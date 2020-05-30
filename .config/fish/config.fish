@@ -45,11 +45,23 @@ end
 
 function gp
         set result (string join ' ' $argv)
-#       set result "'"$result"'"
         git add .
         git commit -m $result
         git push
 end
+
+function da
+        config add $argv
+end
+
+function dp
+        set result (string join ' ' $argv)
+        config add .
+        config commit -m $result
+        config push
+end
+
+
 
 # start google chrome with argument as address
 function c
