@@ -39,9 +39,9 @@ end
 
 function dp
         set result (string join ' ' $argv)
-        config add .
-        config commit -m $result
-        config push
+        dot add -u
+        dot commit -m $result
+        dot push
 end
 
 # start google chrome with argument as address
