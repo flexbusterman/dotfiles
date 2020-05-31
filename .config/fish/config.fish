@@ -21,13 +21,13 @@ alias vim='nvim'
 # alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 alias dot='/usr/bin/git --git-dir=$HOME/.dot/ --work-tree=$HOME'
-
-function pi
-	sudo pacman -S --noconfirm $argv
+alias rf='rm -rf'
+function in
+	sudo apt -y install $argv
 end
 
-function pr
-	sudo pacman -Rv --noconfirm $argv
+function un
+	sudo apt -y remove $argv
 end
 
 function gp
