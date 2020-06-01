@@ -19,7 +19,7 @@ static const char col_gray4[]       = "#eeeeee";
 static const char col_cyan[]        = "#005577";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
+	[SchemeNorm] = { col_gray3, col_gray1, col_gray1 },
 	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
 };
 
@@ -74,12 +74,13 @@ static const char *termcmd[]  = { "st", NULL };
 static const char *reboot[] = { "reboot", NULL };
 static const char *poweroff[] = { "poweroff", NULL };
 static const char *falkon[] = { "falkon", NULL };
-static const char *ranger[] = { "st ranger", NULL };
+/* static const char *ranger[] = { "st ranger", NULL }; */
 
 #include <X11/XF86keysym.h>
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
+	{ MODKEY|ShiftMask,                       XK_comma, spawn,  SHCMD("st ranger")},
 	{ MODKEY,                       XK_Return, spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY|ControlMask|ShiftMask,             XK_r, spawn,          {.v = reboot } },
@@ -104,7 +105,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  spawn,         {.v = ranger } },
-	{ MODKEY|ShiftMask,             XK_period, spawn,         {.v = falkon } },
+/* { MODKEY|ShiftMask,             XK_period, spawn,         {.v = falkon } }, */
 /* { MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } }, */
 /* { MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } }, */
 	{ MODKEY,			XK_z,		incrgaps,	{.i = +3 } },
