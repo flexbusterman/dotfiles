@@ -53,3 +53,5 @@ end
 
 fish_vi_key_bindings
 fish_ssh_agent
+ssh-add ~/.ssh/github
+clear
