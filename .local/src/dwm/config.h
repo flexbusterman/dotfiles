@@ -81,6 +81,8 @@ static const char *poweroff[] = { "poweroff", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
+	{ MODKEY|ControlMask|ShiftMask,                       XK_s, spawn,  SHCMD("setxkbmap se")},
+	{ MODKEY|ControlMask|ShiftMask,                       XK_u, spawn,  SHCMD("setxkbmap us")},
 	{ 0, XF86XK_MonBrightnessUp,	spawn,		SHCMD("xbacklight -inc 15") },
 	{ 0, XF86XK_MonBrightnessDown,	spawn,		SHCMD("xbacklight -dec 15") },
 	{ 0, XF86XK_AudioMute,		spawn,		SHCMD("pactl set-sink-mute 0 toggle") },
