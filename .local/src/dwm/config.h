@@ -73,7 +73,7 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *termcmd[]  = { "st", NULL };
 static const char *reboot[] = { "reboot", NULL };
 static const char *poweroff[] = { "poweroff", NULL };
-static const char *falkon[] = { "falkon", NULL };
+/* static const char *chromium[] = { "chromium http://www.google.com", NULL }; */
 /* static const char *ranger[] = { "st ranger", NULL }; */
 /* pactl set-sink-volume 0 50% */
 
@@ -111,7 +111,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 /* { MODKEY|ShiftMask,             XK_comma,  spawn,         {.v = ranger } }, */
-        { MODKEY|ShiftMask,             XK_period, spawn,         {.v = falkon } },
+        { MODKEY|ShiftMask,             XK_period, spawn,         SHCMD("chromium http://www.google.com") },
 /* { MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } }, */
 /* { MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } }, */
 	{ MODKEY,			XK_z,		incrgaps,	{.i = +3 } },
