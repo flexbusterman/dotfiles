@@ -81,6 +81,7 @@ static const char *poweroff[] = { "poweroff", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
+	{ 0,				XK_Print,	spawn,		SHCMD("maim ~/Pictures/SCREENSHOTS/$(date '+%F %T').jpg") },
 	{ MODKEY|ControlMask|ShiftMask,                       XK_s, spawn,  SHCMD("setxkbmap se")},
 	{ MODKEY|ControlMask|ShiftMask,                       XK_u, spawn,  SHCMD("setxkbmap us")},
 	{ 0, XF86XK_MonBrightnessUp,	spawn,		SHCMD("xbacklight -inc 15") },
