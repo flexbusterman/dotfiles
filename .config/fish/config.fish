@@ -14,7 +14,7 @@
 # if status --is-interactive
 #   ...
 # end
-
+alias reaper="/home/flex/opt/REAPER/reaper"
 alias fs="df -h | grep --color='never' 'Filesystem\|sd'"
 alias copy='xclip -sel clip'
 alias vim='nvim'
