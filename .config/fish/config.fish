@@ -30,6 +30,12 @@ function un
 	sudo apt -y remove $argv
 end
 
+# function to prepend date to filename
+function pd
+  set date (date +%F)
+  mv "$argv" "$date $argv"
+end
+
 function gp
         set result (string join ' ' $argv)
         git add .

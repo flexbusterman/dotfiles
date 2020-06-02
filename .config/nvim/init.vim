@@ -586,3 +586,5 @@ let g:seiya_auto_enable=1
 let g:seiya_target_groups = has('nvim') ? ['guibg'] : ['ctermbg']
 
 command! -nargs=0 Sw w !sudo tee % > /dev/null
+
+" map <C-<Bslash>>

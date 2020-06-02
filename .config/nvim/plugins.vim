@@ -103,6 +103,7 @@ Plug 'Yggdroot/indentLine' " https://github.com/Yggdroot/indentLine
 Plug 'ap/vim-css-color'
 
 Plug 'miyakogi/seiya.vim'
+Plug 'arecarn/vim-crunch'
 
 " Initialize plugin system
 call plug#end()
