@@ -92,7 +92,7 @@ static Key keys[] = {
 	{ 0, XF86XK_AudioMute,		spawn,		SHCMD("pactl set-sink-mute 0 toggle") },
 	{ 0, XF86XK_AudioRaiseVolume,	spawn,		SHCMD("pactl set-sink-volume 0 +5%") },
 	{ 0, XF86XK_AudioLowerVolume,	spawn,		SHCMD("pactl set-sink-volume 0 -5%") },
-	{ MODKEY|ShiftMask,                       XK_comma, spawn,  SHCMD("alacritty ranger")},
+	{ MODKEY|ShiftMask,                       XK_comma, spawn,  SHCMD("alacritty -e ranger")},
 	{ MODKEY,                       XK_Return, spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY|ControlMask|ShiftMask,             XK_r, spawn,          {.v = reboot } },
