@@ -3,7 +3,7 @@
 # Any items in the `env` entry below will be added as
 # environment variables. Some entries may override variables
 # set by alacritty itself.
-#env:
+env:
   # TERM variable
   #
   # This value is used to set the `$TERM` environment variable for
@@ -11,6 +11,7 @@
   # check the local terminfo database and use `alacritty` if it is
   # available, otherwise `xterm-256color` is used.
   #TERM: alacritty
+  WINIT_X11_SCALE_FACTOR: "1.0"
 
 #window:
   # Window dimensions (changes require restart)
@@ -87,7 +88,7 @@
   #multiplier: 3
 
 # Font configuration
-#font:
+font:
   # Normal (roman) font face
   #normal:
     # Font family
@@ -135,7 +136,7 @@
     #style: Bold Italic
 
   # Point size
-  #size: 11.0
+  size: 13
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
@@ -516,7 +517,7 @@ background_opacity: 0.85
 #   - Copy
 #   - Paste
 #   - PasteSelection
-#   - IncreaseFontSize
+#   - IncreaseFontS11ize
 #   - DecreaseFontSize
 #   - ResetFontSize
 #   - ScrollPageUp
