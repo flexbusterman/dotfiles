@@ -14,6 +14,8 @@
 # if status --is-interactive
 #   ...
 # end
+alias la="exa -la"
+alias ls="exa"
 alias reaper="/home/flex/opt/REAPER/reaper"
 alias fs="df -h | grep --color='never' 'Filesystem\|sd'"
 alias copy='xclip -sel clip'
@@ -60,4 +62,6 @@ end
 fish_vi_key_bindings
 fish_ssh_agent
 ssh-add ~/.ssh/github
+ssh-add ~/.ssh/bitbucket
 clear
+set -gx PATH $PATH /home/flex/.cargo/bin
