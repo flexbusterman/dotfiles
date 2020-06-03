@@ -17,6 +17,7 @@
 alias la="exa -la"
 alias ls="exa"
 alias reaper="/home/flex/opt/REAPER/reaper"
+alias ranger="/home/flex/.local/src/ranger/ranger.py"
 alias fs="df -h | grep --color='never' 'Filesystem\|sd'"
 alias copy='xclip -sel clip'
 alias vim='nvim'
@@ -26,12 +27,12 @@ alias dot='/usr/bin/git --git-dir=$HOME/.dot/ --work-tree=$HOME'
 alias rf='rm -rf'
 function in
 	# sudo apt -y install $argv
-        sudo pacman -S -noconfirm $argv
+        sudo pacman -S --noconfirm $argv
 end
 
 function un
 	# sudo apt -y remove $argv
-        sudo pacman -R -noconfirm $argv
+        sudo pacman -R --noconfirm $argv
 end
 
 # function to prepend date to filename
