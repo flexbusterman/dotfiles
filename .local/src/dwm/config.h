@@ -120,7 +120,8 @@ static Key keys[] = {
 	{ MODKEY|ControlMask|ShiftMask,             XK_r, spawn,          {.v = reboot } },
 	{ MODKEY|ControlMask|ShiftMask,             XK_p, spawn,          {.v = poweroff } },
 	{ MODKEY|ShiftMask,			XK_period,		spawn,		SHCMD("$BROWSER") },
-	/* { MODKEY|ShiftMask,                       XK_comma, spawn,  SHCMD("st $/homeranger")}, */
+	{ MODKEY|ShiftMask,                       XK_comma, spawn,  SHCMD("st ranger")},
+	{ 0,				XK_Print,	spawn,		SHCMD("maim -f 'jpg' /home/flex/Pictures/SCREENSHOTS/$(date '+%F_%H_%M_%S').jpg") },
 
 	/* modifier                     key        function        argument */
 	STACKKEYS(MODKEY,                          focus)
@@ -241,7 +242,7 @@ static Key keys[] = {
 	{ MODKEY,			XK_space,	zoom,		{0} },
 	{ MODKEY|ShiftMask,		XK_space,	togglefloating,	{0} },
 
-	{ 0,				XK_Print,	spawn,		SHCMD("maim pic-full-$(date '+%y%m%d-%H%M-%S').png") },
+	/* { 0,				XK_Print,	spawn,		SHCMD("maim pic-full-$(date '+%y%m%d-%H%M-%S').png") }, */
 	{ ShiftMask,			XK_Print,	spawn,		SHCMD("maimpick") },
 	{ MODKEY,			XK_Print,	spawn,		SHCMD("dmenurecord") },
 	{ MODKEY|ShiftMask,		XK_Print,	spawn,		SHCMD("dmenurecord kill") },

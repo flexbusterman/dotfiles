@@ -17,7 +17,7 @@
 alias la="exa -la"
 alias ls="exa"
 alias reaper="/home/flex/opt/REAPER/reaper"
-alias ranger="/home/flex/.local/src/ranger/ranger.py"
+# alias ranger="/home/flex/.local/src/ranger/ranger.py"
 alias fs="df -h | grep --color='never' 'Filesystem\|sd'"
 alias copy='xclip -sel clip'
 alias vim='nvim'
