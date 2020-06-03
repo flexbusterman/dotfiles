@@ -28,4 +28,4 @@ esac
 
 # date "+%Y %b %d (%a) $icon%I:%M%p"
 printf " "
-date "+%F %R"
+date "+%F %R "
