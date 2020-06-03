@@ -12,7 +12,7 @@ export PATH="$PATH:$(du "$HOME/.local/bin/" | cut -f2 | paste -sd ':')"
 export EDITOR="nvim"
 export TERMINAL="st"
 # export BROWSER="brave"
-export BROWSER="chromium"
+export BROWSER="falkon"
 export READER="zathura"
 export SHELL="fish"
 

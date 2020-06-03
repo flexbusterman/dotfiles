@@ -120,7 +120,6 @@ static Key keys[] = {
 	{ MODKEY|ControlMask|ShiftMask,             XK_r, spawn,          {.v = reboot } },
 	{ MODKEY|ControlMask|ShiftMask,             XK_p, spawn,          {.v = poweroff } },
 	{ MODKEY|ShiftMask,			XK_period,		spawn,		SHCMD("$BROWSER") },
-        /* TODO: sort out ranger */
 	/* { MODKEY|ShiftMask,                       XK_comma, spawn,  SHCMD("st $/homeranger")}, */
 
 	/* modifier                     key        function        argument */
