@@ -25,11 +25,13 @@ alias vim='nvim'
 alias dot='/usr/bin/git --git-dir=$HOME/.dot/ --work-tree=$HOME'
 alias rf='rm -rf'
 function in
-	sudo apt -y install $argv
+	# sudo apt -y install $argv
+        sudo pacman -S -noconfirm $argv
 end
 
 function un
-	sudo apt -y remove $argv
+	# sudo apt -y remove $argv
+        sudo pacman -R -noconfirm $argv
 end
 
 # function to prepend date to filename
