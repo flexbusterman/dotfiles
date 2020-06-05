@@ -67,4 +67,4 @@ fish_ssh_agent
 ssh-add ~/.ssh/github
 ssh-add ~/.ssh/bitbucket
 clear
-set -gx PATH $PATH /home/flex/.cargo/bin
+# set -gx PATH $PATH /home/flex/.cargo/bin
