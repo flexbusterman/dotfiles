@@ -62,6 +62,13 @@ function c
 	i3-msg workspace 2
 end
 
+function timer
+  set input $argv
+  set minutes ()
+  echo $minutes
+end
+
+
 fish_vi_key_bindings
 fish_ssh_agent
 ssh-add ~/.ssh/github

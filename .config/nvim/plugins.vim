@@ -105,5 +105,7 @@ Plug 'ap/vim-css-color'
 Plug 'miyakogi/seiya.vim'
 Plug 'arecarn/vim-crunch'
 
+" Plug 'eslint/eslint'
+
 " Initialize plugin system
 call plug#end()
