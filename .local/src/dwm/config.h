@@ -96,6 +96,7 @@ static const Layout layouts[] = {
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
+/* #define FLEXCMD(cmd) { .v = (const char*[]){ "/bin/bash", "pc", cmd, NULL } } */
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
@@ -103,6 +104,7 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *termcmd[]  = { "st", NULL };
 static const char *reboot[] = { "reboot", NULL };
 static const char *poweroff[] = { "poweroff", NULL };
+/* static const char *vifm[] = { "st env SHELL=/bin/bash vifm", NULL }; */
 
 #include <X11/XF86keysym.h>
 #include "shiftview.c"
@@ -121,7 +123,7 @@ static Key keys[] = {
 	{ MODKEY|ControlMask|ShiftMask,             XK_r, spawn,          {.v = reboot } },
 	{ MODKEY|ControlMask|ShiftMask,             XK_p, spawn,          {.v = poweroff } },
 	{ MODKEY|ShiftMask,			XK_period,		spawn,		SHCMD("$BROWSER") },
-	{ MODKEY|ShiftMask,                       XK_comma, spawn,  SHCMD("st vifm")},
+	{ MODKEY|ShiftMask,                       XK_comma, spawn,  SHCMD("st env SHELL=/bin/bash vifm")},
 	{ 0,				XK_Print,	spawn,		SHCMD("maim -f 'jpg' /home/flex/Pictures/SCREENSHOTS/$(date '+%F_%H_%M_%S').jpg") },
 
 	/* modifier                     key        function        argument */
