@@ -63,11 +63,21 @@ function c
 end
 
 function timer
-  set input $argv
-  set minutes ()
-  echo $minutes
+  set count $argv
+  for n in (seq $count -1 0)
+    clear
+    set minutes (math -s0 "$n / 60")
+    set seconds (math -s0 "$n % 60")
+    if test $seconds -lt 10
+      echo $minutes:0$seconds
+    else
+      echo $minutes:$seconds
+    end
+    sleep 1
+  end
+  clear
+  figlet "Done"
 end
-
 
 fish_vi_key_bindings
 fish_ssh_agent
