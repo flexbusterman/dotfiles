@@ -17,6 +17,8 @@ settings:
     https://splendidprizeforyou.com: false
     https://www.networkworld.com: false
     https://www.reddit.com: false
+  fonts.default_size:
+    global: 17px
   url.searchengines:
     global:
       DEFAULT: https://www.google.com.ar/search?q={}
