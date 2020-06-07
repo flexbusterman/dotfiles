@@ -75,3 +75,4 @@ ssh-add ~/.ssh/github
 ssh-add ~/.ssh/bitbucket
 clear
 # set -gx PATH $PATH /home/flex/.cargo/bin
+set fish_greeting ""
