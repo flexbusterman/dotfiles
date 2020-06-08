@@ -15,6 +15,7 @@ set nohlsearch
 set incsearch
 set suggestoptions=normal,visual,view,otherpane,keys,marks,registers
 colorscheme luke
+set dotfiles
 
 map <C-h> <C-w>h
 map <C-j> <C-w>j
