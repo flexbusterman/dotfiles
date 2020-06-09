@@ -14,6 +14,14 @@
 # if status --is-interactive
 #   ...
 # end
+
+# aliases for maestral dropbox client
+alias m="maestral"
+alias mls="maestral ls | less"
+alias mrm="maestral excluded add"
+alias madd="maestral excluded remove"
+alias ms='maestral status' # Returns the current status of the Maestral daemon.
+
 alias la="exa -la"
 alias ls="exa"
 alias reaper="/home/flex/opt/REAPER/reaper"
@@ -86,3 +94,9 @@ ssh-add ~/.ssh/bitbucket
 clear
 # set -gx PATH $PATH /home/flex/.cargo/bin
 set fish_greeting ""
+Usage: maestral [OPTIONS] COMMAND [ARGS]...
+
+  Maestral Dropbox client for Linux and macOS.
+
+Options:
+  -h, --help  Show this message and exit.
