@@ -97,7 +97,6 @@ static const Layout layouts[] = {
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
-/* #define FLEXCMD(cmd) { .v = (const char*[]){ "/bin/bash", "pc", cmd, NULL } } */
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
@@ -110,7 +109,6 @@ static const char *poweroff[] = { "poweroff", NULL };
 #include <X11/XF86keysym.h>
 #include "shiftview.c"
 static Key keys[] = {
-
         /* FLEX KEYS */
 	{ MODKEY|ControlMask|ShiftMask,                       XK_s, spawn,  SHCMD("setxkbmap se")},
 	{ MODKEY|ControlMask|ShiftMask,                       XK_u, spawn,  SHCMD("setxkbmap us")},
@@ -296,7 +294,6 @@ static Key keys[] = {
 	/* { MODKEY|Mod4Mask,              XK_o,      incrohgaps,     {.i = -1 } }, */
 	/* { MODKEY|ShiftMask,             XK_y,      incrovgaps,     {.i = +1 } }, */
 	/* { MODKEY|ShiftMask,             XK_o,      incrovgaps,     {.i = -1 } }, */
-
 };
 
 /* button definitions */
