@@ -12,6 +12,8 @@ settings:
         ',M': hint links spawn mpv {hint-url}
         ',m': hint links spawn mpv {hint-url}
         ',y': open www.youtube.com
+  colors.webpage.bg:
+    global: black
   content.notifications:
     https://cutewallpaper.org: false
     https://splendidprizeforyou.com: false
@@ -19,10 +21,12 @@ settings:
     https://www.reddit.com: false
   fonts.default_size:
     global: 17px
+  url.default_page:
+    global: about:blank
   url.searchengines:
     global:
       DEFAULT: https://www.google.com.ar/search?q={}
       d: https://duckduckgo.com/?q={}
       y: https://www.youtube.com/results?search_query={}
   url.start_pages:
-    global: https://www.google.com
+    global: about:blank
