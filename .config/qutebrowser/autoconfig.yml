@@ -13,10 +13,11 @@ settings:
         ',m': hint links spawn mpv {hint-url}
         ',y': open www.youtube.com
   colors.webpage.bg:
-    global: black
+    global: white
   content.notifications:
     https://cutewallpaper.org: false
     https://splendidprizeforyou.com: false
+    https://www.facebook.com: false
     https://www.networkworld.com: false
     https://www.reddit.com: false
   fonts.default_size:

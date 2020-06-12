@@ -18,7 +18,7 @@ static char normbordercolor[]       = "#111111";
 static char normfgcolor[]           = "#cccccc";
 static char selfgcolor[]            = "#ffffff";
 static char selbordercolor[]        = "#52a7DD";
-static char selbgcolor[]            = "#333333";
+static char selbgcolor[]            = "#222222";
 static char *colors[][3] = {
        /*               fg           bg           border   */
        [SchemeNorm] = { normfgcolor, normbgcolor, normbordercolor },
@@ -122,7 +122,8 @@ static Key keys[] = {
 	{ MODKEY|ControlMask|ShiftMask,             XK_r, spawn,          {.v = reboot } },
 	{ MODKEY|ControlMask|ShiftMask,             XK_p, spawn,          {.v = poweroff } },
 	{ MODKEY|ShiftMask,			XK_period,		spawn,		SHCMD("$BROWSER") },
-	{ MODKEY|ShiftMask,                       XK_comma, spawn,  SHCMD("st env SHELL=/bin/bash vifm")},
+/* { MODKEY|ShiftMask,                       XK_comma, spawn,  SHCMD("st env SHELL=/bin/bash vifm")}, */
+	{ MODKEY|ShiftMask,                       XK_comma, spawn,  SHCMD("st ranger")},
 	{ 0,				XK_Print,	spawn,		SHCMD("maim -f 'jpg' /home/flex/Pictures/SCREENSHOTS/$(date '+%F_%H_%M_%S').jpg") },
 
 	/* modifier                     key        function        argument */

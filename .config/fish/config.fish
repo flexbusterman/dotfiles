@@ -16,11 +16,11 @@
 # end
 
 # aliases for maestral dropbox client
-alias m="maestral"
-alias mls="maestral ls | sort -k 3,3 | less -p included"
-alias mrm="maestral excluded add"
-alias madd="maestral excluded remove"
-alias ms='maestral status' # Returns the current status of the Maestral daemon.
+alias d="maestral"
+alias dls="maestral ls | sort -k 3,3 | less -p included"
+alias drm="maestral excluded add"
+alias dadd="maestral excluded remove"
+alias ds='maestral status' # Returns the current status of the Maestral daemon.
 
 alias la="exa -la"
 alias ls="exa"
