@@ -48,7 +48,7 @@ static const Rule rules[] = {
 	/* class    instance      title       	 tags mask    isfloating   isterminal  noswallow  monitor */
 	{ "mpv",     NULL,       NULL,       	    -1,       0,           0,         0,        -1 },
 /* { "Barrier",     NULL,       NULL,  1 << 8,       0,           0,         0,        -1 }, */
-	{ "Barrier",     NULL,       NULL,  1 << 8,       0,           0,         0,        -1 },
+	{ "Barrier",     NULL,       NULL,  1 << 7,       0,           0,         0,        -1 },
 	{ "St",       NULL,       NULL,       	    0,            0,           1,         0,        -1 },
 	{ NULL,       NULL,       "Event Tester",   0,            0,           0,         1,        -1 },
 	{ NULL,      "spterm",    NULL,       	    SPTAG(0),     1,           1,         0,        -1 },
@@ -63,10 +63,10 @@ static const int resizehints = 1;    /* 1 means respect size hints in tiled resi
 #include "vanitygaps.c"
 static const Layout layouts[] = {
 	/* symbol     arrange function */
- 	{ "[]=",	tile },			/* Default: Master on left, slaves on right */
+	{ "[@]",	spiral },		/* Fibonacci spiral */
 	{ "TTT",	bstack },		/* Master on top, slaves on bottom */
 
-	{ "[@]",	spiral },		/* Fibonacci spiral */
+ 	{ "[]=",	tile },			/* Default: Master on left, slaves on right */
 	{ "[\\]",	dwindle },		/* Decreasing in size right and leftward */
 
 	{ "H[]",	deck },			/* Master on left, slaves in monocle-like mode on right */
@@ -89,7 +89,7 @@ static const Layout layouts[] = {
 #define STACKKEYS(MOD,ACTION) \
 	{ MOD,	XK_j,	ACTION##stack,	{.i = INC(+1) } }, \
 	{ MOD,	XK_k,	ACTION##stack,	{.i = INC(-1) } }, \
-	{ MOD,  XK_v,   ACTION##stack,  {.i = 0 } }, \
+	{ MODKEY|ControlMask|ShiftMask,  XK_space,   ACTION##stack,  {.i = 0 } }, \
 	/* { MOD, XK_grave, ACTION##stack, {.i = PREVSEL } }, \ */
 	/* { MOD, XK_a,     ACTION##stack, {.i = 1 } }, \ */
 	/* { MOD, XK_z,     ACTION##stack, {.i = 2 } }, \ */
