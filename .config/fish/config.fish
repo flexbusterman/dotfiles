@@ -40,7 +40,7 @@ end
 
 function un
 	# sudo apt -y remove $argv
-        sudo pacman -R --noconfirm $argv
+        sudo pacman -Rns $argv
 end
 
 # function to prepend date to filename

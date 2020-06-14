@@ -110,8 +110,8 @@ static const char *poweroff[] = { "poweroff", NULL };
 #include "shiftview.c"
 static Key keys[] = {
         /* FLEX KEYS */
-	{ MODKEY|ControlMask|ShiftMask,                       XK_s, spawn,  SHCMD("setxkbmap se")},
-	{ MODKEY|ControlMask|ShiftMask,                       XK_u, spawn,  SHCMD("setxkbmap us")},
+	{ MODKEY|ControlMask|ShiftMask,                       XK_s, spawn,  SHCMD("setxkbmap se; setxkbmap -option \"caps:swapescape\"")},
+	{ MODKEY|ControlMask|ShiftMask,                       XK_u, spawn,  SHCMD("setxkbmap us; setxkbmap -option \"caps:swapescape\"")},
 	/* { 0, XF86XK_MonBrightnessUp,	spawn,		SHCMD("xbacklight -inc 15") }, */
 	/* { 0, XF86XK_MonBrightnessDown,	spawn,		SHCMD("xbacklight -dec 15") }, */
 	{ MODKEY,			XK_w,		killclient,	{0} },

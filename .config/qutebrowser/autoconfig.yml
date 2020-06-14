@@ -9,8 +9,7 @@ settings:
   bindings.commands:
     global:
       normal:
-        ',M': hint links spawn mpv {hint-url}
-        ',m': hint links spawn mpv {hint-url}
+        ',m': hint links spawn mpv {hint-url} --ytdl-raw-options=mark-watched=
         ',y': open www.youtube.com
   colors.webpage.bg:
     global: white
@@ -25,7 +24,7 @@ settings:
   fonts.default_family:
     global: RobotoMono
   fonts.default_size:
-    global: 17px
+    global: 16px
   url.default_page:
     global: about:blank
   url.searchengines:
