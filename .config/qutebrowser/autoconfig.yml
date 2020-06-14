@@ -9,6 +9,7 @@ settings:
   bindings.commands:
     global:
       normal:
+        ',f': open www.facebook.com/messages/t
         ',m': hint links spawn mpv {hint-url} --ytdl-raw-options=mark-watched=
         ',y': open www.youtube.com
   colors.webpage.bg:

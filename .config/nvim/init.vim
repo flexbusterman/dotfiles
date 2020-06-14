@@ -24,7 +24,7 @@ set clipboard+=unnamedplus
 set expandtab
 
 " Change number of spaces that a <Tab> counts for during editing ops
-set softtabstop=2
+set tabstop=2
 
 " Indentation amount for < and > commands.
 set shiftwidth=2
@@ -33,7 +33,7 @@ set shiftwidth=2
 " set nowrap
 
 " Don't highlight current cursor line
-set nocursorline
+" set nocursorline
 
 " Disable line/column number in status line
 " Shows up in preview window when airline is disabled if not
@@ -68,7 +68,8 @@ let g:rehash256 = 1
 " Uncomment to prevent non-normal modes showing in powerline and below powerline.
 set noshowmode
 
-set path+=**					" Searches current directory recursively.
+" Searches current directory recursively.
+set path+=**
 
 " ============================================================================ "
 " ===                           PLUGIN SETUP                               === "
@@ -76,67 +77,67 @@ set path+=**					" Searches current directory recursively.
 
 " Wrap in try/catch to avoid errors on initial install before plugin is available
 try
-" === Denite setup ==="
-" Use ripgrep for searching current directory for files
-" By default, ripgrep will respect rules in .gitignore
-"   --files: Print each file that would be searched (but don't search)
-"   --glob:  Include or exclues files for searching that match the given glob
-"            (aka ignore .git files)
-"
-call denite#custom#var('file/rec', 'command', ['rg', '--files', '--glob', '!.git'])
+  " === Denite setup ==="
+  " Use ripgrep for searching current directory for files
+  " By default, ripgrep will respect rules in .gitignore
+  "   --files: Print each file that would be searched (but don't search)
+  "   --glob:  Include or exclues files for searching that match the given glob
+  "            (aka ignore .git files)
+  "
+  call denite#custom#var('file/rec', 'command', ['rg', '--files', '--glob', '!.git'])
 
-" Use ripgrep in place of "grep"
-call denite#custom#var('grep', 'command', ['rg'])
+  " Use ripgrep in place of "grep"
+  call denite#custom#var('grep', 'command', ['rg'])
 
-" Custom options for ripgrep
-"   --vimgrep:  Show results with every match on it's own line
-"   --hidden:   Search hidden directories and files
-"   --heading:  Show the file name above clusters of matches from each file
-"   --S:        Search case insensitively if the pattern is all lowercase
-call denite#custom#var('grep', 'default_opts', ['--hidden', '--vimgrep', '--heading', '-S'])
+  " Custom options for ripgrep
+  "   --vimgrep:  Show results with every match on it's own line
+  "   --hidden:   Search hidden directories and files
+  "   --heading:  Show the file name above clusters of matches from each file
+  "   --S:        Search case insensitively if the pattern is all lowercase
+  call denite#custom#var('grep', 'default_opts', ['--hidden', '--vimgrep', '--heading', '-S'])
 
-" Recommended defaults for ripgrep via Denite docs
-call denite#custom#var('grep', 'recursive_opts', [])
-call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
-call denite#custom#var('grep', 'separator', ['--'])
-call denite#custom#var('grep', 'final_opts', [])
+  " Recommended defaults for ripgrep via Denite docs
+  call denite#custom#var('grep', 'recursive_opts', [])
+  call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
+  call denite#custom#var('grep', 'separator', ['--'])
+  call denite#custom#var('grep', 'final_opts', [])
 
-" Remove date from buffer list
-call denite#custom#var('buffer', 'date_format', '')
+  " Remove date from buffer list
+  call denite#custom#var('buffer', 'date_format', '')
 
-" Custom options for Denite
-"   auto_resize             - Auto resize the Denite window height automatically.
-"   prompt                  - Customize denite prompt
-"  direction               - Specify Denite window direction as directly below current pane
-"   winminheight            - Specify min height for Denite window
-"   highlight_mode_insert   - Specify h1-CursorLine in insert mode
-"   prompt_highlight        - Specify color of prompt
-"   highlight_matched_char  - Matched characters highlight
-"   highlight_matched_range - matched range highlight
-let s:denite_options = {'default' : {
-\ 'split': 'floating',
-\ 'start_filter': 1,
-\ 'auto_resize': 1,
-\ 'source_names': 'short',
-\ 'prompt': 'λ ',
-\ 'highlight_matched_char': 'QuickFixLine',
-\ 'highlight_matched_range': 'Visual',
-\ 'highlight_window_background': 'Visual',
-\ 'highlight_filter_background': 'DiffAdd',
-\ 'winrow': 1,
-\ 'vertical_preview': 1
-\ }}
+  " Custom options for Denite
+  "   auto_resize             - Auto resize the Denite window height automatically.
+  "   prompt                  - Customize denite prompt
+  "  direction               - Specify Denite window direction as directly below current pane
+  "   winminheight            - Specify min height for Denite window
+  "   highlight_mode_insert   - Specify h1-CursorLine in insert mode
+  "   prompt_highlight        - Specify color of prompt
+  "   highlight_matched_char  - Matched characters highlight
+  "   highlight_matched_range - matched range highlight
+  let s:denite_options = {'default' : {
+        \ 'split': 'floating',
+        \ 'start_filter': 1,
+        \ 'auto_resize': 1,
+        \ 'source_names': 'short',
+        \ 'prompt': 'λ ',
+        \ 'highlight_matched_char': 'QuickFixLine',
+        \ 'highlight_matched_range': 'Visual',
+        \ 'highlight_window_background': 'Visual',
+        \ 'highlight_filter_background': 'DiffAdd',
+        \ 'winrow': 1,
+        \ 'vertical_preview': 1
+        \ }}
 
-" Loop through denite options and enable them
-function! s:profile(opts) abort
-  for l:fname in keys(a:opts)
-    for l:dopt in keys(a:opts[l:fname])
-      call denite#custom#option(l:fname, l:dopt, a:opts[l:fname][l:dopt])
+  " Loop through denite options and enable them
+  function! s:profile(opts) abort
+    for l:fname in keys(a:opts)
+      for l:dopt in keys(a:opts[l:fname])
+        call denite#custom#option(l:fname, l:dopt, a:opts[l:fname][l:dopt])
+      endfor
     endfor
-  endfor
-endfunction
+  endfunction
 
-call s:profile(s:denite_options)
+  call s:profile(s:denite_options)
 catch
   echo 'Denite not installed. It should work after running :PlugInstall'
 endtry
@@ -185,46 +186,46 @@ let g:NERDTreeIgnore = ['^\.DS_Store$', '^tags$', '\.git$[[dir]]', '\.idea$[[dir
 " Wrap in try/catch to avoid errors on initial install before plugin is available
 try
 
-" === Vim airline ==== "
-" Enable extensions
-" let g:airline_extensions = ['branch', 'hunks', 'coc']
+  " === Vim airline ==== "
+  " Enable extensions
+  " let g:airline_extensions = ['branch', 'hunks', 'coc']
 
-" Update section z to just have line number
-" let g:airline_section_z = airline#section#create(['linenr'])
+  " Update section z to just have line number
+  " let g:airline_section_z = airline#section#create(['linenr'])
 
-" Do not draw separators for empty sections (only for the active window) >
-" let g:airline_skip_empty_sections = 1
+  " Do not draw separators for empty sections (only for the active window) >
+  " let g:airline_skip_empty_sections = 1
 
-" Smartly uniquify buffers names with similar filename, suppressing common parts of paths.
-" let g:airline#extensions#tabline#formatter = 'unique_tail'
+  " Smartly uniquify buffers names with similar filename, suppressing common parts of paths.
+  " let g:airline#extensions#tabline#formatter = 'unique_tail'
 
-" Custom setup that removes filetype/whitespace from default vim airline bar
-" let g:airline#extensions#default#layout = [['a', 'b', 'c'], ['x', 'z', 'warning', 'error']]
+  " Custom setup that removes filetype/whitespace from default vim airline bar
+  " let g:airline#extensions#default#layout = [['a', 'b', 'c'], ['x', 'z', 'warning', 'error']]
 
-" Customize vim airline per filetype
-" 'nerdtree'  - Hide nerdtree status line
-" 'list'      - Only show file type plus current line number out of total
-" let g:airline_filetype_overrides = {
-"   \ 'nerdtree': [ get(g:, 'NERDTreeStatusline', ''), '' ],
-"   \ 'list': [ '%y', '%l/%L'],
-"   \ }
+  " Customize vim airline per filetype
+  " 'nerdtree'  - Hide nerdtree status line
+  " 'list'      - Only show file type plus current line number out of total
+  " let g:airline_filetype_overrides = {
+  "   \ 'nerdtree': [ get(g:, 'NERDTreeStatusline', ''), '' ],
+  "   \ 'list': [ '%y', '%l/%L'],
+  "   \ }
 
-" Enable powerline fonts
-" let g:airline_powerline_fonts = 1
-"
-" " Enable caching of syntax highlighting groups
-" let g:airline_highlighting_cache = 1
-"
-" " Define custom airline symbols
-" if !exists('g:airline_symbols')
-"   let g:airline_symbols = {}
-" endif
-"
-" " Don't show git changes to current file in airline
-" let g:airline#extensions#hunks#enabled=0
-"
-" catch
-"   echo 'Airline not installed. It should work after running :PlugInstall'
+  " Enable powerline fonts
+  " let g:airline_powerline_fonts = 1
+  "
+  " " Enable caching of syntax highlighting groups
+  " let g:airline_highlighting_cache = 1
+  "
+  " " Define custom airline symbols
+  " if !exists('g:airline_symbols')
+  "   let g:airline_symbols = {}
+  " endif
+  "
+  " " Don't show git changes to current file in airline
+  " let g:airline#extensions#hunks#enabled=0
+  "
+  " catch
+  "   echo 'Airline not installed. It should work after running :PlugInstall'
 endtry
 "
 " === echodoc === "
@@ -344,7 +345,7 @@ endfunction
 colorscheme dracula
 
 if (has("termguicolors"))
-    set termguicolors
+  set termguicolors
 endif
 
 
@@ -373,19 +374,19 @@ nnoremap <leader>j :<C-u>DeniteCursorWord grep:.<CR>
 autocmd FileType denite-filter call s:denite_filter_my_settings()
 function! s:denite_filter_my_settings() abort
   imap <silent><buffer> <C-o>
-  \ <Plug>(denite_filter_quit)
+        \ <Plug>(denite_filter_quit)
   inoremap <silent><buffer><expr> <Esc>
-  \ denite#do_map('quit')
+        \ denite#do_map('quit')
   nnoremap <silent><buffer><expr> <Esc>
-  \ denite#do_map('quit')
+        \ denite#do_map('quit')
   inoremap <silent><buffer><expr> <CR>
-  \ denite#do_map('do_action')
+        \ denite#do_map('do_action')
   inoremap <silent><buffer><expr> <C-t>
-  \ denite#do_map('do_action', 'tabopen')
+        \ denite#do_map('do_action', 'tabopen')
   inoremap <silent><buffer><expr> <C-v>
-  \ denite#do_map('do_action', 'vsplit')
+        \ denite#do_map('do_action', 'vsplit')
   inoremap <silent><buffer><expr> <C-h>
-  \ denite#do_map('do_action', 'split')
+        \ denite#do_map('do_action', 'split')
 endfunction
 
 " Define mappings while in denite window
@@ -400,32 +401,32 @@ endfunction
 autocmd FileType denite call s:denite_my_settings()
 function! s:denite_my_settings() abort
   nnoremap <silent><buffer><expr> <CR>
-  \ denite#do_map('do_action')
+        \ denite#do_map('do_action')
   nnoremap <silent><buffer><expr> q
-  \ denite#do_map('quit')
+        \ denite#do_map('quit')
   nnoremap <silent><buffer><expr> <Esc>
-  \ denite#do_map('quit')
+        \ denite#do_map('quit')
   nnoremap <silent><buffer><expr> d
-  \ denite#do_map('do_action', 'delete')
+        \ denite#do_map('do_action', 'delete')
   nnoremap <silent><buffer><expr> p
-  \ denite#do_map('do_action', 'preview')
+        \ denite#do_map('do_action', 'preview')
   nnoremap <silent><buffer><expr> i
-  \ denite#do_map('open_filter_buffer')
+        \ denite#do_map('open_filter_buffer')
   nnoremap <silent><buffer><expr> <C-o>
-  \ denite#do_map('open_filter_buffer')
+        \ denite#do_map('open_filter_buffer')
   nnoremap <silent><buffer><expr> <C-t>
-  \ denite#do_map('do_action', 'tabopen')
+        \ denite#do_map('do_action', 'tabopen')
   nnoremap <silent><buffer><expr> <C-v>
-  \ denite#do_map('do_action', 'vsplit')
+        \ denite#do_map('do_action', 'vsplit')
   nnoremap <silent><buffer><expr> <C-h>
-  \ denite#do_map('do_action', 'split')
+        \ denite#do_map('do_action', 'split')
 endfunction
 
 " === Nerdtree shorcuts === "
 "  <leader>n - Toggle NERDTree on/off
 "  <leader>f - Opens current file location in NERDTree
 nmap <leader>n :NERDTreeToggle<CR>
-nmap <leader>f :NERDTreeFind<CR>
+" nmap <leader>f :NERDTreeFind<CR>
 
 "   <Space> - PageDown
 "   -       - PageUp
@@ -439,10 +440,10 @@ nmap <C-k> <C-w>k
 nmap <C-l> <C-w>l
 
 " === coc.nvim === "
-"   <leader>dd    - Jump to definition of current symbol
-"   <leader>dr    - Jump to references of current symbol
-"   <leader>dj    - Jump to implementation of current symbol
-"   <leader>ds    - Fuzzy search current project symbols
+" <leader>dd    - Jump to definition of current symbol
+" <leader>dr    - Jump to references of current symbol
+" <leader>dj    - Jump to implementation of current symbol
+" <leader>ds    - Fuzzy search current project symbols
 nmap <silent> <leader>dd <Plug>(coc-definition)
 nmap <silent> <leader>dr <Plug>(coc-references)
 nmap <silent> <leader>dj <Plug>(coc-implementation)
@@ -517,6 +518,9 @@ nmap <leader>z :JsDoc<CR>
 " endf
 
 map <leader>f :CocCommand eslint.executeAutofix
+vmap <leader>e <Plug>(coc-format-selected)
+nmap <leader>e <Plug>(coc-format-selected)
+
 " A syntax for placeholders
 " Pressing Control-j jumps to the next match.
 map <leader>j <Esc>/<++><CR><Esc>cf>
@@ -555,14 +559,14 @@ set number
 autocmd BufRead,BufNewFile *.md setlocal spell
 
 " Set backups
-if has('persistent_undo')
-  set undofile
-  set undolevels=3000
-  set undoreload=10000
-endif
-set backupdir=~/.local/share/nvim/backup " Don't put backups in current dir
-set backup
-set noswapfile
+" if has('persistent_undo')
+" set undofile
+" set undolevels=3000
+" set undoreload=10000
+" endif
+" set backupdir=~/.local/share/nvim/backup " Don't put backups in current dir
+" set nobackup
+" set noswapfile
 
 " Reload icons after init source
 " if exists('g:loaded_webdevicons')
@@ -589,3 +593,16 @@ let g:seiya_target_groups = has('nvim') ? ['guibg'] : ['ctermbg']
 command! -nargs=0 Sw w !sudo tee % > /dev/null
 
 " map <C-<Bslash>>
+let g:vim_vue_plugin_load_full_syntax = 1
+
+
+set tabstop=2
+set autoindent
+set smartindent
+
+noremap <F3> :Autoformat<CR>
+
+" helper for indent mistake
+set list listchars=tab:»·,trail:·
+
+set indentexpr=

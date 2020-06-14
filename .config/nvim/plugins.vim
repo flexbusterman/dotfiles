@@ -90,13 +90,13 @@ Plug 'itchyny/lightline.vim'                      " Lightline statusbar
 
 " Icons
 " Plug 'ryanoasis/vim-devicons'
-" Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
 " Flex
 Plug 'tpope/vim-surround'                         " https://github.com/tpope/vim-surround
 Plug 'leafoftree/vim-vue-plugin'                  " vimawesome.com/plugin/vim-vue-plugin
 Plug 'dracula/vim'
-
+Plug 'chiel92/vim-autoformat'
 
 Plug 'chrisbra/vim-commentary'
 Plug 'Yggdroot/indentLine' " https://github.com/Yggdroot/indentLine

@@ -22,13 +22,13 @@ alias drm="maestral excluded add"
 alias dadd="maestral excluded remove"
 alias ds='maestral status' # Returns the current status of the Maestral daemon.
 
+alias vim="nvim"
 alias la="exa -la"
 alias ls="exa"
 alias reaper="/home/flex/opt/REAPER/reaper"
 # alias ranger="/home/flex/.local/src/ranger/ranger.py"
 alias fs="df -h | grep --color='never' 'Filesystem\|sd'"
 alias copy='xclip -sel clip'
-alias vim='nvim'
 # alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 alias dot='/usr/bin/git --git-dir=$HOME/.dot/ --work-tree=$HOME'
