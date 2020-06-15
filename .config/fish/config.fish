@@ -14,27 +14,29 @@
 # if status --is-interactive
 #   ...
 # end
-
-# aliases for maestral dropbox client
-alias d="maestral"
-alias dls="maestral ls | sort -k 3,3 | less -p included"
-alias drm="maestral excluded add"
-alias dadd="maestral excluded remove"
-alias ds='maestral status' # Returns the current status of the Maestral daemon.
-alias dr='maestral restart'
-alias cheat='tldr'
-
-alias vim="nvim"
-alias la="exa -la"
-alias ls="exa"
-alias reaper="/home/flex/opt/REAPER/reaper"
-# alias ranger="/home/flex/.local/src/ranger/ranger.py"
-alias fs="df -h | grep --color='never' 'Filesystem\|sd'"
-alias copy='xclip -sel clip'
 # alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+# aliases for maestral dropbox client
+abbr d "maestral"
+abbr dls "maestral ls | sort -k 3,3 | less -p included"
+abbr drm "maestral excluded add"
+abbr dadd "maestral excluded remove"
+abbr ds 'maestral status'
+abbr dr 'maestral restart'
+abbr cheat 'tldr'
+abbr vim "nvim"
+abbr la "exa -la"
+abbr ls "exa"
+abbr reaper "/home/flex/opt/REAPER/reaper"
+abbr fs "df -h | grep --color='never' 'Filesystem\|sd'"
+abbr copy 'xclip -sel clip'
+abbr wd "(date +\"%F\") "
+abbr dot '/usr/bin/git --git-dir=$HOME/.dot/ --work-tree=$HOME'
+abbr rf 'rm -rf'
 
-alias dot='/usr/bin/git --git-dir=$HOME/.dot/ --work-tree=$HOME'
-alias rf='rm -rf'
+function wd
+  mkdir (date +"%F ")$argv
+end
+
 function in
 	# sudo apt -y install $argv
         sudo pacman -S --noconfirm $argv
