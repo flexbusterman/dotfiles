@@ -16,6 +16,9 @@
 # end
 # alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 # aliases for maestral dropbox client
+alias vim "nvim"
+alias dot '/usr/bin/git --git-dir=$HOME/.dot/ --work-tree=$HOME'
+
 abbr d "maestral"
 abbr dls "maestral ls | sort -k 3,3 | less -p included"
 abbr drm "maestral excluded add"
@@ -23,14 +26,11 @@ abbr dadd "maestral excluded remove"
 abbr ds 'maestral status'
 abbr dr 'maestral restart'
 abbr cheat 'tldr'
-abbr vim "nvim"
 abbr la "exa -la"
 abbr ls "exa"
 abbr reaper "/home/flex/opt/REAPER/reaper"
 abbr fs "df -h | grep --color='never' 'Filesystem\|sd'"
 abbr copy 'xclip -sel clip'
-abbr wd "(date +\"%F\") "
-abbr dot '/usr/bin/git --git-dir=$HOME/.dot/ --work-tree=$HOME'
 abbr rf 'rm -rf'
 
 function wd
