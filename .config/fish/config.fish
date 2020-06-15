@@ -21,6 +21,8 @@ alias dls="maestral ls | sort -k 3,3 | less -p included"
 alias drm="maestral excluded add"
 alias dadd="maestral excluded remove"
 alias ds='maestral status' # Returns the current status of the Maestral daemon.
+alias dr='maestral restart'
+alias cheat='tldr'
 
 alias vim="nvim"
 alias la="exa -la"
