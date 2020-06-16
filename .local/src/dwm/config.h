@@ -125,7 +125,8 @@ static Key keys[] = {
   { MODKEY|ShiftMask,     XK_period,    spawn,    SHCMD("$BROWSER") },
   /* { MODKEY|ShiftMask,                       XK_comma, spawn,  SHCMD("st env SHELL=/bin/bash vifm")}, */
   { MODKEY|ShiftMask,                       XK_comma, spawn,  SHCMD("st ranger")},
-  { 0,        XK_Print, spawn,    SHCMD("maim -f 'jpg' /home/flex/Pictures/SCREENSHOTS/$(date '+%F_%H_%M_%S').jpg") },
+/* { 0,        XK_Print, spawn,    SHCMD("fish -c \"touch (date +\"%F test\")\"") time=$(date +\"%F\ %H_%M_%S\"); maim -f jpg $(/home/flex/Pictures/SCREENSHOTS/$time.jpg") }, */
+  { 0,        XK_Print, spawn,    SHCMD("fish -c \"maim -f jpg /home/flex/Pictures/SCREENSHOTS/(date +'%F %H_%M_%S.jpg')\"")},
 
   /* modifier                     key        function        argument */
   STACKKEYS(MODKEY,                          focus)
@@ -246,7 +247,7 @@ static Key keys[] = {
 { MODKEY,     XK_space, zoom,   {0} },
 { MODKEY|ShiftMask,   XK_f, togglefloating, {0} },
 
-  /* { 0,       XK_Print, spawn,    SHCMD("maim pic-full-$(date '+%y%m%d-%H%M-%S').png") }, */
+  /* { 0,       XK_\Print, spawn,    SHCMD("maim pic-full-$(date '+%y%m%d-%H%M-%S').png") }, */
 { ShiftMask,      XK_Print, spawn,    SHCMD("maimpick") },
 { MODKEY,     XK_Print, spawn,    SHCMD("dmenurecord") },
 { MODKEY|ShiftMask,   XK_Print, spawn,    SHCMD("dmenurecord kill") },
