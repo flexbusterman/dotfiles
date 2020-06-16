@@ -90,7 +90,7 @@ Plug 'itchyny/lightline.vim'                      " Lightline statusbar
 
 " Icons
 " Plug 'ryanoasis/vim-devicons'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+" Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
 " Flex
 Plug 'tpope/vim-surround'                         " https://github.com/tpope/vim-surround
