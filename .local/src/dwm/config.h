@@ -121,7 +121,8 @@ static Key keys[] = {
   { MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
   { MODKEY|ControlMask|ShiftMask,             XK_r, spawn,          {.v = reboot } },
   { MODKEY|ControlMask|ShiftMask,             XK_p, spawn,          {.v = poweroff } },
-  { MODKEY|ShiftMask,     XK_period,    spawn,    SHCMD("$BROWSER") },
+  { MODKEY|ShiftMask,     XK_period,    spawn,    SHCMD("$BROWSER 'http://www.google.com'") },
+  { MODKEY|ControlMask|ShiftMask,     XK_period,    spawn,    SHCMD("$BROWSER") },
   /* { MODKEY|ShiftMask,                       XK_comma, spawn,  SHCMD("st env SHELL=/bin/bash vifm")}, */
   { MODKEY|ShiftMask,                       XK_comma, spawn,  SHCMD("st ranger")},
   { 0,        XK_Print, spawn,    SHCMD("fish -c \"maim -f jpg -m 9 /home/flex/Pictures/SCREENSHOTS/(date +'%F %H_%M_%S.jpg')\"")},
