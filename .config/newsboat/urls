@@ -1,16 +1,21 @@
-"       YOUTUBE"
+" "
+" --- YOUTUBE --- "
 https://www.youtube.com/feeds/videos.xml?channel_id=UCRLOLGZl3-QTaJfLmAKgoAw "~Alan Thrall"
+https://www.youtube.com/feeds/videos.xml?channel_id=UC0M0rxSz3IF0CsSour1iWmw "~Cinemassacre"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCvjgXvBlbQiydffZU7m1_aw "~Coding Train"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCHen0AQzqOMaPbpjYBhfsTA "~dude837"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCAf4fP8QzKkJ_t-c1F2v27Q "~Eli Fieldsteel"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCVls1GmFKf6WlTraIb_IaJg "~DistroTube"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCeovElJP0n0i8ADaPsRSd8g "~Hainbach"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCm22FAXZMw1BaWeFszZxUKw "~Kitboga"
 https://www.youtube.com/feeds/videos.xml?channel_id=UC2eYFnH61tmytImy1mTYvhA "~Luke Smith"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCjDQKxiTVpXutZc2Ra9wCAg "~Oki's Weird Stories"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCe3p87KA_3zKLwH-3Y1rV3w "~Revolution"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCNUzWfHUP_iXZ1GMHz8gBgw "~Ryukahr"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCtUbO6rBht0daVIOGML3c8w "~Summoning Salt"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCg4XK-l40KZD7fLi12pJ1YA "~Welyn"
-
-"       OTHER"
+" "
+" --- OTHER --- "
 http://lukesmith.xyz/rss.xml
 # https://notrelated.libsyn.com/rss
-# https://www.archlinux.org/feeds/news/ "tech"
+# https://www.archlinux.org/feeds/news/
