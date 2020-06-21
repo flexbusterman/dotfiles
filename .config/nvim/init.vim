@@ -8,6 +8,8 @@ source ~/.config/nvim/plugins.vim
 " Remap leader key to ,
 let g:mapleader=','
 
+noremap <C-\> :normal gcc<CR>
+
 " Disable line numbers
 " set nonumber
 
