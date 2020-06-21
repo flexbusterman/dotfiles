@@ -43,5 +43,6 @@ settings:
       DEFAULT: https://www.google.com.ar/search?q={}
       d: https://duckduckgo.com/?q={}
       y: https://www.youtube.com/results?search_query={}
+      p: https://www.piratebay.live/search/{}
   url.start_pages:
     global: about:blank
