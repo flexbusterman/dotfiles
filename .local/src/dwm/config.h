@@ -122,10 +122,11 @@ static Key keys[] = {
   { MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
   { MODKEY|ControlMask|ShiftMask,             XK_r, spawn,          {.v = reboot } },
   { MODKEY|ControlMask|ShiftMask,             XK_p, spawn,          {.v = poweroff } },
-  { MODKEY|ShiftMask,     XK_period,    spawn,    SHCMD("$BROWSER 'http://www.google.com'") },
-  { MODKEY|ControlMask|ShiftMask,     XK_period,    spawn,    SHCMD("$BROWSER") },
+  { MODKEY|ShiftMask,     XK_period,    spawn,    SHCMD("$BROWSER") },
+  { MODKEY|ControlMask|ShiftMask,     XK_period,    spawn,    SHCMD("chromium") },
   /* { MODKEY|ShiftMask,                       XK_comma, spawn,  SHCMD("st env SHELL=/bin/bash vifm")}, */
   { MODKEY|ShiftMask,                       XK_comma, spawn,  SHCMD("st ranger")},
+  { MODKEY|ControlMask|ShiftMask,                       XK_comma, spawn,  SHCMD("st -e lf")},
   { 0,        XK_Print, spawn,    SHCMD("fish -c \"maim -f jpg -m 9 /home/flex/Pictures/SCREENSHOTS/(date +'%F %H_%M_%S.jpg')\"")},
 
   /* modifier                     key        function        argument */
@@ -160,8 +161,8 @@ static Key keys[] = {
     { MODKEY|ShiftMask,   XK_w,   spawn,    SHCMD("st -e sudo nmtui") },
     { MODKEY,     XK_e,   spawn,    SHCMD("st -e neomutt ; pkill -RTMIN+12 dwmblocks; rmdir ~/.abook") },
     { MODKEY|ShiftMask,   XK_e,   spawn,    SHCMD("st -e abook -C ~/.config/abook/abookrc --datafile ~/.config/abook/addressbook") },
-    { MODKEY,     XK_r,   spawn,    SHCMD("st -e lf") },
-    { MODKEY|ShiftMask,   XK_r,   spawn,    SHCMD("st -e htop") },
+    { MODKEY|ShiftMask,   XK_r,   spawn,    SHCMD("st -e bashtop") },
+    { MODKEY|ControlMask|ShiftMask,   XK_r,   spawn,    SHCMD("st -e htop") },
     { MODKEY,     XK_t,   setlayout,  {.v = &layouts[2]} }, /* tile */
     { MODKEY|ShiftMask,   XK_t,   setlayout,  {.v = &layouts[1]} }, /* bstack */
     { MODKEY,     XK_y,   setlayout,  {.v = &layouts[0]} }, /* spiral */
