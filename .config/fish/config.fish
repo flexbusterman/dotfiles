@@ -1,4 +1,4 @@
-# /etc/fish/config.fish
+#/etc/fish/config.fish
 
 # Put system-wide fish configuration entries here
 # or in .fish files in conf.d/
@@ -18,6 +18,7 @@
 # aliases for maestral dropbox client
 alias vim "nvim"
 alias dot '/usr/bin/git --git-dir=$HOME/.dot/ --work-tree=$HOME'
+alias dev 'st nvim ~/GIT/kalle2019/ &; st fish -c \"st (cd ~/GIT/kalle2019/)\" &; st nvim ~/GIT/buf2020/ &; st fish -c \"st (cd ~/GIT/buf2020/)\" &; st nvim ~/Documents/buffalobillgates.js &;'
 
 abbr d "maestral"
 abbr dls "maestral ls | sort -k 3,3 | less -p included"
