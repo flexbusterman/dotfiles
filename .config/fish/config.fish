@@ -18,7 +18,6 @@
 # aliases for maestral dropbox client
 alias vim "nvim"
 alias dot '/usr/bin/git --git-dir=$HOME/.dot/ --work-tree=$HOME'
-alias dev 'st nvim ~/GIT/kalle2019/ &; st fish -c \"st (cd ~/GIT/kalle2019/)\" &; st nvim ~/GIT/buf2020/ &; st fish -c \"st (cd ~/GIT/buf2020/)\" &; st nvim ~/Documents/buffalobillgates.js &;'
 
 abbr d "maestral"
 abbr dls "maestral ls | sort -k 3,3 | less -p included"
@@ -38,9 +37,15 @@ function wd
   mkdir (date +"%F ")$argv
 end
 
+function dev
+  st -e fish -c "cd ~/GIT/kalle2019; fish -c \"npm run dev\"" &
+  st -e fish -c "vim ~/Documents/buffalobillgates.js -c \"CocDisable\"" &
+  st -e fish -c "cd ~/GIT/kalle2019; vim -c \"NERDTree\"" &
+end
+
 function in
 	# sudo apt -y install $argv
-        sudo pacman -S --noconfirm $argv
+  sudo pacman -S --noconfirm $argv
 end
 
 function un
