@@ -133,6 +133,12 @@ dp () {
   dot push
 }
 
+dev () {
+  st -e zsh -c "cd ~/GIT/kalle2019; fish -c \"npm run dev\"" &
+  st -e zsh -c "nvim ~/Documents/buffalobillgates.js -c \"CocDisable\"" &
+  st -e zsh -c "cd ~/GIT/kalle2019; nvim -c \"NERDTree\"" &
+}
+
 # start google chrome with argument as address
 # c () {
 # set result (string join ' ' $*)
