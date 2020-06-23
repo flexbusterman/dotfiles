@@ -103,7 +103,8 @@ Plug 'posva/vim-vue'                  " vimawesome.com/plugin/vim-vue-plugin
 Plug 'dracula/vim'
 Plug 'chiel92/vim-autoformat'
 
-Plug 'chrisbra/vim-commentary'
+" Plug 'chrisbra/vim-commentary'
+Plug 'preservim/nerdcommenter'
 Plug 'Yggdroot/indentLine' " https://github.com/Yggdroot/indentLine
 Plug 'ap/vim-css-color'
 

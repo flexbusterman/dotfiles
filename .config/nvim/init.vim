@@ -8,7 +8,36 @@ source ~/.config/nvim/plugins.vim
 " Remap leader key to ,
 let g:mapleader=','
 
-noremap <C-\> :normal gcc<CR>
+
+" NERD Commenter
+ let g:NERDToggleCheckAllLines = 1
+ let g:NERDSpaceDelims = 1 " adds spaces after comment delimiters
+
+" this just inverts lines instead of toggle comments for all:
+noremap <C-\> :norm ,c<space><CR>
+
+filetype plugin on
+
+let g:ft = ''
+fu! NERDCommenter_before()
+  if &ft == 'vue'
+    let g:ft = 'vue'
+    let stack = synstack(line('.'), col('.'))
+    if len(stack) > 0
+      let syn = synIDattr((stack)[0], 'name')
+      if len(syn) > 0
+        let syn = tolower(syn)
+        exe 'setf '.syn
+      endif
+    endif
+  endif
+endfu
+fu! NERDCommenter_after()
+  if g:ft == 'vue'
+    setf vue
+    g:ft
+  endif
+endfu
 
 " Disable line numbers
 " set nonumber
@@ -432,8 +461,8 @@ nmap <leader>n :NERDTreeToggle<CR>
 
 "   <Space> - PageDown
 "   -       - PageUp
-noremap <Space> <PageDown>
-noremap - <PageUp>
+"noremap <Space> <PageDown>
+"noremap - <PageUp>
 
 " Quick window switching
 nmap <C-h> <C-w>h
