@@ -127,7 +127,8 @@ static Key keys[] = {
   /* { MODKEY|ShiftMask,                       XK_comma, spawn,  SHCMD("st env SHELL=/bin/bash vifm")}, */
   { MODKEY|ShiftMask,                       XK_apostrophe, spawn,  SHCMD("st -e lf")},
   { MODKEY|ControlMask|ShiftMask,                       XK_comma, spawn,  SHCMD("st -e ranger")},
-  { 0,        XK_Print, spawn,    SHCMD("zsh -c \"maim -f jpg -m 9 /home/flex/Pictures/SCREENSHOTS/$(date +'%F %H_%M_%S.jpg')\"")},
+/* { 0,        XK_Print, spawn,    SHCMD("zsh -c \"maim -f jpg -m 9 /home/flex/Pictures/SCREENSHOTS/$(date +'%F %H_%M_%S.jpg')\"")}, */
+  { 0,        XK_Print, spawn,    SHCMD("maim -f jpg -m 9 \"/home/flex/Pictures/SCREENSHOTS/$(date +\"%F %H_%M_%S.jpg\")\"")},
 
   /* modifier                     key        function        argument */
   STACKKEYS(MODKEY,                          focus)
