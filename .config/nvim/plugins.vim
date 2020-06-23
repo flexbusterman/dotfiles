@@ -51,8 +51,8 @@ Plug 'Shougo/echodoc.vim'
 
 " === Git Plugins === "
 " Enable git changes to be shown in sign column
-Plug 'mhinz/vim-signify'
-Plug 'tpope/vim-fugitive'
+" Plug 'mhinz/vim-signify'
+" Plug 'tpope/vim-fugitive'
 
 " === Javascript Plugins === "
 " Typescript syntax highlighting
@@ -94,7 +94,12 @@ Plug 'itchyny/lightline.vim'                      " Lightline statusbar
 
 " Flex
 Plug 'tpope/vim-surround'                         " https://github.com/tpope/vim-surround
-Plug 'leafoftree/vim-vue-plugin'                  " vimawesome.com/plugin/vim-vue-plugin
+
+" Plug 'leafoftree/vim-vue-plugin'                  " vimawesome.com/plugin/vim-vue-plugin
+
+" Seems to work better
+Plug 'posva/vim-vue'                  " vimawesome.com/plugin/vim-vue-plugin
+
 Plug 'dracula/vim'
 Plug 'chiel92/vim-autoformat'
 
