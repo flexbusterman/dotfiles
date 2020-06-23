@@ -133,12 +133,6 @@ dp () {
   dot push
 }
 
-# dev () {
-# st -e zsh -c "cd ~/Documents/; zsh -c \"nvim buffalobillgates.js +CocDisable\"" &
-# st -e zsh -c "cd ~/GIT/kalle2019; zsh -c \"npm run dev\"" &
-# cd ~/GIT/kalle2019/; nvim +NERDTree
-# }
-
 dev () {
   st -e zsh -c "cd ~/GIT/kalle2019; zsh -c \"npm run dev\"" &
   st -e zsh -c "cd ~/Documents/; nvim -c \"autocmd! CursorHold * CocDisable\" buffalobillgates.js" &
