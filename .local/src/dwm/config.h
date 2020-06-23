@@ -127,7 +127,7 @@ static Key keys[] = {
   /* { MODKEY|ShiftMask,                       XK_comma, spawn,  SHCMD("st env SHELL=/bin/bash vifm")}, */
   { MODKEY|ShiftMask,                       XK_comma, spawn,  SHCMD("st ranger")},
   { MODKEY|ControlMask|ShiftMask,                       XK_comma, spawn,  SHCMD("st -e lf")},
-  { 0,        XK_Print, spawn,    SHCMD("fish -c \"maim -f jpg -m 9 /home/flex/Pictures/SCREENSHOTS/(date +'%F %H_%M_%S.jpg')\"")},
+  { 0,        XK_Print, spawn,    SHCMD("zsh -c \"maim -f jpg -m 9 /home/flex/Pictures/SCREENSHOTS/$(date +'%F %H_%M_%S.jpg')\"")},
 
   /* modifier                     key        function        argument */
   STACKKEYS(MODKEY,                          focus)
@@ -222,10 +222,14 @@ static Key keys[] = {
 { MODKEY,     XK_period,  spawn,    SHCMD("mpc next") },
 { MODKEY|ShiftMask,   XK_period,  spawn,    SHCMD("mpc repeat") },
 
-{ MODKEY,     XK_Left,  focusmon, {.i = -1 } },
-{ MODKEY|ShiftMask,   XK_Left,  tagmon,   {.i = -1 } },
-{ MODKEY,     XK_Right, focusmon, {.i = +1 } },
-{ MODKEY|ShiftMask,   XK_Right, tagmon,   {.i = +1 } },
+/* { MODKEY,     XK_Left,  focusmon, {.i = -1 } }, */
+/* { MODKEY|ShiftMask,   XK_Left,  tagmon,   {.i = -1 } }, */
+{ MODKEY|ControlMask|ShiftMask,     XK_j,  focusmon, {.i = -1 } },
+{ MODKEY|ControlMask|ShiftMask,     XK_h,  tagmon, {.i = -1 } },
+/* { MODKEY,     XK_Right, focusmon, {.i = +1 } }, */
+/* { MODKEY|ShiftMask,   XK_Right, tagmon,   {.i = +1 } }, */
+{ MODKEY|ControlMask|ShiftMask,    XK_k, focusmon, {.i = +1 } },
+{ MODKEY|ControlMask|ShiftMask,    XK_l, tagmon, {.i = +1 } },
 
 { MODKEY,     XK_Page_Up, shiftview,  { .i = -1 } },
 { MODKEY|ShiftMask,   XK_Page_Up, shifttag, { .i = -1 } },

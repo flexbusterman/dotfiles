@@ -14,7 +14,7 @@ export TERMINAL="st"
 # export BROWSER="brave"
 export BROWSER="qutebrowser"
 export READER="zathura"
-export SHELL="fish"
+export SHELL="zsh"
 
 # ~/ Clean-up:
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -132,6 +132,3 @@ fi
 
 # Switch escape and caps if tty and no passwd required:
 sudo -n loadkeys ${XDG_DATA_HOME:-$HOME/.local/share}/larbs/ttymaps.kmap 2>/dev/null
-# setxkbmap -option caps:swapescape
-# setxkbmap -option caps:escape
-# setxkbmap -option "caps:swapescape"
