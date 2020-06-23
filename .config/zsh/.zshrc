@@ -133,10 +133,16 @@ dp () {
   dot push
 }
 
+# dev () {
+# st -e zsh -c "cd ~/Documents/; zsh -c \"nvim buffalobillgates.js +CocDisable\"" &
+# st -e zsh -c "cd ~/GIT/kalle2019; zsh -c \"npm run dev\"" &
+# cd ~/GIT/kalle2019/; nvim +NERDTree
+# }
+
 dev () {
-  st -e zsh -c "cd ~/GIT/kalle2019; fish -c \"npm run dev\"" &
-  st -e zsh -c "nvim ~/Documents/buffalobillgates.js -c \"CocDisable\"" &
-  st -e zsh -c "cd ~/GIT/kalle2019; nvim -c \"NERDTree\"" &
+  st -e zsh -c "cd ~/Documents/; nvim -c \"autocmd! CursorHold * CocDisable\" buffalobillgates.js" &
+  st -e zsh -c "cd ~/GIT/kalle2019; zsh -c \"npm run dev\"" &
+  st -e zsh -c "cd ~/GIT/kalle2019/; nvim -c \"autocmd! CursorHold * NERDTree\"" &
 }
 
 # start google chrome with argument as address
