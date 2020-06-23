@@ -125,8 +125,8 @@ static Key keys[] = {
   { MODKEY|ShiftMask,     XK_period,    spawn,    SHCMD("$BROWSER") },
   { MODKEY|ControlMask|ShiftMask,     XK_period,    spawn,    SHCMD("chromium") },
   /* { MODKEY|ShiftMask,                       XK_comma, spawn,  SHCMD("st env SHELL=/bin/bash vifm")}, */
-  { MODKEY|ShiftMask,                       XK_comma, spawn,  SHCMD("st ranger")},
-  { MODKEY|ControlMask|ShiftMask,                       XK_comma, spawn,  SHCMD("st -e lf")},
+  { MODKEY|ShiftMask,                       XK_comma, spawn,  SHCMD("st -e lf")},
+  { MODKEY|ControlMask|ShiftMask,                       XK_comma, spawn,  SHCMD("st -e ranger")},
   { 0,        XK_Print, spawn,    SHCMD("zsh -c \"maim -f jpg -m 9 /home/flex/Pictures/SCREENSHOTS/$(date +'%F %H_%M_%S.jpg')\"")},
 
   /* modifier                     key        function        argument */
