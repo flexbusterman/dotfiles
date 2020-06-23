@@ -140,9 +140,9 @@ dp () {
 # }
 
 dev () {
-  st -e zsh -c "cd ~/Documents/; nvim -c \"autocmd! CursorHold * CocDisable\" buffalobillgates.js" &
   st -e zsh -c "cd ~/GIT/kalle2019; zsh -c \"npm run dev\"" &
-  st -e zsh -c "cd ~/GIT/kalle2019/; nvim -c \"autocmd! CursorHold * NERDTree\"" &
+  st -e zsh -c "cd ~/Documents/; nvim -c \"autocmd! CursorHold * CocDisable\" buffalobillgates.js" &
+  cd ~/GIT/kalle2019/; nvim -c "autocmd! CursorHold * NERDTree"
 }
 
 # start google chrome with argument as address
