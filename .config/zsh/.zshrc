@@ -157,5 +157,10 @@ dp () {
 # figlet "Done"
 # }
 
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/github
+ssh-add ~/.ssh/bitbucket
+clear
+
 # Load syntax highlighting; should be last according to Luke.
 source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null
