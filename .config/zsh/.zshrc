@@ -91,8 +91,8 @@ alias dadd="maestral excluded remove"
 alias ds='maestral status'
 alias dr='maestral restart'
 alias cheat='tldr'
-# alias la="exa -la"
-# alias ls="exa"
+alias la="exa -la"
+alias ls="exa"
 alias reaper="/home/flex/opt/REAPER/reaper"
 alias fs="df -h | grep --color='never' 'Filesystem\|sd'"
 alias copy='xclip -sel clip'
@@ -103,14 +103,52 @@ test () {
   echo $result
 }
 
-in () {
-  # sudo apt -y install $*
+yin () {
+  yaourt -S $*
+}
+
+yun () {
+  yaourt -Rs $*
+}
+
+yup () {
+  yaourt -Syua
+}
+
+yf () {
+  yaourt -Ss $*
+}
+
+yls () {
+  yaourt -Q
+}
+
+pin () {
   sudo pacman -S --noconfirm $*
 }
 
-un () {
-  # sudo apt -y remove $*
+pun () {
   sudo pacman -Rns $*
+}
+
+pup () {
+  sudo pacman -Syu
+}
+
+pf (){
+  pacman -Ss "$*"
+}
+
+pls (){
+  pacman -Qe
+}
+
+pla (){
+  pacman -Q
+}
+
+pc (){
+  pacman -Scc
 }
 
 # prepend date
@@ -136,7 +174,7 @@ dp () {
 dev () {
   st -e zsh -c "cd ~/GIT/kalle2019; zsh -c \"npm run dev\"" &
   st -e zsh -c "cd ~/Documents/; nvim -c \"autocmd! CursorHold * CocDisable\" buffalobillgates.js" &
-# cd ~/GIT/kalle2019/; nvim -c "autocmd! CursorHold * NERDTree"
+  # cd ~/GIT/kalle2019/; nvim -c "autocmd! CursorHold * NERDTree"
   cd ~/GIT/kalle2019/; nvim;
 }
 
@@ -168,6 +206,9 @@ eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/github
 ssh-add ~/.ssh/bitbucket
 clear
+
+autoload predict-on
+predict-on
 
 # Load syntax highlighting; should be last according to Luke.
 source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null

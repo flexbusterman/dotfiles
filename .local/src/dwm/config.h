@@ -125,8 +125,8 @@ static Key keys[] = {
   { MODKEY|ShiftMask,     XK_period,    spawn,    SHCMD("$BROWSER") },
   { MODKEY|ControlMask|ShiftMask,     XK_period,    spawn,    SHCMD("chromium") },
   /* { MODKEY|ShiftMask,                       XK_comma, spawn,  SHCMD("st env SHELL=/bin/bash vifm")}, */
-  { MODKEY|ShiftMask,                       XK_apostrophe, spawn,  SHCMD("st -e lf")},
-  { MODKEY|ControlMask|ShiftMask,                       XK_comma, spawn,  SHCMD("st -e ranger")},
+  { MODKEY|ShiftMask,                       XK_apostrophe, spawn,  SHCMD("st ranger")},
+  { MODKEY|ControlMask|ShiftMask,                       XK_apostrophe, spawn,  SHCMD("st -e lf")},
 /* { 0,        XK_Print, spawn,    SHCMD("zsh -c \"maim -f jpg -m 9 /home/flex/Pictures/SCREENSHOTS/$(date +'%F %H_%M_%S.jpg')\"")}, */
   { 0,        XK_Print, spawn,    SHCMD("maim -f jpg -m 9 \"/home/flex/Pictures/SCREENSHOTS/$(date +\"%F %H_%M_%S.jpg\")\"")},
 
@@ -162,7 +162,7 @@ static Key keys[] = {
     { MODKEY|ShiftMask,   XK_w,   spawn,    SHCMD("st -e sudo nmtui") },
     { MODKEY,     XK_e,   spawn,    SHCMD("st -e neomutt ; pkill -RTMIN+12 dwmblocks; rmdir ~/.abook") },
     { MODKEY|ShiftMask,   XK_e,   spawn,    SHCMD("st -e abook -C ~/.config/abook/abookrc --datafile ~/.config/abook/addressbook") },
-    { MODKEY|ShiftMask,   XK_r,   spawn,    SHCMD("st -e bashtop") },
+    { MODKEY|ShiftMask,   XK_r,   spawn,    SHCMD("st -e gotop") },
     { MODKEY|ControlMask|ShiftMask,   XK_r,   spawn,    SHCMD("st -e htop") },
     { MODKEY,     XK_t,   setlayout,  {.v = &layouts[2]} }, /* tile */
     { MODKEY|ShiftMask,   XK_t,   setlayout,  {.v = &layouts[1]} }, /* bstack */
@@ -279,7 +279,7 @@ static Key keys[] = {
 { 0, XF86XK_ScreenSaver,  spawn,    SHCMD("slock & xset dpms force off; mpc pause; pauseallmpv") },
 { 0, XF86XK_TaskPane,   spawn,    SHCMD("st -e htop") },
 { 0, XF86XK_Mail,   spawn,    SHCMD("st -e neomutt ; pkill -RTMIN+12 dwmblocks") },
-{ 0, XF86XK_MyComputer,   spawn,    SHCMD("st -e lf /") },
+{ 0, XF86XK_MyComputer,   spawn,    SHCMD("st -e ranger /") },
   /* { 0, XF86XK_Battery,   spawn,    SHCMD("") }, */
 { 0, XF86XK_Launch1,    spawn,    SHCMD("xset dpms force off") },
 { 0, XF86XK_TouchpadToggle, spawn,    SHCMD("(synclient | grep 'TouchpadOff.*1' && synclient TouchpadOff=0) || synclient TouchpadOff=1") },
