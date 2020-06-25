@@ -105,7 +105,7 @@ Plug 'chiel92/vim-autoformat'
 
 " Plug 'chrisbra/vim-commentary'
 Plug 'preservim/nerdcommenter'
-Plug 'Yggdroot/indentLine' " https://github.com/Yggdroot/indentLine
+" Plug 'Yggdroot/indentLine' " https://github.com/Yggdroot/indentLine
 Plug 'ap/vim-css-color'
 
 Plug 'miyakogi/seiya.vim'
