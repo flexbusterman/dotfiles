@@ -83,6 +83,30 @@ bindkey '^e' edit-command-line
 # |  _| | |  __/>  <
 # |_|   |_|\___/_/\_\
 
+# start google chrome with argument as address
+# c () {
+# set result (string join ' ' $*)
+# nohup google-chrome http://$result  >> /dev/null > exhibitor.out 2>&1 & && disown (jobs -p)
+# i3-msg workspace 2
+# }
+
+# timer () {
+# set count $*
+# for n in (seq $count -1 0)
+# clear
+# set minutes (math -s0 "$n / 60")
+# set seconds (math -s0 "$n % 60")
+# if test $seconds -lt 10
+# echo $minutes:0$seconds
+# else
+# echo $minutes:$seconds
+# }
+# sleep 1
+# }
+# clear
+# figlet "Done"
+# }
+
 alias vim="nvim"
 alias dot='/usr/bin/git --git-dir=$HOME/.dot/ --work-tree=$HOME'
 alias dls="maestral ls | sort -k 3,3 | less -p included"
@@ -171,36 +195,17 @@ dp () {
   dot push
 }
 
+hi () {
+  result=$*
+  history 0 | grep $result
+}
+
 dev () {
   st -e zsh -c "cd ~/GIT/kalle2019; zsh -c \"npm run dev\"" &
   st -e zsh -c "cd ~/Documents/; nvim -c \"autocmd! CursorHold * CocDisable\" buffalobillgates.js" &
   # cd ~/GIT/kalle2019/; nvim -c "autocmd! CursorHold * NERDTree"
   cd ~/GIT/kalle2019/; nvim;
 }
-
-# start google chrome with argument as address
-# c () {
-# set result (string join ' ' $*)
-# nohup google-chrome http://$result  >> /dev/null > exhibitor.out 2>&1 & && disown (jobs -p)
-# i3-msg workspace 2
-# }
-
-# timer () {
-# set count $*
-# for n in (seq $count -1 0)
-# clear
-# set minutes (math -s0 "$n / 60")
-# set seconds (math -s0 "$n % 60")
-# if test $seconds -lt 10
-# echo $minutes:0$seconds
-# else
-# echo $minutes:$seconds
-# }
-# sleep 1
-# }
-# clear
-# figlet "Done"
-# }
 
 eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/github
