@@ -10,7 +10,7 @@ let g:mapleader=','
 
 
 " NERD Commenter
- let g:NERDToggleCheckAllLines = 1
+ " let g:NERDToggleCheckAllLines = 1
  let g:NERDSpaceDelims = 1 " adds spaces after comment delimiters
 
 " this just inverts lines instead of toggle comments for all:
@@ -213,6 +213,9 @@ let g:NERDTreeDirArrowCollapsible = '⬎'
 
 " Hide certain files and directories from NERDTree
 let g:NERDTreeIgnore = ['^\.DS_Store$', '^tags$', '\.git$[[dir]]', '\.idea$[[dir]]', '\.sass-cache$']
+
+" enable line numbers
+let NERDTreeShowLineNumbers = 1
 
 " Wrap in try/catch to avoid errors on initial install before plugin is available
 try
