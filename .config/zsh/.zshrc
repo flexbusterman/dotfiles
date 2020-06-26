@@ -212,8 +212,10 @@ ssh-add ~/.ssh/github
 ssh-add ~/.ssh/bitbucket
 clear
 
+# Aggressive autocomplete
 autoload predict-on
 predict-on
+
 
 # append a trailing ‘/’ to all directory names resulting from filename generation
 setopt MARK_DIRS
@@ -233,6 +235,25 @@ setopt HIST_IGNORE_DUPS
 setopt HIST_IGNORE_SPACE
 # When searching history don't display results already cycled through twice
 setopt HIST_FIND_NO_DUPS
+
+# # ===== Completion
+# # show completion menu on successive tab press ... needs unsetop menu_complete to work
+# setopt AUTO_MENU
+# # automatically list choices on an ambiguous completion
+# setopt AUTO_LIST
+# # when listing files that are possible completions, show the type of each file with a trailing identifying mark
+# setopt LIST_TYPES
+# # extra completion
+# setopt COMPLETE_ALIASES
+# # if unset, the cursor is set to the end of the word if completion is started. Otherwise it stays there and completion is done from both ends
+# setopt COMPLETE_IN_WORD
+# # if a completion is performed with the cursor within a word, and a full completion is inserted, the cursor is moved to the end of the word
+# setopt ALWAYS_TO_END
+
+# # do not autoselect the first completion entry
+# unsetopt MENU_COMPLETE
+# # do not set auto_name_dirs because it messes up prompts (any parameter that is set to the absolute name of a directory immediately becomes a name for that directory)
+# unsetopt AUTO_NAME_DIRS
 
 # Load syntax highlighting; should be last according to Luke.
 source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null
