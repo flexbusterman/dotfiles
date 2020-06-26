@@ -7,7 +7,7 @@ setopt autocd   # Automatically cd into typed directory.
 stty stop undef   # Disable ctrl-s to freeze terminal.
 
 # History in cache directory:
-HISTSIZE=10000
+HISTSIZE=20000
 SAVEHIST=10000
 HISTFILE=~/.cache/zsh/history
 
@@ -27,7 +27,7 @@ _comp_options+=(globdots)   # Include hidden files.
 bindkey -v
 export KEYTIMEOUT=1
 
-# Use vim keys in tab complete menu:
+# Use vim keys in tab c omplete menu:
 bindkey -M menuselect 'h' vi-backward-char
 bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
@@ -214,6 +214,25 @@ clear
 
 autoload predict-on
 predict-on
+
+# append a trailing ‘/’ to all directory names resulting from filename generation
+setopt MARK_DIRS
+
+# ===== History
+# Allow multiple terminal sessions to all append to one zsh command history
+setopt APPEND_HISTORY
+# Save each command’s beginning timestamp (in seconds since the epoch) and the duration (in seconds) to the history file
+# setopt EXTENDED_HISTORY
+# Add commands as they are typed, don't wait until shell exit
+setopt INC_APPEND_HISTORY
+# If the internal history needs to be trimmed to add the current command line, setting this option will cause the oldest history event that has a duplicate to be lost before losing a unique event
+setopt HIST_EXPIRE_DUPS_FIRST
+# Do not enter command lines into the history list if they are duplicates of the previous event
+setopt HIST_IGNORE_DUPS
+# remove command lines from the history list when the first character on the line is a space
+setopt HIST_IGNORE_SPACE
+# When searching history don't display results already cycled through twice
+setopt HIST_FIND_NO_DUPS
 
 # Load syntax highlighting; should be last according to Luke.
 source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null
