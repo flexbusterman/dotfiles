@@ -109,9 +109,11 @@ Plug 'preservim/nerdcommenter'
 Plug 'ap/vim-css-color'
 
 Plug 'miyakogi/seiya.vim'
-Plug 'arecarn/vim-crunch'
-
+" Plug 'arecarn/vim-crunch'
 " Plug 'eslint/eslint'
+" Plug 'sk1418/howmuch.vim'
+Plug 'nixon/vim-vmath'
+
 
 " Initialize plugin system
 call plug#end()
