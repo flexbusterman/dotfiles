@@ -6,14 +6,12 @@ source ~/.config/nvim/plugins.vim
 " ============================================================================ "
 
 " Remap leader key to ,
-let g:mapleader=','
+let mapleader = ","
+let g:mapleader = ","
 
-
-" NERD Commenter
  " let g:NERDToggleCheckAllLines = 1
- let g:NERDSpaceDelims = 1 " adds spaces after comment delimiters
 
-" this just inverts lines instead of toggle comments for all:
+"dddddddddddd this just inverts lines instead of toggle comments for all:
 noremap <C-\> :norm ,c<space><CR>
 
 filetype plugin on
@@ -669,3 +667,13 @@ function! CalcBC()
     echo "answer = " . answer
   endif
 endfunction
+
+" Delete without cut
+nnoremap x "_x
+nnoremap d "_d
+nnoremap D "_D
+vnoremap d "_d
+
+nnoremap <leader>d ""d
+nnoremap <leader>D ""D
+vnoremap <leader>d ""d
