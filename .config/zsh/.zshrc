@@ -129,6 +129,13 @@ test () {
   echo $result
 }
 
+uz () {
+  for archive in $*;
+  #do 7z x -o"`basename \"$archive\"`" "$archive";
+  do 7z x -o"${archive%.*}" "$archive";
+  done
+}
+
 yin () {
   yaourt -S $*
 }
