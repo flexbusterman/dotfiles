@@ -11,8 +11,11 @@ let g:mapleader = ","
 
  " let g:NERDToggleCheckAllLines = 1
 
-"dddddddddddd this just inverts lines instead of toggle comments for all:
+" this just inverts lines instead of toggle comments for all:
 noremap <C-\> :norm ,c<space><CR>
+
+" insert console.log()
+map <leader>l <esc>iconsole.log()<esc>i
 
 filetype plugin on
 
