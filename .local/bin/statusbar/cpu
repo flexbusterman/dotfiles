@@ -15,6 +15,6 @@ sleep 0.5
 read cpu a b c idle rest < /proc/stat
 total=$((a+b+c+idle))
 cpu=$((100*( (total-prevtotal) - (idle-previdle) ) / (total-prevtotal) ))
-echo -e " CPU $cpu% "
+echo " CPU $cpu% "
 # echo -e "033[31m💻 $cpu%\e[0m"
 #echo -e "$cpu%"printf "BAT %s%s%s%% " "$status" "$warn" "$capacity"

@@ -120,7 +120,6 @@ alias dr='maestral restart'
 alias cheat='tldr'
 alias la="exa -la"
 alias ls="exa"
-alias reaper="/home/flex/opt/REAPER/reaper"
 alias fs="df -h | grep --color='never' 'Filesystem\|sd'"
 alias copy='xclip -sel clip'
 alias rf='rm -rf'
