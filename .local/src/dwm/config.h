@@ -110,7 +110,8 @@ static const char *poweroff[] = { "poweroff", NULL };
 #include "shiftview.c"
 static Key keys[] = {
   /* FLEX KEYS */
-  { MODKEY|ShiftMask,                       XK_b, spawn,  SHCMD("bluetoothctl show | grep -i powered | grep -i yes && notify-send 'Bluetooth is on' || notify-send 'Starting bluetooth' && bluetoothctl power on")},
+  { MODKEY|ShiftMask,                       XK_b, spawn,  SHCMD("bluetoothctl show | grep -i powered | grep -i yes && notify-send 'Bluetooth is on' || notify-send 'Starting bluetooth' && bluetoothctl power on && bluetoothctl -- connect 70:BF:92:27:E1:95")},
+
   { MODKEY|ControlMask|ShiftMask,                       XK_s, spawn,  SHCMD("setxkbmap se; setxkbmap -option \"caps:swapescape\"")},
   { MODKEY|ControlMask|ShiftMask,                       XK_u, spawn,  SHCMD("setxkbmap us; setxkbmap -option \"caps:swapescape\"")},
   /* { 0, XF86XK_MonBrightnessUp, spawn,    SHCMD("xbacklight -inc 15") }, */
