@@ -19,9 +19,12 @@ HISTFILE=~/.cache/zsh/history
 # Basic auto/tab complete:
 autoload -U compinit
 zstyle ':completion:*' menu select
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 zmodload zsh/complist
 compinit
 _comp_options+=(globdots)   # Include hidden files.
+
+#ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#ff00ff,bg=cyan,bold,underline"
 
 # vi mode
 bindkey -v
@@ -213,8 +216,8 @@ ssh-add ~/.ssh/bitbucket
 clear
 
 # Aggressive autocomplete
-autoload predict-on
-predict-on
+#autoload predict-on
+#predict-on
 
 
 # append a trailing ‘/’ to all directory names resulting from filename generation
@@ -254,6 +257,9 @@ setopt HIST_FIND_NO_DUPS
 # unsetopt MENU_COMPLETE
 # # do not set auto_name_dirs because it messes up prompts (any parameter that is set to the absolute name of a directory immediately becomes a name for that directory)
 # unsetopt AUTO_NAME_DIRS
-
+ #CASE_SENSITIVE="false"
 # Load syntax highlighting; should be last according to Luke.
+
+source ~/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+
 source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null
