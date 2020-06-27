@@ -12,10 +12,12 @@ let g:mapleader = ","
  " let g:NERDToggleCheckAllLines = 1
 
 " this just inverts lines instead of toggle comments for all:
-noremap <C-\> :norm ,c<space><CR>
-
+nnoremap <C-\> :norm ,c<space><CR>
 " insert console.log()
 map <leader>l <esc>iconsole.log()<esc>i
+nnoremap <leader>w :w<CR>
+inoremap <leader>w <esc>:w<CR>
+map <leader>q <esc>:qa!<CR>
 
 filetype plugin on
 
@@ -496,7 +498,7 @@ nmap <silent> <leader>. :nohlsearch<CR>
 
 " === Easy-motion shortcuts ==="
 "   <leader>w - Easy-motion highlights first word letters bi-directionally
-map <leader>w <Plug>(easymotion-bd-w)
+map <leader>m <Plug>(easymotion-bd-w)
 
 " Allows you to save files you opened without write permissions via sudo
 cmap w!! w !sudo tee %
@@ -642,7 +644,7 @@ set list listchars=tab:»·,trail:·
 
 set indentexpr=
 
-vnoremap <leader>m "ey:call CalcBC()<CR>
+vnoremap <leader>r "ey:call CalcBC()<CR>
 function! CalcBC()
   let has_equal = 0
   " remove newlines and trailing spaces
