@@ -9,6 +9,8 @@ source ~/.config/nvim/plugins.vim
 let mapleader = ","
 let g:mapleader = ","
 
+set nocompatible
+
  " let g:NERDToggleCheckAllLines = 1
 
 " this just inverts lines instead of toggle comments for all:

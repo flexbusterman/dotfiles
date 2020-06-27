@@ -114,6 +114,7 @@ Plug 'miyakogi/seiya.vim'
 " Plug 'sk1418/howmuch.vim'
 Plug 'nixon/vim-vmath'
 
+Plug 'vimwiki/vimwiki'
 
 " Initialize plugin system
 call plug#end()
