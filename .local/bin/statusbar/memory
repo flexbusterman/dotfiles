@@ -13,4 +13,4 @@ esac
 # mem="free | awk '/Mem/ {printf "%dM%dM\n", $3 / 1024.0}'"
 # echo -e "$mem"
 
-free --mebi | sed -n '2{p;q}' | awk '{printf (" MEM %2.0fMB ", ( $3 ), ($2))}'
+free --mebi | sed -n '2{p;q}' | awk '{printf (" RAM %2.0fMB ", ( $3 ), ($2))}'
