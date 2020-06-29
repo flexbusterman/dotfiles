@@ -676,11 +676,15 @@ function! CalcBC()
 endfunction
 
 " Delete without cut
-nnoremap x "_x
-nnoremap d "_d
-nnoremap D "_D
-vnoremap d "_d
+"nnoremap x "_x
+"nnoremap d "_d
+"nnoremap D "_D
+"vnoremap d "_d
+"nnoremap c "_c
 
-nnoremap <leader>d ""d
-nnoremap <leader>D ""D
-vnoremap <leader>d ""d
+"nnoremap <leader>d ""d
+"nnoremap <leader>dd ""dd
+"autocmd VimEnter * noremap <leader>dd ""dd
+"nnoremap <leader>D ""D
+"vnoremap <leader>d ""d
+"nnoremap <leader>c ""c
