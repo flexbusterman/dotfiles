@@ -13,15 +13,16 @@ static const Block blocks[] = {
   /* {"", "price btc Bitcoin 💰",       0,  21}, */
   /* {"", "price lbc \"LBRY Token\" 📚",      0,  22}, */
   /* {"", "torrent",  20, 7}, */
-  {"",  "memory", 10, 14},
-  {"",  "cpu",    10, 18},
+  {"",  "memory", 10, 0},
+  {"",  "cpu",    10, 0},
   /* {"", "moonphase",  18000,  17}, */
   /* {"", "weather",  18000,  5}, */
   /* {"", "mailbox",  180,  12}, */
   /* {"", "nettraf",  1,  16}, */
-  {"",  "volume", 0,  10},
-  {"",  "battery",  5,  3},
-  {"",  "clock",  60, 1},
+  //{"",  "volume", 0,  10},
+  {"",  "volume", 0,  0},
+  {"",  "battery",  5,  0},
+  {"",  "clock",  60, 0},
   /* {"", "help-icon",  0,  15}, */
 };
 
