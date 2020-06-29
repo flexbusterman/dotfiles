@@ -6,6 +6,7 @@ static const Block blocks[] = {
   {"",  "disk", 15,  5},
   {"",  "memory", 10, 14},
   {"",  "cpu",    10, 18},
+  {"",	"volume",	0,	10},
   {"",  "battery",  5,  3},
   {"",  "clock",  60, 1},
 	/* {"",	"music",	0,	11},*/
@@ -20,7 +21,6 @@ static const Block blocks[] = {
 	//{"",	"weather",	18000,	5},
 	//{"",	"mailbox",	180,	12},
 	/* {"",	"nettraf",	1,	16}, */
-	//{"",	"volume",	0,	10},
 	//{"",	"help-icon",	0,	15},
 };
 
