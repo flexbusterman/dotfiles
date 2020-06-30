@@ -136,6 +136,14 @@ uz () {
   done
 }
 
+# dex () {
+  #for directory in $*
+  #echo '$directory'
+  ##do maestral exclude add $dir
+  #done
+#}
+
+
 yin () {
   yaourt -S $*
 }
