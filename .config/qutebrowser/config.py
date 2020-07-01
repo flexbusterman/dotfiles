@@ -17,6 +17,9 @@ dracula.draw.blood(c, {
     }
 })
 
+config.bind(",a", "hint links userscript youtube_mp3_downloader.sh")
+config.bind(",v", "hint links userscript youtube_downloader.sh")
+
 ## Aliases for commands. The keys of the given dictionary are the
 ## aliases, while the values are the commands they map to.
 ## Type: Dict
