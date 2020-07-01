@@ -78,7 +78,7 @@ bindkey '^[[P' delete-char
 
 # Edit line in vim with ctrl-e:
 autoload edit-command-line; zle -N edit-command-line
-bindkey '^e' edit-command-line
+ '^e' edit-command-line
 
 # _____ _
 # |  ___| | _____  __
@@ -215,6 +215,14 @@ dp () {
 hi () {
   result=$*
   history 0 | grep $result
+}
+
+mind () {
+  st -e zsh -c "cd ~/GIT/kalle2019; zsh -c \"npm run dev\"" &
+  st -e zsh -c "cd ~/GIT/kalle2019;" &
+  st -e zsh -c "cd ~/Documents/; nvim -c \"autocmd! CursorHold * CocDisable\" Scandinavian Mind.wiki" &
+  # cd ~/GIT/kalle2019/; nvim -c "autocmd! CursorHold * NERDTree"
+  cd ~/GIT/mind/; nvim;
 }
 
 dev () {
