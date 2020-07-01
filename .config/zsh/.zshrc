@@ -220,7 +220,7 @@ hi () {
 mind () {
   st -e zsh -c "cd ~/GIT/kalle2019; zsh -c \"npm run dev\"" &
   st -e zsh -c "cd ~/GIT/kalle2019;" &
-  st -e zsh -c "cd ~/Documents/; nvim -c \"autocmd! CursorHold * CocDisable\" Scandinavian Mind.wiki" &
+  st -e zsh -c "cd ~/Documents/; nvim -c \"autocmd! CursorHold * CocDisable\" Scandinavian\ Mind.wiki" &
   # cd ~/GIT/kalle2019/; nvim -c "autocmd! CursorHold * NERDTree"
   cd ~/GIT/mind/; nvim;
 }
