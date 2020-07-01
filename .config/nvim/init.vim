@@ -19,7 +19,7 @@ nnoremap <C-\> :norm ,c<space><CR>
 map <leader>l <esc>iconsole.log()<esc>i
 nnoremap <leader>w :w<CR>
 inoremap <leader>w <esc>:w<CR>
-map <leader>q <esc>:qa!<CR>
+map <leader>q <esc>:q!<CR>
 
 filetype plugin on
 
