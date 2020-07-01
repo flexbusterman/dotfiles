@@ -227,6 +227,7 @@ dev () {
 eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/github
 ssh-add ~/.ssh/bitbucket
+ssh-add ~/.ssh/mind
 clear
 
 # Aggressive autocomplete
