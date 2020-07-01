@@ -111,6 +111,7 @@ static const char *poweroff[] = { "poweroff", NULL };
 static Key keys[] = {
   /* FLEX KEYS */
   { MODKEY|ShiftMask,                       XK_b, spawn,  SHCMD("bluetoothctl show | grep -i powered | grep -i yes && notify-send 'Bluetooth is on' || notify-send 'Starting bluetooth' && bluetoothctl power on && bluetoothctl -- connect 70:BF:92:27:E1:95")},
+  { MODKEY|ShiftMask,                       XK_c, spawn,  SHCMD("notify-send 'Connecting to Jabra' && bluetoothctl -- connect 70:BF:92:27:E1:95 && pacmd set-card-profile bluez_card.70_BF_92_27_E1_95 a2dp_sink")},
 
   { MODKEY|ControlMask|ShiftMask,                       XK_s, spawn,  SHCMD("setxkbmap se; setxkbmap -option \"caps:swapescape\"; xset r rate 300 50")},
   { MODKEY|ControlMask|ShiftMask,                       XK_u, spawn,  SHCMD("setxkbmap us; setxkbmap -option \"caps:swapescape\"; xset r rate 300 50")},

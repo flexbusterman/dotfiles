@@ -116,5 +116,7 @@ Plug 'nixon/vim-vmath'
 
 Plug 'vimwiki/vimwiki'
 
+Plug 'ThePrimeagen/vim-be-good', {'do': '.\install.sh'}
+
 " Initialize plugin system
 call plug#end()
