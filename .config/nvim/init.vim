@@ -15,6 +15,7 @@ set nocompatible
 
 " this just inverts lines instead of toggle comments for all:
 nnoremap <C-\> :norm ,c<space><CR>
+let NERDSpaceDelims=1
 " insert console.log()
 map <leader>l <esc>iconsole.log()<esc>i
 nnoremap <leader>w :w<CR>

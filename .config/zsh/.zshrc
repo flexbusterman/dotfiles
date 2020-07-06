@@ -227,7 +227,7 @@ mind () {
 
 dev () {
   st -e zsh -c "cd ~/GIT/kalle2019; zsh -c \"npm run dev\"" &
-  st -e zsh -c "cd ~/Documents/; nvim -c \"autocmd! CursorHold * CocDisable\" buffalobillgates.js" &
+  st -e zsh -c "cd ~/Documents/; nvim -c \"autocmd! CursorHold * CocDisable\" Buffalo\ Bill\ Gates.wiki" &
   # cd ~/GIT/kalle2019/; nvim -c "autocmd! CursorHold * NERDTree"
   cd ~/GIT/kalle2019/; nvim;
 }
@@ -236,6 +236,7 @@ eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/github
 ssh-add ~/.ssh/bitbucket
 ssh-add ~/.ssh/mind
+ssh-add ~/.ssh/drop
 clear
 
 # Aggressive autocomplete
