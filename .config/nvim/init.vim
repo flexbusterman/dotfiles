@@ -676,6 +676,9 @@ function! CalcBC()
   endif
 endfunction
 
+" let g:sclangTerm = "st -x $SHELL -ic"
+let g:sclangTerm = "st -e zsh -ic"
+
 " Delete without cut
 "nnoremap x "_x
 "nnoremap d "_d
