@@ -118,8 +118,8 @@ Plug 'vimwiki/vimwiki'
 
 Plug 'ThePrimeagen/vim-be-good', {'do': '.\install.sh'}
 
-Plug 'sbl/scvim'
-
+" Plug 'sbl/scvim'
+Plug 'supercollider/scvim'
 
 " Initialize plugin system
 call plug#end()

@@ -677,8 +677,10 @@ function! CalcBC()
 endfunction
 
 " let g:sclangTerm = "st -x $SHELL -ic"
+au BufEnter,BufWinEnter,BufNewFile,BufRead *.sc,*.scd set filetype=supercollider
+au Filetype supercollider packadd scvim
 let g:sclangTerm = "st -e zsh -ic"
-
+let g:scFlash = 1
 " Delete without cut
 "nnoremap x "_x
 "nnoremap d "_d
