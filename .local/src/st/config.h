@@ -6,10 +6,10 @@
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
 /* static char *font = "RobotoMono:pixelsize=17:antialias=true:autohint=true"; */
-static char *font = "RobotoMono:size:pixelsize=17:antialias=true:autohint=true";
+static char *font = "RobotoMono:size:pixelsize=16:antialias=true:autohint=true";
 /* static char *font2[] = { "RobotoMono:pixelsize=17:antialias=true:autohint=true" }; */
-static char *font2[] = { "RobotoMono:pixelsize=17:antialias=true:autohint=true" };
-static int borderpx = 2;
+static char *font2[] = { "RobotoMono:pixelsize=16:antialias=true:autohint=true" };
+static int borderpx = 0;
 
 /*
  * What program is execed by st depends of these precedence rules:
