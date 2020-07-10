@@ -123,6 +123,7 @@ alias ls="exa"
 alias fs="df -h | grep --color='never' 'Filesystem\|sd'"
 alias copy='xclip -sel clip'
 alias rf='rm -rf'
+alias res="xdpyinfo | awk '/dimensions/{print $2}'"
 
 test () {
   result="\"$*\""
