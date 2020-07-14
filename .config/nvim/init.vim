@@ -113,7 +113,7 @@ set path+=**
 " ============================================================================ "
 
 " Wrap in try/catch to avoid errors on initial install before plugin is available
-try
+" try
   " === Denite setup ==="
   " Use ripgrep for searching current directory for files
   " By default, ripgrep will respect rules in .gitignore
@@ -121,26 +121,26 @@ try
   "   --glob:  Include or exclues files for searching that match the given glob
   "            (aka ignore .git files)
   "
-  call denite#custom#var('file/rec', 'command', ['rg', '--files', '--glob', '!.git'])
+  " call denite#custom#var('file/rec', 'command', ['rg', '--files', '--glob', '!.git'])
 
   " Use ripgrep in place of "grep"
-  call denite#custom#var('grep', 'command', ['rg'])
+  " call denite#custom#var('grep', 'command', ['rg'])
 
   " Custom options for ripgrep
   "   --vimgrep:  Show results with every match on it's own line
   "   --hidden:   Search hidden directories and files
   "   --heading:  Show the file name above clusters of matches from each file
   "   --S:        Search case insensitively if the pattern is all lowercase
-  call denite#custom#var('grep', 'default_opts', ['--hidden', '--vimgrep', '--heading', '-S'])
+  " call denite#custom#var('grep', 'default_opts', ['--hidden', '--vimgrep', '--heading', '-S'])
 
   " Recommended defaults for ripgrep via Denite docs
-  call denite#custom#var('grep', 'recursive_opts', [])
-  call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
-  call denite#custom#var('grep', 'separator', ['--'])
-  call denite#custom#var('grep', 'final_opts', [])
+  " call denite#custom#var('grep', 'recursive_opts', [])
+  " call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
+  " call denite#custom#var('grep', 'separator', ['--'])
+  " call denite#custom#var('grep', 'final_opts', [])
 
   " Remove date from buffer list
-  call denite#custom#var('buffer', 'date_format', '')
+  " call denite#custom#var('buffer', 'date_format', '')
 
   " Custom options for Denite
   "   auto_resize             - Auto resize the Denite window height automatically.
@@ -151,48 +151,48 @@ try
   "   prompt_highlight        - Specify color of prompt
   "   highlight_matched_char  - Matched characters highlight
   "   highlight_matched_range - matched range highlight
-  let s:denite_options = {'default' : {
-        \ 'split': 'floating',
-        \ 'start_filter': 1,
-        \ 'auto_resize': 1,
-        \ 'source_names': 'short',
-        \ 'prompt': 'λ ',
-        \ 'highlight_matched_char': 'QuickFixLine',
-        \ 'highlight_matched_range': 'Visual',
-        \ 'highlight_window_background': 'Visual',
-        \ 'highlight_filter_background': 'DiffAdd',
-        \ 'winrow': 1,
-        \ 'vertical_preview': 1
-        \ }}
+  " let s:denite_options = {'default' : {
+        " \ 'split': 'floating',
+        " \ 'start_filter': 1,
+        " \ 'auto_resize': 1,
+        " \ 'source_names': 'short',
+        " \ 'prompt': 'λ ',
+        " \ 'highlight_matched_char': 'QuickFixLine',
+        " \ 'highlight_matched_range': 'Visual',
+        " \ 'highlight_window_background': 'Visual',
+        " \ 'highlight_filter_background': 'DiffAdd',
+        " \ 'winrow': 1,
+        " \ 'vertical_preview': 1
+        " \ }}
 
   " Loop through denite options and enable them
-  function! s:profile(opts) abort
-    for l:fname in keys(a:opts)
-      for l:dopt in keys(a:opts[l:fname])
-        call denite#custom#option(l:fname, l:dopt, a:opts[l:fname][l:dopt])
-      endfor
-    endfor
-  endfunction
+  " function! s:profile(opts) abort
+    " for l:fname in keys(a:opts)
+      " for l:dopt in keys(a:opts[l:fname])
+        " call denite#custom#option(l:fname, l:dopt, a:opts[l:fname][l:dopt])
+      " endfor
+    " endfor
+  " endfunction
 
-  call s:profile(s:denite_options)
-catch
-  echo 'Denite not installed. It should work after running :PlugInstall'
-endtry
+  " call s:profile(s:denite_options)
+" catch
+  " echo 'Denite not installed. It should work after running :PlugInstall'
+" endtry
 
 " === Coc.nvim === "
 " use <tab> for trigger completion and navigate to next complete item
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~ '\s'
-endfunction
+" function! s:check_back_space() abort
+  " let col = col('.') - 1
+  " return !col || getline('.')[col - 1]  =~ '\s'
+" endfunction
 
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
+" inoremap <silent><expr> <TAB>
+      " \ pumvisible() ? "\<C-n>" :
+      " \ <SID>check_back_space() ? "\<TAB>" :
+      " \ coc#refresh()
 
 "Close preview window when completion is done.
-autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+" autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 
 " === NeoSnippet === "
 
@@ -240,7 +240,7 @@ let g:NERDTreeIgnore = ['^\.DS_Store$', '^tags$', '\.git$[[dir]]', '\.idea$[[dir
 let NERDTreeShowLineNumbers = 1
 
 " Wrap in try/catch to avoid errors on initial install before plugin is available
-try
+" try
 
   " === Vim airline ==== "
   " Enable extensions
@@ -282,7 +282,7 @@ try
   "
   " catch
   "   echo 'Airline not installed. It should work after running :PlugInstall'
-endtry
+" endtry
 "
 " === echodoc === "
 " Enable echodoc on startup
@@ -378,17 +378,17 @@ autocmd BufWritepre * %s/\n\+\%$//e
 " autocmd! ColorScheme OceanicNext call s:custom_jarvis_colors()
 
 " Call method on window enter
-augroup WindowManagement
-  autocmd!
-  autocmd WinEnter * call Handle_Win_Enter()
-augroup END
+" augroup WindowManagement
+  " autocmd!
+  " autocmd WinEnter * call Handle_Win_Enter()
+" augroup END
 
 " Change highlight group of preview window when open
-function! Handle_Win_Enter()
-  if &previewwindow
-    setlocal winhighlight=Normal:MarkdownError
-  endif
-endfunction
+" function! Handle_Win_Enter()
+  " if &previewwindow
+    " setlocal winhighlight=Normal:MarkdownError
+  " endif
+" endfunction
 
 " Editor theme
 " set background=dark
@@ -415,10 +415,10 @@ endif
 "   <leader>t - Browse list of files in current directory
 "   <leader>g - Search current directory for occurences of given term and close window if no results
 "   <leader>j - Search current directory for occurences of word under cursor
-nmap ; :Denite buffer<CR>
-nmap <leader>t :DeniteProjectDir file/rec<CR>
-nnoremap <leader>g :<C-u>Denite grep:. -no-empty<CR>
-nnoremap <leader>j :<C-u>DeniteCursorWord grep:.<CR>
+" nmap ; :Denite buffer<CR>
+" nmap <leader>t :DeniteProjectDir file/rec<CR>
+" nnoremap <leader>g :<C-u>Denite grep:. -no-empty<CR>
+" nnoremap <leader>j :<C-u>DeniteCursorWord grep:.<CR>
 
 " Define mappings while in 'filter' mode
 "   <C-o>         - Switch to normal mode inside of search results
@@ -427,23 +427,23 @@ nnoremap <leader>j :<C-u>DeniteCursorWord grep:.<CR>
 "   <C-t>         - Open currently selected file in a new tab
 "   <C-v>         - Open currently selected file a vertical split
 "   <C-h>         - Open currently selected file in a horizontal split
-autocmd FileType denite-filter call s:denite_filter_my_settings()
-function! s:denite_filter_my_settings() abort
-  imap <silent><buffer> <C-o>
-        \ <Plug>(denite_filter_quit)
-  inoremap <silent><buffer><expr> <Esc>
-        \ denite#do_map('quit')
-  nnoremap <silent><buffer><expr> <Esc>
-        \ denite#do_map('quit')
-  inoremap <silent><buffer><expr> <CR>
-        \ denite#do_map('do_action')
-  inoremap <silent><buffer><expr> <C-t>
-        \ denite#do_map('do_action', 'tabopen')
-  inoremap <silent><buffer><expr> <C-v>
-        \ denite#do_map('do_action', 'vsplit')
-  inoremap <silent><buffer><expr> <C-h>
-        \ denite#do_map('do_action', 'split')
-endfunction
+" autocmd FileType denite-filter call s:denite_filter_my_settings()
+" function! s:denite_filter_my_settings() abort
+  " imap <silent><buffer> <C-o>
+        " \ <Plug>(denite_filter_quit)
+  " inoremap <silent><buffer><expr> <Esc>
+        " \ denite#do_map('quit')
+  " nnoremap <silent><buffer><expr> <Esc>
+        " \ denite#do_map('quit')
+  " inoremap <silent><buffer><expr> <CR>
+        " \ denite#do_map('do_action')
+  " inoremap <silent><buffer><expr> <C-t>
+        " \ denite#do_map('do_action', 'tabopen')
+  " inoremap <silent><buffer><expr> <C-v>
+        " \ denite#do_map('do_action', 'vsplit')
+  " inoremap <silent><buffer><expr> <C-h>
+        " \ denite#do_map('do_action', 'split')
+" endfunction
 
 " Define mappings while in denite window
 "   <CR>        - Opens currently selected file
@@ -454,29 +454,29 @@ endfunction
 "   <C-t>       - Open currently selected file in a new tab
 "   <C-v>       - Open currently selected file a vertical split
 "   <C-h>       - Open currently selected file in a horizontal split
-autocmd FileType denite call s:denite_my_settings()
-function! s:denite_my_settings() abort
-  nnoremap <silent><buffer><expr> <CR>
-        \ denite#do_map('do_action')
-  nnoremap <silent><buffer><expr> q
-        \ denite#do_map('quit')
-  nnoremap <silent><buffer><expr> <Esc>
-        \ denite#do_map('quit')
-  nnoremap <silent><buffer><expr> d
-        \ denite#do_map('do_action', 'delete')
-  nnoremap <silent><buffer><expr> p
-        \ denite#do_map('do_action', 'preview')
-  nnoremap <silent><buffer><expr> i
-        \ denite#do_map('open_filter_buffer')
-  nnoremap <silent><buffer><expr> <C-o>
-        \ denite#do_map('open_filter_buffer')
-  nnoremap <silent><buffer><expr> <C-t>
-        \ denite#do_map('do_action', 'tabopen')
-  nnoremap <silent><buffer><expr> <C-v>
-        \ denite#do_map('do_action', 'vsplit')
-  nnoremap <silent><buffer><expr> <C-h>
-        \ denite#do_map('do_action', 'split')
-endfunction
+" autocmd FileType denite call s:denite_my_settings()
+" function! s:denite_my_settings() abort
+  " nnoremap <silent><buffer><expr> <CR>
+        " \ denite#do_map('do_action')
+  " nnoremap <silent><buffer><expr> q
+        " \ denite#do_map('quit')
+  " nnoremap <silent><buffer><expr> <Esc>
+        " \ denite#do_map('quit')
+  " nnoremap <silent><buffer><expr> d
+        " \ denite#do_map('do_action', 'delete')
+  " nnoremap <silent><buffer><expr> p
+        " \ denite#do_map('do_action', 'preview')
+  " nnoremap <silent><buffer><expr> i
+        " \ denite#do_map('open_filter_buffer')
+  " nnoremap <silent><buffer><expr> <C-o>
+        " \ denite#do_map('open_filter_buffer')
+  " nnoremap <silent><buffer><expr> <C-t>
+        " \ denite#do_map('do_action', 'tabopen')
+  " nnoremap <silent><buffer><expr> <C-v>
+        " \ denite#do_map('do_action', 'vsplit')
+  " nnoremap <silent><buffer><expr> <C-h>
+        " \ denite#do_map('do_action', 'split')
+" endfunction
 
 " === Nerdtree shorcuts === "
 "  <leader>n - Toggle NERDTree on/off
@@ -500,10 +500,10 @@ nmap <C-l> <C-w>l
 " <leader>dr    - Jump to references of current symbol
 " <leader>dj    - Jump to implementation of current symbol
 " <leader>ds    - Fuzzy search current project symbols
-nmap <silent> <leader>dd <Plug>(coc-definition)
-nmap <silent> <leader>dr <Plug>(coc-references)
-nmap <silent> <leader>dj <Plug>(coc-implementation)
-nnoremap <silent> <leader>ds :<C-u>CocList -I -N --top symbols<CR>
+" nmap <silent> <leader>dd <Plug>(coc-definition)
+" nmap <silent> <leader>dr <Plug>(coc-references)
+" nmap <silent> <leader>dj <Plug>(coc-implementation)
+" nnoremap <silent> <leader>ds :<C-u>CocList -I -N --top symbols<CR>
 
 " === vim-better-whitespace === "
 "   <leader>y - Automatically remove trailing whitespace
@@ -573,9 +573,9 @@ nmap <leader>z :JsDoc<CR>
 " endif
 " endf
 
-map <leader>f :CocCommand eslint.executeAutofix
-vmap <leader>e <Plug>(coc-format-selected)
-nmap <leader>e <Plug>(coc-format-selected)
+" map <leader>f :CocCommand eslint.executeAutofix
+" vmap <leader>e <Plug>(coc-format-selected)
+" nmap <leader>e <Plug>(coc-format-selected)
 
 " A syntax for placeholders
 " Pressing Control-j jumps to the next match.
@@ -710,3 +710,7 @@ let g:scFlash = 1
 "nnoremap <leader>D ""D
 "vnoremap <leader>d ""d
 "nnoremap <leader>c ""c
+
+let g:ale_fixers = {
+ \ 'javascript': ['eslint']
+ \ }

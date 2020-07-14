@@ -24,23 +24,23 @@ call plug#begin('~/.config/nvim/plugged')
 " Trailing whitespace highlighting & automatic fixing
 Plug 'ntpeters/vim-better-whitespace'
 
-" auto-close p lugin
-Plug 'rstacruz/vim-closer'
+" auto-close plugin
+" Plug 'rstacruz/vim-closer'
 
 " Improved motion in Vim
 Plug 'easymotion/vim-easymotion'
 
 " Intellisense Engine
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Denite - Fuzzy finding, buffer management
-if has('nvim')
-  Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/denite.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
+" if has('nvim')
+  " Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
+" else
+  " Plug 'Shougo/denite.nvim'
+  " Plug 'roxma/nvim-yarp'
+  " Plug 'roxma/vim-hug-neovim-rpc'
+" endif
 
 " Snippet support
 " if has('nvim')
@@ -56,7 +56,7 @@ endif
 " Plug 'Shougo/neosnippet-snippets'
 
 " Print function signatures in echo area
-Plug 'Shougo/echodoc.vim'
+" Plug 'Shougo/echodoc.vim'
 
 " === Git Plugins === "
 " Enable git changes to be shown in sign column
@@ -71,7 +71,7 @@ Plug 'HerringtonDarkholme/yats.vim'
 Plug 'mxw/vim-jsx'
 
 " Generate JSDoc commands based on function signature
-Plug 'heavenshell/vim-jsdoc'
+" Plug 'heavenshell/vim-jsdoc'
 
 " === Syntax Highlighting === "
 
@@ -82,14 +82,14 @@ Plug 'chr4/nginx.vim'
 Plug 'othree/javascript-libraries-syntax.vim'
 
 " Improved syntax highlighting and indentation
-Plug 'othree/yajs.vim'
+" Plug 'othree/yajs.vim'
 
 " === UI === "
 " File explorer
 Plug 'scrooloose/nerdtree'
 
 " Colorscheme
-Plug 'mhartington/oceanic-next'
+" Plug 'mhartington/oceanic-next'
 
 " Customized vim status line
 " Plug 'vim-airline/vim-airline'
@@ -102,7 +102,7 @@ Plug 'itchyny/lightline.vim'                      " Lightline statusbar
 " Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
 " Flex
-Plug 'tpope/vim-surround'                         " https://github.com/tpope/vim-surround
+" Plug 'tpope/vim-surround'                         " https://github.com/tpope/vim-surround
 
 " Plug 'leafoftree/vim-vue-plugin'                  " vimawesome.com/plugin/vim-vue-plugin
 
@@ -110,7 +110,8 @@ Plug 'tpope/vim-surround'                         " https://github.com/tpope/vim
 Plug 'posva/vim-vue'                  " vimawesome.com/plugin/vim-vue-plugin
 
 Plug 'dracula/vim'
-Plug 'chiel92/vim-autoformat'
+
+" Plug 'chiel92/vim-autoformat'
 
 " Plug 'chrisbra/vim-commentary'
 Plug 'preservim/nerdcommenter'
@@ -129,6 +130,8 @@ Plug 'ThePrimeagen/vim-be-good', {'do': '.\install.sh'}
 
 " Plug 'sbl/scvim'
 Plug 'supercollider/scvim'
+
+Plug 'w0rp/ale'
 
 " Initialize plugin system
 call plug#end()
