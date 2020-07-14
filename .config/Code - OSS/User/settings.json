@@ -126,4 +126,9 @@
             ],
         }
     ],
+    "editor.highlightActiveIndentGuide": false,
+    "editor.renderIndentGuides": false,
+    "editor.renderLineHighlight": "none",
+    "editor.occurrencesHighlight": false,
+    "editor.matchBrackets": "never",
 }
