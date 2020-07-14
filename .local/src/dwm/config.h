@@ -126,7 +126,7 @@ static Key keys[] = {
   { MODKEY|ControlMask|ShiftMask,             XK_r, spawn,          {.v = reboot } },
   { MODKEY|ControlMask|ShiftMask,             XK_p, spawn,          {.v = poweroff } },
   { MODKEY|ShiftMask,     XK_period,    spawn,    SHCMD("$BROWSER") },
-  { MODKEY|ControlMask|ShiftMask,     XK_period,    spawn,    SHCMD("chromium") },
+  { MODKEY|ControlMask|ShiftMask,     XK_period,    spawn,    SHCMD("firefox") },
   /* { MODKEY|ShiftMask,                       XK_comma, spawn,  SHCMD("st env SHELL=/bin/bash vifm")}, */
   { MODKEY|ShiftMask,                       XK_apostrophe, spawn,  SHCMD("st ranger")},
   { MODKEY|ControlMask|ShiftMask,                       XK_apostrophe, spawn,  SHCMD("st -e lf")},
