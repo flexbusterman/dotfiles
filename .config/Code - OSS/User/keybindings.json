@@ -30,17 +30,8 @@
     "command": "workbench.action.toggleSidebarVisibility", 
     "when": "!editorTextFocus"
   },
-  { 
-    "key": "ctrl+h",
-    "command": "list.collapse",
-    "when": "listFocus && !inputFocus"
-  },
-  { 
-    "key": "ctrl+l",
-    "command": "list.expand",
-    "when": "listFocus && !inputFocus"
-  },
-  { 
+  {
+    
     "key": "ctrl+k",
     "command": "list.focusUp",
     "when": "listFocus && !inputFocus"
@@ -89,5 +80,38 @@
     "key": "ctrl+\\",
     "command": "editor.action.commentLine",
     "when": "editorTextFocus"
+  },
+  {
+    "key": ", f",
+    "command": "editor.action.formatDocument",
+    "when": "editorHasDocumentFormattingProvider && editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "ctrl+shift+i",
+    "command": "-editor.action.formatDocument",
+    "when": "editorHasDocumentFormattingProvider && editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "ctrl+h",
+    "command": "-editor.action.startFindReplaceAction"
+  },
+  {
+    "key": "ctrl+h",
+    "command": "-extension.vim_ctrl+h",
+    "when": "editorTextFocus && vim.active && vim.use<C-h> && !inDebugRepl"
+  },
+  {
+    "key": "ctrl+k ctrl+right",
+    "command": "-workbench.action.focusRightGroup"
+  },
+  {
+    "key": "ctrl+l",
+    "command": "-expandLineSelection",
+    "when": "textInputFocus"
+  },
+  {
+    "key": "ctrl+l",
+    "command": "-extension.vim_navigateCtrlL",
+    "when": "editorTextFocus && vim.active && vim.use<C-l> && !inDebugRepl"
   },
 ]
