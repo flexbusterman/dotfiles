@@ -26,7 +26,7 @@
     "when": "editorTextFocus && vim.active && vim.mode != 'Insert'"
   },
   {
-    "key": ", t", 
+    "key": ", n", 
     "command": "workbench.action.toggleSidebarVisibility", 
     "when": "!editorTextFocus"
   },
@@ -84,5 +84,10 @@
     "key": "ctrl+k",
     "command": "workbench.action.quickOpenSelectPrevious",
     "when": "inQuickOpen"
+  },
+  {
+    "key": "ctrl+\\",
+    "command": "editor.action.commentLine",
+    "when": "editorTextFocus"
   },
 ]

@@ -131,4 +131,6 @@
     "editor.renderLineHighlight": "none",
     "editor.occurrencesHighlight": false,
     "editor.matchBrackets": "never",
+    "git.confirmSync": false,
+    "editor.wordWrap": "on",
 }
