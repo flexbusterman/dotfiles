@@ -28,7 +28,7 @@
   {
     "key": ", n", 
     "command": "workbench.action.toggleSidebarVisibility", 
-    "when": "!editorTextFocus"
+    "when": "vim.mode != 'Insert'"
   },
   {
     
@@ -84,7 +84,8 @@
   {
     "key": ", f",
     "command": "editor.action.formatDocument",
-    "when": "editorHasDocumentFormattingProvider && editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly"
+    "when": "editorTextFocus && vim.active && vim.mode != 'Insert'"
+    // "when": "editorHasDocumentFormattingProvider && editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly"
   },
   {
     "key": "ctrl+shift+i",
@@ -113,5 +114,20 @@
     "key": "ctrl+l",
     "command": "-extension.vim_navigateCtrlL",
     "when": "editorTextFocus && vim.active && vim.use<C-l> && !inDebugRepl"
+  },
+  {
+    "key": ", w",
+    "command": "workbench.action.files.save",
+    "when": "editorTextFocus && vim.active && vim.mode != 'Insert'"
+  },
+  {
+    "key": ", q",
+    "command": "workbench.action.closeActiveEditor",
+    "when": "editorTextFocus && vim.active && vim.mode != 'Insert'"
+  },
+  {
+    "key": ", n",
+    "command": "workbench.view.explorer",
+    "when": "editorTextFocus && vim.active && vim.mode != 'Insert'"
   },
 ]

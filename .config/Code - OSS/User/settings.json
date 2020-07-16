@@ -41,33 +41,7 @@
   "editor.tabSize": 2,
   "vim.leader": ",",
   "vim.insertModeKeyBindings": [
-    {
-      "before": [
-        "<leader>",
-        "w"
-      ],
-      "commands": [
-        "workbench.action.files.save"
-      ]
-    },
-    {
-      "before": [
-        "j",
-        "j"
-      ],
-      "after": [
-        "<Esc>"
-      ]
-    },
-    {
-      "before": [
-        "<leader>",
-        "."
-      ],
-      "commands": [
-        ":nohl"
-      ]
-    },
+
   ],
   "vim.normalModeKeyBindingsNonRecursive": [
     {
