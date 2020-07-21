@@ -2,7 +2,7 @@
   "keyboard.dispatch": "keyCode",
   "editor.lineNumbers": "relative",
   "editor.autoIndent": "full",
-  "window.zoomLevel": 1.5227586988632231,
+  "window.zoomLevel": 1,
   "editor.minimap.enabled": false,
   "breadcrumbs.enabled": true,
   "workbench.startupEditor": "newUntitledFile",
@@ -40,9 +40,7 @@
   "vim.commandLineModeKeyBindings": [],
   "editor.tabSize": 2,
   "vim.leader": ",",
-  "vim.insertModeKeyBindings": [
-
-  ],
+  "vim.insertModeKeyBindings": [],
   "vim.normalModeKeyBindingsNonRecursive": [
     {
       "before": [
@@ -170,13 +168,14 @@
   "editor.wordWrap": "on",
   "editor.fontFamily": "'Roboto Mono'",
   "debug.console.fontFamily": "'Roboto Mono'",
-  "debug.console.fontSize": 13,
+  "debug.console.fontSize": 14,
   "markdown.preview.fontFamily": "'Roboto Mono'",
-  "markdown.preview.fontSize": 13,
+  "markdown.preview.fontSize": 14,
   "terminal.integrated.fontFamily": "'Roboto Mono'",
-  "terminal.integrated.fontSize": 13,
-  "vim.easymotionMarkerFontSize": "13",
+  "terminal.integrated.fontSize": 14,
+  "vim.easymotionMarkerFontSize": "14",
   "vim.easymotionMarkerFontFamily": "'Roboto Mono'",
-  "zoombar.defaultZoom": 132,
-  "editor.fontSize": 13
+  "zoombar.defaultZoom": 120,
+  "editor.fontSize": 14,
+  "vetur.format.defaultFormatter.js": "vscode-typescript"
 }
