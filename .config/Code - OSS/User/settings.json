@@ -177,5 +177,6 @@
   "vim.easymotionMarkerFontFamily": "'Roboto Mono'",
   "zoombar.defaultZoom": 120,
   "editor.fontSize": 14,
-  "vetur.format.defaultFormatter.js": "vscode-typescript"
+  "vetur.format.defaultFormatter.js": "vscode-typescript",
+  "explorer.confirmDelete": false
 }
