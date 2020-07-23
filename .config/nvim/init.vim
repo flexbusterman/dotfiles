@@ -7,17 +7,17 @@ let g:mapleader = ","
 
 set nocompatible
 
-nnoremap <leader>w :w<CR>
-inoremap <leader>w <esc>:w<CR>
+nnoremap <leader><space> :w<CR>
+inoremap <leader><space> <esc>:w<CR>
 map <leader>q <esc>:q!<CR>
 
 " Yank and paste with the system clipboard
 set clipboard+=unnamedplus
 
-inoremap jk <ESC>
+" inoremap jk <ESC>
 " nmap <C-\> :NERDTreeToggle<CR>
-vmap <C-\> <plug>NERDCommenterToggle
-nmap <C-\> <plug>NERDCommenterToggle
+vmap <leader>t <plug>NERDCommenterToggle
+nmap <leader>t <plug>NERDCommenterToggle
 let NERDSpaceDelims=1
 
 " Show hidden files/directories
@@ -181,13 +181,14 @@ augroup mygroup
 augroup end
 
 " Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
-xmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)
+" xmap <leader>a  <Plug>(coc-codeaction-selected)
+" nmap <leader>a  <Plug>(coc-codeaction-selected)
 
 " Remap for do codeAction of current line
-nmap <leader>ac  <Plug>(coc-codeaction)
+" nmap <leader>ac  <Plug>(coc-codeaction)
 " Fix autofix problem of current line
-nmap <leader>qf  <Plug>(coc-fix-current)
+" nmap <leader>qf  <Plug>(coc-fix-current)
+nmap <leader>a <Plug>(coc-fix-current)
 
 " Create mappings for function text object, requires document symbols feature of languageserver.
 xmap if <Plug>(coc-funcobj-i)
@@ -196,8 +197,8 @@ omap if <Plug>(coc-funcobj-i)
 omap af <Plug>(coc-funcobj-a)
 
 " Use <C-d> for select selections ranges, needs server support, like: coc-tsserver, coc-python
-nmap <silent> <C-d> <Plug>(coc-range-select)
-xmap <silent> <C-d> <Plug>(coc-range-select)
+" nmap <silent> <C-d> <Plug>(coc-range-select)
+" xmap <silent> <C-d> <Plug>(coc-range-select)
 
 " Use `:Format` to format current buffer
 command! -nargs=0 Format :call CocAction('format')
