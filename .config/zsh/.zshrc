@@ -224,7 +224,7 @@ mind () {
   # st -e zsh -c "cd ~/Documents/; nvim -c \"autocmd! CursorHold * CocDisable\" Scandinavian\ Mind.wiki" &
   st -e zsh -c "cd ~/Documents/; nvim Scandinavian\ Mind.wiki" &
   # cd ~/GIT/kalle2019/; nvim -c "autocmd! CursorHold * NERDTree"
-  cd ~/GIT/mind/; eval "$(ssh-agent -s)" && ssh-add ~/.ssh/mind; code;
+  cd ~/GIT/mind/; eval "$(ssh-agent -s)" && ssh-add ~/.ssh/mind; vim;
 }
 
 dev () {
