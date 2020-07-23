@@ -26,8 +26,14 @@ let g:NERDTreeShowHidden = 1
 " open NERDTree automatically
 " autocmd StdinReadPre * let s:std_in=1
 " autocmd VimEnter * NERDTree
+" 
+" enable line numbers
+let NERDTreeShowLineNumbers=1
 
-let g:NERDTreeGitStatusWithFlags = 1
+" make sure relative line numbers are used
+autocmd FileType nerdtree setlocal relativenumber
+
+let g:NERDTreeGitStatusWithFlags = 0
 "let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 "let g:NERDTreeGitStatusNodeColorization = 1
 "let g:NERDTreeColorMapCustom = {
@@ -40,6 +46,7 @@ let g:NERDTreeGitStatusWithFlags = 1
     "\ "Clean"     : "#87939A",
     "\ "Ignored"   : "#808080"
     "\ } 
+"
 let g:NERDTreeIgnore = ['^node_modules$']
 
 " vim-prettier
