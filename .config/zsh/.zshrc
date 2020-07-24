@@ -222,11 +222,12 @@ mind () {
   st -e zsh -c "cd ~/GIT/mind/; zsh -c \"npm run dev\"" &
   # st -e zsh -c "cd ~/GIT/mind/; zsh" &
   # st -e zsh -c "cd ~/Documents/; nvim -c \"autocmd! CursorHold * CocDisable\" Scandinavian\ Mind.wiki" &
-  firefox https://xd.adobe.com/view/035ce4d8-ddd4-4c00-752c-3f6187a5d998-756d/grid &
-  firefox localhost:3333 &
+  st -e firefox https://xd.adobe.com/view/035ce4d8-ddd4-4c00-752c-3f6187a5d998-756d/grid &
+  st -e firefox firefox localhost:3333 &
   st -e zsh -c "cd ~/Documents/; nvim Scandinavian\ Mind.wiki" &
   # cd ~/GIT/kalle2019/; nvim -c "autocmd! CursorHold * NERDTree"
-  cd ~/GIT/mind/; eval "$(ssh-agent -s)" && ssh-add ~/.ssh/mind; vim;
+  st -e zsh -c "cd ~/GIT/mind/; zsh -c \"eval \"$(ssh-agent -s)\" && ssh-add ~/.ssh/mind; vim;" &
+  
 }
 
 dev () {
