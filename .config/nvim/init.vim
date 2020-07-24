@@ -30,6 +30,8 @@ let g:NERDTreeShowHidden = 1
 " enable line numbers
 let NERDTreeShowLineNumbers=1
 
+let NERDTreeMinimalUI=1
+
 " make sure relative line numbers are used
 autocmd FileType nerdtree setlocal relativenumber
 
