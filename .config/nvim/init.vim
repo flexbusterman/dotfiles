@@ -4,12 +4,14 @@ source ~/.config/nvim/plugins.vim
 " Remap leader key to space
 let mapleader = " "
 let g:mapleader = " "
-j
+
 set nocompatible
 
 " Flex bindings
-nnoremap <leader>, :w<CR>
-inoremap <leader>, <esc>:w<CR>
+nnoremap <leader>j :w<CR>
+vnoremap <leader>j :w<CR>
+
+" inoremap <leader>, <esc>:w<CR>
 map <leader>q <esc>:q!<CR>
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
@@ -62,7 +64,6 @@ command! -nargs=0 Prettier :CocCommand prettier.formatFile
 " run prettier on save
 "let g:prettier#autoformat = 0
 "autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
-
 
 " ctrlp
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
@@ -236,16 +237,16 @@ nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
 " Search workspace symbols
 nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
 " Do default action for next item.
-nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+" nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 " Do default action for previous item.
-nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+" nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
 " Use 256 colours (Use this setting only if your terminal supports 256 colours)
 set t_Co=256
 
-nmap <leader>n :NERDTreeToggle<CR>
+nmap <leader>h :NERDTreeToggle<CR>
 
 " Quick window switching
 nmap <C-h> <C-w>h
@@ -255,11 +256,11 @@ nmap <C-l> <C-w>l
 
 nmap <leader>y :StripWhitespace<CR>
 
-map <leader>h :%s///<left><left>
-nmap <silent> <leader>. :nohlsearch<CR>
+" map <leader>h :%s///<left><left>
+nmap <silent> <leader>l :nohlsearch<CR>
 
-map <leader>m <Plug>(easymotion-bd-w)
-
+nmap <leader>k <Plug>(easymotion-bd-w)
+vmap <leader>k <Plug>(easymotion-bd-w)
 
 noremap <F3> :Autoformat<CR>
 
@@ -306,6 +307,7 @@ let g:lightline = {
       \ }
 
 set smartcase
+set ignorecase
 set smartindent
 set noswapfile
 set nobackup
