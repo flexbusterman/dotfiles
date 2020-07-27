@@ -1,15 +1,15 @@
 scriptencodin utf-8
 source ~/.config/nvim/plugins.vim
-
-" Remap leader key to ,
-let mapleader = ","
-let g:mapleader = ","
-
+    
+" Remap leader key to space
+let mapleader = " "
+let g:mapleader = " "
+j
 set nocompatible
 
 " Flex bindings
-nnoremap <leader><space> :w<CR>
-inoremap <leader><space> <esc>:w<CR>
+nnoremap <leader>, :w<CR>
+inoremap <leader>, <esc>:w<CR>
 map <leader>q <esc>:q!<CR>
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
