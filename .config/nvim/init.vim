@@ -7,9 +7,12 @@ let g:mapleader = ","
 
 set nocompatible
 
+" Flex bindings
 nnoremap <leader><space> :w<CR>
 inoremap <leader><space> <esc>:w<CR>
 map <leader>q <esc>:q!<CR>
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
 
 " Yank and paste with the system clipboard
 set clipboard+=unnamedplus
