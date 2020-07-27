@@ -163,7 +163,7 @@ static Key keys[] = {
     { MODKEY|ShiftMask,   XK_q,   spawn,    SHCMD("sysact") },
     /* { MODKEY,      XK_w,   spawn,    SHCMD("$BROWSER") }, */
     { MODKEY|ShiftMask,   XK_w,   spawn,    SHCMD("st -e sudo nmtui") },
-    { MODKEY,     XK_e,   spawn,    SHCMD("st -e neomutt ; pkill -RTMIN+12 dwmblocks; rmdir ~/.abook") },
+    { MODKEY,     XK_e,   spawn,    SHCMD("st -e neomutt") },
     { MODKEY|ShiftMask,   XK_e,   spawn,    SHCMD("st -e abook -C ~/.config/abook/abookrc --datafile ~/.config/abook/addressbook") },
     { MODKEY|ShiftMask,   XK_r,   spawn,    SHCMD("st -e bashtop") },
     { MODKEY,   XK_r,   spawn,    SHCMD("st -e htop") },

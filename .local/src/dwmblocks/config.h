@@ -3,14 +3,14 @@ static const Block blocks[] = {
   /*Icon*/  /*Command*/   /*Update Interval*/ /*Update Signal*/
   {"",  "dropbox", 5,  0},
   {"",  "internet", 20,  4},
-  // {"",  "disk", 15,  5},
+	{"",  "disk", 15,  5},
   {"",  "memory", 10, 18},
-  {"",  "cpu",    10, 18},
-	// {"",	"volume",	0,	10},
+  {"",  "cpu",    1, 18},
+	{"",	"volume",	0,	10},
   {"",  "battery",  5,  3},
 	{"",	"clock",	60,	1},
 	/* {"",	"music",	0,	11},*/
-	//{"",	"pacpackages",	0,	8},
+	// {"",	"pacpackages",	0,	8},
 	//{"",	"news",		0,	6},
 	/* {"",	"crypto",	0,	13}, */
 	//{"",	"torrent",	20,	7},
