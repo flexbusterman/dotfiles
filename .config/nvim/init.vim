@@ -1,4 +1,4 @@
-scriptencoding utf-8
+scriptencodin utf-8
 source ~/.config/nvim/plugins.vim
 
 " Remap leader key to ,
@@ -75,7 +75,7 @@ set cindent
 set tabstop=2
 set shiftwidth=2
 " always uses spaces instead of tab characters
-set expandtab
+" set expandtab
 
 colorscheme dracula
 
@@ -302,5 +302,12 @@ let g:lightline = {
       \ 'colorscheme': 'darcula',
       \ }
 
-:set ignorecase
-:set smartcase
+set smartcase
+set smartindent
+set noswapfile
+set nobackup
+
+" this directory needs to be created
+set undodir=~/.config/nvim/undodir
+" incremental searching
+set incsearch
