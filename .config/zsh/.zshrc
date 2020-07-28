@@ -73,7 +73,7 @@ mind () {
 	st -e zsh -c "cd ~/Documents/; nvim Scandinavian\ Mind.wiki" &
 	st -e zsh -c "cd ~/GIT/mind/; eval \"$(ssh-agent -s)\" && ssh-add ~/.ssh/mind;" &
 	sleep 1
-	st -e zsh -c "cd ~/GIT/mind/; eval \"$(ssh-agent -s)\" && ssh-add ~/.ssh/mind; vim;" &
+	st -e zsh -c "cd ~/GIT/mind/; eval \"$(ssh-agent -s)\" && ssh-add ~/.ssh/mind; nvim;" &
 }
 
 dev () {
