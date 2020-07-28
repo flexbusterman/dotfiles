@@ -16,11 +16,14 @@ alias res="xdpyinfo | awk '/dimensions/{print $2}'"
 alias wifi="wicd-gtk"
 alias q="exit"
 
-# Aliases for editing common files in VIM
+# VIM aliases for editing common files
 alias vz="cd /home/flex/.config/zsh/; nvim .zshrc"
 alias vx="cd /home/flex/; nvim .xprofile"
 alias vn="cd /home/flex/.config/nvim/; nvim init.vim"
 alias vp="cd /home/flex/.config/nvim/; nvim plugins.vim"
+alias vu="cd /home/flex/.config/newsboat/; nvim urls"
+alias vd="cd /home/flex/.local/src/dwm/; nvim config.h"
+alias vs="cd /home/flex/.local/src/st/; nvim config.h"
 
 # Pacman shortcut aliases
 pin () { sudo pacman -S --noconfirm $* }
@@ -64,13 +67,13 @@ hls () {
 }
 
 mind () {
-  st -e zsh -c "cd ~/GIT/mind/; zsh -c \"npm run dev\"" &
-  st -e firefox https://xd.adobe.com/view/035ce4d8-ddd4-4c00-752c-3f6187a5d998-756d/grid &
-  st -e firefox localhost:3333 &
-  st -e zsh -c "cd ~/Documents/; nvim Scandinavian\ Mind.wiki" &
-  st -e zsh -c "cd ~/GIT/mind/; eval \"$(ssh-agent -s)\" && ssh-add ~/.ssh/mind;" &
+	st -e zsh -c "cd ~/GIT/mind/; zsh -c \"npm run dev\"" &
+	st -e firefox https://xd.adobe.com/view/035ce4d8-ddd4-4c00-752c-3f6187a5d998-756d/grid &
+	st -e firefox localhost:3333 &
+	st -e zsh -c "cd ~/Documents/; nvim Scandinavian\ Mind.wiki" &
+	st -e zsh -c "cd ~/GIT/mind/; eval \"$(ssh-agent -s)\" && ssh-add ~/.ssh/mind;" &
 	sleep 1
-  st -e zsh -c "cd ~/GIT/mind/; eval \"$(ssh-agent -s)\" && ssh-add ~/.ssh/mind; vim;" &
+	st -e zsh -c "cd ~/GIT/mind/; eval \"$(ssh-agent -s)\" && ssh-add ~/.ssh/mind; vim;" &
 }
 
 dev () {
