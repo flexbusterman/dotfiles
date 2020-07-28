@@ -24,6 +24,7 @@ alias vp="cd /home/flex/.config/nvim/; nvim plugins.vim"
 alias vu="cd /home/flex/.config/newsboat/; nvim urls"
 alias vd="cd /home/flex/.local/src/dwm/; nvim config.h"
 alias vs="cd /home/flex/.local/src/st/; nvim config.h"
+alias vc="cd /home/flex/.config/nvim/; nvim coc-settings.json"
 
 # Pacman shortcut aliases
 pin () { sudo pacman -S --noconfirm $* }
