@@ -1,4 +1,101 @@
-# Luke's config for the Zoomer Shell
+# Augustins version of Luke's config for the Zoomer Shell
+
+alias vim="nvim"
+alias dot='/usr/bin/git --git-dir=$HOME/.dot/ --work-tree=$HOME'
+alias dls="maestral ls | sort -k 3,3 | less -p included"
+alias drm="maestral excluded add"
+alias dadd="maestral excluded remove"
+alias ds='maestral status'
+alias dr='maestral restart'
+alias la="exa -la"
+alias ls="exa"
+alias fs="df -h | grep --color='never' 'Filesystem\|sd'"
+alias copy='xclip -sel clip'
+alias rf='rm -rf'
+alias res="xdpyinfo | awk '/dimensions/{print $2}'"
+alias wifi="wicd-gtk"
+alias q="exit"
+
+# Aliases for editing common files in VIM
+alias vz="cd /home/flex/.config/zsh/; nvim .zshrc"
+alias vx="cd /home/flex/; nvim .xprofile"
+alias vn="cd /home/flex/.config/nvim/; nvim init.vim"
+alias vp="cd /home/flex/.config/nvim/; nvim plugins.vim"
+
+# Pacman shortcut aliases
+pin () { sudo pacman -S --noconfirm $* }
+pun () { sudo pacman -Rns $* }
+pup () { sudo pacman -Syu }
+pf (){ pacman -Ss "$*" }
+pls (){ pacman -Qe }
+pla (){ pacman -Q }
+pc (){ sudo pacman -Scc }
+
+# Yaourt shortcut aliases
+yin () { yaourt -S $* }
+yun () { yaourt -Rs $* }
+yup () { yaourt -Syua }
+yf () { yaourt -Ss $* }
+yls () { yaourt -Q }
+
+# prepend date
+pd () {
+  date=$(date +%F)
+  mv "$*" "$date $*"
+}
+
+gp () {
+  result="\"$*\""
+  git add .
+  git commit -m $result
+  git push
+}
+
+dp () {
+  result="\"$*\""
+  dot add -u
+  dot commit -m $result
+  dot push
+}
+
+hls () {
+  result=$*
+  history 0 | grep $result
+}
+
+mind () {
+  st -e zsh -c "cd ~/GIT/mind/; zsh -c \"npm run dev\"" &
+  st -e firefox https://xd.adobe.com/view/035ce4d8-ddd4-4c00-752c-3f6187a5d998-756d/grid &
+  st -e firefox localhost:3333 &
+  st -e zsh -c "cd ~/Documents/; nvim Scandinavian\ Mind.wiki" &
+  st -e zsh -c "cd ~/GIT/mind/; eval \"$(ssh-agent -s)\" && ssh-add ~/.ssh/mind;" &
+	sleep 1
+  st -e zsh -c "cd ~/GIT/mind/; eval \"$(ssh-agent -s)\" && ssh-add ~/.ssh/mind; vim;" &
+}
+
+dev () {
+  st -e zsh -c "cd ~/GIT/kalle2019; zsh -c \"npm run dev\"" &
+  st -e zsh -c "cd ~/Documents/; nvim -c \"autocmd! CursorHold * CocDisable\" Buffalo\ Bill\ Gates.wiki" &
+  cd ~/GIT/kalle2019/; nvim;
+}
+
+#Aggressive autocomplete
+#autoload predict-on
+#predict-on
+
+# Add ssh tokens
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/github
+ssh-add ~/.ssh/bitbucket
+ssh-add ~/.ssh/drop
+ssh-add ~/.ssh/mind
+clear
+
+#   _          _
+#  | |   _   _| | _____
+#  | |  | | | | |/ / _ \
+#  | |__| |_| |   <  __/
+#  |_____\__,_|_|\_\___|
 
 # Enable colors and change prompt:
 autoload -U colors && colors  # Load colors
@@ -78,177 +175,7 @@ bindkey '^[[P' delete-char
 
 # Edit line in vim with ctrl-e:
 autoload edit-command-line; zle -N edit-command-line
- '^e' edit-command-line
-
-# _____ _
-# |  ___| | _____  __
-# | |_  | |/ _ \ \/ /
-# |  _| | |  __/>  <
-# |_|   |_|\___/_/\_\
-
-# start google chrome with argument as address
-# c () {
-# set result (string join ' ' $*)
-# nohup google-chrome http://$result  >> /dev/null > exhibitor.out 2>&1 & && disown (jobs -p)
-# i3-msg workspace 2
-# }
-
-# timer () {
-# set count $*
-# for n in (seq $count -1 0)
-# clear
-# set minutes (math -s0 "$n / 60")
-# set seconds (math -s0 "$n % 60")
-# if test $seconds -lt 10
-# echo $minutes:0$seconds
-# else
-# echo $minutes:$seconds
-# }
-# sleep 1
-# }
-# clear
-# figlet "Done"
-# }
-
-alias vim="nvim"
-alias dot='/usr/bin/git --git-dir=$HOME/.dot/ --work-tree=$HOME'
-alias dls="maestral ls | sort -k 3,3 | less -p included"
-alias drm="maestral excluded add"
-alias dadd="maestral excluded remove"
-alias ds='maestral status'
-alias dr='maestral restart'
-alias cheat='tldr'
-alias la="exa -la"
-alias ls="exa"
-alias fs="df -h | grep --color='never' 'Filesystem\|sd'"
-alias copy='xclip -sel clip'
-alias rf='rm -rf'
-alias res="xdpyinfo | awk '/dimensions/{print $2}'"
-alias wifi="wicd-gtk"
-
-test () {
-  result="\"$*\""
-  echo $result
-}
-
-uz () {
-  for archive in $*;
-  #do 7z x -o"`basename \"$archive\"`" "$archive";
-  do 7z x -o"${archive%.*}" "$archive";
-  done
-}
-
-# dex () {
-  #for directory in $*
-  #echo '$directory'
-  ##do maestral exclude add $dir
-  #done
-#}
-
-
-yin () {
-  yaourt -S $*
-}
-
-yun () {
-  yaourt -Rs $*
-}
-
-yup () {
-  yaourt -Syua
-}
-
-yf () {
-  yaourt -Ss $*
-}
-
-yls () {
-  yaourt -Q
-}
-
-pin () {
-  sudo pacman -S --noconfirm $*
-}
-
-pun () {
-  sudo pacman -Rns $*
-}
-
-pup () {
-  sudo pacman -Syu
-}
-
-pf (){
-  pacman -Ss "$*"
-}
-
-pls (){
-  pacman -Qe
-}
-
-pla (){
-  pacman -Q
-}
-
-pc (){
-  pacman -Scc
-}
-
-# prepend date
-pd () {
-  date=$(date +%F)
-  mv "$*" "$date $*"
-}
-
-gp () {
-  result="\"$*\""
-  git add .
-  git commit -m $result
-  git push
-}
-
-dp () {
-  result="\"$*\""
-  dot add -u
-  dot commit -m $result
-  dot push
-}
-
-hi () {
-  result=$*
-  history 0 | grep $result
-}
-
-mind () {
-  st -e zsh -c "cd ~/GIT/mind/; zsh -c \"npm run dev\"" &
-  # st -e zsh -c "cd ~/GIT/mind/; zsh" &
-  # st -e zsh -c "cd ~/Documents/; nvim -c \"autocmd! CursorHold * CocDisable\" Scandinavian\ Mind.wiki" &
-  st -e firefox https://xd.adobe.com/view/035ce4d8-ddd4-4c00-752c-3f6187a5d998-756d/grid &
-  st -e firefox firefox localhost:3333 &
-  st -e zsh -c "cd ~/Documents/; nvim Scandinavian\ Mind.wiki" &
-  # cd ~/GIT/kalle2019/; nvim -c "autocmd! CursorHold * NERDTree"
-  st -e zsh -c "cd ~/GIT/mind/; zsh -c \"eval \"$(ssh-agent -s)\" && ssh-add ~/.ssh/mind; vim;" &
-  
-}
-
-dev () {
-  st -e zsh -c "cd ~/GIT/kalle2019; zsh -c \"npm run dev\"" &
-  st -e zsh -c "cd ~/Documents/; nvim -c \"autocmd! CursorHold * CocDisable\" Buffalo\ Bill\ Gates.wiki" &
-  # cd ~/GIT/kalle2019/; nvim -c "autocmd! CursorHold * NERDTree"
-  cd ~/GIT/kalle2019/; nvim;
-}
-
-eval "$(ssh-agent -s)"
-ssh-add ~/.ssh/github
-ssh-add ~/.ssh/bitbucket
-ssh-add ~/.ssh/mind
-ssh-add ~/.ssh/drop
-clear
-
-# Aggressive autocomplete
-#autoload predict-on
-#predict-on
-
+bindkey '^e' edit-command-line
 
 # append a trailing ‘/’ to all directory names resulting from filename generation
 setopt MARK_DIRS
@@ -288,8 +215,7 @@ setopt HIST_FIND_NO_DUPS
 # # do not set auto_name_dirs because it messes up prompts (any parameter that is set to the absolute name of a directory immediately becomes a name for that directory)
 # unsetopt AUTO_NAME_DIRS
  #CASE_SENSITIVE="false"
+
 # Load syntax highlighting; should be last according to Luke.
-
 source ~/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-
 source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null
