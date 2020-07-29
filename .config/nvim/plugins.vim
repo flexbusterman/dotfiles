@@ -31,5 +31,8 @@ Plug 'supercollider/scvim'
 
 Plug 'itchyny/lightline.vim'                      " Lightline statusbar
 
+" previews substitution and sort using regex
+Plug 'markonm/traces.vim'
+
 " Initialize plugin system
 call plug#end()

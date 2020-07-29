@@ -16,6 +16,8 @@ map <leader>q <esc>:q!<CR>
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 
+nnoremap <leader>rw :CocSearch <C-R>=expand("<cword>")<CR><CR>
+
 " Yank and paste with the system clipboard
 set clipboard+=unnamedplus
 
