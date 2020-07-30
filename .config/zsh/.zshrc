@@ -1,7 +1,7 @@
 # Augustins version of Luke's config for the Zoomer Shell
 
 # no duplicates in history
-HISTFILE="$HOME/.zsh_history"
+HISTFILE=~/.cache/zsh/history
 HISTSIZE=10000000
 SAVEHIST=10000000
 setopt BANG_HIST                 # Treat the '!' character specially during expansion.
@@ -126,9 +126,6 @@ setopt autocd   # Automatically cd into typed directory.
 stty stop undef   # Disable ctrl-s to freeze terminal.
 
 # History in cache directory:
-HISTSIZE=20000
-SAVEHIST=10000
-HISTFILE=~/.cache/zsh/history
 
 # Load aliases and shortcuts if existent.
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shortcutrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shortcutrc"
