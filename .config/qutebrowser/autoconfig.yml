@@ -35,9 +35,9 @@ settings:
     https://calendar.google.com?cid=%25s: true
     https://mail.google.com?extsrc=mailto&url=%25s: true
   fonts.default_family:
-    global: RobotoMono
+    global: Ac437 IBM BIOS
   fonts.default_size:
-    global: 15px
+    global: 12px
   url.default_page:
     global: about:blank
   url.searchengines:
