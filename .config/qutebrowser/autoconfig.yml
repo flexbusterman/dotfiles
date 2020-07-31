@@ -37,7 +37,7 @@ settings:
   fonts.default_family:
     global: Ac437 IBM BIOS
   fonts.default_size:
-    global: 12px
+    global: 11px
   url.default_page:
     global: about:blank
   url.searchengines:
