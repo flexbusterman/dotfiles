@@ -35,7 +35,7 @@ settings:
     https://calendar.google.com?cid=%25s: true
     https://mail.google.com?extsrc=mailto&url=%25s: true
   fonts.default_family:
-    global: Ac437 IBM BIOS
+    global: Px437 IBM BIOS
   fonts.default_size:
     global: 11px
   url.default_page:
