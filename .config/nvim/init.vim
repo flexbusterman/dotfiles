@@ -8,6 +8,10 @@ let g:mapleader = " "
 set nocompatible
 
 " Flex bindings
+"
+" Automatically close nerdtree on opening file
+let NERDTreeQuitOnOpen = 1
+
 nnoremap <leader>j :w<CR>
 vnoremap <leader>j :w<CR>
 

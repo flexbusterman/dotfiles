@@ -34,5 +34,8 @@ Plug 'itchyny/lightline.vim'                      " Lightline statusbar
 " previews substitution and sort using regex
 Plug 'markonm/traces.vim'
 
+" NERDTree h l open and close
+Plug 'flw-cn/vim-nerdtree-l-open-h-close'
+
 " Initialize plugin system
 call plug#end()
