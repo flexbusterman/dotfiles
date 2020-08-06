@@ -20,19 +20,31 @@ setopt HIST_BEEP                 # Beep when accessing nonexisten
 
 alias vim="nvim"
 alias dot='/usr/bin/git --git-dir=$HOME/.dot/ --work-tree=$HOME'
+
+# Dropbox aliases
 alias dls="dropbox-cli ls"
 alias drm="dropbox-cli exclude add"
 alias dsl="dropbox-cli sharelink"
 alias dadd="dropbox-cli exclude remove"
 alias ds='dropbox-cli status'
 alias dr='dropbox-cli restart'
+
+# WIFI connection aliases
+alias wls="nmcli dev wifi"
+alias wla="nmcli c"
+alias ws="nmcli device status"
+alias wd="nmcli device disconnect"
+wc() { nmcli device wifi connect $1 password $2 }
+wdisable() { nmcli connection down $* }
+
+alias wrm="nmcli "
+
 alias la="exa -la"
 alias ls="exa"
 alias fs="df -h | grep --color='never' 'Filesystem\|sd'"
 alias copy='xclip -sel clip'
 alias rf='rm -rf'
 alias res="xdpyinfo | awk '/dimensions/{print $2}'"
-alias wifi="wicd-gtk"
 alias q="exit"
 
 # VIM aliases for editing common files
