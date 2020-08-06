@@ -1,6 +1,9 @@
 scriptencodin utf-8
 source ~/.config/nvim/plugins.vim
     
+
+let g:vimwiki_list = [{'path': '~/Dropbox/\!\ NOTES/', 'syntax': 'markdown'}]
+
 " Remap leader key to space
 let mapleader = " "
 let g:mapleader = " "
@@ -10,7 +13,7 @@ set nocompatible
 " Flex bindings
 "
 " Automatically close nerdtree on opening file
-let NERDTreeQuitOnOpen = 1
+let NERDTreeQuitOnOpen = 0
 
 nnoremap <leader>j :w<CR>
 vnoremap <leader>j :w<CR>

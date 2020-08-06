@@ -20,11 +20,12 @@ setopt HIST_BEEP                 # Beep when accessing nonexisten
 
 alias vim="nvim"
 alias dot='/usr/bin/git --git-dir=$HOME/.dot/ --work-tree=$HOME'
-alias dls="maestral ls | sort -k 3,3 | less -p included"
-alias drm="maestral excluded add"
-alias dadd="maestral excluded remove"
-alias ds='maestral status'
-alias dr='maestral restart'
+alias dls="dropbox-cli ls"
+alias drm="dropbox-cli exclude add"
+alias dsl="dropbox-cli sharelink"
+alias dadd="dropbox-cli exclude remove"
+alias ds='dropbox-cli status'
+alias dr='dropbox-cli restart'
 alias la="exa -la"
 alias ls="exa"
 alias fs="df -h | grep --color='never' 'Filesystem\|sd'"
