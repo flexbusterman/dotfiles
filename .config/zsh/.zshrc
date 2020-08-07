@@ -34,10 +34,9 @@ alias wls="nmcli dev wifi"
 alias wla="nmcli c"
 alias ws="nmcli device status"
 alias wd="nmcli device disconnect"
+wrm() { nmcli con delete $* }
 wc() { nmcli device wifi connect $1 password $2 }
 wdisable() { nmcli connection down $* }
-
-alias wrm="nmcli "
 
 alias la="exa -la"
 alias ls="exa"
