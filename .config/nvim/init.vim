@@ -10,6 +10,9 @@ let g:mapleader = " "
 
 set nocompatible
 
+" This might fix syntax highlighting from stopping
+autocmd BufEnter * :syntax sync fromstart
+
 " Flex bindings
 "
 " Automatically close nerdtree on opening file
