@@ -128,6 +128,7 @@ timeout = 0
 [ignore]
     # This notification will not be displayed
     summary = "maestral"
+    summary = "Dropbox"
     format = ""
 
 #[history-ignore]

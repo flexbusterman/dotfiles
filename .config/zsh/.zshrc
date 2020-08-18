@@ -99,12 +99,28 @@ hls () {
 
 mind () {
 	st -e zsh -c "cd ~/GIT/mind/; zsh -c \"npm run dev\"" &
-	st -e firefox https://xd.adobe.com/view/035ce4d8-ddd4-4c00-752c-3f6187a5d998-756d/grid &
-	st -e firefox localhost:3333 &
+	st -e firefox -new-instance https://xd.adobe.com/view/035ce4d8-ddd4-4c00-752c-3f6187a5d998-756d/grid &
+	st -e firefox -new-instance localhost:3333 &
 	st -e zsh -c "cd ~/Documents/; nvim Scandinavian\ Mind.wiki" &
 	st -e zsh -c "cd ~/GIT/mind/; eval \"$(ssh-agent -s)\" && ssh-add ~/.ssh/mind;" &
 	sleep 1
-	st -e zsh -c "cd ~/GIT/mind/; eval \"$(ssh-agent -s)\" && ssh-add ~/.ssh/mind; nvim;" &
+	st -e zsh -c "cd ~/GIT/mind/; eval \"$(ssh-agent -s)\" && ssh-add ~/.ssh/mind; nvim -O pages/index.vue layouts/default.vue;" &
+}
+
+dev () {
+  st -e zsh -c "cd ~/GIT/kalle2019; zsh -c \"npm run dev\"" &
+  st -e zsh -c "cd ~/Documents/; nvim -c \"autocmd! CursorHold * CocDisable\" Buffalo\ Bill\ Gates.wiki" &
+  cd ~/GIT/kalle2019/; nvim;
+}
+
+landing () {
+	st -e zsh -c "cd ~/GIT/landing/; zsh -c \"npm run dev\"" &
+	st -e firefox -new-instance https://xd.adobe.com/view/035ce4d8-ddd4-4c00-752c-3f6187a5d998-756d/grid &
+	st -e firefox -new-instance localhost:3000 &
+	st -e zsh -c "cd ~/Documents/; nvim Scandinavian\ Mind.wiki" &
+	st -e zsh -c "cd ~/GIT/landing/; eval \"$(ssh-agent -s)\" && ssh-add ~/.ssh/mind;" &
+	sleep 1
+	st -e zsh -c "cd ~/GIT/landing/; eval \"$(ssh-agent -s)\" && ssh-add ~/.ssh/mind; nvim -O pages/index.vue layouts/default.vue;" &
 }
 
 dev () {
