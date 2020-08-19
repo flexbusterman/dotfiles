@@ -116,7 +116,7 @@ dev () {
 landing () {
 	st -e zsh -c "cd ~/GIT/landing/; zsh -c \"npm run dev\"" &
 	st -e firefox -new-instance https://xd.adobe.com/view/035ce4d8-ddd4-4c00-752c-3f6187a5d998-756d/grid &
-	st -e firefox -new-instance localhost:3000 &
+	st -e firefox -new-instance localhost:8000 &
 	st -e zsh -c "cd ~/Documents/; nvim Scandinavian\ Mind.wiki" &
 	st -e zsh -c "cd ~/GIT/landing/; eval \"$(ssh-agent -s)\" && ssh-add ~/.ssh/mind;" &
 	sleep 1
