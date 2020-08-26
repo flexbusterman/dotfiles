@@ -59,6 +59,7 @@ alias vc="cd /home/flex/.config/nvim/; nvim coc-settings.json"
 # Pacman shortcut aliases
 pin () { sudo pacman -S --noconfirm $* }
 pun () { sudo pacman -Rns $* }
+prm () { sudo pacman -Rns $* }
 pup () { sudo pacman -Syu }
 pf (){ pacman -Ss "$*" }
 pls (){ pacman -Qe }
@@ -66,9 +67,10 @@ pla (){ pacman -Q }
 pc (){ sudo pacman -Scc }
 
 # Yaourt shortcut aliases
-yin () { yaourt -S $* }
+yin () { yaourt -S --noconfirm $* }
 yun () { yaourt -Rs $* }
-yup () { yaourt -Syua }
+yrm () { yaourt -Rs $* }
+yup () { yaourt -Syua --noconfirm}
 yf () { yaourt -Ss $* }
 yls () { yaourt -Q }
 
@@ -100,7 +102,7 @@ hls () {
 mind () {
 	st -e zsh -c "cd ~/GIT/mind/; zsh -c \"npm run dev\"" &
 	st -e firefox -new-instance https://xd.adobe.com/view/035ce4d8-ddd4-4c00-752c-3f6187a5d998-756d/grid &
-	st -e firefox -new-instance localhost:3333 &
+	st -e firefox -new-instance localhost:8000 &
 	st -e zsh -c "cd ~/Documents/; nvim Scandinavian\ Mind.wiki" &
 	st -e zsh -c "cd ~/GIT/mind/; eval \"$(ssh-agent -s)\" && ssh-add ~/.ssh/mind;" &
 	sleep 1
