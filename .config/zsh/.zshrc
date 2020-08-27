@@ -56,7 +56,11 @@ alias vd="cd /home/flex/.local/src/dwm/; nvim config.h"
 alias vs="cd /home/flex/.local/src/st/; nvim config.h"
 alias vc="cd /home/flex/.config/nvim/; nvim coc-settings.json"
 
-# Pacman shortcut aliases
+# GIT aliases
+alias gb="git branch"
+
+
+# Pacman shortcut functions
 pin () { sudo pacman -S --noconfirm $* }
 pun () { sudo pacman -Rns $* }
 prm () { sudo pacman -Rns $* }
@@ -66,7 +70,7 @@ pls (){ pacman -Qe }
 pla (){ pacman -Q }
 pc (){ sudo pacman -Scc }
 
-# Yaourt shortcut aliases
+# Yaourt shortcuts functions
 yin () { yaourt -S --noconfirm $* }
 yun () { yaourt -Rs $* }
 yrm () { yaourt -Rs $* }
@@ -74,18 +78,33 @@ yup () { yaourt -Syua --noconfirm}
 yf () { yaourt -Ss $* }
 yls () { yaourt -Q }
 
+# ssh add function
+sa () {
+	eval "$(ssh-agent -s)"
+	ssh-add ~/.ssh/$*
+}
+
 # prepend date
 pd () {
   date=$(date +%F)
   mv "$*" "$date $*"
 }
 
+# git functions
 gp () {
   result="\"$*\""
   git add .
   git commit -m $result
   git push
 }
+
+gpd () {
+  result="\"$*\""
+  git add .
+  git commit -m $result
+  git push origin dev
+}
+
 
 dp () {
   result="\"$*\""
