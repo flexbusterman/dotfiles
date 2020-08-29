@@ -37,5 +37,14 @@ Plug 'markonm/traces.vim'
 " NERDTree h l open and close
 Plug 'flw-cn/vim-nerdtree-l-open-h-close'
 
+
+Plug 'flw-cn/vim-nerdtree-l-open-h-close'
+
+" To matchit in vue
+Plug 'andymass/vim-matchup'
+Plug 'leafOfTree/vim-vue-plugin'
+Plug 'posva/vim-vue'
+
+
 " Initialize plugin system
 call plug#end()
