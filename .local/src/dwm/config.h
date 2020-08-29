@@ -129,11 +129,12 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,                       XK_bracketleft, spawn,  SHCMD("sleep 0.2 && xdotool key shift+aring" ) },
 	{ MODKEY|ShiftMask,                       XK_apostrophe, spawn,  SHCMD("sleep 0.2 && xdotool key shift+adiaeresis" ) },
 	{ MODKEY|ShiftMask,                       XK_semicolon, spawn,  SHCMD("sleep 0.2 && xdotool key shift+odiaeresis" ) },
+	{ MODKEY,                       XK_d, spawn,  SHCMD("sleep 0.2 && xdotool type --clearmodifiers \"$(date +\"%F \")\"")},
+
+  { MODKEY|ShiftMask,                       XK_b, spawn,  SHCMD("bluetoothctl show | grep -i powered | grep -i yes && notify-send 'Bluetooth is on' && pactl set-card-profile bluez_card.70_BF_92_2A_35_E8 a2dp_sink || notify-send 'Starting bluetooth' && bluetoothctl power on && bluetoothctl -- connect 70:BF:92:2A:35:E8 pactl set-card-profile bluez_card.70_BF_92_2A_35_E8 a2dp_sink")},
 
 
-
-  { MODKEY|ShiftMask,                       XK_b, spawn,  SHCMD("bluetoothctl show | grep -i powered | grep -i yes && notify-send 'Bluetooth is on' || notify-send 'Starting bluetooth' && bluetoothctl power on && bluetoothctl -- connect 70:BF:92:2A:35:E8")},
-  { MODKEY|ShiftMask,                       XK_c, spawn,  SHCMD("notify-send 'Connecting to Jabra' && bluetoothctl -- connect 70:BF:92:2A:35:E8 && pacmd set-card-profile bluez_card.70_BF_92_27_E1_95 a2dp_sink")},
+  { MODKEY|ShiftMask,                       XK_c, spawn,  SHCMD("notify-send 'Connecting to Jabra' && bluetoothctl -- connect 70:BF:92:2A:35:E8; pactl set-card-profile bluez_card.70_BF_92_2A_35_E8 a2dp_sink")},
 
   { MODKEY|ControlMask|ShiftMask,                       XK_s, spawn,  SHCMD("setxkbmap se; setxkbmap -option \"caps:swapescape\"; xset r rate 300 50")},
   { MODKEY|ControlMask|ShiftMask,                       XK_u, spawn,  SHCMD("setxkbmap us; setxkbmap -option \"caps:swapescape\"; xset r rate 300 50")},
