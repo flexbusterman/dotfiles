@@ -111,6 +111,27 @@ static const char *poweroff[] = { "poweroff", NULL };
 #include "shiftview.c"
 static Key keys[] = {
   /* FLEX KEYS */
+
+
+
+	
+	// { MODKEY,                       XK_bracketleft, spawn,  SHCMD("xdotool key aring") },
+	// { MODKEY,                       XK_apostrophe, spawn,  SHCMD("xdotool key adiaeresis" ) },
+	// { MODKEY,                       XK_semicolon, spawn,  SHCMD("xdotool key odiaeresis" ) },
+	// { MODKEY|ShiftMask,                       XK_bracketleft, spawn,  SHCMD("xdotool key shift+aring" ) },
+	// { MODKEY|ShiftMask,                       XK_apostrophe, spawn,  SHCMD("xdotool key shift+adiaeresis" ) },
+	// { MODKEY|ShiftMask,                       XK_semicolon, spawn,  SHCMD("xdotool key shift+odiaeresis" ) },
+
+
+{ MODKEY,                       XK_bracketleft, spawn,  SHCMD("sleep 0.2 && xdotool key aring") },
+	{ MODKEY,                       XK_apostrophe, spawn,  SHCMD("sleep 0.2 && xdotool key adiaeresis" ) },
+	{ MODKEY,                       XK_semicolon, spawn,  SHCMD("sleep 0.2 && xdotool key odiaeresis" ) },
+	{ MODKEY|ShiftMask,                       XK_bracketleft, spawn,  SHCMD("sleep 0.2 && xdotool key shift+aring" ) },
+	{ MODKEY|ShiftMask,                       XK_apostrophe, spawn,  SHCMD("sleep 0.2 && xdotool key shift+adiaeresis" ) },
+	{ MODKEY|ShiftMask,                       XK_semicolon, spawn,  SHCMD("sleep 0.2 && xdotool key shift+odiaeresis" ) },
+
+
+
   { MODKEY|ShiftMask,                       XK_b, spawn,  SHCMD("bluetoothctl show | grep -i powered | grep -i yes && notify-send 'Bluetooth is on' || notify-send 'Starting bluetooth' && bluetoothctl power on && bluetoothctl -- connect 70:BF:92:2A:35:E8")},
   { MODKEY|ShiftMask,                       XK_c, spawn,  SHCMD("notify-send 'Connecting to Jabra' && bluetoothctl -- connect 70:BF:92:2A:35:E8 && pacmd set-card-profile bluez_card.70_BF_92_27_E1_95 a2dp_sink")},
 
@@ -129,8 +150,8 @@ static Key keys[] = {
   { MODKEY|ControlMask|ShiftMask,     XK_period,    spawn,    SHCMD("firefox") },
   { MODKEY|ControlMask,     XK_period,    spawn,    SHCMD("brave") },
   /* { MODKEY|ShiftMask,                       XK_comma, spawn,  SHCMD("st env SHELL=/bin/bash vifm")}, */
-  { MODKEY|ShiftMask,                       XK_apostrophe, spawn,  SHCMD("st ranger")},
-  { MODKEY|ControlMask|ShiftMask,                       XK_apostrophe, spawn,  SHCMD("st -e lf")},
+	{ MODKEY|ControlMask|ShiftMask,                       XK_apostrophe, spawn,  SHCMD("st ranger")},
+  // { MODKEY|ControlMask|ShiftMask,                       XK_apostrophe, spawn,  SHCMD("st -e lf")},
 /* { 0,        XK_Print, spawn,    SHCMD("zsh -c \"maim -f jpg -m 9 /home/flex/Pictures/SCREENSHOTS/$(date +'%F %H_%M_%S.jpg')\"")}, */
   { 0,        XK_Print, spawn,    SHCMD("maim -f jpg -m 9 \"/home/flex/Pictures/SCREENSHOTS/$(date +\"%F %H_%M_%S.jpg\")\"")},
 
@@ -180,8 +201,8 @@ static Key keys[] = {
     { MODKEY|ShiftMask,   XK_o,   incnmaster,     {.i = -1 } },
     { MODKEY,     XK_p,     spawn,    SHCMD("mpc toggle") },
     { MODKEY|ShiftMask,   XK_p,     spawn,    SHCMD("mpc pause ; pauseallmpv") },
-    { MODKEY,     XK_bracketleft,   spawn,    SHCMD("mpc seek -10") },
-    { MODKEY|ShiftMask,   XK_bracketleft,   spawn,    SHCMD("mpc seek -60") },
+    // { MODKEY,     XK_bracketleft,   spawn,    SHCMD("mpc seek -10") },
+    // { MODKEY|ShiftMask,   XK_bracketleft,   spawn,    SHCMD("mpc seek -60") },
     { MODKEY,     XK_bracketright,  spawn,    SHCMD("mpc seek +10") },
     { MODKEY|ShiftMask,   XK_bracketright,  spawn,    SHCMD("mpc seek +60") },
     { MODKEY,     XK_backslash,   view,   {0} },
@@ -200,14 +221,14 @@ static Key keys[] = {
 { MODKEY,     XK_h,   setmfact, {.f = -0.05} },
   /* J and K are automatically bound above in STACKEYS */
 { MODKEY,     XK_l,   setmfact,       {.f = +0.05} },
-{ MODKEY,     XK_semicolon, shiftview,  { .i = 1 } },
-{ MODKEY|ShiftMask,   XK_semicolon, shifttag, { .i = 1 } },
-{ MODKEY,     XK_apostrophe,  togglescratch,  {.ui = 1} },
+// { MODKEY,     XK_semicolon, shiftview,  { .i = 1 } },
+// { MODKEY|ShiftMask,   XK_semicolon, shifttag, { .i = 1 } },
+{ MODKEY,    XK_q,  togglescratch,  {.ui = 1} },
   /* { MODKEY|ShiftMask,    XK_apostrophe,  spawn,    SHCMD("") }, */
   /* { MODKEY,      XK_Return,  spawn,    {.v = termcmd } }, */
 
   /* TODO: might wanna check out scratchpads */
-  /* { MODKEY|ShiftMask,    XK_Return,  togglescratch,  {.ui = 0} }, */
+	// { MODKEY|ShiftMask,    XK_Return,  togglescratch,  {.ui = 0} },
 
 { MODKEY,     XK_z,   incrgaps, {.i = +3 } },
   /* { MODKEY|ShiftMask,    XK_z,   spawn,    SHCMD("") }, */
