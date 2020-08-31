@@ -18,11 +18,16 @@ autocmd BufEnter * :syntax sync fromstart
 " Automatically close nerdtree on opening file
 let NERDTreeQuitOnOpen = 0
 
-nnoremap <leader>j :w<CR>
-vnoremap <leader>j :w<CR>
+nnoremap <silent> <nowait> <leader>j :w<CR>
+vnoremap <silent> <nowait> <leader>j :w<CR>
 
 " inoremap <leader>, <esc>:w<CR>
-map <leader>q <esc>:q!<CR>
+nnoremap <silent> <nowait> <leader>q <esc>:q!<CR>
+vnoremap <silent> <nowait> <leader>q <esc>:q!<CR>
+xnoremap <silent> <nowait> <leader>q <esc>:q!<CR>
+
+" map <leader>q <esc>:q!<CR>
+"
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 
@@ -444,8 +449,9 @@ nmap <leader>a  <Plug>(coc-codeaction-selected)
 
 " Remap keys for applying codeAction to the current buffer.
 nmap <leader>ac  <Plug>(coc-codeaction)
+
 " Apply AutoFix to problem on the current line.
-nmap <leader>qf  <Plug>(coc-fix-current)
+nmap <leader>af  <Plug>(coc-fix-current)
 
 " Map function and class text objects
 " NOTE: Requires 'textDocument.documentSymbol' support from the language server.
@@ -479,20 +485,20 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " Mappings for CoCList
 " Show all diagnostics.
-nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
+nnoremap <silent><nowait> <leader>a  :<C-u>CocList diagnostics<cr>
 " Manage extensions.
-nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
+nnoremap <silent><nowait> <leader>e  :<C-u>CocList extensions<cr>
 " Show commands.
-nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
+nnoremap <silent><nowait> <leader>c  :<C-u>CocList commands<cr>
 " Find symbol of current document.
-nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
-" Search workspace symbols.
-nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
+nnoremap <silent><nowait> <leader>o  :<C-u>CocList outline<cr>
+" Search workleader symbols.
+nnoremap <silent><nowait> <leader>s  :<C-u>CocList -I symbols<cr>
 " Do default action for next item.
-" nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
-nnoremap <silent><nowait> <space>n  :<C-u>CocNext<CR>
+" nnoremap <silent><nowait> <leader>j  :<C-u>CocNext<CR>
+nnoremap <silent><nowait> <leader>n  :<C-u>CocNext<CR>
 " Do default action for previous item.
-" nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
-nnoremap <silent><nowait> <space>p  :<C-u>CocPrev<CR>
+" nnoremap <silent><nowait> <leader>k  :<C-u>CocPrev<CR>
+nnoremap <silent><nowait> <leader>p  :<C-u>CocPrev<CR>
 " Resume latest coc list.
-nnoremap <silent><nowait> <space>r  :<C-u>CocListResume<CR>
+nnoremap <silent><nowait> <leader>r  :<C-u>CocListResume<CR>
