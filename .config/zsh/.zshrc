@@ -162,6 +162,9 @@ ssh-add ~/.ssh/drop
 ssh-add ~/.ssh/mind
 clear
 
+# bind ctrl+space accept completion
+bindkey '^ ' autosuggest-accept
+
 #   _          _
 #  | |   _   _| | _____
 #  | |  | | | | |/ / _ \
