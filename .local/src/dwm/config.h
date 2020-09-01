@@ -147,11 +147,11 @@ static Key keys[] = {
   { MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
   { MODKEY|ControlMask|ShiftMask,             XK_r, spawn,          {.v = reboot } },
   { MODKEY|ControlMask|ShiftMask,             XK_p, spawn,          {.v = poweroff } },
-  { MODKEY|ShiftMask,     XK_period,    spawn,    SHCMD("$BROWSER") },
+  { MODKEY,     XK_q,    spawn,    SHCMD("qutebrowser") },
   { MODKEY|ControlMask|ShiftMask,     XK_period,    spawn,    SHCMD("firefox") },
-  { MODKEY|ControlMask,     XK_period,    spawn,    SHCMD("brave") },
+  { MODKEY,     XK_b,    spawn,    SHCMD("brave") },
   /* { MODKEY|ShiftMask,                       XK_comma, spawn,  SHCMD("st env SHELL=/bin/bash vifm")}, */
-	{ MODKEY|ControlMask|ShiftMask,                       XK_apostrophe, spawn,  SHCMD("st ranger")},
+	{ MODKEY,                       XK_r, spawn,  SHCMD("st ranger")},
   // { MODKEY|ControlMask|ShiftMask,                       XK_apostrophe, spawn,  SHCMD("st -e lf")},
 /* { 0,        XK_Print, spawn,    SHCMD("zsh -c \"maim -f jpg -m 9 /home/flex/Pictures/SCREENSHOTS/$(date +'%F %H_%M_%S.jpg')\"")}, */
   { 0,        XK_Print, spawn,    SHCMD("maim -f jpg -m 9 \"/home/flex/Pictures/SCREENSHOTS/$(date +\"%F %H_%M_%S.jpg\")\"")},
@@ -188,8 +188,8 @@ static Key keys[] = {
     { MODKEY|ShiftMask,   XK_w,   spawn,    SHCMD("st -e sudo nmtui") },
     { MODKEY,     XK_e,   spawn,    SHCMD("st -e neomutt") },
     { MODKEY|ShiftMask,   XK_e,   spawn,    SHCMD("st -e abook -C ~/.config/abook/abookrc --datafile ~/.config/abook/addressbook") },
-    { MODKEY|ShiftMask,   XK_r,   spawn,    SHCMD("st -e bashtop") },
-    { MODKEY,   XK_r,   spawn,    SHCMD("st -e htop") },
+    { MODKEY|ShiftMask,   XK_h,   spawn,    SHCMD("st -e bashtop") },
+    { MODKEY,   XK_h,   spawn,    SHCMD("st -e htop") },
     { MODKEY,     XK_t,   setlayout,  {.v = &layouts[2]} }, /* tile */
     { MODKEY|ShiftMask,   XK_t,   setlayout,  {.v = &layouts[1]} }, /* bstack */
     { MODKEY,     XK_y,   setlayout,  {.v = &layouts[0]} }, /* spiral */
@@ -224,7 +224,7 @@ static Key keys[] = {
 { MODKEY,     XK_l,   setmfact,       {.f = +0.05} },
 // { MODKEY,     XK_semicolon, shiftview,  { .i = 1 } },
 // { MODKEY|ShiftMask,   XK_semicolon, shifttag, { .i = 1 } },
-{ MODKEY,    XK_q,  togglescratch,  {.ui = 1} },
+{ MODKEY,    XK_c,  togglescratch,  {.ui = 1} },
   /* { MODKEY|ShiftMask,    XK_apostrophe,  spawn,    SHCMD("") }, */
   /* { MODKEY,      XK_Return,  spawn,    {.v = termcmd } }, */
 
@@ -238,7 +238,7 @@ static Key keys[] = {
   /* { MODKEY,      XK_c,   spawn,    SHCMD("") }, */
   /* { MODKEY|ShiftMask,    XK_c,   spawn,    SHCMD("") }, */
   /* V is automatically bound above in STACKKEYS */
-{ MODKEY,     XK_b,   togglebar,  {0} },
+{ MODKEY,     XK_s,   togglebar,  {0} },
   /* { MODKEY|ShiftMask,    XK_b,   spawn,    SHCMD("") }, */
 { MODKEY,     XK_n,   spawn,    SHCMD("st -e nvim -c VimwikiIndex") },
 // { MODKEY|ShiftMask,   XK_n,   spawn,    SHCMD("st -e newsboat; pkill -RTMIN+6 dwmblocks") },
