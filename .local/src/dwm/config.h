@@ -188,8 +188,8 @@ static Key keys[] = {
     { MODKEY|ShiftMask,   XK_w,   spawn,    SHCMD("st -e sudo nmtui") },
     { MODKEY,     XK_e,   spawn,    SHCMD("st -e neomutt") },
     { MODKEY|ShiftMask,   XK_e,   spawn,    SHCMD("st -e abook -C ~/.config/abook/abookrc --datafile ~/.config/abook/addressbook") },
-    { MODKEY|ShiftMask,   XK_h,   spawn,    SHCMD("st -e bashtop") },
-    { MODKEY,   XK_h,   spawn,    SHCMD("st -e htop") },
+    // { MODKEY|ShiftMask,   XK_h,   spawn,    SHCMD("st -e bashtop") },
+    // { MODKEY,   XK_h,   spawn,    SHCMD("st -e htop") },
     { MODKEY,     XK_t,   setlayout,  {.v = &layouts[2]} }, /* tile */
     { MODKEY|ShiftMask,   XK_t,   setlayout,  {.v = &layouts[1]} }, /* bstack */
     { MODKEY,     XK_y,   setlayout,  {.v = &layouts[0]} }, /* spiral */
