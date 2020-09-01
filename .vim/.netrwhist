@@ -1,0 +1,6 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =4
+let g:netrw_dirhist_4='/home/flex/GIT/kalle2019/src'
+let g:netrw_dirhist_3='/home/flex/GIT/kalle2019'
+let g:netrw_dirhist_2='/home/flex/GIT/kalle2019/public'
+let g:netrw_dirhist_1='/home/flex/GIT/kalle2019'
