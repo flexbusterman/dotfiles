@@ -1,5 +1,5 @@
 [global]
-    font = Helvetica 8
+    font = Px437 IBM BIOS 8 
  
     # allow a small subset of html markup:
     # <b>bold</b>
@@ -149,17 +149,17 @@
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the '#' and following  would be interpreted as a comment.
-    background = "#D3D3A4"
-    foreground = "#404040"
-    timeout = 5
+    background = "#000000"
+    foreground = "#FFFFFF"
+    timeout = 2
  
 [urgency_normal]
-    background = "#D3D3A4"
-    foreground = "#404040"
-    timeout = 5
+    background = "#000000"
+    foreground = "#FFFFFF"
+    timeout = 2
  
 [urgency_critical]
-    background = "#D8E0E3"
+    background = "#FFE0E3"
     foreground = "#412F27"
     timeout = 5
  
