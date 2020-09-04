@@ -2,7 +2,7 @@ scriptencodin utf-8
 source ~/.config/nvim/plugins.vim
     
 
-let g:vimwiki_list = [{'path': '~/Dropbox/\!\ NOTES/', 'syntax': 'markdown'}]
+let g:vimwiki_list = [{'path': '~/Dropbox/\!\ NOTES/', 'syntax': 'markdown', 'ext': '.md'}]
 
 " Remap leader key to space
 let mapleader = " "
@@ -41,6 +41,9 @@ nnoremap # #zz
 nnoremap g* g*zz
 nnoremap g# g#zz
 
+
+inoremap <silent> <C-h> <esc>bcaw
+
 " Yank and paste with the system clipboard
 set clipboard+=unnamedplus
 
@@ -53,10 +56,6 @@ let NERDSpaceDelims=1
 " Show hidden files/directories
 let g:NERDTreeShowHidden = 1
 
-" open NERDTree automatically
-" autocmd StdinReadPre * let s:std_in=1
-" autocmd VimEnter * NERDTree
-" 
 " enable line numbers
 let NERDTreeShowLineNumbers=1
 
