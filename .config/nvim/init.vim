@@ -36,6 +36,10 @@ nnoremap <leader>rw :CocSearch <C-R>=expand("<cword>")<CR><CR>
 " center matches on screen
 nnoremap n nzz
 nnoremap N Nzz
+nnoremap * *zz
+nnoremap # #zz
+nnoremap g* g*zz
+nnoremap g# g#zz
 
 " Yank and paste with the system clipboard
 set clipboard+=unnamedplus
