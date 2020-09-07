@@ -55,6 +55,7 @@ alias vu="cd /home/flex/.config/newsboat/; nvim urls"
 alias vd="cd /home/flex/.local/src/dwm/; nvim config.h"
 alias vs="cd /home/flex/.local/src/st/; nvim config.h"
 alias vc="cd /home/flex/.config/nvim/; nvim coc-settings.json"
+alias ve="cd /home/flex/.doom.d/; nvim config.el "
 
 alias poe="cd ~/.local/share/wineprefixes/default/drive_c/Program\ Files\ \(x86\)/Grinding\ Gear\ Games/Path\ of\ Exile/; wine PathOfExile_x64.exe"
 alias gb="git branch"
