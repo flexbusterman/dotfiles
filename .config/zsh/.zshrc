@@ -163,7 +163,9 @@ ssh-add ~/.ssh/mind
 clear
 
 # bind ctrl+space accept completion
+bindkey -r '^L'
 bindkey '^ ' autosuggest-accept
+bindkey '^L' autosuggest-accept
 
 #   _          _
 #  | |   _   _| | _____
