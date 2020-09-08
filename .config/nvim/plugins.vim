@@ -27,7 +27,7 @@ Plug 'vimwiki/vimwiki'
 Plug 'ThePrimeagen/vim-be-good', {'do': '.\install.sh'}
 
 " Plug 'sbl/scvim'
-Plug 'supercollider/scvim'
+" Plug 'supercollider/scvim'
 
 Plug 'itchyny/lightline.vim'                      " Lightline statusbar
 
@@ -45,6 +45,7 @@ Plug 'andymass/vim-matchup'
 Plug 'leafOfTree/vim-vue-plugin'
 Plug 'posva/vim-vue'
 
+Plug 'davidgranstrom/scnvim', { 'do': {-> scnvim#install() } }
 
 " Initialize plugin system
 call plug#end()

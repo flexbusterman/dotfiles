@@ -509,3 +509,5 @@ nnoremap <silent><nowait> <leader>n  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <leader>p  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <leader>r  :<C-u>CocListResume<CR>
+
+let g:UltiSnipsSnippetDirectories = ['UltiSnips', 'scnvim-data']
