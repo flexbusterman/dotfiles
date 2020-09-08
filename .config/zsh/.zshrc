@@ -164,8 +164,19 @@ clear
 
 # bind ctrl+space accept completion
 bindkey -r '^L'
-bindkey '^ ' autosuggest-accept
 bindkey '^L' autosuggest-accept
+
+# bindkey -r -M vicmd 'k'
+# j
+# bindkey -r -M vicmd 'j'
+# bindkey -M vicmd "j" history-beginning-search-forward
+
+autoload -U up-line-or-beginning-search
+autoload -U down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+bindkey "^K" up-line-or-beginning-search # Up
+bindkey "^J" down-line-or-beginning-search # Down
 
 #   _          _
 #  | |   _   _| | _____
