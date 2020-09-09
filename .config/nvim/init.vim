@@ -1,7 +1,9 @@
 scriptencodin utf-8
 source ~/.config/nvim/plugins.vim
 
-let g:vimwiki_list = [{'path': '~/Dropbox/\!\ NOTES/', 'syntax': 'markdown', 'ext': '.md'}]
+" VimWiki
+let g:vimwiki_list = [{'path': '~/Dropbox/\!\ NOTES/'}]
+" nmap <C-Space> :VimwikiToggleListItem
 
 " Remap leader key to space
 let mapleader = " "
@@ -168,7 +170,7 @@ function! s:check_back_space() abort
 endfunction
 
 " Use <c-space> to trigger completion.
-inoremap <silent><expr> <c-space> coc#refresh()
+" inoremap <silent><expr> <c-space> coc#refresh()
 
 " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
 " Coc only does snippet and additional edit on confirm.
@@ -517,14 +519,14 @@ vmap <silent><nowait> <leader><CR> <Plug>(scnvim-send-selection)
 nmap <silent><nowait> <leader>. <Plug>(scnvim-hard-stop)
 map <silent><nowait> <leader>p <Plug>(scnvim-postwindow-toggle)
 map <silent><nowait> <leader>b <Plug>(scnvim-hard-stop)
-map <silent><nowait> <leader>s :SCNvimStart
+map <silent><nowait> <leader>s :SCNvimStart<CR>
 " map <silent><nowait> <leader>d :
 " vertical 'v' or horizontal 'h' split
 let g:scnvim_postwin_orientation = 'v'
 " position of the post window 'right' or 'left'
 let g:scnvim_postwin_direction = 'right'
 " default is half the terminal size for vertical and a third for horizontal
-let g:scnvim_postwin_size = 50
+let g:scnvim_postwin_size = 30
 " automatically open post window on a SuperCollider error
 let g:scnvim_postwin_auto_toggle = 1
 " duration of the highlight
@@ -533,3 +535,24 @@ let g:scnvim_eval_flash_duration = 100
 let g:scnvim_eval_flash_repeats = 1
 " configure the color
 highlight SCNvimEval guifg=black guibg=blue ctermfg=black ctermbg=blue
+
+" path to the sclang executable
+" scnvim will look in some known locations for sclang, but if it can't find it use this variable instead
+" (also improves startup time slightly)
+" let g:scnvim_sclang_executable = ''
+
+" update rate for server info in status line (seconds)
+" (don't set this to low or vim will get slow)
+" let g:scnvim_statusline_interval = 1
+
+" set this variable if you don't want the "echo args" feature
+" let g:scnvim_echo_args = 0
+
+" set this variable if you don't want any default mappings
+" let g:scnvim_no_mappings = 1
+
+" set this variable to browse SuperCollider documentation in nvim (requires `pandoc`)
+" let g:scnvim_scdoc = 0
+
+" pass flags directly to sclang - see help file for more details, caveats, and further examples
+" let g:scnvim_sclang_options = ['-u', 9999]

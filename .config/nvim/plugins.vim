@@ -47,5 +47,7 @@ Plug 'posva/vim-vue'
 
 Plug 'davidgranstrom/scnvim', { 'do': {-> scnvim#install() } }
 
+" Plug 'vim-pandoc/vim-pandoc'
+
 " Initialize plugin system
 call plug#end()
