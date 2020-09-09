@@ -556,3 +556,7 @@ highlight SCNvimEval guifg=black guibg=blue ctermfg=black ctermbg=blue
 
 " pass flags directly to sclang - see help file for more details, caveats, and further examples
 " let g:scnvim_sclang_options = ['-u', 9999]
+"
+filetype indent on
+autocmd BufRead,BufWritePre *.sc normal magg=G`a
+autocmd BufRead,BufWritePre *.scd normal magg=G`a
