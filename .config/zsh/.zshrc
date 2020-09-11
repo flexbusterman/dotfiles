@@ -18,6 +18,9 @@ setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording en
 setopt HIST_VERIFY               # Don't execute immediately upon history expansion.
 setopt HIST_BEEP                 # Beep when accessing nonexisten
 
+# Other aliases
+alias gb="git branch"
+alias ra="pulseaudio --kill; jack_control start; jack_control exit; pulseaudio --start;"
 alias vim="nvim"
 alias dot='/usr/bin/git --git-dir=$HOME/.dot/ --work-tree=$HOME'
 
@@ -59,10 +62,6 @@ alias vc="cd /home/flex/.config/nvim/; nvim coc-settings.json"
 # Keymap aliases
 alias se="setxkbmap se; setxkbmap -option caps:swapescape; xset r rate 300 50"
 alias us="setxkbmap us; setxkbmap -option caps:swapescape; xset r rate 300 50"
-
-# Other aliases
-alias poe="cd ~/.local/share/wineprefixes/default/drive_c/Program\ Files\ \(x86\)/Grinding\ Gear\ Games/Path\ of\ Exile/; wine PathOfExile_x64.exe"
-alias gb="git branch"
 
 # Pacman shortcut functions
 pin () { sudo pacman -S --noconfirm $* }
