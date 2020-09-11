@@ -1,39 +1,89 @@
 scriptencodin utf-8
 source ~/.config/nvim/plugins.vim
-
-" VimWiki
+"   ____                           _    ___        _   _
+"  / ___| ___ _ __   ___ _ __ __ _| |  / _ \ _ __ | |_(_) ___  _ __  ___
+" | |  _ / _ \ '_ \ / _ \ '__/ _` | | | | | | '_ \| __| |/ _ \| '_ \/ __|
+" | |_| |  __/ | | |  __/ | | (_| | | | |_| | |_) | |_| | (_) | | | \__ \
+"  \____|\___|_| |_|\___|_|  \__,_|_|  \___/| .__/ \__|_|\___/|_| |_|___/
+"                                           |_|
+set nocompatible
+set number relativenumber
+set smarttab
+set cindent
+set tabstop=2
+set shiftwidth=2
+" Fixes syntax highlighting from stopping
+autocmd BufEnter * :syntax sync fromstart
 let g:vimwiki_list = [{'path': '~/Dropbox/\!\ NOTES/'}]
-" nmap <C-Space> :VimwikiToggleListItem
-
-" Remap leader key to space
+" Yank and paste with the system clipboard
+set clipboard+=unnamedplus
+" set transparent background
+hi Normal guibg=NONE ctermbg=NONE
+" Set floating window to be slightly transparent
+set winbl=10
+if (has("termguicolors"))
+  set termguicolors
+endif
+" Some servers have issues with backup files, see #649 set nobackup set nowritebackup " Better display for messages set cmdheight=2 " You will have bad experience for diagnostic messages when it's default 4000.
+set updatetime=300
+" don't give |ins-completion-menu| messages.
+set shortmess+=c
+" always show signcolumns
+set signcolumn=yes
+filetype indent on
+" Use 256 colours (Use this setting only if your terminal supports 256 colours)
+set t_Co=256
+set smartcase
+set ignorecase
+set smartindent
+set noswapfile
+set nobackup
+" this directory needs to be created
+set undodir=~/.config/nvim/undodir
+" incremental searching
+set incsearch
+" TextEdit might fail if hidden is not set.
+set hidden
+" Some servers have issues with backup files, see #649.
+set nobackup
+set nowritebackup
+set cmdheight=1
+" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+" delays and poor user experience.
+set updatetime=300
+" Don't pass messages to |ins-completion-menu|.
+set shortmess+=c
+" Always show the signcolumn, otherwise it would shift the text each time
+" diagnostics appear/become resolved.
+if has("patch-8.1.1564")
+  " Recently vim can merge signcolumn and number column into one
+  set signcolumn=number
+else
+  set signcolumn=yes
+endif
+" Splits open at the bottom and right, which is non-retarded, unlike vim defaults.
+set splitbelow splitright
+" Color
+colorscheme dracula
+let g:lightline = {
+      \ 'colorscheme': 'darcula',
+      \ }
+"  _  __          _     _           _ _
+" | |/ /___ _   _| |__ (_)_ __   __| (_)_ __   __ _ ___
+" | ' // _ \ | | | '_ \| | '_ \ / _` | | '_ \ / _` / __|
+" | . \  __/ |_| | |_) | | | | | (_| | | | | | (_| \__ \
+" |_|\_\___|\__, |_.__/|_|_| |_|\__,_|_|_| |_|\__, |___/
+          " |___/                             |___/
 let mapleader = " "
 let g:mapleader = " "
-
-set nocompatible
-
-" This might fix syntax highlighting from stopping
-autocmd BufEnter * :syntax sync fromstart
-
-" Flex bindings
-"
-" Automatically close nerdtree on opening file
-let NERDTreeQuitOnOpen = 0
-
 nnoremap <silent> <nowait> <leader>j :w<CR>
 vnoremap <silent> <nowait> <leader>j :w<CR>
-
-" inoremap <leader>, <esc>:w<CR>
 nnoremap <silent> <nowait> <leader>q <esc>:q!<CR>
 vnoremap <silent> <nowait> <leader>q <esc>:q!<CR>
 xnoremap <silent> <nowait> <leader>q <esc>:q!<CR>
-
-" map <leader>q <esc>:q!<CR>
-"
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
-
 nnoremap <leader>rw :CocSearch <C-R>=expand("<cword>")<CR><CR>
-
 " center matches on screen
 nnoremap n nzz
 nnoremap N Nzz
@@ -41,258 +91,97 @@ nnoremap * *zz
 nnoremap # #zz
 nnoremap g* g*zz
 nnoremap g# g#zz
-
+" Because double pressing key is slow
 nmap <silent> <nowait> <leader>d dd
 vmap <silent> <nowait> <leader>d dd
 nmap <silent> <nowait> <leader>g gg
 vmap <silent> <nowait> <leader>g gg
-
+" remove previous word without exiting insert mode
 inoremap <silent> <C-h> <esc>bcaw
-
-" Yank and paste with the system clipboard
-set clipboard+=unnamedplus
-
-" inoremap jk <ESC>
-" nmap <C-\> :NERDTreeToggle<CR>
-vmap <leader>t <plug>NERDCommenterToggle
-nmap <leader>t <plug>NERDCommenterToggle
-let NERDSpaceDelims=1
-
-" Show hidden files/directories
-let g:NERDTreeShowHidden = 1
-
-" enable line numbers
-let NERDTreeShowLineNumbers=1
-
-let NERDTreeMinimalUI=1
-
-" make sure relative line numbers are used
-autocmd FileType nerdtree setlocal relativenumber
-
-let g:NERDTreeGitStatusWithFlags = 0
-"let g:WebDevIconsUnicodeDecorateFolderNodes = 1
-"let g:NERDTreeGitStatusNodeColorization = 1
-"let g:NERDTreeColorMapCustom = {
-    "\ "Staged"    : "#0ee375",
-    "\ "Modified"  : "#d9bf91",
-    "\ "Renamed"   : "#51C9FC",
-    "\ "Untracked" : "#FCE77C",
-    "\ "Unmerged"  : "#FC51E6",
-    "\ "Dirty"     : "#FFBD61",
-    "\ "Clean"     : "#87939A",
-    "\ "Ignored"   : "#808080"
-    "\ } 
-"
-let g:NERDTreeIgnore = ['^node_modules$']
-
-" vim-prettier
-"let g:prettier#quickfix_enabled = 0
-"let g:prettier#quickfix_auto_focus = 0
-" prettier command for coc
-command! -nargs=0 Prettier :CocCommand prettier.formatFile
-" run prettier on save
-"let g:prettier#autoformat = 0
-"autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
-
-" ctrlp
-let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
-
-" j/k will move virtual lines (lines that wrap)
-" noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
-" noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
-
-set number relativenumber
-
-set smarttab
-set cindent
-set tabstop=2
-set shiftwidth=2
-" always uses spaces instead of tab characters
-" set expandtab
-
-colorscheme dracula
-
-" set transparent background
-hi Normal guibg=NONE ctermbg=NONE
-
-" Set floating window to be slightly transparent
-set winbl=10
-
-if (has("termguicolors"))
-  set termguicolors
-endif
-
-" sync open file with NERDTree
-" " Check if NERDTree is open or active
-" function! IsNERDTreeOpen()
-"   return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
-" endfunction
-
-" Call NERDTreeFind iff NERDTree is active, current window contains a modifiable
-" file, and we're not in vimdiff
-" function! SyncTree()
-"   if &modifiable && IsNERDTreeOpen() && strlen(expand('%')) > 0 && !&diff
-"     NERDTreeFind
-"     wincmd p
-"   endif
-" endfunction
- 
-" Highlight currently open buffer in NERDTree
-" autocmd BufEnter * call SyncTree()
-
-" coc config
-let g:coc_global_extensions = [
-  \ 'coc-snippets',
-  \ 'coc-pairs',
-  \ 'coc-tsserver',
-  \ 'coc-eslint',
-  \ 'coc-prettier',
-  \ 'coc-json',
-  \ ]
-" from readme
-" if hidden is not set, TextEdit might fail.
-set hidden " Some servers have issues with backup files, see #649 set nobackup set nowritebackup " Better display for messages set cmdheight=2 " You will have bad experience for diagnostic messages when it's default 4000.
-set updatetime=300
-
-" don't give |ins-completion-menu| messages.
-set shortmess+=c
-
-" always show signcolumns
-set signcolumn=yes
-
-" Use tab for trigger completion with characters ahead and navigate.
-" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-" Use <c-space> to trigger completion.
-" inoremap <silent><expr> <c-space> coc#refresh()
-
-" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
-" Coc only does snippet and additional edit on confirm.
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-" Or use `complete_info` if your vim support it, like:
-" inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-
-" Use `[g` and `]g` to navigate diagnostics
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
-
-" Remap keys for gotos
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-
-" Use K to show documentation in preview window
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
-
-" Highlight symbol under cursor on CursorHold
-autocmd CursorHold * silent call CocActionAsync('highlight')
-
-" Remap for rename current word
-nmap <F2> <Plug>(coc-rename)
-
-" Remap for format selected region
-" xmap <leader>f  <Plug>(coc-format-selected)
-" nmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f :Prettier<CR>
-
-augroup mygroup
-  autocmd!
-  " Setup formatexpr specified filetype(s).
-  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-  " Update signature help on jump placeholder
-  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-augroup end
-
-" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
-" xmap <leader>a  <Plug>(coc-codeaction-selected)
-" nmap <leader>a  <Plug>(coc-codeaction-selected)
-
-" Remap for do codeAction of current line
-" nmap <leader>ac  <Plug>(coc-codeaction)
-" Fix autofix problem of current line
-" nmap <leader>qf  <Plug>(coc-fix-current)
-nmap <leader>a <Plug>(coc-fix-current)
-
-" Create mappings for function text object, requires document symbols feature of languageserver.
-xmap if <Plug>(coc-funcobj-i)
-xmap af <Plug>(coc-funcobj-a)
-omap if <Plug>(coc-funcobj-i)
-omap af <Plug>(coc-funcobj-a)
-
-" Use <C-d> for select selections ranges, needs server support, like: coc-tsserver, coc-python
-" nmap <silent> <C-d> <Plug>(coc-range-select)
-" xmap <silent> <C-d> <Plug>(coc-range-select)
-
-" Use `:Format` to format current buffer
-command! -nargs=0 Format :call CocAction('format')
-
-" Use `:Fold` to fold current buffer
-command! -nargs=? Fold :call     CocAction('fold', <f-args>)
-
-" use `:OR` for organize import of current buffer
-command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
-
-" Add status line support, for integration with other plugin, checkout `:h coc-status`
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
-
-" Using CocList
-" Show all diagnostics
-nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
-" Manage extensions
-nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
-" Show commands
-nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
-" Find symbol of current document
-nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
-" Search workspace symbols
-nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
-" Do default action for next item.
-" nnoremap <silent> <space>j  :<C-u>CocNext<CR>
-" Do default action for previous item.
-" nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
-" Resume latest coc list
-nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
-
-" Use 256 colours (Use this setting only if your terminal supports 256 colours)
-set t_Co=256
-
-nmap <leader>h :NERDTreeToggle<CR>
-
 " Quick window switching
 nmap <C-h> <C-w>h
 nmap <C-j> <C-w>j
 nmap <C-k> <C-w>k
 nmap <C-l> <C-w>l
-
 nmap <leader>y :StripWhitespace<CR>
-
-" map <leader>h :%s///<left><left>
 nmap <silent> <leader>l :nohlsearch<CR>
-
 nmap <leader>k <Plug>(easymotion-bd-w)
 vmap <leader>k <Plug>(easymotion-bd-w)
-
 noremap <F3> :Autoformat<CR>
-
+" * and # search for next/previous of selected text when used in visual mode
+xno * :<c-u>cal<SID>VisualSearch()<cr>/<cr>
+xno # :<c-u>cal<SID>VisualSearch()<cr>?<cr>
+fun! s:VisualSearch()
+  let old = @" | norm! gvy
+  let @/ = '\V'.substitute(escape(@", '\'), '\n', '\\n', 'g')
+  let @" = old
+endf
+"  _   _ _____ ____  ____ _____
+" | \ | | ____|  _ \|  _ \_   _| __ ___  ___
+" |  \| |  _| | |_) | | | || || '__/ _ \/ _ \
+" | |\  | |___|  _ <| |_| || || | |  __/  __/
+" |_| \_|_____|_| \_\____/ |_||_|  \___|\___|
+"
+let NERDSpaceDelims=1
+" Show hidden files/directories
+let g:NERDTreeShowHidden = 1
+" enable line numbers
+let NERDTreeShowLineNumbers=1
+let NERDTreeMinimalUI=1
+let NERDTreeQuitOnOpen = 1
+" make sure relative line numbers are used
+autocmd FileType nerdtree setlocal relativenumber
+let g:NERDTreeGitStatusWithFlags = 0
+let g:NERDTreeIgnore = ['^node_modules$']
+vmap <leader>t <plug>NERDCommenterToggle
+nmap <leader>t <plug>NERDCommenterToggle
+nmap <leader>h :NERDTreeToggle<CR>
+"  ____                         ____      _ _ _     _
+" / ___| _   _ _ __   ___ _ __ / ___|___ | | (_) __| | ___ _ __
+" \___ \| | | | '_ \ / _ \ '__| |   / _ \| | | |/ _` |/ _ \ '__|
+"  ___) | |_| | |_) |  __/ |  | |__| (_) | | | | (_| |  __/ |
+" |____/ \__,_| .__/ \___|_|   \____\___/|_|_|_|\__,_|\___|_|
+"             |_|
+"
+au BufEnter,BufWinEnter,BufNewFile,BufRead *.sc,*.scd set filetype=supercollider
+" au Filetype supercollider packadd scvim
+let g:sclangTerm = "st -e zsh -ic"
+let g:scFlash = 1
+nmap <silent><nowait> <leader><CR> <Plug>(scnvim-send-block)
+vmap <silent><nowait> <leader><CR> <Plug>(scnvim-send-selection)
+nmap <silent><nowait> <leader>. <Plug>(scnvim-hard-stop)
+map <silent><nowait> <leader>p <Plug>(scnvim-postwindow-toggle)
+map <silent><nowait> <leader>b <Plug>(scnvim-hard-stop)
+map <silent><nowait> <leader>s :SCNvimStart<CR>
+" vertical 'v' or horizontal 'h' split
+let g:scnvim_postwin_orientation = 'v'
+" position of the post window 'right' or 'left'
+let g:scnvim_postwin_direction = 'right'
+" default is half the terminal size for vertical and a third for horizontal
+let g:scnvim_postwin_size = 30
+" automatically open post window on a SuperCollider error
+let g:scnvim_postwin_auto_toggle = 1
+" duration of the highlight
+let g:scnvim_eval_flash_duration = 100
+" number of flashes. A value of 0 disables this feature.
+let g:scnvim_eval_flash_repeats = 1
+" configure the color
+highlight SCNvimEval guifg=black guibg=blue ctermfg=black ctermbg=blue
+autocmd BufRead,BufWritePre *.sc normal magg=G`a
+autocmd BufRead,BufWritePre *.scd normal magg=G`a
+"       _        _
+"   ___| |_ _ __| |_ __
+"  / __| __| '__| | '_ \
+" | (__| |_| |  | | |_) |
+"  \___|\__|_|  |_| .__/
+"                 |_|
+let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+"  ____            _         ____      _            _       _
+" | __ )  __ _ ___(_) ___   / ___|__ _| | ___ _   _| | __ _| |_ ___  _ __
+" |  _ \ / _` / __| |/ __| | |   / _` | |/ __| | | | |/ _` | __/ _ \| '__|
+" | |_) | (_| \__ \ | (__  | |__| (_| | | (__| |_| | | (_| | || (_) | |
+" |____/ \__,_|___/_|\___|  \____\__,_|_|\___|\__,_|_|\__,_|\__\___/|_|
+"
 vnoremap <leader>r "ey:call CalcBC()<CR>
 function! CalcBC()
   let has_equal = 0
@@ -321,69 +210,46 @@ function! CalcBC()
     echo "answer = " . answer
   endif
 endfunction
-
-" let g:sclangTerm = "st -x $SHELL -ic"
-au BufEnter,BufWinEnter,BufNewFile,BufRead *.sc,*.scd set filetype=supercollider
-au Filetype supercollider packadd scvim
-let g:sclangTerm = "st -e zsh -ic"
-let g:scFlash = 1
-
-" Splits open at the bottom and right, which is non-retarded, unlike vim defaults.
-set splitbelow splitright
-
-let g:lightline = {
-      \ 'colorscheme': 'darcula',
-      \ }
-
-set smartcase
-set ignorecase
-set smartindent
-set noswapfile
-set nobackup
-
-" this directory needs to be created
-set undodir=~/.config/nvim/undodir
-" incremental searching
-set incsearch
-
-
-"   ____ ___   ____
-"  / ___/ _ \ / ___|
-" | |  | | | | |
-" | |__| |_| | |___
-"  \____\___/ \____|
-
-" Coc settings from https://github.com/neoclide/coc.nvim
-
-
-" TextEdit might fail if hidden is not set.
-set hidden
-
-" Some servers have issues with backup files, see #649.
-set nobackup
-set nowritebackup
-
-" Give more space for displaying messages.
-" set cmdheight=2
-" but I prefer 1
-set cmdheight=1
-
-" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
-" delays and poor user experience.
-set updatetime=300
-
-" Don't pass messages to |ins-completion-menu|.
-set shortmess+=c
-
-" Always show the signcolumn, otherwise it would shift the text each time
-" diagnostics appear/become resolved.
-if has("patch-8.1.1564")
-  " Recently vim can merge signcolumn and number column into one
-  set signcolumn=number
-else
-  set signcolumn=yes
-endif
-
+"   ____                                           __    ____                      _      _   _
+"  / ___|___  _ __   __ _ _   _  ___ _ __    ___  / _|  / ___|___  _ __ ___  _ __ | | ___| |_(_) ___  _ __
+" | |   / _ \| '_ \ / _` | | | |/ _ \ '__|  / _ \| |_  | |   / _ \| '_ ` _ \| '_ \| |/ _ \ __| |/ _ \| '_ \
+" | |__| (_) | | | | (_| | |_| |  __/ |    | (_) |  _| | |__| (_) | | | | | | |_) | |  __/ |_| | (_) | | | |
+"  \____\___/|_| |_|\__, |\__,_|\___|_|     \___/|_|    \____\___/|_| |_| |_| .__/|_|\___|\__|_|\___/|_| |_|
+"                      |_|                                                  |_|
+let g:coc_global_extensions = [
+  \ 'coc-snippets',
+  \ 'coc-pairs',
+  \ 'coc-tsserver',
+  \ 'coc-eslint',
+  \ 'coc-prettier',
+  \ 'coc-json',
+  \ ]
+let g:UltiSnipsSnippetDirectories = ['UltiSnips', 'scnvim-data']
+" prettier command for coc
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
+" Coc only does snippet and additional edit on confirm.
+" Remap for rename current word
+nmap <F2> <Plug>(coc-rename)
+nmap <leader>f :Prettier<CR>
+" Fix autofix problem of current line
+" nmap <leader>qf  <Plug>(coc-fix-current)
+nmap <leader>a <Plug>(coc-fix-current)
+" Use <C-d> for select selections ranges, needs server support, like: coc-tsserver, coc-python
+" nmap <silent> <C-d> <Plug>(coc-range-select)
+" xmap <silent> <C-d> <Plug>(coc-range-select)
+" Using CocList Show all diagnostics
+nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+" Manage extensions
+nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+" Show commands
+nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+" Find symbol of current document
+nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+" Search workspace symbols
+nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+" Resume latest coc list
+nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
@@ -392,19 +258,16 @@ inoremap <silent><expr> <TAB>
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
 function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
-
 " Use <c-space> to trigger completion.
 if has('nvim')
   inoremap <silent><expr> <c-space> coc#refresh()
 else
   inoremap <silent><expr> <c-@> coc#refresh()
 endif
-
 " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
 " position. Coc only does snippet and additional edit on confirm.
 " <cr> could be remapped by other vim plugin, try `:verbose imap <CR>`.
@@ -413,21 +276,17 @@ if exists('*complete_info')
 else
   inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 endif
-
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
-
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
-
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>
-
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
     execute 'h '.expand('<cword>')
@@ -435,17 +294,13 @@ function! s:show_documentation()
     call CocAction('doHover')
   endif
 endfunction
-
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
-
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
-
 " Formatting selected code.
 " xmap <leader>f  <Plug>(coc-format-selected)
 " nmap <leader>f  <Plug>(coc-format-selected)
-
 augroup mygroup
   autocmd!
   " Setup formatexpr specified filetype(s).
@@ -453,18 +308,14 @@ augroup mygroup
   " Update signature help on jump placeholder.
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
-
 " Applying codeAction to the selected region.
 " Example: `<leader>aap` for current paragraph
 xmap <leader>a  <Plug>(coc-codeaction-selected)
 nmap <leader>a  <Plug>(coc-codeaction-selected)
-
 " Remap keys for applying codeAction to the current buffer.
 nmap <leader>ac  <Plug>(coc-codeaction)
-
 " Apply AutoFix to problem on the current line.
 nmap <leader>af  <Plug>(coc-fix-current)
-
 " Map function and class text objects
 " NOTE: Requires 'textDocument.documentSymbol' support from the language server.
 xmap if <Plug>(coc-funcobj-i)
@@ -475,26 +326,20 @@ xmap ic <Plug>(coc-classobj-i)
 omap ic <Plug>(coc-classobj-i)
 xmap ac <Plug>(coc-classobj-a)
 omap ac <Plug>(coc-classobj-a)
-
 " Use CTRL-S for selections ranges.
 " Requires 'textDocument/selectionRange' support of LS, ex: coc-tsserver
 nmap <silent> <C-s> <Plug>(coc-range-select)
 xmap <silent> <C-s> <Plug>(coc-range-select)
-
 " Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocAction('format')
-
 " Add `:Fold` command to fold current buffer.
 command! -nargs=? Fold :call     CocAction('fold', <f-args>)
-
 " Add `:OR` command for organize imports of the current buffer.
 command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
-
 " Add (Neo)Vim's native statusline support.
 " NOTE: Please see `:h coc-status` for integrations with external plugins that
 " provide custom statusline: lightline.vim, vim-airline.
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
-
 " Mappings for CoCList
 " Show all diagnostics.
 nnoremap <silent><nowait> <leader>a  :<C-u>CocList diagnostics<cr>
@@ -507,60 +352,8 @@ nnoremap <silent><nowait> <leader>o  :<C-u>CocList outline<cr>
 " Search workleader symbols.
 " nnoremap <silent><nowait> <leader>s  :<C-u>CocList -I symbols<cr>
 " Do default action for next item.
-" nnoremap <silent><nowait> <leader>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <leader>n  :<C-u>CocNext<CR>
 " Do default action for previous item.
-" nnoremap <silent><nowait> <leader>k  :<C-u>CocPrev<CR>
 nnoremap <silent><nowait> <leader>p  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <leader>r  :<C-u>CocListResume<CR>
-
-" SuperCollider (scnvim) config
-let g:UltiSnipsSnippetDirectories = ['UltiSnips', 'scnvim-data']
-" let g:scnvim_no_mappings = 1
-nmap <silent><nowait> <leader><CR> <Plug>(scnvim-send-block)
-vmap <silent><nowait> <leader><CR> <Plug>(scnvim-send-selection)
-nmap <silent><nowait> <leader>. <Plug>(scnvim-hard-stop)
-map <silent><nowait> <leader>p <Plug>(scnvim-postwindow-toggle)
-map <silent><nowait> <leader>b <Plug>(scnvim-hard-stop)
-map <silent><nowait> <leader>s :SCNvimStart<CR>
-" map <silent><nowait> <leader>d :
-" vertical 'v' or horizontal 'h' split
-let g:scnvim_postwin_orientation = 'v'
-" position of the post window 'right' or 'left'
-let g:scnvim_postwin_direction = 'right'
-" default is half the terminal size for vertical and a third for horizontal
-let g:scnvim_postwin_size = 30
-" automatically open post window on a SuperCollider error
-let g:scnvim_postwin_auto_toggle = 1
-" duration of the highlight
-let g:scnvim_eval_flash_duration = 100
-" number of flashes. A value of 0 disables this feature.
-let g:scnvim_eval_flash_repeats = 1
-" configure the color
-highlight SCNvimEval guifg=black guibg=blue ctermfg=black ctermbg=blue
-
-" path to the sclang executable
-" scnvim will look in some known locations for sclang, but if it can't find it use this variable instead
-" (also improves startup time slightly)
-" let g:scnvim_sclang_executable = ''
-
-" update rate for server info in status line (seconds)
-" (don't set this to low or vim will get slow)
-" let g:scnvim_statusline_interval = 1
-
-" set this variable if you don't want the "echo args" feature
-" let g:scnvim_echo_args = 0
-
-" set this variable if you don't want any default mappings
-" let g:scnvim_no_mappings = 1
-
-" set this variable to browse SuperCollider documentation in nvim (requires `pandoc`)
-" let g:scnvim_scdoc = 0
-
-" pass flags directly to sclang - see help file for more details, caveats, and further examples
-" let g:scnvim_sclang_options = ['-u', 9999]
-"
-filetype indent on
-autocmd BufRead,BufWritePre *.sc normal magg=G`a
-autocmd BufRead,BufWritePre *.scd normal magg=G`a
