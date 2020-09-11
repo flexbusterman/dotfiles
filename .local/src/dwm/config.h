@@ -305,7 +305,7 @@ static Key keys[] = {
 { 0, XF86XK_AudioForward, spawn,    SHCMD("mpc seek +10") },
 { 0, XF86XK_AudioMedia,   spawn,    SHCMD("st -e ncmpcpp") },
 { 0, XF86XK_PowerOff,   spawn,    SHCMD("sysact") },
-{ 0, XF86XK_Calculator,   spawn,    SHCMD("st -e bc -l") },
+// { 0, XF86XK_Calculator,   spawn,    SHCMD("st -e bc -l") },
 { 0, XF86XK_Sleep,    spawn,    SHCMD("sudo -A zzz") },
 { 0, XF86XK_WWW,    spawn,    SHCMD("$BROWSER") },
 { 0, XF86XK_DOS,    spawn,    SHCMD("st") },
