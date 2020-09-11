@@ -230,7 +230,7 @@ static Key keys[] = {
 { MODKEY,     XK_l,   setmfact,       {.f = +0.05} },
 // { MODKEY,     XK_semicolon, shiftview,  { .i = 1 } },
 // { MODKEY|ShiftMask,   XK_semicolon, shifttag, { .i = 1 } },
-{ MODKEY,    XK_c,  togglescratch,  {.ui = 1} },
+{ MODKEY|ControlMask|ShiftMask,    XK_c,  togglescratch,  {.ui = 1} },
   /* { MODKEY|ShiftMask,    XK_apostrophe,  spawn,    SHCMD("") }, */
   /* { MODKEY,      XK_Return,  spawn,    {.v = termcmd } }, */
 
