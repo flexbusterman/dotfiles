@@ -56,9 +56,13 @@ alias vd="cd /home/flex/.local/src/dwm/; nvim config.h"
 alias vs="cd /home/flex/.local/src/st/; nvim config.h"
 alias vc="cd /home/flex/.config/nvim/; nvim coc-settings.json"
 
+# Keymap aliases
+alias se="setxkbmap se; setxkbmap -option caps:swapescape; xset r rate 300 50"
+alias us="setxkbmap us; setxkbmap -option caps:swapescape; xset r rate 300 50"
+
+# Other aliases
 alias poe="cd ~/.local/share/wineprefixes/default/drive_c/Program\ Files\ \(x86\)/Grinding\ Gear\ Games/Path\ of\ Exile/; wine PathOfExile_x64.exe"
 alias gb="git branch"
-
 
 # Pacman shortcut functions
 pin () { sudo pacman -S --noconfirm $* }
@@ -113,7 +117,7 @@ dp () {
   dot push
 }
 
-hls () {
+hg () {
   result=$*
   history 0 | grep $result
 }
@@ -134,15 +138,15 @@ dev () {
   cd ~/GIT/kalle2019/; nvim;
 }
 
-landing () {
-	st -e zsh -c "cd ~/GIT/landing/; zsh -c \"npm run dev\"" &
-	st -e firefox -new-instance https://xd.adobe.com/view/035ce4d8-ddd4-4c00-752c-3f6187a5d998-756d/grid &
-	st -e firefox -new-instance localhost:8000 &
-	st -e zsh -c "cd ~/Documents/; nvim Scandinavian\ Mind.wiki" &
-	st -e zsh -c "cd ~/GIT/landing/; eval \"$(ssh-agent -s)\" && ssh-add ~/.ssh/mind;" &
-	sleep 1
-	st -e zsh -c "cd ~/GIT/landing/; eval \"$(ssh-agent -s)\" && ssh-add ~/.ssh/mind; nvim -O pages/index.vue layouts/default.vue;" &
-}
+# landing () {
+	# st -e zsh -c "cd ~/GIT/landing/; zsh -c \"npm run dev\"" &
+	# st -e firefox -new-instance https://xd.adobe.com/view/035ce4d8-ddd4-4c00-752c-3f6187a5d998-756d/grid &
+	# st -e firefox -new-instance localhost:8000 &
+	# st -e zsh -c "cd ~/Documents/; nvim Scandinavian\ Mind.wiki" &
+	# st -e zsh -c "cd ~/GIT/landing/; eval \"$(ssh-agent -s)\" && ssh-add ~/.ssh/mind;" &
+	# sleep 1
+	# st -e zsh -c "cd ~/GIT/landing/; eval \"$(ssh-agent -s)\" && ssh-add ~/.ssh/mind; nvim -O pages/index.vue layouts/default.vue;" &
+# }
 
 dev () {
   st -e zsh -c "cd ~/GIT/kalle2019; zsh -c \"npm run dev\"" &
