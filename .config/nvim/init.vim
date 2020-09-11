@@ -42,6 +42,10 @@ nnoremap # #zz
 nnoremap g* g*zz
 nnoremap g# g#zz
 
+nmap <silent> <nowait> <leader>d dd
+vmap <silent> <nowait> <leader>d dd
+nmap <silent> <nowait> <leader>g gg
+vmap <silent> <nowait> <leader>g gg
 
 inoremap <silent> <C-h> <esc>bcaw
 
