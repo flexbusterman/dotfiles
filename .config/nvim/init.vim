@@ -18,12 +18,7 @@ let g:vimwiki_list = [{'path': '~/Dropbox/\!\ NOTES/'}]
 " Yank and paste with the system clipboard
 set clipboard+=unnamedplus
 " set transparent background
-hi Normal guibg=NONE ctermbg=NONE
 " Set floating window to be slightly transparent
-set winbl=10
-if (has("termguicolors"))
-  set termguicolors
-endif
 " Some servers have issues with backup files, see #649 set nobackup set nowritebackup " Better display for messages set cmdheight=2 " You will have bad experience for diagnostic messages when it's default 4000.
 set updatetime=300
 " don't give |ins-completion-menu| messages.
@@ -68,6 +63,11 @@ colorscheme dracula
 let g:lightline = {
       \ 'colorscheme': 'darcula',
       \ }
+set winbl=10
+if (has("termguicolors"))
+  set termguicolors
+endif
+hi Normal guibg=NONE ctermbg=NONE
 "  _  __          _     _           _ _
 " | |/ /___ _   _| |__ (_)_ __   __| (_)_ __   __ _ ___
 " | ' // _ \ | | | '_ \| | '_ \ / _` | | '_ \ / _` / __|
