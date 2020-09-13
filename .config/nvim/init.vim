@@ -74,7 +74,7 @@ hi Normal guibg=NONE ctermbg=NONE
 " | ' // _ \ | | | '_ \| | '_ \ / _` | | '_ \ / _` / __|
 " | . \  __/ |_| | |_) | | | | | (_| | | | | | (_| \__ \
 " |_|\_\___|\__, |_.__/|_|_| |_|\__,_|_|_| |_|\__, |___/
-          " |___/                             |___/
+"           |___/                             |___/
 let mapleader = " "
 let g:mapleader = " "
 nnoremap <silent> <nowait> <leader>j :w<CR>

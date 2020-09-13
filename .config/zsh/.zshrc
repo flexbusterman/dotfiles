@@ -149,7 +149,7 @@ dev () {
 # }
 
 aug () {
-  st -e zsh -c "cd ~/Dropbox/\!\ SUPERCOLLIDER/; nvim 2020-09-09\ SuperCollider\ MIDI\ Bitwig\ 002.sc" &
+  st -e zsh -c "cd ~/Dropbox/\!\ SUPERCOLLIDER/; nvim -c :NERDTreeToggle "&
   patchage &
   bitwig-studio &
 }
