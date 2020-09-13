@@ -190,11 +190,17 @@
 #    summary = "*script*"
 #    script = dunst_test.sh
  
-[ignore]
-# This notification will not be displayed
+# [arbitrary title]
+[dropbox]
 	 summary = "Dropbox"
+	 # ignore
 	 format = ""
  
+[barrier]
+	 summary = "Brave"
+	 # ignore
+	 format = ""
+
 #[signed_on]
 #    appname = Pidgin
 #    summary = "*signed on*"
