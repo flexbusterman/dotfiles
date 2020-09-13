@@ -6,6 +6,7 @@ source ~/.config/nvim/plugins.vim
 " | |_| |  __/ | | |  __/ | | (_| | | | |_| | |_) | |_| | (_) | | | \__ \
 "  \____|\___|_| |_|\___|_|  \__,_|_|  \___/| .__/ \__|_|\___/|_| |_|___/
 "                                           |_|
+"
 set nocompatible
 set number relativenumber
 set smarttab
@@ -103,7 +104,8 @@ nmap <C-h> <C-w>h
 nmap <C-j> <C-w>j
 nmap <C-k> <C-w>k
 nmap <C-l> <C-w>l
-nmap <leader>y :StripWhitespace<CR>
+" nmap <leader>y :StripWhitespace<CR>
+" nmap <leader>y :StripWhitespace<CR>
 nmap <silent> <leader>l :nohlsearch<CR>
 nmap <leader>k <Plug>(easymotion-bd-w)
 vmap <leader>k <Plug>(easymotion-bd-w)
@@ -116,6 +118,8 @@ fun! s:VisualSearch()
   let @/ = '\V'.substitute(escape(@", '\'), '\n', '\\n', 'g')
   let @" = old
 endf
+" remove empty lines in selection
+vmap <leader>e :s/\n\n/\r/g<CR>
 "  _   _ _____ ____  ____ _____
 " | \ | | ____|  _ \|  _ \_   _| __ ___  ___
 " |  \| |  _| | |_) | | | || || '__/ _ \/ _ \
@@ -147,8 +151,8 @@ au BufEnter,BufWinEnter,BufNewFile,BufRead *.sc,*.scd set filetype=supercollider
 " au Filetype supercollider packadd scvim
 let g:sclangTerm = "st -e zsh -ic"
 let g:scFlash = 1
-nmap <silent><nowait> <leader><CR> <Plug>(scnvim-send-block)
-vmap <silent><nowait> <leader><CR> <Plug>(scnvim-send-selection)
+nmap <silent><nowait> <CR> <Plug>(scnvim-send-block)
+vmap <silent><nowait> <CR> <Plug>(scnvim-send-selection)
 nmap <silent><nowait> <leader>. <Plug>(scnvim-hard-stop)
 map <silent><nowait> <leader>p <Plug>(scnvim-postwindow-toggle)
 map <silent><nowait> <leader>b <Plug>(scnvim-hard-stop)
@@ -162,13 +166,33 @@ let g:scnvim_postwin_size = 30
 " automatically open post window on a SuperCollider error
 let g:scnvim_postwin_auto_toggle = 1
 " duration of the highlight
-let g:scnvim_eval_flash_duration = 100
+let g:scnvim_eval_flash_duration = 25
 " number of flashes. A value of 0 disables this feature.
 let g:scnvim_eval_flash_repeats = 1
 " configure the color
 highlight SCNvimEval guifg=black guibg=blue ctermfg=black ctermbg=blue
 autocmd BufRead,BufWritePre *.sc normal magg=G`a
 autocmd BufRead,BufWritePre *.scd normal magg=G`a
+" path to the sclang executable
+" scnvim will look in some known locations for sclang, but if it can't find it use this variable instead
+" (also improves startup time slightly)
+let g:scnvim_sclang_executable = ''
+
+" update rate for server info in status line (seconds)
+" (don't set this to low or vim will get slow)
+let g:scnvim_statusline_interval = 1
+
+" set this variable if you don't want the "echo args" feature
+let g:scnvim_echo_args = 0
+
+" set this variable if you don't want any default mappings
+let g:scnvim_no_mappings = 1
+
+" set this variable to browse SuperCollider documentation in nvim (requires `pandoc`)
+let g:scnvim_scdoc = 1
+
+" pass flags directly to sclang - see help file for more details, caveats, and further examples
+let g:scnvim_sclang_options = ['-u', 9999]
 "       _        _
 "   ___| |_ _ __| |_ __
 "  / __| __| '__| | '_ \
@@ -342,9 +366,9 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 " Mappings for CoCList
 " Show all diagnostics.
-nnoremap <silent><nowait> <leader>a  :<C-u>CocList diagnostics<cr>
+" nnoremap <silent><nowait> <leader>a  :<C-u>CocList diagnostics<cr>
 " Manage extensions.
-nnoremap <silent><nowait> <leader>e  :<C-u>CocList extensions<cr>
+" nnoremap <silent><nowait> <leader>e  :<C-u>CocList extensions<cr>
 " Show commands.
 nnoremap <silent><nowait> <leader>c  :<C-u>CocList commands<cr>
 " Find symbol of current document.
