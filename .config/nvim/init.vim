@@ -97,6 +97,10 @@ nmap <silent> <nowait> <leader>d dd
 vmap <silent> <nowait> <leader>d dd
 nmap <silent> <nowait> <leader>g gg
 vmap <silent> <nowait> <leader>g gg
+nmap <silent> <nowait> <leader>y yy
+vmap <silent> <nowait> <leader>y yy
+nmap <silent> <nowait> <leader>z zz
+vmap <silent> <nowait> <leader>z zz
 " remove previous word without exiting insert mode
 inoremap <silent> <C-h> <esc>bcaw
 " Quick window switching
@@ -104,7 +108,6 @@ nmap <C-h> <C-w>h
 nmap <C-j> <C-w>j
 nmap <C-k> <C-w>k
 nmap <C-l> <C-w>l
-" nmap <leader>y :StripWhitespace<CR>
 " nmap <leader>y :StripWhitespace<CR>
 nmap <silent> <leader>l :nohlsearch<CR>
 nmap <leader>k <Plug>(easymotion-bd-w)
