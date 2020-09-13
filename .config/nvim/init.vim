@@ -150,7 +150,7 @@ nmap <leader>h :NERDTreeToggle<CR>
 au BufEnter,BufWinEnter,BufNewFile,BufRead *.sc,*.scd set filetype=supercollider
 " au Filetype supercollider packadd scvim
 let g:sclangTerm = "st -e zsh -ic"
-let g:scFlash = 1
+" let g:scFlash = 1
 nmap <silent><nowait> <CR> <Plug>(scnvim-send-block)
 vmap <silent><nowait> <CR> <Plug>(scnvim-send-selection)
 nmap <silent><nowait> <leader>. <Plug>(scnvim-hard-stop)
@@ -170,27 +170,22 @@ let g:scnvim_eval_flash_duration = 25
 " number of flashes. A value of 0 disables this feature.
 let g:scnvim_eval_flash_repeats = 1
 " configure the color
-highlight SCNvimEval guifg=black guibg=blue ctermfg=black ctermbg=blue
+highlight SCNvimEval guifg=black guibg=cyan ctermfg=black ctermbg=cyan
 autocmd BufRead,BufWritePre *.sc normal magg=G`a
 autocmd BufRead,BufWritePre *.scd normal magg=G`a
 " path to the sclang executable
 " scnvim will look in some known locations for sclang, but if it can't find it use this variable instead
 " (also improves startup time slightly)
 let g:scnvim_sclang_executable = ''
-
 " update rate for server info in status line (seconds)
 " (don't set this to low or vim will get slow)
 let g:scnvim_statusline_interval = 1
-
 " set this variable if you don't want the "echo args" feature
 let g:scnvim_echo_args = 0
-
 " set this variable if you don't want any default mappings
 let g:scnvim_no_mappings = 1
-
 " set this variable to browse SuperCollider documentation in nvim (requires `pandoc`)
 let g:scnvim_scdoc = 1
-
 " pass flags directly to sclang - see help file for more details, caveats, and further examples
 let g:scnvim_sclang_options = ['-u', 9999]
 "       _        _
