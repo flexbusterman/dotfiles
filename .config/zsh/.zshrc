@@ -116,10 +116,7 @@ dp () {
   dot push
 }
 
-hg () {
-  result=$*
-  history 0 | grep $result
-}
+hg () { history 0 | grep -i $* }
 
 mind () {
 	st -t dev -e zsh -c "cd ~/GIT/mind/; zsh -c \"npm run dev\"" &

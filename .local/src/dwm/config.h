@@ -156,9 +156,9 @@ static Key keys[] = {
   { MODKEY|ControlMask|ShiftMask,             XK_p, spawn,          {.v = poweroff } },
   { MODKEY,     XK_q,    spawn,    SHCMD("qutebrowser") },
   { MODKEY|ControlMask|ShiftMask,     XK_period,    spawn,    SHCMD("firefox") },
-  { MODKEY,     XK_b,    spawn,    SHCMD("brave") },
+  { MODKEY|ShiftMask,     XK_period,    spawn,    SHCMD("brave") },
   /* { MODKEY|ShiftMask,                       XK_comma, spawn,  SHCMD("st env SHELL=/bin/bash vifm")}, */
-	{ MODKEY,                       XK_r, spawn,  SHCMD("st ranger")},
+	{ MODKEY|ShiftMask,    XK_comma, spawn,  SHCMD("st -e ranger")},
   // { MODKEY|ControlMask|ShiftMask,                       XK_apostrophe, spawn,  SHCMD("st -e lf")},
 /* { 0,        XK_Print, spawn,    SHCMD("zsh -c \"maim -f jpg -m 9 /home/flex/Pictures/SCREENSHOTS/$(date +'%F %H_%M_%S.jpg')\"")}, */
   { 0,        XK_Print, spawn,    SHCMD("maim -f jpg -m 9 \"/home/flex/Pictures/SCREENSHOTS/$(date +\"%F %H_%M_%S.jpg\")\"")},
@@ -207,12 +207,12 @@ static Key keys[] = {
     { MODKEY|ShiftMask,   XK_i,   setlayout,  {.v = &layouts[7]} }, /* centeredfloatingmaster */
     { MODKEY,     XK_o,   incnmaster,     {.i = +1 } },
     { MODKEY|ShiftMask,   XK_o,   incnmaster,     {.i = -1 } },
-    { MODKEY,     XK_p,     spawn,    SHCMD("mpc toggle") },
-    { MODKEY|ShiftMask,   XK_p,     spawn,    SHCMD("mpc pause ; pauseallmpv") },
-    // { MODKEY,     XK_bracketleft,   spawn,    SHCMD("mpc seek -10") },
-    // { MODKEY|ShiftMask,   XK_bracketleft,   spawn,    SHCMD("mpc seek -60") },
-    { MODKEY,     XK_bracketright,  spawn,    SHCMD("mpc seek +10") },
-    { MODKEY|ShiftMask,   XK_bracketright,  spawn,    SHCMD("mpc seek +60") },
+    // { MODKEY,     XK_p,     spawn,    SHCMD("mpc toggle") },
+    { MODKEY|ShiftMask,   XK_p,     spawn,    SHCMD("audtool playback-playpause") },
+		{ MODKEY,     XK_Left,   spawn,    SHCMD("audtool playback-seek-relative -10") },
+		{ MODKEY|ShiftMask,   XK_Left,   spawn,    SHCMD("audtool playback-seek-relative -60") },
+    { MODKEY,     XK_Right,  spawn,    SHCMD("audtool playback-seek-relative +10") },
+    { MODKEY|ShiftMask,   XK_Right,  spawn,    SHCMD("audtool playback-seek-relative +60") },
     { MODKEY,     XK_backslash,   view,   {0} },
     /* { MODKEY|ShiftMask,    XK_backslash,   spawn,    SHCMD("") }, */
 
@@ -233,7 +233,7 @@ static Key keys[] = {
 // { MODKEY|ShiftMask,   XK_semicolon, shifttag, { .i = 1 } },
 { MODKEY|ControlMask|ShiftMask,    XK_c,  togglescratch,  {.ui = 1} },
   /* { MODKEY|ShiftMask,    XK_apostrophe,  spawn,    SHCMD("") }, */
-  /* { MODKEY,      XK_Return,  spawn,    {.v = termcmd } }, */
+  /* { MODKEY,      Xmpc pause ; pauseallmpvKmpc pause ; pauseallmpv_Return,  spawn,    {.v = termcmd } }, */
 
   /* TODO: might wanna check out scratchpads */
 	// { MODKEY|ShiftMask,    XK_Return,  togglescratch,  {.ui = 0} },
@@ -250,11 +250,11 @@ static Key keys[] = {
 { MODKEY,     XK_n,   spawn,    SHCMD("st -e nvim -c VimwikiIndex") },
 // { MODKEY|ShiftMask,   XK_n,   spawn,    SHCMD("st -e newsboat; pkill -RTMIN+6 dwmblocks") },
 { MODKEY|ShiftMask,   XK_n,   spawn,    SHCMD("st -e newsboat") },
-{ MODKEY,     XK_m,   spawn,    SHCMD("st -e ncmpcpp") },
+{ MODKEY,     XK_m,   spawn,    SHCMD("audacious") },
 { MODKEY|ShiftMask,   XK_m,   spawn,    SHCMD("pamixer -t; kill -44 $(pidof dwmblocks)") },
-{ MODKEY,     XK_comma, spawn,    SHCMD("mpc prev") },
-{ MODKEY|ShiftMask,   XK_comma, spawn,    SHCMD("mpc seek 0%") },
-{ MODKEY,     XK_period,  spawn,    SHCMD("mpc next") },
+{ MODKEY|ControlMask|ShiftMask,     XK_Left, spawn,    SHCMD("audtool playlist-reverse") },
+// { MODKEY|ShiftMask,   XK_comma, spawn,    SHCMD("mpc seek 0%") },
+{ MODKEY|ControlMask|ShiftMask,     XK_period,  spawn,    SHCMD("audtool playlist-advance") },
 // { MODKEY|ShiftMask,   XK_period,  spawn,    SHCMD("mpc repeat") },
 
 /* { MODKEY,     XK_Left,  focusmon, {.i = -1 } }, */
