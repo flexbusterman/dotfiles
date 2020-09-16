@@ -48,6 +48,6 @@ Plug 'posva/vim-vue'
 Plug 'davidgranstrom/scnvim', { 'do': {-> scnvim#install() } }
 
 " Plug 'vim-pandoc/vim-pandoc'
-
+Plug 'sersorrel/vim-lilypond'
 " Initialize plugin system
 call plug#end()
