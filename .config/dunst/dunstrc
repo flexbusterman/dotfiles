@@ -201,6 +201,11 @@
 	 # ignore
 	 format = ""
 
+[barrierads]
+	 summary = "(A)*"
+	 # ignore
+	 format = ""
+
 #[signed_on]
 #    appname = Pidgin
 #    summary = "*signed on*"
