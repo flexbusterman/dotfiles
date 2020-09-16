@@ -41,14 +41,6 @@ wrm() { nmcli con delete $* }
 wc() { nmcli device wifi connect $1 password $2 }
 wdisable() { nmcli connection down $* }
 
-alias la="exa -la"
-alias ls="exa"
-alias fs="df -h | grep --color='never' 'Filesystem\|sd'"
-alias copy='xclip -sel clip'
-alias rf='rm -rf'
-alias res="xdpyinfo | awk '/dimensions/{print $2}'"
-alias q="exit"
-
 # VIM aliases for editing common files
 alias vz="cd /home/flex/.config/zsh/; nvim .zshrc"
 alias vx="cd /home/flex/; nvim .xprofile"
@@ -62,6 +54,16 @@ alias vc="cd /home/flex/.config/nvim/; nvim coc-settings.json"
 # Keymap aliases
 alias se="setxkbmap se; setxkbmap -option caps:swapescape; xset r rate 300 50"
 alias us="setxkbmap us; setxkbmap -option caps:swapescape; xset r rate 300 50"
+
+# other aliases
+alias la="exa -la"
+alias ls="exa"
+alias fs="df -h | grep --color='never' 'Filesystem\|sd'"
+alias copy='xclip -sel clip'
+alias rf='rm -rf'
+alias res="xdpyinfo | awk '/dimensions/{print $2}'"
+alias q="exit"
+alias ig="brave --app=\"http://www.instagram.com/direct/inbox/\""
 
 # Pacman shortcut functions
 pin () { sudo pacman -S --noconfirm $* }
