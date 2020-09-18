@@ -306,6 +306,9 @@ setopt HIST_FIND_NO_DUPS
 # unsetopt AUTO_NAME_DIRS
  #CASE_SENSITIVE="false"
 
+(cat ~/.cache/wal/sequences &)
+
 # Load syntax highlighting; should be last according to Luke.
 source ~/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null
+
