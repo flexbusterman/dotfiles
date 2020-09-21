@@ -181,12 +181,6 @@ zle -N down-line-or-beginning-search
 bindkey "^K" up-line-or-beginning-search # Up
 bindkey "^J" down-line-or-beginning-search # Down
 
-#   _          _
-#  | |   _   _| | _____
-#  | |  | | | | |/ / _ \
-#  | |__| |_| |   <  __/
-#  |_____\__,_|_|\_\___|
-
 # Enable colors and change prompt:
 autoload -U colors && colors  # Load colors
 PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
