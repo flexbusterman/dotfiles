@@ -308,8 +308,6 @@ setopt HIST_FIND_NO_DUPS
 
 (cat ~/.cache/wal/sequences &)
 
+source /home/flex/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 # Load syntax highlighting; should be last according to Luke.
-source /usr/share/zsh/plugins/zsh-autosuggestions
-# source ~/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null
-
