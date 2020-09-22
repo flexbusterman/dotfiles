@@ -52,4 +52,5 @@ Plug 'sersorrel/vim-lilypond'
 
 Plug 'sainnhe/sonokai'
 " Initialize plugin system
+Plug 'johngrib/vim-game-snake'
 call plug#end()
