@@ -300,7 +300,7 @@ setopt HIST_FIND_NO_DUPS
 # unsetopt AUTO_NAME_DIRS
  #CASE_SENSITIVE="false"
 
-(cat ~/.cache/wal/sequences &)
+# (cat ~/.cache/wal/sequences &)
 
 source /home/flex/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 # Load syntax highlighting; should be last according to Luke.
