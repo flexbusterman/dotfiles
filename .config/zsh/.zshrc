@@ -83,6 +83,27 @@ yup () { yaourt -Syua --noconfirm}
 yf () { yaourt -Ss $* }
 yls () { yaourt -Q }
 
+beer(){
+	while true
+	do
+echo '                       '
+echo '  .   *   ..  . *  *   '
+echo '*  * @()Ooc()*   o  .  '
+echo '    (Q@*0CG*O()  ___   '
+echo '   |\_________/|/ _ \  '
+echo '   |  |  |  |  | / | | '
+echo '   |  |  |  |  | | | | '
+echo '   |  |  |  |  | | | | '
+echo '   |  |  |  |  | | | | '
+echo '   |  |  |  |  | | | | '
+echo '   |  |  |  |  | \_| | '
+echo '   |  |  |  |  |\___/  '
+echo '   |\_|__|__|_/|       '
+echo '    \_________/        '
+echo '                       '
+sleep 5
+done
+}
 # ssh add function
 sa () {
 	eval "$(ssh-agent -s)"
@@ -301,7 +322,6 @@ setopt HIST_FIND_NO_DUPS
  #CASE_SENSITIVE="false"
 
 # (cat ~/.cache/wal/sequences &)
-
 source /home/flex/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 # Load syntax highlighting; should be last according to Luke.
 source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null
