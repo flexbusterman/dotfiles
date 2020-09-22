@@ -112,35 +112,56 @@ float alpha = 0.8;
 
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
+
   /* 8 normal colors */
-  [0] = "#282828", /* hard contrast: #1d2021 / soft contrast: #32302f */
-  [1] = "#cc241d", /* red     */
-  [2] = "#98971a", /* green   */
-  [3] = "#d79921", /* yellow  */
-  [4] = "#458588", /* blue    */
-  [5] = "#b16286", /* magenta */
-  [6] = "#689d6a", /* cyan    */
-  [7] = "#a89984", /* white   */
+  [0] = "#30323a", /* black   */
+  [1] = "#ff6077", /* red     */
+  [2] = "#a7df78", /* green   */
+  [3] = "#e7c664", /* yellow  */
+  [4] = "#76cce0", /* blue    */
+  [5] = "#b39df3", /* magenta */
+  [6] = "#a1efe4", /* cyan    */
+  [7] = "#f8f8f2", /* white   */
 
   /* 8 bright colors */
-  [8]  = "#928374", /* black   */
-  [9]  = "#fb4934", /* red     */
-  [10] = "#b8bb26", /* green   */
-  [11] = "#fabd2f", /* yellow  */
-  [12] = "#83a598", /* blue    */
-  [13] = "#d3869b", /* magenta */
-  [14] = "#8ec07c", /* cyan    */
-  [15] = "#ebdbb2", /* white   */
+  [8]  = "#3b3e48", /* black   */
+  [9]  = "#ff6077", /* red     */
+  [10] = "#a7df78", /* green   */
+  [11] = "#f39660", /* yellow  */
+  [12] = "#76cce0", /* blue    */
+  [13] = "#b39df3", /* magenta */
+  [14] = "#a1efe4", /* cyan    */
+  [15] = "#f9f8f5", /* white   */
+  /* special colors */
+  [256] = "#181819", /* background */
+  [257] = "#f8f8f2", /* foreground */
 };
+
+/*
+ * Default colors (colorname index)
+ * foreground, background, cursor
+ */
+unsigned int defaultfg = 257;
+unsigned int defaultbg = 256;
+unsigned int defaultcs = 257;
+
+/*
+ * Colors used, when the specific fg == defaultfg. So in reverse mode this
+ * will reverse too. Another logic would only make the simple feature too
+ * complex.
+ */
+unsigned int defaultitalic = 7;
+unsigned int defaultunderline = 7;
+
 
 
 /*
  * Default colors (colorname index)
  * foreground, background, cursor, reverse cursor
  */
-unsigned int defaultfg = 15;
-unsigned int defaultbg = 0;
-unsigned int defaultcs = 15;
+// unsigned int defaultfg = 15;
+// unsigned int defaultbg = 0;
+// unsigned int defaultcs = 15;
 // unsigned int defaultfg = 259;
 // unsigned int defaultbg = 258;
 // unsigned int defaultcs = 256;
