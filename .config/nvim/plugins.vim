@@ -49,5 +49,7 @@ Plug 'davidgranstrom/scnvim', { 'do': {-> scnvim#install() } }
 
 " Plug 'vim-pandoc/vim-pandoc'
 Plug 'sersorrel/vim-lilypond'
+
+Plug 'sainnhe/sonokai'
 " Initialize plugin system
 call plug#end()

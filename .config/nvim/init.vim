@@ -60,15 +60,13 @@ endif
 " Splits open at the bottom and right, which is non-retarded, unlike vim defaults.
 set splitbelow splitright
 " Color
-colorscheme dracula
-let g:lightline = {
-      \ 'colorscheme': 'darcula',
-      \ }
+colorscheme sonokai
+highlight Normal ctermbg=Black
+highlight NonText ctermbg=Black
 set winbl=10
 if (has("termguicolors"))
   set termguicolors
 endif
-hi Normal guibg=NONE ctermbg=NONE
 "  _  __          _     _           _ _
 " | |/ /___ _   _| |__ (_)_ __   __| (_)_ __   __ _ ___
 " | ' // _ \ | | | '_ \| | '_ \ / _` | | '_ \ / _` / __|
