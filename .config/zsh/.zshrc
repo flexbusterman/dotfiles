@@ -64,7 +64,7 @@ alias rf='rm -rf'
 alias res="xdpyinfo | awk '/dimensions/{print $2}'"
 alias q="exit"
 alias ig="brave --app=\"http://www.instagram.com/direct/inbox/\""
-
+alias train="libreoffice /home/flex/Dropbox/\!\ DROPSYNC/\!\ TRANSFER/Beginner\ Template\ Augustin.xlsx"
 # Pacman shortcut functions
 pin () { sudo pacman -S --noconfirm $* }
 pun () { sudo pacman -Rns $* }
@@ -83,6 +83,9 @@ yup () { yaourt -Syua --noconfirm}
 yf () { yaourt -Ss $* }
 yls () { yaourt -Q }
 
+timer(){
+	termdown --no-figlet $*
+}
 beer(){
 	while true
 	do
