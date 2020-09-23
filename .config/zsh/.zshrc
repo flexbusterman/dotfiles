@@ -64,7 +64,6 @@ alias rf='rm -rf'
 alias res="xdpyinfo | awk '/dimensions/{print $2}'"
 alias q="exit"
 alias ig="brave --app=\"http://www.instagram.com/direct/inbox/\""
-alias train="libreoffice /home/flex/Dropbox/\!\ DROPSYNC/\!\ TRANSFER/Beginner\ Template\ Augustin.xlsx"
 # Pacman shortcut functions
 pin () { sudo pacman -S --noconfirm $* }
 pun () { sudo pacman -Rns $* }
@@ -83,29 +82,35 @@ yup () { yaourt -Syua --noconfirm}
 yf () { yaourt -Ss $* }
 yls () { yaourt -Q }
 
+train(){
+	st -e zsh -c "libreoffice /home/flex/Dropbox/\!\ DROPSYNC/\!\ TRANSFER/Beginner\ Template\ Augustin.xlsx" &
+	termdown --no-figlet
+}
+
 timer(){
 	termdown --no-figlet $*
 }
+
 beer(){
 	while true
 	do
-echo '                       '
-echo '  .   *   ..  . *  *   '
-echo '*  * @()Ooc()*   o  .  '
-echo '    (Q@*0CG*O()  ___   '
-echo '   |\_________/|/ _ \  '
-echo '   |  |  |  |  | / | | '
-echo '   |  |  |  |  | | | | '
-echo '   |  |  |  |  | | | | '
-echo '   |  |  |  |  | | | | '
-echo '   |  |  |  |  | | | | '
-echo '   |  |  |  |  | \_| | '
-echo '   |  |  |  |  |\___/  '
-echo '   |\_|__|__|_/|       '
-echo '    \_________/        '
-echo '                       '
-sleep 5
-done
+		echo '                       '
+		echo '  .   *   ..  . *  *   '
+		echo '*  * @()Ooc()*   o  .  '
+		echo '    (Q@*0CG*O()  ___   '
+		echo '   |\_________/|/ _ \  '
+		echo '   |  |  |  |  | / | | '
+		echo '   |  |  |  |  | | | | '
+		echo '   |  |  |  |  | | | | '
+		echo '   |  |  |  |  | | | | '
+		echo '   |  |  |  |  | | | | '
+		echo '   |  |  |  |  | \_| | '
+		echo '   |  |  |  |  |\___/  '
+		echo '   |\_|__|__|_/|       '
+		echo '    \_________/        '
+		echo '                       '
+		sleep 5
+	done
 }
 # ssh add function
 sa () {
