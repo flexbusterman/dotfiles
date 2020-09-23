@@ -53,4 +53,5 @@ Plug 'sersorrel/vim-lilypond'
 Plug 'sainnhe/sonokai'
 " Initialize plugin system
 Plug 'johngrib/vim-game-snake'
+Plug 'wellle/targets.vim'
 call plug#end()

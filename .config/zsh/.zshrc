@@ -322,6 +322,7 @@ setopt HIST_FIND_NO_DUPS
  #CASE_SENSITIVE="false"
 
 # (cat ~/.cache/wal/sequences &)
+source /usr/share/zsh/plugins/zsh-system-clipboard/zsh-system-clipboard.zsh
 source /home/flex/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 # Load syntax highlighting; should be last according to Luke.
 source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null

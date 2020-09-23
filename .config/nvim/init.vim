@@ -60,9 +60,12 @@ endif
 " Splits open at the bottom and right, which is non-retarded, unlike vim defaults.
 set splitbelow splitright
 " Color
+" hi=NONE guibg=NONE ctermbg=NONE
 colorscheme sonokai
-highlight Normal ctermbg=Black
-highlight NonText ctermbg=Black
+highlight Normal ctermbg=NONE
+highlight NonText ctermbg=NONE
+" highlight Normal ctermbg=Black
+" highlight NonText ctermbg=Black
 set winbl=10
 if (has("termguicolors"))
   set termguicolors
