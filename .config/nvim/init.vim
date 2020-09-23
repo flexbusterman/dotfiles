@@ -7,6 +7,13 @@ source ~/.config/nvim/plugins.vim
 "  \____|\___|_| |_|\___|_|  \__,_|_|  \___/| .__/ \__|_|\___/|_| |_|___/
 "                                           |_|
 "
+if has ('autocmd') " Remain compatible with earlier versions
+  augroup vimrc " Source vim configuration upon save
+    autocmd! BufWritePost $MYVIMRC source % | echom "Reloaded " . $MYVIMRC | redraw
+    autocmd! BufWritePost $MYGVIMRC if has('gui_running') | so % | echom "Reloaded " . $MYGVIMRC | endif | redraw
+  augroup END
+endif " has autocmd
+set cursorline
 set nocompatible
 set number relativenumber
 set smarttab
@@ -65,6 +72,7 @@ colorscheme sonokai
 highlight Normal ctermbg=none guibg=none guifg=White
 highlight NonText ctermbg=none guibg=none guifg=White
 highlight EndOfBuffer ctermbg=none guibg=none guifg=White
+highlight CursorLine ctermbg=Black guifg=White
 " set winbl=10
 " highlight Normal guibg=none
 " highlight NonText guibg=none
