@@ -62,8 +62,8 @@ set splitbelow splitright
 " Color
 " hi=NONE guibg=NONE ctermbg=NONE
 colorscheme sonokai
-highlight Normal ctermbg=NONE
-highlight NonText ctermbg=NONE
+highlight Normal guibg=none
+highlight NonText guibg=none
 " highlight Normal ctermbg=Black
 " highlight NonText ctermbg=Black
 set winbl=10
