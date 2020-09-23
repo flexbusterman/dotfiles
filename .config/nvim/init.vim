@@ -72,7 +72,8 @@ colorscheme sonokai
 highlight Normal ctermbg=none guibg=none guifg=White
 highlight NonText ctermbg=none guibg=none guifg=White
 highlight EndOfBuffer ctermbg=none guibg=none guifg=White
-highlight CursorLine ctermbg=Black guifg=White
+highlight CursorLine ctermbg=Black
+highlight SignColumn ctermbg=none guibg=none guifg=White
 " set winbl=10
 " highlight Normal guibg=none
 " highlight NonText guibg=none
@@ -80,9 +81,9 @@ highlight CursorLine ctermbg=Black guifg=White
 " highlight NonText ctermbg=Black
 " set winbl=10
 "
-" if (has("termguicolors"))
-  " set termguicolors
-" endif
+if (has("termguicolors"))
+	set termguicolors
+endif
 "  _  __          _     _           _ _
 " | |/ /___ _   _| |__ (_)_ __   __| (_)_ __   __ _ ___
 " | ' // _ \ | | | '_ \| | '_ \ / _` | | '_ \ / _` / __|
