@@ -22,7 +22,7 @@ setopt HIST_BEEP                 # Beep when accessing nonexisten
 alias gb="git branch"
 alias ra="pulseaudio --kill; jack_control start; jack_control exit; pulseaudio --start;"
 alias vim="nvim"
-alias dot='/usr/bin/git --git-dir=$HOME/.dot/ --work-tree=$HOME'
+alias dot='/usr/bin/git --git-dir=$HOME/.dot.git/ --work-tree=$HOME'
 
 # Dropbox aliases
 alias dls="dropbox-cli ls"
