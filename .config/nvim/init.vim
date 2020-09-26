@@ -138,6 +138,11 @@ fun! s:VisualSearch()
 endf
 " remove empty lines in selection
 vmap <leader>e :s/\n\n/\r/g<CR>
+" nmap <leader>n <Plug>VimwikiNextLink
+" nmap <leader>p <Plug>VimwikiPrevLink
+nmap <F13> <Plug>VimwikiNextLink
+nmap <F14> <Plug>VimwikiPrevLink
+" nmap <F15> <Plug>VimwikiAddHeaderLevel
 "  _   _ _____ ____  ____ _____
 " | \ | | ____|  _ \|  _ \_   _| __ ___  ___
 " |  \| |  _| | |_) | | | || || '__/ _ \/ _ \
@@ -290,10 +295,10 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
+" inoremap <silent><expr> <TAB>
+      " \ pumvisible() ? "\<C-n>" :
+      " \ <SID>check_back_space() ? "\<TAB>" :
+      " \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 function! s:check_back_space() abort
   let col = col('.') - 1
