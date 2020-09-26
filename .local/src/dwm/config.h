@@ -162,6 +162,7 @@ static Key keys[] = {
   // { MODKEY|ControlMask|ShiftMask,                       XK_apostrophe, spawn,  SHCMD("st -e lf")},
 /* { 0,        XK_Print, spawn,    SHCMD("zsh -c \"maim -f jpg -m 9 /home/flex/Pictures/SCREENSHOTS/$(date +'%F %H_%M_%S.jpg')\"")}, */
   { 0,        XK_Print, spawn,    SHCMD("maim -f jpg -m 9 \"/home/flex/Pictures/SCREENSHOTS/$(date +\"%F %H_%M_%S.jpg\")\"")},
+  { ShiftMask,        XK_Print, spawn,    SHCMD("maim -f jpg -m 9 -s \"/home/flex/Pictures/SCREENSHOTS/$(date +\"%F %H_%M_%S.jpg\")\"")},
 
   /* modifier                     key        function        argument */
   STACKKEYS(MODKEY,                          focus)
@@ -288,7 +289,7 @@ static Key keys[] = {
 { MODKEY|ShiftMask,   XK_f, togglefloating, {0} },
 
   /* { 0,       XK_\Print, spawn,    SHCMD("maim pic-full-$(date '+%y%m%d-%H%M-%S').png") }, */
-{ ShiftMask,      XK_Print, spawn,    SHCMD("maimpick") },
+// { ShiftMask,      XK_Print, spawn,    SHCMD("maimpick") },
 { MODKEY,     XK_Print, spawn,    SHCMD("dmenurecord") },
 { MODKEY|ShiftMask,   XK_Print, spawn,    SHCMD("dmenurecord kill") },
 { MODKEY,     XK_Delete,  spawn,    SHCMD("dmenurecord kill") },
