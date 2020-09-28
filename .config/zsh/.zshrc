@@ -1,5 +1,6 @@
 # Augustins version of Luke's config for the Zoomer Shell
 
+
 # no duplicates in history
 HISTFILE=~/.cache/zsh/history
 HISTSIZE=10000000
