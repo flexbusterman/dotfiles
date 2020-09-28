@@ -35,3 +35,39 @@ endsnippet
 snippet bc "Semi-transparent background color" b
 background-color: rgba(0,0,0,0.25);
 endsnippet
+# let ${1:${VISUAL}} = require('${0:$1}');
+snippet pd "Augustin Pdef" b
+(
+Pdef(\\${1:name}, Ppar(
+	[
+		Pbind ( // notes
+			\type, \midi,
+			\midicmd, \noteOn,
+			\midiout, m,
+			\chan, ${2:0},
+			\midinote, Pfunc({${3:60}},inf),
+			\amp, ${4:0.2},
+			\stretch 4*60/${5:120}, 
+			\dur, ${6:1},
+			\sustain, ${7:1},
+		),
+		Pbind (
+			\type, \midi, \midicmd, \control, \midiout, m, \chan, $2,
+		) <>
+		Ppar(
+			[
+				// volume 
+				Pbind ( \ctlNum, 7, \control, ${8:64}, \dur, $6, \stretch, 4*60/$5),
+				// decay 
+				Pbind ( \ctlNum, 14, \control, ${9:64}, \dur, $6, \stretch, 4*60/$5),
+				// pan
+				Pbind ( \ctlNum, 10, \control, ${10:64}, \dur, $6, \stretch, 4*60/$5),
+			], inf
+		)
+	], inf)
+).play.quant_(${11:4*60/$5})
+);
+
+Pdef(\\$1).stop;
+
+endsnippet

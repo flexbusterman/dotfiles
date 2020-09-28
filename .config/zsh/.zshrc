@@ -178,7 +178,7 @@ dev () {
 
 aug () {
   st -e zsh -c "cd ~/Dropbox/\!\ SUPERCOLLIDER/; nvim -c :NERDTreeToggle "&
-  patchage &
+  patchage -J &
   bitwig-studio &
 }
 
