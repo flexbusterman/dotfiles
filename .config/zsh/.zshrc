@@ -112,6 +112,7 @@ beer(){
 		sleep 5
 	done
 }
+
 # ssh add function
 sa () {
 	eval "$(ssh-agent -s)"
