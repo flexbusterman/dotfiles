@@ -1,0 +1,37 @@
+IDE:
+  editor:
+    blinkDuration: 600
+    disableBlinkingCursor: false
+    font:
+      antialias: 2
+      family: Px437 IBM BIOS
+      size: 10
+    highlightBracketContents: true
+    highlightCurrentLine: false
+    inactiveEditorFadeAlpha: 64
+    indentWidth: 4
+    insertMatchingTokens: false
+    lineWrap: true
+    spaceIndent: false
+    stepForwardEvaluation: false
+    theme: dracula
+    useComboBox: false
+    useComboBoxWhenSplitting: false
+  interpreter:
+    autoStart: true
+    configFile: /home/flex/.config/SuperCollider/sclang_conf.yaml
+    runtimeDir: ""
+    standalone: false
+  mainWindow:
+    detached: !QVariantMap
+      documents-dock: ""
+      help-dock: ""
+      post-dock: ""
+    geometry: AdnQywADAAAAAAAAAAAADgAAB38AAAQ3AAAAAAAAAA4AAAd/AAAENwAAAAAAAAAAB4AAAAAAAAAADgAAB38AAAQ3
+    state: AAAA/wAAAAD9AAAAAgAAAAAAAAAAAAAAAPwCAAAAAfsAAAAcAGQAbwBjAHUAbQBlAG4AdABzAC0AZABvAGMAawAAAAAA/////wAAAF4A////AAAAAQAAAl0AAAP+/AIAAAAC+wAAABIAaABlAGwAcAAtAGQAbwBjAGsBAAAAEgAAAlwAAABMAP////sAAAASAHAAbwBzAHQALQBkAG8AYwBrAQAAAm8AAAGhAAAATAD///8AAAUiAAAD/gAAAAEAAAACAAAAAQAAAAL8AAAAAA==
+  postWindow:
+    lineWrap: false
+    scrollback: 1000
+  recentDocuments: !QVariantList
+    - /home/flex/Dropbox/! SUPERCOLLIDER/! TUTORIALS/Eli Fieldsteel/EF - Audio Coding with SuperCollider Week 6 MIDI.scd
+  startWithSession: last
