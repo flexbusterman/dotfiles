@@ -20,6 +20,8 @@ set smarttab
 set cindent
 set tabstop=2
 set shiftwidth=2
+set numberwidth=2
+
 " Fixes syntax highlighting from stopping
 autocmd BufEnter * :syntax sync fromstart
 let g:vimwiki_list = [{'path': '~/Dropbox/\!\ NOTES/'}]
@@ -80,7 +82,7 @@ highlight SignColumn ctermbg=none guibg=none guifg=White
 " highlight Normal ctermbg=Black
 " highlight NonText ctermbg=Black
 " set winbl=10
-"
+
 if (has("termguicolors"))
 	set termguicolors
 endif
