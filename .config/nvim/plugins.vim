@@ -29,7 +29,7 @@ Plug 'ThePrimeagen/vim-be-good', {'do': '.\install.sh'}
 " Plug 'sbl/scvim'
 " Plug 'supercollider/scvim'
 
-Plug 'itchyny/lightline.vim'                      " Lightline statusbar
+" Plug 'itchyny/lightline.vim'                      " Lightline statusbar
 
 " previews substitution and sort using regex
 Plug 'markonm/traces.vim'
@@ -54,4 +54,7 @@ Plug 'sainnhe/sonokai'
 " Initialize plugin system
 Plug 'johngrib/vim-game-snake'
 Plug 'wellle/targets.vim'
+
+Plug 'tpope/vim-fugitive'
+Plug 'vim-airline/vim-airline'
 call plug#end()

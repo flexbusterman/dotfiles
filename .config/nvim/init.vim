@@ -145,6 +145,12 @@ vmap <leader>e :s/\n\n/\r/g<CR>
 nmap <F13> <Plug>VimwikiNextLink
 nmap <F14> <Plug>VimwikiPrevLink
 " nmap <F15> <Plug>VimwikiAddHeaderLevel
+"
+" Fugitive bindings
+nmap <leader>gs :G<CR>
+nmap <leader>gh :diffget //2<CR>
+nmap <leader>gl :diffget //3<CR>
+
 "  _   _ _____ ____  ____ _____
 " | \ | | ____|  _ \|  _ \_   _| __ ___  ___
 " |  \| |  _| | |_) | | | || || '__/ _ \/ _ \
