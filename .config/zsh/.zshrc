@@ -159,7 +159,7 @@ mind () {
 	st -t wiki -e zsh -c "cd ~/Documents/; nvim Scandinavian\ Mind.wiki" &
 	st -t terminal -e zsh -c "cd ~/GIT/mind/; eval \"$(ssh-agent -s)\" && ssh-add ~/.ssh/mind;" &
 	# sleep 0.5
-	st -t main -e zsh -c "cd ~/GIT/mind/; nvim -O pages/index.vue layouts/default.vue;" &
+	st -t main -e zsh -c "cd ~/GIT/mind/; eval \"$(ssh-agent -s)\" && ssh-add ~/.ssh/mind; cd ~/GIT/mind/; nvim pages/index.vue;" &
 }
 
 dev () {

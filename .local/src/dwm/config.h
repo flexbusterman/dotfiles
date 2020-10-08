@@ -120,6 +120,7 @@ static Key keys[] = {
   /* FLEX KEYS */
 
 
+	{ MODKEY|ShiftMask,                       XK_l, spawn,  SHCMD("slock" ) },
 
 	
 	// { MODKEY,                       XK_bracketleft, spawn,  SHCMD("xdotool key aring") },
