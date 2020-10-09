@@ -88,7 +88,7 @@ train(){
 	termdown --no-figlet
 }
 
-timer(){
+t(){
 	termdown --no-figlet $*
 }
 
