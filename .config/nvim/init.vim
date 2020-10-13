@@ -21,6 +21,7 @@ set cindent
 set tabstop=2
 set shiftwidth=2
 set numberwidth=2
+set autoread
 
 " Fixes syntax highlighting from stopping
 autocmd BufEnter * :syntax sync fromstart
