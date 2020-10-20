@@ -25,10 +25,13 @@ alias ra="pulseaudio --kill; jack_control start; jack_control exit; pulseaudio -
 alias vim="nvim"
 alias dot='/usr/bin/git --git-dir=$HOME/.dot.git/ --work-tree=$HOME'
 alias bs='browser-sync start --server --directory --files "*"'
+alias grep="grep -i"
 
 # Dropbox aliases
 alias dls="dropbox-cli ls"
+alias deg="dropbox-cli exclude | grep -i"
 alias drm="dropbox-cli exclude add"
+alias drma="ls | sed 's/ /\\ /g' | sed 's/'\''/\\'\''/g' | xargs dropbox-cli exclude add"
 alias dsl="dropbox-cli sharelink"
 alias dadd="dropbox-cli exclude remove"
 alias ds='dropbox-cli status'
