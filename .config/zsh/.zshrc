@@ -24,6 +24,7 @@ alias gb="git branch"
 alias ra="pulseaudio --kill; jack_control start; jack_control exit; pulseaudio --start;"
 alias vim="nvim"
 alias dot='/usr/bin/git --git-dir=$HOME/.dot.git/ --work-tree=$HOME'
+alias bs='browser-sync start --server --directory --files "*"'
 
 # Dropbox aliases
 alias dls="dropbox-cli ls"
