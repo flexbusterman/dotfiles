@@ -25,6 +25,7 @@ alias vim="nvim"
 alias dot='/usr/bin/git --git-dir=$HOME/.dot.git/ --work-tree=$HOME'
 alias bs='browser-sync start --server --directory --files "*"'
 alias grep="grep -i"
+alias live="wine64 /home/flex/Wine/Program\ Files/Ableton/Live\ 10\ Suite/Program/Ableton\ Live\ 10\ Suite.exe"
 
 # Dropbox aliases
 alias dls="dropbox-cli ls"
