@@ -211,7 +211,7 @@ static Key keys[] = {
     { MODKEY,     XK_o,   incnmaster,     {.i = +1 } },
     { MODKEY|ShiftMask,   XK_o,   incnmaster,     {.i = -1 } },
     // { MODKEY,     XK_p,     spawn,    SHCMD("mpc toggle") },
-    { MODKEY|ShiftMask,   XK_p,     spawn,    SHCMD("audtool playback-playpause") },
+    { MODKEY|ShiftMask,   XK_p,     spawn,    SHCMD("pulseeffects") },
 		{ MODKEY,     XK_Left,   spawn,    SHCMD("audtool playback-seek-relative -10") },
 		{ MODKEY|ShiftMask,   XK_Left,   spawn,    SHCMD("audtool playback-seek-relative -60") },
     { MODKEY,     XK_Right,  spawn,    SHCMD("audtool playback-seek-relative +10") },
