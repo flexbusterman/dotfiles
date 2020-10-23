@@ -7,6 +7,7 @@ source ~/.config/nvim/plugins.vim
 "  \____|\___|_| |_|\___|_|  \__,_|_|  \___/| .__/ \__|_|\___/|_| |_|___/
 "                                           |_|
 "
+"
 if has ('autocmd') " Remain compatible with earlier versions
   augroup vimrc " Source vim configuration upon save
     autocmd! BufWritePost $MYVIMRC source % | echom "Reloaded " . $MYVIMRC | redraw
@@ -120,8 +121,10 @@ nmap <silent> <nowait> <leader>y yy
 vmap <silent> <nowait> <leader>y yy
 nmap <silent> <nowait> <leader>z zz
 vmap <silent> <nowait> <leader>z zz
-" remove previous word without exiting insert mode
-inoremap <silent> <C-h> <esc>bcaw
+" remove previous WORD without exiting insert mode
+inoremap <silent> <C-h> <esc>bcaW
+" accept suggestion
+inoremap <silent> <C-l> <C-y>
 " Quick window switching
 nmap <C-h> <C-w>h
 nmap <C-j> <C-w>j
@@ -152,6 +155,8 @@ nmap <F14> <Plug>VimwikiPrevLink
 nmap <leader>gs :G<CR>
 nmap <leader>gh :diffget //2<CR>
 nmap <leader>gl :diffget //3<CR>
+
+
 
 "  _   _ _____ ____  ____ _____
 " | \ | | ____|  _ \|  _ \_   _| __ ___  ___
