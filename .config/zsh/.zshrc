@@ -64,7 +64,9 @@ alias us="setxkbmap us; setxkbmap -option caps:swapescape; xset r rate 300 50"
 
 # other aliases
 alias la="exa -la"
+alias lag="exa -la | grep -i"
 alias ls="exa"
+alias lsg="exa | grep -i"
 alias fs="df -h | grep --color='never' 'Filesystem\|sd'"
 alias copy='xclip -sel clip'
 alias rf='rm -rf'
