@@ -34,7 +34,7 @@ alias drm="dropbox-cli exclude add"
 alias drma="ls | sed 's/ /\\ /g' | sed 's/'\''/\\'\''/g' | xargs dropbox-cli exclude add"
 alias dsl="dropbox-cli sharelink"
 alias dadd="dropbox-cli exclude remove"
-alias daddx ="sed 's/ /\\ /g' | sed 's/'\''/\\'\''/g' | xargs dropbox-cli exclude remove"
+alias daddx="sed 's/ /\\ /g' | sed 's/'\''/\\'\''/g' | xargs dropbox-cli exclude remove"
 alias ds='dropbox-cli status'
 alias dr='dropbox-cli restart'
 
