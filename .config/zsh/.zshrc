@@ -192,6 +192,11 @@ aug () {
   bitwig-studio &
 }
 
+# Locate and Edit
+le(){
+	locate $* | sed 1q | xargs nvim
+}
+
 #Aggressive autocomplete
 #autoload predict-on
 #predict-on
