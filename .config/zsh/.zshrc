@@ -19,6 +19,16 @@ setopt HIST_VERIFY               # Don't execute immediately upon history expans
 setopt HIST_BEEP                 # Beep when accessing nonexisten
 
 # Other aliases
+alias la="exa -la"
+alias lag="exa -la | grep -i"
+alias ls="exa"
+alias lsg="exa | grep -i"
+alias fs="df -h | grep --color='never' 'Filesystem\|sd'"
+alias copy='xclip -sel clip'
+alias rf='rm -rf'
+alias res="xdpyinfo | awk '/dimensions/{print $2}'"
+alias q="exit"
+alias ig="brave --app=\"http://www.instagram.com/direct/inbox/\""
 alias gb="git branch"
 alias ra="pulseaudio --kill; jack_control start; jack_control exit; pulseaudio --start;"
 alias vim="nvim"
@@ -26,6 +36,7 @@ alias dot='/usr/bin/git --git-dir=$HOME/.dot.git/ --work-tree=$HOME'
 alias bs='browser-sync start --server --directory --files "*"'
 alias grep="grep -i"
 alias live="wine64 /home/flex/Wine/Program\ Files/Ableton/Live\ 10\ Suite/Program/Ableton\ Live\ 10\ Suite.exe"
+alias ud='sudo updatedb'
 
 # Dropbox aliases
 alias dls="dropbox-cli ls"
@@ -62,17 +73,6 @@ alias vr="cd /home/flex/.config/ranger/; nvim rifle.conf"
 alias se="setxkbmap se; setxkbmap -option caps:swapescape; xset r rate 300 50"
 alias us="setxkbmap us; setxkbmap -option caps:swapescape; xset r rate 300 50"
 
-# other aliases
-alias la="exa -la"
-alias lag="exa -la | grep -i"
-alias ls="exa"
-alias lsg="exa | grep -i"
-alias fs="df -h | grep --color='never' 'Filesystem\|sd'"
-alias copy='xclip -sel clip'
-alias rf='rm -rf'
-alias res="xdpyinfo | awk '/dimensions/{print $2}'"
-alias q="exit"
-alias ig="brave --app=\"http://www.instagram.com/direct/inbox/\""
 # Pacman shortcut functions
 pin () { sudo pacman -S --noconfirm $* }
 pun () { sudo pacman -Rns $* }
