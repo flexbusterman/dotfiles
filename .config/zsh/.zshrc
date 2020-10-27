@@ -19,10 +19,10 @@ setopt HIST_VERIFY               # Don't execute immediately upon history expans
 setopt HIST_BEEP                 # Beep when accessing nonexisten
 
 # Other aliases
-alias la="exa -la"
-alias lag="exa -la | grep -i"
 alias ls="exa"
 alias lsg="exa | grep -i"
+alias la="exa -la"
+alias lag="exa -la | grep -i"
 alias fs="df -h | grep --color='never' 'Filesystem\|sd'"
 alias copy='xclip -sel clip'
 alias rf='rm -rf'
