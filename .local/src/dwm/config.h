@@ -250,7 +250,7 @@ static Key keys[] = {
   /* V is automatically bound above in STACKKEYS */
 { MODKEY,     XK_s,   togglebar,  {0} },
   /* { MODKEY|ShiftMask,    XK_b,   spawn,    SHCMD("") }, */
-{ MODKEY,     XK_n,   spawn,    SHCMD("st -e nvim -c VimwikiIndex") },
+{ MODKEY,     XK_n,   spawn,    SHCMD("cd ~/Dropbox/\!\ NOTES/; st -e nvim -c VimwikiIndex") },
 // { MODKEY|ShiftMask,   XK_n,   spawn,    SHCMD("st -e newsboat; pkill -RTMIN+6 dwmblocks") },
 { MODKEY|ShiftMask,   XK_n,   spawn,    SHCMD("st -e newsboat") },
 { MODKEY,     XK_m,   spawn,    SHCMD("audacious") },

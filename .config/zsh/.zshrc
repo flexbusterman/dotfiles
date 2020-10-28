@@ -92,7 +92,7 @@ yf () { yaourt -Ss $* }
 yls () { yaourt -Q }
 
 train(){
-	st -e zsh -c "libreoffice /home/flex/Dropbox/\!\ DROPSYNC/\!\ TRANSFER/Beginner\ Template\ Augustin.xlsx" &
+	st -e zsh -c "libreoffice /home/flex/Dropbox/DROPSYNC/\!\ TRANSFER/Beginner\ Template\ Augustin.xlsx" &
 	termdown --no-figlet
 }
 
@@ -187,7 +187,7 @@ dev () {
 # }
 
 aug () {
-  st -e zsh -c "cd ~/Dropbox/\!\ SUPERCOLLIDER/; nvim -c :NERDTreeToggle "&
+  st -e zsh -c "cd ~/Dropbox/SUPERCOLLIDER/; nvim -c :NERDTreeToggle "&
   patchage -J &
   bitwig-studio &
 }

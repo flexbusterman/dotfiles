@@ -27,7 +27,7 @@ set nohlsearch
 
 " Fixes syntax highlighting from stopping
 autocmd BufEnter * :syntax sync fromstart
-let g:vimwiki_list = [{'path': '~/Dropbox/\!\ NOTES/'}]
+let g:vimwiki_list = [{'path': '~/Dropbox/NOTES/'}]
 " Yank and paste with the system clipboard
 set clipboard+=unnamedplus
 " set transparent background
