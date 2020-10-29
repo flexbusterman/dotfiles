@@ -91,6 +91,36 @@ yup () { yaourt -Syua --noconfirm}
 yf () { yaourt -Ss $* }
 yls () { yaourt -Q }
 
+datefolder(){
+for f in *
+do
+	if [ -z "$(ls -A $f)" ]
+	then
+	elif [ -d "$f" ]
+	then
+		cd $f
+		NEWEST=$(date +"%Y%m%d")
+		for file in *
+		do
+			if [ -f $file ]
+			then
+				if [ $(date -r $file +"%Y%m%d") -le $NEWEST ]
+				then
+					NEWEST=$(date -r "$file" +"%Y%m%d")
+				fi
+			fi
+		done
+		YEAR=$(echo $NEWEST | cut -c 1-4)
+		MONTH=$(echo $NEWEST | cut -c 5-6)
+		DAY=$(echo $NEWEST | cut -c 7-8)
+		RESULT="$YEAR-$MONTH-$DAY $f"
+		echo "$f => $RESULT"
+		cd ..
+		mv $f $RESULT
+	fi
+done
+}
+
 train(){
 	st -e zsh -c "libreoffice /home/flex/Dropbox/DROPSYNC/\!\ TRANSFER/Beginner\ Template\ Augustin.xlsx" &
 	termdown --no-figlet
@@ -176,16 +206,6 @@ dev () {
   cd ~/GIT/kalle2019/; nvim;
 }
 
-# landing () {
-	# st -e zsh -c "cd ~/GIT/landing/; zsh -c \"npm run dev\"" &
-	# st -e firefox -new-instance https://xd.adobe.com/view/035ce4d8-ddd4-4c00-752c-3f6187a5d998-756d/grid &
-	# st -e firefox -new-instance localhost:8000 &
-	# st -e zsh -c "cd ~/Documents/; nvim Scandinavian\ Mind.wiki" &
-	# st -e zsh -c "cd ~/GIT/landing/; eval \"$(ssh-agent -s)\" && ssh-add ~/.ssh/mind;" &
-	# sleep 1
-	# st -e zsh -c "cd ~/GIT/landing/; eval \"$(ssh-agent -s)\" && ssh-add ~/.ssh/mind; nvim -O pages/index.vue layouts/default.vue;" &
-# }
-
 aug () {
   st -e zsh -c "cd ~/Dropbox/SUPERCOLLIDER/; nvim -c :NERDTreeToggle "&
   patchage -J &
@@ -195,6 +215,11 @@ aug () {
 # Locate and Edit
 le(){
 	locate $* | sed 1q | xargs nvim
+}
+
+# Find Recursively and case-insensitive
+fr(){
+find . -path '**' -iname '$*'
 }
 
 #Aggressive autocomplete

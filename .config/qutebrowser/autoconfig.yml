@@ -23,6 +23,8 @@ settings:
     global: true
   content.geolocation:
     https://www.google.com.ar: false
+  content.host_blocking.enabled:
+    global: true
   content.notifications:
     https://cutewallpaper.org: false
     https://mspoweruser.com: false
