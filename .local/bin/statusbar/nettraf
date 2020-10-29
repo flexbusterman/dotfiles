@@ -17,8 +17,8 @@ rxcurrent="$(cat /sys/class/net/*/statistics/rx_bytes | paste -sd '+' | bc)"
 txcurrent="$(cat /sys/class/net/*/statistics/tx_bytes | paste -sd '+' | bc)"
 
 printf " %s %s \\n" \
-	"$(printf -- "(%s-%s)/1024\\n" "$rxcurrent" "$(cat "$rxfile")" | bc)" \
-	"$(printf -- "(%s-%s)/1024\\n" "$txcurrent" "$(cat "$txfile")" | bc)"
+	"$(printf -- "(%s-%s)/2048\\n" "$rxcurrent" "$(cat "$rxfile")" | bc)" \
+	"$(printf -- "(%s-%s)/2048\\n" "$txcurrent" "$(cat "$txfile")" | bc)"
 
 # Log the current values for next run.
 echo "$rxcurrent" > "$rxfile"
