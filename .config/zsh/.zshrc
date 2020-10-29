@@ -92,7 +92,7 @@ yf () { yaourt -Ss $* }
 yls () { yaourt -Q }
 
 datefolder(){
-for f in *
+for f in $*
 do
 	if [ -z "$(ls -A $f)" ]
 	then
