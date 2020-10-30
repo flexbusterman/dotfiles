@@ -98,7 +98,7 @@ do
 	then
 	elif [ -d "$f" ]
 	then
-		cd $f
+		cd "$f"
 		NEWEST=$(date +"%Y%m%d")
 		for file in *
 		do
@@ -119,6 +119,28 @@ do
 		mv $f $RESULT
 	fi
 done
+}
+
+datefile(){
+	for f in $*
+	do
+		if [ -f "$f" ]
+		then
+			DATE=$(date -r "$f" +"%Y%m%d")
+			YEAR=$(echo $DATE | cut -c 1-4)
+			MONTH=$(echo $DATE | cut -c 5-6)
+			DAY=$(echo $DATE | cut -c 7-8)
+			RESULT="$YEAR-$MONTH-$DAY $f"
+			# if [[ $f =~ ^[0-9]{4}-.*$ ]]
+			if [[ $f =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}.* ]]
+			then
+				echo "$f already begins with date"
+			else
+				echo "Renaming: $f => $RESULT"
+				mv $f $RESULT
+			fi
+		fi
+	done
 }
 
 train(){
