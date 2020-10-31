@@ -119,32 +119,11 @@ static const char *poweroff[] = { "poweroff", NULL };
 #include "shiftview.c"
 static Key keys[] = {
   /* FLEX KEYS */
-
-
 	{ MODKEY|ShiftMask,                       XK_l, spawn,  SHCMD("slock" ) },
-
-	
-	// { MODKEY,                       XK_bracketleft, spawn,  SHCMD("xdotool key aring") },
-	// { MODKEY,                       XK_apostrophe, spawn,  SHCMD("xdotool key adiaeresis" ) },
-	// { MODKEY,                       XK_semicolon, spawn,  SHCMD("xdotool key odiaeresis" ) },
-	// { MODKEY|ShiftMask,                       XK_bracketleft, spawn,  SHCMD("xdotool key shift+aring" ) },
-	// { MODKEY|ShiftMask,                       XK_apostrophe, spawn,  SHCMD("xdotool key shift+adiaeresis" ) },
-	// { MODKEY|ShiftMask,                       XK_semicolon, spawn,  SHCMD("xdotool key shift+odiaeresis" ) },
-
-
-{ MODKEY,                       XK_bracketleft, spawn,  SHCMD("sleep 0.2 && xdotool key aring") },
-	{ MODKEY,                       XK_apostrophe, spawn,  SHCMD("sleep 0.2 && xdotool key adiaeresis" ) },
-	{ MODKEY,                       XK_semicolon, spawn,  SHCMD("sleep 0.2 && xdotool key odiaeresis" ) },
-	{ MODKEY|ShiftMask,                       XK_bracketleft, spawn,  SHCMD("sleep 0.2 && xdotool key shift+aring" ) },
-	{ MODKEY|ShiftMask,                       XK_apostrophe, spawn,  SHCMD("sleep 0.2 && xdotool key shift+adiaeresis" ) },
-	{ MODKEY|ShiftMask,                       XK_semicolon, spawn,  SHCMD("sleep 0.2 && xdotool key shift+odiaeresis" ) },
 	{ MODKEY,                       XK_d, spawn,  SHCMD("sleep 0.2 && xdotool type --clearmodifiers \"$(date +\"%F \")\"")},
-
   { MODKEY|ShiftMask,                       XK_b, spawn,  SHCMD("bluetoothctl show | grep -i powered | grep -i yes && notify-send 'Bluetooth is on' && pactl set-card-profile bluez_card.70_BF_92_2A_35_E8 a2dp_sink || notify-send 'Starting bluetooth' && bluetoothctl power on && bluetoothctl -- connect 70:BF:92:2A:35:E8 pactl set-card-profile bluez_card.70_BF_92_2A_35_E8 a2dp_sink")},
 
-
   { MODKEY|ShiftMask,                       XK_c, spawn,  SHCMD("notify-send 'Connecting to Jabra' && bluetoothctl -- connect 70:BF:92:2A:35:E8; pactl set-card-profile bluez_card.70_BF_92_2A_35_E8 a2dp_sink")},
-
   { MODKEY|ControlMask|ShiftMask,                       XK_s, spawn,  SHCMD("setxkbmap se; setxkbmap -option \"caps:swapescape\"; xset r rate 300 50")},
   { MODKEY|ControlMask|ShiftMask,                       XK_u, spawn,  SHCMD("setxkbmap us; setxkbmap -option \"caps:swapescape\"; xset r rate 300 50")},
   /* { 0, XF86XK_MonBrightnessUp, spawn,    SHCMD("xbacklight -inc 15") }, */
@@ -165,7 +144,6 @@ static Key keys[] = {
 /* { 0,        XK_Print, spawn,    SHCMD("zsh -c \"maim -f jpg -m 9 /home/flex/Pictures/SCREENSHOTS/$(date +'%F %H_%M_%S.jpg')\"")}, */
   { 0,        XK_Print, spawn,    SHCMD("maim -f jpg -m 9 \"/home/flex/Pictures/SCREENSHOTS/$(date +\"%F %H_%M_%S.jpg\")\"")},
   { ShiftMask,        XK_Print, spawn,    SHCMD("maim -f jpg -m 9 -s \"/home/flex/Pictures/SCREENSHOTS/$(date +\"%F %H_%M_%S.jpg\")\"")},
-
   /* modifier                     key        function        argument */
   STACKKEYS(MODKEY,                          focus)
     STACKKEYS(MODKEY|ShiftMask,                push)
