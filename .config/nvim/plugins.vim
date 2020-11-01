@@ -57,4 +57,6 @@ Plug 'wellle/targets.vim'
 
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
+
+Plug 'wincent/loupe'
 call plug#end()
