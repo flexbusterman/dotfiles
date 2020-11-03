@@ -7,7 +7,6 @@ source ~/.config/nvim/plugins.vim
 "  \____|\___|_| |_|\___|_|  \__,_|_|  \___/| .__/ \__|_|\___/|_| |_|___/
 "                                           |_|
 "
-"
 if has ('autocmd') " Remain compatible with earlier versions
   augroup vimrc " Source vim configuration upon save
     autocmd! BufWritePost $MYVIMRC source % | echom "Reloaded " . $MYVIMRC | redraw
@@ -24,7 +23,6 @@ set shiftwidth=2
 set numberwidth=2
 set autoread
 " set nohlsearch
-
 " Fixes syntax highlighting from stopping
 autocmd BufEnter * :syntax sync fromstart
 let g:vimwiki_list = [{'path': '~/Dropbox/NOTES/'}]
@@ -124,7 +122,7 @@ vmap <silent> <nowait> <leader>z zz
 " remove previous WORD without exiting insert mode
 inoremap <silent> <C-h> <esc>bcaW
 " accept suggestion
-inoremap <silent> <C-l> <C-y>
+" inoremap <C-space> <C-y>
 " Quick window switching
 nmap <C-h> <C-w>h
 nmap <C-j> <C-w>j
@@ -321,11 +319,11 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 " Use <c-space> to trigger completion.
-if has('nvim')
-  inoremap <silent><expr> <c-space> coc#refresh()
-else
-  inoremap <silent><expr> <c-@> coc#refresh()
-endif
+" if has('nvim')
+  " inoremap <silent><expr> <c-space> coc#refresh()
+" else
+  " inoremap <silent><expr> <c-@> coc#refresh()
+" endif
 " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
 " position. Coc only does snippet and additional edit on confirm.
 " <cr> could be remapped by other vim plugin, try `:verbose imap <CR>`.
