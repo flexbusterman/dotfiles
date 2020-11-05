@@ -47,9 +47,9 @@ Pdef(\\${1:name}, Ppar(
 			\chan, ${2:0},
 			\midinote, Pfunc({${3:60}},inf),
 			\amp, ${4:0.2},
-			\stretch 4*60/${5:120}, 
-			\dur, ${6:1},
-			\sustain, ${7:1},
+			\stretch, 4*60/${5:120}, 
+			\dur, ${6:1/4},
+			\sustain, ${7:Pkey(\dur) * 2},
 		),
 		Pbind (
 			\type, \midi, \midicmd, \control, \midiout, m, \chan, $2,
