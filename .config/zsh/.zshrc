@@ -234,9 +234,9 @@ dev () {
 }
 
 aug () {
-  st -e zsh -c "cd ~/Dropbox/SUPERCOLLIDER/; nvim -c :NERDTreeToggle "&
-  patchage -J &
+  st -t SuperCollider -e zsh -c "cd ~/Dropbox/SUPERCOLLIDER/; nvim -c \"NERDTreeToggle | set filetype=supercollider | SCNvimStart\"" &
   bitwig-studio &
+  st -t aug -e zsh -c "sleep 5; aconnect 128:7 16:0"
 }
 
 # Locate and Edit
