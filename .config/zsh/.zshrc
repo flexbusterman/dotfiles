@@ -37,6 +37,8 @@ alias bs='browser-sync start --server --directory --files "*"'
 alias grep="grep -i"
 alias live="wine64 /home/flex/Wine/Program\ Files/Ableton/Live\ 10\ Suite/Program/Ableton\ Live\ 10\ Suite.exe"
 alias ud='sudo updatedb'
+alias du='du -h'
+alias dl='cd ~/Downloads; exa'
 
 # Dropbox aliases
 alias dls="dropbox-cli ls"
