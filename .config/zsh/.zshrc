@@ -39,6 +39,7 @@ alias live="wine64 /home/flex/Wine/Program\ Files/Ableton/Live\ 10\ Suite/Progra
 alias ud='sudo updatedb'
 alias du='du -h'
 alias dl='cd ~/Downloads; exa'
+alias de='find . -empty -type d -delete'
 
 # Dropbox aliases
 alias dls="dropbox-cli ls"
