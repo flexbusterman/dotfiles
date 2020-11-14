@@ -140,7 +140,7 @@ static Key keys[] = {
   { MODKEY|ControlMask|ShiftMask,     XK_period,    spawn,    SHCMD("brave https://mail.google.com/mail/u/0/#inbox https://mail.google.com/mail/u/1/#inbox https://mail.google.com/mail/u/3/#inbox https://calendar.google.com") },
   { MODKEY|ShiftMask,     XK_period,    spawn,    SHCMD("brave") },
   /* { MODKEY|ShiftMask,                       XK_comma, spawn,  SHCMD("st env SHELL=/bin/bash vifm")}, */
-	{ MODKEY|ShiftMask,    XK_comma, spawn,  SHCMD("st -e ranger")},
+	{ MODKEY|ShiftMask,    XK_comma, spawn,  SHCMD("st -e ranger ~/Downloads/ ~/Dropbox/")},
   // { MODKEY|ControlMask|ShiftMask,                       XK_apostrophe, spawn,  SHCMD("st -e lf")},
 /* { 0,        XK_Print, spawn,    SHCMD("zsh -c \"maim -f jpg -m 9 /home/flex/Pictures/SCREENSHOTS/$(date +'%F %H_%M_%S.jpg')\"")}, */
   { 0,        XK_Print, spawn,    SHCMD("maim -f jpg -m 9 \"/home/flex/Pictures/SCREENSHOTS/$(date +\"%F %H_%M_%S.jpg\")\"")},
