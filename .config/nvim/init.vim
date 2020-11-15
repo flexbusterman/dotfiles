@@ -71,7 +71,7 @@ endif
 set splitbelow splitright
 " Color
 " hi=NONE guibg=NONE ctermbg=NONE
-colorscheme sonokai
+colorscheme dracula
 highlight Normal ctermbg=none guibg=none guifg=White
 highlight NonText ctermbg=none guibg=none guifg=White
 highlight EndOfBuffer ctermbg=none ctermfg=none guibg=none guifg=none 

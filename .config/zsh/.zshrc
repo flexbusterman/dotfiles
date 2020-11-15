@@ -1,7 +1,7 @@
 # Augustins version of Luke's config for the Zoomer Shell
 
 # no duplicates in history
-HISTFILE=~/.cache/zsh/history
+HISTFILE=/home/flex/.history/zsh/history
 HISTSIZE=10000000
 SAVEHIST=10000000
 setopt BANG_HIST                 # Treat the '!' character specially during expansion.
