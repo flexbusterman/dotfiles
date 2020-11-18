@@ -19,7 +19,7 @@ setopt HIST_VERIFY               # Don't execute immediately upon history expans
 setopt HIST_BEEP                 # Beep when accessing nonexisten
 
 # Other aliases
-# alias ls="exa"
+alias ls="exa"
 alias lsg="exa | grep -i"
 alias la="exa -la"
 alias lag="exa -la | grep -i"
@@ -98,7 +98,7 @@ yls () { yaourt -Q }
 datefolder(){
 for f in $*
 do
-	if [ -z "$(ls -A $f)" ]
+	if [ -z "$('ls' -A $f)" ]
 	then
 	elif [ -d "$f" ]
 	then
