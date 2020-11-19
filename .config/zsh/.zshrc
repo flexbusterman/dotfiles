@@ -260,7 +260,7 @@ find . -path '**' -iname '$*'
 
 # Add ssh tokens
 eval "$(ssh-agent -s)"
-ssh-add ~/.ssh/github
+ssh-add ~/.ssh/flexgit
 ssh-add ~/.ssh/bitbucket
 ssh-add ~/.ssh/drop
 ssh-add ~/.ssh/mind
