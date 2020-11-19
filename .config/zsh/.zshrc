@@ -1,4 +1,4 @@
-# Augustins version of Luke's config for the Zoomer Shell
+# Augustins version of Luke's config for the Zoomer Shell!
 
 # no duplicates in history
 HISTFILE=/home/flex/.history/zsh/history
