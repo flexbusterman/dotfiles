@@ -27,9 +27,10 @@ Plug 'vimwiki/vimwiki'
 Plug 'ThePrimeagen/vim-be-good', {'do': '.\install.sh'}
 
 " Plug 'sbl/scvim'
-" Plug 'supercollider/scvim'
+Plug 'supercollider/scvim'
 
-" Plug 'itchyny/lightline.vim'                      " Lightline statusbar
+" Lightline statusbar
+" Plug 'itchyny/lightline.vim'
 
 " previews substitution and sort using regex
 Plug 'markonm/traces.vim'

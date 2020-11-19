@@ -38,8 +38,9 @@ alias grep="grep -i"
 alias live="wine64 /home/flex/Wine/Program\ Files/Ableton/Live\ 10\ Suite/Program/Ableton\ Live\ 10\ Suite.exe"
 alias ud='sudo updatedb'
 alias du='du -h'
-alias dl='cd ~/Downloads; exa'
+alias d='cd ~/Downloads; exa'
 alias de='find . -empty -type d -delete'
+alias D='cd ~/Dropbox; exa'
 
 # Dropbox aliases
 alias dls="dropbox-cli ls"
