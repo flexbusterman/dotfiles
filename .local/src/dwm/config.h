@@ -122,9 +122,9 @@ static Key keys[] = {
   /* FLEX KEYS */
 	{ MODKEY|ShiftMask,                       XK_l, spawn,  SHCMD("slock" ) },
 	{ MODKEY,                       XK_d, spawn,  SHCMD("sleep 0.2 && xdotool type --clearmodifiers \"$(date +\"%F \")\"")},
-  { MODKEY|ShiftMask,                       XK_b, spawn,  SHCMD("bluetoothctl show | grep -i powered | grep -i yes && notify-send 'Bluetooth is on' && pactl set-card-profile bluez_card.70_BF_92_2A_35_E8 a2dp_sink || notify-send 'Starting bluetooth' && bluetoothctl power on && bluetoothctl -- connect 70:BF:92:2A:35:E8 pactl set-card-profile bluez_card.70_BF_92_2A_35_E8 a2dp_sink")},
+  { MODKEY|ShiftMask,                       XK_b, spawn,  SHCMD("bluetoothctl show | grep -i powered | grep -i yes && notify-send 'Bluetooth is on' && pactl set-card-profile bluez_card.74_5C_4B_D2_86_F7 a2dp_sink || notify-send 'Starting bluetooth' && bluetoothctl power on && bluetoothctl -- connect 74:5C:4B:D2:86:F7 && pactl set-card-profile bluez_card.74_5C_4B_D2_86_F7 a2dp_sink")},
 
-  { MODKEY|ShiftMask,                       XK_c, spawn,  SHCMD("notify-send 'Connecting to Jabra' && bluetoothctl -- connect 70:BF:92:2A:35:E8; pactl set-card-profile bluez_card.70_BF_92_2A_35_E8 a2dp_sink")},
+  // { MODKEY|ShiftMask,                       XK_c, spawn,  SHCMD("notify-send 'Connecting to Jabra' && bluetoothctl -- connect 70:BF:92:2A:35:E8; pactl set-card-profile bluez_card.70_BF_92_2A_35_E8 a2dp_sink")},
   { MODKEY|ControlMask|ShiftMask,                       XK_s, spawn,  SHCMD("setxkbmap se; setxkbmap -option \"caps:swapescape\"; xset r rate 300 50")},
   { MODKEY|ControlMask|ShiftMask,                       XK_u, spawn,  SHCMD("setxkbmap us; setxkbmap -option \"caps:swapescape\"; xset r rate 300 50")},
   /* { 0, XF86XK_MonBrightnessUp, spawn,    SHCMD("xbacklight -inc 15") }, */
