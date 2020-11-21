@@ -24,10 +24,7 @@ Plug 'dracula/vim'
 
 Plug 'vimwiki/vimwiki'
 
-Plug 'ThePrimeagen/vim-be-good', {'do': '.\install.sh'}
-
-" Plug 'sbl/scvim'
-Plug 'supercollider/scvim'
+" Plug 'ThePrimeagen/vim-be-good', {'do': '.\install.sh'}
 
 " Lightline statusbar
 " Plug 'itchyny/lightline.vim'
@@ -46,6 +43,8 @@ Plug 'andymass/vim-matchup'
 Plug 'leafOfTree/vim-vue-plugin'
 Plug 'posva/vim-vue'
 
+" Plug 'sbl/scvim'
+Plug 'supercollider/scvim'
 Plug 'davidgranstrom/scnvim', { 'do': {-> scnvim#install() } }
 
 " Plug 'vim-pandoc/vim-pandoc'
