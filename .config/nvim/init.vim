@@ -147,8 +147,9 @@ vmap <leader>e :s/\n\n/\r/g<CR>
 " nmap <leader>p <Plug>VimwikiPrevLink
 nmap <F13> <Plug>VimwikiNextLink
 nmap <F14> <Plug>VimwikiPrevLink
+nmap <leader>i <Plug>VimwikiIndex
 " nmap <F15> <Plug>VimwikiAddHeaderLevel
-"
+
 " Fugitive bindings
 nmap <leader>gs :G<CR>
 nmap <leader>gh :diffget //2<CR>
