@@ -199,7 +199,7 @@ let g:scnvim_postwin_orientation = 'v'
 " position of the post window 'right' or 'left'
 let g:scnvim_postwin_direction = 'right'
 " default is half the terminal size for vertical and a third for horizontal
-let g:scnvim_postwin_size = 30
+let g:scnvim_postwin_size = 60
 " automatically open post window on a SuperCollider error
 let g:scnvim_postwin_auto_toggle = 1
 " duration of the highlight
@@ -281,6 +281,7 @@ let g:coc_global_extensions = [
   \ 'coc-json',
   \ ]
 let g:UltiSnipsSnippetDirectories = ['UltiSnips', 'scnvim-data']
+let g:scnvim_sclang_executable = '/usr/bin/sclang'
 " prettier command for coc
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
@@ -413,3 +414,10 @@ nnoremap <silent><nowait> <leader>cn  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <leader>cp  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <leader>cr  :<C-u>CocListResume<CR>
+
+" coc snippet bindings
+let g:UltiSnipsExpandTrigger='<Nop>'
+let g:UltiSnipsJumpForwardTrigger = '<TAB>'
+let g:UltiSnipsJumpBackwardTrigger = '<S-TAB>'
+let g:coc_snippet_next = '<TAB>'
+let g:coc_snippet_prev = '<S-TAB>'

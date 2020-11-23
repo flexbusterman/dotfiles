@@ -44,10 +44,12 @@ Plug 'leafOfTree/vim-vue-plugin'
 Plug 'posva/vim-vue'
 
 " Plug 'sbl/scvim'
-Plug 'supercollider/scvim'
+" Plug 'supercollider/scvim'
 Plug 'davidgranstrom/scnvim', { 'do': {-> scnvim#install() } }
+" to show sc documentation in nvim
+Plug 'vim-pandoc/vim-pandoc'
+Plug 'vim-pandoc/vim-pandoc-syntax' 
 
-" Plug 'vim-pandoc/vim-pandoc'
 Plug 'sersorrel/vim-lilypond'
 
 Plug 'sainnhe/sonokai'
