@@ -5,8 +5,8 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Px437 IBM BIOS:size=8:antialias=true:autohint=true";
-static char *font2[] = { "Px437 IBM BIOS:size=8:antialias=true:autohint=true" };
+static char *font = "Px437 IBM BIOS:size=7:antialias=true:autohint=true";
+static char *font2[] = { "Px437 IBM BIOS:size=7:antialias=true:autohint=true" };
 static int borderpx = 0;
 
 /*

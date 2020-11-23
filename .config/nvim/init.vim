@@ -196,15 +196,17 @@ map <silent><nowait> <leader>p <Plug>(scnvim-postwindow-toggle)
 map <silent><nowait> <leader>b <Plug>(scnvim-hard-stop)
 map <silent><nowait> <leader>s :SCNvimStart<CR>
 " vertical 'v' or horizontal 'h' split
-let g:scnvim_postwin_orientation = 'v'
+let g:scnvim_postwin_orientation = 'h'
 " position of the post window 'right' or 'left'
 let g:scnvim_postwin_direction = 'right'
 " default is half the terminal size for vertical and a third for horizontal
-let g:scnvim_postwin_size = 60
+let g:scnvim_postwin_size = 15
 " automatically open post window on a SuperCollider error
 let g:scnvim_postwin_auto_toggle = 1
 " duration of the highlight
 let g:scnvim_eval_flash_duration = 25
+" set this variable to browse SuperCollider documentation in nvim (requires `pandoc`)
+let g:scnvim_scdoc = 1
 " number of flashes. A value of 0 disables this feature.
 let g:scnvim_eval_flash_repeats = 1
 " configure the color
