@@ -457,7 +457,7 @@ config.bind(",v", "hint links userscript youtube_downloader.sh")
 ## Background color for webpages if unset (or empty to use the theme's
 ## color).
 ## Type: QtColor
-# c.colors.webpage.bg = 'white'
+c.colors.webpage.bg = 'black'
 
 ## Which algorithm to use for modifying how colors are rendered with
 ## darkmode.
@@ -466,7 +466,7 @@ config.bind(",v", "hint links userscript youtube_downloader.sh")
 ##   - lightness-cielab: Modify colors by converting them to CIELAB color space and inverting the L value.
 ##   - lightness-hsl: Modify colors by converting them to the HSL color space and inverting the lightness (i.e. the "L" in HSL).
 ##   - brightness-rgb: Modify colors by subtracting each of r, g, and b from their maximum value.
-# c.colors.webpage.darkmode.algorithm = 'lightness-cielab'
+c.colors.webpage.darkmode.algorithm = 'lightness-cielab'
 
 ## Contrast for dark mode. This only has an effect when
 ## `colors.webpage.darkmode.algorithm` is set to `lightness-hsl` or
@@ -484,7 +484,7 @@ config.bind(",v", "hint links userscript youtube_downloader.sh")
 ## `colors.webpage.darkmode.threshold.background` to 205.  - "With
 ## selective inversion of everything": Combines the two variants   above.
 ## Type: Bool
-# c.colors.webpage.darkmode.enabled = False
+c.colors.webpage.darkmode.enabled = True
 
 ## Render all colors as grayscale. This only has an effect when
 ## `colors.webpage.darkmode.algorithm` is set to `lightness-hsl` or
@@ -939,7 +939,9 @@ config.bind(",v", "hint links userscript youtube_downloader.sh")
 
 ## List of user stylesheet filenames to use.
 ## Type: List of File, or File
-# c.content.user_stylesheets = []
+c.content.user_stylesheets = [
+    'dracula.css'
+        ]
 
 ## Enable WebGL.
 ## Type: Bool
