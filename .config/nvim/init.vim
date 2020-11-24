@@ -1,4 +1,4 @@
-scriptencodin utf-8
+scriptencoding utf-8
 source ~/.config/nvim/plugins.vim
 "   ____                           _    ___        _   _
 "  / ___| ___ _ __   ___ _ __ __ _| |  / _ \ _ __ | |_(_) ___  _ __  ___
@@ -100,8 +100,8 @@ vnoremap <silent> <nowait> <leader>j :w<CR>
 nnoremap <silent> <nowait> <leader>q <esc>:q!<CR>
 vnoremap <silent> <nowait> <leader>q <esc>:q!<CR>
 xnoremap <silent> <nowait> <leader>q <esc>:q!<CR>
-vnoremap J :m '>+1<CR>gv=gv
-vnoremap K :m '<-2<CR>gv=gv
+" vnoremap J :m '>+1<CR>gv=gv
+" vnoremap K :m '<-2<CR>gv=gv
 nnoremap <leader>rw :CocSearch <C-R>=expand("<cword>")<CR><CR>
 " center matches on screen
 nnoremap n nzz
@@ -228,6 +228,9 @@ let g:scnvim_no_mappings = 1
 let g:scnvim_scdoc = 1
 " pass flags directly to sclang - see help file for more details, caveats, and further examples
 let g:scnvim_sclang_options = ['-u', 9999]
+" help
+let g:scnvim_scdoc_render_prg = '/home/flex/.local/bin/html2text'
+" let g:scnvim_scdoc_render_args = '% -o %'
 "       _        _
 "   ___| |_ _ __| |_ __
 "  / __| __| '__| | '_ \
@@ -346,7 +349,7 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 " Use K to show documentation in preview window.
-nnoremap <silent> K :call <SID>show_documentation()<CR>
+" nnoremap <silent> K :call <SID>show_documentation()<CR>
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
     execute 'h '.expand('<cword>')

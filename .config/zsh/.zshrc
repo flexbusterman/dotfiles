@@ -71,8 +71,8 @@ alias vu="cd /home/flex/.config/newsboat/; nvim urls"
 alias vd="cd /home/flex/.local/src/dwm/; nvim config.h"
 alias vs="cd /home/flex/.local/src/st/; nvim config.h"
 alias vc="cd /home/flex/.config/nvim/; nvim coc-settings.json"
-alias vr="cd /home/flex/.config/ranger/; nvim rc.conf"
-alias vR="cd /home/flex/.config/ranger/; nvim rifle.conf"
+alias vr="cd /home/flex/.config/ranger/; nvim rifle.conf"
+alias vR="cd /home/flex/.config/ranger/; nvim rc.conf"
 
 # Keymap aliases
 alias se="setxkbmap se; setxkbmap -option caps:swapescape; xset r rate 300 50"
