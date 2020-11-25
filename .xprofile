@@ -1,12 +1,9 @@
 #/bin/sh
-
 # This file runs when a DM logs you into a graphical session.
 # If you use startx/xinit like a Chad, this file will also be sourced.
-
 # Fix Gnome Apps Slow  Start due to failing services
 # Add this when you include flatpak in your system
 dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
-
 # mpd &			# music player daemon - you might prefer it as a service though
 # remaps &		# run the remaps script, switching caps/esc and more; check it for more info
 setbg &			# set the background with the `setbg` script
@@ -18,5 +15,5 @@ unclutter &		# Remove mouse when idle
 xinput set-prop "TPPS/2 IBM TrackPoint" "libinput Accel Speed" -0.7
 xset r rate 300 50 # Speed xrate up
 setxkbmap -option "caps:swapescape"
-
+xmodmap ~/.Xmodmap
 dropbox-cli start &

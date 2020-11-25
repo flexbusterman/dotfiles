@@ -5,13 +5,6 @@ clear Mod3
 clear Mod4
 clear Mod5
 
-! setting all the modification keys
-add Mod1 = Super_L
-add Mod2 = Num_Lock
-add mod3 = Multi_key
-add mod4 = Alt_L
-add mod5 = ISO_Level3_Shift
-
 ! clear must be done before configuring it
 keycode 64 = 
 keycode 108 = 
@@ -23,4 +16,10 @@ keycode 64 = Super_L
 keycode 108 = Multi_key
 keycode 133 = Alt_L
 
-! remove Mod1 = Alt_R
+! setting all the modification keys
+add Mod1 = Super_L
+add Mod2 = Num_Lock
+add mod3 = Multi_key
+add mod4 = Alt_L
+add mod5 = ISO_Level3_Shift
+

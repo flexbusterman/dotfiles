@@ -156,8 +156,13 @@ nmap <leader>gh :diffget //2<CR>
 nmap <leader>gl :diffget //3<CR>
 " mobile screenshot renaming
 let @s='dt_xllla-lla-lllr lla_lla_0j'
-
-
+" resizing splits
+nmap <silent> <leader>ww <C-w>=
+" nmap <silent> <Leader>wk :exe "resize " . (winheight(0) * 3/2)<CR>
+nmap <silent> <Leader>wk :resize +20<CR>
+nmap <silent> <Leader>wj :resize -20<CR>
+nmap <silent> <Leader>wh :vertical resize -20<CR>
+nmap <silent> <Leader>wl :vertical resize +20<CR>
 "  _   _ _____ ____  ____ _____
 " | \ | | ____|  _ \|  _ \_   _| __ ___  ___
 " |  \| |  _| | |_) | | | || || '__/ _ \/ _ \
