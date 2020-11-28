@@ -41,6 +41,7 @@ alias du='du -h'
 alias d='cd ~/Downloads; exa'
 alias de='find . -empty -type d -delete'
 alias D='cd ~/Dropbox; exa'
+alias hs="du -hs ."
 
 # Dropbox aliases
 alias dls="dropbox-cli ls"
