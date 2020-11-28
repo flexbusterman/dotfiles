@@ -73,6 +73,9 @@ static const int resizehints = 1;    /* 1 means respect size hints in tiled resi
 #include "vanitygaps.c"
 static const Layout layouts[] = {
   /* symbol     arrange function */
+  { "|M|",  centeredmaster },   /* Master in middle, slaves on sides */
+  { ">M>",  centeredfloatingmaster }, /* Same but master floats */
+
   { "[@]",  spiral },   /* Fibonacci spiral */
   { "TTT",  bstack },   /* Master on top, slaves on bottom */
 
@@ -81,9 +84,6 @@ static const Layout layouts[] = {
 
   { "H[]",  deck },     /* Master on left, slaves in monocle-like mode on right */
   { "[M]",  monocle },    /* All windows on top of eachother */
-
-  { "|M|",  centeredmaster },   /* Master in middle, slaves on sides */
-  { ">M>",  centeredfloatingmaster }, /* Same but master floats */
 
   { "><>",  NULL },     /* no layout function means floating behavior */
   { NULL,   NULL },
@@ -162,10 +162,10 @@ static Key keys[] = {
     TAGKEYS(      XK_9,   8)
     { MODKEY,     XK_0,   view,   {.ui = ~0 } },
     { MODKEY|ShiftMask,   XK_0,   tag,    {.ui = ~0 } },
-    { MODKEY,     XK_minus, spawn,    SHCMD("pamixer --allow-boost -d 5; kill -44 $(pidof dwmblocks)") },
-    { MODKEY|ShiftMask,   XK_minus, spawn,    SHCMD("pamixer --allow-boost -d 15; kill -44 $(pidof dwmblocks)") },
-    { MODKEY,     XK_equal, spawn,    SHCMD("pamixer --allow-boost -i 5; kill -44 $(pidof dwmblocks)") },
-    { MODKEY|ShiftMask,   XK_equal, spawn,    SHCMD("pamixer --allow-boost -i 15; kill -44 $(pidof dwmblocks)") },
+    // { MODKEY,     XK_minus, spawn,    SHCMD("pamixer --allow-boost -d 5; kill -44 $(pidof dwmblocks)") },
+    // { MODKEY|ShiftMask,   XK_minus, spawn,    SHCMD("pamixer --allow-boost -d 15; kill -44 $(pidof dwmblocks)") },
+    // { MODKEY,     XK_equal, spawn,    SHCMD("pamixer --allow-boost -i 5; kill -44 $(pidof dwmblocks)") },
+    // { MODKEY|ShiftMask,   XK_equal, spawn,    SHCMD("pamixer --allow-boost -i 15; kill -44 $(pidof dwmblocks)") },
     { MODKEY,     XK_BackSpace, spawn,    SHCMD("sysact") },
     { MODKEY|ShiftMask,   XK_BackSpace, spawn,    SHCMD("sysact") },
 
@@ -177,7 +177,7 @@ static Key keys[] = {
     { MODKEY|ShiftMask,   XK_w,   spawn,    SHCMD("st -e sudo nmtui") },
     { MODKEY,     XK_e,   spawn,    SHCMD("st -e neomutt") },
     { MODKEY|ShiftMask,   XK_e,   spawn,    SHCMD("st -e abook -C ~/.config/abook/abookrc --datafile ~/.config/abook/addressbook") },
-    // { MODKEY|ShiftMask,   XK_h,   spawn,    SHCMD("st -e bashtop") },
+		{ MODKEY,   XK_p,   spawn,    SHCMD("st -e htop") },
     // { MODKEY,   XK_h,   spawn,    SHCMD("st -e htop") },
     { MODKEY,     XK_t,   setlayout,  {.v = &layouts[2]} }, /* tile */
     { MODKEY|ShiftMask,   XK_t,   setlayout,  {.v = &layouts[1]} }, /* bstack */
@@ -187,8 +187,10 @@ static Key keys[] = {
     { MODKEY|ShiftMask,   XK_u,   setlayout,  {.v = &layouts[5]} }, /* monocle */
     { MODKEY,     XK_i,   setlayout,  {.v = &layouts[6]} }, /* centeredmaster */
     { MODKEY|ShiftMask,   XK_i,   setlayout,  {.v = &layouts[7]} }, /* centeredfloatingmaster */
-    { MODKEY,     XK_o,   incnmaster,     {.i = +1 } },
-    { MODKEY|ShiftMask,   XK_o,   incnmaster,     {.i = -1 } },
+    { MODKEY,     XK_equal,   incnmaster,     {.i = +1 } },
+    { MODKEY,   XK_minus,   incnmaster,     {.i = -1 } },
+    // { MODKEY,     XK_o,   incnmaster,     {.i = +1 } },
+    // { MODKEY|ShiftMask,   XK_o,   incnmaster,     {.i = -1 } },
     // { MODKEY,     XK_p,     spawn,    SHCMD("mpc toggle") },
     { MODKEY|ShiftMask,   XK_p,     spawn,    SHCMD("pulseeffects") },
 		{ MODKEY,     XK_Left,   spawn,    SHCMD("audtool playback-seek-relative -10") },
