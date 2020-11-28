@@ -39,7 +39,7 @@ alias grep="grep -i"
 alias ud='sudo updatedb'
 alias du='du -h'
 alias de='find . -empty -type d -delete'
-alias hs="du -hs ."
+alias du="du -hs ."
 
 # Navigation shortcuts
 alias d='cd ~/Dropbox; exa'
