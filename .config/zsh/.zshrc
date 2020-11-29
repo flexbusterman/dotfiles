@@ -18,257 +18,6 @@ setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording en
 setopt HIST_VERIFY               # Don't execute immediately upon history expansion.
 setopt HIST_BEEP                 # Beep when accessing nonexisten
 
-# Other aliases
-alias ls="exa"
-alias lsg="exa | grep -i"
-alias la="exa -la"
-alias lag="exa -la | grep -i"
-alias fs="df -h | grep --color='never' 'Filesystem\|sd'"
-alias copy='xclip -sel clip'
-alias rf='rm -rf'
-alias res="xdpyinfo | awk '/dimensions/{print $2}'"
-alias q="exit"
-alias ig="brave --app=\"http://www.instagram.com/direct/inbox/\""
-alias gb="git branch"
-alias ra="pulseaudio --kill; jack_control start; jack_control exit; pulseaudio --start;"
-alias vim="nvim"
-alias dot='/usr/bin/git --git-dir=$HOME/.dot.git/ --work-tree=$HOME'
-alias bs='browser-sync start --server --directory --files "*"'
-alias grep="grep -i"
-# alias live="wine64 /home/flex/Wine/Program\ Files/Ableton/Live\ 10\ Suite/Program/Ableton\ Live\ 10\ Suite.exe"
-alias ud='sudo updatedb'
-alias du='du -h'
-alias de='find . -empty -type d -delete'
-alias du="du -hs ."
-
-# Navigation shortcuts
-alias d='cd ~/Dropbox; exa'
-alias D='cd ~/Downloads; exa'
-
-# Dropbox aliases
-alias dls="dropbox-cli ls"
-alias deg="dropbox-cli exclude | grep -i"
-alias drm="dropbox-cli exclude add"
-alias drma="ls | sed 's/ /\\ /g' | sed 's/'\''/\\'\''/g' | xargs dropbox-cli exclude add"
-alias dsl="dropbox-cli sharelink"
-alias dadd="dropbox-cli exclude remove"
-alias daddx="sed 's/ /\\ /g' | sed 's/'\''/\\'\''/g' | xargs dropbox-cli exclude remove"
-alias ds='dropbox-cli status'
-alias dr='dropbox-cli restart'
-
-# WIFI connection aliases
-alias wls="nmcli dev wifi"
-alias wla="nmcli c"
-alias ws="nmcli device status"
-alias wd="nmcli device disconnect"
-wrm() { nmcli con delete $* }
-wc() { nmcli device wifi connect $1 password $2 }
-wdisable() { nmcli connection down $* }
-
-# VIM aliases for editing common files
-alias vz="cd /home/flex/.config/zsh/; nvim .zshrc"
-alias vx="cd /home/flex/; nvim .xprofile"
-alias vn="cd /home/flex/.config/nvim/; nvim init.vim"
-alias vp="cd /home/flex/.config/nvim/; nvim plugins.vim"
-alias vu="cd /home/flex/.config/newsboat/; nvim urls"
-alias vd="cd /home/flex/.local/src/dwm/; nvim config.h"
-alias vs="cd /home/flex/.local/src/st/; nvim config.h"
-alias vc="cd /home/flex/.config/nvim/; nvim coc-settings.json"
-alias vr="cd /home/flex/.config/ranger/; nvim rifle.conf"
-alias vR="cd /home/flex/.config/ranger/; nvim rc.conf"
-
-# Keymap aliases
-alias se="setxkbmap se; setxkbmap -option caps:swapescape; xset r rate 300 50"
-alias us="setxkbmap us; setxkbmap -option caps:swapescape; xset r rate 300 50"
-
-# Pacman shortcut functions
-pin () { sudo pacman -S --noconfirm $* }
-pun () { sudo pacman -Rns $* }
-prm () { sudo pacman -Rns $* }
-pup () { sudo pacman -Syu }
-pf (){ pacman -Ss "$*" }
-pls (){ pacman -Qe }
-pla (){ pacman -Q }
-pc (){ sudo pacman -Scc }
-
-# Yaourt shortcuts functions
-yin () { yaourt -S --noconfirm $* }
-yun () { yaourt -Rs $* }
-yrm () { yaourt -Rs $* }
-yup () { yaourt -Syua --noconfirm}
-yf () { yaourt -Ss $* }
-yls () { yaourt -Q }
-
-datefolder(){
-for f in $*
-do
-	if [ -z "$('ls' -A $f)" ]
-	then
-	elif [ -d "$f" ]
-	then
-		cd "$f"
-		NEWEST=$(date +"%Y%m%d")
-		for file in *
-		do
-			if [ -f $file ]
-			then
-				if [ $(date -r $file +"%Y%m%d") -le $NEWEST ]
-				then
-					NEWEST=$(date -r "$file" +"%Y%m%d")
-				fi
-			fi
-		done
-		cd ..
-		YEAR=$(echo $NEWEST | cut -c 1-4)
-		MONTH=$(echo $NEWEST | cut -c 5-6)
-		DAY=$(echo $NEWEST | cut -c 7-8)
-		RESULT="$YEAR-$MONTH-$DAY $f"
-		if [[ $f =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}.* ]]
-		then
-			echo "$f already begins with date"
-		else
-			echo "Renaming: $f => $RESULT"
-			mv $f $RESULT
-		fi
-	fi
-done
-}
-
-datefile(){
-	for f in $*
-	do
-		if [ -f "$f" ]
-		then
-			DATE=$(date -r "$f" +"%Y%m%d")
-			YEAR=$(echo $DATE | cut -c 1-4)
-			MONTH=$(echo $DATE | cut -c 5-6)
-			DAY=$(echo $DATE | cut -c 7-8)
-			RESULT="$YEAR-$MONTH-$DAY $f"
-			# if [[ $f =~ ^[0-9]{4}-.*$ ]]
-			if [[ $f =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}.* ]]
-			then
-				echo "$f already begins with date"
-			else
-				echo "Renaming: $f => $RESULT"
-				mv $f $RESULT
-			fi
-		fi
-	done
-}
-
-train(){
-	st -e zsh -c "libreoffice /home/flex/Dropbox/DROPSYNC/\!\ TRANSFER/Beginner\ Template\ Augustin.xlsx" &
-	termdown --no-figlet
-}
-
-t(){
-	termdown --no-figlet $*
-}
-
-beer(){
-	while true
-	do
-		echo '                       '
-		echo '  .   *   ..  . *  *   '
-		echo '*  * @()Ooc()*   o  .  '
-		echo '    (Q@*0CG*O()  ___   '
-		echo '   |\_________/|/ _ \  '
-		echo '   |  |  |  |  | / | | '
-		echo '   |  |  |  |  | | | | '
-		echo '   |  |  |  |  | | | | '
-		echo '   |  |  |  |  | | | | '
-		echo '   |  |  |  |  | | | | '
-		echo '   |  |  |  |  | \_| | '
-		echo '   |  |  |  |  |\___/  '
-		echo '   |\_|__|__|_/|       '
-		echo '    \_________/        '
-		echo '                       '
-		sleep 5
-	done
-}
-
-# ssh add function
-sa () {
-	eval "$(ssh-agent -s)"
-	ssh-add ~/.ssh/$*
-}
-
-# prepend date
-pd () {
-  date=$(date +%F)
-  mv "$*" "$date $*"
-}
-
-# git functions
-gp () {
-  result="\"$*\""
-  git add .
-  git commit -m $result
-  git push
-}
-
-gpd () {
-  result="\"$*\""
-  git add .
-  git commit -m $result
-  git push origin dev
-}
-
-
-dp () {
-  result="\"$*\""
-  dot add -u
-  dot commit -m $result
-  dot push
-}
-
-hg () { history 0 | grep -i $* }
-
-mind () {
-	st -t dev -e zsh -c "cd ~/GIT/mind/; zsh -c \"npm run dev\"" &
-	sleep 2
-	firefox --devtools --new-window localhost:8000 &
-	firefox --new-window https://xd.adobe.com/view/035ce4d8-ddd4-4c00-752c-3f6187a5d998-756d/grid &
-	st -t wiki -e zsh -c "cd ~/Documents/; nvim Scandinavian\ Mind.wiki" &
-	st -t terminal -e zsh -c "cd ~/GIT/mind/; eval \"$(ssh-agent -s)\" && ssh-add ~/.ssh/mind;" &
-	# sleep 0.5
-	st -t main -e zsh -c "cd ~/GIT/mind/; eval \"$(ssh-agent -s)\" && ssh-add ~/.ssh/mind; cd ~/GIT/mind/; nvim pages/index.vue;" &
-}
-
-dev () {
-  st -e zsh -c "cd ~/GIT/kalle2019; zsh -c \"npm run dev\"" &
-  st -e zsh -c "cd ~/Documents/; nvim -c \"autocmd! CursorHold * CocDisable\" Buffalo\ Bill\ Gates.wiki" &
-  cd ~/GIT/kalle2019/; nvim;
-}
-
-aug () {
-  st -t SuperCollider -e zsh -c "cd ~/Dropbox/SUPERCOLLIDER/; nvim -c \"NERDTreeToggle | set filetype=supercollider | SCNvimStart\"" &
-  bitwig-studio &
-  st -t aug -e zsh -c "sleep 5; aconnect 128:7 16:0"
-}
-
-# Locate and Edit
-le(){
-	locate $* | sed 1q | xargs nvim
-}
-
-# Find Recursively and case-insensitive
-fr(){
-find . -path '**' -iname '$*'
-}
-
-#Aggressive autocomplete
-#autoload predict-on
-#predict-on
-
-# Add ssh tokens
-eval "$(ssh-agent -s)"
-ssh-add ~/.ssh/flexgit
-ssh-add ~/.ssh/bitbucket
-ssh-add ~/.ssh/drop
-ssh-add ~/.ssh/mind
-clear
-
 # bind ctrl+space accept completion
 bindkey -r '^L'
 bindkey '^L' autosuggest-accept
@@ -547,3 +296,256 @@ zle-line-init() {
 zle -N zle-line-init
 echo -ne '\e[5 q' # Use beam shape cursor on startup.
 preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
+
+
+# Other aliases
+alias ls="exa"
+alias lsg="exa | grep -i"
+alias la="exa -la"
+alias lag="exa -la | grep -i"
+alias fs="df -h | grep --color='never' 'Filesystem\|sd'"
+alias copy='xclip -sel clip'
+alias rf='rm -rf'
+alias res="xdpyinfo | awk '/dimensions/{print $2}'"
+alias q="exit"
+alias ig="brave --app=\"http://www.instagram.com/direct/inbox/\""
+alias gb="git branch"
+alias ra="pulseaudio --kill; jack_control start; jack_control exit; pulseaudio --start;"
+alias vim="nvim"
+alias dot='/usr/bin/git --git-dir=$HOME/.dot.git/ --work-tree=$HOME'
+alias bs='browser-sync start --server --directory --files "*"'
+alias grep="grep -i"
+# alias live="wine64 /home/flex/Wine/Program\ Files/Ableton/Live\ 10\ Suite/Program/Ableton\ Live\ 10\ Suite.exe"
+alias ud='sudo updatedb'
+alias du='du -h'
+alias de='find . -empty -type d -delete'
+alias du="du -hs ."
+
+# Navigation shortcuts
+alias d='cd ~/Dropbox; exa'
+alias D='cd ~/Downloads; exa'
+
+# Dropbox aliases
+alias dls="dropbox-cli ls"
+alias deg="dropbox-cli exclude | grep -i"
+alias drm="dropbox-cli exclude add"
+alias drma="ls | sed 's/ /\\ /g' | sed 's/'\''/\\'\''/g' | xargs dropbox-cli exclude add"
+alias dsl="dropbox-cli sharelink"
+alias dadd="dropbox-cli exclude remove"
+alias daddx="sed 's/ /\\ /g' | sed 's/'\''/\\'\''/g' | xargs dropbox-cli exclude remove"
+alias ds='dropbox-cli status'
+alias dr='dropbox-cli restart'
+
+# WIFI connection aliases
+alias wls="nmcli dev wifi"
+alias wla="nmcli c"
+alias ws="nmcli device status"
+alias wd="nmcli device disconnect"
+wrm() { nmcli con delete $* }
+wc() { nmcli device wifi connect $1 password $2 }
+wdisable() { nmcli connection down $* }
+
+# VIM aliases for editing common files
+alias vz="cd /home/flex/.config/zsh/; nvim .zshrc"
+alias vx="cd /home/flex/; nvim .xprofile"
+alias vn="cd /home/flex/.config/nvim/; nvim init.vim"
+alias vp="cd /home/flex/.config/nvim/; nvim plugins.vim"
+alias vu="cd /home/flex/.config/newsboat/; nvim urls"
+alias vd="cd /home/flex/.local/src/dwm/; nvim config.h"
+alias vs="cd /home/flex/.local/src/st/; nvim config.h"
+alias vc="cd /home/flex/.config/nvim/; nvim coc-settings.json"
+alias vr="cd /home/flex/.config/ranger/; nvim rifle.conf"
+alias vR="cd /home/flex/.config/ranger/; nvim rc.conf"
+
+# Keymap aliases
+alias se="setxkbmap se; setxkbmap -option caps:swapescape; xset r rate 300 50"
+alias us="setxkbmap us; setxkbmap -option caps:swapescape; xset r rate 300 50"
+
+# Pacman shortcut functions
+pin () { sudo pacman -S --noconfirm $* }
+pun () { sudo pacman -Rns $* }
+prm () { sudo pacman -Rns $* }
+pup () { sudo pacman -Syu }
+pf (){ pacman -Ss "$*" }
+pls (){ pacman -Qe }
+pla (){ pacman -Q }
+pc (){ sudo pacman -Scc }
+
+# Yaourt shortcuts functions
+yin () { yaourt -S --noconfirm $* }
+yun () { yaourt -Rs $* }
+yrm () { yaourt -Rs $* }
+yup () { yaourt -Syua --noconfirm}
+yf () { yaourt -Ss $* }
+yls () { yaourt -Q }
+
+datefolder(){
+for f in $*
+do
+	if [ -z "$('ls' -A $f)" ]
+	then
+	elif [ -d "$f" ]
+	then
+		cd "$f"
+		NEWEST=$(date +"%Y%m%d")
+		for file in *
+		do
+			if [ -f $file ]
+			then
+				if [ $(date -r $file +"%Y%m%d") -le $NEWEST ]
+				then
+					NEWEST=$(date -r "$file" +"%Y%m%d")
+				fi
+			fi
+		done
+		cd ..
+		YEAR=$(echo $NEWEST | cut -c 1-4)
+		MONTH=$(echo $NEWEST | cut -c 5-6)
+		DAY=$(echo $NEWEST | cut -c 7-8)
+		RESULT="$YEAR-$MONTH-$DAY $f"
+		if [[ $f =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}.* ]]
+		then
+			echo "$f already begins with date"
+		else
+			echo "Renaming: $f => $RESULT"
+			mv $f $RESULT
+		fi
+	fi
+done
+}
+
+datefile(){
+	for f in $*
+	do
+		if [ -f "$f" ]
+		then
+			DATE=$(date -r "$f" +"%Y%m%d")
+			YEAR=$(echo $DATE | cut -c 1-4)
+			MONTH=$(echo $DATE | cut -c 5-6)
+			DAY=$(echo $DATE | cut -c 7-8)
+			RESULT="$YEAR-$MONTH-$DAY $f"
+			# if [[ $f =~ ^[0-9]{4}-.*$ ]]
+			if [[ $f =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}.* ]]
+			then
+				echo "$f already begins with date"
+			else
+				echo "Renaming: $f => $RESULT"
+				mv $f $RESULT
+			fi
+		fi
+	done
+}
+
+train(){
+	st -e zsh -c "libreoffice /home/flex/Dropbox/DROPSYNC/\!\ TRANSFER/Beginner\ Template\ Augustin.xlsx" &
+	termdown --no-figlet
+}
+
+t(){
+	termdown --no-figlet $*
+}
+
+beer(){
+	while true
+	do
+		echo '                       '
+		echo '  .   *   ..  . *  *   '
+		echo '*  * @()Ooc()*   o  .  '
+		echo '    (Q@*0CG*O()  ___   '
+		echo '   |\_________/|/ _ \  '
+		echo '   |  |  |  |  | / | | '
+		echo '   |  |  |  |  | | | | '
+		echo '   |  |  |  |  | | | | '
+		echo '   |  |  |  |  | | | | '
+		echo '   |  |  |  |  | | | | '
+		echo '   |  |  |  |  | \_| | '
+		echo '   |  |  |  |  |\___/  '
+		echo '   |\_|__|__|_/|       '
+		echo '    \_________/        '
+		echo '                       '
+		sleep 5
+	done
+}
+
+# ssh add function
+sa () {
+	eval "$(ssh-agent -s)"
+	ssh-add ~/.ssh/$*
+}
+
+# prepend date
+pd () {
+  date=$(date +%F)
+  mv "$*" "$date $*"
+}
+
+# git functions
+gp () {
+  result="\"$*\""
+  git add .
+  git commit -m $result
+  git push
+}
+
+gpd () {
+  result="\"$*\""
+  git add .
+  git commit -m $result
+  git push origin dev
+}
+
+
+dp () {
+  result="\"$*\""
+  dot add -u
+  dot commit -m $result
+  dot push
+}
+
+hg () { history 0 | grep -i $* }
+
+mind () {
+	st -t dev -e zsh -c "cd ~/GIT/mind/; zsh -c \"npm run dev\"" &
+	sleep 2
+	firefox --devtools --new-window localhost:8000 &
+	firefox --new-window https://xd.adobe.com/view/035ce4d8-ddd4-4c00-752c-3f6187a5d998-756d/grid &
+	st -t wiki -e zsh -c "cd ~/Documents/; nvim Scandinavian\ Mind.wiki" &
+	st -t terminal -e zsh -c "cd ~/GIT/mind/; eval \"$(ssh-agent -s)\" && ssh-add ~/.ssh/mind;" &
+	# sleep 0.5
+	st -t main -e zsh -c "cd ~/GIT/mind/; eval \"$(ssh-agent -s)\" && ssh-add ~/.ssh/mind; cd ~/GIT/mind/; nvim pages/index.vue;" &
+}
+
+dev () {
+  st -e zsh -c "cd ~/GIT/kalle2019; zsh -c \"npm run dev\"" &
+  st -e zsh -c "cd ~/Documents/; nvim -c \"autocmd! CursorHold * CocDisable\" Buffalo\ Bill\ Gates.wiki" &
+  cd ~/GIT/kalle2019/; nvim;
+}
+
+aug () {
+  st -t SuperCollider -e zsh -c "cd ~/Dropbox/SUPERCOLLIDER/; nvim -c \"NERDTreeToggle | set filetype=supercollider | SCNvimStart\"" &
+  bitwig-studio &
+  st -t aug -e zsh -c "sleep 5; aconnect 128:7 16:0"
+}
+
+# Locate and Edit
+le(){
+	locate $* | sed 1q | xargs nvim
+}
+
+# Find Recursively and case-insensitive
+fr(){
+find . -path '**' -iname '$*'
+}
+
+#Aggressive autocomplete
+#autoload predict-on
+#predict-on
+
+# Add ssh tokens
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/flexgit
+ssh-add ~/.ssh/bitbucket
+ssh-add ~/.ssh/drop
+ssh-add ~/.ssh/mind
+clear
+
