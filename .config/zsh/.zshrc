@@ -156,15 +156,16 @@ setopt HIST_FIND_NO_DUPS
 # (cat ~/.cache/wal/sequences &)
 
 # zplug plugin manager
-# source ~/.zplug/init.zsh
-# zplug "simnalamburt/zsh-expand-all"
-# # Install plugins if there are plugins that have not been installed
-# if ! zplug check --verbose; then
-    # printf "Install? [y/N]: "
-    # if read -q; then
-        # echo; zplug install
-    # fi
-# fi
+source ~/.zplug/init.zsh
+zplug "simnalamburt/zsh-expand-all"
+# zplug "momo-lab/zsh-abbrev-alias"
+# Install plugins if there are plugins that have not been installed
+if ! zplug check --verbose; then
+		printf "Install? [y/N]: "
+		if read -q; then
+				echo; zplug install
+		fi
+fi
 
 # trying out oh my zsh
 
@@ -238,7 +239,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(globalias vi-mode)
+plugins=(vi-mode)
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -468,43 +469,20 @@ beer(){
 }
 
 # ssh add function
-sa () {
+sa() {
 	eval "$(ssh-agent -s)"
 	ssh-add ~/.ssh/$*
 }
 
 # prepend date
-pd () {
+pd() {
   date=$(date +%F)
   mv "$*" "$date $*"
 }
 
-# git functions
-gp () {
-  result="\"$*\""
-  git add .
-  git commit -m $result
-  git push
-}
+hg() { history 0 | grep -i $* }
 
-gpd () {
-  result="\"$*\""
-  git add .
-  git commit -m $result
-  git push origin dev
-}
-
-
-dp () {
-  result="\"$*\""
-  dot add -u
-  dot commit -m $result
-  dot push
-}
-
-hg () { history 0 | grep -i $* }
-
-mind () {
+mind() {
 	st -t dev -e zsh -c "cd ~/GIT/mind/; zsh -c \"npm run dev\"" &
 	sleep 2
 	firefox --devtools --new-window localhost:8000 &
@@ -515,13 +493,13 @@ mind () {
 	st -t main -e zsh -c "cd ~/GIT/mind/; eval \"$(ssh-agent -s)\" && ssh-add ~/.ssh/mind; cd ~/GIT/mind/; nvim pages/index.vue;" &
 }
 
-dev () {
+dev() {
   st -e zsh -c "cd ~/GIT/kalle2019; zsh -c \"npm run dev\"" &
   st -e zsh -c "cd ~/Documents/; nvim -c \"autocmd! CursorHold * CocDisable\" Buffalo\ Bill\ Gates.wiki" &
   cd ~/GIT/kalle2019/; nvim;
 }
 
-aug () {
+aug() {
   st -t SuperCollider -e zsh -c "cd ~/Dropbox/SUPERCOLLIDER/; nvim -c \"NERDTreeToggle | set filetype=supercollider | SCNvimStart\"" &
   bitwig-studio &
   st -t aug -e zsh -c "sleep 5; aconnect 128:7 16:0"
@@ -537,6 +515,27 @@ fr(){
 find . -path '**' -iname '$*'
 }
 
+gp() {
+  result="\"$*\""
+  git add .
+  git commit -m $result
+  git push
+}
+
+gpd() {
+  result="\"$*\""
+  git add .
+  git commit -m $result
+  git push origin dev
+}
+
+
+dp() {
+  result="\"$*\""
+  dot add -u
+  dot commit -m $result
+  dot push
+}
 #Aggressive autocomplete
 #autoload predict-on
 #predict-on
@@ -548,4 +547,15 @@ ssh-add ~/.ssh/bitbucket
 ssh-add ~/.ssh/drop
 ssh-add ~/.ssh/mind
 clear
+
+zplug load
+
+# expand-alias-and-accept-line() {
+    # __abbrev_alias::magic_abbrev_expand
+    # # zle .backward-delete-char # this prevets a ^M character from ending up as part of the command
+    # zle .accept-line
+# }
+
+# zle -N accept-line expand-alias-and-accept-line
+#
 
