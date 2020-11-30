@@ -63,6 +63,7 @@ static const Rule rules[] = {
   { "firefox",      NULL,         NULL,      1 << 1,               0,           1,         1,        -1 },
   { "Patchage",      NULL,         NULL,      1 << 1,               0,           1,         1,        -1 },
 { "Spotify",     NULL,       NULL,  1 << 2,       0,           0,         0,        -1 },
+{ "deadbeef",     NULL,       NULL,  1 << 2,       0,           0,         0,        -1 },
 };
 
 /* layout(s) */
@@ -278,9 +279,25 @@ static Key keys[] = {
 { MODKEY,     XK_Delete,  spawn,    SHCMD("dmenurecord kill") },
 { MODKEY,     XK_Scroll_Lock, spawn,    SHCMD("killall screenkey || screenkey &") },
 
+	// music controls
+{ ControlMask|ShiftMask, XK_k, spawn,    SHCMD("pamixer --allow-boost -i 3; kill -44 $(pidof dwmblocks)") },
+{ ControlMask|ShiftMask, XK_j, spawn,    SHCMD("pamixer --allow-boost -d 3; kill -44 $(pidof dwmblocks)") },
+{ ControlMask|ShiftMask, XK_h, spawn,    SHCMD("deadbeef --prev") },
+{ ControlMask|ShiftMask, XK_l, spawn,    SHCMD("deadbeef --next") },
+{ ControlMask|ShiftMask, XK_space, spawn,    SHCMD("deadbeef --play-pause") },
+{ ControlMask|ShiftMask, XK_q, spawn,    SHCMD("deadbeef --quit") },
+{ ControlMask|ShiftMask, XK_d, spawn,    SHCMD("deadbeef") },
+
 { 0, XF86XK_AudioMute,    spawn,    SHCMD("pamixer -t; kill -44 $(pidof dwmblocks)") },
 { 0, XF86XK_AudioRaiseVolume, spawn,    SHCMD("pamixer --allow-boost -i 3; kill -44 $(pidof dwmblocks)") },
 { 0, XF86XK_AudioLowerVolume, spawn,    SHCMD("pamixer --allow-boost -d 3; kill -44 $(pidof dwmblocks)") },
+// { 0, XF86XK_AudioPrev,    spawn,    SHCMD("mpc prev") },
+// { 0, XF86XK_AudioNext,    spawn,    SHCMD("mpc next") },
+// { 0, XF86XK_AudioPause,   spawn,    SHCMD("mpc pause") },
+// { 0, XF86XK_AudioPlay,    spawn,    SHCMD("mpc play") },
+// { 0, XF86XK_AudioStop,    spawn,    SHCMD("mpc stop") },
+// { 0, XF86XK_AudioRewind,  spawn,    SHCMD("mpc seek -10") },
+// { 0, XF86XK_AudioForward, spawn,    SHCMD("mpc seek +10") },
 { 0, XF86XK_AudioPrev,    spawn,    SHCMD("mpc prev") },
 { 0, XF86XK_AudioNext,    spawn,    SHCMD("mpc next") },
 { 0, XF86XK_AudioPause,   spawn,    SHCMD("mpc pause") },
