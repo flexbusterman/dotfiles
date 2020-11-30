@@ -57,7 +57,7 @@ export AWT_TOOLKIT="MToolkit wmname LG3D"	#May have to install wmname
 export _JAVA_AWT_WM_NONREPARENTING=1	# Fix for Java applications in dwm
 export QT_QPA_PLATFORMTHEME=qt5ct
 
-This is the list for lf icons:
+# This is the list for lf icons:
 # export LF_ICONS="di=📁:\
 # fi=📃:\
 # tw=🤝:\
