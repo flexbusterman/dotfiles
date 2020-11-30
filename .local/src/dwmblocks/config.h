@@ -3,6 +3,7 @@ static const Block blocks[] = {
   /*Icon*/  /*Command*/   /*Update Interval*/ /*Update Signal*/
 	// {"",  "dropbox", 5,  0},
 	{"",	"nettraf",	1,	16},
+	{"",	"deadbeef",	10,	0},
   {"",  "internet", 20,  4},
 	{"",  "disk", 15,  5},
   {"",  "memory", 10, 18},
