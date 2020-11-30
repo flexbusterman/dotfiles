@@ -321,7 +321,7 @@ alias ud='sudo updatedb'
 alias du='du -h'
 alias de='find . -empty -type d -delete'
 alias du="du -hs ."
-alias play="ffplay -nodisp"
+alias play="ffplay -nodisp -autoexit"
 
 # Navigation shortcuts
 alias d='cd ~/Dropbox; exa'
@@ -445,6 +445,10 @@ train(){
 
 t(){
 	termdown --no-figlet $*
+}
+
+tf(){
+	termdown --no-figlet $* && ffplay -nodisp -autoexit /home/flex/Dropbox/MUSIC/fanfare.mp3
 }
 
 beer(){

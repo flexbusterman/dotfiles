@@ -20,3 +20,4 @@ dropbox-cli start &
 # deadbeef &
 # slstatus &
 # verbar &
+# cadence-session-start --system-start
