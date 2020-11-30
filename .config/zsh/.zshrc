@@ -239,8 +239,8 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(vi-mode)
-source $ZSH/oh-my-zsh.sh
+# plugins=()
+# source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
@@ -321,6 +321,7 @@ alias ud='sudo updatedb'
 alias du='du -h'
 alias de='find . -empty -type d -delete'
 alias du="du -hs ."
+alias play="ffplay -nodisp"
 
 # Navigation shortcuts
 alias d='cd ~/Dropbox; exa'
@@ -483,6 +484,7 @@ pd() {
 hg() { history 0 | grep -i $* }
 
 mind() {
+	cd /home/flex/GIT/mind
 	st -t dev -e zsh -c "cd ~/GIT/mind/; zsh -c \"npm run dev\"" &
 	sleep 2
 	firefox --devtools --new-window localhost:8000 &
