@@ -9,7 +9,7 @@ static const unsigned int gappiv    = 30;       /* vert inner gap between window
 static const unsigned int gappoh    = 30;       /* horiz outer gap between windows and screen edge */
 static const unsigned int gappov    = 30;       /* vert outer gap between windows and screen edge */
 static const int smartgaps          = 1;        /* 1 means no outer gap when there is only one window */
-static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
+static const int swallowfloating    = 1;        /* 1 means swallow floating windows by default */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "Px437 IBM BIOS:size=7:antialias=true:autohint=true"};
@@ -67,7 +67,7 @@ static const Rule rules[] = {
 };
 
 /* layout(s) */
-static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
+static const float mfact     = 0.50; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
 #define FORCE_VSPLIT 1  /* nrowgrid layout: force two clients to always split vertically */
@@ -228,7 +228,7 @@ static Key keys[] = {
 { MODKEY,     XK_x,   incrgaps, {.i = -3 } },
   /* { MODKEY|ShiftMask,    XK_x,   spawn,    SHCMD("") }, */
   /* { MODKEY,      XK_c,   spawn,    SHCMD("") }, */
-  /* { MODKEY|ShiftMask,    XK_c,   spawn,    SHCMD("") }, */
+	{ MODKEY|ShiftMask,    XK_c,   spawn,    SHCMD("cadence") },
   /* V is automatically bound above in STACKKEYS */
 { MODKEY,     XK_s,   togglebar,  {0} },
   /* { MODKEY|ShiftMask,    XK_b,   spawn,    SHCMD("") }, */

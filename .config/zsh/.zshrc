@@ -322,6 +322,7 @@ alias du='du -h'
 alias de='find . -empty -type d -delete'
 alias du="du -hs ."
 alias play="ffplay -nodisp -autoexit"
+alias np="deadbeef --nowplaying %d/%f"
 
 # Navigation shortcuts
 alias d='cd ~/Dropbox; exa'
