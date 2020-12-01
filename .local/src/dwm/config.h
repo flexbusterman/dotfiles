@@ -74,11 +74,11 @@ static const int resizehints = 1;    /* 1 means respect size hints in tiled resi
 #include "vanitygaps.c"
 static const Layout layouts[] = {
   /* symbol     arrange function */
-  { "|M|",  centeredmaster },   /* Master in middle, slaves on sides */
-  { ">M>",  centeredfloatingmaster }, /* Same but master floats */
-
   { "[@]",  spiral },   /* Fibonacci spiral */
   { "TTT",  bstack },   /* Master on top, slaves on bottom */
+
+  { "|M|",  centeredmaster },   /* Master in middle, slaves on sides */
+  { ">M>",  centeredfloatingmaster }, /* Same but master floats */
 
   { "[]=",  tile },     /* Default: Master on left, slaves on right */
   { "[\\]", dwindle },    /* Decreasing in size right and leftward */
@@ -286,7 +286,7 @@ static Key keys[] = {
 { ControlMask|ShiftMask, XK_l, spawn,    SHCMD("deadbeef --next") },
 { ControlMask|ShiftMask, XK_space, spawn,    SHCMD("deadbeef --play-pause") },
 { ControlMask|ShiftMask, XK_q, spawn,    SHCMD("deadbeef --quit") },
-{ ControlMask|ShiftMask, XK_d, spawn,    SHCMD("deadbeef") },
+{ ControlMask|ShiftMask, XK_Return, spawn,    SHCMD("deadbeef") },
 
 { 0, XF86XK_AudioMute,    spawn,    SHCMD("pamixer -t; kill -44 $(pidof dwmblocks)") },
 { 0, XF86XK_AudioRaiseVolume, spawn,    SHCMD("pamixer --allow-boost -i 3; kill -44 $(pidof dwmblocks)") },
