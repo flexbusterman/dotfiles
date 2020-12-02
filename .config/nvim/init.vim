@@ -291,6 +291,7 @@ let g:coc_global_extensions = [
   \ 'coc-eslint',
   \ 'coc-prettier',
   \ 'coc-json',
+  \ 'coc-vetur',
   \ ]
 let g:UltiSnipsSnippetDirectories = ['UltiSnips', 'scnvim-data']
 let g:scnvim_sclang_executable = '/usr/bin/sclang'
