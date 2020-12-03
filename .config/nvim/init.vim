@@ -164,6 +164,15 @@ nmap <silent> <Leader>wk :resize +20<CR>
 nmap <silent> <Leader>wj :resize -20<CR>
 nmap <silent> <Leader>wh :vertical resize -20<CR>
 nmap <silent> <Leader>wl :vertical resize +20<CR>
+
+" jump to first / last of paragraph
+set whichwrap+=b,s
+set virtualedit=onemore
+nnoremap { k{<Space>0
+vnoremap { k{<Space>0
+nnoremap } j}<BS>0
+vnoremap } j}<BS>0
+
 "  _   _ _____ ____  ____ _____
 " | \ | | ____|  _ \|  _ \_   _| __ ___  ___
 " |  \| |  _| | |_) | | | || || '__/ _ \/ _ \
