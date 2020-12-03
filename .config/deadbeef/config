@@ -50,13 +50,13 @@ hotkey.key31 n 0 0 playback_random
 hotkey.key32 "Ctrl k" 0 0 toggle_stop_after_album
 hotkeys_created 1
 junk.enable_cp1251_detection 0
-logwindow.geometry.h 1061
-logwindow.geometry.w 1146
-logwindow.geometry.x 0
+logwindow.geometry.h 528
+logwindow.geometry.w 954
+logwindow.geometry.x 480
 logwindow.geometry.y 13
-mainwin.geometry.h 1061
-mainwin.geometry.w 1050
-mainwin.geometry.x 0
+mainwin.geometry.h 528
+mainwin.geometry.w 954
+mainwin.geometry.x 480
 mainwin.geometry.y 13
 network.proxy.port 8080
 output_plugin alsa
