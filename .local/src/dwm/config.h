@@ -115,7 +115,7 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *termcmd[]  = { "st", NULL };
 static const char *reboot[] = { "reboot", NULL };
 static const char *poweroff[] = { "poweroff", NULL };
-/* static const char *vifm[] = { "st env SHELL=/bin/bash vifm", NULL }; */
+// static const char *vifm[] = { "st env SHELL=/bin/bash vifm", NULL };
 
 #include <X11/XF86keysym.h>
 #include "shiftview.c"
@@ -141,7 +141,10 @@ static Key keys[] = {
   { MODKEY|ControlMask|ShiftMask,     XK_period,    spawn,    SHCMD("brave https://mail.google.com/mail/u/0/#inbox https://mail.google.com/mail/u/1/#inbox https://mail.google.com/mail/u/3/#inbox https://calendar.google.com") },
   { MODKEY|ShiftMask,     XK_period,    spawn,    SHCMD("brave") },
   /* { MODKEY|ShiftMask,                       XK_comma, spawn,  SHCMD("st env SHELL=/bin/bash vifm")}, */
-	{ MODKEY|ShiftMask,    XK_comma, spawn,  SHCMD("st -e ranger")},
+	{ MODKEY|ShiftMask,                       XK_comma, spawn,  SHCMD("st env SHELL=/bin/bash vifm")},
+	// { MODKEY|ShiftMask,    XK_comma, spawn,  SHCMD("st -e env - TERM=$TERM HOME=$HOME PATH=$PATH LANG=$LANG vifm")},
+
+
   // { MODKEY|ControlMask|ShiftMask,                       XK_apostrophe, spawn,  SHCMD("st -e lf")},
 /* { 0,        XK_Print, spawn,    SHCMD("zsh -c \"maim -f jpg -m 9 /home/flex/Pictures/SCREENSHOTS/$(date +'%F %H_%M_%S.jpg')\"")}, */
   { 0,        XK_Print, spawn,    SHCMD("maim -f jpg -m 9 \"/home/flex/Pictures/SCREENSHOTS/$(date +\"%F %H_%M_%S.jpg\")\"")},
@@ -314,7 +317,7 @@ static Key keys[] = {
 { 0, XF86XK_ScreenSaver,  spawn,    SHCMD("slock & xset dpms force off; mpc pause; pauseallmpv") },
 { 0, XF86XK_TaskPane,   spawn,    SHCMD("st -e htop") },
 { 0, XF86XK_Mail,   spawn,    SHCMD("st -e neomutt") },
-{ 0, XF86XK_MyComputer,   spawn,    SHCMD("st -e ranger /") },
+// { 0, XF86XK_MyComputer,   spawn,    SHCMD("st -e vifm /") },
   /* { 0, XF86XK_Battery,   spawn,    SHCMD("") }, */
 { 0, XF86XK_Launch1,    spawn,    SHCMD("xset dpms force off") },
 { 0, XF86XK_TouchpadToggle, spawn,    SHCMD("(synclient | grep 'TouchpadOff.*1' && synclient TouchpadOff=0) || synclient TouchpadOff=1") },

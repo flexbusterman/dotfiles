@@ -56,7 +56,7 @@ logwindow.geometry.w 1146
 logwindow.geometry.x 0
 logwindow.geometry.y 13
 mainwin.geometry.h 1061
-mainwin.geometry.w 1146
+mainwin.geometry.w 954
 mainwin.geometry.x 0
 mainwin.geometry.y 13
 network.proxy.port 8080
@@ -68,8 +68,8 @@ playlist.cursor.0 0
 playlist.scroll.0 0
 playlist.scroll.cursorfollowplayback 1
 playlist.tab.00000 Default
-prefwin.geometry.h 490
-prefwin.geometry.w 842
+prefwin.geometry.h 513
+prefwin.geometry.w 848
 prefwin.geometry.x 59
 prefwin.geometry.y 261
 resume.paused 1
