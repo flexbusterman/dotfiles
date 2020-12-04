@@ -5,13 +5,90 @@
 " Blank lines are ignored.
 " The basic format for each item is shown with an example.
 
+set vicmd=$EDITOR
+set syscalls
+set nofollowlinks
+set sortnumbers
+set undolevels=100
+set wildmenu
+set wildstyle=popup
+set scrolloff=0
+set ignorecase
+set smartcase
+set nohlsearch
+set incsearch
+set suggestoptions=normal,visual,view,otherpane,keys,marks,registers
+colorscheme dracula
+set dotfiles
+
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+map <C-o> <C-w>o
+map <C-s> <C-w>s
+map <C-v> <C-w>v
+
+map R :restart<CR>
+map x :!sxiv -ft * 2>/dev/null &<CR>
+nnoremap o :file &<cr>
+map E :!$EDITOR %f<CR>
+map mkd :mkdir<space>
+map bg :!setbg %f &<CR>
+map X :!ext %f &<CR>
+nnoremap s :shell<cr>
+nnoremap w :view<cr>
+vnoremap w :view<cr>gv
+nnoremap yd :!echo %d | xclip %i<cr>
+nnoremap yf :!echo %c:p | xclip %i<cr>
+nnoremap I cw<c-a>
+nnoremap cc cw<c-u>
+nnoremap A cw
+nnoremap ,w :set wrap!<cr>
+nmap <space> tj
+nmap q ZQ
+
+fileview */ tree %c -L 1 --dirsfirst
+fileview ../ tree %c -L 1 --dirsfirst
+fileviewer *.html w3m -dump %c
+filextype *.html,*.htm firefox %f 2>/dev/null &
+
+fileviewer *.docx docx2txt %c -
+fileviewer *.odt odt2txt %c -
+
+filetype *.csv,*.xlsx sc-im %c
+fileviewer *.csv sed "s/,,,,/,,-,,/g;s/,,/ /g" %c | column -t | sed "s/ - /  /g" | cut -c -%pw
+
+" filetype *.wav,*.mp3,*.flac,*.m4a,*.wma,*.ape,*.ac3,*.og[agx],*.spx,*.opus mpv --no-audio-display %f */
+filetype *.aac,*.ac3,*.ahx,*.aif,*.aiff,*.alac,*.ape,*.ay,*.flac,*.hes,*.it,*.m4a,*.mid,*.midi,*.mod,*.mp3,*.mpc,*.nsf,*.og[agx],*.opus*.s3m,*.sid,*.spc,*.spx,*.tta,*.vgm,*.vgz,*.vtx,*.wav,*.wma,*.wv,*.xm deadbeef %f, 2>/dev/null &
+" filetype *.wav,*.mp3,*.flac,*.m4a,*.wma,*.ape,*.ac3,*.og[agx],*.spx,*.opus,*.hes qmmp %c 2>/dev/null &
+filextype *.pdf,*.ps,*.eps,*.ps.gz,*.djvu,*.epub,*.cbz,*.cbr,*.cb7 zathura %f 2>/dev/null &
+fileviewer *.pdf pdftotext -l 1 -nopgbrk %c -
+fileviewer *.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,*.fl[icv],*.m2v,*.mov,*.webm,*.ts,*.mts,*.m4v,*.qt,*.divx,*.as[fx],*mp3,*.flac file
+filextype *.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,*.fl[icv],*.m2v,*.mov,*.webm,*.ts,*.mts,*.m4v,*.r[am],*.qt,*.divx,*.as[fx] mpv %f 2>/dev/null &,
+
+fileview *.tar.gz atool -l --format=tar %f 2>/dev/null | awk '{$1=$2=$3=$4=$5=""; print $0}'
+fileview *.zip,*.cbz    atool -l --format=zip %f 2>/dev/null | tail +4 | awk '{$1=$2=$3=""; print $0}'
+fileview *.rar,*.cbr    atool -l --format=rar %f 2>/dev/null | tail +9 | awk '{$1=$2=$3=$4=""; print $0}'
+fileview *.7z,*.cb7     atool -l --format=7z %f 2>/dev/null | tail +20 | awk '{$1=$2=$3=$4=$5=""; print $0}'
+filetype *.zip,*.7z,*.rar,*.tar.gz,*.tar.xz ext %f
+
+fileviewer *.[1-8] man ./%c | col -b
+filetype *.[1-8] man ./%c
+
+fileviewer *.jpg,*.jpeg,*.png,*.ico,*.gif vifmimg draw %px %py %pw %ph %c %pc vifmimg clear
+filextype *.bmp,*.jpg,*.jpeg,*.png,*.ico,*.gif,*.xpm  rotdir %f 2>/dev/null | sxiv -ia 2>/dev/null &
+
+filextype *.svg inkscape %f 2>/dev/null &
+filextype *.xcf gimp %f 2>/dev/null &
+
 " ------------------------------------------------------------------------------
 
 " Command used to edit files in various contexts.  The default is vim.
 " If you would like to use another vi clone such as Elvis or Vile
 " you will need to change this setting.
 
-set vicmd=nvim
+" set vicmd=nvim
 " set vicmd=elvis\ -G\ termcap
 " set vicmd=vile
 
@@ -20,7 +97,7 @@ set vicmd=nvim
 " solution, it's also much slower when processing large amounts of files and
 " doesn't support progress measuring.
 
-set syscalls
+" set syscalls
 
 " Trash Directory
 " The default is to move files that are deleted with dd or :d to
@@ -38,7 +115,7 @@ set history=100
 " Automatically resolve symbolic links on l or Enter.
 
 " set nofollowlinks
-set followlinks
+" set followlinks
 
 " With this option turned on you can run partially entered commands with
 " unambiguous beginning using :! (e.g. :!Te instead of :!Terminal or :!Te<tab>).
@@ -47,11 +124,11 @@ set fastrun
 
 " Natural sort of (version) numbers within text.
 
-set sortnumbers
+" set sortnumbers
 
 " Maximum number of changes that can be undone.
 
-set undolevels=100
+" set undolevels=100
 
 " Use Vim's format of help file (has highlighting and "hyperlinks").
 " If you would rather use a plain text help file set novimhelp.
@@ -75,29 +152,29 @@ set timefmt="%F %H:%M:%S"
 
 " Show list of matches on tab completion in command-line mode
 
-set wildmenu
+" set wildmenu
 
 " Display completions in a form of popup with descriptions of the matches
 
-set wildstyle=popup
+" set wildstyle=popup
 
 " Display suggestions in normal, visual and view modes for keys, marks and
 " registers (at most 5 files).  In other view, when available.
 
-set suggestoptions=normal,visual,view,otherpane,keys,marks,registers
+" set suggestoptions=normal,visual,view,otherpane,keys,marks,registers
 
 " Ignore case in search patterns unless it contains at least one uppercase
 " letter
 
-set ignorecase
-set smartcase
+" set ignorecase
+" set smartcase
 
 " Don't highlight search results automatically
 
-set nohlsearch
+" set nohlsearch
 
 " Use increment searching (search while typing)
-set incsearch
+" set incsearch
 
 " Try to leave some space from cursor to upper/lower border in lists
 
@@ -177,210 +254,210 @@ command! reload :write | restart full
 " You can also add %CLEAR if you want to clear screen before running FUSE
 " program.
 
-" Pdf
-filextype {*.pdf},<application/pdf> zathura %c %i &, apvlv %c, xpdf %c
-fileviewer {*.pdf},<application/pdf> pdftotext -nopgbrk %c -
-
-" PostScript
-filextype {*.ps,*.eps,*.ps.gz},<application/postscript>
-        \ {View in zathura}
-        \ zathura %f,
-        \ {View in gv}
-        \ gv %c %i &,
-
-" Djvu
-filextype {*.djvu},<image/vnd.djvu>
-        \ {View in zathura}
-        \ zathura %f,
-        \ {View in apvlv}
-        \ apvlv %f,
-
-" Audio
-filetype {*.aac,*.ac3,*.ahx,*.aif,*.aiff,*.alac,*.ape,*.ay,*.flac,*.hes,*.it,*.m4a,*.mid,*.midi,*.mod,*.mp3,*.mpc,*.nsf,*.og[agx],*.opus*.s3m,*.sid,*.spc,*.spx,*.tta,*.vgm,*.vgz,*.vtx,*.wav,*.wma,*.wv,*.xm}
-        \<audio/*>
-       \ {Play using deadbeef}
-       \ deadbeef %f,
-       \ {Play using ffplay}
-       \ ffplay -nodisp -autoexit %c,
-       \ {Play using MPlayer}
-       \ mplayer %f,
-fileviewer {*.mp3},<audio/mpeg> mp3info
-fileviewer {*.flac},<audio/flac> soxi
-
-" Video
-filextype {*.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
-          \*.fl[icv],*.m2v,*.mov,*.webm,*.ts,*.mts,*.m4v,*.r[am],*.qt,*.divx,
-          \*.as[fx]},
-         \<video/*>
-        \ {View using ffplay}
-        \ ffplay -fs -autoexit %f,
-        \ {View using Dragon}
-        \ dragon %f:p,
-        \ {View using mplayer}
-        \ mplayer %f,
-fileviewer {*.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
-           \*.fl[icv],*.m2v,*.mov,*.webm,*.ts,*.mts,*.m4v,*.r[am],*.qt,*.divx,
-           \*.as[fx]},
-          \<video/*>
-         \ ffprobe -pretty %c 2>&1
-
-" Web
-filextype {*.html,*.htm},<text/html>
-        \ {Open with dwb}
-        \ dwb %f %i &,
-        \ {Open with firefox}
-        \ firefox %f &,
-        \ {Open with uzbl}
-        \ uzbl-browser %f %i &,
-filetype {*.html,*.htm},<text/html> links, lynx
-
-" Object
-filetype {*.o},<application/x-object> nm %f | less
-
-" Man page
-filetype {*.[1-8]},<text/troff> man ./%c
-fileviewer {*.[1-8]},<text/troff> man ./%c | col -b
-
-" Images
-filextype {*.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm},<image/*>
-        \ {View in sxiv}
-        \ sxiv %f,
-        \ {View in gpicview}
-        \ gpicview %c,
-        \ {View in shotwell}
-        \ shotwell,
-fileviewer {*.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm},<image/*>
-         \ identify %f
-
-" OpenRaster
-filextype *.ora
-        \ {Edit in MyPaint}
-        \ mypaint %f,
-
-" Mindmap
-filextype *.vym
-        \ {Open with VYM}
-        \ vym %f &,
-
-" MD5
-filetype *.md5
-       \ {Check MD5 hash sum}
-       \ md5sum -c %f %S,
-
-" SHA1
-filetype *.sha1
-       \ {Check SHA1 hash sum}
-       \ sha1sum -c %f %S,
-
-" SHA256
-filetype *.sha256
-       \ {Check SHA256 hash sum}
-       \ sha256sum -c %f %S,
-
-" SHA512
-filetype *.sha512
-       \ {Check SHA512 hash sum}
-       \ sha512sum -c %f %S,
-
-" GPG signature
-filetype {*.asc},<application/pgp-signature>
-       \ {Check signature}
-       \ !!gpg --verify %c,
-
-" Torrent
-filetype {*.torrent},<application/x-bittorrent> ktorrent %f &
-fileviewer {*.torrent},<application/x-bittorrent> dumptorrent -v %c
-
-" FuseZipMount
-filetype {*.zip,*.jar,*.war,*.ear,*.oxt,*.apkg},
-        \<application/zip,application/java-archive>
-       \ {Mount with fuse-zip}
-       \ FUSE_MOUNT|fuse-zip %SOURCE_FILE %DESTINATION_DIR,
-       \ {View contents}
-       \ zip -sf %c | less,
-       \ {Extract here}
-       \ tar -xf %c,
-fileviewer *.zip,*.jar,*.war,*.ear,*.oxt zip -sf %c
-
-" ArchiveMount
-filetype {*.tar,*.tar.bz2,*.tbz2,*.tgz,*.tar.gz,*.tar.xz,*.txz},
-        \<application/x-tar>
-       \ {Mount with archivemount}
-       \ FUSE_MOUNT|archivemount %SOURCE_FILE %DESTINATION_DIR,
-fileviewer *.tgz,*.tar.gz tar -tzf %c
-fileviewer *.tar.bz2,*.tbz2 tar -tjf %c
-fileviewer *.tar.txz,*.txz xz --list %c
-fileviewer {*.tar},<application/x-tar> tar -tf %c
-
-" Rar2FsMount and rar archives
-filetype {*.rar},<application/x-rar>
-       \ {Mount with rar2fs}
-       \ FUSE_MOUNT|rar2fs %SOURCE_FILE %DESTINATION_DIR,
-fileviewer {*.rar},<application/x-rar> unrar v %c
-
-" IsoMount
-filetype {*.iso},<application/x-iso9660-image>
-       \ {Mount with fuseiso}
-       \ FUSE_MOUNT|fuseiso %SOURCE_FILE %DESTINATION_DIR,
-
-" SshMount
-filetype *.ssh
-       \ {Mount with sshfs}
-       \ FUSE_MOUNT2|sshfs %PARAM %DESTINATION_DIR %FOREGROUND,
-
-" FtpMount
-filetype *.ftp
-       \ {Mount with curlftpfs}
-       \ FUSE_MOUNT2|curlftpfs -o ftp_port=-,,disable_eprt %PARAM %DESTINATION_DIR %FOREGROUND,
-
-" Fuse7z and 7z archives
-filetype {*.7z},<application/x-7z-compressed>
-       \ {Mount with fuse-7z}
-       \ FUSE_MOUNT|fuse-7z %SOURCE_FILE %DESTINATION_DIR,
-fileviewer {*.7z},<application/x-7z-compressed> 7z l %c
-
-" Office files
-filextype {*.odt,*.doc,*.docx,*.xls,*.xlsx,*.odp,*.pptx,*.ppt},
-         \<application/vnd.openxmlformats-officedocument.*,
-          \application/msword,
-          \application/vnd.ms-excel>
-        \ libreoffice %f &
-fileviewer {*.doc},<application/msword> catdoc %c
-fileviewer {*.docx},
-          \<application/
-           \vnd.openxmlformats-officedocument.wordprocessingml.document>
-         \ docx2txt.pl %f -
-
-" TuDu files
-filetype *.tudu tudu -f %c
-
-" Qt projects
-filextype *.pro qtcreator %f &
-
-" Directories
-filextype */
-        \ {View in thunar}
-        \ Thunar %f &,
-
-" Syntax highlighting in preview
-"
-" Explicitly set highlight type for some extensions
-"
-" 256-color terminal
-" fileviewer *.[ch],*.[ch]pp highlight -O xterm256 -s dante --syntax c %c
-" fileviewer Makefile,Makefile.* highlight -O xterm256 -s dante --syntax make %c
-"
-" 16-color terminal
-" fileviewer *.c,*.h highlight -O ansi -s dante %c
-"
-" Or leave it for automatic detection
-"
-fileviewer *[^/] pygmentize -O style=monokai -f console256 -g
-
-" Displaying pictures in terminal
-"
-fileviewer *.jpg,*.png shellpic %c
-
+" " Pdf
+" filextype {*.pdf},<application/pdf> zathura %c %i &, apvlv %c, xpdf %c
+" fileviewer {*.pdf},<application/pdf> pdftotext -nopgbrk %c -
+" 
+" " PostScript
+" filextype {*.ps,*.eps,*.ps.gz},<application/postscript>
+"         \ {View in zathura}
+"         \ zathura %f,
+"         \ {View in gv}
+"         \ gv %c %i &,
+" 
+" " Djvu
+" filextype {*.djvu},<image/vnd.djvu>
+"         \ {View in zathura}
+"         \ zathura %f,
+"         \ {View in apvlv}
+"         \ apvlv %f,
+" 
+" " Audio
+" filetype {*.aac,*.ac3,*.ahx,*.aif,*.aiff,*.alac,*.ape,*.ay,*.flac,*.hes,*.it,*.m4a,*.mid,*.midi,*.mod,*.mp3,*.mpc,*.nsf,*.og[agx],*.opus*.s3m,*.sid,*.spc,*.spx,*.tta,*.vgm,*.vgz,*.vtx,*.wav,*.wma,*.wv,*.xm}
+"         \<audio/*>
+"        \ {Play using deadbeef}
+"        \ deadbeef %f,
+"        \ {Play using ffplay}
+"        \ ffplay -nodisp -autoexit %c,
+"        \ {Play using MPlayer}
+"        \ mplayer %f,
+" fileviewer {*.mp3},<audio/mpeg> mp3info
+" fileviewer {*.flac},<audio/flac> soxi
+" 
+" " Video
+" filextype {*.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
+"           \*.fl[icv],*.m2v,*.mov,*.webm,*.ts,*.mts,*.m4v,*.r[am],*.qt,*.divx,
+"           \*.as[fx]},
+"          \<video/*>
+"         \ {View using ffplay}
+"         \ ffplay -fs -autoexit %f,
+"         \ {View using Dragon}
+"         \ dragon %f:p,
+"         \ {View using mplayer}
+"         \ mplayer %f,
+" fileviewer {*.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
+"            \*.fl[icv],*.m2v,*.mov,*.webm,*.ts,*.mts,*.m4v,*.r[am],*.qt,*.divx,
+"            \*.as[fx]},
+"           \<video/*>
+"          \ ffprobe -pretty %c 2>&1
+" 
+" " Web
+" filextype {*.html,*.htm},<text/html>
+"         \ {Open with dwb}
+"         \ dwb %f %i &,
+"         \ {Open with firefox}
+"         \ firefox %f &,
+"         \ {Open with uzbl}
+"         \ uzbl-browser %f %i &,
+" filetype {*.html,*.htm},<text/html> links, lynx
+" 
+" " Object
+" filetype {*.o},<application/x-object> nm %f | less
+" 
+" " Man page
+" filetype {*.[1-8]},<text/troff> man ./%c
+" fileviewer {*.[1-8]},<text/troff> man ./%c | col -b
+" 
+" " Images
+" filextype {*.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm},<image/*>
+"         \ {View in sxiv}
+"         \ sxiv %f,
+"         \ {View in gpicview}
+"         \ gpicview %c,
+"         \ {View in shotwell}
+"         \ shotwell,
+" fileviewer {*.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm},<image/*>
+"          \ identify %f
+" 
+" " OpenRaster
+" filextype *.ora
+"         \ {Edit in MyPaint}
+"         \ mypaint %f,
+" 
+" " Mindmap
+" filextype *.vym
+"         \ {Open with VYM}
+"         \ vym %f &,
+" 
+" " MD5
+" filetype *.md5
+"        \ {Check MD5 hash sum}
+"        \ md5sum -c %f %S,
+" 
+" " SHA1
+" filetype *.sha1
+"        \ {Check SHA1 hash sum}
+"        \ sha1sum -c %f %S,
+" 
+" " SHA256
+" filetype *.sha256
+"        \ {Check SHA256 hash sum}
+"        \ sha256sum -c %f %S,
+" 
+" " SHA512
+" filetype *.sha512
+"        \ {Check SHA512 hash sum}
+"        \ sha512sum -c %f %S,
+" 
+" " GPG signature
+" filetype {*.asc},<application/pgp-signature>
+"        \ {Check signature}
+"        \ !!gpg --verify %c,
+" 
+" " Torrent
+" filetype {*.torrent},<application/x-bittorrent> ktorrent %f &
+" fileviewer {*.torrent},<application/x-bittorrent> dumptorrent -v %c
+" 
+" " FuseZipMount
+" filetype {*.zip,*.jar,*.war,*.ear,*.oxt,*.apkg},
+"         \<application/zip,application/java-archive>
+"        \ {Mount with fuse-zip}
+"        \ FUSE_MOUNT|fuse-zip %SOURCE_FILE %DESTINATION_DIR,
+"        \ {View contents}
+"        \ zip -sf %c | less,
+"        \ {Extract here}
+"        \ tar -xf %c,
+" fileviewer *.zip,*.jar,*.war,*.ear,*.oxt zip -sf %c
+" 
+" " ArchiveMount
+" filetype {*.tar,*.tar.bz2,*.tbz2,*.tgz,*.tar.gz,*.tar.xz,*.txz},
+"         \<application/x-tar>
+"        \ {Mount with archivemount}
+"        \ FUSE_MOUNT|archivemount %SOURCE_FILE %DESTINATION_DIR,
+" fileviewer *.tgz,*.tar.gz tar -tzf %c
+" fileviewer *.tar.bz2,*.tbz2 tar -tjf %c
+" fileviewer *.tar.txz,*.txz xz --list %c
+" fileviewer {*.tar},<application/x-tar> tar -tf %c
+" 
+" " Rar2FsMount and rar archives
+" filetype {*.rar},<application/x-rar>
+"        \ {Mount with rar2fs}
+"        \ FUSE_MOUNT|rar2fs %SOURCE_FILE %DESTINATION_DIR,
+" fileviewer {*.rar},<application/x-rar> unrar v %c
+" 
+" " IsoMount
+" filetype {*.iso},<application/x-iso9660-image>
+"        \ {Mount with fuseiso}
+"        \ FUSE_MOUNT|fuseiso %SOURCE_FILE %DESTINATION_DIR,
+" 
+" " SshMount
+" filetype *.ssh
+"        \ {Mount with sshfs}
+"        \ FUSE_MOUNT2|sshfs %PARAM %DESTINATION_DIR %FOREGROUND,
+" 
+" " FtpMount
+" filetype *.ftp
+"        \ {Mount with curlftpfs}
+"        \ FUSE_MOUNT2|curlftpfs -o ftp_port=-,,disable_eprt %PARAM %DESTINATION_DIR %FOREGROUND,
+" 
+" " Fuse7z and 7z archives
+" filetype {*.7z},<application/x-7z-compressed>
+"        \ {Mount with fuse-7z}
+"        \ FUSE_MOUNT|fuse-7z %SOURCE_FILE %DESTINATION_DIR,
+" fileviewer {*.7z},<application/x-7z-compressed> 7z l %c
+" 
+" " Office files
+" filextype {*.odt,*.doc,*.docx,*.xls,*.xlsx,*.odp,*.pptx,*.ppt},
+"          \<application/vnd.openxmlformats-officedocument.*,
+"           \application/msword,
+"           \application/vnd.ms-excel>
+"         \ libreoffice %f &
+" fileviewer {*.doc},<application/msword> catdoc %c
+" fileviewer {*.docx},
+"           \<application/
+"            \vnd.openxmlformats-officedocument.wordprocessingml.document>
+"          \ docx2txt.pl %f -
+" 
+" " TuDu files
+" filetype *.tudu tudu -f %c
+" 
+" " Qt projects
+" filextype *.pro qtcreator %f &
+" 
+" " Directories
+" filextype */
+"         \ {View in thunar}
+"         \ Thunar %f &,
+" 
+" " Syntax highlighting in preview
+" "
+" " Explicitly set highlight type for some extensions
+" "
+" " 256-color terminal
+" " fileviewer *.[ch],*.[ch]pp highlight -O xterm256 -s dante --syntax c %c
+" " fileviewer Makefile,Makefile.* highlight -O xterm256 -s dante --syntax make %c
+" "
+" " 16-color terminal
+" " fileviewer *.c,*.h highlight -O ansi -s dante %c
+" "
+" " Or leave it for automatic detection
+" "
+" fileviewer *[^/] pygmentize -O style=monokai -f console256 -g
+" 
+" " Displaying pictures in terminal
+" "
+" fileviewer *.jpg,*.png shellpic %c
+" 
 " Open all other files with default system programs (you can also remove all
 " :file[x]type commands above to ensure they don't interfere with system-wide
 " settings).  By default all unknown files are opened with 'vi[x]cmd'
@@ -510,3 +587,7 @@ nnoremap <c-u> <c-w>x
 "     vifm --server-name "$VIFM_SERVER_NAME" --remote +"cd '$PWD'"
 "
 " let $VIFM_SERVER_NAME = v:servername
+
+" LUKES CONFIG
+" source ${XDG_CONFIG_HOME:-$HOME/.config}/vifm/vifmshortcuts
+
