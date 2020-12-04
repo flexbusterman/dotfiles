@@ -236,7 +236,7 @@ static Key keys[] = {
 // { MODKEY|ShiftMask,   XK_n,   spawn,    SHCMD("st -e newsboat; pkill -RTMIN+6 dwmblocks") },
 { MODKEY|ShiftMask,   XK_n,   spawn,    SHCMD("st -e newsboat") },
 { MODKEY,     XK_m,   spawn,    SHCMD("audacious") },
-{ MODKEY|ShiftMask,   XK_m,   spawn,    SHCMD("aconnect 128:7 16:0") },
+{ MODKEY|ShiftMask,   XK_m,   spawn,    SHCMD("aconnect 127:7 16:0; aconnect 128:7 16:0; aconnect 129:7 16:0; aconnect 130:7 16:0") },
 { MODKEY|ControlMask|ShiftMask,     XK_Left, spawn,    SHCMD("audtool playlist-reverse") },
 // { MODKEY|ShiftMask,   XK_comma, spawn,    SHCMD("mpc seek 0%") },
 { MODKEY|ControlMask|ShiftMask,     XK_period,  spawn,    SHCMD("audtool playlist-advance") },

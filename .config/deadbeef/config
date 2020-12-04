@@ -51,10 +51,10 @@ hotkey.key31 n 0 0 playback_random
 hotkey.key32 "Ctrl k" 0 0 toggle_stop_after_album
 hotkeys_created 1
 junk.enable_cp1251_detection 0
-logwindow.geometry.h 528
-logwindow.geometry.w 954
-logwindow.geometry.x 480
-logwindow.geometry.y 13
+logwindow.geometry.h 1001
+logwindow.geometry.w 909
+logwindow.geometry.x 30
+logwindow.geometry.y 43
 mainwin.geometry.h 1061
 mainwin.geometry.w 1146
 mainwin.geometry.x 0
@@ -74,7 +74,7 @@ prefwin.geometry.x 59
 prefwin.geometry.y 261
 resume.paused 1
 resume.playlist 0
-resume.position 3.2507927
+resume.position 104.35093
 resume.track 0
 resume_last_session 0
 searchwin.geometry.h 150

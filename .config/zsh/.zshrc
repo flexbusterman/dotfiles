@@ -301,9 +301,9 @@ preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 
 # Other aliases
 alias ls="exa"
-alias lsg="exa | grep -i"
+alias lsg="exa | grep --color=always -i"
 alias la="exa -la"
-alias lag="exa -la | grep -i"
+alias lag="exa -la | grep --color=always -i"
 alias fs="df -h | grep --color='never' 'Filesystem\|sd'"
 alias copy='xclip -sel clip'
 alias rf='rm -rf'
@@ -315,7 +315,7 @@ alias ra="pulseaudio --kill; jack_control start; jack_control exit; pulseaudio -
 alias vim="nvim"
 alias dot='/usr/bin/git --git-dir=$HOME/.dot.git/ --work-tree=$HOME'
 alias bs='browser-sync start --server --directory --files "*"'
-alias grep="grep -i"
+alias grep="grep --color=always -i"
 # alias live="wine64 /home/flex/Wine/Program\ Files/Ableton/Live\ 10\ Suite/Program/Ableton\ Live\ 10\ Suite.exe"
 alias ud='sudo updatedb'
 alias du='du -h'
@@ -330,7 +330,7 @@ alias D='cd ~/Downloads; exa'
 
 # Dropbox aliases
 alias dls="dropbox-cli ls"
-alias deg="dropbox-cli exclude | grep -i"
+alias deg="dropbox-cli exclude | grep --color=always -i"
 alias drm="dropbox-cli exclude add"
 alias drma="ls | sed 's/ /\\ /g' | sed 's/'\''/\\'\''/g' | xargs dropbox-cli exclude add"
 alias dsl="dropbox-cli sharelink"
@@ -486,7 +486,7 @@ pd() {
   mv "$*" "$date $*"
 }
 
-hg() { history 0 | grep -i $* }
+hg() { history 0 | grep --color=always -i $* }
 
 mind() {
 	cd /home/flex/GIT/mind
