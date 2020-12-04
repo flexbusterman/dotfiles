@@ -141,7 +141,8 @@ static Key keys[] = {
   { MODKEY|ControlMask|ShiftMask,     XK_period,    spawn,    SHCMD("brave https://mail.google.com/mail/u/0/#inbox https://mail.google.com/mail/u/1/#inbox https://mail.google.com/mail/u/3/#inbox https://calendar.google.com") },
   { MODKEY|ShiftMask,     XK_period,    spawn,    SHCMD("brave") },
   /* { MODKEY|ShiftMask,                       XK_comma, spawn,  SHCMD("st env SHELL=/bin/bash vifm")}, */
-	{ MODKEY|ShiftMask,                       XK_comma, spawn,  SHCMD("st env SHELL=/bin/bash vifm")},
+	// { MODKEY|ShiftMask,                       XK_comma, spawn,  SHCMD("st env SHELL=/bin/bash vifm")},
+	{ MODKEY|ShiftMask,                       XK_comma, spawn,  SHCMD("st env SHELL=/bin/zsh vifm")},
 	// { MODKEY|ShiftMask,    XK_comma, spawn,  SHCMD("st -e env - TERM=$TERM HOME=$HOME PATH=$PATH LANG=$LANG vifm")},
 
 
