@@ -1,9 +1,4 @@
 " vim: filetype=vifm :
-" Sample configuration file for vifm (last updated: 9 September, 2020)
-" You can edit this file by hand.
-" The " character at the beginning of a line comments out the line.
-" Blank lines are ignored.
-" The basic format for each item is shown with an example.
 
 set vicmd=$EDITOR
 set syscalls
@@ -18,9 +13,9 @@ set smartcase
 set nohlsearch
 set incsearch
 set suggestoptions=normal,visual,view,otherpane,keys,marks,registers
-colorscheme dracula
 set dotfiles
 set relativenumber
+colorscheme dracula
 
 map <C-h> <C-w>h
 map <C-j> <C-w>j
@@ -48,6 +43,8 @@ nnoremap A cw
 nnoremap ,w :set wrap!<cr>
 nmap <space> tj
 nmap q ZQ
+nnoremap va ggVG
+vnoremap u :This is disabled to avoid mistakes
 
 fileview */ tree %c -L 1 --dirsfirst
 fileview ../ tree %c -L 1 --dirsfirst
