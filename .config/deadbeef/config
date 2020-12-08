@@ -9,7 +9,7 @@ converter.output_format 0
 converter.overwrite_action 0
 deadbeef_version 1.8.4
 filechooser.lastdir file:///home/flex/.config
-gtkui.columns.playlist [{"title":"♫","id":"1","format":"%playstatus%","sort_format":"","size":"50","align":"0","color_override":"0","color":"#ff000000"},{"title":"Artist","id":"-1","format":"$if(%artist%,%artist%,Unknown Artist)","sort_format":"","size":"222","align":"0","color_override":"0","color":"#ffd4d4d4"},{"title":"Year","id":"-1","format":"%year%","sort_format":"","size":"54","align":"0","color_override":"0","color":"#ffd4d4d4"},{"title":"Album","id":"-1","format":"%album%","sort_format":"","size":"366","align":"0","color_override":"0","color":"#ff000000"},{"title":"Title","id":"-1","format":"%title%","sort_format":"","size":"254","align":"0","color_override":"0","color":"#ff000000"},{"title":"Duration","id":"-1","format":"%length%","sort_format":"","size":"137","align":"0","color_override":"0","color":"#ff000000"}]
+gtkui.columns.playlist [{"title":"♫","id":"1","format":"%playstatus%","sort_format":"","size":"24","align":"0","color_override":"0","color":"#ff000000"},{"title":"Artist","id":"-1","format":"$if(%artist%,%artist%,Unknown Artist)","sort_format":"","size":"222","align":"0","color_override":"0","color":"#ffd4d4d4"},{"title":"Year","id":"-1","format":"%year%","sort_format":"","size":"54","align":"0","color_override":"0","color":"#ffd4d4d4"},{"title":"Album","id":"-1","format":"%album%","sort_format":"","size":"225","align":"0","color_override":"0","color":"#ff000000"},{"title":"Title","id":"-1","format":"%title%","sort_format":"","size":"254","align":"0","color_override":"0","color":"#ff000000"},{"title":"Duration","id":"-1","format":"%length%","sort_format":"","size":"137","align":"0","color_override":"0","color":"#ff000000"}]
 gtkui.eq.visible 0
 gtkui.hide_tray_icon 0
 gtkui.layout.0.6.2 vbox expand="0 1" fill="1 1" homogeneous=0 {hbox expand="0 1 0" fill="1 1 1" homogeneous=0 {playtb {} seekbar {} volumebar {} } tabbed_playlist hideheaders=0 width=984 {} } 
@@ -29,36 +29,37 @@ hotkey.key08 "Ctrl j" 0 0 jump_to_current_track
 hotkey.key09 "F1" 0 0 help
 hotkey.key10 "Delete" 1 0 remove_from_playlist
 hotkey.key11 "Ctrl w" 0 0 remove_current_playlist
-hotkey.key13 "Alt Return" 1 0 track_properties
-hotkey.key14 "Return" 0 0 play
-hotkey.key15 "Ctrl p" 0 0 toggle_pause
-hotkey.key16 "Alt 1" 0 0 playlist1
-hotkey.key17 "Alt 2" 0 0 playlist2
-hotkey.key18 "Alt 3" 0 0 playlist3
-hotkey.key19 "Alt 4" 0 0 playlist4
-hotkey.key20 "Alt 5" 0 0 playlist5
-hotkey.key21 "Alt 6" 0 0 playlist6
-hotkey.key22 "Alt 7" 0 0 playlist7
-hotkey.key23 "Alt 8" 0 0 playlist8
-hotkey.key24 "Alt 9" 0 0 playlist9
-hotkey.key25 "Alt 0" 0 0 playlist10
-hotkey.key26 z 0 0 prev
-hotkey.key27 x 0 0 play
-hotkey.key28 c 0 0 toggle_pause
-hotkey.key29 v 0 0 stop
-hotkey.key30 b 0 0 next
-hotkey.key31 n 0 0 playback_random
-hotkey.key32 "Ctrl k" 0 0 toggle_stop_after_album
+hotkey.key12 "Alt Return" 1 0 track_properties
+hotkey.key13 "Return" 0 0 play
+hotkey.key14 "Ctrl p" 0 0 toggle_pause
+hotkey.key15 "Alt 1" 0 0 playlist1
+hotkey.key16 "Alt 2" 0 0 playlist2
+hotkey.key17 "Alt 3" 0 0 playlist3
+hotkey.key18 "Alt 4" 0 0 playlist4
+hotkey.key19 "Alt 5" 0 0 playlist5
+hotkey.key20 "Alt 6" 0 0 playlist6
+hotkey.key21 "Alt 7" 0 0 playlist7
+hotkey.key22 "Alt 8" 0 0 playlist8
+hotkey.key23 "Alt 9" 0 0 playlist9
+hotkey.key24 "Alt 0" 0 0 playlist10
+hotkey.key25 "z" 0 0 prev
+hotkey.key26 "x" 0 0 play
+hotkey.key27 "c" 0 0 toggle_pause
+hotkey.key28 "v" 0 0 stop
+hotkey.key29 "b" 0 0 next
+hotkey.key30 "n" 0 0 playback_random
+hotkey.key31 "Ctrl k" 0 0 toggle_stop_after_album
+hotkey.key32 "j" 1 0 move_tracks_down
 hotkeys_created 1
 junk.enable_cp1251_detection 0
 logwindow.geometry.h 1061
 logwindow.geometry.w 954
 logwindow.geometry.x 0
 logwindow.geometry.y 13
-mainwin.geometry.h 1001
-mainwin.geometry.w 1092
-mainwin.geometry.x 30
-mainwin.geometry.y 43
+mainwin.geometry.h 527
+mainwin.geometry.w 954
+mainwin.geometry.x 960
+mainwin.geometry.y 13
 network.proxy.port 8080
 output_plugin alsa
 playback.loop 1
@@ -70,8 +71,8 @@ playlist.scroll.cursorfollowplayback 1
 playlist.tab.00000 Default
 prefwin.geometry.h 513
 prefwin.geometry.w 848
-prefwin.geometry.x 59
-prefwin.geometry.y 261
+prefwin.geometry.x 0
+prefwin.geometry.y 409
 resume.paused 1
 resume.playlist 0
 resume.position 3.2972324
