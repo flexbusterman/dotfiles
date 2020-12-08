@@ -109,6 +109,7 @@ filextype *.xcf gimp %f 2>/dev/null &
 " This probably shouldn't be an option.
 
 set trash
+set trashdir=$HOME/.cache/trash
 
 " This is how many directories to store in the directory history.
 
