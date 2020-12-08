@@ -142,7 +142,7 @@ static Key keys[] = {
   { MODKEY|ShiftMask,     XK_period,    spawn,    SHCMD("brave") },
   /* { MODKEY|ShiftMask,                       XK_comma, spawn,  SHCMD("st env SHELL=/bin/bash vifm")}, */
 	// { MODKEY|ShiftMask,                       XK_comma, spawn,  SHCMD("st env SHELL=/bin/bash vifm")},
-	{ MODKEY|ShiftMask,                       XK_comma, spawn,  SHCMD("st env SHELL=/bin/zsh vifm")},
+	{ MODKEY|ShiftMask,                       XK_comma, spawn,  SHCMD("st env SHELL=/bin/zsh vifmrun")},
 	// { MODKEY|ShiftMask,    XK_comma, spawn,  SHCMD("st -e env - TERM=$TERM HOME=$HOME PATH=$PATH LANG=$LANG vifm")},
 
 
