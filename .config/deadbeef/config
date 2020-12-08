@@ -52,7 +52,7 @@ hotkey.key32 "Ctrl k" 0 0 toggle_stop_after_album
 hotkeys_created 1
 junk.enable_cp1251_detection 0
 logwindow.geometry.h 1061
-logwindow.geometry.w 1146
+logwindow.geometry.w 954
 logwindow.geometry.x 0
 logwindow.geometry.y 13
 mainwin.geometry.h 1001
