@@ -50,15 +50,20 @@ hotkey.key29 "b" 0 0 next
 hotkey.key30 "n" 0 0 playback_random
 hotkey.key31 "Ctrl k" 0 0 toggle_stop_after_album
 hotkey.key32 "j" 1 0 move_tracks_down
+hotkey.key33 "k" 1 0 move_tracks_up
+hotkey.key34 "l" 0 0 play_pause
+hotkey.key35 "e" 0 0 toggle_eq
+hotkey.key36 "Shift Ctrl l" 0 1 seek_5s_fwd
+hotkey.key37 "Shift Ctrl h" 0 1 seek_5s_back
 hotkeys_created 1
 junk.enable_cp1251_detection 0
 logwindow.geometry.h 1061
 logwindow.geometry.w 954
 logwindow.geometry.x 0
 logwindow.geometry.y 13
-mainwin.geometry.h 527
-mainwin.geometry.w 954
-mainwin.geometry.x 960
+mainwin.geometry.h 1067
+mainwin.geometry.w 1920
+mainwin.geometry.x 0
 mainwin.geometry.y 13
 network.proxy.port 8080
 output_plugin alsa
@@ -71,8 +76,8 @@ playlist.scroll.cursorfollowplayback 1
 playlist.tab.00000 Default
 prefwin.geometry.h 513
 prefwin.geometry.w 848
-prefwin.geometry.x 0
-prefwin.geometry.y 409
+prefwin.geometry.x 320
+prefwin.geometry.y 354
 resume.paused 1
 resume.playlist 0
 resume.position 3.2972324
