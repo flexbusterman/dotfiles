@@ -179,6 +179,7 @@ vnoremap } j}<BS>0
 " | |\  | |___|  _ <| |_| || || | |  __/  __/
 " |_| \_|_____|_| \_\____/ |_||_|  \___|\___|
 "
+" Add spaces after comment delimiters by default
 let NERDSpaceDelims=1
 " Show hidden files/directories
 let g:NERDTreeShowHidden = 1
@@ -193,6 +194,10 @@ let g:NERDTreeIgnore = ['^node_modules$']
 vmap <leader>t <plug>NERDCommenterToggle
 nmap <leader>t <plug>NERDCommenterToggle
 nmap <leader>h :NERDTreeToggle<CR>
+let g:NERDSpaceDelims = 1
+" Use compact syntax for prettified multi-line comments
+let g:NERDCompactSexyComs = 1
+let g:NERDCustomDelimiters = { 'text': { 'left': '"','right': '' } }
 "  ____                         ____      _ _ _     _
 " / ___| _   _ _ __   ___ _ __ / ___|___ | | (_) __| | ___ _ __
 " \___ \| | | | '_ \ / _ \ '__| |   / _ \| | | |/ _` |/ _ \ '__|

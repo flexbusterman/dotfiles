@@ -479,6 +479,12 @@ beer(){
 	done
 }
 
+# pdf2mp3() {
+	# pdftotext $* | sed ebook.txt
+	# espeak -f ebook.txt -w ebook_audio.wav
+	# mplayer ebook_audio.wav
+# }
+
 # ssh add function
 sa() {
 	eval "$(ssh-agent -s)"
