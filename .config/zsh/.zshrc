@@ -304,12 +304,15 @@ alias ls="exa"
 alias lsg="exa | grep --color=always -i"
 alias la="exa -la"
 alias lag="exa -la | grep --color=always -i"
+alias lm="exa -la --sort=modified"
+alias lt="exa -lar --sort=size"
 alias fs="df -h | grep --color='never' 'Filesystem\|sd'"
 alias copy='xclip -sel clip'
 alias rf='rm -rf'
 alias res="xdpyinfo | awk '/dimensions/{print $2}'"
 alias q="exit"
 alias ig="brave --app=\"http://www.instagram.com/direct/inbox/\""
+alias igdl="cd /home/flex/Dropbox/MEMES/; instaloader --login=augustinsupremacy memeforyouandhim"
 alias gb="git branch"
 alias ra="pulseaudio --kill; jack_control start; jack_control exit; pulseaudio --start;"
 alias vim="nvim"
@@ -367,6 +370,9 @@ alias vv="cd /home/flex/.config/vifm/; nvim vifmrc"
 # Keymap aliases
 alias se="setxkbmap se; setxkbmap -option caps:swapescape; xset r rate 300 50"
 alias us="setxkbmap us; setxkbmap -option caps:swapescape; xset r rate 300 50"
+
+yt () { youtube-dl --add-metadata -i "$*"}
+yta () { youtube-dl --add-metadata -i -x -f bestaudio/best "$*"}
 
 # Pacman shortcut functions
 pin () { sudo pacman -S --noconfirm $* }
