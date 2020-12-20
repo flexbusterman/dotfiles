@@ -339,8 +339,10 @@ alias drma="ls | sed 's/ /\\ /g' | sed 's/'\''/\\'\''/g' | xargs dropbox-cli exc
 alias dsl="dropbox-cli sharelink"
 alias dadd="dropbox-cli exclude remove"
 alias pw="date +%s | sha256sum | base64 | head -c 32 | xclip -sel clip"
-# alias daddx="sed 's/ /\\ /g' | sed 's/'\''/\\'\''/g' | xargs dropbox-cli exclude remove"
-# alias daddx=dropbox-cli exclude | command grep -i cover | xargs -d '\n' dropbox-cli exclude remove
+alias ms="mullvad status"
+alias mc="mullvad connect"
+alias md="mullvad disconnect"
+
 dag () {
 	dropbox-cli exclude | command grep -i $* | xargs -d '\n' dropbox-cli exclude remove
 }
