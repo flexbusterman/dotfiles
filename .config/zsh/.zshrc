@@ -527,7 +527,7 @@ dev() {
 }
 
 aug() {
-  st -t SuperCollider -e zsh -c "cd ~/Dropbox/SUPERCOLLIDER/; nvim -c \"NERDTreeToggle | set filetype=supercollider | SCNvimStart\"" &
+  st -t SuperCollider -e zsh -c "cd ~/Dropbox/; nvim -c \"NERDTreeToggle | set filetype=supercollider | SCNvimStart\"" &
   bitwig-studio &
   st -t aug -e zsh -c "sleep 5; aconnect 128:7 16:0"
 }
