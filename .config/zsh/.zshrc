@@ -312,7 +312,7 @@ alias rf='rm -rf'
 alias res="xdpyinfo | awk '/dimensions/{print $2}'"
 alias q="exit"
 alias ig="brave --app=\"http://www.instagram.com/direct/inbox/\""
-alias igdl="cd /home/flex/Dropbox/MEMES/; instaloader --no-metadata-json --no-captions --login=augustinsupremacy memeforyouandhim"
+alias igdl="instalooter user memeseducational ~/Dropbox/MEMES/memeseducational -N && instalooter user dank_memes_world_1 /home/flex/Dropbox/MEMES/dank_memes_world_1 -N && instalooter user zucktheberg /home/flex/Dropbox/MEMES/zucktheberg -N && instalooter user stinky420memes /home/flex/Dropbox/MEMES/stinky420memes -N && instalooter user memes.to.dm /home/flex/Dropbox/MEMES/memes.to.dm -N && instalooter -u augustinsupremacy user memeforyouandhim /home/flex/Dropbox/MEMES/memeforyouandhim -N && instalooter user epicallyepicmemes /home/flex/Dropbox/MEMES/epicallyepicmemes -N"
 alias gb="git branch"
 alias ra="pulseaudio --kill; jack_control start; jack_control exit; pulseaudio --start;"
 alias vim="nvim"
