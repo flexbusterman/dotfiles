@@ -36,7 +36,7 @@ snippet bc "Semi-transparent background color" b
 background-color: rgba(0,0,0,0.25);
 endsnippet
 # let ${1:${VISUAL}} = require('${0:$1}');
-snippet pc "Augustin Pdef with CC" b
+snippet pdc "Augustin Pdef with CC" b
 (
 Pdef(\\${1:name}, Ppar(
 	[
@@ -90,5 +90,17 @@ Pdef(\\${1:name},
 );
 
 Pdef(\\$1).stop;
+
+endsnippet
+
+snippet sd "Simple SynthDef" b
+(
+SynthDef(\\${1:blip}, {
+	| freq=${2:440}, amp=${2:0.2}, auxAmp=${3:0.0}, pan=0.5, out=0, auxOut=0 |
+	var sig;
+	sig = SinOsc.ar(freq: freq)
+	Out.ar(0,sum);
+}).add;
+);
 
 endsnippet
