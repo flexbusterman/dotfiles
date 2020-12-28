@@ -249,7 +249,7 @@ let g:scnvim_scdoc = 1
 " pass flags directly to sclang - see help file for more details, caveats, and further examples
 let g:scnvim_sclang_options = ['-u', 9999]
 " help
-let g:scnvim_scdoc_render_prg = '/home/flex/.local/bin/html2text'
+let g:scnvim_scdoc_render_prg = '/usr/bin/pandoc'
 " let g:scnvim_scdoc_render_args = '% -o %'
 "       _        _
 "   ___| |_ _ __| |_ __
