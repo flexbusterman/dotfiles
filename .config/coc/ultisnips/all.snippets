@@ -96,11 +96,20 @@ endsnippet
 snippet sd "Simple SynthDef" b
 (
 SynthDef(\\${1:blip}, {
-	| freq=${2:440}, amp=${2:0.2}, auxAmp=${3:0.0}, pan=0.5, out=0, auxOut=0 |
-	var sig;
-	sig = SinOsc.ar(freq: freq)
-	Out.ar(0,sum);
+	| freq=${2:440}, amp=${3:0.2}, auxAmp=${4:0.0}, att=0.00001, rel=1.0, pan=0.5, out=0, auxOut=0 |
+	var sig, env;
+	sig = SinOsc.ar(freq);
+	env = Env.perc(0.0001, 1.0).kr(2);
+	sig = sig * env;
+	sig = Pan2.ar(sig, pan);
+	Out.ar(out, sig * amp);
+	Out.ar(auxOut, sig * auxAmp);
 }).add;
 );
 
+x = Synth(\\$1);
+endsnippet
+
+snippet test "Test SuperCollider audio" b
+{SinOsc.ar(freq: 440.0,  phase: 0.0,  mul: 0.2,  add: 0.0)!2}.play;
 endsnippet
