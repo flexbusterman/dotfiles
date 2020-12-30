@@ -122,6 +122,7 @@ static const char *poweroff[] = { "poweroff", NULL };
 static Key keys[] = {
   /* FLEX KEYS */
 	{ MODKEY|ShiftMask,                       XK_l, spawn,  SHCMD("slock" ) },
+	{ MODKEY|ShiftMask,                       XK_s, spawn,  SHCMD("st -e zsh -c yt" ) },
 	{ MODKEY,                       XK_d, spawn,  SHCMD("sleep 0.2 && xdotool type --clearmodifiers \"$(date +\"%F \")\"")},
   { MODKEY|ShiftMask,                       XK_b, spawn,  SHCMD("bluetoothctl show | grep -i powered | grep -i yes && notify-send 'Bluetooth is on' && pactl set-card-profile bluez_card.74_5C_4B_D2_86_F7 a2dp_sink || notify-send 'Starting bluetooth' && bluetoothctl power on && bluetoothctl -- connect 74:5C:4B:D2:86:F7 && pactl set-card-profile bluez_card.74_5C_4B_D2_86_F7 a2dp_sink")},
 
