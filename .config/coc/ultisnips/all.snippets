@@ -96,10 +96,10 @@ endsnippet
 snippet sd "Simple SynthDef" b
 (
 SynthDef(\\${1:blip}, {
-	| freq=${2:440}, amp=${3:0.2}, auxAmp=${4:0.0}, att=0.00001, rel=1.0, pan=0.5, out=0, auxOut=0 |
+	| freq=${2:440}, amp=$53:0.2}, auxAmp=${4:0.0}, att=0.00001, rel=1.0, pan=0.0, out=0, auxOut=0 |
 	var sig, env;
 	sig = SinOsc.ar(freq);
-	env = Env.perc(0.0001, 1.0).kr(2);
+	env = Env.perc(att, rel).kr(2);
 	sig = sig * env;
 	sig = Pan2.ar(sig, pan);
 	Out.ar(out, sig * amp);

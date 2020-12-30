@@ -67,6 +67,12 @@ endif
 " Set custom status line look
 set statusline="  Hint: %z%= %A %10u:%-7g %15s %20d  "
 
+" fzf
+command! FZFlocate :set noquickview | :execute 'goto' fnameescape(term('locate $HOME | fzf --height 20 2>/dev/tty'))
+command! FZFfind :set noquickview | :execute 'goto' fnameescape(term('find | fzf --height 20 2>/dev/tty'))
+nnoremap <c-g> :FZFlocate<cr>
+nnoremap <c-f> :FZFfind<cr>
+
 map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k

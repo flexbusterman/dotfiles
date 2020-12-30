@@ -91,4 +91,8 @@ streamer.8_to_16 0
 streamer.samplerate 44100
 streamer.samplerate_mult_44 44100
 streamer.samplerate_mult_48 48000
+trkproperties.geometry.h 400
+trkproperties.geometry.w 400
+trkproperties.geometry.x 92
+trkproperties.geometry.y 183
 wildmidi.config /home/flex/.config/freepats.cfg
