@@ -228,8 +228,8 @@ alias vv="cd /home/flex/.config/vifm/; nvim vifmrc"
 alias se="setxkbmap se; setxkbmap -option caps:swapescape; xset r rate 300 50"
 alias us="setxkbmap us; setxkbmap -option caps:swapescape; xset r rate 300 50"
 
-yt () { youtube-dl --add-metadata -i "$*"}
-yta () { youtube-dl --add-metadata -i -x -f bestaudio/best "$*"}
+ytd () { youtube-dl --add-metadata -i "$*"}
+ytda () { youtube-dl --add-metadata -i -x -f bestaudio/best "$*"}
 
 # Pacman shortcut functions
 pin () { sudo pacman -S --noconfirm $* }
