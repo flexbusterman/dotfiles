@@ -8,14 +8,13 @@
 config.load_autoconfig()
 
 # Dracula color scheme
-import dracula.draw
-
-dracula.draw.blood(c, {
-    'spacing': {
-        'vertical': 6,
-        'horizontal': 8
-    }
-})
+#  import dracula.draw
+#  dracula.draw.blood(c, {
+    #  'spacing': {
+        #  'vertical': 6,
+        #  'horizontal': 8
+    #  }
+#  })
 
 config.bind(",a", "hint links userscript youtube_mp3_downloader.sh")
 config.bind(",v", "hint links userscript youtube_downloader.sh")
@@ -939,9 +938,9 @@ c.colors.webpage.darkmode.enabled = True
 
 ## List of user stylesheet filenames to use.
 ## Type: List of File, or File
-c.content.user_stylesheets = [
-    'dracula.css'
-        ]
+#  c.content.user_stylesheets = [
+    #  'dracula.css'
+        #  ]
 
 ## Enable WebGL.
 ## Type: Bool
