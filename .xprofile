@@ -24,5 +24,4 @@ xrdb ~/.Xresources &
 mw -Y &
 # mullvad connect &
 # watch -n 60 /home/flex/.local/bin/flexmail &>/dev/null &
-# slstatus &
 # cadence-session-start --system-start
