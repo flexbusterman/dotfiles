@@ -25,5 +25,4 @@ mw -Y &
 # mullvad connect &
 # watch -n 60 /home/flex/.local/bin/flexmail &>/dev/null &
 # slstatus &
-# verbar &
 # cadence-session-start --system-start
