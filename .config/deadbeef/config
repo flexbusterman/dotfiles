@@ -62,7 +62,7 @@ logwindow.geometry.w 954
 logwindow.geometry.x 0
 logwindow.geometry.y 13
 mainwin.geometry.h 1061
-mainwin.geometry.w 1146
+mainwin.geometry.w 954
 mainwin.geometry.x 0
 mainwin.geometry.y 13
 network.proxy.port 8080
