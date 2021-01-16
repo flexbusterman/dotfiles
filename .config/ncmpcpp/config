@@ -30,3 +30,5 @@ progressbar_color = black:b
 progressbar_elapsed_color = blue:b
 statusbar_color = red
 statusbar_time_color = cyan:b
+mpd_host = "127.0.0.1"
+mpd_port = "6600"

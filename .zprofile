@@ -15,6 +15,8 @@ export TERMINAL="st"
 export BROWSER="brave"
 export READER="zathura"
 export SHELL="zsh"
+export MPD_HOST=127.0.0.1
+export MPD_PORT=6600
 
 # ~/ Clean-up:
 export XDG_CONFIG_HOME="$HOME/.config"

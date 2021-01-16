@@ -23,7 +23,7 @@ bindkey -r '^L'
 bindkey '^L' autosuggest-accept
 
 autoload -U up-line-or-beginning-search
-autoload -U down-line-or-beginning-search
+autoloa-U down-line-or-beginning-search
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
 bindkey "^K" up-line-or-beginning-search # Up
@@ -53,6 +53,9 @@ _comp_options+=(globdots)   # Include hidden files.
 # vi mode
 bindkey -v
 export KEYTIMEOUT=1
+export MPD_HOST=127.0.0.1
+export MPD_PORT=6600
+
 
 # Use vim keys in tab complete menu:
 bindkey -M menuselect 'h' vi-backward-char
@@ -183,6 +186,10 @@ alias np="deadbeef --nowplaying %d/%f"
 # Navigation shortcuts
 alias d='cd ~/Dropbox; exa'
 alias D='cd ~/Downloads; exa'
+alias mv='cd ~/GIT/mind; nvim'
+alias mn='cd ~/GIT/mind; npm run dev'
+alias sv='cd ~/GIT/sandhamn; nvim'
+alias sn='cd ~/GIT/sandhamn; npm run dev'
 
 # Dropbox aliases
 alias dls="dropbox-cli ls"
