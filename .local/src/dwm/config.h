@@ -346,7 +346,6 @@ static Key keys[] = {
   /* { MODKEY|ShiftMask,             XK_y,      incrovgaps,     {.i = +1 } }, */
   /* { MODKEY|ShiftMask,             XK_o,      incrovgaps,     {.i = -1 } }, */
   };
-
 /* button definitions */
 /* click can be ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, or ClkRootWin */
 static Button buttons[] = {
