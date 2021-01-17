@@ -100,6 +100,9 @@ vnoremap <silent> <nowait> <leader>j :w<CR>
 nnoremap <silent> <nowait> <leader>q <esc>:q!<CR>
 vnoremap <silent> <nowait> <leader>q <esc>:q!<CR>
 xnoremap <silent> <nowait> <leader>q <esc>:q!<CR>
+" tabs
+nnoremap <silent> <nowait> <leader><tab> :tabn<CR>
+nnoremap <silent> <nowait> <leader>t :tabedit<CR>
 " vnoremap J :m '>+1<CR>gv=gv
 " vnoremap K :m '<-2<CR>gv=gv
 nnoremap <leader>rw :CocSearch <C-R>=expand("<cword>")<CR><CR>
@@ -192,8 +195,8 @@ let NERDTreeQuitOnOpen = 1
 autocmd FileType nerdtree setlocal relativenumber
 let g:NERDTreeGitStatusWithFlags = 0
 let g:NERDTreeIgnore = ['^node_modules$']
-vmap <leader>t <plug>NERDCommenterToggle
-nmap <leader>t <plug>NERDCommenterToggle
+vmap <leader>; <plug>NERDCommenterToggle
+nmap <leader>; <plug>NERDCommenterToggle
 nmap <leader>h :NERDTreeToggle<CR>
 let g:NERDSpaceDelims = 1
 " Use compact syntax for prettified multi-line comments

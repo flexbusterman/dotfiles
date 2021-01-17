@@ -292,6 +292,7 @@ static Key keys[] = {
 { ControlMask|ShiftMask, XK_space, spawn,    SHCMD("deadbeef --play-pause") },
 { ControlMask|ShiftMask, XK_q, spawn,    SHCMD("deadbeef --quit") },
 { ControlMask|ShiftMask, XK_Return, spawn,    SHCMD("deadbeef") },
+{ ControlMask|ShiftMask, XK_t, spawn,    SHCMD("tetris") },
 
 { 0, XF86XK_AudioMute,    spawn,    SHCMD("pamixer -t; kill -44 $(pidof dwmblocks)") },
 { 0, XF86XK_AudioRaiseVolume, spawn,    SHCMD("pamixer --allow-boost -i 3; kill -44 $(pidof dwmblocks)") },
