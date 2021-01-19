@@ -250,8 +250,7 @@ static Key keys[] = {
 /* { MODKEY,     XK_Left,  focusmon, {.i = -1 } }, */
 /* { MODKEY|ShiftMask,   XK_Left,  tagmon,   {.i = -1 } }, */
 { MODKEY|ControlMask|ShiftMask,     XK_j,  focusmon, {.i = -1 } },
-{ MODKEY|ControlMask|ShiftMask,     XK_h,  tagmon, {.i = -1 } },
-/* { MODKEY,     XK_Right, focusmon, {.i = +1 } }, */
+{ MODKEY|ControlMask|ShiftMask,     XK_h,  tagmon, {.i = -1 } }, /* { MODKEY,     XK_Right, focusmon, {.i = +1 } }, */
 /* { MODKEY|ShiftMask,   XK_Right, tagmon,   {.i = +1 } }, */
 { MODKEY|ControlMask|ShiftMask,    XK_k, focusmon, {.i = +1 } },
 { MODKEY|ControlMask|ShiftMask,    XK_l, tagmon, {.i = +1 } },
@@ -292,7 +291,7 @@ static Key keys[] = {
 { ControlMask|ShiftMask, XK_space, spawn,    SHCMD("deadbeef --play-pause") },
 { ControlMask|ShiftMask, XK_q, spawn,    SHCMD("deadbeef --quit") },
 { ControlMask|ShiftMask, XK_Return, spawn,    SHCMD("deadbeef") },
-{ ControlMask|ShiftMask, XK_t, spawn,    SHCMD("tetris") },
+{ MODKEY|ControlMask|ShiftMask, XK_t, spawn,    SHCMD("tetris") },
 
 { 0, XF86XK_AudioMute,    spawn,    SHCMD("pamixer -t; kill -44 $(pidof dwmblocks)") },
 { 0, XF86XK_AudioRaiseVolume, spawn,    SHCMD("pamixer --allow-boost -i 3; kill -44 $(pidof dwmblocks)") },
