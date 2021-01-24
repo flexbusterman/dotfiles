@@ -105,7 +105,7 @@ nnoremap <silent> <nowait> <leader><tab> :tabn<CR>
 nnoremap <silent> <nowait> <leader>t :tabedit<CR>
 " vnoremap J :m '>+1<CR>gv=gv
 " vnoremap K :m '<-2<CR>gv=gv
-nnoremap <leader>rw :CocSearch <C-R>=expand("<cword>")<CR><CR>
+" nnoremap <leader>rw :CocSearch <C-R>=expand("<cword>")<CR><CR>
 " center matches on screen
 nnoremap n nzz
 nnoremap N Nzz
