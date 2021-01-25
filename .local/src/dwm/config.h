@@ -64,6 +64,9 @@ static const Rule rules[] = {
   { "Patchage",      NULL,         NULL,      1 << 1,               0,           1,         1,        -1 },
 { "Spotify",     NULL,       NULL,  1 << 2,       0,           0,         0,        -1 },
 { "deadbeef",     NULL,       NULL,  1 << 2,       0,           0,         0,        -1 },
+
+{ "Zathura", NULL, NULL, 0, 0, 0, 1, -1 },
+
 };
 
 /* layout(s) */

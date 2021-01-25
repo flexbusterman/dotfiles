@@ -326,7 +326,7 @@ t(){
 }
 
 tf(){
-	termdown --no-figlet $* && ffplay -nodisp -autoexit /home/flex/Dropbox/MUSIC/fanfare.mp3
+	termdown --no-figlet $* && ffplay -nodisp -autoexit /home/flex/Dropbox/MUSIC/MP3/fanfare.mp3
 }
 
 beer(){
