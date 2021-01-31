@@ -57,14 +57,14 @@ hotkey.key36 "Shift Ctrl l" 0 1 seek_5s_fwd
 hotkey.key37 "Shift Ctrl h" 0 1 seek_5s_back
 hotkeys_created 1
 junk.enable_cp1251_detection 0
-logwindow.geometry.h 1001
+logwindow.geometry.h 995
 logwindow.geometry.w 1092
 logwindow.geometry.x 30
-logwindow.geometry.y 43
-mainwin.geometry.h 1061
-mainwin.geometry.w 1146
-mainwin.geometry.x 0
-mainwin.geometry.y 13
+logwindow.geometry.y 49
+mainwin.geometry.h 1001
+mainwin.geometry.w 1092
+mainwin.geometry.x 30
+mainwin.geometry.y 43
 network.proxy.port 8080
 output_plugin alsa
 playback.loop 1

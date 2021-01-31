@@ -19,6 +19,7 @@ setxkbmap -option "caps:escape" -option "shift:both_capslock"
 xmodmap ~/.Xmodmap
 dropbox start -i &
 deadbeef &
+# xmobar &
 # set background color for sxiv
 xrdb ~/.Xresources &
 mw -Y &
