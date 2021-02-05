@@ -61,9 +61,9 @@ logwindow.geometry.h 995
 logwindow.geometry.w 1092
 logwindow.geometry.x 30
 logwindow.geometry.y 49
-mainwin.geometry.h 1001
-mainwin.geometry.w 1092
-mainwin.geometry.x 30
+mainwin.geometry.h 482
+mainwin.geometry.w 818
+mainwin.geometry.x 1066
 mainwin.geometry.y 43
 network.proxy.port 8080
 output_plugin alsa
