@@ -4,7 +4,7 @@
 static int topbar = 1;                      /* -b  option; if 0, dmenu appears at bottom     */
 /* -fn option overrides fonts[0]; default X11 font or font set */
 
-static const char *fonts[]          = { "Ac437 IBM CGAthin:size=10:antialias=true:autohint=true", "JoyPixels:pixelsize=12:antialias=true:autohint=true"  };
+static const char *fonts[]          = { "Px437 IBM 3270pc:size=11:antialias=true:autohint=true", "JoyPixels:pixelsize=12:antialias=true:autohint=true"  };
 static const unsigned int bgalpha = 0xe0;
 static const unsigned int fgalpha = OPAQUE;
 static const char *prompt      = NULL;      /* -p  option; prompt to the left of input field */

@@ -12,8 +12,8 @@ static const int smartgaps          = 1;        /* 1 means no outer gap when the
 static const int swallowfloating    = 1;        /* 1 means swallow floating windows by default */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "Ac437 IBM CGAthin:size=10:antialias=true:autohint=true"};
-static char dmenufont[]             = "Ac437 IBM CGAthin:size=10:antialias=true:autohint=true";
+static const char *fonts[]          = { "Px437 IBM 3270pc:size=11:antialias=true:autohint=true"};
+static char dmenufont[]             = "Px437 IBM 3270pc:size=11:antialias=true:autohint=true";
 //static char dmenufont[]             = "RobotoMono:size=13";
 static char normbgcolor[]           = "#000000";
 static char normbordercolor[]       = "#111111";
