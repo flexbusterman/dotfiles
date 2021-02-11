@@ -7,9 +7,9 @@
  */
  
 // static char *font = "Px437 IBM BIOS:size=7:antialias=true:autohint=true";
-static char *font = "Ac437 CompaqThin 8x8:size=8:antialias=true:autohint=true";
+static char *font = "Ac437 IBM CGAthin:size=10:antialias=true:autohint=true";
 // static char *font2[] = { "Px437 IBM BIOS:size=7:antialias=true:autohint=true" };
-static char *font2[] = { "Ac437 CompaqThin 8x8:size=8:antialias=true:autohint=true" };
+static char *font2[] = { "Ac437 IBM CGAthin:size=10:antialias=true:autohint=true" };
 static int borderpx = 0;
 
 /*
