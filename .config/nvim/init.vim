@@ -25,6 +25,14 @@ set autoread
 " set nohlsearch
 " Fixes syntax highlighting from stopping
 autocmd BufEnter * :syntax sync fromstart
+autocmd FileType mail set textwidth=0 wrapmargin=0
+
+"here a function was defined
+function! s:twitvim_my_settings()
+  "this function just do one thing, set nowrap option. (text is gonna be displayed without wrap.)
+  set nowrap
+endfunction
+
 let g:vimwiki_list = [{'path': '~/Dropbox/NOTES/'}]
 " Yank and paste with the system clipboard
 set clipboard+=unnamedplus

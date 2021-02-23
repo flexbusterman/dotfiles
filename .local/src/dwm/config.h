@@ -235,7 +235,7 @@ static Key keys[] = {
   /* { MODKEY|ShiftMask,    XK_z,   spawn,    SHCMD("") }, */
 { MODKEY,     XK_x,   incrgaps, {.i = -3 } },
 	{ MODKEY|ShiftMask,    XK_x,   spawn,    SHCMD("xkill") },
-  /* { MODKEY,      XK_c,   spawn,    SHCMD("") }, */
+	{ MODKEY,      XK_c,   spawn,    SHCMD("st -e calcurse") },
 	{ MODKEY|ShiftMask,    XK_c,   spawn,    SHCMD("cadence") },
   /* V is automatically bound above in STACKKEYS */
 { MODKEY,     XK_s,   togglebar,  {0} },
