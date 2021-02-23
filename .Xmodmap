@@ -2,25 +2,26 @@
 clear Mod1
 ! clear Mod2
 ! clear Mod3
-! clear Mod4
+clear Mod4
 ! clear Mod5
 
 ! clear must be done before configuring it
-! keycode 64 = 
+keycode 64 = 
 keycode 108 = 
-! keycode 133 = 
+keycode 133 = 
 ! keycode 204 = 
 
 ! Configuration (first column normal type, second with shift and second with Mod_switch)
 ! keycode 64 = Super_L
+keycode 64 = Alt_L
 keycode 108 = Multi_key
-! keycode 133 = Alt_L
+keycode 133 = Super_L
 
 ! setting all the modification keys
 add Mod1 = Meta_L
 ! add Mod2 = Num_Lock
-! add mod3 = Multi_key
-! add mod4 = Alt_L
+add mod3 = Super_L
+add Mod4 = Alt_L
 ! add mod5 = ISO_Level3_Shift
 !
 
