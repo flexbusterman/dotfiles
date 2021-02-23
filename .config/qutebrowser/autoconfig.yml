@@ -17,14 +17,20 @@ settings:
           open -t https://app.slack.com/client/T3SMMM8F8/CB5NVC78W;; open -t https://app.slack.com/client/TF3UUPZNZ/CH5G52FPS;;
           open -t https://www.dropbox.com/h;; tab-focus 1
         ',y': open www.youtube.com
+  colors.hints.bg:
+    global: rgba(0,0,0,1)
+  colors.hints.fg:
+    global: rgba(200,200,200,1)
+  colors.hints.match.fg:
+    global: rgba(255,255,255,1)
   colors.webpage.bg:
     global: black
   colors.webpage.darkmode.enabled:
     global: true
+  content.blocking.enabled:
+    global: true
   content.geolocation:
     https://www.google.com.ar: false
-  content.host_blocking.enabled:
-    global: true
   content.notifications:
     https://cutewallpaper.org: false
     https://mspoweruser.com: false
@@ -38,9 +44,11 @@ settings:
     https://calendar.google.com?cid=%25s: true
     https://mail.google.com?extsrc=mailto&url=%25s: true
   fonts.default_family:
-    global: Px437 IBM BIOS
+    global: Px437 IBM 3270pc
   fonts.default_size:
-    global: 11px
+    global: 15px
+  hints.border:
+    global: '1px solid #000000'
   url.default_page:
     global: about:blank
   url.searchengines:
