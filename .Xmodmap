@@ -1,7 +1,7 @@
 ! Might need to clear mods
 clear Mod1
 ! clear Mod2
-! clear Mod3
+clear Mod3
 clear Mod4
 ! clear Mod5
 
@@ -18,7 +18,7 @@ keycode 108 = Multi_key
 keycode 133 = Super_L
 
 ! setting all the modification keys
-add Mod1 = Meta_L
+add Mod1 = Super_L
 ! add Mod2 = Num_Lock
 add mod3 = Super_L
 add Mod4 = Alt_L
