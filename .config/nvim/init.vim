@@ -185,6 +185,8 @@ nnoremap { k{<Space>0
 vnoremap { k{<Space>0
 nnoremap } j}<BS>0
 vnoremap } j}<BS>0
+"
+map <C-p> :Telescope find_files<CR>
 
 "  _   _ _____ ____  ____ _____
 " | \ | | ____|  _ \|  _ \_   _| __ ___  ___
