@@ -153,6 +153,8 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm .|. shiftMask, xK_n), spawn ("st -e newsboat"))
     , ((modm, xK_c), spawn ("st -e calcurse"))
     , ((modm, xK_t), spawn ("st -e tg"))
+    , ((0, xK_Print), spawn ("maim -f jpg -m 9 \"/home/flex/Pictures/SCREENSHOTS/$(date +\"%F %H_%M_%S.jpg\")\""))
+    , ((shiftMask, xK_Print), spawn ("maim -f jpg -m 9 -s \"/home/flex/Pictures/SCREENSHOTS/$(date +\"%F %H_%M_%S.jpg\")\""))
 		, ((0, 0x1008ff12), spawn ("pamixer -t"))
 		, ((0, 0x1008ff11), spawn ("pamixer --allow-boost -d 3"))
 		, ((0, 0x1008ff13), spawn ("pamixer --allow-boost -i 3"))
@@ -161,10 +163,6 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 		, ((0, 0x1008ff94), spawn ("bluetoothctl show | grep -i powered | grep -i yes && notify-send 'Bluetooth is on' && pactl set-card-profile bluez_card.74_5C_4B_D2_86_F7 a2dp_sink || notify-send 'Starting bluetooth' && bluetoothctl power on && bluetoothctl -- connect 74:5C:4B:D2:86:F7 && pactl set-card-profile bluez_card.74_5C_4B_D2_86_F7 a2dp_sink"))
 
     , ((modm, xK_n), spawn ("cd ~/Dropbox/NOTES/; st -e nvim -c VimwikiIndex"))
--- { 0, ,    spawn,    SHCMD("pamixer -t; kill -44 $(pidof dwmblocks)") },
--- { 0, XF86XK_AudioMute,    spawn,    SHCMD("pamixer -t; kill -44 $(pidof dwmblocks)") },
--- { 0, XF86XK_AudioRaiseVolume, spawn,    SHCMD("pamixer --allow-boost -i 3; kill -44 $(pidof dwmblocks)") },
--- { 0, XF86XK_AudioLowerVolume, spawn,    SHCMD("pamixer --allow-boost -d 3; kill -44 $(pidof dwmblocks)") },
     ]
     ++
 
