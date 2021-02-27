@@ -151,7 +151,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm .|. controlMask .|. shiftMask, xK_period ), spawn ("brave"))
     , ((modm .|. shiftMask, xK_x), spawn ("xkill"))
     , ((modm .|. shiftMask, xK_n), spawn ("st -e newsboat"))
-    , ((modm, xK_c), spawn ("st -e calcurse"))
+    , ((modm .|. shiftMask, xK_c), spawn ("st -e calcurse"))
     , ((modm, xK_t), spawn ("st -e tg"))
     , ((0, xK_Print), spawn ("maim -f jpg -m 9 \"/home/flex/Pictures/SCREENSHOTS/$(date +\"%F %H_%M_%S.jpg\")\""))
     , ((shiftMask, xK_Print), spawn ("maim -f jpg -m 9 -s \"/home/flex/Pictures/SCREENSHOTS/$(date +\"%F %H_%M_%S.jpg\")\""))
@@ -161,8 +161,20 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 		, ((0, 0x1008ff03), spawn ("xbacklight -dec $(bc <<< \"$(xbacklight) * 0.5\")"))
 		, ((0, 0x1008ff02), spawn ("xbacklight -inc $(bc <<< \"$(xbacklight) * 0.5 + 0.15\")"))
 		, ((0, 0x1008ff94), spawn ("bluetoothctl show | grep -i powered | grep -i yes && notify-send 'Bluetooth is on' && pactl set-card-profile bluez_card.74_5C_4B_D2_86_F7 a2dp_sink || notify-send 'Starting bluetooth' && bluetoothctl power on && bluetoothctl -- connect 74:5C:4B:D2:86:F7 && pactl set-card-profile bluez_card.74_5C_4B_D2_86_F7 a2dp_sink"))
-
     , ((modm, xK_n), spawn ("cd ~/Dropbox/NOTES/; st -e nvim -c VimwikiIndex"))
+    -- , ((modm, xK_F1),    spawn ("groff -mom /usr/local/share/dwm/larbs.mom -Tpdf | zathura -"))
+    -- , ((modm, xK_F2),    spawn ("tutorialvids"))
+    , ((modm, xK_F3),    spawn ("displayselect"))
+    , ((modm, xK_F4), spawn ("st -e pulsemixer"))
+    -- , ((modm), xK_F5,    xr db,ULL })
+    , ((modm, xK_F6),    spawn ("torwrap"))
+    , ((modm, xK_F7),    spawn ("td-toggle"))
+    , ((modm, xK_F8),    spawn ("mailsync"))
+    , ((modm, xK_F9),    spawn ("dmenumount"))
+    , ((modm, xK_F10),   spawn ("dmenuumount"))
+    , ((modm, xK_F11),   spawn ("mpv --no-cache --no-osc --no-input-default-bindings --input-conf=/dev/null --title=webcam $(ls /dev/video[0,2,4,6,8] | tail -n 1)"))
+-- , ((modm, xK_F12,   xrdb,   {.v = NULL }
+
     ]
     ++
 
