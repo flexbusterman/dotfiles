@@ -152,6 +152,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm .|. shiftMask, xK_x), spawn ("xkill"))
     , ((modm .|. shiftMask, xK_n), spawn ("st -e newsboat"))
     , ((modm .|. shiftMask, xK_c), spawn ("st -e calcurse"))
+    , ((modm, xK_e), spawn ("st -e neomutt"))
     , ((modm, xK_t), spawn ("st -e tg"))
     , ((0, xK_Print), spawn ("maim -f jpg -m 9 \"/home/flex/Pictures/SCREENSHOTS/$(date +\"%F %H_%M_%S.jpg\")\""))
     , ((shiftMask, xK_Print), spawn ("maim -f jpg -m 9 -s \"/home/flex/Pictures/SCREENSHOTS/$(date +\"%F %H_%M_%S.jpg\")\""))
