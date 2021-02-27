@@ -224,7 +224,9 @@ wdisable() { nmcli connection down $* }
 
 # VIM aliases for editing common files
 alias vz="cd /home/flex/.config/zsh/; nvim .zshrc"
-alias vx="cd /home/flex/; nvim .xprofile"
+alias vP="cd /home/flex/; nvim .xprofile"
+alias vx="cd /home/flex/.xmonad/; nvim xmonad.hs"
+alias vX="cd /home/flex/.xmobar/; nvim xmobar.hs"
 alias vn="cd /home/flex/.config/nvim/; nvim init.vim"
 alias vp="cd /home/flex/.config/nvim/; nvim plugins.vim"
 alias vu="cd /home/flex/.config/newsboat/; nvim urls"
