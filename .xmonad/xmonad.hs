@@ -149,6 +149,22 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm .|. shiftMask, xK_comma ), spawn ("st -e vifm"))
     , ((modm .|. shiftMask, xK_period ), spawn ("qutebrowser"))
     , ((modm .|. controlMask .|. shiftMask, xK_period ), spawn ("brave"))
+    , ((modm .|. shiftMask, xK_x), spawn ("xkill"))
+    , ((modm .|. shiftMask, xK_n), spawn ("st -e newsboat"))
+    , ((modm, xK_c), spawn ("st -e calcurse"))
+    , ((modm, xK_t), spawn ("st -e tg"))
+		, ((0, 0x1008ff12), spawn ("pamixer -t"))
+		, ((0, 0x1008ff11), spawn ("pamixer --allow-boost -d 3"))
+		, ((0, 0x1008ff13), spawn ("pamixer --allow-boost -i 3"))
+		, ((0, 0x1008ff03), spawn ("xbacklight -dec $(bc <<< \"$(xbacklight) * 0.5\")"))
+		, ((0, 0x1008ff02), spawn ("xbacklight -inc $(bc <<< \"$(xbacklight) * 0.5 + 0.15\")"))
+		, ((0, 0x1008ff94), spawn ("bluetoothctl show | grep -i powered | grep -i yes && notify-send 'Bluetooth is on' && pactl set-card-profile bluez_card.74_5C_4B_D2_86_F7 a2dp_sink || notify-send 'Starting bluetooth' && bluetoothctl power on && bluetoothctl -- connect 74:5C:4B:D2:86:F7 && pactl set-card-profile bluez_card.74_5C_4B_D2_86_F7 a2dp_sink"))
+
+    , ((modm, xK_n), spawn ("cd ~/Dropbox/NOTES/; st -e nvim -c VimwikiIndex"))
+-- { 0, ,    spawn,    SHCMD("pamixer -t; kill -44 $(pidof dwmblocks)") },
+-- { 0, XF86XK_AudioMute,    spawn,    SHCMD("pamixer -t; kill -44 $(pidof dwmblocks)") },
+-- { 0, XF86XK_AudioRaiseVolume, spawn,    SHCMD("pamixer --allow-boost -i 3; kill -44 $(pidof dwmblocks)") },
+-- { 0, XF86XK_AudioLowerVolume, spawn,    SHCMD("pamixer --allow-boost -d 3; kill -44 $(pidof dwmblocks)") },
     ]
     ++
 
@@ -159,16 +175,17 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     [((m .|. modm, k), windows $ f i)
         | (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9]
         , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
-    ++
 
     --
     -- mod-{w,e,r}, Switch to physical/Xinerama screens 1, 2, or 3
     -- mod-shift-{w,e,r}, Move client to screen 1, 2, or 3
     --
-	--
-    [((m .|. modm, key), screenWorkspace sc >>= flip whenJust (windows . f))
-        | (key, sc) <- zip [xK_b, xK_n, xK_m] [0..]
-        , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
+  --
+  --
+    -- ++
+    -- [((m .|. modm, key), screenWorkspace sc >>= flip whenJust (windows . f))
+        -- | (key, sc) <- zip [xK_b, xK_n, xK_m] [0..]
+        -- , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
 
 
 ------------------------------------------------------------------------
@@ -285,7 +302,7 @@ main = do
             ppOutput = hPutStrLn xmproc
 					-- , ppTitle = xmobarColor xmobarTitleColor "" . shorten 100
           -- , ppCurrent = xmobarColor xmobarCurrentWorkspaceColor ""
-					, ppSep = "   "
+					, ppSep = " "
       }
       , manageHook = manageDocks <+> myManageHook
 --      , startupHook = docksStartupHook <+> setWMName "LG3D"
