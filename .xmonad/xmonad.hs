@@ -17,7 +17,7 @@ import qualified Data.Map        as M
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
 --
-myTerminal      = "st"
+myTerminal      = "xterm"
 
 -- Whether focus follows the mouse pointer.
 myFocusFollowsMouse :: Bool
@@ -29,7 +29,7 @@ myClickJustFocuses = False
 
 -- Width of the window border in pixels.
 --
-myBorderWidth   = 2
+myBorderWidth   = 1
 
 -- modMask lets you specify which modkey you want to use. The default
 -- is mod1Mask ("left alt").  You may also consider using mod3Mask
@@ -63,29 +63,25 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     [ ((modm .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf)
 
     -- launch dmenu
-    -- , ((modm,               xK_p     ), spawn "dmenu_run")
-    , ((modm,               xK_Return     ), spawn "dmenu_run")
+    , ((modm,               xK_p     ), spawn "dmenu_run")
 
     -- launch gmrun
-		, ((modm .|. shiftMask, xK_p     ), spawn "gmrun")
-
-    , ((modm .|. shiftMask, xK_Return     ), spawn "st")
+    , ((modm .|. shiftMask, xK_p     ), spawn "gmrun")
 
     -- close focused window
-    -- , ((modm .|. shiftMask, xK_c     ), kill)
-    , ((modm, xK_w     ), kill)
+    , ((modm .|. shiftMask, xK_c     ), kill)
 
      -- Rotate through the available layout algorithms
     , ((modm,               xK_space ), sendMessage NextLayout)
 
     --  Reset the layouts on the current workspace to default
-		, ((modm .|. shiftMask, xK_space ), setLayout $ XMonad.layoutHook conf)
+    , ((modm .|. shiftMask, xK_space ), setLayout $ XMonad.layoutHook conf)
 
     -- Resize viewed windows to the correct size
     , ((modm,               xK_n     ), refresh)
 
     -- Move focus to the next window
-    -- , ((modm,               xK_Tab   ), windows W.focusDown)
+    , ((modm,               xK_Tab   ), windows W.focusDown)
 
     -- Move focus to the next window
     , ((modm,               xK_j     ), windows W.focusDown)
@@ -97,7 +93,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm,               xK_m     ), windows W.focusMaster  )
 
     -- Swap the focused window and the master window
-    -- , ((modm,               xK_Return), windows W.swapMaster)
+    , ((modm,               xK_Return), windows W.swapMaster)
 
     -- Swap the focused window with the next window
     , ((modm .|. shiftMask, xK_j     ), windows W.swapDown  )
