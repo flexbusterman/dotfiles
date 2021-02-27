@@ -7,16 +7,27 @@
 -- Normally, you'd only override those defaults you care about.
 --
 
-import XMonad
 import Data.Monoid
+import Graphics.X11.ExtraTypes.XF86
 import System.Exit
-import XMonad.Hooks.ManageDocks
+import System.IO
+import XMonad
 import XMonad.Hooks.DynamicLog
-import XMonad.Util.SpawnOnce
+import XMonad.Hooks.ManageDocks
+import XMonad.Hooks.ManageHelpers
+import XMonad.Hooks.SetWMName
+import XMonad.Layout.Fullscreen
+import XMonad.Layout.NoBorders
+import XMonad.Layout.Spiral
+import XMonad.Layout.Tabbed
+import XMonad.Layout.ThreeColumns
+import XMonad.Util.EZConfig
 import XMonad.Util.Run
-
-import qualified XMonad.StackSet as W
+import XMonad.Util.SpawnOnce
 import qualified Data.Map        as M
+import qualified Data.Map        as M
+import qualified XMonad.StackSet as W
+import qualified XMonad.StackSet as W
 
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
@@ -253,20 +264,34 @@ myLogHook = return ()
 -- per-workspace layout choices.
 --
 -- By default, do nothing.
-myStartupHook = return ()
+myStartupHook = do
+  spawnOnce "/usr/bin/xmobar /home/flex/.xmobar/xmobar.hs"
+-- myStartupHook = return ()
 
 ------------------------------------------------------------------------
 -- Now run xmonad with all the defaults we set up.
 
 -- Run xmonad with the settings you specify. No need to modify this.
 --
-main = do
-	xmproc <- spawnPipe "/usr/bin/xmobar /home/flex/.xmobar/xmobar.hs"
-	xmonad $ docks defaults
--- main = xmonad defaults
--- main = xmonad defaults
+
 -- main = do
+	-- xmproc <- spawnPipe "/usr/bin/xmobar /home/flex/.xmobar/xmobar.hs"
 	-- xmonad $ docks defaults
+
+main = do
+  xmproc <- spawnPipe ("/usr/bin/xmobar /home/flex/.xmobar/xmobar.hs")
+  xmonad $ defaults {
+      logHook = dynamicLogWithPP $ xmobarPP {
+            ppOutput = hPutStrLn xmproc
+					-- , ppTitle = xmobarColor xmobarTitleColor "" . shorten 100
+          -- , ppCurrent = xmobarColor xmobarCurrentWorkspaceColor ""
+					, ppSep = "   "
+      }
+      , manageHook = manageDocks <+> myManageHook
+--      , startupHook = docksStartupHook <+> setWMName "LG3D"
+      , startupHook = setWMName "LG3D"
+      , handleEventHook = docksEventHook
+  }
 
 -- A structure containing your configuration settings, overriding
 -- fields in the default config. Any you don't override, will
