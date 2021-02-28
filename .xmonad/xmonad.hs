@@ -90,7 +90,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm,               xK_Tab ), sendMessage NextLayout)
 
     --  Reset the layouts on the current workspace to default
-    -- , ((modm .|. shiftMask, xK_space ), setLayout $ XMonad.layoutHook conf)
+		, ((modm .|. shiftMask, xK_space ), setLayout $ XMonad.layoutHook conf)
 
     -- Resize viewed windows to the correct size
     -- , ((modm,               xK_n     ), refresh)
@@ -308,17 +308,14 @@ myStartupHook = do
 
 main = do
   xmproc <- spawnPipe ("/usr/bin/xmobar /home/flex/.xmobar/xmobar.hs")
-  xmonad $ defaults {
+  xmonad $ fullscreenSupport $ defaults {
       logHook = dynamicLogWithPP $ xmobarPP {
             ppOutput = hPutStrLn xmproc
 					-- , ppTitle = xmobarColor xmobarTitleColor "" . shorten 100
           -- , ppCurrent = xmobarColor xmobarCurrentWorkspaceColor ""
 					, ppSep = " "
       }
-      , manageHook = manageDocks <+> myManageHook
 --      , startupHook = docksStartupHook <+> setWMName "LG3D"
-      , startupHook = setWMName "LG3D"
-      , handleEventHook = docksEventHook
   }
 
 -- A structure containing your configuration settings, overriding
@@ -344,10 +341,10 @@ defaults = def {
 
       -- hooks, layouts
         layoutHook         = myLayout,
-        manageHook         = myManageHook,
-        handleEventHook    = myEventHook,
+				manageHook = manageDocks <+> myManageHook,
+        handleEventHook    = myEventHook <+> docksEventHook,
 				logHook            = myLogHook,
-        startupHook        = myStartupHook
+        startupHook        = myStartupHook <+> setWMName "LG3D"
     }
 
 -- | Finally, a copy of the default bindings in simple textual tabular format.
