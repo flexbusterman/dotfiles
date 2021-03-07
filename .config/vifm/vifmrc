@@ -102,6 +102,8 @@ nmap q ZQ
 nnoremap va ggVG
 vnoremap u :This is disabled to avoid mistakes
 
+map gd :!dropbox-cli exclude add %f<cr>
+
 fileview */ tree %c -L 1 --dirsfirst
 fileview ../ tree %c -L 1 --dirsfirst
 fileviewer *.html w3m -dump %c
