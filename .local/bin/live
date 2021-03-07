@@ -1,0 +1,2 @@
+#!/bin/sh 
+cd '/home/flex/.wine/drive_c/ProgramData/Ableton/Live 10 Suite/Program/'; wine 'Ableton Live 10 Suite.exe'

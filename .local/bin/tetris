@@ -1,0 +1,2 @@
+#!/bin/sh 
+st -e mednafen /home/flex/Dropbox/ROMS/NES/Tetris.nes

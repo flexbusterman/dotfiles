@@ -16,7 +16,7 @@ import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.SetWMName
-import XMonad.Layout.Fullscreen
+-- import XMonad.Layout.Fullscreen
 import XMonad.Layout.NoBorders
 import XMonad.Layout.Spiral
 import XMonad.Layout.Tabbed
@@ -308,7 +308,8 @@ myStartupHook = do
 
 main = do
   xmproc <- spawnPipe ("/usr/bin/xmobar /home/flex/.xmobar/xmobar.hs")
-  xmonad $ fullscreenSupport $ defaults {
+  -- xmonad $ fullscreenSupport $ defaults {
+  xmonad $ defaults {
       logHook = dynamicLogWithPP $ xmobarPP {
             ppOutput = hPutStrLn xmproc
 					-- , ppTitle = xmobarColor xmobarTitleColor "" . shorten 100
