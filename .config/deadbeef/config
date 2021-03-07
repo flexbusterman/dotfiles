@@ -61,10 +61,10 @@ logwindow.geometry.h 1001
 logwindow.geometry.w 1000
 logwindow.geometry.x 30
 logwindow.geometry.y 43
-mainwin.geometry.h 998
-mainwin.geometry.w 1092
-mainwin.geometry.x 30
-mainwin.geometry.y 46
+mainwin.geometry.h 1050
+mainwin.geometry.w 1126
+mainwin.geometry.x 0
+mainwin.geometry.y 24
 network.proxy.port 8080
 output_plugin alsa
 playback.loop 1

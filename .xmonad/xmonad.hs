@@ -6,28 +6,28 @@
 --
 -- Normally, you'd only override those defaults you care about.
 --
-
+-- import XMonad.Layout.Fullscreen
 import Data.Monoid
 import Graphics.X11.ExtraTypes.XF86
+import qualified Data.Map        as M
+import qualified XMonad.StackSet as W
 import System.Exit
 import System.IO
+import XMonad
 import XMonad
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.SetWMName
--- import XMonad.Layout.Fullscreen
 import XMonad.Layout.NoBorders
 import XMonad.Layout.Spiral
 import XMonad.Layout.Tabbed
 import XMonad.Layout.ThreeColumns
-import XMonad.Util.EZConfig
-import XMonad.Util.Run
+-- import XMonad.Util.EZConfig
+import XMonad.Util.EZConfig(additionalKeys)
+-- import XMonad.Util.Run
+import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.SpawnOnce
-import qualified Data.Map        as M
-import qualified Data.Map        as M
-import qualified XMonad.StackSet as W
-import qualified XMonad.StackSet as W
 
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
