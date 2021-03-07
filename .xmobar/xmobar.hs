@@ -13,6 +13,7 @@ Config {
     overrideRedirect = False,
     allDesktops = True,
     persistent = True,
+    position = TopW L 97,
     commands = [
 
         Run DynNetwork     [ "--template" , "<dev>: <tx> <rx>"

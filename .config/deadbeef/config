@@ -61,10 +61,10 @@ logwindow.geometry.h 1001
 logwindow.geometry.w 1000
 logwindow.geometry.x 30
 logwindow.geometry.y 43
-mainwin.geometry.h 1050
-mainwin.geometry.w 1126
+mainwin.geometry.h 1056
+mainwin.geometry.w 1914
 mainwin.geometry.x 0
-mainwin.geometry.y 24
+mainwin.geometry.y 18
 network.proxy.port 8080
 output_plugin alsa
 playback.loop 1
@@ -74,8 +74,8 @@ playlist.cursor.0 0
 playlist.scroll.0 0
 playlist.scroll.cursorfollowplayback 1
 playlist.tab.00000 Default
-prefwin.geometry.h 513
-prefwin.geometry.w 848
+prefwin.geometry.h 533
+prefwin.geometry.w 836
 prefwin.geometry.x 70
 prefwin.geometry.y 217
 resume.paused 1
