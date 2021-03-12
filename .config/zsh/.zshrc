@@ -257,11 +257,11 @@ pc (){ sudo pacman -Scc }
 # Yay install without confirmations
 yin () { yay --save --answerclean All --answerdiff All -Syu $* }
 
-yun () { yaourt -Rs $* }
-yrm () { yaourt -Rs $* }
-yup () { yaourt -Syua --noconfirm}
-yf () { yaourt -Ss $* }
-yls () { yaourt -Q }
+yun () { yay -Rs $* }
+yrm () { yay -Rs $* }
+yup () { yay -Syu --nocleanmenu --nodiffmenu}
+yf () { yay -Ss $* }
+yls () { yay -Q }
 
 datefolder(){
 for f in $*
