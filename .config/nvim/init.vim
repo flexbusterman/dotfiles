@@ -22,6 +22,7 @@ set tabstop=2
 set shiftwidth=2
 set numberwidth=2
 set autoread
+set scrolloff=10
 " set nohlsearch
 " Fixes syntax highlighting from stopping
 autocmd BufEnter * :syntax sync fromstart
