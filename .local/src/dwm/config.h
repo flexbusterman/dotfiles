@@ -57,6 +57,7 @@ static const Rule rules[] = {
   // { NULL,      NULL,         "dev",      1 << 8,               0,           1,         1,        -1 },
   { NULL,      NULL,         "aug",      1 << 8,               0,           1,         1,        -1 },
   { NULL,      NULL,         "PulseEffects",      1 << 8,               0,           1,         1,        -1 },
+  { NULL,      NULL,         "KeePassXC",      1 << 8,               0,           1,         1,        -1 },
   { NULL,      NULL,         "wiki",      1 << 7,               0,           1,         1,        -1 },
   { NULL,      NULL,         "terminal",      1 << 8,               0,           1,         1,        -1 },
   { NULL,      NULL,         "main",      1 << 0,               0,           1,         1,        -1 },
@@ -186,7 +187,8 @@ static Key keys[] = {
     { MODKEY|ShiftMask,   XK_w,   spawn,    SHCMD("st -e sudo nmtui") },
     { MODKEY,     XK_e,   spawn,    SHCMD("st -e neomutt") },
     { MODKEY|ShiftMask,   XK_e,   spawn,    SHCMD("st -e abook -C ~/.config/abook/abookrc --datafile ~/.config/abook/addressbook") },
-		{ MODKEY,   XK_p,   spawn,    SHCMD("st -e htop") },
+		{ MODKEY|ShiftMask,   XK_h,   spawn,    SHCMD("st -e htop") },
+		{ MODKEY,   XK_p,   spawn,    SHCMD("keepassxc") },
     // { MODKEY,   XK_h,   spawn,    SHCMD("st -e htop") },
     { MODKEY,     XK_t,   setlayout,  {.v = &layouts[2]} }, /* tile */
     { MODKEY|ShiftMask,   XK_t,   setlayout,  {.v = &layouts[1]} }, /* bstack */
