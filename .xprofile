@@ -21,6 +21,7 @@ xcape -e 'Mode_switch=Escape'
 
 dropbox start -i &
 deadbeef &
+keepassxc &
 # stalonetray &
 # xmobar &
 # set background color for sxiv
