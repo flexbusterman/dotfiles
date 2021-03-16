@@ -393,10 +393,16 @@ dev() {
   cd ~/GIT/kalle2019/; nvim;
 }
 
+# aug() {
+  # st -t SuperCollider -e zsh -c "cd ~/Dropbox/; nvim -c \"NERDTreeToggle | set filetype=supercollider | SCNvimStart\"" &
+  # bitwig-studio &
+  # st -t aug -e zsh -c "sleep 5; aconnect 128:7 16:0"
+# }
+
 aug() {
-  st -t SuperCollider -e zsh -c "cd ~/Dropbox/; nvim -c \"NERDTreeToggle | set filetype=supercollider | SCNvimStart\"" &
-  bitwig-studio &
-  st -t aug -e zsh -c "sleep 5; aconnect 128:7 16:0"
+  st -t SuperCollider -e zsh -c "cd ~/Dropbox/SUPERCOLLIDER; nvim -O ~/Dropbox/SUPERCOLLIDER/2021-03-15\ Augustin\ Piece\ 001.sc ~/Dropbox/SUPERCOLLIDER/2021-03-15\ Augustin\ Setup\ 001.sc -c \"set filetype=supercollider | SCNvimStart\"" &
+  # bitwig-studio &
+  # st -t aug -e zsh -c "sleep 5; aconnect 128:7 16:0"
 }
 
 # Locate and Edit
