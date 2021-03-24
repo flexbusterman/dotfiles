@@ -24,7 +24,7 @@ bindkey -r '^L'
 bindkey '^L' autosuggest-accept
 
 autoload -U up-line-or-beginning-search
-autoloa-U down-line-or-beginning-search
+autoload -U down-line-or-beginning-search
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
 bindkey "^K" up-line-or-beginning-search # Up
@@ -236,6 +236,7 @@ alias vs="cd /home/flex/.config/coc/ultisnips; nvim all.snippets"
 alias vS="cd /home/flex/.local/src/st/; nvim config.h"
 alias vc="cd /home/flex/.config/nvim/; nvim coc-settings.json"
 alias vv="cd /home/flex/.config/vifm/; nvim vifmrc"
+alias va="cd /home/flex/.local/bin/; nvim aug"
 
 # Keymap aliases
 alias se="setxkbmap se; setxkbmap -option caps:swapescape; xset r rate 300 50"
@@ -259,7 +260,7 @@ yin () { yay --save --answerclean All --answerdiff All -Syu $* }
 
 yun () { yay -Rs $* }
 yrm () { yay -Rs $* }
-yup () { yay -Syu --nocleanmenu --nodiffmenu}
+yup () { yay --nocleanmenu --nodiffmenu -Syu }
 yf () { yay -Ss $* }
 yls () { yay -Q }
 
@@ -399,11 +400,11 @@ dev() {
   # st -t aug -e zsh -c "sleep 5; aconnect 128:7 16:0"
 # }
 
-aug() {
-  st -t SuperCollider -e zsh -c "cd ~/Dropbox/SUPERCOLLIDER; nvim -O ~/Dropbox/SUPERCOLLIDER/2021-03-15\ Augustin\ Piece\ 001.sc ~/Dropbox/SUPERCOLLIDER/2021-03-15\ Augustin\ Setup\ 001.sc -c \"set filetype=supercollider | SCNvimStart\"" &
-  # bitwig-studio &
-  # st -t aug -e zsh -c "sleep 5; aconnect 128:7 16:0"
-}
+# aug() {
+  # st -t SuperCollider -e zsh -c "cd ~/Dropbox/SUPERCOLLIDER; nvim -O ~/Dropbox/SUPERCOLLIDER/2021-03-15\ Augustin\ Piece\ 001.sc ~/Dropbox/SUPERCOLLIDER/2021-03-15\ Augustin\ Setup\ 001.sc -c \"set filetype=supercollider | SCNvimStart\"" &
+  # # bitwig-studio &
+  # # st -t aug -e zsh -c "sleep 5; aconnect 128:7 16:0"
+# }
 
 # Locate and Edit
 le(){
