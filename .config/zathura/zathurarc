@@ -1,2 +1,3 @@
 set selection-clipboard clipboard
-set adjust_open width
+set adjust-open "width"
+set recolor "true"
