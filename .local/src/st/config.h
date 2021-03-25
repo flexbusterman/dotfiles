@@ -6,12 +6,12 @@
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
  
-// static char *font = "Px437 IBM BIOS:size=7:antialias=true:autohint=true";
+static char *font = "Px437 IBM BIOS:size=7:antialias=true:autohint=true";
 // static char *font = "Ac437 IBM CGAthin:size=10:antialias=true:autohint=true";
-static char *font = "Px437 IBM 3270pc:size=11:antialias=true:autohint=true";
-// static char *font2[] = { "Px437 IBM BIOS:size=7:antialias=true:autohint=true" };
+// static char *font = "Px437 IBM 3270pc:size=11:antialias=true:autohint=true";
+static char *font2[] = { "Px437 IBM BIOS:size=7:antialias=true:autohint=true" };
 // static char *font2[] = { "Ac437 IBM CGAthin:size=10:antialias=true:autohint=true" };
-static char *font2[] = { "Px437 IBM 3270pc:size=11:antialias=true:autohint=true" };
+// static char *font2[] = { "Px437 IBM 3270pc:size=11:antialias=true:autohint=true" };
 static int borderpx = 0;
 
 /*
