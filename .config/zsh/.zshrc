@@ -236,7 +236,7 @@ alias vs="cd /home/flex/.config/coc/ultisnips; nvim all.snippets"
 alias vS="cd /home/flex/.local/src/st/; nvim config.h"
 alias vc="cd /home/flex/.config/nvim/; nvim coc-settings.json"
 alias vv="cd /home/flex/.config/vifm/; nvim vifmrc"
-alias va="cd /home/flex/.local/bin/; nvim aug"
+alias va="cd /home/flex/.config/alacritty/; nvim alacritty.yml"
 
 # Keymap aliases
 alias se="setxkbmap se; setxkbmap -option caps:swapescape; xset r rate 300 50"

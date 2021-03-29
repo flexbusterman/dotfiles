@@ -32,7 +32,7 @@ import XMonad.Util.SpawnOnce
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
 --
-myTerminal      = "st"
+myTerminal      = "alacritty"
 
 -- Whether focus follows the mouse pointer.
 myFocusFollowsMouse :: Bool
@@ -146,14 +146,14 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- Run xmessage with a summary of the default keybindings (useful for beginners)
     , ((modm .|. shiftMask, xK_slash ), spawn ("echo \"" ++ help ++ "\" | xmessage -file -"))
 
-    , ((modm .|. shiftMask, xK_comma ), spawn ("st -e vifm"))
+    , ((modm .|. shiftMask, xK_comma ), spawn ("alacritty -e vifm"))
     , ((modm .|. shiftMask, xK_period ), spawn ("qutebrowser"))
     , ((modm .|. controlMask .|. shiftMask, xK_period ), spawn ("brave"))
     , ((modm .|. shiftMask, xK_x), spawn ("xkill"))
-    , ((modm .|. shiftMask, xK_n), spawn ("st -e newsboat"))
-    , ((modm .|. shiftMask, xK_c), spawn ("st -e calcurse"))
-    , ((modm, xK_e), spawn ("st -e neomutt"))
-    , ((modm, xK_t), spawn ("st -e tg"))
+    , ((modm .|. shiftMask, xK_n), spawn ("alacritty -e newsboat"))
+    , ((modm .|. shiftMask, xK_c), spawn ("alacritty -e calcurse"))
+    , ((modm, xK_e), spawn ("alacritty -e neomutt"))
+    , ((modm, xK_t), spawn ("alacritty -e tg"))
     , ((0, xK_Print), spawn ("maim -f jpg -m 9 \"/home/flex/Pictures/SCREENSHOTS/$(date +\"%F %H_%M_%S.jpg\")\""))
     , ((shiftMask, xK_Print), spawn ("maim -f jpg -m 9 -s \"/home/flex/Pictures/SCREENSHOTS/$(date +\"%F %H_%M_%S.jpg\")\""))
 		, ((0, 0x1008ff12), spawn ("pamixer -t"))
@@ -162,11 +162,11 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 		, ((0, 0x1008ff03), spawn ("xbacklight -dec $(bc <<< \"$(xbacklight) * 0.5\")"))
 		, ((0, 0x1008ff02), spawn ("xbacklight -inc $(bc <<< \"$(xbacklight) * 0.5 + 0.15\")"))
 		, ((0, 0x1008ff94), spawn ("bluetoothctl show | grep -i powered | grep -i yes && notify-send 'Bluetooth is on' && pactl set-card-profile bluez_card.74_5C_4B_D2_86_F7 a2dp_sink || notify-send 'Starting bluetooth' && bluetoothctl power on && bluetoothctl -- connect 74:5C:4B:D2:86:F7 && pactl set-card-profile bluez_card.74_5C_4B_D2_86_F7 a2dp_sink"))
-    , ((modm, xK_n), spawn ("cd ~/Dropbox/NOTES/; st -e nvim -c VimwikiIndex"))
+    , ((modm, xK_n), spawn ("cd ~/Dropbox/NOTES/; alacritty -e nvim -c VimwikiIndex"))
     -- , ((modm, xK_F1),    spawn ("groff -mom /usr/local/share/dwm/larbs.mom -Tpdf | zathura -"))
     -- , ((modm, xK_F2),    spawn ("tutorialvids"))
     , ((modm, xK_F3),    spawn ("displayselect"))
-    , ((modm, xK_F4), spawn ("st -e pulsemixer"))
+    , ((modm, xK_F4), spawn ("alacritty -e pulsemixer"))
     -- , ((modm), xK_F5,    xr db,ULL })
     , ((modm, xK_F6),    spawn ("torwrap"))
     , ((modm, xK_F7),    spawn ("td-toggle"))
