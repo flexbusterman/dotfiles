@@ -14,7 +14,6 @@ import qualified XMonad.StackSet as W
 import System.Exit
 import System.IO
 import XMonad
-import XMonad
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ManageHelpers

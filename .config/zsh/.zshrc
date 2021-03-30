@@ -440,10 +440,7 @@ dp() {
 
 # Add ssh tokens
 eval "$(ssh-agent -s)"
-ssh-add ~/.ssh/github
-ssh-add ~/.ssh/bitbucket
-ssh-add ~/.ssh/drop
-ssh-add ~/.ssh/mind
+ssh-add ~/.ssh/git
 clear
 
 # Load syntax highlighting; should be last according to Luke.
