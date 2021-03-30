@@ -15,8 +15,7 @@ Config {
     persistent = True,
     position = TopW L 99,
     commands = [
-
-			Run DynNetwork     [ "--template" , "<dev>: <rx> <tx>" , "--Low"      , "10000" , "--High"     , "50000" , "--low"      , "green" , "--normal"   , "green" , "--high"     , "green" ] 10
+			Run DynNetwork     [ "--template" , "<dev>: <fc=#00ff00><rx></fc> <fc=#ff0000><tx></fc>" , "-w","5" ] 10
         , Run Battery        [ "--template" , "Batt: <acstatus>"
                              , "--Low"      , "10"        -- units: %
                              , "--High"     , "80"        -- units: %
@@ -57,5 +56,5 @@ Config {
     ],
     sepChar = "%",
     alignSep = "}{",
-    template = "%StdinReader% <fc=#666666>│</fc> %battery% }{ %multicpu% <fc=#666666>│</fc> %dynnetwork% <fc=#666666>│</fc> %memory% <fc=#666666>│</fc> %disku% <fc=#666666>│</fc> %date% <fc=#666666>│</fc> "
+    template = "%StdinReader% <fc=#666666>│</fc> %battery% }{ %dynnetwork% <fc=#666666>│</fc> %multicpu% <fc=#666666>│</fc> %memory% <fc=#666666>│</fc> %disku% <fc=#666666>│</fc> %date% "
 }

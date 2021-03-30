@@ -35,7 +35,7 @@ fuzzy_edges 0
 # geometry <geometry>        # tray's geometry in standard X notation; width and
                              # height are specified in slot_size multiples
 # geometry 1x1+0+0
-geometry 4x1-0+0
+geometry 2x1-0+0
 
 # grow_gravity <gravity>     # one of N, S, E, W, NW, NE, SW, SE; tray will grow
                              # in the direction opposite to one specified by
@@ -48,7 +48,7 @@ grow_gravity NE
 icon_gravity NE
 
 # icon_size <int>            # specifies dimensions of typical icon slot
-icon_size 16
+icon_size 18
 
 # log_level <level>          # controls the amount of logging output, level can
                              # be err (default), info, or trace (enabled only
@@ -100,7 +100,7 @@ scrollbars none
                              # icon_size NEW in @VERSION_STR@.
 
 # skip_taskbar [<bool>]      # hide tray`s window from the taskbar
-skip_taskbar true
+skip_taskbar false
 
 # sticky [<bool>]            # make a tray`s window sticky across the
                              # desktops/pages
