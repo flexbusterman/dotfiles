@@ -136,7 +136,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm .|. shiftMask, xK_slash ), spawn ("echo \"" ++ help ++ "\" | xmessage -file -"))
 
     -- , ((modm .|. shiftMask, xK_comma ), spawn ("alacritty -o env.SHELL=/bin/zsh -e vifmrun"))
-    , ((modm .|. shiftMask, xK_comma ), spawn ("alacritty -e vifm"))
+    , ((modm .|. shiftMask, xK_comma ), spawn ("alacritty -o env.SHELL=/bin/zsh -e vifm"))
     , ((modm .|. shiftMask, xK_period ), spawn ("qutebrowser"))
     , ((modm .|. controlMask .|. shiftMask, xK_period ), spawn ("brave"))
     , ((modm .|. shiftMask, xK_x), spawn ("xkill"))
