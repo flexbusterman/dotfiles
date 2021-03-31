@@ -1,12 +1,3 @@
---
--- xmonad example config file.
---
--- A template showing all available configuration hooks,
--- and how to override the defaults in your own xmonad.hs conf file.
---
--- Normally, you'd only override those defaults you care about.
---
--- import XMonad.Layout.Fullscreen
 import Data.Monoid
 import Graphics.X11.ExtraTypes.XF86
 import qualified Data.Map        as M
@@ -15,6 +6,7 @@ import System.Exit
 import System.IO
 import XMonad
 import XMonad.Hooks.DynamicLog
+import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.SetWMName
@@ -22,9 +14,7 @@ import XMonad.Layout.NoBorders
 import XMonad.Layout.Spiral
 import XMonad.Layout.Tabbed
 import XMonad.Layout.ThreeColumns
--- import XMonad.Util.EZConfig
 import XMonad.Util.EZConfig(additionalKeys)
--- import XMonad.Util.Run
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.SpawnOnce
 
@@ -141,10 +131,11 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- Restart xmonad
     , ((modm              , xK_q     ), spawn "xmonad --recompile; xmonad --restart")
-
+    , ((modm              , xK_p     ), spawn "alacritty -e htop")
     -- Run xmessage with a summary of the default keybindings (useful for beginners)
     , ((modm .|. shiftMask, xK_slash ), spawn ("echo \"" ++ help ++ "\" | xmessage -file -"))
 
+    -- , ((modm .|. shiftMask, xK_comma ), spawn ("alacritty -o env.SHELL=/bin/zsh -e vifmrun"))
     , ((modm .|. shiftMask, xK_comma ), spawn ("alacritty -e vifm"))
     , ((modm .|. shiftMask, xK_period ), spawn ("qutebrowser"))
     , ((modm .|. controlMask .|. shiftMask, xK_period ), spawn ("brave"))
@@ -174,6 +165,138 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm, xK_F10),   spawn ("dmenuumount"))
     , ((modm, xK_F11),   spawn ("mpv --no-cache --no-osc --no-input-default-bindings --input-conf=/dev/null --title=webcam $(ls /dev/video[0,2,4,6,8] | tail -n 1)"))
 -- , ((modm, xK_F12,   xrdb,   {.v = NULL }
+
+
+	-- { modm .|. shiftMask,                       XK_l, spawn,  SHCMD("slock" ) },
+	-- { modm .|. shiftMask,                       XK_s, spawn,  SHCMD("st -e zsh -c yt" ) },
+	-- { modm ,                       XK_d, spawn,  SHCMD("sleep 0.2 && xdotool type --clearmodifiers \"$(date +\"%F \")\"")},
+  -- { modm .|. shiftMask,                       XK_b, spawn,  SHCMD("bluetoothctl show .|.  grep -i powered .|.  grep -i yes && notify-send 'Bluetooth is on' && pactl set-card-profile bluez_card.74_5C_4B_D2_86_F7 a2dp_sink .|. .|.  notify-send 'Starting bluetooth' && bluetoothctl power on && bluetoothctl -- connect 74:5C:4B:D2:86:F7 && pactl set-card-profile bluez_card.74_5C_4B_D2_86_F7 a2dp_sink")},
+  -- { modm .|. controlMask .|. shiftMask,                       XK_s, spawn,  SHCMD("setxkbmap se; setxkbmap -option \"caps:swapescape\"; xset r rate 300 50")},
+  -- { modm .|. controlMask .|. shiftMask,                       XK_u, spawn,  SHCMD("setxkbmap us; setxkbmap -option \"caps:swapescape\"; xset r rate 300 50")},
+  -- { modm ,     XK_w,   killclient, {0} },
+  -- { modm ,                       XK_Return, spawn,          {.v = dmenucmd } },
+  -- { modm .|. shiftMask,             XK_Return, spawn,          {.v = termcmd } },
+  -- { modm .|. controlMask .|. shiftMask,             XK_r, spawn,          {.v = reboot } },
+  -- { modm .|. controlMask .|. shiftMask,             XK_p, spawn,          {.v = poweroff } },
+  -- { modm ,     XK_q,    spawn,    SHCMD("qutebrowser") },
+  -- { modm .|. controlMask .|. shiftMask,     XK_period,    spawn,    SHCMD("brave https://mail.google.com/mail/u/0/#inbox https://mail.google.com/mail/u/1/#inbox https://mail.google.com/mail/u/3/#inbox https://calendar.google.com") },
+  -- { modm .|. shiftMask,     XK_period,    spawn,    SHCMD("brave") },
+	-- { modm .|. shiftMask,                       XK_comma, spawn,  SHCMD("st env SHELL=/bin/zsh vifmrun")},
+  -- { 0,        XK_Print, spawn,    SHCMD("maim -f jpg -m 9 \"/home/flex/Pictures/SCREENSHOTS/$(date +\"%F %H_%M_%S.jpg\")\"")},
+  -- { shiftMask,        XK_Print, spawn,    SHCMD("maim -f jpg -m 9 -s \"/home/flex/Pictures/SCREENSHOTS/$(date +\"%F %H_%M_%S.jpg\")\"")},
+  -- STACKKEYS(modm ,                          focus)
+	-- STACKKEYS(modm .|. shiftMask,                push)
+	-- { modm ,     XK_grave, spawn,  SHCMD("dmenuunicode") },
+	-- { modm .|. shiftMask,   XK_0,   tag,    {.ui = ~0 } },
+	-- { modm ,     XK_BackSpace, spawn,    SHCMD("sysact") },
+	-- { modm .|. shiftMask,   XK_BackSpace, spawn,    SHCMD("sysact") },
+	-- { modm ,     XK_Tab,   view,   {0} },
+	-- { modm .|. shiftMask,   XK_q,   spawn,    SHCMD("sysact") },
+	-- { modm .|. shiftMask,   XK_w,   spawn,    SHCMD("st -e sudo nmtui") },
+	-- { modm ,     XK_e,   spawn,    SHCMD("st -e neomutt") },
+	-- { modm .|. shiftMask,   XK_e,   spawn,    SHCMD("st -e abook -C ~/.config/abook/abookrc --datafile ~/.config/abook/addressbook") },
+	-- { modm .|. shiftMask,   XK_h,   spawn,    SHCMD("st -e htop") },
+	-- { modm ,   XK_p,   spawn,    SHCMD("keepassxc") },
+	-- { modm ,     XK_t,   setlayout,  {.v = &layouts[2]} }, /* tile */
+	-- { modm .|. shiftMask,   XK_t,   setlayout,  {.v = &layouts[1]} }, /* bstack */
+	-- { modm ,     XK_y,   setlayout,  {.v = &layouts[0]} }, /* spiral */
+	-- { modm .|. shiftMask,   XK_y,   setlayout,  {.v = &layouts[3]} }, /* dwindle */
+	-- { modm ,     XK_u,   setlayout,  {.v = &layouts[4]} }, /* deck */
+	-- { modm .|. shiftMask,   XK_u,   setlayout,  {.v = &layouts[5]} }, /* monocle */
+	-- { modm ,     XK_i,   setlayout,  {.v = &layouts[6]} }, /* centeredmaster */
+	-- { modm .|. shiftMask,   XK_i,   setlayout,  {.v = &layouts[7]} }, /* centeredfloatingmaster */
+	-- { modm ,     XK_equal,   incnmaster,     {.i = +1 } },
+	-- { modm ,   XK_minus,   incnmaster,     {.i = -1 } },
+	-- { modm .|. shiftMask,   XK_p,     spawn,    SHCMD("pulseeffects") },
+	-- { modm ,     XK_backslash,   view,   {0} },
+	-- { modm ,     XK_a,   togglegaps, {0} },
+	-- { modm .|. shiftMask,   XK_a,   defaultgaps,  {0} },
+	-- { modm ,     XK_s,   togglesticky, {0} },
+	-- { modm ,     XK_f,   togglefullscr,  {0} },
+	-- { modm .|. shiftMask,   XK_f,   setlayout,  {.v = &layouts[8]} },
+	-- { modm ,     XK_g,   shiftview,  { .i = -1 } },
+	-- { modm .|. shiftMask,   XK_g,   shifttag, { .i = -1 } },
+	-- { modm ,     XK_h,   setmfact, {.f = -0.05} },
+	-- { modm ,     XK_l,   setmfact,       {.f = +0.05} },
+	-- { modm .|. controlMask .|. shiftMask,    XK_p,  togglescratch,  {.ui = 1} },
+	-- { modm ,     XK_z,   incrgaps, {.i = +3 } },
+	-- { modm ,     XK_x,   incrgaps, {.i = -3 } },
+	-- { modm .|. shiftMask,    XK_x,   spawn,    SHCMD("xkill") },
+	-- { modm .|. shiftMask,      XK_c,   spawn,    SHCMD("st -e calcurse") },
+	-- { modm .|. controlMask .|. shiftMask,    XK_c,   spawn,    SHCMD("cadence") },
+	-- { modm ,     XK_s,   togglebar,  {0} },
+	-- { modm ,     XK_n,   spawn,    SHCMD("cd ~/Dropbox/NOTES/; st -e nvim -c VimwikiIndex") },
+	-- { modm .|. shiftMask,   XK_n,   spawn,    SHCMD("st -e newsboat") },
+	-- { modm ,     XK_m,   spawn,    SHCMD("st -e ncmpcpp") },
+	-- { modm .|. shiftMask,   XK_m,   spawn,    SHCMD("aconnect 127:7 16:0; aconnect 128:7 16:0; aconnect 129:7 16:0; aconnect 130:7 16:0") },
+	-- { modm .|. controlMask .|. shiftMask,     XK_Left, spawn,    SHCMD("audtool playlist-reverse") },
+	-- { modm .|. controlMask .|. shiftMask,     XK_period,  spawn,    SHCMD("audtool playlist-advance") },
+	-- { modm .|. controlMask .|. shiftMask,     XK_j,  focusmon, {.i = -1 } },
+	-- { modm .|. controlMask .|. shiftMask,     XK_h,  tagmon, {.i = -1 } }, /* { modm ,     XK_Right, focusmon, {.i = +1 } }, */
+	-- { modm .|. controlMask .|. shiftMask,    XK_k, focusmon, {.i = +1 } },
+	-- { modm .|. controlMask .|. shiftMask,    XK_l, tagmon, {.i = +1 } },
+	-- { modm ,     XK_Page_Up, shiftview,  { .i = -1 } },
+	-- { modm .|. shiftMask,   XK_Page_Up, shifttag, { .i = -1 } },
+	-- { modm ,     XK_Page_Down, shiftview,  { .i = +1 } },
+	-- { modm .|. shiftMask,   XK_Page_Down, shifttag, { .i = +1 } },
+	-- { modm ,     XK_F1,    spawn,    SHCMD("groff -mom /usr/local/share/dwm/larbs.mom -Tpdf .|.  zathura -") },
+	-- { modm ,     XK_F2,    spawn,    SHCMD("tutorialvids") },
+	-- { modm ,     XK_F3,    spawn,    SHCMD("displayselect") },
+	-- { modm ,     XK_F4,    spawn,    SHCMD("st -e pulsemixer; kill -44 $(pidof dwmblocks)") },
+	-- { modm ,     XK_F5,    xrdb,   {.v = NULL } },
+	-- { modm ,     XK_F6,    spawn,    SHCMD("torwrap") },
+	-- { modm ,     XK_F7,    spawn,    SHCMD("td-toggle") },
+	-- { modm ,     XK_F8,    spawn,    SHCMD("mailsync") },
+	-- { modm ,     XK_F9,    spawn,    SHCMD("dmenumount") },
+	-- { modm ,     XK_F10,   spawn,    SHCMD("dmenuumount") },
+	-- { modm ,     XK_F11,   spawn,    SHCMD("mpv --no-cache --no-osc --no-input-default-bindings --input-conf=/dev/null --title=webcam $(ls /dev/video[0,2,4,6,8] .|.  tail -n 1)") },
+	-- { modm ,     XK_F12,   xrdb,   {.v = NULL } },
+	-- { modm ,     XK_space, zoom,   {0} },
+	-- { modm .|. shiftMask,   XK_f, togglefloating, {0} },
+	-- { modm ,     XK_Print, spawn,    SHCMD("dmenurecord") },
+	-- { modm .|. shiftMask,   XK_Print, spawn,    SHCMD("dmenurecord kill") },
+	-- { modm ,     XK_Delete,  spawn,    SHCMD("dmenurecord kill") },
+	-- { modm ,     XK_Scroll_Lock, spawn,    SHCMD("killall screenkey .|. .|.  screenkey &") },
+	-- { controlMask .|. shiftMask, XK_k, spawn,    SHCMD("deadbeef --prev") },
+	-- { controlMask .|. shiftMask, XK_j, spawn,    SHCMD("deadbeef --next") },
+	-- { controlMask .|. shiftMask, XK_space, spawn,    SHCMD("deadbeef --play-pause") },
+	-- { controlMask .|. shiftMask, XK_q, spawn,    SHCMD("deadbeef --quit") },
+	-- { controlMask .|. shiftMask, XK_Return, spawn,    SHCMD("deadbeef") },
+	-- { modm .|. controlMask .|. shiftMask, XK_t, spawn,    SHCMD("tetris") },
+	-- { 0, XF86XK_AudioMute,    spawn,    SHCMD("pamixer -t; kill -44 $(pidof dwmblocks)") },
+	-- { 0, XF86XK_AudioRaiseVolume, spawn,    SHCMD("pamixer --allow-boost -i 3; kill -44 $(pidof dwmblocks)") },
+	-- { 0, XF86XK_AudioLowerVolume, spawn,    SHCMD("pamixer --allow-boost -d 3; kill -44 $(pidof dwmblocks)") },
+	-- { 0, XF86XK_AudioPrev,    spawn,    SHCMD("mpc prev") },
+	-- { 0, XF86XK_AudioNext,    spawn,    SHCMD("mpc next") },
+	-- { 0, XF86XK_AudioPause,   spawn,    SHCMD("mpc pause") },
+	-- { 0, XF86XK_AudioPlay,    spawn,    SHCMD("mpc play") },
+	-- { 0, XF86XK_AudioStop,    spawn,    SHCMD("mpc stop") },
+	-- { 0, XF86XK_AudioRewind,  spawn,    SHCMD("mpc seek -10") },
+	-- { 0, XF86XK_AudioForward, spawn,    SHCMD("mpc seek +10") },
+	-- { 0, XF86XK_AudioMedia,   spawn,    SHCMD("st -e ncmpcpp") },
+	-- { 0, XF86XK_PowerOff,   spawn,    SHCMD("sysact") },
+	-- { 0, XF86XK_Sleep,    spawn,    SHCMD("sudo -A zzz") },
+	-- { 0, XF86XK_WWW,    spawn,    SHCMD("$BROWSER") },
+	-- { 0, XF86XK_DOS,    spawn,    SHCMD("st") },
+	-- { 0, XF86XK_ScreenSaver,  spawn,    SHCMD("slock & xset dpms force off; mpc pause; pauseallmpv") },
+	-- { 0, XF86XK_TaskPane,   spawn,    SHCMD("st -e htop") },
+	-- { 0, XF86XK_Mail,   spawn,    SHCMD("st -e neomutt") },
+	-- { 0, XF86XK_Launch1,    spawn,    SHCMD("xset dpms force off") },
+	-- { 0, XF86XK_TouchpadToggle, spawn,    SHCMD("(synclient .|.  grep 'TouchpadOff.*1' && synclient TouchpadOff=0) .|. .|.  synclient TouchpadOff=1") },
+	-- { 0, XF86XK_TouchpadOff,  spawn,    SHCMD("synclient TouchpadOff=1") },
+	-- { 0, XF86XK_TouchpadOn,   spawn,    SHCMD("synclient TouchpadOff=0") },
+	-- { 0, XF86XK_MonBrightnessUp,  spawn,    SHCMD("xbacklight -inc $(bc <<< \"$(xbacklight) * 0.5 + 0.15\")") },
+	-- { 0, XF86XK_MonBrightnessDown,  spawn,    SHCMD("xbacklight -dec $(bc <<< \"$(xbacklight) * 0.5\")") },
+
+
+
+
+
+
+
+
+
+
 
     ]
     ++
@@ -228,7 +351,7 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 -- The available layouts.  Note that each layout is separated by |||,
 -- which denotes layout choice.
 --
-myLayout = avoidStruts (tiled ||| Mirror tiled ||| Full)
+myLayout = avoidStruts (tiled ||| spiral (6/7) ||| Mirror tiled ||| Full)
   where
      -- default tiling algorithm partitions the screen into two panes
      tiled   = Tall nmaster delta ratio
@@ -341,7 +464,7 @@ defaults = def {
 
       -- hooks, layouts
         layoutHook         = myLayout,
-				manageHook = manageDocks <+> myManageHook,
+				manageHook				 = myManageHook <+> manageDocks,
         handleEventHook    = myEventHook <+> docksEventHook,
 				logHook            = myLogHook,
         startupHook        = myStartupHook <+> setWMName "LG3D"
