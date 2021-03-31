@@ -52,9 +52,11 @@ Config {
 	-- Run Com "/bin/bash" ["-c", "echo `xbacklight -get | grep -oE '^.[0-9]{0,3}'`%"]  "mybright" 1,
 	-- Run Com "/bin/bash" ["-c", "~/.local/bin/get-volume.sh"]  "myvolume" 100,
 			Run StdinReader,
-			Run  DiskU [("/", "<free>")] ["-L", "20", "-H", "50", "-m", "1", "-p", "3"] 30
+			Run  DiskU [("/", "<free>")] ["-L", "20", "-H", "50", "-m", "1", "-p", "3"] 100,
+			Run Com "sh" ["-c", "find ~/.local/share/mail/*/*/new/* -type f | command wc -l"] "newmail" 300
+			-- Run  Com "find ~/.local/share/mail/*/*/new/* -type f | command wc -l" ["-s", "-r"] 30
     ],
     sepChar = "%",
     alignSep = "}{",
-    template = "%StdinReader% <fc=#666666>│</fc> %battery% }{ %dynnetwork% <fc=#666666>│</fc> %multicpu% <fc=#666666>│</fc> %memory% <fc=#666666>│</fc> %disku% <fc=#666666>│</fc> %date% "
+    template = "%StdinReader% <fc=#666666>│</fc> %battery% }{ M %newmail% <fc=#666666>│</fc> %dynnetwork% <fc=#666666>│</fc> %multicpu% <fc=#666666>│</fc> %memory% <fc=#666666>│</fc> %disku% <fc=#666666>│</fc> %date%"
 }

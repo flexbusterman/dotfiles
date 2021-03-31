@@ -1,1 +1,5 @@
-ps -C calcurse >/dev/null || mailsync
+#!/bin/bash
+running=false
+ps -C calcurse >/dev/null && running=true
+ps -C calcurse-caldav >/dev/null && running=true
+$running && echo 'something running' || calcurse-caldav

@@ -167,7 +167,6 @@ alias copy='xclip -sel clip'
 alias rf='rm -rf'
 alias res="xdpyinfo | awk '/dimensions/{print $2}'"
 alias q="exit"
-alias ig="brave --app=\"http://www.instagram.com/direct/inbox/\""
 alias igdl="instalooter -u augustinsupremacy user memeforyouandhim /home/flex/Dropbox/MEMES/memeforyouandhim -Nv && instalooter user memeseducational ~/Dropbox/MEMES/memeseducational -Nv && instalooter user dank_memes_world_1 /home/flex/Dropbox/MEMES/dank_memes_world_1 -Nv && instalooter user zucktheberg /home/flex/Dropbox/MEMES/zucktheberg -Nv && instalooter user stinky420memes /home/flex/Dropbox/MEMES/stinky420memes -Nv && instalooter user memes.to.dm /home/flex/Dropbox/MEMES/memes.to.dm -Nv && instalooter user epicallyepicmemes /home/flex/Dropbox/MEMES/epicallyepicmemes -Nv && instalooter user baked_meme_god /home/flex/Dropbox/MEMES/baked_meme_god -Nv && instalooter user stolenmemesawakens /home/flex/Dropbox/MEMES/stolenmemesawakens -Nv && instalooter user memesinyourdms /home/flex/Dropbox/MEMES/memesinyourdms -Nv && instalooter user omgzucc /home/flex/Dropbox/MEMES/omgzucc -Nv"
 alias gb="git branch"
 alias ra="pulseaudio --kill; jack_control start; jack_control exit; pulseaudio --start;"
@@ -188,6 +187,7 @@ alias cat="bat"
 alias d='cd ~/Dropbox; exa'
 alias s='cd ~/Dropbox/2021\ FOTO/SCREENSHOTS; exa'
 alias D='cd ~/Downloads; exa'
+alias b='cd ~/.local/bin/; exa'
 # alias mv='cd ~/GIT/mind; nvim'
 alias mn='cd ~/GIT/mind; npm run dev'
 alias sv='cd ~/GIT/sandhamn; nvim'
