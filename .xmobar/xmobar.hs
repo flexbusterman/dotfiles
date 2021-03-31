@@ -58,5 +58,5 @@ Config {
     ],
     sepChar = "%",
     alignSep = "}{",
-    template = "%StdinReader% <fc=#666666>│</fc> %battery% }{ M %newmail% <fc=#666666>│</fc> %dynnetwork% <fc=#666666>│</fc> %multicpu% <fc=#666666>│</fc> %memory% <fc=#666666>│</fc> %disku% <fc=#666666>│</fc> %date%"
+    template = "%StdinReader% <fc=#666666>│</fc> %battery% }{ M %newmail% <fc=#666666>│</fc> %dynnetwork% <fc=#666666>│</fc> %multicpu% <fc=#666666>│</fc> %memory% <fc=#666666>│</fc> %disku% <fc=#666666>│</fc> %date% "
 }
