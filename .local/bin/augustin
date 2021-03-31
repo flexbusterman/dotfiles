@@ -1,0 +1,1 @@
+alacritty -t SuperCollider -e zsh -c "cd ~/Dropbox/SUPERCOLLIDER; nvim -O ~/Dropbox/SUPERCOLLIDER/2021-03-15\ Augustin\ Piece\ 001.sc /home/flex/.config/SuperCollider/startup.scd -c \"set filetype=supercollider | SCNvimStart\"" &

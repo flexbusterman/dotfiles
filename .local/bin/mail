@@ -1,0 +1,7 @@
+#!/bin/bash
+running=false
+ps -C neomutt >/dev/null && running=true
+ps -C mw >/dev/null && running=true
+ps -C notmuch >/dev/null && running=true
+ps -C mbsync >/dev/null && running=true
+$running && echo 'something running' || mw -Y
