@@ -75,8 +75,8 @@ playlist.cursor.0 0
 playlist.scroll.0 0
 playlist.scroll.cursorfollowplayback 1
 playlist.tab.00000 Default
-prefwin.geometry.h 533
-prefwin.geometry.w 836
+prefwin.geometry.h 534
+prefwin.geometry.w 830
 prefwin.geometry.x 70
 prefwin.geometry.y 217
 resume.paused 1
