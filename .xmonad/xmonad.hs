@@ -132,7 +132,6 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- Restart xmonad
     , ((modm              , xK_q     ), spawn "xmonad --recompile; xmonad --restart")
     , ((modm              , xK_p     ), spawn "alacritty -t Htop -e htop")
-    -- Run xmessage with a summary of the default keybindings (useful for beginners)
     , ((modm .|. shiftMask, xK_slash ), spawn ("echo \"" ++ help ++ "\" | xmessage -file -"))
 
     -- , ((modm .|. shiftMask, xK_comma ), spawn ("alacritty -o env.SHELL=/bin/zsh -e vifmrun"))
@@ -142,6 +141,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 		, ((modm .|. shiftMask, xK_x), spawn ("xkill"))
 		, ((modm .|. shiftMask, xK_n), spawn ("alacritty -t Newsboat -e newsboat"))
 		, ((modm, xK_c), spawn ("alacritty -t Calcurse -e calcurse"))
+		, ((modm, xK_i), spawn ("brave --app='http://www.instagram.com/direct/inbox/'"))
 		, ((modm, xK_e), spawn ("alacritty -t NeoMutt -e neomutt"))
 		, ((modm, xK_t), spawn ("alacritty -t Telegram -e tg"))
 		, ((0, xK_Print), spawn ("maim -f jpg -m 9 \"/home/flex/Pictures/SCREENSHOTS/$(date +\"%F %H_%M_%S.jpg\")\""))
@@ -258,7 +258,7 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 -- The available layouts.  Note that each layout is separated by |||,
 -- which denotes layout choice.
 --
-myLayout = avoidStruts (tiled ||| spiral (6/7) ||| Mirror tiled ||| Full)
+myLayout = avoidStruts (spiral (6/7) ||| tiled ||| Mirror tiled ||| Full)
   where
      -- default tiling algorithm partitions the screen into two panes
      tiled   = Tall nmaster delta ratio
@@ -267,7 +267,7 @@ myLayout = avoidStruts (tiled ||| spiral (6/7) ||| Mirror tiled ||| Full)
      nmaster = 1
 
      -- Default proportion of screen occupied by master pane
-     ratio   = 1/2
+     ratio   = 2/3
 
      -- Percent of screen to increment by when resizing panes
      delta   = 3/100
