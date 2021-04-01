@@ -131,7 +131,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- Restart xmonad
     , ((modm              , xK_q     ), spawn "xmonad --recompile; xmonad --restart")
-    , ((modm              , xK_p     ), spawn "alacritty -e htop")
+    , ((modm              , xK_p     ), spawn "alacritty -t Htop -e htop")
     -- Run xmessage with a summary of the default keybindings (useful for beginners)
     , ((modm .|. shiftMask, xK_slash ), spawn ("echo \"" ++ help ++ "\" | xmessage -file -"))
 
@@ -139,163 +139,70 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm .|. shiftMask, xK_comma ), spawn ("alacritty -o env.SHELL=/bin/zsh -e vifm"))
     , ((modm .|. shiftMask, xK_period ), spawn ("qutebrowser"))
     , ((modm .|. controlMask .|. shiftMask, xK_period ), spawn ("brave"))
-    , ((modm .|. shiftMask, xK_x), spawn ("xkill"))
-    , ((modm .|. shiftMask, xK_n), spawn ("alacritty -e newsboat"))
-    , ((modm .|. shiftMask, xK_c), spawn ("alacritty -e calcurse"))
-    , ((modm, xK_e), spawn ("alacritty -e neomutt"))
-    , ((modm, xK_t), spawn ("alacritty -e tg"))
-    , ((0, xK_Print), spawn ("maim -f jpg -m 9 \"/home/flex/Pictures/SCREENSHOTS/$(date +\"%F %H_%M_%S.jpg\")\""))
-    , ((shiftMask, xK_Print), spawn ("maim -f jpg -m 9 -s \"/home/flex/Pictures/SCREENSHOTS/$(date +\"%F %H_%M_%S.jpg\")\""))
+		, ((modm .|. shiftMask, xK_x), spawn ("xkill"))
+		, ((modm .|. shiftMask, xK_n), spawn ("alacritty -t Newsboat -e newsboat"))
+		, ((modm, xK_c), spawn ("alacritty -t Calcurse -e calcurse"))
+		, ((modm, xK_e), spawn ("alacritty -t NeoMutt -e neomutt"))
+		, ((modm, xK_t), spawn ("alacritty -t Telegram -e tg"))
+		, ((0, xK_Print), spawn ("maim -f jpg -m 9 \"/home/flex/Pictures/SCREENSHOTS/$(date +\"%F %H_%M_%S.jpg\")\""))
+		, ((shiftMask, xK_Print), spawn ("maim -f jpg -m 9 -s \"/home/flex/Pictures/SCREENSHOTS/$(date +\"%F %H_%M_%S.jpg\")\""))
 		, ((0, 0x1008ff12), spawn ("pamixer -t"))
 		, ((0, 0x1008ff11), spawn ("pamixer --allow-boost -d 3"))
 		, ((0, 0x1008ff13), spawn ("pamixer --allow-boost -i 3"))
 		, ((0, 0x1008ff03), spawn ("xbacklight -dec $(bc <<< \"$(xbacklight) * 0.5\")"))
 		, ((0, 0x1008ff02), spawn ("xbacklight -inc $(bc <<< \"$(xbacklight) * 0.5 + 0.15\")"))
 		, ((0, 0x1008ff94), spawn ("bluetoothctl show | grep -i powered | grep -i yes && notify-send 'Bluetooth is on' && pactl set-card-profile bluez_card.74_5C_4B_D2_86_F7 a2dp_sink || notify-send 'Starting bluetooth' && bluetoothctl power on && bluetoothctl -- connect 74:5C:4B:D2:86:F7 && pactl set-card-profile bluez_card.74_5C_4B_D2_86_F7 a2dp_sink"))
-    , ((modm, xK_n), spawn ("cd ~/Dropbox/NOTES/; alacritty -e nvim -c VimwikiIndex"))
-    -- , ((modm, xK_F1),    spawn ("groff -mom /usr/local/share/dwm/larbs.mom -Tpdf | zathura -"))
-    -- , ((modm, xK_F2),    spawn ("tutorialvids"))
-    , ((modm, xK_F3),    spawn ("displayselect"))
-    , ((modm, xK_F4), spawn ("alacritty -e pulsemixer"))
-    -- , ((modm), xK_F5,    xr db,ULL })
-    , ((modm, xK_F6),    spawn ("torwrap"))
-    , ((modm, xK_F7),    spawn ("td-toggle"))
-    , ((modm, xK_F8),    spawn ("mailsync"))
-    , ((modm, xK_F9),    spawn ("dmenumount"))
-    , ((modm, xK_F10),   spawn ("dmenuumount"))
-    , ((modm, xK_F11),   spawn ("mpv --no-cache --no-osc --no-input-default-bindings --input-conf=/dev/null --title=webcam $(ls /dev/video[0,2,4,6,8] | tail -n 1)"))
--- , ((modm, xK_F12,   xrdb,   {.v = NULL }
-
-
-	-- { modm .|. shiftMask,                       XK_l, spawn,  SHCMD("slock" ) },
-	-- { modm .|. shiftMask,                       XK_s, spawn,  SHCMD("st -e zsh -c yt" ) },
-	-- { modm ,                       XK_d, spawn,  SHCMD("sleep 0.2 && xdotool type --clearmodifiers \"$(date +\"%F \")\"")},
-  -- { modm .|. shiftMask,                       XK_b, spawn,  SHCMD("bluetoothctl show .|.  grep -i powered .|.  grep -i yes && notify-send 'Bluetooth is on' && pactl set-card-profile bluez_card.74_5C_4B_D2_86_F7 a2dp_sink .|. .|.  notify-send 'Starting bluetooth' && bluetoothctl power on && bluetoothctl -- connect 74:5C:4B:D2:86:F7 && pactl set-card-profile bluez_card.74_5C_4B_D2_86_F7 a2dp_sink")},
-  -- { modm .|. controlMask .|. shiftMask,                       XK_s, spawn,  SHCMD("setxkbmap se; setxkbmap -option \"caps:swapescape\"; xset r rate 300 50")},
-  -- { modm .|. controlMask .|. shiftMask,                       XK_u, spawn,  SHCMD("setxkbmap us; setxkbmap -option \"caps:swapescape\"; xset r rate 300 50")},
-  -- { modm ,     XK_w,   killclient, {0} },
-  -- { modm ,                       XK_Return, spawn,          {.v = dmenucmd } },
-  -- { modm .|. shiftMask,             XK_Return, spawn,          {.v = termcmd } },
-  -- { modm .|. controlMask .|. shiftMask,             XK_r, spawn,          {.v = reboot } },
-  -- { modm .|. controlMask .|. shiftMask,             XK_p, spawn,          {.v = poweroff } },
-  -- { modm ,     XK_q,    spawn,    SHCMD("qutebrowser") },
-  -- { modm .|. controlMask .|. shiftMask,     XK_period,    spawn,    SHCMD("brave https://mail.google.com/mail/u/0/#inbox https://mail.google.com/mail/u/1/#inbox https://mail.google.com/mail/u/3/#inbox https://calendar.google.com") },
-  -- { modm .|. shiftMask,     XK_period,    spawn,    SHCMD("brave") },
-	-- { modm .|. shiftMask,                       XK_comma, spawn,  SHCMD("st env SHELL=/bin/zsh vifmrun")},
-  -- { 0,        XK_Print, spawn,    SHCMD("maim -f jpg -m 9 \"/home/flex/Pictures/SCREENSHOTS/$(date +\"%F %H_%M_%S.jpg\")\"")},
-  -- { shiftMask,        XK_Print, spawn,    SHCMD("maim -f jpg -m 9 -s \"/home/flex/Pictures/SCREENSHOTS/$(date +\"%F %H_%M_%S.jpg\")\"")},
-  -- STACKKEYS(modm ,                          focus)
-	-- STACKKEYS(modm .|. shiftMask,                push)
-	-- { modm ,     XK_grave, spawn,  SHCMD("dmenuunicode") },
-	-- { modm .|. shiftMask,   XK_0,   tag,    {.ui = ~0 } },
-	-- { modm ,     XK_BackSpace, spawn,    SHCMD("sysact") },
-	-- { modm .|. shiftMask,   XK_BackSpace, spawn,    SHCMD("sysact") },
-	-- { modm ,     XK_Tab,   view,   {0} },
-	-- { modm .|. shiftMask,   XK_q,   spawn,    SHCMD("sysact") },
-	-- { modm .|. shiftMask,   XK_w,   spawn,    SHCMD("st -e sudo nmtui") },
-	-- { modm ,     XK_e,   spawn,    SHCMD("st -e neomutt") },
-	-- { modm .|. shiftMask,   XK_e,   spawn,    SHCMD("st -e abook -C ~/.config/abook/abookrc --datafile ~/.config/abook/addressbook") },
-	-- { modm .|. shiftMask,   XK_h,   spawn,    SHCMD("st -e htop") },
-	-- { modm ,   XK_p,   spawn,    SHCMD("keepassxc") },
-	-- { modm ,     XK_t,   setlayout,  {.v = &layouts[2]} }, /* tile */
-	-- { modm .|. shiftMask,   XK_t,   setlayout,  {.v = &layouts[1]} }, /* bstack */
-	-- { modm ,     XK_y,   setlayout,  {.v = &layouts[0]} }, /* spiral */
-	-- { modm .|. shiftMask,   XK_y,   setlayout,  {.v = &layouts[3]} }, /* dwindle */
-	-- { modm ,     XK_u,   setlayout,  {.v = &layouts[4]} }, /* deck */
-	-- { modm .|. shiftMask,   XK_u,   setlayout,  {.v = &layouts[5]} }, /* monocle */
-	-- { modm ,     XK_i,   setlayout,  {.v = &layouts[6]} }, /* centeredmaster */
-	-- { modm .|. shiftMask,   XK_i,   setlayout,  {.v = &layouts[7]} }, /* centeredfloatingmaster */
-	-- { modm ,     XK_equal,   incnmaster,     {.i = +1 } },
-	-- { modm ,   XK_minus,   incnmaster,     {.i = -1 } },
-	-- { modm .|. shiftMask,   XK_p,     spawn,    SHCMD("pulseeffects") },
-	-- { modm ,     XK_backslash,   view,   {0} },
-	-- { modm ,     XK_a,   togglegaps, {0} },
-	-- { modm .|. shiftMask,   XK_a,   defaultgaps,  {0} },
-	-- { modm ,     XK_s,   togglesticky, {0} },
-	-- { modm ,     XK_f,   togglefullscr,  {0} },
-	-- { modm .|. shiftMask,   XK_f,   setlayout,  {.v = &layouts[8]} },
-	-- { modm ,     XK_g,   shiftview,  { .i = -1 } },
-	-- { modm .|. shiftMask,   XK_g,   shifttag, { .i = -1 } },
-	-- { modm ,     XK_h,   setmfact, {.f = -0.05} },
-	-- { modm ,     XK_l,   setmfact,       {.f = +0.05} },
-	-- { modm .|. controlMask .|. shiftMask,    XK_p,  togglescratch,  {.ui = 1} },
-	-- { modm ,     XK_z,   incrgaps, {.i = +3 } },
-	-- { modm ,     XK_x,   incrgaps, {.i = -3 } },
-	-- { modm .|. shiftMask,    XK_x,   spawn,    SHCMD("xkill") },
-	-- { modm .|. shiftMask,      XK_c,   spawn,    SHCMD("st -e calcurse") },
-	-- { modm .|. controlMask .|. shiftMask,    XK_c,   spawn,    SHCMD("cadence") },
-	-- { modm ,     XK_s,   togglebar,  {0} },
-	-- { modm ,     XK_n,   spawn,    SHCMD("cd ~/Dropbox/NOTES/; st -e nvim -c VimwikiIndex") },
-	-- { modm .|. shiftMask,   XK_n,   spawn,    SHCMD("st -e newsboat") },
-	-- { modm ,     XK_m,   spawn,    SHCMD("st -e ncmpcpp") },
-	-- { modm .|. shiftMask,   XK_m,   spawn,    SHCMD("aconnect 127:7 16:0; aconnect 128:7 16:0; aconnect 129:7 16:0; aconnect 130:7 16:0") },
-	-- { modm .|. controlMask .|. shiftMask,     XK_Left, spawn,    SHCMD("audtool playlist-reverse") },
-	-- { modm .|. controlMask .|. shiftMask,     XK_period,  spawn,    SHCMD("audtool playlist-advance") },
-	-- { modm .|. controlMask .|. shiftMask,     XK_j,  focusmon, {.i = -1 } },
-	-- { modm .|. controlMask .|. shiftMask,     XK_h,  tagmon, {.i = -1 } }, /* { modm ,     XK_Right, focusmon, {.i = +1 } }, */
-	-- { modm .|. controlMask .|. shiftMask,    XK_k, focusmon, {.i = +1 } },
-	-- { modm .|. controlMask .|. shiftMask,    XK_l, tagmon, {.i = +1 } },
-	-- { modm ,     XK_Page_Up, shiftview,  { .i = -1 } },
-	-- { modm .|. shiftMask,   XK_Page_Up, shifttag, { .i = -1 } },
-	-- { modm ,     XK_Page_Down, shiftview,  { .i = +1 } },
-	-- { modm .|. shiftMask,   XK_Page_Down, shifttag, { .i = +1 } },
-	-- { modm ,     XK_F1,    spawn,    SHCMD("groff -mom /usr/local/share/dwm/larbs.mom -Tpdf .|.  zathura -") },
-	-- { modm ,     XK_F2,    spawn,    SHCMD("tutorialvids") },
-	-- { modm ,     XK_F3,    spawn,    SHCMD("displayselect") },
-	-- { modm ,     XK_F4,    spawn,    SHCMD("st -e pulsemixer; kill -44 $(pidof dwmblocks)") },
-	-- { modm ,     XK_F5,    xrdb,   {.v = NULL } },
-	-- { modm ,     XK_F6,    spawn,    SHCMD("torwrap") },
-	-- { modm ,     XK_F7,    spawn,    SHCMD("td-toggle") },
-	-- { modm ,     XK_F8,    spawn,    SHCMD("mailsync") },
-	-- { modm ,     XK_F9,    spawn,    SHCMD("dmenumount") },
-	-- { modm ,     XK_F10,   spawn,    SHCMD("dmenuumount") },
-	-- { modm ,     XK_F11,   spawn,    SHCMD("mpv --no-cache --no-osc --no-input-default-bindings --input-conf=/dev/null --title=webcam $(ls /dev/video[0,2,4,6,8] .|.  tail -n 1)") },
-	-- { modm ,     XK_F12,   xrdb,   {.v = NULL } },
-	-- { modm ,     XK_space, zoom,   {0} },
-	-- { modm .|. shiftMask,   XK_f, togglefloating, {0} },
-	-- { modm ,     XK_Print, spawn,    SHCMD("dmenurecord") },
-	-- { modm .|. shiftMask,   XK_Print, spawn,    SHCMD("dmenurecord kill") },
-	-- { modm ,     XK_Delete,  spawn,    SHCMD("dmenurecord kill") },
-	-- { modm ,     XK_Scroll_Lock, spawn,    SHCMD("killall screenkey .|. .|.  screenkey &") },
-	-- { controlMask .|. shiftMask, XK_k, spawn,    SHCMD("deadbeef --prev") },
-	-- { controlMask .|. shiftMask, XK_j, spawn,    SHCMD("deadbeef --next") },
-	-- { controlMask .|. shiftMask, XK_space, spawn,    SHCMD("deadbeef --play-pause") },
-	-- { controlMask .|. shiftMask, XK_q, spawn,    SHCMD("deadbeef --quit") },
-	-- { controlMask .|. shiftMask, XK_Return, spawn,    SHCMD("deadbeef") },
-	-- { modm .|. controlMask .|. shiftMask, XK_t, spawn,    SHCMD("tetris") },
-	-- { 0, XF86XK_AudioMute,    spawn,    SHCMD("pamixer -t; kill -44 $(pidof dwmblocks)") },
-	-- { 0, XF86XK_AudioRaiseVolume, spawn,    SHCMD("pamixer --allow-boost -i 3; kill -44 $(pidof dwmblocks)") },
-	-- { 0, XF86XK_AudioLowerVolume, spawn,    SHCMD("pamixer --allow-boost -d 3; kill -44 $(pidof dwmblocks)") },
-	-- { 0, XF86XK_AudioPrev,    spawn,    SHCMD("mpc prev") },
-	-- { 0, XF86XK_AudioNext,    spawn,    SHCMD("mpc next") },
-	-- { 0, XF86XK_AudioPause,   spawn,    SHCMD("mpc pause") },
-	-- { 0, XF86XK_AudioPlay,    spawn,    SHCMD("mpc play") },
-	-- { 0, XF86XK_AudioStop,    spawn,    SHCMD("mpc stop") },
-	-- { 0, XF86XK_AudioRewind,  spawn,    SHCMD("mpc seek -10") },
-	-- { 0, XF86XK_AudioForward, spawn,    SHCMD("mpc seek +10") },
-	-- { 0, XF86XK_AudioMedia,   spawn,    SHCMD("st -e ncmpcpp") },
-	-- { 0, XF86XK_PowerOff,   spawn,    SHCMD("sysact") },
-	-- { 0, XF86XK_Sleep,    spawn,    SHCMD("sudo -A zzz") },
-	-- { 0, XF86XK_WWW,    spawn,    SHCMD("$BROWSER") },
-	-- { 0, XF86XK_DOS,    spawn,    SHCMD("st") },
-	-- { 0, XF86XK_ScreenSaver,  spawn,    SHCMD("slock & xset dpms force off; mpc pause; pauseallmpv") },
-	-- { 0, XF86XK_TaskPane,   spawn,    SHCMD("st -e htop") },
-	-- { 0, XF86XK_Mail,   spawn,    SHCMD("st -e neomutt") },
-	-- { 0, XF86XK_Launch1,    spawn,    SHCMD("xset dpms force off") },
-	-- { 0, XF86XK_TouchpadToggle, spawn,    SHCMD("(synclient .|.  grep 'TouchpadOff.*1' && synclient TouchpadOff=0) .|. .|.  synclient TouchpadOff=1") },
-	-- { 0, XF86XK_TouchpadOff,  spawn,    SHCMD("synclient TouchpadOff=1") },
-	-- { 0, XF86XK_TouchpadOn,   spawn,    SHCMD("synclient TouchpadOff=0") },
-	-- { 0, XF86XK_MonBrightnessUp,  spawn,    SHCMD("xbacklight -inc $(bc <<< \"$(xbacklight) * 0.5 + 0.15\")") },
-	-- { 0, XF86XK_MonBrightnessDown,  spawn,    SHCMD("xbacklight -dec $(bc <<< \"$(xbacklight) * 0.5\")") },
-
-
-
-
-
-
-
-
-
+		, ((modm, xK_n), spawn ("cd ~/Dropbox/NOTES/; alacritty -e nvim -c VimwikiIndex"))
+		-- , ((modm, xK_F1),    spawn ("groff -mom /usr/local/share/dwm/larbs.mom -Tpdf | zathura -"))
+		-- , ((modm, xK_F2),    spawn ("tutorialvids"))
+		, ((modm, xK_F3),    spawn ("displayselect"))
+		, ((modm, xK_F4), spawn ("alacritty -e pulsemixer"))
+		-- , ((modm), xK_F5,    xr db,ULL })
+		, ((modm, xK_F6),    spawn ("torwrap"))
+		, ((modm, xK_F7),    spawn ("td-toggle"))
+		, ((modm, xK_F8),    spawn ("mailsync"))
+		, ((modm, xK_F9),    spawn ("dmenumount"))
+		, ((modm, xK_F10),   spawn ("dmenuumount"))
+		, ((modm, xK_F11),   spawn ("mpv --no-cache --no-osc --no-input-default-bindings --input-conf=/dev/null --title=webcam $(ls /dev/video[0,2,4,6,8] | tail -n 1)"))
+		-- , ((modm, xK_F12,   xrdb,   {.v = NULL }
+	-- , ((modm .|. shiftMask,                       xK_l), spawn ("slock"))
+		,	((modm .|. shiftMask,                       xK_s), spawn ("alacritty -e zsh -c yt" ))
+		-- ,	((modm,                       xK_d), spawn ("sleep 0.2 && xdotool type --clearmodifiers \"$(date +\"%F \")\"")
+		,	((modm .|. controlMask .|. shiftMask,                       xK_s), spawn ("setxkbmap se; setxkbmap -option 'caps:swapescape'; xset r rate 300 50"))
+		,	((modm .|. controlMask .|. shiftMask,                       xK_u), spawn ("setxkbmap us; setxkbmap -option \"caps:swapescape\"; xset r rate 300 50"))
+		, ((modm .|. controlMask .|. shiftMask,             xK_r), spawn ("reboot"))
+		, ((modm .|. controlMask .|. shiftMask,             xK_r), spawn ("poweroff"))
+	-- ,	((modm .|. shiftMask,   xK_w),   spawn ("alacritty -e sudo nmtui")))
+	-- ,	((modm .|. shiftMask,   xK_e),   spawn ("alacritty -e abook -C ~/.config/abook/abookrc --datafile ~/.config/abook/addressbook")))
+	-- ,	((modm,   xK_p),   spawn ("keepassxc")))
+	-- ,	((modm .|. controlMask .|. shiftMask,    xK_c),   spawn ("cadence")))
+	-- ,	((modm,     xK_m),   spawn ("alacritty -e ncmpcpp")))
+	-- ,	((modm .|. shiftMask,   xK_m),   spawn ("aconnect 127:7 16:0; aconnect 128:7 16:0; aconnect 129:7 16:0; aconnect 130:7 16:0")))
+	-- ,	((modm,     xK_F2),    spawn ("tutorialvids")))
+	-- ,	((modm,     xK_F3),    spawn ("displayselect")))
+	-- ,	((modm,     xK_F4),    spawn ("alacritty -e pulsemixer; kill -44 $(pidof dwmblocks)")))
+		-- -- (,	(modm,     xK_F5),    xrdb,   {.v = NULL } },)
+	-- ,	((modm,     xK_F6),    spawn ("torwrap")))
+	-- ,	((modm,     xK_F7),    spawn ("td-toggle")))
+	-- ,	((modm,     xK_F8),    spawn ("mailsync")))
+	-- ,	((modm,     xK_F9),    spawn ("dmenumount")))
+	-- ,	((modm,     xK_F10),   spawn ("dmenuumount")))
+	-- ,	((modm,     xK_F11),   spawn ("mpv --no-cache --no-osc --no-input-default-bindings --input-conf=/dev/null --title=webcam $(ls /dev/video[0,2,4,6,8] .|.  tail -n 1)")))
+	-- ,	((modm,     xK_Print), spawn ("dmenurecord")))
+	-- ,	((modm .|. shiftMask,   xK_Print), spawn ("dmenurecord kill")))
+	-- ,	((modm,     xK_Delete),  spawn ("dmenurecord kill")))
+	-- ,	((modm,     xK_Scroll_Lock), spawn ("killall screenkey .|. .|.  screenkey &")))
+	,	((controlMask .|. shiftMask, xK_k), spawn ("deadbeef --prev"))
+	,	((controlMask .|. shiftMask, xK_j), spawn ("deadbeef --next"))
+	,	((controlMask .|. shiftMask, xK_space), spawn ("deadbeef --play-pause"))
+	,	((controlMask .|. shiftMask, xK_q), spawn ("deadbeef --quit"))
+	,	((controlMask .|. shiftMask, xK_Return), spawn ("deadbeef"))
+	-- ,	(modm .|. controlMask .|. shiftMask, xK_t), spawn ("tetris")))
+		-- --,	(( 0, XF86xK_AudioMute),    spawn ("pamixer -t; kill -44 $(pidof dwmblocks)")))
+			-- -- { 0, XF86xK_AudioRaiseVolume, spawn,    SHCMD("pamixer --allow-booalacritty -i 3; kill -44 $(pidof dwmblocks)") },)
+			-- -- { 0, XF86xK_AudioLowerVolume, spawn,    SHCMD("pamixer --allow-booalacritty -d 3; kill -44 $(pidof dwmblocks)") },)
+			-- -- { 0, XF86xK_MonBrightnessUp,  spawn,    SHCMD("xbacklight -inc $(bc <<< \"$(xbacklight) * 0.5 + 0.15\")") },)
+			-- -- { 0, XF86xK_MonBrightnessDown,  spawn,    SHCMD("xbacklight -dec $(bc <<< \"$(xbacklight) * 0.5\")") },)
 
 
     ]
