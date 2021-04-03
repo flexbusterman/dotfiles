@@ -6,7 +6,7 @@ Config {
     -- right_padding = num_icons * icon_size
     -- right_padding = 12 * 23 = 276
     -- Example: position = TopP 0 276
-    font = "xft:Px437 IBM 3270pc:size=11:antialias=true:autohint=true",
+    font = "xft:Px437 IBM BIOS:size=7:antialias=true:autohint=true",
     bgColor = "#000000",
     fgColor = "#ffffff",
     lowerOnStart = False,
