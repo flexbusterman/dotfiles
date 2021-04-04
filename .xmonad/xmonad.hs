@@ -145,6 +145,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 		, ((modm, xK_i), spawn ("brave --app='http://www.instagram.com/direct/inbox/'"))
 		, ((modm, xK_e), spawn ("alacritty -t NeoMutt -e neomutt"))
 		, ((modm, xK_t), spawn ("alacritty -t Telegram -e tg"))
+		, ((modm, xK_s), spawn ("alacritty -t SC-IM -e sc-im"))
 		, ((0, xK_Print), spawn ("maim -f jpg -m 9 \"/home/flex/Pictures/SCREENSHOTS/$(date +\"%F %H_%M_%S.jpg\")\""))
 		, ((shiftMask, xK_Print), spawn ("maim -f jpg -m 9 -s \"/home/flex/Pictures/SCREENSHOTS/$(date +\"%F %H_%M_%S.jpg\")\""))
 		, ((0, 0x1008ff12), spawn ("pamixer -t"))
