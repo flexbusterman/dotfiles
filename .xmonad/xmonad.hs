@@ -170,7 +170,8 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 		-- , ((modm, xK_F12,   xrdb,   {.v = NULL }
 	-- , ((modm .|. shiftMask,                       xK_l), spawn ("slock"))
 		,	((modm .|. shiftMask,                       xK_s), spawn ("alacritty -e zsh -c yt" ))
-		-- ,	((modm,                       xK_d), spawn ("sleep 0.2 && xdotool type --clearmodifiers \"$(date +\"%F \")\"")
+		,	((modm, xK_d),		spawn ("sleep 0.2 && xdotool type --clearmodifiers \"$(date +\"%F \")\""))
+			--
 		,	((modm .|. controlMask .|. shiftMask,                       xK_s), spawn ("setxkbmap se; setxkbmap -option 'caps:swapescape'; xset r rate 300 50"))
 		,	((modm .|. controlMask .|. shiftMask,                       xK_u), spawn ("setxkbmap us; setxkbmap -option \"caps:swapescape\"; xset r rate 300 50"))
 		, ((modm .|. controlMask .|. shiftMask,             xK_r), spawn ("reboot"))

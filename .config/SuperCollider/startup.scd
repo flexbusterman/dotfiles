@@ -1,5 +1,6 @@
 (
-Array.withchannels = 2;
+~channels = 2;
+// Array.withchannels = 2;
 ~count = 0;
 MIDIClient.init;
 MIDIIn.connectAll;
