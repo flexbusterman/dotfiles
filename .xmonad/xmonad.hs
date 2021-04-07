@@ -175,7 +175,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 		,	((modm .|. controlMask .|. shiftMask,                       xK_s), spawn ("setxkbmap se; setxkbmap -option 'caps:swapescape'; xset r rate 300 50"))
 		,	((modm .|. controlMask .|. shiftMask,                       xK_u), spawn ("setxkbmap us; setxkbmap -option \"caps:swapescape\"; xset r rate 300 50"))
 		, ((modm .|. controlMask .|. shiftMask,             xK_r), spawn ("reboot"))
-		, ((modm .|. controlMask .|. shiftMask,             xK_r), spawn ("poweroff"))
+		, ((modm .|. controlMask .|. shiftMask,             xK_p), spawn ("poweroff"))
 	-- ,	((modm .|. shiftMask,   xK_w),   spawn ("alacritty -e sudo nmtui")))
 	-- ,	((modm .|. shiftMask,   xK_e),   spawn ("alacritty -e abook -C ~/.config/abook/abookrc --datafile ~/.config/abook/addressbook")))
 	-- ,	((modm,   xK_p),   spawn ("keepassxc")))
