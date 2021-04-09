@@ -83,8 +83,10 @@ s.waitForBoot({
 	sig = PanAz.ar(~channels,sig,pan,1,\panWidth.kr(2));
 	sig = RLPF.ar(sig,  \cutoff.kr(600) * filtEnv + 10,  \rq.kr(1.0));
 	Out.ar(\out.kr(0),sig);
-	Out.ar(\auxOut.kr(0), sig * \auxAmp.kr(-30).dbamp);
+	Out.ar(\auxOut.kr(0), sig * \auxAmp.kr(0));
 }).add;
+
+
 
 SynthDef.new(\sine, {
 	var sig, env;
@@ -114,6 +116,21 @@ SynthDef.new(\saw, {
 	Out.ar(\auxOut.kr(0), sig * \auxAmp.kr(-30).dbamp);
 }).add;
 
+SynthDef(\karplus,{
+	var sig, sigEnv, env, karplus, trig, panMod;
+	panMod = LFTri.kr(\panSpeed.kr(0.125),\panPhase.kr(2),\panAmp.kr(1.0));
+	sig = LFNoise0.ar(\noiseFreq.kr(20000));
+	trig = Impulse.kr(\trigFreq.kr(2));
+	sigEnv = Env([0,1,0],[\sigAtt.kr(0.000000001),\sigRel.kr(0.1)],\sigCrv.kr(-4)).kr();
+	env = Env([0,1,0],[\att.kr(0.000000001),\rel.kr(5)],\crv.kr(-4)).kr(2);
+	sig = sig * sigEnv;
+	karplus = Pluck.ar(sig, trig, \freq.kr(440).reciprocal, \freq.kr(440).reciprocal, \rel.kr(5), \coef.kr(0.5), \mul.kr(1.0), \add.kr(0.0));
+	karplus = karplus * env;
+	karplus = Pan2.ar(karplus, panMod);
+	Out.ar(\out.kr(0), karplus * \amp.kr(0.2));
+	Out.ar(\auxOut.kr(0), karplus * \auxAmp.kr(0));
+}).add;
+
 SynthDef(\fm,{
 	// carPartial :: modPartial => car/mod ratio
 	|
@@ -137,28 +154,6 @@ SynthDef(\fm,{
 	sig = PanAz.ar(~channels,sig,pan,1,panWidth);
 	Out.ar(0,sig);
 	Out.ar(auxOut,sig*auxAmp);
-}).add;
-
-SynthDef(\karplus,{
-	|
-	freq=440, noiseFreq=20000, out=0, auxOut=0, amp=0.2, auxAmp=0.0,
-	sigAtt=0.000000001, sigRel=0.1, sigCrv=(-4),
-	att=0.000000001, rel=5, crv=(-4),
-	trigFreq=2.0, coef=0.5, mul=1.0, add=0.0,
-	panAmp=1.0, panSpeed=0.125, panPhase=2, panWidth=2
-	|
-	var sig, sigEnv, env, karplus, trig, panMod;
-	panMod = LFTri.kr(panSpeed,panPhase,panAmp);
-	sig = LFNoise0.ar(freq);
-	trig = Impulse.kr(trigFreq);
-	sigEnv = Env([0,1,0],[sigAtt,sigRel],sigCrv).kr();
-	env = Env([0,1,0],[att,rel],crv).kr(2);
-	sig = sig * sigEnv;
-	karplus = Pluck.ar(sig, trig, freq.reciprocal, freq.reciprocal, rel, coef, mul, add);
-	karplus = karplus * env;
-	karplus = Pan2.ar(karplus, panMod);
-	Out.ar(out, karplus * amp);
-	Out.ar(auxOut, karplus * auxAmp);
 }).add;
 
 
