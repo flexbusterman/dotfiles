@@ -23,8 +23,8 @@ xcape -e 'Mode_switch=Escape'
 dropbox &
 # deadbeef &
 # keepassxc &
-# stalonetray &
-# xmobar &
+xmobar &
+stalonetray &
 # set background color for sxiv
 xrdb ~/.Xresources &
 mw -Y &
