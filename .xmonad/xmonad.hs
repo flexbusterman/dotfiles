@@ -5,6 +5,7 @@ import qualified XMonad.StackSet as W
 import System.Exit
 import System.IO
 import XMonad
+import XMonad.Actions.SpawnOn
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.ManageDocks
@@ -139,6 +140,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm .|. shiftMask, xK_comma ), spawn ("alacritty -o env.SHELL=/bin/zsh -e vifm"))
     , ((modm .|. shiftMask, xK_period ), spawn ("qutebrowser"))
     , ((modm .|. controlMask .|. shiftMask, xK_period ), spawn ("brave"))
+    , ((modm .|. controlMask .|. shiftMask, xK_c ), spawnOn "9" "cadence")
 		, ((modm .|. shiftMask, xK_x), spawn ("xkill"))
 		, ((modm .|. shiftMask, xK_n), spawn ("alacritty -t Newsboat -e newsboat"))
 		, ((modm, xK_c), spawn ("alacritty -t Calcurse -e calcurse"))
@@ -375,7 +377,7 @@ defaults = def {
 
       -- hooks, layouts
         layoutHook         = myLayout,
-				manageHook				 = myManageHook <+> manageDocks,
+				manageHook				 = myManageHook <+> manageSpawn <+> manageDocks,
         handleEventHook    = myEventHook <+> docksEventHook,
 				logHook            = myLogHook,
         startupHook        = myStartupHook <+> setWMName "LG3D"
