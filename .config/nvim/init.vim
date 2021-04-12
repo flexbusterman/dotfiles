@@ -23,7 +23,7 @@ set shiftwidth=2
 set numberwidth=2
 set autoread
 set scrolloff=10
-" set nohlsearch
+set nohlsearch
 " Fixes syntax highlighting from stopping
 autocmd BufEnter * :syntax sync fromstart
 autocmd FileType mail set textwidth=0 wrapmargin=0
