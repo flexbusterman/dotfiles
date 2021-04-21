@@ -75,7 +75,6 @@ s.waitForBoot({
 			SinOsc.ar((\freq.kr(440)*\carPartial.kr(1))+mod+vib,0),
 			VarSaw.ar((\freq.kr(440)*\carPartial.kr(1))+mod+vib,0,\width.kr(0.5)) * 0.5,
 			LFPulse.ar((\freq.kr(440)*\carPartial.kr(1))+mod+vib,0,\width.kr(0.5)) * 0.5,
-
 		]
 	);
 	pan = LFTri.kr(\panRate.kr(0),\panPhase.kr(2),\panAmp.kr(1.0));
@@ -85,8 +84,6 @@ s.waitForBoot({
 	Out.ar(\out.kr(0),sig);
 	Out.ar(\auxOut.kr(0), sig * \auxAmp.kr(0));
 }).add;
-
-
 
 SynthDef.new(\sine, {
 	var sig, env;
@@ -117,17 +114,24 @@ SynthDef.new(\saw, {
 }).add;
 
 SynthDef(\karplus,{
-	var sig, sigEnv, env, karplus, trig, panMod;
+	var sig, sigEnv, env, karplus, trig, panMod, filtEnv;
 	panMod = LFTri.kr(\panSpeed.kr(0.125),\panPhase.kr(2),\panAmp.kr(1.0));
 	sig = LFNoise0.ar(\noiseFreq.kr(20000));
 	trig = Impulse.kr(\trigFreq.kr(2));
 	sigEnv = Env([0,1,0],[\sigAtt.kr(0.000000001),\sigRel.kr(0.1)],\sigCrv.kr(-4)).kr();
+	filtEnv = Env(
+		[0,1,1,0],
+		[\filtAtt.kr(0), \filtSus.kr(0.03), \filtRel.kr(2)],
+		[\filtAttC.kr(2),0,\filtRelC.kr(-2)]
+	).ar(0);
 	env = Env([0,1,0],[\att.kr(0.000000001),\rel.kr(5)],\crv.kr(-4)).kr(2);
 	sig = sig * sigEnv;
 	karplus = Pluck.ar(sig, trig, \freq.kr(440).reciprocal, \freq.kr(440).reciprocal, \rel.kr(5), \coef.kr(0.5), \mul.kr(1.0), \add.kr(0.0));
-	karplus = karplus * env;
+	karplus = karplus * env * \pre.kr(1.0);
+	karplus = RLPF.ar(karplus,  \cutoff.kr(600) * filtEnv + 10,  \rq.kr(1.0));
+	karplus = Compander.ar(karplus, karplus, \threshold.kr(0.5), \slopeBelow.kr(1), \slopeAbove.kr(0.5), \clampTime.kr(0.001), \relaxTime.kr(0.1));  
 	karplus = Pan2.ar(karplus, panMod);
-	Out.ar(\out.kr(0), karplus * \amp.kr(0.2));
+	Out.ar(\out.kr(0), karplus * \amp.kr(0.5));
 	Out.ar(\auxOut.kr(0), karplus * \auxAmp.kr(0));
 }).add;
 
@@ -156,7 +160,6 @@ SynthDef(\fm,{
 	Out.ar(auxOut,sig*auxAmp);
 }).add;
 
-
 SynthDef(
 	\gong, { | out, freq = 440, amp = 0.1, panX = 0, panY = 0, gate = 1,
 		attack = 0.01, release = 1, curve = -3, // envelope
@@ -171,6 +174,35 @@ SynthDef(
 		env = EnvGen.kr(Env.perc(attack, release, 1, curve),1,amp, doneAction:2);
 		Out.ar(out, Pan2.ar(sum, panX, env));
 		// Out.ar(out, Pan4.ar(sum, panX, panY, env));
+	}).add;
+
+	SynthDef.new(\multiSaw, {
+		var sig, env, temp, filtEnv;
+		var sum = 0;
+		4.do{
+			temp = VarSaw.ar(
+				\freq.kr(100) * {Rand(0.99,1.02)}!2,
+				{Rand(0.0,1.0)}!2,
+				\width.kr(0.5) * {ExpRand(0.9,1.1)}!2
+			);
+			sum = sum + temp;
+		};
+		env = Env(
+			[0,1,1,0],
+			[\att.kr(0.001), \sus.kr(0.03), \rel.kr(2)],
+			[\attCrv.kr(2),0,\relCrv.kr(-2)]
+		).ar(2);
+		filtEnv = Env(
+			[0,1,1,0],
+			[\filtAtt.kr(0), \filtSus.kr(0.03), \filtRel.kr(2)],
+			[\filtAttC.kr(2),0,\filtRelC.kr(-2)]
+		).ar(0);
+		sig = sum * env;
+		sig = MoogFF.ar(sig * \gain.kr(1.0), \cutoff.kr(600) * filtEnv + 10,  \rq.kr(1.0));
+		sig = Compander.ar(sig, sig, \threshold.kr(0.5), \slopeBelow.kr(1), \slopeAbove.kr(0.5), \clampTime.kr(0.001), \relaxTime.kr(0.1));  
+		sig = Pan2.ar(sig, \pan.kr(0));
+		Out.ar(\out.kr(0), sig * \amp.kr(0.5));
+		Out.ar(\auxOut.kr(0), sig * \auxAmp.kr(0));
 	}).add;
 
 	// TODO: granular
