@@ -814,7 +814,7 @@ background_opacity: 0.9
 #
 # If the same trigger is assigned to multiple actions, all of them are executed
 # in the order they were defined in.
-#key_bindings:
+key_bindings:
   #- { key: Paste,                                       action: Paste          }
   #- { key: Copy,                                        action: Copy           }
   #- { key: L,         mods: Control,                    action: ClearLogNotice }
@@ -850,7 +850,9 @@ background_opacity: 0.9
   #- { key: K,                           mode: Vi|~Search, action: Up                      }
   #- { key: J,                           mode: Vi|~Search, action: Down                    }
   #- { key: H,                           mode: Vi|~Search, action: Left                    }
+- { key: H,         mods: Control,                    action: ReceiveChar}
   #- { key: L,                           mode: Vi|~Search, action: Right                   }
+  #
   #- { key: Up,                          mode: Vi|~Search, action: Up                      }
   #- { key: Down,                        mode: Vi|~Search, action: Down                    }
   #- { key: Left,                        mode: Vi|~Search, action: Left                    }

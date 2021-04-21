@@ -23,7 +23,7 @@ import XMonad.Util.SpawnOnce
 --
 -- certain contrib modules.
 
-myTerminal      = "alacritty"
+myTerminal      = "st"
 
 -- Whether focus follows the mouse pointer.
 myFocusFollowsMouse :: Bool
@@ -66,7 +66,8 @@ myFocusedBorderColor = "#52a7DD"
 myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- launch a terminal
-    [ ((modm .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf)
+    -- [ ((modm .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf)
+    [ ((modm .|. shiftMask, xK_Return), spawn "st -e zsh")
 
     -- launch dmenu
     , ((modm,               xK_Return     ), spawn "dmenu_run")
@@ -133,22 +134,22 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- Restart xmonad
     , ((modm              , xK_q     ), spawn "xmonad --recompile; xmonad --restart")
-    , ((modm              , xK_p     ), spawn "alacritty -t Htop -e htop")
+    , ((modm              , xK_p     ), spawn "st -t Htop -e htop")
     , ((modm .|. shiftMask, xK_slash ), spawn ("echo \"" ++ help ++ "\" | xmessage -file -"))
 
-    -- , ((modm .|. shiftMask, xK_comma ), spawn ("alacritty -o env.SHELL=/bin/zsh -e vifmrun"))
-    , ((modm .|. shiftMask, xK_comma ), spawn ("alacritty -o env.SHELL=/bin/zsh -e vifm"))
+    -- , ((modm .|. shiftMask, xK_comma ), spawn ("st -o env.SHELL=/bin/zsh -e vifmrun"))
+    , ((modm .|. shiftMask, xK_comma ), spawn ("st -o env.SHELL=/bin/zsh -e vifm"))
     , ((modm .|. shiftMask, xK_period ), spawn ("qutebrowser"))
     , ((modm .|. controlMask .|. shiftMask, xK_period ), spawn ("brave"))
     , ((modm .|. controlMask .|. shiftMask, xK_c ), spawnOn "9" "cadence")
-		, ((modm .|. shiftMask, xK_x), spawn ("xkill"))
-		, ((modm .|. shiftMask, xK_n), spawn ("alacritty -t Newsboat -e newsboat"))
-		, ((modm, xK_c), spawn ("alacritty -t Calcurse -e calcurse"))
+		, ((modm, xK_x), spawn ("xkill"))
+		, ((modm .|. shiftMask, xK_n), spawn ("st -t Newsboat -e newsboat"))
+		, ((modm, xK_c), spawn ("st -t Calcurse -e calcurse"))
 		, ((modm .|. shiftMask, xK_c), spawn ("bluetoothctl show | grep -i powered | grep -i yes && notify-send 'Bluetooth is on' && pactl set-card-profile bluez_card.74_5C_4B_D2_86_F7 a2dp_sink || notify-send 'Starting bluetooth' && bluetoothctl power on && bluetoothctl -- connect 74:5C:4B:D2:86:F7 && pactl set-card-profile bluez_card.74_5C_4B_D2_86_F7 a2dp_sink"))
 		, ((modm, xK_i), spawn ("brave --app='http://www.instagram.com/direct/inbox/'"))
-		, ((modm, xK_e), spawn ("alacritty -t NeoMutt -e neomutt"))
-		, ((modm, xK_t), spawn ("alacritty -t Telegram -e tg"))
-		, ((modm, xK_s), spawn ("alacritty -t SC-IM -e sc-im"))
+		, ((modm, xK_e), spawn ("st -t NeoMutt -e neomutt"))
+		, ((modm, xK_t), spawn ("st -t Telegram -e tg"))
+		, ((modm, xK_s), spawn ("st -t SC-IM -e sc-im"))
 		, ((0, xK_Print), spawn ("maim -f jpg -m 9 \"/home/flex/Pictures/SCREENSHOTS/$(date +\"%F %H_%M_%S.jpg\")\""))
 		, ((shiftMask, xK_Print), spawn ("maim -f jpg -m 9 -s \"/home/flex/Pictures/SCREENSHOTS/$(date +\"%F %H_%M_%S.jpg\")\""))
 		, ((0, 0x1008ff12), spawn ("pamixer -t"))
@@ -157,11 +158,11 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 		, ((0, 0x1008ff03), spawn ("xbacklight -dec $(bc <<< \"$(xbacklight) * 0.5\")"))
 		, ((0, 0x1008ff02), spawn ("xbacklight -inc $(bc <<< \"$(xbacklight) * 0.5 + 0.15\")"))
 		, ((0, 0x1008ff94), spawn ("bluetoothctl show | grep -i powered | grep -i yes && notify-send 'Bluetooth is on' && pactl set-card-profile bluez_card.74_5C_4B_D2_86_F7 a2dp_sink || notify-send 'Starting bluetooth' && bluetoothctl power on && bluetoothctl -- connect 74:5C:4B:D2:86:F7 && pactl set-card-profile bluez_card.74_5C_4B_D2_86_F7 a2dp_sink"))
-		, ((modm, xK_n), spawn ("cd ~/Dropbox/NOTES/; alacritty -e nvim -c VimwikiIndex"))
+		, ((modm, xK_n), spawn ("cd ~/Dropbox/NOTES/; st -e nvim -c VimwikiIndex"))
 		-- , ((modm, xK_F1),    spawn ("groff -mom /usr/local/share/dwm/larbs.mom -Tpdf | zathura -"))
 		-- , ((modm, xK_F2),    spawn ("tutorialvids"))
 		, ((modm, xK_F3),    spawn ("displayselect"))
-		, ((modm, xK_F4), spawn ("alacritty -e pulsemixer"))
+		, ((modm, xK_F4), spawn ("st -e pulsemixer"))
 		-- , ((modm), xK_F5,    xr db,ULL })
 		, ((modm, xK_F6),    spawn ("torwrap"))
 		, ((modm, xK_F7),    spawn ("td-toggle"))
@@ -171,22 +172,22 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 		, ((modm, xK_F11),   spawn ("mpv --no-cache --no-osc --no-input-default-bindings --input-conf=/dev/null --title=webcam $(ls /dev/video[0,2,4,6,8] | tail -n 1)"))
 		-- , ((modm, xK_F12,   xrdb,   {.v = NULL }
 	-- , ((modm .|. shiftMask,                       xK_l), spawn ("slock"))
-		,	((modm .|. shiftMask,                       xK_s), spawn ("alacritty -e zsh -c yt" ))
+		,	((modm .|. shiftMask,                       xK_s), spawn ("st -e zsh -c yt" ))
 		,	((modm, xK_d),		spawn ("sleep 0.2 && xdotool type --clearmodifiers \"$(date +\"%F \")\""))
 			--
 		,	((modm .|. controlMask .|. shiftMask,                       xK_s), spawn ("setxkbmap se; setxkbmap -option 'caps:swapescape'; xset r rate 300 50"))
 		,	((modm .|. controlMask .|. shiftMask,                       xK_u), spawn ("setxkbmap us; setxkbmap -option \"caps:swapescape\"; xset r rate 300 50"))
 		, ((modm .|. controlMask .|. shiftMask,             xK_r), spawn ("reboot"))
 		, ((modm .|. controlMask .|. shiftMask,             xK_p), spawn ("poweroff"))
-	-- ,	((modm .|. shiftMask,   xK_w),   spawn ("alacritty -e sudo nmtui")))
-	-- ,	((modm .|. shiftMask,   xK_e),   spawn ("alacritty -e abook -C ~/.config/abook/abookrc --datafile ~/.config/abook/addressbook")))
+	-- ,	((modm .|. shiftMask,   xK_w),   spawn ("st -e sudo nmtui")))
+	-- ,	((modm .|. shiftMask,   xK_e),   spawn ("st -e abook -C ~/.config/abook/abookrc --datafile ~/.config/abook/addressbook")))
 	-- ,	((modm,   xK_p),   spawn ("keepassxc")))
 	-- ,	((modm .|. controlMask .|. shiftMask,    xK_c),   spawn ("cadence")))
-	-- ,	((modm,     xK_m),   spawn ("alacritty -e ncmpcpp")))
+	-- ,	((modm,     xK_m),   spawn ("st -e ncmpcpp")))
 	-- ,	((modm .|. shiftMask,   xK_m),   spawn ("aconnect 127:7 16:0; aconnect 128:7 16:0; aconnect 129:7 16:0; aconnect 130:7 16:0")))
 	-- ,	((modm,     xK_F2),    spawn ("tutorialvids")))
 	-- ,	((modm,     xK_F3),    spawn ("displayselect")))
-	-- ,	((modm,     xK_F4),    spawn ("alacritty -e pulsemixer; kill -44 $(pidof dwmblocks)")))
+	-- ,	((modm,     xK_F4),    spawn ("st -e pulsemixer; kill -44 $(pidof dwmblocks)")))
 		-- -- (,	(modm,     xK_F5),    xrdb,   {.v = NULL } },)
 	-- ,	((modm,     xK_F6),    spawn ("torwrap")))
 	-- ,	((modm,     xK_F7),    spawn ("td-toggle")))
@@ -205,8 +206,8 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 	,	((controlMask .|. shiftMask, xK_Return), spawn ("deadbeef"))
 	-- ,	(modm .|. controlMask .|. shiftMask, xK_t), spawn ("tetris")))
 		-- --,	(( 0, XF86xK_AudioMute),    spawn ("pamixer -t; kill -44 $(pidof dwmblocks)")))
-			-- -- { 0, XF86xK_AudioRaiseVolume, spawn,    SHCMD("pamixer --allow-booalacritty -i 3; kill -44 $(pidof dwmblocks)") },)
-			-- -- { 0, XF86xK_AudioLowerVolume, spawn,    SHCMD("pamixer --allow-booalacritty -d 3; kill -44 $(pidof dwmblocks)") },)
+			-- -- { 0, XF86xK_AudioRaiseVolume, spawn,    SHCMD("pamixer --allow-boost -i 3; kill -44 $(pidof dwmblocks)") },)
+			-- -- { 0, XF86xK_AudioLowerVolume, spawn,    SHCMD("pamixer --allow-boost -d 3; kill -44 $(pidof dwmblocks)") },)
 			-- -- { 0, XF86xK_MonBrightnessUp,  spawn,    SHCMD("xbacklight -inc $(bc <<< \"$(xbacklight) * 0.5 + 0.15\")") },)
 			-- -- { 0, XF86xK_MonBrightnessDown,  spawn,    SHCMD("xbacklight -dec $(bc <<< \"$(xbacklight) * 0.5\")") },)
 

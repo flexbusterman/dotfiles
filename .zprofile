@@ -11,7 +11,7 @@ export PATH="$PATH:$(du "$HOME/.local/bin/" | cut -f2 | paste -sd ':')"
 # Default programs:
 export EDITOR="nvim"
 export VISUAL="nvim"
-export TERMINAL="alacritty"
+export TERMINAL="st"
 export BROWSER="brave"
 export READER="zathura"
 # export SHELL="zsh"
