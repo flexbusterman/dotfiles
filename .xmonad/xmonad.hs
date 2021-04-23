@@ -144,7 +144,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm .|. controlMask .|. shiftMask, xK_c ), spawnOn "9" "cadence")
 		, ((modm, xK_x), spawn ("xkill"))
 		, ((modm .|. shiftMask, xK_n), spawn ("st -t Newsboat -e newsboat"))
-		, ((modm, xK_c), spawn ("st -t Calcurse -e calcurse"))
+		, ((modm .|. controlMask, xK_c), spawn ("st -t Calcurse -e calcurse"))
 		, ((modm .|. shiftMask, xK_c), spawn ("bluetoothctl show | grep -i powered | grep -i yes && notify-send 'Bluetooth is on' && pactl set-card-profile bluez_card.74_5C_4B_D2_86_F7 a2dp_sink || notify-send 'Starting bluetooth' && bluetoothctl power on && bluetoothctl -- connect 74:5C:4B:D2:86:F7 && pactl set-card-profile bluez_card.74_5C_4B_D2_86_F7 a2dp_sink"))
 		, ((modm, xK_i), spawn ("brave --app='http://www.instagram.com/direct/inbox/'"))
 		, ((modm, xK_e), spawn ("st -t NeoMutt -e neomutt"))
@@ -265,7 +265,7 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 -- The available layouts.  Note that each layout is separated by |||,
 -- which denotes layout choice.
 --
-myLayout = avoidStruts ( spiral (6/7) ||| tiled ||| Mirror tiled ||| Full)
+myLayout = avoidStruts ( spiral (6/7) ||| tiled ||| Mirror tiled ||| noBorders Full)
   where
      -- default tiling algorithm partitions the screen into two panes
      tiled   = Tall nmaster delta ratio
@@ -379,7 +379,7 @@ defaults = def {
       -- hooks, layouts
         layoutHook         = myLayout,
 				manageHook				 = myManageHook <+> manageSpawn <+> manageDocks,
-        handleEventHook    = myEventHook <+> docksEventHook,
+        handleEventHook    = myEventHook <+> docksEventHook <+> fullscreenEventHook,
 				logHook            = myLogHook,
         startupHook        = myStartupHook <+> setWMName "LG3D"
     }
