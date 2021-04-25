@@ -135,7 +135,7 @@ SynthDef(\karplus,{
 	Out.ar(\auxOut.kr(0), karplus * \auxAmp.kr(0));
 }).add;
 
-SynthDef(\fm,{
+SynthDef(\fmOld,{
 	// carPartial :: modPartial => car/mod ratio
 	|
 	out=0, auxOut=0, freq=440, carPartial=1, modPartial=1, index=3, mul=0.05,
@@ -158,6 +158,24 @@ SynthDef(\fm,{
 	sig = PanAz.ar(~channels,sig,pan,1,panWidth);
 	Out.ar(0,sig);
 	Out.ar(auxOut,sig*auxAmp);
+}).add;
+
+SynthDef(\fm,{
+	// carPartial :: modPartial => car/mod ratio
+	var carrier, mod1, env, mod1Env, vib, pan, sig, freqEnv;
+	env = Env.new([0,1,0],[\att.kr(0.00001),\rel.kr(2)],[\attC.kr(0),\relC.kr(0)]).kr(2);
+	freqEnv = Env.new([\freqStart.kr(0),\freq.kr(440),\freqEnd.kr(0)],[\freqAtt.kr(0.00001),\freqRel.kr(1000)],[\freqAttC.kr(0),\freqRelC.kr(1000)]).kr();
+	mod1Env = Env.new([0,1,0],[\modAtt.kr(0.00001),\modRel.kr(2)],[\modAttC.kr(0),\modRelC.kr(0)]).kr();
+	mod1 = SinOsc.ar(freqEnv*\modPartial.kr(1),0,\freq.kr(440)*\index.kr(3));
+	// mod1 = SinOsc.ar(\freq.kr(440)*\modPartial,0,\freq.kr(440)*index*LFNoise1.kr(5.reciprocal).abs);
+	vib = LFTri.kr(\vibfreq.kr(0),\vibPhase.kr(2),\vibDepth.kr(0));
+	mod1 = mod1 * mod1Env;
+	carrier = SinOsc.ar((freqEnv*\carPartial.kr(1))+mod1+vib,0);
+	pan = LFTri.kr(\panRate.kr(0),\panPhase.kr(2),\panAmp.kr(0));
+	sig = carrier * \amp.kr(0.5) * env;
+	sig = PanAz.ar(~channels,sig,pan,1,\panWidth.kr(2));
+	Out.ar(\out.kr(0),sig);
+	Out.ar(\auxOut.kr(0),sig*\auxAmp.kr(0));
 }).add;
 
 SynthDef(
