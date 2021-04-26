@@ -25,7 +25,7 @@ set autoread
 set scrolloff=10
 set nohlsearch
 " Fixes syntax highlighting from stopping
-autocmd BufEnter * :syntax sync fromstart
+autocmd BufEnter * :syntax sync fromstart | set nohlsearch
 autocmd FileType mail set textwidth=0 wrapmargin=0
 
 "here a function was defined
@@ -411,7 +411,7 @@ function! s:show_documentation()
   endif
 endfunction
 " Highlight the symbol and its references when holding the cursor.
-autocmd CursorHold * silent call CocActionAsync('highlight')
+" autocmd CursorHold * silent call CocActionAsync('highlight')
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
 " Formatting selected code.
