@@ -109,6 +109,9 @@ vnoremap <silent> <nowait> <leader>j :w<CR>
 nnoremap <silent> <nowait> <leader>q <esc>:q!<CR>
 vnoremap <silent> <nowait> <leader>q <esc>:q!<CR>
 xnoremap <silent> <nowait> <leader>q <esc>:q!<CR>
+"delete duplicate empty lines
+
+nnoremap <silent> <nowait> <leader>k :g/^$/,/./-j<CR><c-o>
 " tabs
 nnoremap <silent> <nowait> <leader><tab> :tabn<CR>
 nnoremap <silent> <nowait> <leader>t :tabedit<CR>
@@ -142,8 +145,8 @@ nmap <C-k> <C-w>k
 nmap <C-l> <C-w>l
 " nmap <leader>y :StripWhitespace<CR>
 nmap <silent> <leader>l :nohlsearch<CR>
-nmap <leader>k <Plug>(easymotion-bd-w)
-vmap <leader>k <Plug>(easymotion-bd-w)
+" nmap <leader>k <Plug>(easymotion-bd-w)
+" vmap <leader>k <Plug>(easymotion-bd-w)
 noremap <F3> :Autoformat<CR>
 " * and # search for next/previous of selected text when used in visual mode
 xno * :<c-u>cal<SID>VisualSearch()<cr>/<cr>
