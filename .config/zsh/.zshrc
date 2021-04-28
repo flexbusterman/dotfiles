@@ -182,6 +182,7 @@ alias du="du -hs ."
 alias play="ffplay -nodisp -autoexit"
 alias np="deadbeef --nowplaying %d/%f"
 alias cat="bat"
+alias less="bat"
 
 # Navigation shortcuts
 alias d='cd ~/Dropbox; exa'
