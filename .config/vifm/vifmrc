@@ -573,4 +573,4 @@ nnoremap yr :!echo -n %c:r | xclip -selection clipboard %i<cr>:echo expand('%"c:
 
 only
 cd ~/Dropbox
-vsplit /mnt/STUFF/Downloads
+vsplit ~/Downloads
