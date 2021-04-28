@@ -1,1 +1,1 @@
-st -e jack_control start; st -t SuperCollider -e zsh -c "cd ~/Dropbox/SUPERCOLLIDER; nvim -O ~/Dropbox/SUPERCOLLIDER/2021-04-06\ Augustin\ Piece\ 002.sc /home/flex/.config/SuperCollider/startup.scd -c \"set filetype=supercollider | SCNvimStart\"" &
+st -e jack_control start; st -t SuperCollider -e zsh -c "cd ~/Dropbox/SUPERCOLLIDER; nvim -O ~/Dropbox/SUPERCOLLIDER/2021-04-24\ fm\ test.sc /home/flex/.config/SuperCollider/startup.scd -c \"set filetype=supercollider | SCNvimStart\"" &
