@@ -31,7 +31,7 @@ settings:
     global: true
   content.geolocation:
     https://www.google.com.ar: false
-  content.notifications:
+  content.notifications.enabled:
     https://cutewallpaper.org: false
     https://mspoweruser.com: false
     https://splendidprizeforyou.com: false
@@ -60,4 +60,4 @@ settings:
   url.start_pages:
     global: about:blank
   zoom.default:
-    global: 125%
+    global: 100%
