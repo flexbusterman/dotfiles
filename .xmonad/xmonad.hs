@@ -15,9 +15,12 @@ import XMonad.Layout.NoBorders
 import XMonad.Layout.Spiral
 import XMonad.Layout.Tabbed
 import XMonad.Layout.ThreeColumns
+import XMonad.Layout.MultiToggle
+import XMonad.Layout.MultiToggle.Instances
 import XMonad.Util.EZConfig(additionalKeys)
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.SpawnOnce
+import XMonad.Config.Gnome
 
 -- The preferred terminal program, which is used in a binding below and by
 --
@@ -122,6 +125,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- Deincrement the number of windows in the master area
     , ((modm              , xK_period), sendMessage (IncMasterN (-1)))
+		, ((modm, xK_f), sendMessage $ Toggle FULL)
 
     -- Toggle the status bar gap
     -- Use this binding with avoidStruts from Hooks.ManageDocks.
@@ -265,7 +269,7 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 -- The available layouts.  Note that each layout is separated by |||,
 -- which denotes layout choice.
 --
-myLayout = avoidStruts ( spiral (6/7) ||| tiled ||| Mirror tiled ||| noBorders Full)
+myLayout = smartBorders $ mkToggle (NOBORDERS ?? FULL ?? EOT) $ avoidStruts ( spiral (6/7) ||| tiled ||| Mirror tiled ||| noBorders Full)
   where
      -- default tiling algorithm partitions the screen into two panes
      tiled   = Tall nmaster delta ratio
@@ -297,7 +301,6 @@ myLayout = avoidStruts ( spiral (6/7) ||| tiled ||| Mirror tiled ||| noBorders F
 --
 myManageHook = composeAll
     [ className =? "MPlayer"        --> doFloat
-    , className =? "Gimp"           --> doFloat
     , resource  =? "desktop_window" --> doIgnore
     , resource  =? "kdesktop"       --> doIgnore ]
 
@@ -378,7 +381,7 @@ defaults = def {
 
       -- hooks, layouts
         layoutHook         = myLayout,
-				manageHook				 = myManageHook <+> manageSpawn <+> manageDocks,
+				manageHook				 = myManageHook <+> manageSpawn <+> manageDocks <+> (isFullscreen --> doFullFloat),
         handleEventHook    = myEventHook <+> docksEventHook <+> fullscreenEventHook,
 				logHook            = myLogHook,
         startupHook        = myStartupHook <+> setWMName "LG3D"

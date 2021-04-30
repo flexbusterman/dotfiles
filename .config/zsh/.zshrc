@@ -444,6 +444,7 @@ dp() {
 # Add ssh tokens
 eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/git
+ssh-add ~/.ssh/id_ed25519
 clear
 
 # Load syntax highlighting; should be last according to Luke.
