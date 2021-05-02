@@ -23,6 +23,7 @@ s.newBusAllocators;
 		~fxGroup = Group.new;
 		~reverb = Synth(\reverb, [\in, ~reverbBus, \out, 0], ~fxGroup);
 		~input = Synth(\input, [\in, 6, \out, ~reverbBus]);
+		// ~wtBus = Synth.new(\wtBus, [\in, ~bus[\wt], \auxOut, ~bus[\reverb]], ~fxGrp);
 	});
 };
 // ~events = [
@@ -273,15 +274,17 @@ SynthDef(
 	}).add;
 
 	SynthDef.new(\cp808, {
-		var atkenv, atk, decay, sum, denv;
+		var atkenv, atk, decay, sig, denv;
 		atkenv = EnvGen.kr(Env.new([0.5,1,0],[0, 0.3], -160), doneAction:2);
 		denv = EnvGen.kr(Env.dadsr(0.026, 0, 6, 0, 1, 1, curve:-157), doneAction:0);
 		atk = WhiteNoise.ar * atkenv * 1.4;
 		decay = WhiteNoise.ar * denv;
-		sum = atk + decay * \amp.kr(1);
-		sum = HPF.ar(sum, 500);
-		sum = BPF.ar(sum, 1062, 0.5);
-		Out.ar(0, Pan2.ar(sum * 1.5, 0));
+		sig = atk + decay * \amp.kr(1);
+		sig = HPF.ar(sig, 500);
+		sig = BPF.ar(sig, 1062, 0.5);
+		sig = Pan2.ar(sig, \pan.kr(0));
+		Out.ar(\out.kr(0), sig * \amp.kr(1));
+		Out.ar(\auxOut.kr(0), sig * \auxAmp.kr(0));
 	}).add;
 
 	// SynthDef.new(\808cpReverb, {
@@ -300,26 +303,29 @@ SynthDef(
 		penv = EnvGen.kr(Env.new([0.6, 1, 0], [0, 30], -225),doneAction:2);
 		fenv = Env([\freq.kr(80)*1.25, \freq.kr(80)*1.125, \freq.kr(80)], [0.1, 0.5], -4).kr;
 		sig = SinOsc.ar(fenv, pi/2) * env;
-		sig = Pan2.ar(sig * \amp.kr(1) * 0.7, 0);
-		Out.ar(0, sig);
+		sig = Pan2.ar(sig * 0.7, \pan.kr(0));
+		Out.ar(\out.kr(0), sig * \amp.kr(1));
+		Out.ar(\auxOut.kr(0), sig * \auxAmp.kr(0));
 	}).add;
 
 	SynthDef.new(\mt808, {
 		var sig, fenv, env;
 		env = EnvGen.kr(Env.new([0.4, 1, 0], [0, 16], -250),doneAction:2);
 		fenv = Env([\freq.kr(120)*1.33333, \freq.kr(120)*1.125, \freq.kr(120)], [0.1, 0.5], -4).kr;
-		sig = SinOsc.ar(fenv, pi/2);
-		sig = Pan2.ar(sig * env * \amp.kr(1) * 0.6, 0);
-		Out.ar(0, sig);
+		sig = SinOsc.ar(fenv, pi/2) * env;
+		sig = Pan2.ar(sig * 0.6, \pan.kr(0));
+		Out.ar(\out.kr(0), sig * \amp.kr(1));
+		Out.ar(\auxOut.kr(0), sig * \auxAmp.kr(0));
 	}).add;
 
 	SynthDef.new(\ht808, {
 		var sig, fenv, env;
 		env = EnvGen.kr(Env.new([0.4, 1, 0], [0, 11], -250),doneAction:2);
 		fenv = Env([\freq.kr(165)*1.333333, \freq.kr(165)*1.121212, \freq.kr(165)], [0.1, 0.5], -4).kr;
-		sig = SinOsc.ar(fenv, pi/2);
-		sig = Pan2.ar(sig * env * \amp.kr(1) * 0.5, 0);
-		Out.ar(0, sig);
+		sig = SinOsc.ar(fenv, pi/2) * env;
+		sig = Pan2.ar(sig * 0.5, \pan.kr(0));
+		Out.ar(\out.kr(0), sig * \amp.kr(1));
+		Out.ar(\auxOut.kr(0), sig * \auxAmp.kr(0));
 	}).add;
 
 	SynthDef.new(\lc808, {
@@ -328,26 +334,29 @@ SynthDef(
 		penv = EnvGen.kr(Env.new([0.6, 1, 0], [0, 30], -225),doneAction:2);
 		fenv = Env([\freq.kr(165)*1.333333, \freq.kr(165)*1.121212, \freq.kr(165)], [0.1, 0.5], -4).kr;
 		sig = SinOsc.ar(fenv, pi/2) * env;
-		sig = Pan2.ar(sig * \amp.kr(1) * 0.5, 0);
-		Out.ar(0, sig);
+		sig = Pan2.ar(sig * 0.5, \pan.kr(0));
+		Out.ar(\out.kr(0), sig * \amp.kr(1));
+		Out.ar(\auxOut.kr(0), sig * \auxAmp.kr(0));
 	}).add;
 
 	SynthDef.new(\mc808, {
 		var sig, fenv, env;
 		env = EnvGen.kr(Env.new([0.15, 1, 0], [0, 9], -250),doneAction:2);
 		fenv = Env([\freq.kr(250)*1.24, \freq.kr(250)*1.12, \freq.kr(250)], [0.1, 0.5], -4).kr;
-		sig = SinOsc.ar(fenv, pi/2);
-		sig = Pan2.ar(sig * env * \amp.kr(1) * 0.5, 0);
-		Out.ar(0, sig);
+		sig = SinOsc.ar(fenv, pi/2) * env;
+		sig = Pan2.ar(sig * 0.5, \pan.kr(0));
+		Out.ar(\out.kr(0), sig * \amp.kr(1));
+		Out.ar(\auxOut.kr(0), sig * \auxAmp.kr(0));
 	}).add;
 
 	SynthDef.new(\hc808, {
 		var sig, fenv, env;
 		env = EnvGen.kr(Env.new([0.15, 1, 0], [0, 6], -250),doneAction:2);
 		fenv = Env([\freq.kr(370)*1.22972, \freq.kr(370)*1.08108, \freq.kr(370)], [0.1, 0.5], -4).kr;
-		sig = SinOsc.ar(fenv, pi/2);
-		sig = Pan2.ar(sig * env * \amp.kr(1) * 0.5, 0);
-		Out.ar(0, sig);
+		sig = SinOsc.ar(fenv, pi/2) * env;
+		sig = Pan2.ar(sig * 0.5, \pan.kr(0));
+		Out.ar(\out.kr(0), sig * \amp.kr(1));
+		Out.ar(\auxOut.kr(0), sig * \auxAmp.kr(0));
 	}).add;
 
 	SynthDef.new(\rim808, {
@@ -360,25 +369,28 @@ SynthDef(
 		sig = BPeakEQ.ar(sig, 464, 0.44, 8);
 		sig = HPF.ar(sig, 315);
 		sig = LPF.ar(sig, 7300);
-		sig = Pan2.ar(sig * \amp.kr(1) * 0.3, 0);
-		Out.ar(0, sig);
+		sig = Pan2.ar(sig * 0.3, \pan.kr(0));
+		Out.ar(\out.kr(0), sig * \amp.kr(1));
+		Out.ar(\auxOut.kr(0), sig * \auxAmp.kr(0));
 	}).add;
 
 	SynthDef.new(\claves808, {
 		var  env, sig;
 		env = EnvGen.kr(Env.new([1, 1, 0], [0, 0.1], -20), doneAction:2);
-		sig = SinOsc.ar(2500, pi/2) * env * \amp.kr(1) * 0.3;
-		sig = Pan2.ar(sig, 0);
-		Out.ar(0, sig);
+		sig = SinOsc.ar(2500, pi/2) * env;
+		sig = Pan2.ar(sig * 0.3, \pan.kr(0));
+		Out.ar(\out.kr(0), sig * \amp.kr(1));
+		Out.ar(\auxOut.kr(0), sig * \auxAmp.kr(0));
 	}).add;
 
 	SynthDef.new(\maracas808, {
 		var env, sig;
 		env = EnvGen.kr(Env.new([0.3, 1, 0], [0.027, 0.07], -250), 1, doneAction:2);
-		sig = WhiteNoise.ar * env * \amp.kr(1) * 0.2;
+		sig = WhiteNoise.ar * env * 0.2;
 		sig = HPF.ar(sig, 5500);
-		sig = Pan2.ar(sig, 0);
-		Out.ar(0, sig);
+		sig = Pan2.ar(sig, \pan.kr(0));
+		Out.ar(\out.kr(0), sig * \amp.kr(1));
+		Out.ar(\auxOut.kr(0), sig * \auxAmp.kr(0));
 	}).add;
 
 	SynthDef.new(\cowbell808, {
@@ -389,11 +401,12 @@ SynthDef(
 		pul2 = LFPulse.ar(538.75);
 		atk = (pul1 + pul2) * atkenv * 6;
 		datk = (pul1 + pul2) * env;
-		sig = (atk + datk) * \amp.kr(1) * 0.05;
+		sig = (atk + datk) * 0.05;
 		sig = HPF.ar(sig, 250);
 		sig = LPF.ar(sig, 4500);
-		sig = Pan2.ar(sig, 0);
-		Out.ar(0, sig);
+		sig = Pan2.ar(sig, \pan.kr(0));
+		Out.ar(\out.kr(0), sig * \amp.kr(1));
+		Out.ar(\auxOut.kr(0), sig * \auxAmp.kr(0));
 	}).add;
 
 	SynthDef.new(\hat808, {
@@ -412,9 +425,10 @@ SynthDef(
 		siglow = BBandPass.ar(siglow, 8900, 0.8);
 		siglow = BHiPass.ar(siglow, 9000, 0.3);
 		sig = BPeakEQ.ar((siglow+sighi), 9700, 0.8, 0.7);
-		sig = sig * env * \amp.kr(1) * 0.4;
+		sig = sig * env * 0.4;
 		sig = Pan2.ar(sig, \pan.kr(0));
-		Out.ar(0, sig);
+		Out.ar(\out.kr(0), sig * \amp.kr(1));
+		Out.ar(\auxOut.kr(0), sig * \auxAmp.kr(0));
 	}).add;
 
 	SynthDef.new(\hatOpen808, {
@@ -437,9 +451,10 @@ SynthDef(
 		sigb = sig * env2;
 		sum = siga + sigb;
 		sum = LPF.ar(sum, 4000);
-		sum = Pan2.ar(sum, \pan.kr(0));
-		sum = sum * \amp.kr(1)*3;
-		Out.ar(0, sum);
+		sig = sum * 3;
+		sig = Pan2.ar(sig, \pan.kr(0));
+		Out.ar(\out.kr(0), sig * \amp.kr(1));
+		Out.ar(\auxOut.kr(0), sig * \auxAmp.kr(0));
 	}).add;
 
 	SynthDef.new(\cymbal808, {
@@ -476,9 +491,10 @@ SynthDef(
 		sig3 = sig3 * env3;
 		sum = sig1 + sig2a + sig2b + sig3;
 		sum = LPF.ar(sum, 4000);
-		sum = Pan2.ar(sum, \pan.kr(0));
-		sum = sum * \amp.kr(1)*4;
-		Out.ar(0, sum);
+		sig = sum * 4;
+		sig = Pan2.ar(sig, \pan.kr(0));
+		Out.ar(\out.kr(0), sig * \amp.kr(1));
+		Out.ar(\auxOut.kr(0), sig * \auxAmp.kr(0));
 	}).add;
 
 	// TODO: granular
