@@ -85,7 +85,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm,               xK_Tab ), sendMessage NextLayout)
 
     --  Reset the layouts on the current workspace to default
-		, ((modm .|. shiftMask, xK_space ), setLayout $ XMonad.layoutHook conf)
+		, ((modm, xK_y ), setLayout $ XMonad.layoutHook conf)
 
     -- Resize viewed windows to the correct size
     -- , ((modm,               xK_n     ), refresh)
@@ -119,6 +119,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- Push window back into tiling
     , ((modm .|. shiftMask,               xK_f     ), withFocused $ windows . W.sink)
+    , ((modm .|. shiftMask,               xK_space     ), withFocused $ windows . W.sink)
 
     -- Increment the number of windows in the master area
     , ((modm              , xK_comma ), sendMessage (IncMasterN 1))

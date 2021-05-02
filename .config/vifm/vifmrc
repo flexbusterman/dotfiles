@@ -572,5 +572,5 @@ nnoremap yn :!echo -n %c | xclip -selection clipboard %i<cr>:echo expand('%"c') 
 nnoremap yr :!echo -n %c:r | xclip -selection clipboard %i<cr>:echo expand('%"c:r') "is yanked to clipboard"<cr>
 
 only
-cd ~/Dropbox
-vsplit ~/Downloads
+cd ~/Downloads
+vsplit ~/Dropbox
