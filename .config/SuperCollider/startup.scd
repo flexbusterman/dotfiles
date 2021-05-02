@@ -5,6 +5,7 @@
 MIDIClient.init;
 MIDIIn.connectAll;
 m = MIDIOut.new(0);
+Pdefn(\bpm, 4*60/120);
 
 // m.noteOn(0, 60, 30);
 m.latency = 0;

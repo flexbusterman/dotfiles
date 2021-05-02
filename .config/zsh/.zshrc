@@ -449,3 +449,4 @@ clear
 
 # Load syntax highlighting; should be last according to Luke.
 source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null
+source ~/GIT/zsh-autocomplete/zsh-autocomplete.plugin.zsh
