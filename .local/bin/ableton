@@ -1,2 +1,2 @@
 #!/bin/sh 
-cd '/home/flex/.wine/drive_c/ProgramData/Ableton/Live 11 Suite/Program/'; wine 'Ableton Live 11 Suite.exe'
+st -e zsh -c "cd /home/flex/.wine/drive_c/ProgramData/Ableton/Live\ 11\ Suite/Program/; wine Ableton\ Live\ 11\ Suite.exe" &
