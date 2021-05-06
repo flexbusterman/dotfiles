@@ -208,6 +208,8 @@ alias ms="mullvad status"
 alias mc="mullvad connect"
 alias md="mullvad disconnect"
 
+alias wine32="WINEPREFIX=~/.wine32 WINEARCH=win32"
+
 dag () {
 	dropbox-cli exclude | command grep -i $* | xargs -d '\n' dropbox-cli exclude remove
 }

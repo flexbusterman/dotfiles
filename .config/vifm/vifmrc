@@ -444,7 +444,7 @@ command! reload :write | restart full
 
 " What should be saved automatically between vifm sessions.  Drop "savedirs"
 " value if you don't want vifm to remember last visited directories for you.
-set vifminfo=dhistory,chistory,state,tui,shistory,
+set vifminfo=dhistory,savedirs,chistory,state,tui,shistory,
     \phistory,fhistory,dirstack,registers,bookmarks,bmarks
 
 " ------------------------------------------------------------------------------
@@ -570,7 +570,3 @@ nnoremap yn :!echo -n %c | xclip -selection clipboard %i<cr>:echo expand('%"c') 
 
 " yank root of current file's name into the clipboard
 nnoremap yr :!echo -n %c:r | xclip -selection clipboard %i<cr>:echo expand('%"c:r') "is yanked to clipboard"<cr>
-
-only
-cd ~/Downloads
-vsplit ~/Dropbox
