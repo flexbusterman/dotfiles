@@ -166,16 +166,19 @@ filextype *.xcf gimp %f 2>/dev/null &
 
 " :mark mark /full/directory/path [filename]
 mark h ~/
-mark b ~/bin/
-mark B ~/.local/bin/
-mark d ~/Dropbox/
-mark D ~/Downloads/
+mark b ~/.local/bin/
+mark B ~/bin/
+mark D ~/Dropbox/
+mark d ~/Downloads/
 mark w ~/Pictures/WALLPAPERS/
 mark p ~/Pictures/
-mark t ~/Downloads/TUTORIALS/
 mark m ~/Music/
 mark c ~/.config/
 mark g ~/GIT/
+mark s ~/Pictures/SCREENSHOTS/
+mark S ~/.local/src/
+mark r /
+mark m /mnt/
 
 " :com[mand][!] command_name action
 " The following macros can be used in a command
