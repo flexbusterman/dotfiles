@@ -23,7 +23,7 @@ dropbox &
 # deadbeef &
 # keepassxc &
 # xmobar &
-stalonetray &
+# stalonetray &
 # set background color for sxiv
 xrdb ~/.Xresources &
 mw -Y &
