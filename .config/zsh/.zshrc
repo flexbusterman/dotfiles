@@ -185,9 +185,9 @@ alias cat="bat"
 alias less="bat"
 
 # Navigation shortcuts
-alias D='cd ~/Dropbox; exa'
+alias d='cd ~/Dropbox; exa'
 alias s='cd ~/Dropbox/2021\ FOTO/SCREENSHOTS; exa'
-alias d='cd ~/Downloads; exa'
+alias D='cd ~/Downloads; exa'
 alias b='cd ~/.local/bin/; exa'
 # alias mv='cd ~/GIT/mind; nvim'
 alias mn='cd ~/GIT/mind; npm run dev'

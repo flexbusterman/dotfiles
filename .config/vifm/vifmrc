@@ -168,8 +168,8 @@ filextype *.xcf gimp %f 2>/dev/null &
 mark h ~/
 mark b ~/.local/bin/
 mark B ~/bin/
-mark D ~/Dropbox/
-mark d ~/Downloads/
+mark d ~/Dropbox/
+mark D ~/Downloads/
 mark w ~/Pictures/WALLPAPERS/
 mark p ~/Pictures/
 mark m ~/Music/
