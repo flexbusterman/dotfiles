@@ -44,12 +44,12 @@ stty stop undef   # Disable ctrl-s to freeze terminal.
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/zshnameddirrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/zshnameddirrc"
 
 # Basic auto/tab complete:
-autoload -U compinit
-zstyle ':completion:*' menu select
-zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
-zmodload zsh/complist
-compinit
-_comp_options+=(globdots)   # Include hidden files.
+# autoload -U compinit
+# zstyle ':completion:*' menu select
+# zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+# zmodload zsh/complist
+# compinit
+# _comp_options+=(globdots)   # Include hidden files.
 
 # vi mode
 bindkey -v
