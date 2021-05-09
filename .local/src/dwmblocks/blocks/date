@@ -1,0 +1,12 @@
+#!/bin/sh
+printf "^c#bd93f9^ $(date '+%F') ^c#777777^│"
+# dracula colors:
+#^c#000000^
+#^c#ff5555^ red
+#^c#50fa7b^ green
+#^c#f1fa8c^ yellow
+#^c#bd93f9^ purple
+#^c#ff79c6^ pink
+#^c#8be9fd^ cyan
+#^c#bbbbbb^ gray
+#^c#44475a^ dark gray

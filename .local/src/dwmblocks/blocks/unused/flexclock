@@ -1,0 +1,4 @@
+# date "+%Y %b %d (%a) $icon%I:%M%p"
+printf "^c#FF0000^"
+date "+%R"
+printf "^c#333333^ │"

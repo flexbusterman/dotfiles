@@ -2,7 +2,7 @@
 #define PATH(name)                      "/home/flex/.local/src/dwmblocks/blocks/"name
 
 /* buffer size for capturing output of the programs used for updating blocks */
-#define CMDOUTLENGTH                    50
+#define CMDOUTLENGTH                    1024
 
 /* DELIMITERENDCHAR must be less than 32.
  * At max, DELIMITERENDCHAR - 1 number of clickable blocks are allowed.
@@ -19,8 +19,9 @@
 /* delimiter specified as an array of characters
  * don't remove DELIMITERENDCHAR at the end */
 // static const char delimiter[] = { ' ', ' ', ' ', DELIMITERENDCHAR };
-static const char delimiter[] = { '│', DELIMITERENDCHAR };
-// static char *delimiter = "│";
+static const char delimiter[] = { };
+// static const char delimiter = '│';
+// static char delimiter = "│";
 
 #include "block.h"
 
@@ -50,7 +51,7 @@ static Block blocks[] = {
         // { PATH("volume.sh"),            PATH("volume_button.sh"),       0,              2},
         // { PATH("cpu_temp.sh"),          PATH("cpu_temp_button.sh"),     1,              4},
         // { PATH("battery.sh"),           PATH("battery_button.sh"),      30,             3},
-				{ PATH("mailbox"), NULL,	5,	12},
+				{ PATH("mailbox"), NULL,	10,	12},
 				{ PATH("nettraf"), NULL,	1,	16},
 				{ PATH("internet"), NULL, 20,  4},
 				{ PATH("disk"), NULL, 15,  5},
@@ -58,6 +59,7 @@ static Block blocks[] = {
 				{ PATH("cpu"), NULL,    1, 18},
 				{ PATH("volume"), NULL,	0,	10},
 				{ PATH("battery"), NULL,  5,  3},
+				{ PATH("date"), NULL,	3600,	1},
 				{ PATH("clock"), NULL,	60,	1},
-        { NULL } /* just to mark the end of the array */
+        // { NULL } [> just to mark the end of the array <]
 };

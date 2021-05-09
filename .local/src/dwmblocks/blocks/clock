@@ -1,0 +1,2 @@
+#!/bin/sh
+printf "^c#ffffff^ $(date '+%R') ^c#777777^│"
