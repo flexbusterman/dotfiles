@@ -18,13 +18,36 @@ s.options.sampleRate_(41000);
 s.options.memSize_(2**20);
 ServerTree.removeAll;
 s.newBusAllocators;
+
+( // generating wavetables
+	thisThread.randSeed = 1;
+	~wt = (
+		\random: Array.fill(20,{
+			|i|
+			Buffer.loadCollection(s,
+				{
+					var sig;
+					sig = Env.new(
+						{rrand(-1.0,1.0)}!(i+2), // levels
+						{exprand(0.01,2)}!(i+1), // times
+						{rrand(-5,5)}!(i+1) // curves
+					).asSignal(512);
+					sig = sig.normalize;
+					sig;
+				}.value.asWavetableNoWrap.normalize;
+			)
+		})
+	);
+);
+
 ~reverbBus = Bus.audio(s, 2);
+~wtBus = Bus.audio(s, 2);
 ~makeNodes = {
 	s.bind({
 		~fxGroup = Group.new;
 		~reverb = Synth(\reverb, [\in, ~reverbBus, \out, 0], ~fxGroup);
 		~input = Synth(\input, [\in, 6, \out, ~reverbBus]);
-		// ~wtBus = Synth.new(\wtBus, [\in, ~bus[\wt], \auxOut, ~bus[\reverb]], ~fxGrp);
+		~shaper = Synth.new(\wt, [\in, ~wtBus, \auxOut, ~reverbBus], ~fxGrp);
 	});
 };
 // ~events = [
@@ -526,7 +549,6 @@ SynthDef(
 		Out.ar(\auxOut.ir(0), sig * \auxAmp.ir(-30).dbamp);
 	}).add;
 
-
 	SynthDef(\reverb, {
 		var sig, wet;
 		sig = In.ar(\in.ir(0), 2);
@@ -556,16 +578,13 @@ SynthDef(
 	}).add;
 
 	SynthDef(\wt,{
-		|in=0, wt=0, auxOut=0, amp=1, auxAmp=0.5|
 		var input, sig;
-		input = In.ar(in,~channels);
-		sig = Shaper.ar(wt, input);
+		input = In.ar(\in.kr(0),~channels);
+		sig = Shaper.ar(\wt.kr(0), input);
 		sig = sig.tanh;
-		sig = sig * amp;
-		Out.ar(0,sig);
-		Out.ar(auxOut,sig*auxAmp);
+		Out.ar(\out.kr(0),sig*\amp.kr(0.5));
+		Out.ar(\auxOut.kr(0),sig*\auxAmp.kr(0));
 	}).add;
-
 
 	// ~bufPath = PathName.new(thisProcess.nowExecutingPath).parentPath ++ "calibration_tone/";
 
@@ -588,18 +607,39 @@ SynthDef(
 	// | .__/ \__,_|\__|\__\___|_|  |_| |_|___/
 	// |_|
 
-	~beep = Pbind(
-		\instrument, \sine,
-		\dur, 2,
-		\atk, 0,
-		\sus, 0.02,
-		\rel, 0.02,
-		\freq, 1000,
-		\amp, Pexprand(0.02, 0.2, inf),
-		\pan, Pseq([-1, 0, 1, 0],inf),
+	Pbindef(\fmKick,
+		\instrument, \fm,
+		\dur, 1/4,
+		\rel, 2,
+		\stretch, Pdefn(\bpm),
+		\freqStart, 0,
+		\freq, 400,
+		\freqEnd, 20.midicps,
+		\freqAtt, 0.00001,
+		\freqRel, 0.2,
+		\freqAttC, 0,
+		\freqRelC, (-20),
+		\carPartial, 1,
+		\modPartial, 1,
+		\index, 1,
+		\amp, 0.5,
+		\auxAmp, 0,
+		\att, 0.0001,
+		\attC, 0,
+		\relC, (-8),
+		\modAtt, 0.0001,
+		\modRel, Pkey(\rel) * 2,
+		\modAttC, 0,
+		\modRelC, (-50),
+		\panAmp, 1.0,
+		\panRate, 0,
+		\panPhase, 2,
+		\panWidth, 2,
+		\vibFreq, 0,
+		\vibDepth, 0,
+		\vibPhase, 2,
 		\out, 0,
 		\auxOut, ~reverbBus,
-		\auxAmp, -10,
 	);
 
 });
