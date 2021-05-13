@@ -109,7 +109,7 @@ fileviewer *.html w3m -dump %c
 filextype *.html,*.htm firefox %f 2>/dev/null &
 fileviewer *.docx docx2txt %c -
 fileviewer *.odt odt2txt %c -
-filetype *.csv,*.xlsx sc-im %c
+filetype *.sc,*.csv,*.xlsx sc-im %c
 fileviewer *.csv sed "s/,,,,/,,-,,/g;s/,,/ /g" %c | column -t | sed "s/ - /  /g" | cut -c -%pw
 " filetype *.wav,*.mp3,*.flac,*.m4a,*.wma,*.ape,*.ac3,*.og[agx],*.spx,*.opus mpv --no-audio-display %f */
 filetype *.aac,*.ac3,*.ahx,*.aif,*.aiff,*.alac,*.ape,*.ay,*.flac,*.hes,*.it,*.m4a,*.mid,*.midi,*.mod,*.s3m,*.mp3,*.mpc,*.nsf,*.og[agx],*.opus*.s3m,*.sid,*.spc,*.spx,*.tta,*.vgm,*.vgz,*.vtx,*.wav,*.wma,*.psf,*.wv,*.xm deadbeef %f, 2>/dev/null &
