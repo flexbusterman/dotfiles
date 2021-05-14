@@ -85,7 +85,7 @@ map R :restart<CR>
 map x :!sxiv -ft * 2>/dev/null &<CR>
 nnoremap o :file &<cr>
 map E :!$EDITOR %f<CR>
-map mkd :mkdir<space>
+map mkd :mkdir<space>""<left>
 map bg :!setbg %f &<CR>
 map X :!ext %f &<CR>
 nnoremap w :view<cr>
