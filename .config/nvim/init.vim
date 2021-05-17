@@ -229,59 +229,6 @@ let g:NERDSpaceDelims = 1
 " Use compact syntax for prettified multi-line comments
 let g:NERDCompactSexyComs = 1
 let g:NERDCustomDelimiters = { 'text': { 'left': '"','right': '' } }
-"  ____                         ____      _ _ _     _
-" / ___| _   _ _ __   ___ _ __ / ___|___ | | (_) __| | ___ _ __
-" \___ \| | | | '_ \ / _ \ '__| |   / _ \| | | |/ _` |/ _ \ '__|
-"  ___) | |_| | |_) |  __/ |  | |__| (_) | | | | (_| |  __/ |
-" |____/ \__,_| .__/ \___|_|   \____\___/|_|_|_|\__,_|\___|_|
-"             |_|
-"
-au BufEnter,BufWinEnter,BufNewFile,BufRead *.sc,*.scd set filetype=supercollider
-" au Filetype supercollider packadd scvim
-let g:sclangTerm = "st -e zsh -ic"
-" let g:scFlash = 1
-nmap <silent><nowait> <CR> <Plug>(scnvim-send-block)
-vmap <silent><nowait> <CR> <Plug>(scnvim-send-selection)
-nmap <silent><nowait> <leader>. <Plug>(scnvim-hard-stop)
-map <silent><nowait> <leader>p <Plug>(scnvim-postwindow-toggle)
-map <silent><nowait> <leader>b <Plug>(scnvim-hard-stop)
-map <silent><nowait> <leader>s :SCNvimStart<CR>
-" vertical 'v' or horizontal 'h' split
-let g:scnvim_postwin_orientation = 'h'
-" position of the post window 'right' or 'left'
-let g:scnvim_postwin_direction = 'right'
-" default is half the terminal size for vertical and a third for horizontal
-let g:scnvim_postwin_size = 15
-" automatically open post window on a SuperCollider error
-let g:scnvim_postwin_auto_toggle = 1
-" duration of the highlight
-let g:scnvim_eval_flash_duration = 25
-" set this variable to browse SuperCollider documentation in nvim (requires `pandoc`)
-let g:scnvim_scdoc = 1
-" number of flashes. A value of 0 disables this feature.
-let g:scnvim_eval_flash_repeats = 1
-" configure the color
-highlight SCNvimEval guifg=black guibg=cyan ctermfg=black ctermbg=cyan
-autocmd BufRead,BufWritePre *.sc normal magg=G`a
-autocmd BufRead,BufWritePre *.scd normal magg=G`a
-" path to the sclang executable
-" scnvim will look in some known locations for sclang, but if it can't find it use this variable instead
-" (also improves startup time slightly)
-let g:scnvim_sclang_executable = ''
-" update rate for server info in status line (seconds)
-" (don't set this to low or vim will get slow)
-let g:scnvim_statusline_interval = 1
-" set this variable if you don't want the "echo args" feature
-let g:scnvim_echo_args = 0
-" set this variable if you don't want any default mappings
-let g:scnvim_no_mappings = 1
-" set this variable to browse SuperCollider documentation in nvim (requires `pandoc`)
-let g:scnvim_scdoc = 1
-" pass flags directly to sclang - see help file for more details, caveats, and further examples
-let g:scnvim_sclang_options = ['-u', 9999]
-" help
-let g:scnvim_scdoc_render_prg = '/usr/bin/pandoc'
-" let g:scnvim_scdoc_render_args = '% -o %'
 "       _        _
 "   ___| |_ _ __| |_ __
 "  / __| __| '__| | '_ \
@@ -482,3 +429,58 @@ let g:coc_snippet_prev = '<S-TAB>'
 
 " latex
 let g:livepreview_previewer = 'zathura'
+
+"  ____                         ____      _ _ _     _
+" / ___| _   _ _ __   ___ _ __ / ___|___ | | (_) __| | ___ _ __
+" \___ \| | | | '_ \ / _ \ '__| |   / _ \| | | |/ _` |/ _ \ '__|
+"  ___) | |_| | |_) |  __/ |  | |__| (_) | | | | (_| |  __/ |
+" |____/ \__,_| .__/ \___|_|   \____\___/|_|_|_|\__,_|\___|_|
+"             |_|
+"
+au BufEnter,BufWinEnter,BufNewFile,BufRead *.sc,*.scd set filetype=supercollider
+" au Filetype supercollider packadd scvim
+let g:sclangTerm = "st -e zsh -ic"
+" let g:scFlash = 1
+nmap <silent><nowait> <CR> <Plug>(scnvim-send-block)
+vmap <silent><nowait> <CR> <Plug>(scnvim-send-selection)
+nmap <silent><nowait> <leader>. <Plug>(scnvim-hard-stop)
+" map <silent><nowait> <leader>p <Plug>(scnvim-postwindow-toggle)
+map <silent><nowait> <leader>b <Plug>(scnvim-hard-stop)
+nmap <silent><nowait> <leader>p <Plug>(scnvim-postwindow-clear)
+map <silent><nowait> <leader>s :SCNvimStart<CR>
+" vertical 'v' or horizontal 'h' split
+let g:scnvim_postwin_orientation = 'h'
+" position of the post window 'right' or 'left'
+let g:scnvim_postwin_direction = 'right'
+" default is half the terminal size for vertical and a third for horizontal
+let g:scnvim_postwin_size = 15
+" automatically open post window on a SuperCollider error
+let g:scnvim_postwin_auto_toggle = 1
+" duration of the highlight
+let g:scnvim_eval_flash_duration = 25
+" set this variable to browse SuperCollider documentation in nvim (requires `pandoc`)
+let g:scnvim_scdoc = 1
+" number of flashes. A value of 0 disables this feature.
+let g:scnvim_eval_flash_repeats = 1
+" configure the color
+highlight SCNvimEval guifg=black guibg=cyan ctermfg=black ctermbg=cyan
+autocmd BufRead,BufWritePre *.sc normal magg=G`a
+autocmd BufRead,BufWritePre *.scd normal magg=G`a
+" path to the sclang executable
+" scnvim will look in some known locations for sclang, but if it can't find it use this variable instead
+" (also improves startup time slightly)
+let g:scnvim_sclang_executable = ''
+" update rate for server info in status line (seconds)
+" (don't set this to low or vim will get slow)
+let g:scnvim_statusline_interval = 1
+" set this variable if you don't want the "echo args" feature
+let g:scnvim_echo_args = 0
+" set this variable if you don't want any default mappings
+let g:scnvim_no_mappings = 1
+" set this variable to browse SuperCollider documentation in nvim (requires `pandoc`)
+let g:scnvim_scdoc = 1
+" pass flags directly to sclang - see help file for more details, caveats, and further examples
+let g:scnvim_sclang_options = ['-u', 9999]
+" help
+let g:scnvim_scdoc_render_prg = '/usr/bin/pandoc'
+" let g:scnvim_scdoc_render_args = '% -o %'
