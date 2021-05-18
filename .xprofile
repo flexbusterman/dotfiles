@@ -28,6 +28,7 @@ dwmblocks &
 # set background color for sxiv
 xrdb ~/.Xresources &
 mw -Y &
+blueman-tray &
 # mullvad connect &
 # watch -n 60 /home/flex/.local/bin/flexmail &>/dev/null &
 # cadence-session-start --system-start

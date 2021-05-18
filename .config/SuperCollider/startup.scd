@@ -22,27 +22,6 @@ s.options.memSize_(2**20);
 ServerTree.removeAll;
 s.newBusAllocators;
 
-( // generating wavetables
-	thisThread.randSeed = 1;
-	~wt = (
-		\random: Array.fill(20,{
-			|i|
-			Buffer.loadCollection(s,
-				{
-					var sig;
-					sig = Env.new(
-						{rrand(-1.0,1.0)}!(i+2), // levels
-						{exprand(0.01,2)}!(i+1), // times
-						{rrand(-5,5)}!(i+1) // curves
-					).asSignal(512);
-					sig = sig.normalize;
-					sig;
-				}.value.asWavetableNoWrap.normalize;
-			)
-		})
-	);
-);
-
 ~reverbBus = Bus.audio(s, 2);
 ~wtBus = Bus.audio(s, 2);
 ~makeNodes = {
@@ -50,7 +29,27 @@ s.newBusAllocators;
 		~fxGroup = Group.new;
 		~reverb = Synth(\reverb, [\in, ~reverbBus, \out, 0], ~fxGroup);
 		~input = Synth(\input, [\in, 6, \out, ~reverbBus]);
-		~shaper = Synth.new(\wt, [\in, ~wtBus, \auxOut, ~reverbBus], ~fxGrp);
+
+		// generating wavetables
+		thisThread.randSeed = 1;
+		~wt = (
+			\random: Array.fill(20,{
+				|i|
+				Buffer.loadCollection(s,
+					{
+						var sig;
+						sig = Env.new(
+							{rrand(-1.0,1.0)}!(i+2), // levels
+							{exprand(0.01,2)}!(i+1), // times
+							{rrand(-5,5)}!(i+1) // curves
+						).asSignal(512);
+						sig.normalize;
+					}.value.asWavetableNoWrap.normalize;
+				)
+			})
+		);
+
+		~shaper = Synth.new(\wt, [\in, ~wtBus, \auxOut, ~reverbBus, \wt, ~wt[\random][0]], ~fxGroup);
 	});
 };
 // ~events = [
@@ -573,7 +572,7 @@ SynthDef(
 	SynthDef(\wt,{
 		var input, sig;
 		input = In.ar(\in.kr(0),~channels);
-		sig = Shaper.ar(\wt.kr(0), input);
+		sig = Shaper.ar(\shape.kr(0), input);
 		sig = sig.tanh;
 		Out.ar(\out.kr(0),sig*\amp.kr(0.5));
 		Out.ar(\auxOut.kr(0),sig*\auxAmp.kr(0));
