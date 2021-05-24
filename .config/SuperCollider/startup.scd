@@ -30,21 +30,46 @@ s.newBusAllocators;
 		~reverb = Synth(\reverb, [\in, ~reverbBus, \out, 0], ~fxGroup);
 		~input = Synth(\input, [\in, 6, \out, ~reverbBus]);
 
-		// generating wavetables
+		// // generating wavetables old
+		// thisThread.randSeed = 1;
+		// ~wt = (
+		// \random: Array.fill(20,{
+		// |i|
+		// Buffer.loadCollection(s,
+		// {
+		// var sig;
+		// sig = Env.new(
+		// {rrand(-1.0,1.0)}!(i+2), // levels
+		// {exprand(0.01,2)}!(i+1), // times
+		// {rrand(-5,5)}!(i+1) // curves
+		// ).asSignal(512);
+		// sig.normalize;
+		// }.value.asWavetableNoWrap.normalize;
+		// )
+		// })
+		// );
+
 		thisThread.randSeed = 1;
 		~wt = (
 			\random: Array.fill(20,{
 				|i|
 				Buffer.loadCollection(s,
 					{
-						var sig;
-						sig = Env.new(
+						var sig, env1, env2;
+						env1 = Env.new(
 							{rrand(-1.0,1.0)}!(i+2), // levels
-							{exprand(0.01,2)}!(i+1), // times
+							{exprand(0.01,2)}!(i+2), // times
 							{rrand(-5,5)}!(i+1) // curves
-						).asSignal(512);
-						sig.normalize;
-					}.value.asWavetableNoWrap.normalize;
+						).asSignal(513).normalize;
+						env2 = Env.new(
+							[-1,1], // levels
+							[1], // times
+							[0] // curves
+						).asSignal(513).normalize;
+						sig = env1 * env2;
+						sig = sig.normalize;
+						sig;
+					}.value.asWavetableNoWrap;
 				)
 			})
 		);

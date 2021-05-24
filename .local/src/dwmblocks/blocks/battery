@@ -80,4 +80,3 @@ done | sed 's/*$//'
 	discharging=$([[ $(cat "/sys/class/power_supply/BAT0/status" 2>/dev/null) == "Discharging" || $(cat "/sys/class/power_supply/BAT1/status" 2>/dev/null) == "Discharging" ]] && echo "-" ) 
 # printf " %s%s%s%s " "$charging" "$discharging" "$(bc <<< "($(cat "/sys/class/power_supply/BAT0/capacity" 2>/dev/null) + $(cat "/sys/class/power_supply/BAT1/capacity" 2>/dev/null)) / 2 ")" "%" 
 printf "^c#50fa7b^ BAT %s%s%s%s ^c#777777^│" "$charging" "$discharging" "$(bc <<< "$(cat "/sys/class/power_supply/BAT0/capacity" 2>/dev/null) ")" "%" 
-

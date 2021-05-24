@@ -17,13 +17,15 @@ esac
 [ $(pamixer --get-mute) = true ] && echo M && exit
 
 vol="$(pamixer --get-volume)"
+# r="$(bc <<< 100 - $vol)"
+# g="$(printf '%x\n' $vol)"
 
-if [ "$vol" -gt "70" ]; then
-	icon="🔊"
-elif [ "$vol" -lt "30" ]; then
-	icon="🔈"
-else
-	icon="🔉"
-fi
+# if [ "$vol" -gt "70" ]; then
+	# # icon="🔊"
+# elif [ "$vol" -lt "30" ]; then
+	# # icon="🔈"
+# else
+	# # icon="🔉"
+# fi
 
 echo "^c#8be9fd^ VOL $vol% ^c#777777^│"
