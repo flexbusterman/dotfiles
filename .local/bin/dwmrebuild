@@ -1,0 +1,2 @@
+#!/bin/bash
+cd /home/flex/.local/src/dwm-flexipatch/ && make && sudo make clean install
