@@ -153,70 +153,65 @@ zle-line-init() {
 zle -N zle-line-init
 echo -ne '\e[5 q' # Use beam shape cursor on startup.
 preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
+#        _ _
+#   __ _| (_) __ _ ___  ___  ___
+#  / _` | | |/ _` / __|/ _ \/ __|
+# | (_| | | | (_| \__ \  __/\__ \
+#  \__,_|_|_|\__,_|___/\___||___/
+# aliases
 
-
-# Other aliases
-alias ls="exa"
-alias lsg="exa | grep --color=always -i"
+# Misc aliases
+alias bs='browser-sync start --server --directory --files "*"'
+alias cat="bat"
+alias copy='xclip -sel clip'
+alias de='find . -empty -type d -delete'
+alias dot='/usr/bin/git --git-dir=$HOME/.dot.git/ --work-tree=$HOME'
+alias du="du -hs ."
+alias du='du -h'
+alias fs="df -h | grep --color='never' 'Filesystem\|sd'"
+alias gb="git branch"
+alias grep="grep --color=always -i"
+alias igdl="instalooter -u augustinsupremacy user memeforyouandhim /home/flex/Dropbox/MEMES/memeforyouandhim -Nv && instalooter user memeseducational ~/Dropbox/MEMES/memeseducational -Nv && instalooter user dank_memes_world_1 /home/flex/Dropbox/MEMES/dank_memes_world_1 -Nv && instalooter user zucktheberg /home/flex/Dropbox/MEMES/zucktheberg -Nv && instalooter user stinky420memes /home/flex/Dropbox/MEMES/stinky420memes -Nv && instalooter user memes.to.dm /home/flex/Dropbox/MEMES/memes.to.dm -Nv && instalooter user epicallyepicmemes /home/flex/Dropbox/MEMES/epicallyepicmemes -Nv && instalooter user baked_meme_god /home/flex/Dropbox/MEMES/baked_meme_god -Nv && instalooter user stolenmemesawakens /home/flex/Dropbox/MEMES/stolenmemesawakens -Nv && instalooter user memesinyourdms /home/flex/Dropbox/MEMES/memesinyourdms -Nv && instalooter user omgzucc /home/flex/Dropbox/MEMES/omgzucc -Nv"
 alias la="exa -la"
 alias lag="exa -la | grep --color=always -i"
-alias lm="exa -la --sort=modified"
-alias lt="exa -lar --sort=size"
-alias fs="df -h | grep --color='never' 'Filesystem\|sd'"
-alias copy='xclip -sel clip'
-alias rf='rm -rf'
-alias res="xdpyinfo | awk '/dimensions/{print $2}'"
-alias q="exit"
-alias igdl="instalooter -u augustinsupremacy user memeforyouandhim /home/flex/Dropbox/MEMES/memeforyouandhim -Nv && instalooter user memeseducational ~/Dropbox/MEMES/memeseducational -Nv && instalooter user dank_memes_world_1 /home/flex/Dropbox/MEMES/dank_memes_world_1 -Nv && instalooter user zucktheberg /home/flex/Dropbox/MEMES/zucktheberg -Nv && instalooter user stinky420memes /home/flex/Dropbox/MEMES/stinky420memes -Nv && instalooter user memes.to.dm /home/flex/Dropbox/MEMES/memes.to.dm -Nv && instalooter user epicallyepicmemes /home/flex/Dropbox/MEMES/epicallyepicmemes -Nv && instalooter user baked_meme_god /home/flex/Dropbox/MEMES/baked_meme_god -Nv && instalooter user stolenmemesawakens /home/flex/Dropbox/MEMES/stolenmemesawakens -Nv && instalooter user memesinyourdms /home/flex/Dropbox/MEMES/memesinyourdms -Nv && instalooter user omgzucc /home/flex/Dropbox/MEMES/omgzucc -Nv"
-alias gb="git branch"
-alias ra="pulseaudio --kill; jack_control start; jack_control exit; pulseaudio --start;"
-alias vim="nvim"
-alias dot='/usr/bin/git --git-dir=$HOME/.dot.git/ --work-tree=$HOME'
-alias bs='browser-sync start --server --directory --files "*"'
-alias grep="grep --color=always -i"
-# alias live="wine64 /home/flex/Wine/Program\ Files/Ableton/Live\ 10\ Suite/Program/Ableton\ Live\ 10\ Suite.exe"
-alias ud='sudo updatedb'
-alias du='du -h'
-alias de='find . -empty -type d -delete'
-alias du="du -hs ."
-alias play="ffplay -nodisp -autoexit"
-alias np="deadbeef --nowplaying %d/%f"
-alias cat="bat"
 alias less="bat"
-
-# Navigation shortcuts
-alias d='cd ~/Dropbox; exa'
-alias s='cd ~/Dropbox/2021\ FOTO/SCREENSHOTS; exa'
-alias D='cd ~/Downloads; exa'
-alias b='cd ~/.local/bin/; exa'
-# alias mv='cd ~/GIT/mind; nvim'
-alias mn='cd ~/GIT/mind; npm run dev'
-alias sv='cd ~/GIT/sandhamn; nvim'
-alias sn='cd ~/GIT/sandhamn; npm run dev'
-
-# Dropbox aliases
-alias dls="dropbox-cli ls"
-alias deg="dropbox-cli exclude | grep --color=always -i"
-alias drm="dropbox-cli exclude add"
-alias drma="ls | sed 's/ /\\ /g' | sed 's/'\''/\\'\''/g' | xargs dropbox-cli exclude add"
-alias dsl="dropbox-cli sharelink | xclip -sel clip"
-alias dadd="dropbox-cli exclude remove"
-# alias pw="date +%s | sha256sum | base64 | head -c 32 | xclip -sel clip"
+alias lm="exa -la --sort=modified"
+alias ls="exa"
+alias lsg="exa | grep --color=always -i"
+alias lt="exa -lar --sort=size"
+alias np="deadbeef --nowplaying %d/%f"
+alias play="ffplay -nodisp -autoexit"
+alias q="exit"
+alias ra="pulseaudio --kill; jack_control start; jack_control exit; pulseaudio --start;"
+alias res="xdpyinfo | awk '/dimensions/{print $2}'"
+alias rf='rm -rf'
+alias ud='sudo updatedb'
+alias vim="nvim"
 alias pw="openssl rand -base64 41 | xclip -sel clip"
-
 alias ms="mullvad status"
 alias mc="mullvad connect"
 alias md="mullvad disconnect"
-
 alias wine32="WINEPREFIX=~/.wine32 WINEARCH=win32"
 alias shs="simple-http-server"
 
-dag () {
-	dropbox-cli exclude | command grep -i $* | xargs -d '\n' dropbox-cli exclude remove
-}
+# Navigation shortcuts
+alias b='cd ~/.local/bin/; exa'
+alias D='cd ~/Downloads; exa'
+alias d='cd ~/Dropbox; exa'
+alias mn='cd ~/GIT/mind; npm run dev'
+alias s='cd ~/Dropbox/2021\ FOTO/SCREENSHOTS; exa'
+alias sn='cd ~/GIT/sandhamn; npm run dev'
+alias sv='cd ~/GIT/sandhamn; nvim'
 
-alias ds='dropbox-cli status'
+# Dropbox aliases
+alias dadd="dropbox-cli exclude remove"
+alias deg="dropbox-cli exclude | grep --color=always -i"
+alias dls="dropbox-cli ls"
 alias dr='dropbox-cli restart'
+alias drm="dropbox-cli exclude add"
+alias drma="ls | sed 's/ /\\ /g' | sed 's/'\''/\\'\''/g' | xargs dropbox-cli exclude add"
+alias ds='dropbox-cli status'
+alias dsl="dropbox-cli sharelink | xclip -sel clip"
 
 # WIFI connection aliases
 alias wls="nmcli dev wifi"
@@ -228,26 +223,37 @@ wc() { nmcli device wifi connect $1 password $2 }
 wdisable() { nmcli connection down $* }
 
 # VIM aliases for editing common files
-alias vz="cd /home/flex/.config/zsh/; nvim .zshrc"
-alias vP="cd /home/flex/; nvim .xprofile"
-alias vx="cd /home/flex/.xmonad/; nvim xmonad.hs"
-alias vX="cd /home/flex/.xmobar/; nvim xmobar.hs"
-alias vn="cd /home/flex/.config/nvim/; nvim init.vim"
-alias vp="cd /home/flex/.local/src/dwm-flexipatch/; nvim patches.h"
-alias vP="cd /home/flex/.config/nvim/; nvim plugins.vim"
-alias vu="cd /home/flex/.config/newsboat/; nvim urls"
+alias vA="cd /home/flex/.config/alacritty/; nvim alacritty.yml"
+alias va="cd /home/flex/.local/bin/; nvim augustin"
+alias vc="cd /home/flex/.config/nvim/; nvim coc-settings.json"
 alias vD="cd /home/flex/.local/src/dmenu/; nvim config.h"
 alias vd="cd /home/flex/.local/src/dwm-flexipatch/; nvim config.h"
+alias vn="cd /home/flex/.config/nvim/; nvim init.vim"
+alias vP="cd /home/flex/.config/nvim/; nvim plugins.vim"
+alias vp="cd /home/flex/.local/src/dwm-flexipatch/; nvim patches.h"
+alias vP="cd /home/flex/; nvim .xprofile"
 alias vs="cd /home/flex/.config/coc/ultisnips; nvim all.snippets"
 alias vS="cd /home/flex/.local/src/st/; nvim config.h"
-alias vc="cd /home/flex/.config/nvim/; nvim coc-settings.json"
+alias vu="cd /home/flex/.config/newsboat/; nvim urls"
 alias vv="cd /home/flex/.config/vifm/; nvim vifmrc"
-alias va="cd /home/flex/.local/bin/; nvim augustin"
-alias vA="cd /home/flex/.config/alacritty/; nvim alacritty.yml"
+alias vX="cd /home/flex/.xmobar/; nvim xmobar.hs"
+alias vx="cd /home/flex/.xmonad/; nvim xmonad.hs"
+alias vz="cd /home/flex/.config/zsh/; nvim .zshrc"
 
 # Keymap aliases
 alias se="setxkbmap se; setxkbmap -option caps:swapescape; xset r rate 300 50"
 alias us="setxkbmap us; setxkbmap -option caps:swapescape; xset r rate 300 50"
+
+#   __                  _   _
+#  / _|_   _ _ __   ___| |_(_) ___  _ __  ___
+# | |_| | | | '_ \ / __| __| |/ _ \| '_ \/ __|
+# |  _| |_| | | | | (__| |_| | (_) | | | \__ \
+# |_|  \__,_|_| |_|\___|\__|_|\___/|_| |_|___/
+# functions
+
+dag () {
+	dropbox-cli exclude | command grep -i $* | xargs -d '\n' dropbox-cli exclude remove
+}
 
 ytd () { youtube-dl --add-metadata -i "$*"}
 ytda () { youtube-dl --add-metadata -i -x -f bestaudio/best "$*"}
