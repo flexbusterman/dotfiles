@@ -161,9 +161,10 @@ preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 # aliases
 
 # Misc aliases
-alias bs='browser-sync start --server --directory --files "*"'
+alias bs='browser-sync start --server --no-notify --files "*"'
 alias cat="bat"
 alias copy='xclip -sel clip'
+alias ct="cointop"
 alias de='find . -empty -type d -delete'
 alias dot='/usr/bin/git --git-dir=$HOME/.dot.git/ --work-tree=$HOME'
 alias du="du -hs ."
@@ -179,20 +180,20 @@ alias lm="exa -la --sort=modified"
 alias ls="exa"
 alias lsg="exa | grep --color=always -i"
 alias lt="exa -lar --sort=size"
+alias mc="mullvad connect"
+alias md="mullvad disconnect"
+alias ms="mullvad status"
 alias np="deadbeef --nowplaying %d/%f"
 alias play="ffplay -nodisp -autoexit"
+alias pw="openssl rand -base64 41 | xclip -sel clip"
 alias q="exit"
 alias ra="pulseaudio --kill; jack_control start; jack_control exit; pulseaudio --start;"
 alias res="xdpyinfo | awk '/dimensions/{print $2}'"
 alias rf='rm -rf'
+alias shs="simple-http-server"
 alias ud='sudo updatedb'
 alias vim="nvim"
-alias pw="openssl rand -base64 41 | xclip -sel clip"
-alias ms="mullvad status"
-alias mc="mullvad connect"
-alias md="mullvad disconnect"
 alias wine32="WINEPREFIX=~/.wine32 WINEARCH=win32"
-alias shs="simple-http-server"
 
 # Navigation shortcuts
 alias b='cd ~/.local/bin/; exa'
@@ -402,9 +403,13 @@ mind() {
 }
 
 dev() {
-  st -e zsh -c "cd ~/GIT/kalle2019; zsh -c \"npm run dev\"" &
-  st -e zsh -c "cd ~/Documents/; nvim -c \"autocmd! CursorHold * CocDisable\" Buffalo\ Bill\ Gates.wiki" &
-  cd ~/GIT/kalle2019/; nvim;
+	# st -e cd ~/GIT/$* &
+	# st -e cd ~/GIT/$*; &
+	st -t Dev -e zsh -c "cd ~/GIT/$*/; nvim index.html" &
+	cd ~/GIT/$*;
+	browser-sync start --server --no-notify --files "*"
+	# st -e zsh -c "cd ~/Documents/; nvim -c \"autocmd! CursorHold * CocDisable\" Buffalo\ Bill\ Gates.wiki" &
+	# cd ~/GIT/kalle2019/; nvim;
 }
 
 # aug() {

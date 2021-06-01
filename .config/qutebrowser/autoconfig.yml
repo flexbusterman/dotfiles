@@ -30,6 +30,7 @@ settings:
   content.blocking.enabled:
     global: true
   content.geolocation:
+    https://www.google.com: true
     https://www.google.com.ar: false
   content.notifications.enabled:
     https://cutewallpaper.org: false
