@@ -67,7 +67,7 @@ mainwin.geometry.w 1920
 mainwin.geometry.x 0
 mainwin.geometry.y 0
 network.proxy.port 8080
-output_plugin alsa
+output_plugin pulseaudio
 playback.loop 1
 playback.volume 0.0000000
 playlist.current 0

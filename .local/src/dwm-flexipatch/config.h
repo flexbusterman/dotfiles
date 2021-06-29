@@ -862,6 +862,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,							XK_i,											spawn,					 	SHCMD("xcalib -invert -alter") },
 	{ MODKEY|ShiftMask,             XK_Return,								spawn,           	SHCMD("st -e zsh" ) },
 	{ MODKEY|ShiftMask,             XK_comma,									spawn,					 	SHCMD("st -e vifmrun" ) },
+	{ MODKEY|ControlMask|ShiftMask, XK_comma,									spawn,					 	SHCMD("thunar" ) },
 	{ MODKEY|ShiftMask,             XK_q,       							quit,            	{0} },
 	{ MODKEY|ShiftMask,             XK_space,									togglefloating,  	{0} },
   { 0,														XK_Print,									spawn,					 	SHCMD("maim -f jpg -m 9 \"/home/flex/Pictures/SCREENSHOTS/$(date +\"%F %H_%M_%S.jpg\")\"")},
@@ -1000,7 +1001,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_r,          self_restart,           {0} },
 	#endif // SELFRESTART_PATCH
 	#if RESTARTSIG_PATCH
-	{ MODKEY|ControlMask|ShiftMask, XK_q,          quit,                   {1} },
+	{ MODKEY|ControlMask|ShiftMask, XK_q,          quit,                   {0} },
 	#endif // RESTARTSIG_PATCH
 	#if FOCUSURGENT_PATCH
 	{ MODKEY,                       XK_u,          focusurgent,            {0} },
