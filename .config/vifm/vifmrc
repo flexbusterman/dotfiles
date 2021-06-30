@@ -100,8 +100,8 @@ nmap <space> tj
 nmap q ZQ
 nnoremap va ggVG
 vnoremap u :This is disabled to avoid mistakes
-
 map gd :!dropbox-cli exclude add %f<cr>
+map ds :!dropbox-cli sharelink %c | xclip -sel clip<cr>
 
 fileview */ tree %c -L 1 --dirsfirst
 fileview ../ tree %c -L 1 --dirsfirst
