@@ -368,9 +368,9 @@ command! reload :write | restart full
 " fileviewer {*.rar},<application/x-rar> unrar v %c
 " 
 " " IsoMount
-" filetype {*.iso},<application/x-iso9660-image>
-"        \ {Mount with fuseiso}
-"        \ FUSE_MOUNT|fuseiso %SOURCE_FILE %DESTINATION_DIR,
+filetype {*.iso},<application/x-iso9660-image>
+			 \ {Mount with fuseiso}
+			 \ FUSE_MOUNT|fuseiso %SOURCE_FILE %DESTINATION_DIR,
 " 
 " " SshMount
 " filetype *.ssh
