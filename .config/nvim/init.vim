@@ -189,6 +189,7 @@ autocmd VimResized *.sc,*.scd :exe 'vertical resize' . float2nr(&columns * 0.5) 
 nmap <silent> <leader>ww <C-w>=
 nnoremap <silent> <leader>wk :exe "resize " . float2nr(&lines * 0.75)<CR>
 nnoremap <silent> <leader>wj :exe "resize " . float2nr(&lines * 0.25)<CR>
+nnoremap <silent> <leader>w= :res 50<CR>
 nmap <silent> <Leader>wh :vertical resize -20<CR>
 nmap <silent> <Leader>wl :vertical resize +20<CR>
 
