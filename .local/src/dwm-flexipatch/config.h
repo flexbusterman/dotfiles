@@ -806,9 +806,8 @@ static Key on_empty_keys[] = {
 
 static Key keys[] = {
 
-	// Flex bindings
+	// Flex bindings flexbindings
 	/* modifier                     key												function         	argument */
-
 	// { MODKEY,                       XK_space,    					  setlayout,     	  {0} },
 	// { MODKEY|ShiftMask,             XK_Return,   					  spawn,         	  {.v = termcmd } },
 	{ 0,														XF86XK_AudioLowerVolume,	spawn,						SHCMD("pamixer --allow-boost -d 3; kill -44 $(pidof dwmblocks)") },
@@ -817,11 +816,13 @@ static Key keys[] = {
 	{ 0,														XF86XK_MonBrightnessDown,	spawn,						SHCMD("xbacklight -dec $(bc <<< \"$(xbacklight) * 0.5\")") },
 	{ 0,														XF86XK_MonBrightnessUp,		spawn,						SHCMD("xbacklight -inc $(bc <<< \"$(xbacklight) * 0.5 + 0.15\")") },
 	{ 0,														XF86XK_PowerOff,					spawn,						SHCMD("sysact") },
+	{ MODKEY,												XK_p,											spawn,						SHCMD("passmenu") },
 	{ ControlMask|ShiftMask,				XK_Return,								spawn,					 	SHCMD("deadbeef") },
 	{ ControlMask|ShiftMask,				XK_j,											spawn,					 	SHCMD("musicnext") },
 	{ ControlMask|ShiftMask,				XK_k,											spawn,					 	SHCMD("musicprev") },
 	{ ControlMask|ShiftMask,				XK_q,											spawn,					 	SHCMD("deadbeef --quit") },
 	{ ControlMask|ShiftMask,				XK_space,									spawn,					 	SHCMD("musicplaypause") },
+	{ MODKEY,												XK_y,											spawn,					 	SHCMD("ytfzf -D") },
 	{ MODKEY,												XK_F10,										spawn,					 	SHCMD("dmenuumount") },
 	{ MODKEY,												XK_F3,										spawn,					 	SHCMD("displayselect") },
 	{ MODKEY,												XK_F4,										spawn,					 	SHCMD("st -e pulsemixer") },
