@@ -8,6 +8,9 @@
 # Adds `~/.local/bin` to $PATH
 export PATH="$PATH:$(du "$HOME/.local/bin/" | cut -f2 | paste -sd ':')"
 
+# Adds `~/.cargo/bin` to $PATH
+export PATH="$PATH:$(du "$HOME/.cargo/bin/" | cut -f2 | paste -sd ':')"
+
 # Default programs:
 export EDITOR="nvim"
 export VISUAL="nvim"
@@ -138,3 +141,4 @@ sudo -n loadkeys ${XDG_DATA_HOME:-$HOME/.local/share}/larbs/ttymaps.kmap 2>/dev/
 
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+. "/home/flex/.local/share/cargo/env"

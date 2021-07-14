@@ -7,7 +7,7 @@ converter.output_file_tf %filename%
 converter.output_folder /home/flex
 converter.output_format 0
 converter.overwrite_action 0
-deadbeef_version 1.8.4
+deadbeef_version 1.8.7
 filechooser.lastdir file:///home/flex/Dropbox/2021-01-28%20Stiu%20Rep%20Samlat/2%20ska%20med%20(kanske)
 gtkui.columns.playlist [{"title":"♫","id":"1","format":"%playstatus%","sort_format":"","size":"24","align":"0","color_override":"0","color":"#ff000000"},{"title":"Artist","id":"-1","format":"$if(%artist%,%artist%,Unknown Artist)","sort_format":"","size":"222","align":"0","color_override":"0","color":"#ffd4d4d4"},{"title":"Year","id":"-1","format":"%year%","sort_format":"","size":"54","align":"0","color_override":"0","color":"#ffd4d4d4"},{"title":"Album","id":"-1","format":"%album%","sort_format":"","size":"236","align":"0","color_override":"0","color":"#ff000000"},{"title":"Title","id":"-1","format":"%title%","sort_format":"","size":"352","align":"0","color_override":"0","color":"#ff000000"},{"title":"Duration","id":"-1","format":"%length%","sort_format":"","size":"137","align":"0","color_override":"0","color":"#ff000000"}]
 gtkui.eq.visible 0
@@ -80,9 +80,9 @@ prefwin.geometry.w 824
 prefwin.geometry.x 70
 prefwin.geometry.y 217
 resume.paused 0
-resume.playlist 0
-resume.position 243.23635
-resume.track 0
+resume.playlist -1
+resume.position -1.000000
+resume.track -1
 resume_last_session 0
 searchwin.geometry.h 150
 searchwin.geometry.w 450
