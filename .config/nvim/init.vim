@@ -28,13 +28,16 @@ set nohlsearch
 autocmd BufEnter * :syntax sync fromstart | set nohlsearch
 autocmd FileType mail set textwidth=0 wrapmargin=0
 
+au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
+
 "here a function was defined
 function! s:twitvim_my_settings()
   "this function just do one thing, set nowrap option. (text is gonna be displayed without wrap.)
   set nowrap
 endfunction
 
-let g:vimwiki_list = [{'path': '~/Dropbox/NOTES/'}]
+let g:vimwiki_list = [{'path': '~/Dropbox/NOTES/',
+                      \ 'syntax': 'markdown', 'ext': '.md'}]
 " Yank and paste with the system clipboard
 set clipboard+=unnamedplus
 " set transparent background
