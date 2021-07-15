@@ -824,6 +824,7 @@ static Key keys[] = {
 	{ ControlMask|ShiftMask,				XK_space,									spawn,					 	SHCMD("musicplaypause") },
 	{ MODKEY,												XK_y,											spawn,					 	SHCMD("ytfzf -D") },
 	{ MODKEY|ShiftMask,							XK_y,											spawn,					 	SHCMD("ytfzf -Dd") },
+	{ MODKEY|ControlMask|ShiftMask, XK_y,											spawn,					 	SHCMD("ytfzf -Df") },
 	{ MODKEY,												XK_m,											spawn,					 	SHCMD("ytfzf -Dm") },
 	{ MODKEY|ShiftMask,							XK_m,											spawn,					 	SHCMD("ytfzf -Dmd") },
 	{ MODKEY,												XK_F10,										spawn,					 	SHCMD("dmenuumount") },
