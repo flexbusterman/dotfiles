@@ -70,4 +70,6 @@ Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+
+Plug 'metakirby5/codi.vim'
 call plug#end()
