@@ -850,6 +850,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_h,       							setmfact,        	{.f = -0.05} },
 	{ MODKEY,                       XK_i,       							setlayout,       	{.v = &layouts[1]} },
 	{ MODKEY,                       XK_l,       							setmfact,        	{.f = +0.05} },
+	{ MODKEY|ShiftMask,             XK_l,       							spawn,						SHCMD("slock") },
 	{ MODKEY,                       XK_o,       							setlayout,       	{.v = &layouts[2]} },
 	{ MODKEY,                       XK_period,  							incnmaster,      	{.i = -1 } },
 	{ MODKEY,                       XK_space,									zoom,            	{0} },
