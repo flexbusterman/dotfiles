@@ -465,6 +465,8 @@ fr(){
 }
 
 gp() {
+  eval "$(ssh-agent -s)"
+  ssh-add ~/.ssh/git
   result="\"$*\""
   git add .
   git commit -m $result
@@ -472,6 +474,8 @@ gp() {
 }
 
 gpd() {
+  eval "$(ssh-agent -s)"
+  ssh-add ~/.ssh/git
   result="\"$*\""
   git add .
   git commit -m $result
@@ -479,6 +483,8 @@ gpd() {
 }
 
 dp() {
+  eval "$(ssh-agent -s)"
+  ssh-add ~/.ssh/git
   result="\"$*\""
   dot add -u
   dot commit -m $result
