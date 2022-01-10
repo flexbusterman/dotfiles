@@ -1,0 +1,12 @@
+#!/bin/bash
+qjackctl -s &
+sleep 1; 
+a2jmidid -e &
+sleep 1; 
+reaper &
+sleep 1; 
+# bitwig-studio &
+# alacritty -t SuperCollider -e zsh -c "cd ~/Dropbox/SUPERCOLLIDER/; nvim -c \"NERDTreeToggle | set filetype=supercollider | SCNvimStart\"" &
+alacritty -t SuperCollider -e zsh -c "cd ~/Dropbox/SUPERCOLLIDER/; nvim -c \"set filetype=supercollider | SCNvimStart\"" &
+# reaper &
+# alacritty -t aug -e zsh -c "sleep 5; aconnect 128:7 16:0"

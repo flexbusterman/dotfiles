@@ -1,0 +1,4 @@
+[[ -d $HOME/.local/bin ]] && export PATH=$HOME/.local/bin:$PATH
+[[ -d $HOME/.local/bin/statusbar ]] && export PATH=$HOME/.local/bin/statusbar:$PATH
+# ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#cyan,bold"
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#666f98"

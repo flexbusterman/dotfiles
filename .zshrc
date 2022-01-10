@@ -171,7 +171,7 @@ alias igdlinitl="cd ~/Dropbox/MEMES && instaloader --login _christian_augustin -
 alias igdlinit="cd ~/Dropbox/MEMES && instaloader --no-video-thumbnails --no-metadata-json --no-captions --no-profile-pic memeseducational dank_memes_world_1 dank_memes_world_1 casual.nihilism mvme.hub memefolk.ig stinky420memes memes epicallyepicmemes baked_meme_god stolenmemesawakens memesinyourdms omgzucc"
 alias igdll="cd ~/Dropbox/MEMES && instaloader -F --login _christian_augustin --no-video-thumbnails --no-metadata-json --no-captions --no-profile-pic memeforyouandhim"
 alias igdl="cd ~/Dropbox/MEMES && instaloader -F --no-video-thumbnails --no-metadata-json --no-captions --no-profile-pic memeseducational dank_memes_world_1 dank_memes_world_1 casual.nihilism mvme.hub memefolk.ig stinky420memes memes epicallyepicmemes baked_meme_god stolenmemesawakens memesinyourdms omgzucc"
-alias la="exa -la"
+alias la="exa -la --group-directories-first"
 alias lag="exa -la | grep --color=always -i"
 alias less="bat"
 alias lm="exa -la --sort=modified"

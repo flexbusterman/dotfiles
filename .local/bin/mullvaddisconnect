@@ -1,0 +1,10 @@
+#!/bin/bash
+
+STATUS=$(mullvad status | awk '{print $NF}')
+if [[ $STATUS == "Disconnected" ]]; then
+    notify-send "Mullvad not connected" 
+else
+    notify-send "Disconnecting Mullvad" 
+    mullvad disconnect
+    # SUDO_ASKPASS=~/.local/bin/dmenupass sudo -A cpupower frequency-set -g powersave && notify-send 'Powersave CPU governor'
+fi

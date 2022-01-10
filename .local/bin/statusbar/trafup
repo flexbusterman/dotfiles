@@ -1,0 +1,2 @@
+#!/bin/sh
+printf "$(sar -n DEV 1 1 | tail -n 1 | awk '{print $6}' | sed 's/\..*//')"

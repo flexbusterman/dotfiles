@@ -1,0 +1,34 @@
+#!/bin/bash
+
+DEVICE="${1:?Missing MAC address as argument}"
+
+POWERED=$(bluetoothctl show | grep -i powered | grep -i yes)
+
+if [[ $POWERED ]]; then
+    echo "Bluetooth powered" 
+else
+    echo "Bluetooth not powered" 
+    bluetoothctl power on
+fi
+
+bluetoothctl -- connect $1
+
+SINK=$(pactl info | grep -i "default sink" | sed "s/.*\.//g")
+
+PROFILE="bluez_card.$(echo "$1" | sed "s/:/_/g")"
+
+# attempt to set sink 5 times
+for i in {1..5}
+do
+    if [[ "$SINK" == "a2dp_sink" ]]; then
+        notify-send "Device $1 connected with a2dp_sink" 
+        echo "a2dp_sink active. Success! Exiting."
+        exit 1
+    else
+        echo "Setting sink"
+        pactl set-card-profile $PROFILE a2dp_sink
+        sleep 1
+        SINK=$(pactl info | grep -i "default sink" | sed "s/.*\.//g")
+        echo "Sink is now $SINK"
+    fi
+done
