@@ -2,18 +2,30 @@
 ~channels = 2;
 ~count = 0;
 ~bpm = 120;
+
 MIDIClient.init;
-MIDIIn.connectAll;
+m = MIDIOut.newByName("Midi Through", "Midi Through Port-0");
+m.latency = 0.0001;
+
+// MIDIClient.init;
+// MIDIIn.connectAll;
+
+// old
 // m = MIDIOut.new(0);
 // MIDIClient.externalDestinations();
 // m = MIDIOut.newByName("Virtual Raw MIDI 1-0", "VirMIDI 1-0", dieIfNotFound: true);
-m = MIDIOut.newByName("Virtual Raw MIDI 0-0", "VirMIDI 0-0", dieIfNotFound: true);
+
+// disabled for test
+// m = MIDIOut.newByName("Virtual Raw MIDI 0-0", "VirMIDI 0-0", dieIfNotFound: true);
+
+// old
 // Pdefn(\bpm, 4*60/120);
 
 t=TempoClock.default;
 t.tempo = 4*60/120;
 
-m.latency = 0.0001;
+// disabled for test
+// m.latency = 0.0001;
 
 // m.noteOn(0, 60, 30);
 // m.noteOn(0, 60, 30);

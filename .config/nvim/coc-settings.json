@@ -1,4 +1,5 @@
 {
+  "prettier.semi": false,
   "suggest.noselect": false,
   "coc.preferences.snippets.enable": true,
   "coc.preferences.formatOnSaveFiletypes": [

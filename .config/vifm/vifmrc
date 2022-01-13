@@ -1,11 +1,4 @@
 "  vim: filetype=vim :
-"  ____ _____ 
-" |  _ \_   _|  Derek Taylor (DistroTube)
-" | | | || |    http://www.youtube.com/c/DistroTube
-" | |_| || |    http://www.gitlab.com/dwt1/ 
-" |____/ |_|
-" |____/ |_|  	
-" My config file for the vifm terminal file manager.
 " ------------------------------------------------------------------------------
 
 " This is the actual command used to start vi.  The default is vim.

@@ -156,7 +156,7 @@ preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 # aliases
 
 # Misc aliases
-alias bs='browser-sync start --server --no-notify --files "*"'
+alias bs='browser-sync start --server --no-notify --files "**/*"'
 alias cat="bat"
 alias copy='xclip -sel clip'
 alias ct="cointop"
@@ -283,6 +283,13 @@ yrm () { yay -Rs $* }
 yup () { yay --nocleanmenu --nodiffmenu -Syu }
 yf () { yay -Ss $* }
 yls () { yay -Q }
+
+minutes () {
+  SUM=$(bc<<<"$*")
+  HOURS=$(bc <<< "$SUM/60")
+  MINUTES=$(bc <<< "$SUM%60")
+  echo "$HOURS:$MINUTES"
+}
 
 underscorefolder(){
 for f in *; do
@@ -432,14 +439,21 @@ mind() {
 	alacritty -t main -e zsh -c "cd ~/GIT/mind/; eval \"$(ssh-agent -s)\" && ssh-add ~/.ssh/mind; cd ~/GIT/mind/; nvim pages/index.vue;" &
 }
 
+# dev() {
+	# # st -e cd ~/GIT/$* &
+	# # st -e cd ~/GIT/$*; &
+	# alacritty -t Dev -e zsh -c "cd ~/GIT/$*/; nvim ./js/02.js" &
+	# cd ~/GIT/$*;
+	# browser-sync start --server --no-notify --files "**/*"
+	# # st -e zsh -c "cd ~/Documents/; nvim -c \"autocmd! CursorHold * CocDisable\" Buffalo\ Bill\ Gates.wiki" &
+	# # cd ~/GIT/kalle2019/; nvim;
+# }
+
 dev() {
-	# st -e cd ~/GIT/$* &
-	# st -e cd ~/GIT/$*; &
-	alacritty -t Dev -e zsh -c "cd ~/GIT/$*/; nvim ./js/02.js" &
-	cd ~/GIT/$*;
-	browser-sync start --server --no-notify --files "**/*"
-	# st -e zsh -c "cd ~/Documents/; nvim -c \"autocmd! CursorHold * CocDisable\" Buffalo\ Bill\ Gates.wiki" &
-	# cd ~/GIT/kalle2019/; nvim;
+	alacritty -t Dev -e zsh -c "cd ~/.local/src/$*/; nvim -c NERDTreeToggle" &
+  
+	cd ~/.local/src/$*
+  npm run dev
 }
 
 # aug() {
@@ -495,13 +509,11 @@ calc() {
   bc <<< $*
 }
 
-addTokens() {
-  # Add ssh tokens
-  eval "$(ssh-agent -s)"
-  ssh-add ~/.ssh/git
-  ssh-add ~/.ssh/id_ed25519
-  ssh-add ~/.ssh/mind2021
-}
+# addTokens() {
+  # # Add ssh tokens
+  # eval "$(ssh-agent -s)"
+  # ssh-add ~/.ssh/git
+# }
 
 # asks too often to show all suggestions, but nice that it shows flags
 source ~/.local/src/zsh-autocomplete/zsh-autocomplete.plugin.zsh
