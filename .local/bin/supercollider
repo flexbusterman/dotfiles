@@ -1,10 +1,35 @@
 #!/bin/bash
-qjackctl -s &
-sleep 1; 
-reaper &
-sleep 1; 
+devices=$(jack_control dpd device | awk '/hw/')
+choice=$(printf "$devices" | dmenu -i -p "device" )
+device=$(echo $choice | sed -e "s/ .*//g" -e "s/'//g")
+jack_control dps device $device
+jack_control start &
+sleep 1
+a2jmidid -e &
+sleep 1
+reaper -audiocfg &
+alacritty -t SuperCollider -e zsh -c "cd ~/Dropbox/SUPERCOLLIDER/; nvim -c \"NERDTreeToggle | set filetype=supercollider | SCNvimStart\"" &
+
+# qjackctl -s &
+# sleep 1; 
+# reaper &
+# sleep 1; 
 # bitwig-studio &
 # alacritty -t SuperCollider -e zsh -c "cd ~/Dropbox/SUPERCOLLIDER/; nvim -c \"NERDTreeToggle | set filetype=supercollider | SCNvimStart\"" &
-alacritty -t SuperCollider -e zsh -c "cd ~/Dropbox/SUPERCOLLIDER/; nvim -c \"set filetype=supercollider | SCNvimStart\"" &
+# alacritty -t SuperCollider -e zsh -c "cd ~/Dropbox/SUPERCOLLIDER/; nvim -c \"set filetype=supercollider | SCNvimStart\"" &
 # reaper &
 # alacritty -t aug -e zsh -c "sleep 5; aconnect 128:7 16:0"
+
+ # 5044  jack_control start
+ # 5045  hg a2j
+ # 5046  a2jmidid -e &
+ # 5047  vz
+ # 5048  b
+ # 5049  cat supercollider
+ # 5050  vim supercollider
+ # 5051  jls
+ # 5052  jk
+ # 5053  jack_control
+ # 5054  jack_control exit
+ # 5055  ps -C a2jmidid
+ # 5056  a2jmidid

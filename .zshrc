@@ -195,10 +195,22 @@ alias jls="jack_control status"
 alias jk="jack_control kill"
 alias js="jack_control start"
 alias par="pulseaudio --kill; jack_control start; jack_control exit; pulseaudio --start;"
-alias paq="pulseaudio --kill;"
+alias pak="pulseaudio --kill;"
 alias pas="pulseaudio --start;"
 alias pa="pulseaudio"
 alias ra="sudo alsa force-reload"
+alias al="asoundconf"
+alias als="asoundconf is-active"
+# get|delete PARAMETER
+# set PARAMETER VALUE
+# alias alls="asoundconf list"
+alias alls="asoundconf list-all"
+alias ald="asoundconf set-default-card"
+# reset-default-card
+# set-pulseaudio
+# unset-pulseaudio
+# set-oss PARAMETER
+# unset-oss
 
 # Navigation shortcuts
 alias b='cd ~/.local/bin/; exa'

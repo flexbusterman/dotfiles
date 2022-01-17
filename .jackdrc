@@ -1,1 +1,1 @@
-/usr/bin/jackd -dalsa -dhw:PCH -r48000 -p1024
+/usr/bin/jackd -dalsa -dhw:PCH -r48000 -p1024 -n2
