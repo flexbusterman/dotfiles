@@ -5,7 +5,7 @@ device=$(echo $choice | sed -e "s/ .*//g" -e "s/'//g")
 jack_control dps device $device
 jack_control start &
 sleep 1
-a2jmidid -e &
+a2jmidid -e -u &
 sleep 1
 reaper -audiocfg &
 alacritty -t SuperCollider -e zsh -c "cd ~/Dropbox/SUPERCOLLIDER/; nvim -c \"NERDTreeToggle | set filetype=supercollider | SCNvimStart\"" &
