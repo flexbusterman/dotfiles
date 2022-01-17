@@ -167,10 +167,6 @@ alias du='du -h'
 alias fs="df -h | grep --color='never' 'Filesystem\|sd'"
 alias gb="git branch"
 alias grep="grep --color=always -i"
-alias igdlinitl="cd ~/Dropbox/MEMES && instaloader --login _christian_augustin --no-video-thumbnails --no-metadata-json --no-captions --no-profile-pic memeforyouandhim"
-alias igdlinit="cd ~/Dropbox/MEMES && instaloader --no-video-thumbnails --no-metadata-json --no-captions --no-profile-pic memeseducational dank_memes_world_1 dank_memes_world_1 casual.nihilism mvme.hub memefolk.ig stinky420memes memes epicallyepicmemes baked_meme_god stolenmemesawakens memesinyourdms omgzucc"
-alias igdll="cd ~/Dropbox/MEMES && instaloader -F --login _christian_augustin --no-video-thumbnails --no-metadata-json --no-captions --no-profile-pic memeforyouandhim"
-alias igdl="cd ~/Dropbox/MEMES && instaloader -F --no-video-thumbnails --no-metadata-json --no-captions --no-profile-pic memeseducational dank_memes_world_1 dank_memes_world_1 casual.nihilism mvme.hub memefolk.ig stinky420memes memes epicallyepicmemes baked_meme_god stolenmemesawakens memesinyourdms omgzucc"
 alias la="exa -la --group-directories-first"
 alias lag="exa -la | grep --color=always -i"
 alias less="bat"
@@ -181,17 +177,28 @@ alias lt="exa -lar --sort=size"
 alias mc="mullvad connect"
 alias md="mullvad disconnect"
 alias ms="mullvad status"
-alias np="deadbeef --nowplaying %d/%f"
-alias play="ffplay -nodisp -autoexit"
 alias pw="openssl rand -base64 41 | xclip -sel clip"
 alias q="exit"
-alias ra="pulseaudio --kill; jack_control start; jack_control exit; pulseaudio --start;"
 alias res="xdpyinfo | awk '/dimensions/{print $2}'"
 alias rf='rm -rf'
 alias shs="simple-http-server"
 alias ud='sudo updatedb'
 alias vim="nvim"
 alias wine32="WINEPREFIX=~/.wine32 WINEARCH=win32"
+
+# audio
+alias play="ffplay -nodisp -autoexit"
+alias np="deadbeef --nowplaying %d/%f"
+alias dq="deadbeef --quit"
+alias j="jack_control"
+alias jls="jack_control status"
+alias jk="jack_control kill"
+alias js="jack_control start"
+alias par="pulseaudio --kill; jack_control start; jack_control exit; pulseaudio --start;"
+alias paq="pulseaudio --kill;"
+alias pas="pulseaudio --start;"
+alias pa="pulseaudio"
+alias ra="sudo alsa force-reload"
 
 # Navigation shortcuts
 alias b='cd ~/.local/bin/; exa'
@@ -222,17 +229,13 @@ wc() { nmcli device wifi connect $1 password $2 }
 wdisable() { nmcli connection down $* }
 
 # VIM aliases for editing common files
-# alias vA="cd /home/flex/.config/alacritty/; nvim alacritty.yml"
-# alias va="cd /home/flex/.local/bin/; nvim augustin"
 alias va="cd /home/flex/.config/awesome/; nvim rc.lua"
-# alias vA="cd /home/flex/.config/awesome/; nvim theme.lua"
 alias vA="cd /home/flex/.config/alacritty/; nvim alacritty.yml"
 alias vc="cd /home/flex/.config/nvim/; nvim coc-settings.json"
 alias vD="cd /home/flex/.local/src/dmenu/; nvim config.h"
 alias vd="cd /home/flex/.local/src/dwm-flexipatch/; nvim config.h"
 alias vn="cd /home/flex/.config/nvim/; nvim init.vim"
 alias vP="cd /home/flex/.config/nvim/; nvim plugins.vim"
-# alias vp="cd /home/flex/.local/src/dwm-flexipatch/; nvim patches.h"
 alias vp="cd /home/flex/; nvim .xprofile"
 alias vs="cd /home/flex/.config/coc/ultisnips; nvim all.snippets"
 alias vS="cd /home/flex/.local/src/st/; nvim config.h"
@@ -249,6 +252,12 @@ alias ve="cd /home/flex/; nvim .zshenv"
 # Keymap aliases
 alias se="setxkbmap se; setxkbmap -option caps:swapescape; xset r rate 300 50"
 alias us="setxkbmap us; setxkbmap -option caps:swapescape; xset r rate 300 50"
+
+# memes
+alias igdlinitl="cd ~/Dropbox/MEMES && instaloader --login _christian_augustin --no-video-thumbnails --no-metadata-json --no-captions --no-profile-pic memeforyouandhim"
+alias igdlinit="cd ~/Dropbox/MEMES && instaloader --no-video-thumbnails --no-metadata-json --no-captions --no-profile-pic memeseducational dank_memes_world_1 dank_memes_world_1 casual.nihilism mvme.hub memefolk.ig stinky420memes memes epicallyepicmemes baked_meme_god stolenmemesawakens memesinyourdms omgzucc"
+alias igdll="cd ~/Dropbox/MEMES && instaloader -F --login _christian_augustin --no-video-thumbnails --no-metadata-json --no-captions --no-profile-pic memeforyouandhim"
+alias igdl="cd ~/Dropbox/MEMES && instaloader -F --no-video-thumbnails --no-metadata-json --no-captions --no-profile-pic memeseducational dank_memes_world_1 dank_memes_world_1 casual.nihilism mvme.hub memefolk.ig stinky420memes memes epicallyepicmemes baked_meme_god stolenmemesawakens memesinyourdms omgzucc"
 
 #   __                  _   _
 #  / _|_   _ _ __   ___| |_(_) ___  _ __  ___
