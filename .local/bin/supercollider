@@ -1,35 +1,27 @@
 #!/bin/bash
-devices=$(jack_control dpd device | awk '/hw/')
-choice=$(printf "$devices" | dmenu -i -p "device" )
-device=$(echo $choice | sed -e "s/ .*//g" -e "s/'//g")
-jack_control dps device $device
-jack_control start &
-sleep 1
-a2jmidid -e -u &
-sleep 1
-reaper -audiocfg &
-alacritty -t SuperCollider -e zsh -c "cd ~/Dropbox/SUPERCOLLIDER/; nvim -c \"NERDTreeToggle | set filetype=supercollider | SCNvimStart\"" &
 
-# qjackctl -s &
-# sleep 1; 
-# reaper &
-# sleep 1; 
-# bitwig-studio &
-# alacritty -t SuperCollider -e zsh -c "cd ~/Dropbox/SUPERCOLLIDER/; nvim -c \"NERDTreeToggle | set filetype=supercollider | SCNvimStart\"" &
-# alacritty -t SuperCollider -e zsh -c "cd ~/Dropbox/SUPERCOLLIDER/; nvim -c \"set filetype=supercollider | SCNvimStart\"" &
-# reaper &
-# alacritty -t aug -e zsh -c "sleep 5; aconnect 128:7 16:0"
+for x in "jack2-dbus" "a2jmidid" "reaper" "alacritty" "supercollider" "neovim" "zsh";do
+	pacman -Qq "$x" >/dev/null 2>&1 && installed='true' ||
+		{ notify-send "$x is missing" && exit 1 ;}
+done
 
- # 5044  jack_control start
- # 5045  hg a2j
- # 5046  a2jmidid -e &
- # 5047  vz
- # 5048  b
- # 5049  cat supercollider
- # 5050  vim supercollider
- # 5051  jls
- # 5052  jk
- # 5053  jack_control
- # 5054  jack_control exit
- # 5055  ps -C a2jmidid
- # 5056  a2jmidid
+if [ $installed == 'true' ]; then
+	devices=$(jack_control dpd device | awk '/hw/' | sed "s/ *//g")
+	choice=$(printf "$devices" | dmenu -i -p "Start Jack using device:" )
+	device=$(echo $choice | sed -e "s/'//g")
+	if [ -z "$device" ]; then
+		echo 'No device chosen. Exiting.'
+	else
+		jack_control dps device $device
+		jack_control start &
+		sleep 1
+		a2jmidid -e -u &
+		sleep 1
+		reaper -audiocfg &
+		alacritty -t SuperCollider -e zsh -c "cd ~/Dropbox/SUPERCOLLIDER/; nvim -c \"NERDTreeToggle | set filetype=supercollider | SCNvimStart\"" &
+	fi
+else
+	notify-send "Failed" 
+fi
+
+exit 1

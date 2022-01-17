@@ -527,7 +527,7 @@ dp() {
 }
 
 calc() {
-  bc <<< $*
+  bc <<< "$*"
 }
 
 # addTokens() {

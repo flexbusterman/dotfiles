@@ -1,0 +1,5 @@
+#!/bin/bash
+
+jack_control stop &
+killall a2jmidid
+exit 1
