@@ -347,11 +347,10 @@ globalkeys = gears.table.join(
 		awful.key({modkey, "Shift"}, "p", function () awful.util.spawn("pulseeffects") end),
 
 		-- Flexbindings youtube-dl
-		awful.key({modkey}, "y", function () awful.util.spawn("ytfzf -DcY") end, {description = "search youtube and choose format", group = "flexbindings"}),
-		awful.key({modkey, "Shift"}, "y", function () awful.util.spawn("ytfzf -dDcY --ytdl-path=~/Downloads") end, {description = "search youtube and choose format", group = "flexbindings"}),
-		-- awful.key({"Control", "Shift"}, "y", function () awful.util.spawn("ytfzf -DcYd --ytdl-path=~/Downloads") end),
-		-- awful.key({modkey, "Shift"}, "y", function () awful.util.spawn("ytfzf -D") end),
-		awful.key({modkey,"Control", "Shift"}, "y", function () awful.util.spawn_with_shell("cd ~/Downloads/VIDEO/; ytfzf -Dd") end),
+		awful.key({modkey}, "y", function () awful.util.spawn("ytfzf -D") end, {description = "search youtube and choose format", group = "flexbindings"}),
+		awful.key({modkey, "Shift"}, "y", function () awful.util.spawn_with_shell("cd ~/Downloads/; ytfzf -Dd") end, {description = "search youtube and choose format", group = "flexbindings"}),
+		awful.key({modkey}, "a", function () awful.util.spawn("ytfzf -Dm") end, {description = "search youtube and choose format", group = "flexbindings"}),
+		awful.key({modkey, "Shift"}, "a", function () awful.util.spawn("ytfzf -Dmd") end, {description = "search youtube and choose format", group = "flexbindings"}),
 		awful.key({modkey}, "s", function () awful.util.spawn("supercollider") end),
 		awful.key({modkey, "Shift"}, "s", function () awful.util.spawn("jackkill") end),
 		-- awful.key({modkey}, "m", function () awful.util.spawn("ytfzf -Dm") end),
