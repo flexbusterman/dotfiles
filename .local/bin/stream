@@ -1,0 +1,15 @@
+#!/bin/bash
+ifinstalled xsel webtorrent mpv || exit 1
+clipboard=$(xsel -ob)
+if [ -n "$clipboard" ]
+then
+	if [[ "$clipboard" = *"magnet:?"* ]]; then
+		webtorrent --mpv $clipboard
+	elif [[ "$clipboard" = *".torrent"* ]]; then
+		webtorrent --mpv $clipboard
+	else
+		mpv $clipboard || notify-send 'Clipboard not valid'
+	fi
+else
+	notify-send 'Clipboard empty'
+fi

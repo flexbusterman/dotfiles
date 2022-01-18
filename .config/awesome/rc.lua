@@ -304,6 +304,8 @@ globalkeys = gears.table.join(
 		awful.key({modkey}, "q", function () awful.util.spawn("qjackctl") end),
 		awful.key({modkey, "Shift" }, "Return", function () awful.util.spawn("alacritty -t ZSH -e zsh") end),
     awful.key({modkey, "Shift" }, "comma", function () awful.util.spawn("alacritty -t Vifm -e vifmrun") end),
+
+		awful.key({modkey}, "semicolon", function () awful.util.spawn("stream") end),
 		-- awful.key({modkey, "Shift" }, "comma", function () awful.util.spawn("alacritty -t Ranger -e ranger") end),
 		awful.key({modkey, "Shift" }, "period", function () awful.util.spawn("brave") end),
 		awful.key({modkey, "Control", "Shift" }, "period", function () awful.util.spawn("brave https://youtube.com") end),
