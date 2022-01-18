@@ -4,12 +4,12 @@ clipboard=$(xsel -ob)
 if [ -n "$clipboard" ]
 then
 	if [[ "$clipboard" = *"magnet:?"* ]]; then
-		choice=$(webtorrent --mpv $clipboard --select | awk '/^[0-9]/' | dmenu -i -p "Index:" )
+		choice=$(webtorrent --mpv $clipboard --select | awk '/^[0-9]/' | dmenu -i -l 20 -p "Index:" )
 		index=$(echo $choice | sed -e "s/ .*//g")
 		webtorrent --mpv $clipboard --select $index
 		# TODO: sort out proper or comparison to avoid duplicate code
 	elif [[ "$clipboard" = *".torrent"* ]]; then
-		choice=$(webtorrent --mpv $clipboard --select | awk '/^[0-9]/' | dmenu -i -p "Index:" )
+		choice=$(webtorrent --mpv $clipboard --select | awk '/^[0-9]/' | dmenu -i -l 20 -p "Index:" )
 		index=$(echo $choice | sed -e "s/ .*//g")
 		webtorrent --mpv $clipboard --select $index
 	else

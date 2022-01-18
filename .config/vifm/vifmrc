@@ -208,7 +208,7 @@ filetype*.wav,*.mp3,*.flac,*.m4a,*.wma,*.ape,*.ac3,*.og[agx],*.spx,*.opus,*.hes,
        \ {Play using Deadbeef}
         \ deadbeef %f 2>/dev/null &,
         \ {View using cmus}
-        \ alacritty -e cmus %f &,
+        \ alacritty -e cmus %f 2>/dev/null &,
        \ {Play using ffplay}
        \ ffplay -nodisp -autoexit %c,
        \ {Play using MPlayer}

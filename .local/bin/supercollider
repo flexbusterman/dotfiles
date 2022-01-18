@@ -7,7 +7,7 @@ done
 
 if [ $installed == 'true' ]; then
 	devices=$(jack_control dpd device | awk '/hw/' | sed "s/ *//g")
-	choice=$(printf "$devices" | dmenu -i -p "Start Jack using device:" )
+	choice=$(printf "$devices" | dmenu -i -l 20 -p "Start Jack using device:" )
 	device=$(echo $choice | sed -e "s/'//g")
 	if [ -z "$device" ]; then
 		echo 'No device chosen. Exiting.'
