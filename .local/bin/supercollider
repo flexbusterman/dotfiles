@@ -1,27 +1,16 @@
 #!/bin/bash
 
-for x in "jack2-dbus" "a2jmidid" "reaper" "alacritty" "supercollider" "neovim" "zsh";do
+jackstart &
+
+for x in "reaper" "alacritty" "supercollider" "neovim" "zsh";do
 	pacman -Qq "$x" >/dev/null 2>&1 && installed='true' ||
 		{ notify-send "$x is missing" && exit 1 ;}
 done
 
 if [ $installed == 'true' ]; then
-	devices=$(jack_control dpd device | awk '/hw/' | sed "s/ *//g")
-	choice=$(printf "$devices" | dmenu -i -l 20 -p "Start Jack using device:" )
-	device=$(echo $choice | sed -e "s/'//g")
-	if [ -z "$device" ]; then
-		echo 'No device chosen. Exiting.'
-	else
-		jack_control dps device $device
-		jack_control start &
-		sleep 1
-		a2jmidid -e -u &
 		sleep 1
 		reaper -audiocfg &
 		alacritty -t SuperCollider -e zsh -c "cd ~/Dropbox/SUPERCOLLIDER/; nvim -c \"NERDTreeToggle | set filetype=supercollider | SCNvimStart\"" &
-	fi
-else
-	notify-send "Failed" 
 fi
 
 exit 1
