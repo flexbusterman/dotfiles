@@ -1,5 +1,12 @@
 #!/bin/bash
 
-jack_control stop &
-killall a2jmidid
-exit 1
+STATUS=$(jack_control status | awk 'NF{print $NF}' | sed '0,/[^ ]*/{s///}' | awk NF)
+
+if [[ $STATUS == "stopped" ]]; then
+	notify-send "Jack is not running" 
+	exit 1
+else
+	notify-send "Stopping Jack"
+	jack_control stop &
+	killall a2jmidid
+fi
