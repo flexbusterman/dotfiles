@@ -219,7 +219,7 @@ alias d='cd ~/Dropbox; exa'
 alias s='cd ~/Dropbox/2022\ FOTO/SCREENSHOTS; exa'
 alias n='cd ~/Dropbox/NOTES; exa'
 alias c='cd ~/.config/; exa'
-alias g='cd ~/GIT/; exa'
+# alias g='cd ~/GIT/; exa'
 
 # Dropbox aliases
 alias dadd="dropbox-cli exclude remove"

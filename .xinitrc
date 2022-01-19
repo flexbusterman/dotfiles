@@ -1,4 +1,5 @@
 #/bin/sh
+# arbtt-capture -r 10 &
 xrdb -load ~/.Xresources &
 setbg &			# set the background with the `setbg` script
 picom --no-fading-openclose &
