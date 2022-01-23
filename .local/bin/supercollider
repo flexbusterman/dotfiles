@@ -1,16 +1,14 @@
 #!/bin/bash
 
-jackstart &
-
 for x in "reaper" "alacritty" "supercollider" "neovim" "zsh";do
 	pacman -Qq "$x" >/dev/null 2>&1 && installed='true' ||
 		{ notify-send "$x is missing" && exit 1 ;}
 done
 
-if [ $installed == 'true' ]; then
+jackstart && run='true' || run='false'
+
+if [ $installed == 'true' ] && [ $run == 'true' ]; then
 		sleep 1
 		reaper -audiocfg &
 		alacritty -t SuperCollider -e zsh -c "cd ~/Dropbox/SUPERCOLLIDER/; nvim -c \"NERDTreeToggle | set filetype=supercollider | SCNvimStart\"" &
 fi
-
-exit 1

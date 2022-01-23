@@ -1,12 +1,13 @@
 #!/bin/bash
 
-STATUS=$(jack_control status | awk 'NF{print $NF}' | sed '0,/[^ ]*/{s///}' | awk NF)
+status=$(pidof jackd)
 
-if [[ $STATUS == "stopped" ]]; then
-	notify-send "Jack is not running" 
-	exit 1
-else
-	notify-send "Stopping Jack"
-	jack_control stop &
+if [[ $status ]]; then
+	notify-send 'Stopping Jack'
+	echo 'Stopping Jack'
 	killall a2jmidid
+	killall jackd
+else
+	notify-send 'Jack is not running'
+	echo 'Jack is not running'
 fi

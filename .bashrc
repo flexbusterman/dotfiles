@@ -2,6 +2,11 @@
 # ~/.bashrc
 #
 
+# environment variables
+export TERMINAL='alacritty'
+export EDITOR='nvim'
+export BROWSER='brave'
+
 [[ $- != *i* ]] && return
 
 colors() {
