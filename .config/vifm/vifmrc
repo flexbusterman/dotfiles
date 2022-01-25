@@ -121,12 +121,12 @@ mark d ~/Dropbox/
 mark j ~/Downloads/
 mark w ~/Pictures/WALLPAPERS/
 mark p ~/Pictures/
-mark m ~/Music/
+mark m ~/Dropbox/MUSIC/
 mark c ~/.config/
 mark g ~/.local/src/
 mark s ~/Pictures/SCREENSHOTS/
 mark r /
-mark m /run/media/flex/
+mark M /run/media/flex/
 mark a "~/Dropbox/ADMINISTRATIVT/AUGUSTIN SUPREMACY 2022"
 mark v ~/Downloads/VIDEO/
 mark t "~/Dropbox/DROPSYNC/! TRANSFER/"
@@ -182,12 +182,37 @@ command! reload :write | restart
 " You can also add %CLEAR if you want to clear screen before running FUSE
 " program.
 
-" Pdf
-filextype *.pdf zathura %c %i &, apvlv %c, xpdf %c
 fileviewer *.pdf
-        \ vifmimg pdfpreview %px %py %pw %ph %c
-        \ %pc
-        \ vifmimg clear
+    \ vifmimg pdf %px %py %pw %ph %c
+    \ %pc
+    \ vifmimg clear
+filextype *.pdf zathura %c %i &, apvlv %c, xpdf %c
+
+fileviewer *.djvu
+    \ vifmimg djvu %px %py %pw %ph %c
+    \ %pc
+    \ vifmimg clear
+filextype *.djvu
+        \ {View in zathura}
+        \ zathura %f,
+        \ {View in apvlv}
+        \ apvlv %f,
+
+fileviewer *.epub
+    \ vifmimg epub %px %py %pw %ph %c
+    \ %pc
+    \ vifmimg clear
+
+fileviewer <font/*>
+    \ vifmimg font %px %py %pw %ph %c
+    \ %pc
+    \ vifmimg clear
+
+" Pdf
+" fileviewer *.pdf
+        " \ vifmimg pdfpreview %px %py %pw %ph %c
+        " \ %pc
+        " \ vifmimg clear
         " \ pdftotext -nopgbrk %c -
 
 " PostScript
@@ -197,15 +222,13 @@ filextype *.ps,*.eps,*.ps.gz
         \ {View in gv}
         \ gv %c %i &,
 
-" Djvu
-filextype *.djvu
-        \ {View in zathura}
-        \ zathura %f,
-        \ {View in apvlv}
-        \ apvlv %f,
-
 " Audio
-filetype*.wav,*.mp3,*.flac,*.m4a,*.wma,*.ape,*.ac3,*.og[agx],*.spx,*.opus,*.hes,*.sid,*.mod,*.s3m,*.it,*.xm,*.nsf,*.ay,*.vtx,*.vgm,*.vgz,*.spc
+" fileviewer <audio/*>
+    " \ vifmimg audio %px %py %pw %ph %c
+    " \ %pc
+    " \ vifmimg clear
+fileviewer *.wav,*.mp3,*.flac,*.m4a,*.wma,*.ape,*.ac3,*.og[agx],*.spx,*.opus,*.hes,*.sid,*.mod,*.s3m,*.it,*.xm,*.nsf,*.ay,*.vtx,*.vgm,*.vgz,*.spc soxi
+filetype *.wav,*.mp3,*.flac,*.m4a,*.wma,*.ape,*.ac3,*.og[agx],*.spx,*.opus,*.hes,*.sid,*.mod,*.s3m,*.it,*.xm,*.nsf,*.ay,*.vtx,*.vgm,*.vgz,*.spc
        \ {Play using Deadbeef}
         \ deadbeef %f 2>/dev/null &,
         \ {View using cmus}
@@ -214,10 +237,19 @@ filetype*.wav,*.mp3,*.flac,*.m4a,*.wma,*.ape,*.ac3,*.og[agx],*.spx,*.opus,*.hes,
        \ ffplay -nodisp -autoexit %c,
        \ {Play using MPlayer}
        \ mplayer %f,
-fileviewer *.mp3 mp3info
-fileviewer *.flac soxi
 
 " Video
+fileviewer <video/*>
+    \ vifmimg video %px %py %pw %ph %c
+    \ %pc
+    \ vifmimg clear
+" fileviewer *.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
+          " \*.fl[icv],*.m2v,*.mov,*.webm,*.ts,*.mts,*.m4v,*.r[am],*.qt,*.divx,
+          " \*.as[fx]
+        " \ vifmimg videopreview %px %py %pw %ph %c 
+        " \ %pc 
+        " \ vifmimg clear
+        " \ ffprobe -pretty %c 2>&1
 filextype *.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
          \*.fl[icv],*.m2v,*.mov,*.webm,*.ts,*.mts,*.m4v,*.r[am],*.qt,*.divx,
          \*.as[fx]
@@ -229,13 +261,9 @@ filextype *.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
         \ dragon %f:p,
         \ {View using mplayer}
         \ mplayer %f,
-fileviewer *.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
-          \*.fl[icv],*.m2v,*.mov,*.webm,*.ts,*.mts,*.m4v,*.r[am],*.qt,*.divx,
-          \*.as[fx]
-        \ vifmimg videopreview %px %py %pw %ph %c 
-        \ %pc 
-        \ vifmimg clear
-        " \ ffprobe -pretty %c 2>&1
+
+" code
+fileviewer *.html,*.go,*.css,*.scd,*.vue,*.md,*.js,*.json,*.h,*.diff,*.c,*.bak,*.sc,*.txt,.* highlight -O xterm256 -s moria %c
 
 " Web
 filextype *.html,*.htm
@@ -259,6 +287,18 @@ filetype *.[1-8] man ./%c
 fileviewer *.[1-8] man ./%c | col -b
 
 " Images
+fileviewer <image/*>
+    \ vifmimg draw %px %py %pw %ph %c
+    \ %pc
+    \ vifmimg clear
+" fileviewer *.bmp,*.jpg,*.jpeg,*.png,*.xpm
+        " \ vifmimg draw %px %py %pw %ph %c
+        " \ %pc
+        " \ vifmimg clear
+" fileviewer *.gif
+        " \ vifmimg gifpreview %px %py %pw %ph %c
+        " \ %pc
+        " \ vifmimg clear
 filextype *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm
         \ {View in sxiv}
         \ sxiv -ia %f &,
@@ -268,14 +308,6 @@ filextype *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm
         \ feh %d &,
         \ {View in cacaview}
         \ cacaview %c &,
-fileviewer *.bmp,*.jpg,*.jpeg,*.png,*.xpm
-        \ vifmimg draw %px %py %pw %ph %c
-        \ %pc
-        \ vifmimg clear
-fileviewer *.gif
-        \ vifmimg gifpreview %px %py %pw %ph %c
-        \ %pc
-        \ vifmimg clear
         
 " OpenRaster
 filextype *.ora

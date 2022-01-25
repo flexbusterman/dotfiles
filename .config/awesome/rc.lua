@@ -653,12 +653,9 @@ awful.rules.rules = {
     },
 
     -- TODO: could probably be combined
-    { rule = { class = "Pulseeffects" },
-      properties = { screen = 1, tag = "9" } },
+    { rule = { class = "Pulseeffects", "QjackCtl" }, properties = { screen = 1, tag = "9" } },
+    { rule = { name = "Server" }, properties = { tag = "9" } },
 
-    { rule_any = { class = { "QjackCtl" } },
-      properties = { tag = "9" }
-    }
 }
 -- }}}
 
