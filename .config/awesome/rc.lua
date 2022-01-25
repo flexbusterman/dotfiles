@@ -318,7 +318,7 @@ globalkeys = gears.table.join(
     -- awful.key({modkey, "Control", "Shift"}, "s", function () awful.util.spawn("alacritty -t SC-IM -e sc-im") end),
 		awful.key({modkey, "Shift"}, "x", function () awful.util.spawn("xkill") end),
 		awful.key({modkey,"Control", "Shift"}, "comma", function () awful.util.spawn("thunar" ) end),
-		awful.key({modkey}, "F1", function () awful.util.spawn("jackstart") end),
+		awful.key({modkey}, "F1", function () awful.util.spawn("jackrun") end),
     awful.key({modkey}, "F2", function () awful.util.spawn("jackkill") end),
 		awful.key({modkey}, "F3", function () awful.util.spawn("displayselect") end),
     awful.key({modkey}, "F4", function () awful.util.spawn("alacritty -t PulseMixer -e pulsemixer") end),
