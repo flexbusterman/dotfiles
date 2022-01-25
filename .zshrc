@@ -527,14 +527,9 @@ dp() {
 }
 
 calc() {
-  bc <<< "$*"
-}
-
-# addTokens() {
-  # # Add ssh tokens
-  # eval "$(ssh-agent -s)"
-  # ssh-add ~/.ssh/git
-# }
+  awk "BEGIN{ print $* }"
+  # bc <<< "$*"
+  ;}
 
 # asks too often to show all suggestions, but nice that it shows flags
 source ~/.local/src/zsh-autocomplete/zsh-autocomplete.plugin.zsh
