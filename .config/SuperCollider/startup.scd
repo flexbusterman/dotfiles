@@ -1,35 +1,16 @@
 (
 ~channels = 2;
-~count = 0;
 ~bpm = 120;
 
 MIDIClient.init;
 m = MIDIOut.newByName("Midi Through", "Midi Through Port-0");
 m.latency = 0.0001;
 
-// MIDIClient.init;
-// MIDIIn.connectAll;
-
-// old
-// m = MIDIOut.new(0);
-// MIDIClient.externalDestinations();
-// m = MIDIOut.newByName("Virtual Raw MIDI 1-0", "VirMIDI 1-0", dieIfNotFound: true);
-
-// disabled for test
-// m = MIDIOut.newByName("Virtual Raw MIDI 0-0", "VirMIDI 0-0", dieIfNotFound: true);
-
-// old
-// Pdefn(\bpm, 4*60/120);
+s.latency = 0.1;
 
 t=TempoClock.default;
-t.tempo = 4*60/120;
+t.tempo = 4*60/~bpm;
 
-// disabled for test
-// m.latency = 0.0001;
-
-// m.noteOn(0, 60, 30);
-// m.noteOn(0, 60, 30);
-// m.allNotesOff(0);
 CmdPeriod.add({(0..127).do{arg n; m.noteOff(0, n)}});
 s.options.numOutputBusChannels_(4);
 s.options.numInputBusChannels_(4);
@@ -37,7 +18,7 @@ s.options.sampleRate_(41000);
 s.options.memSize_(2**20);
 ServerTree.removeAll;
 s.newBusAllocators;
-s.latency_(0.0001);
+s.latency_(0.1);
 
 ~reverbBus = Bus.audio(s, 2);
 ~wtBus = Bus.audio(s, 2);
@@ -46,25 +27,6 @@ s.latency_(0.0001);
 		~fxGroup = Group.new;
 		~reverb = Synth(\reverb, [\in, ~reverbBus, \out, 0], ~fxGroup);
 		~input = Synth(\input, [\in, 6, \out, ~reverbBus]);
-
-		// // generating wavetables old
-		// thisThread.randSeed = 1;
-		// ~wt = (
-		// \random: Array.fill(20,{
-		// |i|
-		// Buffer.loadCollection(s,
-		// {
-		// var sig;
-		// sig = Env.new(
-		// {rrand(-1.0,1.0)}!(i+2), // levels
-		// {exprand(0.01,2)}!(i+1), // times
-		// {rrand(-5,5)}!(i+1) // curves
-		// ).asSignal(512);
-		// sig.normalize;
-		// }.value.asWavetableNoWrap.normalize;
-		// )
-		// })
-		// );
 
 		thisThread.randSeed = 1;
 		~wt = (
@@ -94,16 +56,6 @@ s.latency_(0.0001);
 		~shaper = Synth.new(\wt, [\in, ~wtBus, \auxOut, ~reverbBus, \wt, ~wt[\random][0]], ~fxGroup);
 	});
 };
-// ~events = [
-// {~sampPlayer = ~sampPat.play(quant:1)},
-// {~beepPlayer = ~beepPat.play(quant:1)},
-// {~dronesPlayer = ~dronesPat.play},
-// {
-// ~sampPlayer.stop;
-// ~dronesPlayer.stop;
-// },
-// {~beepPlayer.stop}
-// ];
 
 s.waitForBoot({
 
@@ -729,22 +681,3 @@ StageLimiter.activate;
 });
 
 )
-
-// (
-// ~events[~count].value;
-// ~count = ~count + 1;
-// //if(~count >= ~events.size, {~count = 0});
-// //~count;
-// )
-
-//////////////////////////////
-//demonstration of ServerTree;
-
-// ~fn = {"***rebuilt***".postln};
-
-// ServerTree.add(~fn);
-
-// s.reboot;
-
-// ServerTree.remove(~fn);
-// ServerTree.removeAll;

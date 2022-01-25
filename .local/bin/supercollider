@@ -5,7 +5,7 @@ for x in "reaper" "alacritty" "supercollider" "neovim" "zsh";do
 		{ notify-send "$x is missing" && exit 1 ;}
 done
 
-jackstart && run='true' || run='false'
+jackrun && run='true' || run='false'
 
 if [ $installed == 'true' ] && [ $run == 'true' ]; then
 		sleep 1
