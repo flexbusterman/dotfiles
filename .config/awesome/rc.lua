@@ -240,7 +240,7 @@ awful.screen.connect_for_each_screen(function(s)
 								 -- end
 							 -- end
 						 -- end),
-						awful.widget.watch('mailbox', 30),
+						awful.widget.watch('mailbox', 5),
 						mySeparator,
 						awful.widget.watch('localip', 10),
 						mySeparator,
@@ -307,7 +307,7 @@ globalkeys = gears.table.join(
 
 		awful.key({modkey}, "semicolon", function () awful.util.spawn("stream") end),
 		-- awful.key({modkey, "Shift" }, "comma", function () awful.util.spawn("alacritty -t Ranger -e ranger") end),
-		awful.key({modkey, "Shift" }, "period", function () awful.util.spawn("brave") end),
+		awful.key({modkey, "Shift" }, "period", function () awful.util.spawn("bravestart") end),
 		awful.key({modkey, "Control", "Shift" }, "period", function () awful.util.spawn("brave https://youtube.com") end),
 		awful.key({modkey}, "p", function () awful.util.spawn("passmenu") end),
 		awful.key({modkey}, "e", function () awful.util.spawn_with_shell("cd ~/Downloads/; alacritty -t Neomutt -e neomutt") end),

@@ -1,0 +1,5 @@
+#!/bin/bash
+SUM=$(bc<<<"$*")
+HOURS=$(bc <<< "$SUM/60")
+MINUTES=$(bc <<< "$SUM%60")
+echo "$HOURS:$MINUTES"

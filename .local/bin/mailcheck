@@ -1,0 +1,10 @@
+#!/bin/bash
+
+STATUS=$(mullvad status | awk '{print $NF}')
+if [[ $STATUS == "Connected" ]]; then
+    notify-send "Mullvad connected, not checking mail."
+    exit 1
+else
+    notify-send "Checking mail"
+    mailsync
+fi

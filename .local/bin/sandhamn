@@ -1,0 +1,3 @@
+alacritty -t Server -e zsh -c "cd ~/.local/src/sandhamn; npm run dev" &
+sleep 1 && brave --new-window http://localhost:3333 &
+sleep 2 && alacritty -e zsh -c "cd ~/.local/src/sandhamn; nvim" &

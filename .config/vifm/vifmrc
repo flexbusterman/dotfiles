@@ -181,6 +181,9 @@ command! reload :write | restart
 "
 " You can also add %CLEAR if you want to clear screen before running FUSE
 " program.
+filextype *.exe
+        \ {Run with WINE}
+        \ wine %f 2>/dev/null &,
 
 fileviewer *.pdf
     \ vifmimg pdf %px %py %pw %ph %c

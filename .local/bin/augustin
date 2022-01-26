@@ -1,0 +1,2 @@
+jackd -dalsa -dhw:PCH,0 -r48000 -p1024 & st -t SuperCollider -e zsh -c "cd ~/Dropbox/SUPERCOLLIDER; nvim -O ~/Dropbox/SUPERCOLLIDER/2021-05-18\ 808\ +\ waveshaping\ cleeeean.scd /home/flex/.config/SuperCollider/startup.scd -c \"set filetype=supercollider | SCNvimStart\"" &
+
