@@ -640,6 +640,7 @@ awful.rules.rules = {
 					"voxygen",
 					"dropbox",
 					"brave-browser",
+					"mednafen",
 				},
         name = {
         },
@@ -652,10 +653,8 @@ awful.rules.rules = {
       }, properties = { titlebars_enabled = false }
     },
 
-    -- TODO: could probably be combined
     { rule = { class = "Pulseeffects", "QjackCtl" }, properties = { screen = 1, tag = "9" } },
     { rule = { name = "Server" }, properties = { tag = "9" } },
-
 }
 -- }}}
 

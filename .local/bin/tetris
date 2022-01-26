@@ -1,2 +1,2 @@
 #!/bin/sh 
-st -e mednafen /home/flex/Dropbox/ROMS/NES/Tetris.nes
+mednafen /home/flex/Dropbox/ROMS/NES/Tetris.nes 2>/dev/null &
