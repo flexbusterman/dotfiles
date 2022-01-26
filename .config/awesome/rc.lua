@@ -300,6 +300,7 @@ globalkeys = gears.table.join(
 		awful.key({modkey, "Shift" }, "n", function () awful.util.spawn_with_shell("cd ~/Dropbox/NOTES/; alacritty -t VimWiki -e nvim ~/Dropbox/NOTES/TODO.md") end),
 		awful.key({modkey}, "m", function () awful.util.spawn_with_shell("mullvadconnect") end),
 		awful.key({modkey, "Shift" }, "m", function () awful.util.spawn_with_shell("mullvaddisconnect") end),
+		awful.key({modkey, "Control", "Shift" }, "m", function () awful.util.spawn_with_shell("mailsync") end),
 		awful.key({modkey}, "r", function () awful.util.spawn("alacritty -t Newsboat -e newsboat") end),
 		awful.key({modkey}, "q", function () awful.util.spawn("qjackctl") end),
 		awful.key({modkey, "Shift" }, "Return", function () awful.util.spawn("alacritty -t ZSH -e zsh") end),
@@ -491,7 +492,7 @@ clientkeys = gears.table.join(
         end ,
         {description = "minimize", group = "client"}),
     -- awful.key({ modkey, "Control", "Shift" }, "m",
-    awful.key({ modkey, "Control", "Shift" }, "m",
+    awful.key({ modkey, "Control", "Shift" }, "space",
         function (c)
             c.maximized = not c.maximized
             c:raise()

@@ -29,9 +29,10 @@ case $BLOCK_BUTTON in
 	6) "$TERMINAL" -e "$EDITOR" "$0" ;;
 esac
 
-unread="$(find "${XDG_DATA_HOME:-$HOME/.local/share}"/mail/*/[Ii][Nn][Bb][Oo][Xx]/new/* -type f | wc -l 2>/dev/null)"
-
+unread1="$(find "${XDG_DATA_HOME:-$HOME/.local/share}"/mail/gen*/[Ii][Nn][Bb][Oo][Xx]/new/* -type f | wc -l 2>/dev/null)"
+unread2="$(find "${XDG_DATA_HOME:-$HOME/.local/share}"/mail/chr*/[Ii][Nn][Bb][Oo][Xx]/new/* -type f | wc -l 2>/dev/null)"
+unread3="$(find "${XDG_DATA_HOME:-$HOME/.local/share}"/mail/aug*/[Ii][Nn][Bb][Oo][Xx]/new/* -type f | wc -l 2>/dev/null)"
 # only displays if there is unread 
 # [ "$unread" = "0" ] || echo " M $unread "
 
-echo "M $unread"
+echo "$unread1 $unread2 $unread3"
