@@ -115,21 +115,21 @@ set relativenumber
 
 " :mark mark /full/directory/path [filename]
 
-mark h ~/
-mark b ~/.local/bin/
-mark d ~/Dropbox/
-mark j ~/Downloads/
-mark w ~/Pictures/WALLPAPERS/
-mark p ~/Pictures/
-mark m ~/Dropbox/MUSIC/
-mark c ~/.config/
-mark g ~/.local/src/
-mark s ~/Pictures/SCREENSHOTS/
-mark r /
-mark M /run/media/flex/
 mark a "~/Dropbox/ADMINISTRATIVT/AUGUSTIN SUPREMACY 2022"
-mark v ~/Downloads/VIDEO/
+mark b ~/.local/bin/
+mark c ~/.config/
+mark d ~/Dropbox/
+mark g ~/.local/src/
+mark h ~/
+mark j ~/Downloads/
+mark m ~/Dropbox/MUSIC/
+mark M /run/media/flex/
+mark p ~/Pictures/
+mark r /
+mark s ~/Pictures/SCREENSHOTS/
 mark t "~/Dropbox/DROPSYNC/! TRANSFER/"
+mark v ~/Downloads/VIDEO/
+mark w ~/Pictures/WALLPAPERS/
 
 " ------------------------------------------------------------------------------
 
