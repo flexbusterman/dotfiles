@@ -11,5 +11,6 @@ xcape -e 'Mode_switch=Escape'
 udiskie -ta &
 xset r rate 300 50 # Speed xrate up
 xinput disable "Synaptics TM3288-011"
+mailsync &
 dropbox &
 exec awesome

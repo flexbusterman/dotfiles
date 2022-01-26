@@ -6,7 +6,6 @@
 export TERMINAL='alacritty'
 export EDITOR='nvim'
 export BROWSER='brave'
-# export MANPAGER="nvim -c 'set ft=man' -"
 export MANPAGER="/bin/sh -c \"col -b | nvim -c 'set ft=man ts=8 nomod nolist nonu noma' -\""
 
 [[ $- != *i* ]] && return
