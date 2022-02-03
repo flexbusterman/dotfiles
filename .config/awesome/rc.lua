@@ -323,7 +323,8 @@ globalkeys = gears.table.join(
     awful.key({modkey}, "F2", function () awful.util.spawn("jackkill") end),
 		awful.key({modkey}, "F3", function () awful.util.spawn("displayselect") end),
     awful.key({modkey}, "F4", function () awful.util.spawn("alacritty -t PulseMixer -e pulsemixer") end),
-    awful.key({modkey, "Shift"}, "F4", function () awful.util.spawn("alacritty -t AlsaMixer -e alsamixer") end),
+    -- awful.key({modkey}, "F4", function () awful.util.spawn("alacritty -t AlsaMixer -e alsamixer") end),
+    awful.key({modkey, "Shift"}, "F4", function () awful.util.spawn("pavucontrol") end),
 		awful.key({modkey}, "F6", function () awful.util.spawn("torwrap") end),
 		awful.key({modkey}, "F7", function () awful.util.spawn("td-toggle") end),
 		awful.key({modkey}, "F9", function () awful.util.spawn("dmenumount") end),
@@ -642,6 +643,7 @@ awful.rules.rules = {
 					"dropbox",
 					"brave-browser",
 					"mednafen",
+					-- "REAPER",
 				},
         name = {
         },

@@ -5,9 +5,10 @@ for x in "reaper" "alacritty" "supercollider" "neovim" "zsh";do
 		{ notify-send "$x is missing" && exit 1 ;}
 done
 
-if [ $installed == 'true' ]; then
+jackrun && run='true' || run='false'
+
+if [ $installed == 'true' ] && [ $run == 'true' ]; then
 		sleep 1
-		# PIPEWIRE_LATENCY="1024/48000" reaper -audiocfg &
 		reaper -audiocfg &
 		alacritty -t SuperCollider -e zsh -c "cd ~/Dropbox/SUPERCOLLIDER/; nvim -c \"NERDTreeToggle | set filetype=supercollider | SCNvimStart\"" &
 fi

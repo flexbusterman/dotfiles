@@ -118,7 +118,9 @@ set relativenumber
 mark a "~/Dropbox/ADMINISTRATIVT/AUGUSTIN SUPREMACY 2022"
 mark b ~/.local/bin/
 mark c ~/.config/
+mark C ~/Dropbox/DROPSYNC/Camera/
 mark d ~/Dropbox/
+mark D ~/Dropbox/DROPSYNC/
 mark g ~/.local/src/
 mark h ~/
 mark j ~/Downloads/
@@ -181,9 +183,16 @@ command! reload :write | restart
 "
 " You can also add %CLEAR if you want to clear screen before running FUSE
 " program.
+"
+filextype *.rpp reaper %f 2>/dev/null &,
+
 filextype *.exe
         \ {Run with WINE}
         \ wine %f 2>/dev/null &,
+
+filextype *.bwproject
+        \ {Open with Bitwig}
+        \ bitwig-studio %f 2>/dev/null &,
 
 fileviewer *.pdf
     \ vifmimg pdf %px %py %pw %ph %c
@@ -687,7 +696,6 @@ nmap <C-p> :dragon<CR>
 "" fileviewer *.pdf pdftotext -l 1 -nopgbrk %c -
 "" fileviewer *.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,*.fl[icv],*.m2v,*.mov,*.webm,*.ts,*.mts,*.m4v,*.qt,*.divx,*.as[fx],*mp3,*.flac file
 "filextype *.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,*.fl[icv],*.m2v,*.mov,*.ts,*.mts,*.m4v,*.r[am],*.qt,*.divx,*.webm,*.as[fx] mpv --force-window %f 2>/dev/null &,
-"filextype *.rpp reaper %f 2>/dev/null &,
 "filextype *.bwproject bitwig-studio %f 2>/dev/null &,
 "fileview *.tar.gz atool -l --format=tar %f 2>/dev/null | awk '{$1=$2=$3=$4=$5=""; print $0}'
 "" fileview *.zip,*.cbz    atool -l --format=zip %f 2>/dev/null | tail +4 | awk '{$1=$2=$3=""; print $0}'

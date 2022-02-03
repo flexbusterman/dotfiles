@@ -5,16 +5,17 @@
 MIDIClient.init;
 m = MIDIOut.newByName("Midi Through", "Midi Through Port-0");
 m.latency = 0.0001;
-
-s.latency = 0.1;
+s.latency = 0.2;
+// s.options.hardwareBufferSize=256;
+s.options.hardwareBufferSize=1024;
 
 t=TempoClock.default;
 t.tempo = 4*60/~bpm;
-
 CmdPeriod.add({(0..127).do{arg n; m.noteOff(0, n)}});
 s.options.numOutputBusChannels_(4);
-s.options.numInputBusChannels_(4);
-s.options.sampleRate_(41000);
+// s.options.numInputBusChannels_(4);
+s.options.numInputBusChannels_(0);
+s.options.sampleRate_(48000);
 s.options.memSize_(2**20);
 ServerTree.removeAll;
 s.newBusAllocators;
