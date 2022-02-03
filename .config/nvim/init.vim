@@ -90,7 +90,7 @@ set splitbelow splitright
 colorscheme dracula
 highlight Normal ctermbg=none guibg=none guifg=White
 highlight NonText ctermbg=none guibg=none guifg=White
-highlight EndOfBuffer ctermbg=none ctermfg=none guibg=none guifg=none 
+highlight EndOfBuffer ctermbg=none ctermfg=none guibg=none guifg=none
 highlight CursorLine ctermbg=Black
 highlight SignColumn ctermbg=none guibg=none guifg=White
 " set winbl=10
@@ -118,8 +118,9 @@ vnoremap <silent> <nowait> <leader>q <esc>:q!<CR>
 xnoremap <silent> <nowait> <leader>q <esc>:q!<CR>
 nnoremap <silent> <nowait> <M-`>:w<CR>
 "delete duplicate empty lines
-
-nnoremap <silent> <nowait> <leader>l :g/^$/,/./-j<CR><c-o>
+nnoremap <silent> <nowait> <leader>l :g/^\s\+$/s/\s\+//e <CR> <bar> :g/^$/,/./-j<CR><c-o>
+" nnoremap <silent> <nowait> <leader>l :g/^\s\+$/s/\s\+//<CR><c-o>
+" nnoremap <silent> <nowait> <leader>l :%s/\s\+$//e <CR> <bar> %s/\n\{3,}/\r\r/e<CR><c-o>
 " tabs
 nnoremap <silent> <nowait> <leader><tab> :tabn<CR>
 " nnoremap <silent> <nowait> <leader>t :tabedit<CR>
@@ -165,7 +166,7 @@ fun! s:VisualSearch()
   let @" = old
 endf
 " remove empty lines in selection
-vmap <leader>e :s/\n\n/\r/g<CR>
+" vmap <leader>e :s/\n\n/\r/g<CR>
 " nmap <leader>n <Plug>VimwikiNextLink
 " nmap <leader>p <Plug>VimwikiPrevLink
 nmap <F13> <Plug>VimwikiNextLink

@@ -642,12 +642,13 @@ awful.rules.rules = {
         instance = {
         },
         class = {
-					"qutebrowser",
-					"factorio",
-					"voxygen",
-					"dropbox",
-					"brave-browser",
-					"mednafen",
+          "qutebrowser",
+          "factorio",
+          "voxygen",
+          "dropbox",
+          "brave-browser",
+          "mednafen",
+          "7DaysToDie.x86_64",
 					-- "REAPER",
 				},
         name = {
