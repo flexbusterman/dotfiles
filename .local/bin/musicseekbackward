@@ -1,0 +1,2 @@
+#!/bin/bash
+pgrep deadbeef || playerctl -a position "5-"

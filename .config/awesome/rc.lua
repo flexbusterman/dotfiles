@@ -343,11 +343,15 @@ globalkeys = gears.table.join(
     awful.key({modkey}, "b", function () awful.util.spawn_with_shell("bluetoothconnect 74:5C:4B:D2:86:F7") end),
     awful.key({modkey, "Shift"}, "b", function () awful.util.spawn("bluetoothctl disconnect 74:5C:4B:D2:86:F7") end),
 
-		-- Flexbindings audio and media
-		awful.key({"Control", "Shift"}, "Return", function () awful.util.spawn("deadbeef") end),
+        -- Flexbindings audio and media
+    awful.key({"Control", "Shift"}, "Return", function () awful.util.spawn("ncspottoggle", {tag="9"}) end),
+
+		awful.key({modkey, "Control", "Shift"}, "Return", function () awful.util.spawn_with_shell("pgrep deadbeef && kill $(pgrep deadbeef) || deadbeef") end),
 		awful.key({"Control", "Shift"}, "j", function () awful.util.spawn("musicnext") end),
 		awful.key({"Control", "Shift"}, "k", function () awful.util.spawn("musicprev") end),
-		awful.key({"Control", "Shift"}, "q", function () awful.util.spawn("deadbeef --quit") end),
+		awful.key({"Control", "Shift"}, "h", function () awful.util.spawn("musicseekbackward") end),
+		awful.key({"Control", "Shift"}, "l", function () awful.util.spawn("musicseekforward") end),
+		-- awful.key({"Control", "Shift"}, "q", function () awful.util.spawn("deadbeef --quit") end),
 		awful.key({"Control", "Shift"}, "space", function () awful.util.spawn("musicplaypause") end),
 		awful.key({modkey, "Shift"}, "p", function () awful.util.spawn("pulseeffects") end),
 
@@ -658,7 +662,7 @@ awful.rules.rules = {
     },
 
     { rule = { class = "Pulseeffects", "QjackCtl" }, properties = { screen = 1, tag = "9" } },
-    { rule = { name = "Server" }, properties = { tag = "9" } },
+    { rule = { name = "Server", "ncspot" }, properties = { tag = "9" } },
 }
 -- }}}
 

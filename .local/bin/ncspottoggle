@@ -1,0 +1,2 @@
+#!/bin/bash
+pgrep ncspot && killall ncspot || alacritty -t ncspot -e ncspot &

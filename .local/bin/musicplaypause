@@ -1,2 +1,2 @@
 #!/bin/bash
-ps -C spotify >/dev/null && spotifycli --playpause || deadbeef --play-pause
+pgrep deadbeef && deadbeef --play-pause || playerctl -a play-pause
