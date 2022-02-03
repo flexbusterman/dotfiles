@@ -336,6 +336,7 @@ globalkeys = gears.table.join(
 		awful.key({}, "#122", function () awful.util.spawn("pamixer --allow-boost -d 3") end),
     awful.key({}, "#123", function () awful.util.spawn("pamixer --allow-boost -i 3") end),
     awful.key({}, "#121", function () awful.util.spawn("pamixer -t") end),
+    awful.key({}, "#198", function () awful.util.spawn("amixer set Capture toggle") end),
     awful.key({}, "#232", function () awful.util.spawn_with_shell("xbacklight -dec $(bc <<< \"$(xbacklight) * 0.5\")") end),
     awful.key({}, "#233", function () awful.util.spawn_with_shell("xbacklight -inc $(bc <<< \"$(xbacklight) * 0.5 + 0.15\")") end),
     awful.key({}, "#233", function () awful.util.spawn_with_shell("xbacklight -inc $(bc <<< \"$(xbacklight) * 0.5 + 0.15\")") end),
