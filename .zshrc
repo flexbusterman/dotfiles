@@ -185,6 +185,7 @@ alias shs="simple-http-server"
 alias ud='sudo updatedb'
 alias vim="nvim"
 alias wine32="WINEPREFIX=~/.wine32 WINEARCH=win32"
+alias mnt="sudo mount -o loop $* /mnt/ISO/"
 
 # audio
 alias play="ffplay -nodisp -autoexit"

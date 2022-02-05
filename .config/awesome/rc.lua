@@ -331,8 +331,9 @@ globalkeys = gears.table.join(
 		awful.key({modkey}, "F10", function () awful.util.spawn("dmenuumount") end),
     awful.key({modkey}, "Up", function () awful.util.spawn_with_shell("cpuperformance") end),
     awful.key({modkey}, "Down", function () awful.util.spawn_with_shell("cpupowersave") end),
-
+    awful.key({modkey}, "#49", function () awful.util.spawn("dmenuunicode") end),
 		-- Flexbindings HID control
+
 		awful.key({}, "#122", function () awful.util.spawn("pamixer --allow-boost -d 3") end),
     awful.key({}, "#123", function () awful.util.spawn("pamixer --allow-boost -i 3") end),
     awful.key({}, "#121", function () awful.util.spawn("pamixer -t") end),
