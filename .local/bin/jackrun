@@ -20,7 +20,7 @@ if [ $installed == 'true' ]; then
 			killall jackd
 			sleep 1
 		fi
-		jackd -d alsa -r $rate -p $buffer -d hw:$device &
+		jackd -R -P 95 -d alsa -r $rate -p $buffer -d hw:$device &
 		# jack_control dps device "hw:$device"
 		# jack_control start &
 		sleep 1
