@@ -1,0 +1,34 @@
+#!/bin/bash
+
+for x in "jack2-dbus" "a2jmidid";do
+	pacman -Qq "$x" >/dev/null 2>&1 && installed='true' ||
+		{ notify-send "$x is missing" && exit 1 ;}
+done
+
+if [ $installed == 'true' ]; then
+	devices=$(cat /proc/asound/cards | awk '/\[.*\]/')
+	choice=$(printf "$devices" | dmenu -i -l 20 -p "Start Jack using device:" )
+	device=$(echo $choice | sed -e "s/.*\[\([^ ]*\).*/\1/")
+	if [ -z "$device" ]; then
+		echo 'No device chosen. Exiting.'
+		exit 1
+	else
+		rate=$(printf "41000\n48000\n82000\n96000" | dmenu -i -l 20 -p "Samplerate:" || echo "48000")
+		buffer=$(printf "128\n256\n512\n1024\n2048" | dmenu -i -l 20 -p "Buffersize:"  || echo "512")
+		if [ $(pgrep jackd) ]; then
+			echo "Killing jackd"
+			killall jackd
+			sleep 1
+		fi
+		jackd -d alsa -r $rate -p $buffer -d hw:$device &
+		# jack_control dps device "hw:$device"
+		# jack_control start &
+		sleep 1
+		a2jmidid -e -u &
+		notify-send "Jack connected $device $rate $buffer"
+		exit 0
+	fi
+else
+	notify-send "Failed" 
+	exit 1
+fi

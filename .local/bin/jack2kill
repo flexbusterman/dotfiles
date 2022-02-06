@@ -1,0 +1,13 @@
+#!/bin/bash
+
+status=$(pidof jackd)
+
+if [[ $status ]]; then
+	notify-send 'Stopping Jack'
+	echo 'Stopping Jack'
+	killall a2jmidid
+	killall jackd
+else
+	notify-send 'Jack is not running'
+	echo 'Jack is not running'
+fi
