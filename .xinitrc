@@ -9,7 +9,7 @@ xinput set-prop "TPPS/2 Elan TrackPoint" "libinput Accel Speed" +0.4
 xmodmap ~/.Xmodmap
 xcape -e 'Mode_switch=Escape'
 udiskie -ta &
-xset r rate 300 50 # Speed xrate up
+xset r rate 300 50
 xinput disable "Synaptics TM3288-011"
 mailsync &
 dropbox &
