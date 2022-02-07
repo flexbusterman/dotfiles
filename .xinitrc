@@ -14,4 +14,5 @@ xinput disable "Synaptics TM3288-011"
 mailsync &
 dropbox &
 dunst &
+dwmblocks &
 exec dwm
