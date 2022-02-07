@@ -13,4 +13,5 @@ xset r rate 300 50
 xinput disable "Synaptics TM3288-011"
 mailsync &
 dropbox &
-exec awesome
+dunst &
+exec dwm
