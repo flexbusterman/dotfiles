@@ -15,7 +15,10 @@ sleep 0.5
 read cpu a b c idle rest < /proc/stat
 total=$((a+b+c+idle))
 cpu=$((100*( (total-prevtotal) - (idle-previdle) ) / (total-prevtotal) ))
-echo "CPU $cpu%"
+red=$(printf '%02x\n' $(awk "BEGIN{ print 2.55 * $cpu}"))
+green=$(printf '%02x\n' $(awk "BEGIN{ print 2.55 * (100 - $cpu)}"))
+blue="00"
+echo "^c#$red$green$blue^CPU $cpu%^d^"
 # echo "<span foreground=\"#ff79c6\">CPU $cpu%</span>"
 # echo -e "033[31m💻 $cpu%\e[0m"
 #echo -e "$cpu%"printf "BAT %s%s%s%% " "$status" "$warn" "$capacity"
