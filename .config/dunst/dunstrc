@@ -17,7 +17,7 @@
     #
     # If this option is set to mouse or keyboard, the monitor option
     # will be ignored.
-    follow = none
+    follow = keyboard
 
     ### Geometry ###
 
@@ -33,7 +33,7 @@
     origin = top-right
 
     # Offset from the origin
-    offset = 10x50
+    offset = 10x30
 
     # Scale factor. It is auto-detected if value is 0.
     scale = 0
@@ -294,14 +294,15 @@
     # Otherwise the "#" and following would be interpreted as a comment.
     background = "#222222"
     foreground = "#888888"
-    timeout = 10
+    timeout = 3
     # Icon for notifications with low urgency, uncomment to enable
     #default_icon = /path/to/icon
 
 [urgency_normal]
-    background = "#285577"
+    # background = "#285577"
+    background = "#222222"
     foreground = "#ffffff"
-    timeout = 10
+    timeout = 3
     # Icon for notifications with normal urgency, uncomment to enable
     #default_icon = /path/to/icon
 
