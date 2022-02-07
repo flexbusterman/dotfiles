@@ -1,2 +1,2 @@
 #!/bin/sh
-echo $(date '+%F %H:%M      ')
+echo "$(date '+%F %H:%M')      "
