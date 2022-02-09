@@ -23,8 +23,8 @@ ff="ff"
 chargeredblue=$(printf '%02x\n' $(awk "BEGIN{ print 2.55 * (100 - $percentage)}"))
 
 
-	charging=$([[ $(cat "/sys/class/power_supply/BAT0/status" 2>/dev/null) == "Charging" || $(cat "/sys/class/power_supply/BAT1/status" 2>/dev/null) == "Charging" ]] && echo "^c#$chargeredblue$ff$chargeredblue^+" ) 
-	discharging=$([[ $(cat "/sys/class/power_supply/BAT0/status" 2>/dev/null) == "Discharging" || $(cat "/sys/class/power_supply/BAT1/status" 2>/dev/null) == "Discharging" ]] && echo "^c#ff$dischargegreenblue$dischargegreenblue^-" ) 
+	charging=$([[ $(cat "/sys/class/power_supply/BAT0/status" 2>/dev/null) == "Charging" || $(cat "/sys/class/power_supply/BAT1/status" 2>/dev/null) == "Charging" ]] && printf "^c#$chargeredblue$ff$chargeredblue^+" ) 
+	discharging=$([[ $(cat "/sys/class/power_supply/BAT0/status" 2>/dev/null) == "Discharging" || $(cat "/sys/class/power_supply/BAT1/status" 2>/dev/null) == "Discharging" ]] && printf "^c#ff$dischargegreenblue$dischargegreenblue^-" ) 
 
 printf "BAT %s%s%s%s" "$charging" "$discharging" "$percentage" "%^d^" 
 
