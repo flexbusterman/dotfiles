@@ -17,7 +17,7 @@ total=$((a+b+c+idle))
 cpu=$((100*( (total-prevtotal) - (idle-previdle) ) / (total-prevtotal) ))
 # red=$(printf '%02x\n' $(awk "BEGIN{ print 2.55 * $cpu}"))
 greenblue=$(printf '%02x\n' $(awk "BEGIN{ print 2.55 * (100 - $cpu)}"))
-printf "CPU ^c#ff$greenblue$greenblue^$cpu%^d^"
+printf "CPU ^c#ff$greenblue$greenblue^$cpu%%^d^"
 # printf "<span foreground=\"#ff79c6\">CPU $cpu%</span>"
 # printf -e "033[31m💻 $cpu%\e[0m"
 #printf -e "$cpu%"printf "BAT %s%s%s%% " "$status" "$warn" "$capacity"
