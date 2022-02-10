@@ -13,7 +13,7 @@ filechooser.lastdir file:///home/flex/Dropbox/2021-01-28%20Stiu%20Rep%20Samlat/2
 gtkui.columns.playlist [{"title":"♫","id":"1","format":"%playstatus%","sort_format":"","size":"24","align":"0","color_override":"0","color":"#ff000000"},{"title":"Artist","id":"-1","format":"$if(%artist%,%artist%,Unknown Artist)","sort_format":"","size":"222","align":"0","color_override":"0","color":"#ffd4d4d4"},{"title":"Year","id":"-1","format":"%year%","sort_format":"","size":"54","align":"0","color_override":"0","color":"#ffd4d4d4"},{"title":"Album","id":"-1","format":"%album%","sort_format":"","size":"236","align":"0","color_override":"0","color":"#ff000000"},{"title":"Title","id":"-1","format":"%title%","sort_format":"","size":"352","align":"0","color_override":"0","color":"#ff000000"},{"title":"Duration","id":"-1","format":"%length%","sort_format":"","size":"137","align":"0","color_override":"0","color":"#ff000000"}]
 gtkui.eq.visible 0
 gtkui.hide_tray_icon 1
-gtkui.layout.0.6.2 vbox expand="0 1" fill="1 1" homogeneous=0 {hbox expand="0 1 0" fill="1 1 1" homogeneous=0 {playtb {} seekbar {} volumebar {} } tabbed_playlist hideheaders=0 width=1149 {} } 
+gtkui.layout.0.6.2 vbox expand="0 1" fill="1 1" homogeneous=0 {hbox expand="0 1 0" fill="1 1 1" homogeneous=0 {playtb {} seekbar {} volumebar {} } tabbed_playlist hideheaders=0 width=1338 {} } 
 gtkui.start_hidden 0
 gtkui.statusbar.visible 1
 gtkui.tabscroll 0
@@ -63,11 +63,11 @@ logwindow.geometry.h 1001
 logwindow.geometry.w 1000
 logwindow.geometry.x 30
 logwindow.geometry.y 43
-mainwin.geometry.h 569
+mainwin.geometry.h 1054
 mainwin.geometry.maximized 0
-mainwin.geometry.w 396
+mainwin.geometry.w 1434
 mainwin.geometry.x 0
-mainwin.geometry.y 27
+mainwin.geometry.y 20
 mp3.id3v1_encoding iso8859-1
 mp3.id3v2_version 3
 mp3.write_id3v1 1
@@ -77,7 +77,7 @@ output_plugin pulseaudio
 playback.loop 1
 playback.volume 0.0000000
 playlist.current 0
-playlist.cursor.0 0
+playlist.cursor.0 -1
 playlist.scroll.0 0
 playlist.scroll.cursorfollowplayback 1
 playlist.tab.00000 Default
