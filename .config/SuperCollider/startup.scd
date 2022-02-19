@@ -1,7 +1,6 @@
 (
 ~channels = 2;
 ~bpm = 120;
-
 MIDIClient.init;
 m = MIDIOut.newByName("Midi Through", "Midi Through Port-0");
 m.latency = 0.0001;
@@ -676,8 +675,8 @@ SynthDef(
 	\hatOpen808 -> Dictionary.newFrom([ \amp, 1, \auxAmp, 0, \bpfFreq, 7700, \env1rel, 0.5, \env1relCrv, (-3), \env2rel, 0.5, \env2relCrv, (-150), \lpfFreq, 4000, \osc1freq, 203.52, \osc2freq, 366.31, \osc3freq, 301.77, \osc4freq, 518.19, \osc5freq, 811.16, \osc6freq, 538.75, \pan, 0, \out, 0, \auxOut, ~reverbBus ]),
 	\cymbal808 -> Dictionary.newFrom([ \amp, 1, \auxAmp, 0, \lpf, 4000, \osc1freq, 203.52, \osc2freq, 366.31, \osc3freq, 301.77, \osc4freq, 518.19, \osc5freq, 811.16, \osc6freq, 538.75, \rel1, 2, \rel1crv, (-3), \rel2, 2, \rel2, 2, \rel2crv, (-5), \rel3, 2, \rel3crv, (-150), \sig1bpf, 3000, \sig1eq, 2400, \sig2bpf, 7400, \sig2eq, 7200, \sig3bpf, 6500, \sig3eq, 7400, \tone, 0.002, \pan, 0, \out, 0, \auxOut, ~reverbBus ]),
 ];
-
-StageLimiter.activate;
+// removed due to bug in install
+// StageLimiter.activate;
 
 });
 
