@@ -65,7 +65,7 @@ logwindow.geometry.x 30
 logwindow.geometry.y 43
 mainwin.geometry.h 1054
 mainwin.geometry.maximized 0
-mainwin.geometry.w 1242
+mainwin.geometry.w 761
 mainwin.geometry.x 0
 mainwin.geometry.y 20
 mp3.id3v1_encoding iso8859-1
