@@ -115,6 +115,7 @@ set relativenumber
 
 " ------------------------------------------------------------------------------
 
+" marks
 " :mark mark /full/directory/path [filename]
 
 mark a "~/Dropbox/ADMINISTRATIVT/AUGUSTIN SUPREMACY 2022"
@@ -130,10 +131,11 @@ mark m ~/Dropbox/MUSIC/
 mark M /run/media/flex/
 mark p ~/Pictures/
 mark r /
-mark s ~/Pictures/SCREENSHOTS/
-mark t "~/Dropbox/DROPSYNC/! TRANSFER/"
+mark s ~/Dropbox/2022\ FOTO/SCREENSHOTS/
+mark t ~/Dropbox/DROPSYNC/!\ TRANSFER/
 mark v ~/Downloads/VIDEO/
-mark w ~/Pictures/WALLPAPERS/
+mark W ~/Dropbox/WALLPAPERS/
+mark w ~/.wine/drive_c/
 
 " ------------------------------------------------------------------------------
 

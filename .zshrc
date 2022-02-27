@@ -220,6 +220,7 @@ alias d='cd ~/Dropbox; exa'
 alias s='cd ~/Dropbox/2022\ FOTO/SCREENSHOTS; exa'
 alias n='cd ~/Dropbox/NOTES; exa'
 alias c='cd ~/.config/; exa'
+alias w='cd ~/.wine/drive_c/; exa'
 # alias g='cd ~/GIT/; exa'
 
 # Dropbox aliases
