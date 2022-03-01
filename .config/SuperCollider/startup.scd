@@ -11,7 +11,7 @@ s.options.hardwareBufferSize=1024;
 t=TempoClock.default;
 t.tempo = 4*60/~bpm;
 CmdPeriod.add({(0..127).do{arg n; m.noteOff(0, n)}});
-s.options.numOutputBusChannels_(4);
+s.options.numOutputBusChannels_(2);
 // s.options.numInputBusChannels_(4);
 s.options.numInputBusChannels_(0);
 s.options.sampleRate_(48000);

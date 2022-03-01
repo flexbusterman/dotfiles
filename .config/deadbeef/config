@@ -55,8 +55,8 @@ hotkey.key32 "j" 1 0 move_tracks_down
 hotkey.key33 "k" 1 0 move_tracks_up
 hotkey.key34 "l" 0 0 play_pause
 hotkey.key35 "e" 0 0 toggle_eq
-hotkey.key36 "Shift Ctrl Alt h" 0 1 seek_5s_back
-hotkey.key37 "Shift Ctrl Alt l" 0 1 seek_5s_fwd
+hotkey.key36 "Shift Ctrl Left" 0 1 seek_5s_back
+hotkey.key37 "Shift Ctrl Right" 0 1 seek_5s_fwd
 hotkeys_created 1
 junk.enable_cp1251_detection 0
 logwindow.geometry.h 1001
@@ -65,7 +65,7 @@ logwindow.geometry.x 30
 logwindow.geometry.y 43
 mainwin.geometry.h 1054
 mainwin.geometry.maximized 0
-mainwin.geometry.w 761
+mainwin.geometry.w 1050
 mainwin.geometry.x 0
 mainwin.geometry.y 20
 mp3.id3v1_encoding iso8859-1
@@ -83,12 +83,12 @@ playlist.scroll.cursorfollowplayback 1
 playlist.tab.00000 Default
 prefwin.geometry.h 596
 prefwin.geometry.w 824
-prefwin.geometry.x 667
-prefwin.geometry.y 347
+prefwin.geometry.x 246
+prefwin.geometry.y 262
 resume.paused 0
-resume.playlist -1
-resume.position -1.000000
-resume.track -1
+resume.playlist 0
+resume.position 0.0000000
+resume.track 0
 resume_last_session 0
 searchwin.geometry.h 150
 searchwin.geometry.w 450
