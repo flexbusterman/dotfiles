@@ -534,7 +534,7 @@ calc() {
   ;}
 
 # asks too often to show all suggestions, but nice that it shows flags
-source ~/.local/src/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+# source ~/.local/src/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 
 source ~/.zsh/plugins/zsh-system-clipboard/zsh-system-clipboard.zsh
 
