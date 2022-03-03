@@ -1,2 +1,3 @@
 #!/bin/bash
-pgrep deadbeef && deadbeef --play-pause || playerctl -a play-pause
+# pgrep deadbeef && deadbeef --play-pause || playerctl -a play-pause
+playerctl -a play-pause

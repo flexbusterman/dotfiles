@@ -1,3 +1,4 @@
 #!/bin/bash
 # ps -C spotify >/dev/null && spotifycli --prev || deadbeef --prev
-pgrep deadbeef && deadbeef --prev || playerctl -a previous
+# pgrep deadbeef && deadbeef --prev || playerctl -a previous
+playerctl -a previous
