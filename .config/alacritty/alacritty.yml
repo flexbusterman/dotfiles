@@ -57,27 +57,28 @@ bell:
 hide_cursor_when_typing: false
 font:
   normal:
-    family: Source Code Pro
-    # style: Regular
-    style: Bold
+    # family: Source Code Pro
+    family: Px437 IBM BIOS
+    style: Regular
+    # style: Bold
 
   bold:
-    family: Source Code Pro
+    family: Px437 IBM BIOS
     style: Bold
 
   italic:
-    family: Source Code Pro
-    # style: Italic
-    style: Bold
+    family: Px437 IBM BIOS
+    style: Italic
+    # style: Bold
 
   bold_italic:
-    family: Source Code Pro
+    family: Px437 IBM BIOS
     style: Bold Italic
 
-  size: 6.5
+  size: 4.5
   offset:
       x: 0
-      y: -5
+      y: 0
 
 shell:
  program: /usr/bin/zsh
