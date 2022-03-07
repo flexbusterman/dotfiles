@@ -1,1 +1,1 @@
-VBoxManage startvm "WIN10"
+VBoxManage startvm "win10"
