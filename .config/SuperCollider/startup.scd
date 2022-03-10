@@ -3,7 +3,9 @@
 ~bpm = 120;
 MIDIClient.init;
 m = MIDIOut.newByName("Midi Through", "Midi Through Port-0");
+n = MIDIOut.newByName("Scarlett 6i6 USB", "Scarlett 6i6 USB MIDI 1");
 m.latency = 0.0001;
+n.latency = 0.0001;
 s.latency = 0.2;
 // s.options.hardwareBufferSize=256;
 s.options.hardwareBufferSize=1024;
@@ -604,7 +606,11 @@ SynthDef(
 
 	ServerTree.add(~makeNodes);
 	ServerTree.run;
-	CmdPeriod.add({(0..16).do{|channel|m.allNotesOff(channel)}});
+	CmdPeriod.add({(0..16).do{
+		|channel|
+		m.allNotesOff(channel);
+		n.allNotesOff(channel);
+	}});
 	s.sync;
 
 	//              _   _

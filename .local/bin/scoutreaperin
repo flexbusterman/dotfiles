@@ -1,0 +1,5 @@
+#!/bin/bash
+jack_disconnect SuperCollider:out_1 system:playback_1
+jack_disconnect SuperCollider:out_2 system:playback_2
+jack_connect SuperCollider:out_1 REAPER:in5
+jack_connect SuperCollider:out_2 REAPER:in6
