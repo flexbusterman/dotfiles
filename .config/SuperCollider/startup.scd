@@ -3,16 +3,22 @@
 ~bpm = 120;
 MIDIClient.init;
 m = MIDIOut.newByName("Midi Through", "Midi Through Port-0");
-n = MIDIOut.newByName("Scarlett 6i6 USB", "Scarlett 6i6 USB MIDI 1");
 m.latency = 0.0001;
-n.latency = 0.0001;
+
+// add secondary device if present
+if(MIDIClient.destinations.select{|dev|dev.name == "Scarlett 6i6 USB MIDI 1"}.size>0){
+	n = MIDIOut.newByName("Scarlett 6i6 USB", "Scarlett 6i6 USB MIDI 1");
+	n.latency = 0.0001;
+};
+
+
 s.latency = 0.2;
 // s.options.hardwareBufferSize=256;
 s.options.hardwareBufferSize=1024;
 
 t=TempoClock.default;
 t.tempo = 4*60/~bpm;
-CmdPeriod.add({(0..127).do{arg n; m.noteOff(0, n)}});
+// CmdPeriod.add({(0..127).do{arg n; m.noteOff(0, n)}});
 s.options.numOutputBusChannels_(2);
 // s.options.numInputBusChannels_(4);
 s.options.numInputBusChannels_(0);
@@ -609,8 +615,11 @@ SynthDef(
 	CmdPeriod.add({(0..16).do{
 		|channel|
 		m.allNotesOff(channel);
-		n.allNotesOff(channel);
+		if (n!=nil) {
+			n.allNotesOff(channel);
+		}
 	}});
+
 	s.sync;
 
 	//              _   _
