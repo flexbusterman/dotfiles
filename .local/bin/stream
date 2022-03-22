@@ -13,7 +13,7 @@ then
 		index=$(echo $choice | sed -e "s/ .*//g")
 		webtorrent --mpv $clipboard --select $index
 	else
-		mpv "$clipboard" || notify-send 'Clipboard not valid'
+		mpv --ytdl-raw-options=netrc=,mark-watched= "$clipboard" || notify-send 'Clipboard not valid'
 	fi
 else
 	notify-send 'Clipboard empty'
