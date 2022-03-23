@@ -37,31 +37,31 @@ s.latency_(0.1);
 		~input = Synth(\input, [\in, 6, \out, ~reverbBus]);
 
 		thisThread.randSeed = 1;
-		~wt = (
-			\random: Array.fill(20,{
-				|i|
-				Buffer.loadCollection(s,
-					{
-						var sig, env1, env2;
-						env1 = Env.new(
-							{rrand(-1.0,1.0)}!(i+2), // levels
-							{exprand(0.01,2)}!(i+2), // times
-							{rrand(-5,5)}!(i+1) // curves
-						).asSignal(513).normalize;
-						env2 = Env.new(
-							[-1,1], // levels
-							[1], // times
-							[0] // curves
-						).asSignal(513).normalize;
-						sig = env1 * env2;
-						sig = sig.normalize;
-						sig;
-					}.value.asWavetableNoWrap;
-				)
-			})
-		);
+		// ~wt = (
+		// \random: Array.fill(20,{
+		// |i|
+		// Buffer.loadCollection(s,
+		// {
+		// var sig, env1, env2;
+		// env1 = Env.new(
+		// {rrand(-1.0,1.0)}!(i+2), // levels
+		// {exprand(0.01,2)}!(i+2), // times
+		// {rrand(-5,5)}!(i+1) // curves
+		// ).asSignal(513).normalize;
+		// env2 = Env.new(
+		// [-1,1], // levels
+		// [1], // times
+		// [0] // curves
+		// ).asSignal(513).normalize;
+		// sig = env1 * env2;
+		// sig = sig.normalize;
+		// sig;
+		// }.value.asWavetableNoWrap;
+		// )
+		// })
+		// );
 
-		~shaper = Synth.new(\wt, [\in, ~wtBus, \auxOut, ~reverbBus, \wt, ~wt[\random][0]], ~fxGroup);
+		// ~shaper = Synth.new(\wt, [\in, ~wtBus, \auxOut, ~reverbBus, \wt, ~wt[\random][0]], ~fxGroup);
 	});
 };
 
@@ -592,14 +592,14 @@ SynthDef(
 		Out.ar(auxOut,sig*auxAmp);
 	}).add;
 
-	SynthDef(\wt,{
-		var input, sig;
-		input = In.ar(\in.kr(0),~channels);
-		sig = Shaper.ar(\shape.kr(0), input);
-		sig = sig.tanh;
-		Out.ar(\out.kr(0),sig*\amp.kr(0.5));
-		Out.ar(\auxOut.kr(0),sig*\auxAmp.kr(0));
-	}).add;
+	// SynthDef(\wt,{
+	// var input, sig;
+	// input = In.ar(\in.kr(0),~channels);
+	// sig = Shaper.ar(\shape.kr(0), input);
+	// sig = sig.tanh;
+	// Out.ar(\out.kr(0),sig*\amp.kr(0.5));
+	// Out.ar(\auxOut.kr(0),sig*\auxAmp.kr(0));
+	// }).add;
 
 	// ~bufPath = PathName.new(thisProcess.nowExecutingPath).parentPath ++ "calibration_tone/";
 
@@ -690,8 +690,9 @@ SynthDef(
 	\hatOpen808 -> Dictionary.newFrom([ \amp, 1, \auxAmp, 0, \bpfFreq, 7700, \env1rel, 0.5, \env1relCrv, (-3), \env2rel, 0.5, \env2relCrv, (-150), \lpfFreq, 4000, \osc1freq, 203.52, \osc2freq, 366.31, \osc3freq, 301.77, \osc4freq, 518.19, \osc5freq, 811.16, \osc6freq, 538.75, \pan, 0, \out, 0, \auxOut, ~reverbBus ]),
 	\cymbal808 -> Dictionary.newFrom([ \amp, 1, \auxAmp, 0, \lpf, 4000, \osc1freq, 203.52, \osc2freq, 366.31, \osc3freq, 301.77, \osc4freq, 518.19, \osc5freq, 811.16, \osc6freq, 538.75, \rel1, 2, \rel1crv, (-3), \rel2, 2, \rel2, 2, \rel2crv, (-5), \rel3, 2, \rel3crv, (-150), \sig1bpf, 3000, \sig1eq, 2400, \sig2bpf, 7400, \sig2eq, 7200, \sig3bpf, 6500, \sig3eq, 7400, \tone, 0.002, \pan, 0, \out, 0, \auxOut, ~reverbBus ]),
 ];
-// removed due to bug in install
-// StageLimiter.activate;
+
+// installing BatLib if not installed
+if(Quarks.isInstalled("BatLib") == false){Quarks.install("BatLib")}{StageLimiter.activate;};
 
 });
 

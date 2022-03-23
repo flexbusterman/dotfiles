@@ -97,17 +97,33 @@ Pdef(\\$1).stop;
 
 endsnippet
 
-snippet sd "Simple SynthDef" b
+# snippet sd "Simple SynthDef" b
+# (
+# SynthDef(\\${1:blip}, {
+# | freq=${2:440}, amp=$53:0.2}, auxAmp=${4:0.0}, att=0.00001, rel=1.0, pan=0.0, out=0, auxOut=0 |
+# var sig, env;
+# sig = SinOsc.ar(freq);
+# env = Env.perc(att, rel).kr(2);
+# sig = sig * env;
+# sig = Pan2.ar(sig, pan);
+# Out.ar(out, sig * amp);
+# Out.ar(auxOut, sig * auxAmp);
+# }).add;
+# );
+
+# x = Synth(\\$1);
+# endsnippet
+
+snippet sd "Simple Synth" b
 (
 SynthDef(\\${1:blip}, {
-	| freq=${2:440}, amp=$53:0.2}, auxAmp=${4:0.0}, att=0.00001, rel=1.0, pan=0.0, out=0, auxOut=0 |
 	var sig, env;
-	sig = SinOsc.ar(freq);
-	env = Env.perc(att, rel).kr(2);
+	sig = SinOsc.ar(\freq.kr(${2:440}));
+	env = Env.perc(\att.kr(0.00001), \rel.kr(1.0)).kr(2);
 	sig = sig * env;
-	sig = Pan2.ar(sig, pan);
-	Out.ar(out, sig * amp);
-	Out.ar(auxOut, sig * auxAmp);
+	sig = Pan2.ar(sig, \pan.kr(0));
+	Out.ar(\out.kr(0), sig * \amp.kr(${3:0.2}));
+	Out.ar(\auxOut.kr(0), sig * \auxAmp.kr(${4:0.0}));
 }).add;
 );
 
