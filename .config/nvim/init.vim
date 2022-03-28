@@ -297,6 +297,7 @@ let g:coc_global_extensions = [
   \ 'coc-json',
   \ 'coc-vetur',
   \ ]
+let g:scnvim_snippet_format = "ultisnips"
 let g:UltiSnipsSnippetDirectories = ['UltiSnips', 'scnvim-data']
 let g:scnvim_sclang_executable = '/usr/bin/sclang'
 " prettier command for coc
