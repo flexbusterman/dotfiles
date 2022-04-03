@@ -74,4 +74,5 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'metakirby5/codi.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'TristanCrawford/vim-eel2'
+Plug 'tidalcycles/vim-tidal'
 call plug#end()

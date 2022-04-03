@@ -16,3 +16,4 @@ dropbox &
 dunst &
 dwmblocks &
 exec dwm
+# exec spectrwm

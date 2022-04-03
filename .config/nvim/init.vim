@@ -497,3 +497,6 @@ let g:scnvim_sclang_options = ['-u', 9999]
 " help
 let g:scnvim_scdoc_render_prg = '/usr/bin/pandoc'
 " let g:scnvim_scdoc_render_args = '% -o %'
+"
+" tidalcycles
+let g:tidal_target = "terminal"
