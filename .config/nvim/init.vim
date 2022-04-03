@@ -500,3 +500,4 @@ let g:scnvim_scdoc_render_prg = '/usr/bin/pandoc'
 "
 " tidalcycles
 let g:tidal_target = "terminal"
+let g:Hexokinase_highlighters = ['backgroundfull']

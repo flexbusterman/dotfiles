@@ -75,4 +75,5 @@ Plug 'metakirby5/codi.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'TristanCrawford/vim-eel2'
 Plug 'tidalcycles/vim-tidal'
+Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 call plug#end()
