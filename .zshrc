@@ -244,14 +244,15 @@ wc() { nmcli device wifi connect $1 password $2 }
 wdisable() { nmcli connection down $* }
 
 # VIM aliases for editing common files
-alias va="cd /home/flex/.config/awesome/; nvim rc.lua"
-alias vA="cd /home/flex/.config/alacritty/; nvim alacritty.yml"
+# alias va="cd /home/flex/.config/awesome/; nvim rc.lua"
+alias va="cd /home/flex/.config/alacritty/; nvim alacritty.yml"
 alias vc="cd /home/flex/.config/nvim/; nvim coc-settings.json"
 alias vD="cd /home/flex/.local/src/dmenu/; nvim config.def.h"
 alias vd="cd /home/flex/.local/src/dwm/; nvim config.def.h"
 alias vn="cd /home/flex/.config/nvim/; nvim init.vim"
+alias vp="cd /home/flex/.config/polybar/; nvim config.ini"
 alias vP="cd /home/flex/.config/nvim/; nvim plugins.vim"
-alias vp="cd /home/flex/; nvim .xprofile"
+# alias vp="cd /home/flex/; nvim .xprofile"
 alias vs="cd /home/flex/.config/coc/ultisnips; nvim all.snippets"
 alias vS="cd /home/flex/.local/src/st/; nvim config.h"
 alias vu="cd /home/flex/.config/newsboat/; nvim urls"
@@ -260,7 +261,7 @@ alias vv="cd /home/flex/.config/vifm/; nvim vifmrc"
 alias vx="cd /home/flex/; nvim .xinitrc"
 alias vz="cd /home/flex/; nvim .zshrc"
 alias vi="cd /home/flex/.config/i3/; nvim config"
-alias vI="cd /home/flex/.config/i3status/; nvim config"
+# alias vI="cd /home/flex/.config/i3status/; nvim config"
 alias vq="cd /home/flex/.config/qtile/; nvim config.py"
 alias ve="cd /home/flex/; nvim .zshenv"
 
