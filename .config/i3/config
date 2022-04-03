@@ -32,10 +32,13 @@ exec --no-startup-id nm-applet
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+
+bindsym XF86MonBrightnessUp exec xbacklight -inc $(bc <<< "$(xbacklight) * 0.5 + 0.15")
+bindsym XF86MonBrightnessDown exec xbacklight -dec $(bc <<< "$(xbacklight) * 0.5")
 
 # use these keys for focus, movement, and resize directions when reaching for
 # the arrows is not convenient
@@ -212,36 +215,31 @@ bindsym $mod+Shift+m exec "mullvaddisconnect"
 # bindsym $mod+Control+k,					focusmon,				{.i = +1 } },
 # bindsym $mod+Control+h,					tagmon,					{.i = -1 } },
 # bindsym $mod+Control+l,					tagmon,					{.i = +1 } },
-# bindsym $mod+F1 exec "jackrun"
-# bindsym $mod+F2 exec "jackkill"
-# bindsym $mod+F3 exec "displayselect"
-# bindsym $mod+F4 exec "alacritty -t PulseMixer -e pulsemixer"
-# bindsym $mod+Shift+F4 exec "pavucontrol"
-# bindsym $mod+F6 exec "torwrap"
-# bindsym $mod+F7 exec "td-toggle"
-# bindsym $mod+F8 exec "dmenumount"
-# bindsym $mod+F9 exec "dmenuumount"
+bindsym $mod+F1 exec "jackrun"
+bindsym $mod+F2 exec "jackkill"
+bindsym $mod+F3 exec "displayselect"
+bindsym $mod+F4 exec "alacritty -t PulseMixer -e pulsemixer"
+bindsym $mod+Shift+F4 exec "pavucontrol"
+bindsym $mod+F6 exec "torwrap"
+bindsym $mod+F7 exec "td-toggle"
+bindsym $mod+F8 exec "dmenumount"
+bindsym $mod+F9 exec "dmenuumount"
 # XF86XK_AudioMute exec "pamixer -t; kill -44 $(pidof dwmblocks)"
-# XF86XK_AudioRaiseVolume exec "pamixer --allow-boost -i 3; kill -44 $(pidof dwmblocks)"
-# XF86XK_AudioLowerVolume exec "pamixer --allow-boost -d 3; kill -44 $(pidof dwmblocks)"
 # XF86XK_AudioMicMute exec "amixer set Capture toggle"
-# XF86XK_MonBrightnessUp exec "xbacklight -inc $(bc <<< \"$(xbacklight) * 0.5 + 0.15\")"
-# XF86XK_MonBrightnessDown exec "xbacklight -dec $(bc <<< \"$(xbacklight) * 0.5\")"
 # bindsym $mod+Shift+e exec "cd ~/.local/src/dwm/; alacritty -t DWMconfig -e nvim config.def.h"
 # bindsym $mod+Shift+j,					movestack,      {.i = +1 } },
 # bindsym $mod+Shift+k,					movestack,      {.i = -1 } },
 # bindsym $mod+Shift+Control+r exec "reboot"
 # bindsym $mod+Shift+Control+p exec "poweroff"
-# bindsym $mod+semicolon exec "stream"
-# bindsym $mod+p exec "passmenu"
-# bindsym $mod+Up exec "cpuperformance"
-# bindsym $mod+Down exec "cpupowersave"
-# bindsym $mod+Down exec "cpupowersave"
-# Control+Shift+Return exec "audacious"
-# bindsym $mod+Control+Shift+Return exec "alacritty -t ncspot -e ncspot"
-# Control+Shift+j exec "musicnext"
-# Control+Shift+k exec "musicprev"
-# Control+Shift+h exec "musicseekbackward"
-# Control+Shift+l exec "musicseekforward"
-# Control+Shift+space exec "musicplaypause"
+bindsym $mod+semicolon exec "stream"
+bindsym $mod+p exec "passmenu"
+bindsym $mod+Up exec "cpuperformance"
+bindsym $mod+Down exec "cpupowersave"
+bindsym Control+Shift+Return exec "audacious"
+bindsym $mod+Control+Shift+Return exec "alacritty -t ncspot -e ncspot"
+bindsym Control+Shift+j exec "musicnext"
+bindsym Control+Shift+k exec "musicprev"
+bindsym Control+Shift+h exec "musicseekbackward"
+bindsym Control+Shift+l exec "musicseekforward"
+bindsym Control+Shift+space exec "musicplaypause"
 
