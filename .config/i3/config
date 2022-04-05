@@ -12,6 +12,7 @@ set $mod Mod1
 #
 
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+exec --no-startup-id dropbox
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -207,7 +208,7 @@ bindsym $mod+e exec alacritty -t NeoMutt -e neomutt
 bindsym $mod+t exec alacritty -t Htop -e htop
   # { MODKEY+a,   togglegaps, {0} },
 bindsym $mod+Shift+x exec xkill
-bindsym $mod+n exec cd ~/Dropbox/NOTES/; alacritty -t VimWiki -e nvim -c VimwikiIndex
+bindsym $mod+n exec alacritty -t VimWiki --working-directory ~/Dropbox/NOTES/ -e nvim -c VimwikiIndex
 bindsym $mod+m exec "mullvadconnect"
 bindsym $mod+Shift+m exec "mullvaddisconnect"
 # bindsym $mod+Shift+Control+m exec "mailsync"
@@ -244,4 +245,3 @@ bindsym Control+Shift+k exec "musicprev"
 bindsym Control+Shift+h exec "musicseekbackward"
 bindsym Control+Shift+l exec "musicseekforward"
 bindsym Control+Shift+space exec "musicplaypause"
-

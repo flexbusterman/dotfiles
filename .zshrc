@@ -186,6 +186,7 @@ alias ud='sudo updatedb'
 alias vim="nvim"
 alias wine32="WINEPREFIX=~/.wine32 WINEARCH=win32"
 alias mnt="sudo mount -o loop $* /mnt/ISO/"
+alias vimdiff='nvim -d'
 
 # audio
 alias play="ffplay -nodisp -autoexit"
@@ -250,7 +251,7 @@ alias vc="cd /home/flex/.config/nvim/; nvim coc-settings.json"
 alias vD="cd /home/flex/.local/src/dmenu/; nvim config.def.h"
 alias vd="cd /home/flex/.local/src/dwm/; nvim config.def.h"
 alias vn="cd /home/flex/.config/nvim/; nvim init.vim"
-alias vp="cd /home/flex/.config/polybar/; nvim config.ini"
+alias vp="cd /home/flex/.config/polybar/; nvim config"
 alias vP="cd /home/flex/.config/nvim/; nvim plugins.vim"
 # alias vp="cd /home/flex/; nvim .xprofile"
 alias vs="cd /home/flex/.config/coc/ultisnips; nvim all.snippets"
@@ -264,6 +265,8 @@ alias vi="cd /home/flex/.config/i3/; nvim config"
 # alias vI="cd /home/flex/.config/i3status/; nvim config"
 alias vq="cd /home/flex/.config/qtile/; nvim config.py"
 alias ve="cd /home/flex/; nvim .zshenv"
+alias vb="cd /home/flex/.config/bspwm/; nvim bspwmrc"
+alias vk="cd /home/flex/.config/sxhkd/; nvim sxhkdrc"
 
 # Keymap aliases
 alias se="setxkbmap se; setxkbmap -option caps:swapescape; xset r rate 300 50"

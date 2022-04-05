@@ -156,6 +156,7 @@ nmap <C-l> <C-w>l
 " nmap <leader>y :StripWhitespace<CR>
 nmap <leader>f <Plug>(easymotion-bd-w)
 vmap <leader>f <Plug>(easymotion-bd-w)
+
 noremap <F3> :Autoformat<CR>
 " * and # search for next/previous of selected text when used in visual mode
 xno * :<c-u>cal<SID>VisualSearch()<cr>/<cr>
