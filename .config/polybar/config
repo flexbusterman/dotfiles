@@ -73,7 +73,7 @@ font-0 = Px437 IBM BIOS:size=7;3
 
 modules-left = xworkspaces xwindow
 ; modules-right = filesystem pulseaudio xkeyboard memory cpu wlan eth date
-modules-right = wlan filesystem memory cpu pulseaudio date
+modules-right = wlan filesystem memory cpu pulseaudio battery date
 
 cursor-click = pointer
 cursor-scroll = ns-resize
@@ -183,15 +183,17 @@ label-connected = %{F#F0C674}%ifname%%{F-} %local_ip%
 [module/date]
 type = internal/date
 interval = 1
-
 date = %{F#8be9fd}%Y-%m-%d %{F#ffffff}%H:%M
 date-alt = %Y-%m-%d %H:%M:%S
-
-
-; magenta: #ff79c6
-; cyan:    #8be9fd
 label = %date%
-; label-foreground = ${colors.primary}
+
+[module/battery]
+type=internal/battery
+label-charging = %{F#caa9fa}BAT %{F#50fa7b}+%percentage%%
+label-discharging =%{F#caa9fa}BAT %{F#9aedfe}-%percentage%% %{F-}%time%
+label-full = %{F#caa9fa}BAT %{F#50fa7b}%percentage%%
+label-low = %{F#caa9fa}BAT %{F#ff5555}-%percentage%%! %{F-}%time%
+time-format = %H:%M
 
 [settings]
 screenchange-reload = true
