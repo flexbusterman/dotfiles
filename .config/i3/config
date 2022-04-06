@@ -193,12 +193,11 @@ bindsym Mod4+l resize grow width 10 px or 10 ppt
 		# font pango: Px437 IBM BIOS 7
 # }
 
-
 bindsym $mod+Shift+comma exec alacritty -t Vifm -e vifmrun
 bindsym $mod+Shift+period exec bravestart 
 bindsym $mod+Shift+Control+period exec brave "https://www.youtube.com"
-bindsym $mod+Shift+Control+l exec slock 
-bindsym $mod+d exec sleep 0.2 && xdotool type --clearmodifiers $(date +"%F ")
+bindsym --release $mod+Shift+Control+l exec slock 
+bindsym --release $mod+d exec sleep 0.2 && xdotool type --clearmodifiers $(date +"%F ")
 bindsym $mod+b exec bluetoothconnect 74:5C:4B:D2:86:F7
 bindsym $mod+Shift+b exec bluetoothctl disconnect 74:5C:4B:D2:86:F7
 bindsym Print exec maim -f jpg -m 9 "/home/flex/Pictures/SCREENSHOTS/$(date +\"%F %H_%M_%S.jpg\")"
@@ -207,11 +206,10 @@ bindsym $mod+grave exec dmenuunicode
 bindsym $mod+e exec alacritty -t NeoMutt -e neomutt
 bindsym $mod+t exec alacritty -t Htop -e htop
   # { MODKEY+a,   togglegaps, {0} },
-bindsym $mod+Shift+x exec xkill
+bindsym --release $mod+Shift+x exec xkill
 bindsym $mod+n exec alacritty -t VimWiki --working-directory ~/Dropbox/NOTES/ -e nvim -c VimwikiIndex
 bindsym $mod+m exec "mullvadconnect"
 bindsym $mod+Shift+m exec "mullvaddisconnect"
-# bindsym $mod+Shift+Control+m exec "mailsync"
 # bindsym $mod+Shift+n exec "cd ~/Dropbox/NOTES/; alacritty -t VimWiki -e nvim ~/Dropbox/NOTES/TODO.md"
 # bindsym $mod+r exec "alacritty -t Newsboat -e newsboat"
 # bindsym $mod+Control+j,					focusmon,				{.i = -1 } },
@@ -245,3 +243,12 @@ bindsym Control+Shift+k exec "musicprev"
 bindsym Control+Shift+h exec "musicseekbackward"
 bindsym Control+Shift+l exec "musicseekforward"
 bindsym Control+Shift+space exec "musicplaypause"
+
+# rules
+assign [class="Audacious"] 9
+assign [class="Steam"] 9
+assign [instance="ncspot"] 9
+# Spotify doesn't work with window rules in any wm : )
+
+# exact match instead of substring
+# assign [class="^URxvt$"] 2
