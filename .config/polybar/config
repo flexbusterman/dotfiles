@@ -72,7 +72,6 @@ separator-foreground = ${colors.disabled}
 font-0 = Px437 IBM BIOS:size=7;3
 
 modules-left = xworkspaces xwindow
-; modules-right = filesystem pulseaudio xkeyboard memory cpu wlan eth date
 modules-right = wlan filesystem memory cpu pulseaudio battery date
 
 cursor-click = pointer
@@ -167,7 +166,7 @@ type = internal/network
 interval = 5
 format-connected = <label-connected>
 format-disconnected = <label-disconnected>
-label-disconnected = %{F#caa9fa}%ifname%%{F-} %{F#707880} disconnected
+label-disconnected = %{F#caa9fa}%ifname%%{F-} %{F#707880}disconnected
 
 [module/wlan]
 inherit = network-base
