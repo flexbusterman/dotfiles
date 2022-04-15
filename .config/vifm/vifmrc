@@ -784,7 +784,7 @@ nmap <C-p> :dragon<CR>
 "command! mkcd :mkdir %a | cd %a
 "command! vgrep vim "+grep %a"
 "command! reload :write | restart full
-command! dragon dragon-drag-and-drop -a -x %f
+command! dragon dragon-drop -a -x %f
 "
 "" source ${XDG_CONFIG_HOME:-$HOME/.config}/vifm/vifmshortcuts
 "map > :!vifmimg inc<CR>
