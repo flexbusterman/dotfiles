@@ -12,7 +12,8 @@ udiskie -ta &
 xset r rate 300 50
 xinput disable "Synaptics TM3288-011"
 mailsync &
-# dropbox &
+dropbox &
 dunst &
 # ~/.config/polybar/launch.sh &
-exec i3
+# dwmblocks &
+exec dwm
