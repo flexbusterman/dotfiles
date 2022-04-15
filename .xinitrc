@@ -14,6 +14,4 @@ xinput disable "Synaptics TM3288-011"
 mailsync &
 dropbox &
 dunst &
-# ~/.config/polybar/launch.sh &
-# dwmblocks &
-exec dwm
+exec i3

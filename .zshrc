@@ -249,7 +249,7 @@ wdisable() { nmcli connection down $* }
 alias va="cd /home/flex/.config/alacritty/; nvim alacritty.yml"
 alias vc="cd /home/flex/.config/nvim/; nvim coc-settings.json"
 alias vD="cd /home/flex/.local/src/dmenu/; nvim config.def.h"
-alias vd="cd /home/flex/.local/src/dwm/; nvim config.def.h"
+alias vd="cd /home/flex/.local/src/dwm-ipc/; nvim config.def.h"
 alias vn="cd /home/flex/.config/nvim/; nvim init.vim"
 alias vp="cd /home/flex/.config/polybar/; nvim config"
 alias vP="cd /home/flex/.config/nvim/; nvim plugins.vim"
