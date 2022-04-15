@@ -148,11 +148,11 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 # move the currently focused window to the scratchpad
-bindsym $mod+Shift+minus move scratchpad
+# bindsym $mod+Shift+minus move scratchpad
 
 # Show the next scratchpad window or hide the focused scratchpad window.
 # If there are multiple scratchpad windows, this command cycles through them.
-bindsym $mod+minus scratchpad show
+# bindsym $mod+minus scratchpad show
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
@@ -225,10 +225,10 @@ bindsym $mod+Shift+q exit
         # bindsym $mod+r mode "default"
 # }
 
-bindsym Mod4+h resize shrink width 10 px or 10 ppt
-bindsym Mod4+j resize grow height 10 px or 10 ppt
-bindsym Mod4+k resize shrink height 10 px or 10 ppt
-bindsym Mod4+l resize grow width 10 px or 10 ppt
+bindsym $mod+equal resize grow width 10 px or 10 ppt
+bindsym $mod+Shift+equal resize grow height 10 px or 10 ppt
+bindsym $mod+minus resize shrink width 10 px or 10 ppt
+bindsym $mod+Shift+minus resize shrink height 10 px or 10 ppt
 
 # bindsym $mod+r mode "resize"
 
