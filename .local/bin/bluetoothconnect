@@ -13,22 +13,22 @@ fi
 
 bluetoothctl -- connect $1
 
-SINK=$(pactl info | grep -i "default sink" | sed "s/.*\.//g")
+# SINK=$(pactl info | grep -i "default sink" | sed "s/.*\.//g")
 
-PROFILE="bluez_card.$(echo "$1" | sed "s/:/_/g")"
+# PROFILE="bluez_card.$(echo "$1" | sed "s/:/_/g")"
 
-# attempt to set sink 10 times
-for i in {1..10}
-do
-    if [[ "$SINK" == "a2dp_sink" ]]; then
-        notify-send "Device $1 connected with a2dp_sink" 
-        echo "a2dp_sink active. Success! Exiting."
-        exit 1
-    else
-        echo "Setting sink"
-        pactl set-card-profile $PROFILE a2dp_sink
-        sleep 1
-        SINK=$(pactl info | grep -i "default sink" | sed "s/.*\.//g")
-        echo "Sink is now $SINK"
-    fi
-done
+# # attempt to set sink 10 times
+# for i in {1..10}
+# do
+    # if [[ "$SINK" == "a2dp_sink" ]]; then
+        # notify-send "Device $1 connected with a2dp_sink" 
+        # echo "a2dp_sink active. Success! Exiting."
+        # exit 1
+    # else
+        # echo "Setting sink"
+        # pactl set-card-profile $PROFILE a2dp_sink
+        # sleep 1
+        # SINK=$(pactl info | grep -i "default sink" | sed "s/.*\.//g")
+        # echo "Sink is now $SINK"
+    # fi
+# done

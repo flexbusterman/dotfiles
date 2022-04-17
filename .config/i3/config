@@ -256,6 +256,7 @@ bindsym --release $mod+Shift+x exec xkill
 bindsym $mod+n exec alacritty -t VimWiki --working-directory ~/Dropbox/NOTES/ -e nvim -c VimwikiIndex
 bindsym $mod+m exec "mullvadconnect"
 bindsym $mod+Shift+m exec "mullvaddisconnect"
+bindsym $mod+q exec qpwgraph
 # bindsym $mod+Shift+n exec "cd ~/Dropbox/NOTES/; alacritty -t VimWiki -e nvim ~/Dropbox/NOTES/TODO.md"
 # bindsym $mod+r exec "alacritty -t Newsboat -e newsboat"
 # bindsym $mod+Control+j,					focusmon,				{.i = -1 } },
