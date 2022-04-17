@@ -115,10 +115,10 @@ bindsym $mod+k focus up
 bindsym $mod+l focus right
 
 # move focused window
-bindsym $mod+Shift+h move left
-bindsym $mod+Shift+j move down
-bindsym $mod+Shift+k move up
-bindsym $mod+Shift+l move right
+bindsym $mod+Shift+h move left 40
+bindsym $mod+Shift+j move down 40
+bindsym $mod+Shift+k move up 40
+bindsym $mod+Shift+l move right 40
 
 # split in horizontal orientation
 bindsym $mod+period split h
@@ -225,10 +225,10 @@ bindsym $mod+Shift+q exit
         # bindsym $mod+r mode "default"
 # }
 
-bindsym $mod+equal resize grow width 10 px or 10 ppt
-bindsym $mod+Shift+equal resize grow height 10 px or 10 ppt
-bindsym $mod+minus resize shrink width 10 px or 10 ppt
-bindsym $mod+Shift+minus resize shrink height 10 px or 10 ppt
+bindsym $mod+equal resize grow width 40 px or 10 ppt
+bindsym $mod+Shift+equal resize grow height 40 px or 10 ppt
+bindsym $mod+minus resize shrink width 40 px or 10 ppt
+bindsym $mod+Shift+minus resize shrink height 40 px or 10 ppt
 
 # bindsym $mod+r mode "resize"
 
