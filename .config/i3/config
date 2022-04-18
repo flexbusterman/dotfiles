@@ -89,6 +89,8 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 bindsym XF86MonBrightnessUp exec xbacklight -inc $(bc <<< "$(xbacklight) * 0.5 + 0.15")
 bindsym XF86MonBrightnessDown exec xbacklight -dec $(bc <<< "$(xbacklight) * 0.5")
 
+bindsym $mod+s exec polybar-msg cmd toggle
+
 # use these keys for focus, movement, and resize directions when reaching for
 # the arrows is not convenient
 set $up l
