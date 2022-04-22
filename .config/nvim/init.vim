@@ -187,8 +187,8 @@ let @f='5Wdt;ofont-family: pa;k0wWWWWdwjofont-size: pa;kkf/ldwjjofont€kb€kb€
 " autocmd VimResized * wincmd =
 
 " autocmd VimResized * :exe 'vertical resize' . float2nr(&columns * 0.5) | exe resize . float2nr(&lines * 0.75)
-autocmd WinEnter *.sc,*.scd :exe 'vertical resize' . float2nr(&columns * 0.5) | exe 'resize' . float2nr(&lines * 0.75)
-autocmd VimResized *.sc,*.scd :exe 'vertical resize' . float2nr(&columns * 0.5) | exe 'resize' . float2nr(&lines * 0.75)
+" autocmd WinEnter *.sc,*.scd :exe 'vertical resize' . float2nr(&columns * 0.5) | exe 'resize' . float2nr(&lines * 0.75)
+" autocmd VimResized *.sc,*.scd :exe 'vertical resize' . float2nr(&columns * 0.5) | exe 'resize' . float2nr(&lines * 0.75)
 
 " autocmd WinResize * :exe 50wincmd |
 
