@@ -14,4 +14,6 @@ xinput disable "Synaptics TM3288-011"
 mailsync &
 dropbox &
 dunst &
-exec i3
+qpwgraph -m &
+# exec i3
+exec awesome

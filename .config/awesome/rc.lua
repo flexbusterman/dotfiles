@@ -217,7 +217,7 @@ awful.screen.connect_for_each_screen(function(s)
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
             -- mykeyboardlayout,
-						mySeparator,
+            mySeparator,
 						-- awful.widget.watch('bash -c "sensors | grep temp1"', 15),
 						-- awful.widget.watch(amixer sget Master, 5),
 						-- awful.widget.watch('bash -c "sensors | grep temp1"', 15),
@@ -240,8 +240,8 @@ awful.screen.connect_for_each_screen(function(s)
 								 -- end
 							 -- end
 						 -- end),
-						awful.widget.watch('mailbox', 5),
-						mySeparator,
+						-- awful.widget.watch('mailbox', 5),
+						-- mySeparator,
 						awful.widget.watch('localip', 10),
 						mySeparator,
 						awful.widget.watch('curl ipinfo.io/ip', 10),
@@ -302,7 +302,8 @@ globalkeys = gears.table.join(
 		awful.key({modkey, "Shift" }, "m", function () awful.util.spawn_with_shell("mullvaddisconnect") end),
 		awful.key({modkey, "Control", "Shift" }, "m", function () awful.util.spawn_with_shell("mailsync") end),
 		awful.key({modkey}, "r", function () awful.util.spawn("alacritty -t Newsboat -e newsboat") end),
-		awful.key({modkey}, "q", function () awful.util.spawn("qjackctl") end),
+		-- awful.key({modkey}, "q", function () awful.util.spawn("qjackctl") end),
+		awful.key({modkey}, "q", function () awful.util.spawn("qpwgraph") end),
 		awful.key({modkey, "Shift" }, "Return", function () awful.util.spawn("alacritty -t ZSH -e zsh") end),
     awful.key({modkey, "Shift" }, "comma", function () awful.util.spawn("alacritty -t Vifm -e vifmrun") end),
 
@@ -745,3 +746,6 @@ end)
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
+--
+-- autostart startup
+-- awful.util.spawn_with_shell("~/.config/polybar/launch.sh") 

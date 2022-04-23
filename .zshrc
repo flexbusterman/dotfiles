@@ -247,6 +247,7 @@ wdisable() { nmcli connection down $* }
 # VIM aliases for editing common files
 # alias va="cd /home/flex/.config/awesome/; nvim rc.lua"
 alias va="cd /home/flex/.config/alacritty/; nvim alacritty.yml"
+alias vA="cd /home/flex/.config/awesome/; nvim rc.lua"
 alias vc="cd /home/flex/.config/nvim/; nvim coc-settings.json"
 alias vD="cd /home/flex/.local/src/dmenu/; nvim config.def.h"
 alias vd="cd /home/flex/.local/src/dwm-ipc/; nvim config.def.h"
