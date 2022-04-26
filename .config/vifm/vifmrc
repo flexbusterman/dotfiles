@@ -282,7 +282,7 @@ filextype *.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
         \ mplayer %f,
 
 " code
-fileviewer *.html,*.go,*.css,*.scd,*.vue,*.md,*.js,*.json,*.h,*.diff,*.c,*.bak,*.sc,*.txt,.* highlight -O xterm256 -s moria %c
+fileviewer *.html,*.go,*.css,*.scd,*.vue,*.md,*.js,*.json,*.h,*.diff,*.c,*.bak,*.txt,.* highlight -O xterm256 -s moria %c
 
 " Web
 filextype *.html,*.htm
@@ -297,6 +297,15 @@ filextype *.html,*.htm
         \ {Open with uzbl}
         \ uzbl-browser %f %i &,
 filetype *.html,*.htm links, lynx
+
+
+fileviewer *.sc highlight -O xterm256 -s moria %c
+
+" spreadcheat
+filextype *.sc
+        \ {Open with sc-im}
+        \ alacritty -e sc-im %f 2>/dev/null &,
+" filetype *.sc, sc-im
 
 " Object
 filetype *.o nm %f | less
