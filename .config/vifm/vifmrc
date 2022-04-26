@@ -305,7 +305,9 @@ fileviewer *.sc highlight -O xterm256 -s moria %c
 filextype *.sc
         \ {Open with sc-im}
         \ alacritty -e sc-im %f 2>/dev/null &,
-" filetype *.sc, sc-im
+filextype *.ods
+        \ {Open with LibreOffice}
+        \ libreoffice --calc %f 2>/dev/null &,
 
 " Object
 filetype *.o nm %f | less
