@@ -651,6 +651,7 @@ awful.rules.rules = {
           "brave-browser",
           "mednafen",
           "7DaysToDie.x86_64",
+          "org.libreoffice",
 					-- "REAPER",
 				},
         name = {
