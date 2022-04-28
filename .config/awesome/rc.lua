@@ -314,7 +314,7 @@ globalkeys = gears.table.join(
 		awful.key({modkey}, "p", function () awful.util.spawn("passmenu") end),
 		awful.key({modkey}, "e", function () awful.util.spawn_with_shell("cd ~/Downloads/; alacritty -t Neomutt -e neomutt") end),
 		awful.key({modkey, "Shift"}, "t", function () awful.util.spawn("alacritty -t Telegram -e tg") end),
-		-- awful.key({modkey, "Control", "Shift"}, "l", function () awful.util.spawn("slock") end),
+    awful.key({modkey, "Control", "Shift"}, "l", function () awful.util.spawn("slock") end),
 		awful.key({modkey, "Shift"}, "c", function () awful.util.spawn("alacritty -t Calcurse -e calcurse") end),
 		awful.key({modkey}, "t", function () awful.util.spawn("alacritty -t Htop -e htop") end),
     -- awful.key({modkey, "Control", "Shift"}, "s", function () awful.util.spawn("alacritty -t SC-IM -e sc-im") end),
