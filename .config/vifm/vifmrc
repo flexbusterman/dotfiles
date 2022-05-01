@@ -329,7 +329,7 @@ fileviewer <image/*>
         " \ vifmimg gifpreview %px %py %pw %ph %c
         " \ %pc
         " \ vifmimg clear
-filextype *.bmp,*.jpg,*.JPG,*.jpeg,*.png,*.gif,*.xpm,*.webp
+filextype *.bmp,*.jpg,*.JPG,*.jpeg,*.png,*.gif,*.xpm,*.webp,*.tiff
         \ {View in sxiv}
         " \ sxiv -ia %f &,
         \ rifle_sxiv %f &,
