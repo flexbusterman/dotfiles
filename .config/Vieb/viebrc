@@ -1,5 +1,5 @@
 " Options
-set adblocker=static
+set adblocker=update
 set cache=clearonquit
 set noclearcookiesonquit
 set nocleardownloadsoncompleted
@@ -49,7 +49,7 @@ set follownewtabswitch
 set fontsize=14
 set guifullscreennavbar=oninput
 set guifullscreentabbar=onupdate
-set guihidetimeout=2000
+set guihidetimeout=5000
 set guinavbar=always
 set guitabbar=always
 set ignorecase
@@ -161,7 +161,7 @@ set taboverflow=scroll
 set tabreopenmuted=remember
 set tabreopenposition=right
 set timeout
-set timeoutlen=1000
+set timeoutlen=30000
 set vimcommand=gvim
 set windowtitle=simple
 

@@ -653,6 +653,7 @@ awful.rules.rules = {
           "mednafen",
           "7DaysToDie.x86_64",
           "org.libreoffice",
+          "Brave",
 					-- "REAPER",
 				},
         name = {
