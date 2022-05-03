@@ -1,5 +1,5 @@
 " Options
-set adblocker=update
+set adblocker=static
 set cache=clearonquit
 set noclearcookiesonquit
 set nocleardownloadsoncompleted

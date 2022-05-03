@@ -19,7 +19,7 @@ exec --no-startup-id dropbox
 font pango: Px437 IBM BIOS 7
 
 # default_border pixel 3
-default_border pixel 3
+for_window [class="^.*"] border pixel 3
 hide_edge_borders smart
 
 # Default Colors
@@ -194,7 +194,7 @@ bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
 # reload the configuration file
-bindsym $mod+r reload
+# bindsym $mod+r reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
@@ -261,7 +261,7 @@ bindsym $mod+m exec "mullvadconnect"
 bindsym $mod+Shift+m exec "mullvaddisconnect"
 bindsym $mod+q exec qpwgraph
 # bindsym $mod+Shift+n exec "cd ~/Dropbox/NOTES/; alacritty -t VimWiki -e nvim ~/Dropbox/NOTES/TODO.md"
-# bindsym $mod+r exec "alacritty -t Newsboat -e newsboat"
+bindsym $mod+r exec alacritty -t Newsboat -e newsboat
 # bindsym $mod+Control+j,					focusmon,				{.i = -1 } },
 # bindsym $mod+Control+k,					focusmon,				{.i = +1 } },
 # bindsym $mod+Control+h,					tagmon,					{.i = -1 } },
@@ -308,3 +308,4 @@ bindsym Control+Shift+space exec "musicplaypause"
 # client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 # client.background       #ffffff
 # assign [class="^URxvt$"] 2
+#
