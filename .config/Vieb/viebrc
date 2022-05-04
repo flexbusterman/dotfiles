@@ -128,7 +128,7 @@ set noquitonlasttabclose
 set redirects=https?://(www\.)?google\.com(\.\w+)?/amp/s/amp\.(.*)~https://$3
 set noredirecttohttp
 set requesttimeout=20000
-set restoretabs
+" set restoretabs
 set restorewindowmaximize
 set restorewindowposition
 set restorewindowsize

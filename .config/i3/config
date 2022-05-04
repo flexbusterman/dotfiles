@@ -242,8 +242,8 @@ bindsym $mod+Shift+minus resize shrink height 40 px or 3 ppt
 # }
 
 bindsym $mod+Shift+comma exec alacritty -t Vifm -e vifmrun
-bindsym $mod+Shift+period exec bravestart 
-bindsym $mod+Shift+Control+period exec vieb 
+bindsym $mod+Shift+period exec qutebrowser
+bindsym $mod+Shift+Control+period exec bravestart
 # bindsym $mod+Shift+Control+period exec brave "https://www.youtube.com"
 bindsym --release $mod+Shift+Control+l exec slock 
 bindsym --release $mod+d exec sleep 0.2 && xdotool type --clearmodifiers $(date +"%F ")

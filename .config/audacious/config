@@ -7,10 +7,10 @@ column_widths=10,275,333,10,175,175,10,100,41,10,275,275,275,10,275
 infoarea_show_art=FALSE
 infoarea_show_vis=FALSE
 infoarea_visible=FALSE
-player_height=1063
-player_width=1920
+player_height=524
+player_width=1914
 player_x=0
-player_y=17
+player_y=550
 
 [gtkui-layout]
 item_count=0
