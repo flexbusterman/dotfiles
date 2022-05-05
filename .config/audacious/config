@@ -8,8 +8,8 @@ infoarea_show_art=FALSE
 infoarea_show_vis=FALSE
 infoarea_visible=FALSE
 player_height=524
-player_width=1914
-player_x=0
+player_width=474
+player_x=960
 player_y=550
 
 [gtkui-layout]
