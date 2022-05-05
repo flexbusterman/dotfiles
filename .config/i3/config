@@ -86,10 +86,10 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
-bindsym XF86MonBrightnessUp exec xbacklight -inc $(bc <<< "$(xbacklight) * 0.5 + 0.15")
-bindsym XF86MonBrightnessDown exec xbacklight -dec $(bc <<< "$(xbacklight) * 0.5")
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc $(bc <<< "$(xbacklight) * 0.5 + 0.15")
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec $(bc <<< "$(xbacklight) * 0.5")
 
-bindsym $mod+s exec polybar-msg cmd toggle
+bindsym $mod+s exec --no-startup-id polybar-msg cmd toggle
 
 # use these keys for focus, movement, and resize directions when reaching for
 # the arrows is not convenient
@@ -102,7 +102,7 @@ set $right semicolon
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+shift+Return exec alacritty
+bindsym $mod+shift+Return exec --no-startup-id alacritty
 
 # kill focused window
 bindsym $mod+w kill
@@ -198,7 +198,7 @@ bindsym $mod+Shift+0 move container to workspace number $ws10
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-# bindsym $mod+Shift+q exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+# bindsym $mod+Shift+q exec --no-startup-id "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 bindsym $mod+Shift+q exit
 
 # resize window (you can also use the mouse for that)
@@ -241,59 +241,59 @@ bindsym $mod+Shift+minus resize shrink height 40 px or 3 ppt
 		# font pango: Px437 IBM BIOS 7
 # }
 
-bindsym $mod+Shift+comma exec alacritty -t Vifm -e vifmrun
-bindsym $mod+Shift+period exec qutebrowser
-bindsym $mod+Shift+Control+period exec bravestart
-# bindsym $mod+Shift+Control+period exec brave "https://www.youtube.com"
-bindsym --release $mod+Shift+Control+l exec slock 
-bindsym --release $mod+d exec sleep 0.2 && xdotool type --clearmodifiers $(date +"%F ")
-bindsym $mod+b exec bluetoothconnect 74:5C:4B:D2:86:F7
-bindsym $mod+Shift+b exec bluetoothctl disconnect 74:5C:4B:D2:86:F7
-bindsym Print exec maim -f jpg -m 9 "/home/flex/Pictures/SCREENSHOTS/$(date +\"%F %H_%M_%S.jpg\")"
-bindsym Shift+Print exec maim -f jpg -m 9 -s "/home/flex/Pictures/SCREENSHOTS/$(date +\"%F %H_%M_%S.jpg\")"
-bindsym $mod+grave exec dmenuunicode
-bindsym $mod+e exec alacritty -t NeoMutt -e neomutt
-bindsym $mod+t exec alacritty -t Htop -e htop
+bindsym $mod+Shift+comma exec --no-startup-id alacritty -t Vifm -e vifmrun
+bindsym $mod+Shift+period exec --no-startup-id qutebrowser
+bindsym $mod+Shift+Control+period exec --no-startup-id bravestart
+# bindsym $mod+Shift+Control+period exec --no-startup-id brave "https://www.youtube.com"
+bindsym --release $mod+Shift+Control+l exec --no-startup-id slock 
+bindsym --release $mod+d exec --no-startup-id sleep 0.2 && xdotool type --clearmodifiers $(date +"%F ")
+bindsym $mod+b exec --no-startup-id bluetoothconnect 74:5C:4B:D2:86:F7
+bindsym $mod+Shift+b exec --no-startup-id bluetoothctl disconnect 74:5C:4B:D2:86:F7
+bindsym Print exec --no-startup-id maim -f jpg -m 9 "/home/flex/Pictures/SCREENSHOTS/$(date +\"%F %H_%M_%S.jpg\")"
+bindsym Shift+Print exec --no-startup-id maim -f jpg -m 9 -s "/home/flex/Pictures/SCREENSHOTS/$(date +\"%F %H_%M_%S.jpg\")"
+bindsym $mod+grave exec --no-startup-id dmenuunicode
+bindsym $mod+e exec --no-startup-id alacritty -t NeoMutt -e neomutt
+bindsym $mod+t exec --no-startup-id alacritty -t Htop -e htop
   # { MODKEY+a,   togglegaps, {0} },
-bindsym --release $mod+Shift+x exec xkill
-bindsym $mod+n exec alacritty -t VimWiki --working-directory ~/Dropbox/NOTES/ -e nvim -c VimwikiIndex
-bindsym $mod+m exec "mullvadconnect"
-bindsym $mod+Shift+m exec "mullvaddisconnect"
-bindsym $mod+q exec qpwgraph
-# bindsym $mod+Shift+n exec "cd ~/Dropbox/NOTES/; alacritty -t VimWiki -e nvim ~/Dropbox/NOTES/TODO.md"
-bindsym $mod+r exec alacritty -t Newsboat -e newsboat
+bindsym --release $mod+Shift+x exec --no-startup-id xkill
+bindsym $mod+n exec --no-startup-id alacritty -t VimWiki --working-directory ~/Dropbox/NOTES/ -e nvim -c VimwikiIndex
+bindsym $mod+m exec --no-startup-id "mullvadconnect"
+bindsym $mod+Shift+m exec --no-startup-id "mullvaddisconnect"
+bindsym $mod+q exec --no-startup-id qpwgraph
+# bindsym $mod+Shift+n exec --no-startup-id "cd ~/Dropbox/NOTES/; alacritty -t VimWiki -e nvim ~/Dropbox/NOTES/TODO.md"
+bindsym $mod+r exec --no-startup-id alacritty -t Newsboat -e newsboat
 # bindsym $mod+Control+j,					focusmon,				{.i = -1 } },
 # bindsym $mod+Control+k,					focusmon,				{.i = +1 } },
 # bindsym $mod+Control+h,					tagmon,					{.i = -1 } },
 # bindsym $mod+Control+l,					tagmon,					{.i = +1 } },
-bindsym $mod+F1 exec "jackrun"
-bindsym $mod+F2 exec "jackkill"
-bindsym $mod+F3 exec "displayselect"
-bindsym $mod+F4 exec "alacritty -t PulseMixer -e pulsemixer"
-bindsym $mod+Shift+F4 exec "pavucontrol"
-bindsym $mod+F6 exec "torwrap"
-bindsym $mod+F7 exec "td-toggle"
-bindsym $mod+F8 exec "dmenumount"
-bindsym $mod+F9 exec "dmenuumount"
-# XF86XK_AudioMute exec "pamixer -t; kill -44 $(pidof dwmblocks)"
-# XF86XK_AudioMicMute exec "amixer set Capture toggle"
-# bindsym $mod+Shift+e exec "cd ~/.local/src/dwm/; alacritty -t DWMconfig -e nvim config.def.h"
+bindsym $mod+F1 exec --no-startup-id "jackrun"
+bindsym $mod+F2 exec --no-startup-id "jackkill"
+bindsym $mod+F3 exec --no-startup-id "displayselect"
+bindsym $mod+F4 exec --no-startup-id "alacritty -t PulseMixer -e pulsemixer"
+bindsym $mod+Shift+F4 exec --no-startup-id "pavucontrol"
+bindsym $mod+F6 exec --no-startup-id "torwrap"
+bindsym $mod+F7 exec --no-startup-id "td-toggle"
+bindsym $mod+F8 exec --no-startup-id "dmenumount"
+bindsym $mod+F9 exec --no-startup-id "dmenuumount"
+# XF86XK_AudioMute exec --no-startup-id "pamixer -t; kill -44 $(pidof dwmblocks)"
+# XF86XK_AudioMicMute exec --no-startup-id "amixer set Capture toggle"
+# bindsym $mod+Shift+e exec --no-startup-id "cd ~/.local/src/dwm/; alacritty -t DWMconfig -e nvim config.def.h"
 # bindsym $mod+Shift+j,					movestack,      {.i = +1 } },
 # bindsym $mod+Shift+k,					movestack,      {.i = -1 } },
-bindsym $mod+Shift+Control+r exec "reboot"
-bindsym $mod+Shift+Control+p exec "poweroff"
-bindsym $mod+semicolon exec "clipstream"
-bindsym $mod+Shift+semicolon exec "clipdownload"
-bindsym $mod+p exec "passmenu"
-bindsym $mod+Up exec "cpuperformance"
-bindsym $mod+Down exec "cpupowersave"
-bindsym Control+Shift+Return exec "audacious"
-bindsym $mod+Control+Shift+Return exec "alacritty -t ncspot -e ncspot"
-bindsym Control+Shift+j exec "musicnext"
-bindsym Control+Shift+k exec "musicprev"
-bindsym Control+Shift+h exec "musicseekbackward"
-bindsym Control+Shift+l exec "musicseekforward"
-bindsym Control+Shift+space exec "musicplaypause"
+bindsym $mod+Shift+Control+r exec --no-startup-id "reboot"
+bindsym $mod+Shift+Control+p exec --no-startup-id "poweroff"
+bindsym $mod+semicolon exec --no-startup-id "clipstream"
+bindsym $mod+Shift+semicolon exec --no-startup-id "clipdownload"
+bindsym $mod+p exec --no-startup-id "passmenu"
+bindsym $mod+Up exec --no-startup-id "cpuperformance"
+bindsym $mod+Down exec --no-startup-id "cpupowersave"
+bindsym Control+Shift+Return exec --no-startup-id "audacious"
+bindsym $mod+Control+Shift+Return exec --no-startup-id "alacritty -t ncspot -e ncspot"
+bindsym Control+Shift+j exec --no-startup-id "musicnext"
+bindsym Control+Shift+k exec --no-startup-id "musicprev"
+bindsym Control+Shift+h exec --no-startup-id "musicseekbackward"
+bindsym Control+Shift+l exec --no-startup-id "musicseekforward"
+bindsym Control+Shift+space exec --no-startup-id "musicplaypause"
 
 # rules
 # assign [class="Audacious"] 9
