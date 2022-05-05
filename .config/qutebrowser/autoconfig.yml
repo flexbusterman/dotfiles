@@ -10,9 +10,12 @@ settings:
     global:
       normal:
         ',m': hint links spawn mpv {hint-url} --ytdl-raw-options=mark-watched=
-        ',s': open https://mail.google.com/mail/u/0/;; open -t https://mail.google.com/mail/u/1/;;
-          open -t https://mail.google.com/mail/u/2/;; open -t https://calendar.google.com/calendar/r/month;;
-          open -t https://keep.google.com/u/0/;; open -t https://www.facebook.com/messages/t/;; tab-focus 1
+        # ',s': open https://mail.google.com/mail/u/0/;; open -t https://mail.google.com/mail/u/1/;;
+          # open -t https://mail.google.com/mail/u/2/;; open -t https://calendar.google.com/calendar/r/month;;
+          # open -t https://keep.google.com/u/0/;; open -t https://www.facebook.com/messages/t/;;
+          # tab-focus 1
+        j: scroll-px 0 100
+        k: scroll-px 0 -100
   colors.hints.bg:
     global: rgba(0,0,0,1)
   colors.hints.fg:
