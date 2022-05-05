@@ -57,6 +57,7 @@ settings:
       d: https://duckduckgo.com/?q={}
       p: https://pirate-proxy.cc/search?q={}
       y: https://www.youtube.com/results?search_query={}
+      o: https://odysee.com/$/search?q={}
   url.start_pages:
     global: about:blank
   zoom.default:
