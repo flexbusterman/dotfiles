@@ -15,5 +15,6 @@ mailsync &
 dropbox &
 dunst &
 qpwgraph -m &
+mpd &
 exec i3
 # exec awesome

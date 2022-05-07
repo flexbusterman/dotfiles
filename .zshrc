@@ -5,6 +5,7 @@ HISTFILE=/home/flex/.history/zsh/history
 HISTSIZE=10000000
 SAVEHIST=10000000
 path+=($HOME/.ghcup/bin)
+path+=($HOME/go/bin/)
 setopt BANG_HIST                 # Treat the '!' character specially during expansion.
 setopt EXTENDED_HISTORY          # Write the history file in the ":start:elapsed;command" format.
 setopt INC_APPEND_HISTORY        # Write to the history file immediately, not when the shell exits.

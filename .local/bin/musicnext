@@ -1,4 +1,4 @@
 #!/bin/bash
 # ps -C spotify >/dev/null && spotifycli --next || deadbeef --next
 # pgrep deadbeef && deadbeef --next || playerctl -a next
-playerctl -a next
+playerctl -a next ||  mpc next
