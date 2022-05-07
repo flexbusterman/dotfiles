@@ -10,10 +10,6 @@ settings:
     global:
       normal:
         ',m': hint links spawn mpv {hint-url} --ytdl-raw-options=mark-watched=
-        # ',s': open https://mail.google.com/mail/u/0/;; open -t https://mail.google.com/mail/u/1/;;
-          # open -t https://mail.google.com/mail/u/2/;; open -t https://calendar.google.com/calendar/r/month;;
-          # open -t https://keep.google.com/u/0/;; open -t https://www.facebook.com/messages/t/;;
-          # tab-focus 1
         j: scroll-px 0 100
         k: scroll-px 0 -100
   colors.hints.bg:
@@ -33,6 +29,7 @@ settings:
     https://www.google.com.ar: false
   content.notifications.enabled:
     https://cutewallpaper.org: false
+    https://mail.one.com: false
     https://mspoweruser.com: false
     https://splendidprizeforyou.com: false
     https://www.adsrsounds.com: false
@@ -43,6 +40,7 @@ settings:
   content.register_protocol_handler:
     https://calendar.google.com?cid=%25s: true
     https://mail.google.com?extsrc=mailto&url=%25s: true
+    https://mail.protonmail.com#mailto=%25s: false
   fonts.default_family:
     global: Px437 IBM BIOS
   fonts.default_size:
@@ -55,9 +53,9 @@ settings:
     global:
       DEFAULT: https://www.google.com/search?q={}
       d: https://duckduckgo.com/?q={}
+      o: https://odysee.com/$/search?q={}
       p: https://pirate-proxy.cc/search?q={}
       y: https://www.youtube.com/results?search_query={}
-      o: https://odysee.com/$/search?q={}
   url.start_pages:
     global: about:blank
   zoom.default:
