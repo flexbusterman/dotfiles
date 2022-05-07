@@ -2,7 +2,7 @@
 # arbtt-capture -r 10 &
 xrdb -load ~/.Xresources &
 setbg &			# set the background with the `setbg` script
-picom --no-fading-openclose &
+picom --no-fading-openclose -o 0 &
 unclutter &		# Remove mouse when idle
 xinput set-prop "TPPS/2 IBM TrackPoint" "libinput Accel Speed" -0.7
 xinput set-prop "TPPS/2 Elan TrackPoint" "libinput Accel Speed" +0.4
@@ -15,6 +15,5 @@ mailsync &
 dropbox &
 dunst &
 qpwgraph -m &
-clipmenud &
 exec i3
 # exec awesome
