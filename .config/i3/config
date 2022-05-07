@@ -244,7 +244,8 @@ bindsym $mod+Shift+minus resize shrink height 40 px or 3 ppt
 bindsym $mod+Shift+comma exec --no-startup-id alacritty -t Vifm -e vifmrun
 bindsym $mod+Shift+period exec --no-startup-id qutebrowser
 bindsym $mod+Shift+Control+period exec --no-startup-id bravestart
-bindsym $mod+y exec --no-startup-id brave "https://www.youtube.com"
+bindsym $mod+y exec --no-startup-id ytfzfclipboard
+bindsym $mod+Shift+y exec --no-startup-id brave "https://www.youtube.com"
 bindsym --release $mod+Shift+Control+l exec --no-startup-id slock 
 bindsym --release $mod+d exec --no-startup-id sleep 0.2 && xdotool type --clearmodifiers $(date +"%F ")
 bindsym $mod+b exec --no-startup-id bluetoothconnect 74:5C:4B:D2:86:F7
