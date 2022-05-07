@@ -148,6 +148,11 @@ ex ()
 export HISTFILESIZE=
 export HISTSIZE=
 
+# clipmenu environment variables
+export HISTSIZE=
+export CM_HISTLENGTH=10
+export CM_IGNORE_WINDOW="dmenu"
+
 # export NVM_DIR="$HOME/.config/nvm"
 # [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 # [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
