@@ -1,103 +1,3 @@
-" use the albumartist in preference to artist
-" set albumartist          
-" automatically fetch lyrics as the songs change
-" set autolyrics           
-" automatically scroll playlist when songs change
-" set autoscroll           
-" estimate to scroll lyrics as percents of song complete
-" set autoscrolllyrics     
-" automatically update mpd after tag changes
-" set autoupdate           
-" display id numbers next to songs in the browse window
-set browsenumbers        
-" enable or disable colours
-" set colour               
-" when enabled, expand to artist by default in library
-" set expand-artists       
-" group artists like "xyz" set and "the xyz" in the library
-" set groupignorethe       
-" highlight search results
-" set hlsearch             
-" case insensitive searching
-" set ignorecase           
-" search for results as you are typing
-" set incsearch            
-" download all meta information to construct the library
-" set listallmeta          
-" location on the client computer of music files
-" set local-music-dir      
-" regular expression to strip from title for lyric search
-" set lyricstrip           
-" turn mouse support on
-" set mouse                
-" poll mpd for status updates rather than using idle mode
-" set polling              
-" display id numbers next to songs in the playlist
-" set playlistnumbers      
-" if mpd is stopped start playing when a song is added
-" set playonadd            
-" whether or not to show the progress bar
-" set progressbar          
-" automatically reconnect if the connection drops
-" set reconnect            
-" scroll down one line after adding a song
-" set scrollonadd          
-" scroll down one line after deleting a song
-" set scrollondelete       
-" scroll song titles in the status line
-" set scrollstatus         
-" mouse click on progress bar causes a seek
-" set seekbar              
-" wrap search results when using n/N
-" set searchwrap           
-" include playlists in the directory window
-" set showlists            
-" show the current path in the directory window
-" set showpath             
-" show the current percentage in the progress bar
-" set showpercent          
-" :q and :quit will quit vimpc, not close active tab
-" set singlequit           
-" if capital in search pattern, enable case sensitivity
-" set smartcase            
-" display id numbers next to songs in other windows
-" set songnumbers          
-" ignore case when sorting
-" set sortignorecase       
-" ignore the prefix 'the' when sorting
-" set sortignorethe        
-" automatically stop playback when vimpc is quit
-" set stoponquit           
-" whether or not to show the tab bar
-" set tabbar               
-" display the time remaining rather than elapsed
-" set timeremaining        
-" display the number next to the window in the tab bar
-" set windownumbers        
-
-" Value Settings:
-" ----------------------
-" add <where>          | set where to add songs to the playlist
-										" | either "end" or "next" (defaults to end)
-" libraryformat <fmt>  | set the format to print songs in the library
-										" | set PRINT FORMATS section
-" playlists <option>   | set which playlists to include in the lists window
-										" | "mpd", "files" or "all" (defaults to mpd)
-" songformat <fmt>     | set the format to print songs
-										" | set PRINT FORMATS section
-" sort <option>        | sort the browse window based on the songformat or
-										" | the order of the library, options are either
-										" | "format" or "library" (defaults to format)
-" timeout <seconds>    | sets the timeout in seconds when connecting
-										" | to use the default MPD_TIMEOUT environment
-										" | variable, set this to 0 (defaults to 15)
-" window <window>      | sets the window that will start with focus
-" windows <windows>    | comma seperated list of windows to be shown at startup
-
-set windows library,directory,browse
-set window library
-
-
 " A silly example of an alias
 " alias smiths deleteall; findartist! The Smiths; play 1
 
@@ -115,3 +15,7 @@ map <F1> :help<C-M>
 
 update
 connect
+
+set ignorecase           
+set windows library,directory,browse
+set window library
