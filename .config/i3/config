@@ -244,11 +244,12 @@ bindsym $mod+Shift+minus resize shrink height 40 px or 3 ppt
 bindsym $mod+Shift+comma exec --no-startup-id alacritty -t Vifm -e vifmrun
 bindsym $mod+Shift+period exec --no-startup-id qutebrowser
 bindsym $mod+Shift+Control+period exec --no-startup-id bravestart
-# bindsym $mod+Shift+Control+period exec --no-startup-id brave "https://www.youtube.com"
+bindsym $mod+y exec --no-startup-id brave "https://www.youtube.com"
 bindsym --release $mod+Shift+Control+l exec --no-startup-id slock 
 bindsym --release $mod+d exec --no-startup-id sleep 0.2 && xdotool type --clearmodifiers $(date +"%F ")
 bindsym $mod+b exec --no-startup-id bluetoothconnect 74:5C:4B:D2:86:F7
 bindsym $mod+Shift+b exec --no-startup-id bluetoothctl disconnect 74:5C:4B:D2:86:F7
+bindsym $mod+Control+Shift+b exec --no-startup-id bluetoothrestart
 bindsym Print exec --no-startup-id maim -f jpg -m 9 "/home/flex/Pictures/SCREENSHOTS/$(date +\"%F %H_%M_%S.jpg\")"
 bindsym Shift+Print exec --no-startup-id maim -f jpg -m 9 -s "/home/flex/Pictures/SCREENSHOTS/$(date +\"%F %H_%M_%S.jpg\")"
 bindsym $mod+grave exec --no-startup-id dmenuunicode
