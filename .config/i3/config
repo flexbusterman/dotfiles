@@ -22,13 +22,13 @@ font pango: Px437 IBM BIOS 7
 # default_border pixel 3
 for_window [class="^.*"] border pixel 3
 hide_edge_borders smart
-
 gaps inner 18
-gaps outer 0
+gaps outer 4
+
 # bindsym 1 mode "default" gaps inner all set 10, gaps outer all set 4
 bindsym $mod+a gaps inner all set 0, gaps outer all set 0, exec --no-startup-id polybar-msg cmd show
-bindsym $mod+s gaps inner all set 18, gaps outer all set 0, exec --no-startup-id polybar-msg cmd hide
-smart_gaps on
+bindsym $mod+s gaps inner all set 18, gaps outer all set 4, exec --no-startup-id polybar-msg cmd hide
+# smart_gaps on
 
 # Default Colors
 # class                 border  backgr. text    indicator child_border
@@ -257,7 +257,7 @@ bindsym --release $mod+Shift+Control+l exec --no-startup-id slock
 bindsym --release $mod+d exec --no-startup-id sleep 0.2 && xdotool type --clearmodifiers $(date +"%F ")
 bindsym $mod+b exec --no-startup-id bluetoothconnect 74:5C:4B:D2:86:F7
 bindsym $mod+Shift+b exec --no-startup-id bluetoothctl disconnect 74:5C:4B:D2:86:F7
-bindsym $mod+Control+Shift+b exec --no-startup-id bluetoothrestart
+# bindsym $mod+Control+Shift+b exec --no-startup-id bluetoothrestart
 bindsym Print exec --no-startup-id maim -f jpg -m 9 "/home/flex/Pictures/SCREENSHOTS/$(date +\"%F %H_%M_%S.jpg\")"
 bindsym Shift+Print exec --no-startup-id maim -f jpg -m 9 -s "/home/flex/Pictures/SCREENSHOTS/$(date +\"%F %H_%M_%S.jpg\")"
 bindsym $mod+grave exec --no-startup-id dmenuunicode
