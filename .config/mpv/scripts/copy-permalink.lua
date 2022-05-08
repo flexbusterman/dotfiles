@@ -1,4 +1,4 @@
--- Author: Ole Jørgen Brønner (olejorgenb@yahoo.no)
+-- Original Author: Ole Jørgen Brønner (olejorgenb@yahoo.no)
 -- Requirement: xclip
 -- Installation: 
 -- 'mkdir -p ~/.config/mpv/scripts && cp -i copy-permalink.lua ~/.config/mpv/scripts'
@@ -11,7 +11,7 @@ function copyPermalink()
   local pipe = io.popen("xclip -silent -in -selection clipboard", "w")
   pipe:write(bookmark)
   pipe:close()
-  mp.osd_message("Link to position copied to clipboard")
+  mp.osd_message("MPV link copied to clipboard")
 end
 
 function sharePermalink()
@@ -23,9 +23,9 @@ function sharePermalink()
   local pipe = io.popen("xclip -silent -in -selection clipboard", "w")
   pipe:write(bookmark)
   pipe:close()
-  mp.osd_message("Shareable link with position copied to clipboard")
+  mp.osd_message("YouTube link copied to clipboard")
 end
 
 -- mp.register_script_message("copy-permalink", copyPermalink)
-mp.add_key_binding("y", "copy-permalink", copyPermalink)
-mp.add_key_binding("shift+y", "share-permalink", sharePermalink)
+mp.add_key_binding("shift+y", "copy-permalink", copyPermalink)
+mp.add_key_binding("y", "share-permalink", sharePermalink)

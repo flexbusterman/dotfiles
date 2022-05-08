@@ -1,0 +1,28 @@
+#!/bin/bash
+# using this file as a clipboard stack
+stack=~/.local/src/stack/stack
+
+yank() {
+	# pop
+	line=$(head -n 1 $stack)
+	echo $line | xclip -sel clip
+	notify-send "$line"
+	tail -n +2 "$stack" > "$stack.tmp" && mv "$stack.tmp" "$stack"
+}
+
+put() {
+	# push
+	printf '%s\n%s\n' "$(xclip -sel clip -o)" "$(cat $stack)" > $stack
+	notify-send "$(xclip -sel clip -o)"
+}
+
+while getopts "yp" arg; do
+  case $arg in
+    y)
+			yank
+      ;;
+    p)
+			put
+      ;;
+  esac
+done
