@@ -22,8 +22,12 @@ font pango: Px437 IBM BIOS 7
 for_window [class="^.*"] border pixel 3
 hide_edge_borders smart
 
-gaps inner 15 
-gaps outer 8
+gaps inner 18
+gaps outer 0
+
+# bindsym 1 mode "default" gaps inner all set 10, gaps outer all set 4
+bindsym $mod+a gaps inner all set 0, gaps outer all set 0
+bindsym $mod+s gaps inner all set 18, gaps outer all set 0
 
 smart_gaps on
 
@@ -93,7 +97,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc $(bc <<< "$(xbacklight) * 0.5 + 0.15")
 bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec $(bc <<< "$(xbacklight) * 0.5")
 
-bindsym $mod+s exec --no-startup-id polybar-msg cmd toggle
+bindsym $mod+d exec --no-startup-id polybar-msg cmd toggle
 
 # use these keys for focus, movement, and resize directions when reaching for
 # the arrows is not convenient
@@ -148,7 +152,7 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
 # focus the parent container
-bindsym $mod+a focus parent
+bindsym $mod+slash focus parent
 
 # focus the child container
 #bindsym $mod+d focus child
