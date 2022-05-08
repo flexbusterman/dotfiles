@@ -24,16 +24,14 @@ hide_edge_borders smart
 
 gaps inner 18
 gaps outer 0
-
 # bindsym 1 mode "default" gaps inner all set 10, gaps outer all set 4
-bindsym $mod+a gaps inner all set 0, gaps outer all set 0
-bindsym $mod+s gaps inner all set 18, gaps outer all set 0
-
+bindsym $mod+a gaps inner all set 0, gaps outer all set 0, exec --no-startup-id polybar-msg cmd show
+bindsym $mod+s gaps inner all set 18, gaps outer all set 0, exec --no-startup-id polybar-msg cmd hide
 smart_gaps on
 
 # Default Colors
 # class                 border  backgr. text    indicator child_border
-# client.focused          #4c7899 #285577 #ffffff #2e9ef4   #285577
+# client.focused          #4c7899 #285577 #ffffff #92cdf0   #005182
 # client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
 # client.unfocused        #333333 #222222 #888888 #292d2e   #222222
 # client.urgent           #2f343a #900000 #ffffff #900000   #900000
@@ -42,8 +40,8 @@ smart_gaps on
 
 # class                 border  backgr. text    indicator child_border
 client.focused          #2e9ef4 #2e9ef4 #ffffff #8be9fd   #2e9ef4   
-client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
-client.unfocused        #333333 #222222 #888888 #292d2e   #222222
+client.focused_inactive #333333 #333333 #333333 #333333   #333333
+client.unfocused        #000000 #000000 #000000 #000000   #000000
 client.urgent           #2f343a #900000 #ffffff #900000   #900000
 client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 client.background       #ffffff
@@ -97,7 +95,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc $(bc <<< "$(xbacklight) * 0.5 + 0.15")
 bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec $(bc <<< "$(xbacklight) * 0.5")
 
-bindsym $mod+d exec --no-startup-id polybar-msg cmd toggle
+# bindsym $mod+d exec --no-startup-id polybar-msg cmd toggle
 
 # use these keys for focus, movement, and resize directions when reaching for
 # the arrows is not convenient
