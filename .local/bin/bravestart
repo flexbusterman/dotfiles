@@ -3,5 +3,5 @@ STATUS=$(mullvad status | awk '{print $NF}')
 if [[ $STATUS == "UDP" ]]; then
 	nohup brave --incognito --new-window "https://duckduckgo.com" &
 else
-  nohup brave --new-window &
+  nohup brave --new-window "https://youtube.com" &
 fi
