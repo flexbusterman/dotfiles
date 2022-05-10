@@ -60,7 +60,8 @@ Plug 'wellle/targets.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
 
-Plug 'wincent/loupe'
+" very magic searching Greg Hurrell
+" Plug 'wincent/loupe'
 
 Plug 'lervag/vimtex'
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }

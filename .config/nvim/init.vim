@@ -124,7 +124,10 @@ nnoremap <silent> <nowait> <leader>l :g/^\s\+$/s/\s\+//e <CR> <bar> :g/^$/,/./-j
 " tabs
 nnoremap <silent> <nowait> <leader><tab> :tabn<CR>
 " nnoremap <silent> <nowait> <leader>t :tabedit<CR>
+"
+" Format capitalization to title 
 nnoremap <silent> <nowait> <leader>t :s/\v<(.)(\w*)/\u\1\L\2/g<CR>
+
 " vnoremap J :m '>+1<CR>gv=gv
 " vnoremap K :m '<-2<CR>gv=gv
 " nnoremap <leader>rw :CocSearch <C-R>=expand("<cword>")<CR><CR>
