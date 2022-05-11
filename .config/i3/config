@@ -283,6 +283,7 @@ bindsym $mod+F6 exec --no-startup-id "torwrap"
 bindsym $mod+s exec --no-startup-id "supercollider"
 bindsym $mod+Control+Shift+Return exec --no-startup-id "$terminal -t ncspot -e ncspot"
 bindsym Control+Shift+Return exec --no-startup-id "$terminal -t ncmpcpp -e ncmpcpp"
+bindsym $mod+Shift+t exec --no-startup-id "$terminal -t typingtest -e tt -theme dracula"
 
 # gui applications
 bindsym $mod+Shift+period exec --no-startup-id "qutebrowser"
