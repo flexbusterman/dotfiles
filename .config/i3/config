@@ -10,10 +10,11 @@
 #
 
 set $mod Mod1
+set $terminal alacritty
 
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-exec_always --no-startup-id autotiling
-exec --no-startup-id dropbox
+exec_always --no-startup-id "$HOME/.config/polybar/launch.sh"
+exec_always --no-startup-id "autotiling"
+exec --no-startup-id "dropbox"
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -23,7 +24,7 @@ for_window [class="^.*"] border pixel 3
 hide_edge_borders smart
 gaps inner 24
 gaps outer 0
-bindsym $mod+a exec --no-startup-id i3focustoggle 24
+bindsym $mod+a exec --no-startup-id "i3focustoggle 24"
 # smart_gaps on
 
 # Default Colors
@@ -35,7 +36,7 @@ bindsym $mod+a exec --no-startup-id i3focustoggle 24
 # client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 # client.background       #ffffff
 #
-# Dracula colors for reference
+# Dracula colors
 #000000
 #ff5555
 #50fa7b
@@ -62,7 +63,6 @@ client.urgent           #2f343a #900000 #ffffff #900000   #900000
 client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 client.background       #ffffff
 
-
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 exec --no-startup-id dex --autostart --environment i3
@@ -79,17 +79,10 @@ exec --no-startup-id dex --autostart --environment i3
 # exec --no-startup-id nm-applet
 
 # Use pactl to adjust volume in PulseAudio.
-# set $refresh_i3status killall -SIGUSR1 i3status
-# bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
-# bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
-# bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
-# bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
-
-# Use pactl to adjust volume in PulseAudio.
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
+bindsym XF86AudioRaiseVolume exec --no-startup-id "pactl set-sink-volume @DEFAULT_SINK@ +5%"
+bindsym XF86AudioLowerVolume exec --no-startup-id "pactl set-sink-volume @DEFAULT_SINK@ -5%"
+bindsym XF86AudioMute exec --no-startup-id "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+bindsym XF86AudioMicMute exec --no-startup-id "pactl set-source-mute @DEFAULT_SOURCE@ toggle"
 
 bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc $(bc <<< "$(xbacklight) * 0.5 + 0.15")
 bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec $(bc <<< "$(xbacklight) * 0.5")
@@ -107,13 +100,13 @@ set $right semicolon
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+shift+Return exec --no-startup-id alacritty
+bindsym $mod+shift+Return exec --no-startup-id "$terminal"
 
 # kill focused window
 bindsym $mod+w kill
 
 # start dmenu (a program launcher)
-bindsym $mod+Return exec --no-startup-id dmenu_run
+bindsym $mod+Return exec --no-startup-id "dmenu_run"
 
 # change focus
 bindsym $mod+h focus left
@@ -238,7 +231,6 @@ bindsym $mod+minus resize shrink width 40 px or 3 ppt
 bindsym $mod+Shift+minus resize shrink height 40 px or 3 ppt
 
 # bindsym $mod+r mode "resize"
-
 # Start i3bar to display a workspace bar (plus the system information i3status finds out, if available)
 # bar {
     # status_command i3status
@@ -246,50 +238,26 @@ bindsym $mod+Shift+minus resize shrink height 40 px or 3 ppt
 		# font pango: Px437 IBM BIOS 7
 # }
 
-bindsym $mod+Shift+comma exec --no-startup-id alacritty -t Vifm -e vifmrun
-bindsym $mod+Shift+period exec --no-startup-id qutebrowser
-bindsym $mod+Shift+Control+period exec --no-startup-id bravestart
-bindsym $mod+y exec --no-startup-id stack -y
-bindsym $mod+p exec --no-startup-id stack -p
-bindsym $mod+Shift+y exec --no-startup-id ytfzfclipboard
-# bindsym $mod+Shift+y exec --no-startup-id brave "https://www.youtube.com"
-bindsym --release $mod+Shift+Control+l exec --no-startup-id slock 
+# script bindings
+bindsym $mod+Shift+Control+period exec --no-startup-id "bravestart"
+bindsym $mod+y exec --no-startup-id "stack -y"
+bindsym $mod+p exec --no-startup-id "stack -p"
+bindsym $mod+Shift+y exec --no-startup-id "ytfzfclipboard"
 bindsym --release $mod+d exec --no-startup-id sleep 0.2 && xdotool type --clearmodifiers $(date +"%F ")
-bindsym $mod+b exec --no-startup-id bluetoothconnect 74:5C:4B:D2:86:F7
-bindsym $mod+Shift+b exec --no-startup-id bluetoothctl disconnect 74:5C:4B:D2:86:F7
-# bindsym $mod+Control+Shift+b exec --no-startup-id bluetoothrestart
+bindsym $mod+b exec --no-startup-id "bluetoothconnect 74:5C:4B:D2:86:F7"
+bindsym $mod+Shift+b exec --no-startup-id "bluetoothctl disconnect 74:5C:4B:D2:86:F7"
 bindsym Print exec --no-startup-id maim -f jpg -m 9 "/home/flex/Pictures/SCREENSHOTS/$(date +\"%F %H_%M_%S.jpg\")"
 bindsym Shift+Print exec --no-startup-id maim -f jpg -m 9 -s "/home/flex/Pictures/SCREENSHOTS/$(date +\"%F %H_%M_%S.jpg\")"
-bindsym $mod+grave exec --no-startup-id dmenuunicode
-bindsym $mod+e exec --no-startup-id alacritty -t NeoMutt -e neomutt
-bindsym $mod+t exec --no-startup-id alacritty -t Htop -e htop
-  # { MODKEY+a,   togglegaps, {0} },
-bindsym --release $mod+Shift+x exec --no-startup-id xkill
-bindsym $mod+n exec --no-startup-id alacritty -t VimWiki --working-directory ~/Dropbox/NOTES/ -e nvim -c VimwikiIndex
-bindsym $mod+Shift+n exec --no-startup-id alacritty -t stack --working-directory ~/.local/src/stack -e nvim ~/.local/src/stack/stack
+bindsym $mod+grave exec --no-startup-id "dmenuunicode"
 bindsym $mod+m exec --no-startup-id "mullvadconnect"
 bindsym $mod+Shift+m exec --no-startup-id "mullvaddisconnect"
-bindsym $mod+q exec --no-startup-id qpwgraph
-bindsym $mod+r exec --no-startup-id alacritty -t Newsboat -e newsboat
-bindsym $mod+Shift+c exec --no-startup-id calc
-# bindsym $mod+Control+j,					focusmon,				{.i = -1 } },
-# bindsym $mod+Control+k,					focusmon,				{.i = +1 } },
-# bindsym $mod+Control+h,					tagmon,					{.i = -1 } },
-# bindsym $mod+Control+l,					tagmon,					{.i = +1 } },
+bindsym $mod+Shift+c exec --no-startup-id "calc"
 bindsym $mod+F1 exec --no-startup-id "jackrun"
 bindsym $mod+F2 exec --no-startup-id "jackkill"
 bindsym $mod+F3 exec --no-startup-id "displayselect"
-bindsym $mod+F4 exec --no-startup-id "alacritty -t PulseMixer -e pulsemixer"
-bindsym $mod+Shift+F4 exec --no-startup-id "pavucontrol"
-bindsym $mod+F6 exec --no-startup-id "torwrap"
 bindsym $mod+F7 exec --no-startup-id "td-toggle"
 bindsym $mod+F8 exec --no-startup-id "dmenumount"
 bindsym $mod+F9 exec --no-startup-id "dmenuumount"
-# XF86XK_AudioMute exec --no-startup-id "pamixer -t; kill -44 $(pidof dwmblocks)"
-# XF86XK_AudioMicMute exec --no-startup-id "amixer set Capture toggle"
-# bindsym $mod+Shift+e exec --no-startup-id "cd ~/.local/src/dwm/; alacritty -t DWMconfig -e nvim config.def.h"
-# bindsym $mod+Shift+j,					movestack,      {.i = +1 } },
-# bindsym $mod+Shift+k,					movestack,      {.i = -1 } },
 bindsym $mod+Shift+Control+r exec --no-startup-id "reboot"
 bindsym $mod+Shift+Control+p exec --no-startup-id "poweroff"
 bindsym $mod+semicolon exec --no-startup-id "clipstream"
@@ -297,15 +265,32 @@ bindsym $mod+Shift+semicolon exec --no-startup-id "clipdownload"
 bindsym $mod+Shift+p exec --no-startup-id "passmenu"
 bindsym $mod+Up exec --no-startup-id "cpuperformance"
 bindsym $mod+Down exec --no-startup-id "cpupowersave"
-bindsym Control+Shift+Return exec --no-startup-id alacritty -t ncmpcpp -e ncmpcpp
-bindsym $mod+Control+Return exec --no-startup-id "audacious"
-bindsym $mod+Control+Shift+Return exec --no-startup-id "alacritty -t ncspot -e ncspot"
 bindsym Control+Shift+j exec --no-startup-id "musicnext"
 bindsym Control+Shift+k exec --no-startup-id "musicprev"
 bindsym Control+Shift+h exec --no-startup-id "musicseekbackward"
 bindsym Control+Shift+l exec --no-startup-id "musicseekforward"
 bindsym Control+Shift+space exec --no-startup-id "musicplaypause"
+
+# terminal tui applications
+bindsym $mod+n exec --no-startup-id "$terminal -t VimWiki --working-directory ~/Dropbox/NOTES/ -e nvim -c VimwikiIndex"
+bindsym $mod+Shift+n exec --no-startup-id "$terminal -t stack --working-directory ~/.local/src/stack -e nvim ~/.local/src/stack/stack"
+bindsym $mod+Shift+comma exec --no-startup-id "$terminal -t Vifm -e vifmrun"
+bindsym $mod+e exec --no-startup-id "$terminal -t NeoMutt -e neomutt"
+bindsym $mod+t exec --no-startup-id "$terminal -t Htop -e htop"
+bindsym $mod+r exec --no-startup-id "$terminal -t Newsboat -e newsboat"
+bindsym $mod+F4 exec --no-startup-id "$terminal -t PulseMixer -e pulsemixer"
+bindsym $mod+F6 exec --no-startup-id "torwrap"
 bindsym $mod+s exec --no-startup-id "supercollider"
+bindsym $mod+Control+Shift+Return exec --no-startup-id "$terminal -t ncspot -e ncspot"
+bindsym Control+Shift+Return exec --no-startup-id "$terminal -t ncmpcpp -e ncmpcpp"
+
+# gui applications
+bindsym $mod+Shift+period exec --no-startup-id "qutebrowser"
+bindsym --release $mod+Shift+Control+l exec --no-startup-id "slock"
+bindsym --release $mod+Shift+x exec --no-startup-id "xkill"
+bindsym $mod+q exec --no-startup-id "qpwgraph"
+bindsym $mod+Shift+F4 exec --no-startup-id "pavucontrol"
+bindsym $mod+Control+Return exec --no-startup-id "audacious"
 
 # rules
 # assign [class="Audacious"] 9
@@ -313,12 +298,4 @@ bindsym $mod+s exec --no-startup-id "supercollider"
 # assign [instance="ncspot"] 9
 
 # exact match instead of substring
-# class                 border  backgr. text    indicator child_border
-# client.focused          #4c7899 #285577 #ffffff #2e9ef4   #285577
-# client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
-# client.unfocused        #333333 #222222 #888888 #292d2e   #222222
-# client.urgent           #2f343a #900000 #ffffff #900000   #900000
-# client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
-# client.background       #ffffff
 # assign [class="^URxvt$"] 2
-#

@@ -27,6 +27,8 @@ settings:
   content.geolocation:
     https://www.google.com: true
     https://www.google.com.ar: false
+  content.mute:
+    facebook.com: true
   content.notifications.enabled:
     https://cutewallpaper.org: false
     https://mail.one.com: false
@@ -55,8 +57,8 @@ settings:
       d: https://duckduckgo.com/?q={}
       o: https://odysee.com/$/search?q={}
       p: https://pirate-proxy.cc/search?q={}
-      y: https://www.youtube.com/results?search_query={}
       w: https://wallpaperaccess.com/search?q={}
+      y: https://www.youtube.com/results?search_query={}
   url.start_pages:
     global: about:blank
   zoom.default:
