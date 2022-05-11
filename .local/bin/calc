@@ -1,0 +1,5 @@
+#!/bin/sh 
+input=$(echo "" | dmenu)
+result=$(awk "BEGIN{ print $input }")
+notify-send $result
+printf $result | xclip -sel clip

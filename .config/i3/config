@@ -271,6 +271,7 @@ bindsym $mod+m exec --no-startup-id "mullvadconnect"
 bindsym $mod+Shift+m exec --no-startup-id "mullvaddisconnect"
 bindsym $mod+q exec --no-startup-id qpwgraph
 bindsym $mod+r exec --no-startup-id alacritty -t Newsboat -e newsboat
+bindsym $mod+Shift+c exec --no-startup-id calc
 # bindsym $mod+Control+j,					focusmon,				{.i = -1 } },
 # bindsym $mod+Control+k,					focusmon,				{.i = +1 } },
 # bindsym $mod+Control+h,					tagmon,					{.i = -1 } },

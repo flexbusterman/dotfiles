@@ -537,10 +537,10 @@ dp() {
   dot push
 }
 
-calc() {
-  awk "BEGIN{ print $* }"
-  # bc <<< "$*"
-  ;}
+# calc() {
+  # awk "BEGIN{ print $* }"
+  # # bc <<< "$*"
+  # ;}
 
 # asks too often to show all suggestions, but nice that it shows flags
 # source ~/.local/src/zsh-autocomplete/zsh-autocomplete.plugin.zsh

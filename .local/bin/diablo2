@@ -1,2 +1,0 @@
-#!/bin/sh 
-wine "/home/flex/.wine/drive_c/Program Files (x86)/Diablo II/Game.exe" -w
