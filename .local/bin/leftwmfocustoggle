@@ -1,0 +1,12 @@
+#!/bin/bash
+
+focus=$(cat ~/.config/leftwm/focus | while read line; do echo $line; done)
+if [[ $focus == "true" ]]; then
+	leftwm-command "SetMarginMultiplier 0.0"
+	polybar-msg cmd show
+	echo "false" > ~/.config/leftwm/focus
+else
+	leftwm-command "SetMarginMultiplier $1"
+	polybar-msg cmd hide
+	echo "true" > ~/.config/leftwm/focus
+fi

@@ -1,0 +1,612 @@
+modkey = "Mod1"
+mousekey = "Mod1"
+workspaces = []
+tags = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+layouts = ["MainAndVertStack", "MainAndHorizontalStack", "MainAndDeck", "GridHorizontal", "EvenHorizontal", "EvenVertical", "Fibonacci", "LeftMain", "CenterMain", "CenterMainBalanced", "CenterMainFluid", "Monocle", "RightWiderLeftStack", "LeftWiderRightStack"]
+layout_mode = "Workspace"
+insert_behavior = "Top"
+scratchpad = []
+window_rules = []
+disable_current_tag_swap = false
+disable_tile_drag = false
+focus_behaviour = "Sloppy"
+focus_new_windows = true
+
+[[keybind]]
+command = "Execute"
+value = "dmenu_run"
+modifier = ["modkey"]
+key = "Return"
+
+[[keybind]]
+command = "Execute"
+value = "alacritty"
+modifier = ["modkey", "Shift"]
+key = "Return"
+
+[[keybind]]
+command = "CloseWindow"
+value = ""
+modifier = ["modkey"]
+key = "w"
+
+[[keybind]]
+command = "SoftReload"
+value = ""
+modifier = ["modkey", "Shift"]
+key = "r"
+
+[[keybind]]
+command = "Execute"
+value = "loginctl kill-session $XDG_SESSION_ID"
+modifier = ["modkey", "Shift"]
+key = "q"
+
+[[keybind]]
+command = "Execute"
+value = "slock"
+modifier = ["modkey", "Shift", "Control"]
+key = "l"
+
+# [[keybind]]
+# command = "MoveToLastWorkspace"
+# value = ""
+# modifier = ["modkey", "Shift"]
+# key = "w"
+
+# [[keybind]]
+# command = "SwapTags"
+# value = ""
+# modifier = ["modkey"]
+# key = "Space"
+
+[[keybind]]
+command = "MoveWindowUp"
+value = ""
+modifier = ["modkey", "Shift"]
+key = "k"
+
+[[keybind]]
+command = "MoveWindowDown"
+value = ""
+modifier = ["modkey", "Shift"]
+key = "j"
+
+[[keybind]]
+command = "MoveWindowTop"
+value = ""
+modifier = ["modkey"]
+key = "space"
+
+[[keybind]]
+command = "ToggleFloating"
+value = ""
+modifier = ["modkey", "Shift"]
+key = "space"
+
+[[keybind]]
+command = "FocusWindowUp"
+value = ""
+modifier = ["modkey"]
+key = "k"
+
+[[keybind]]
+command = "FocusWindowDown"
+value = ""
+modifier = ["modkey"]
+key = "j"
+
+[[keybind]]
+command = "ToggleFullScreen"
+value = ""
+modifier = ["modkey"]
+key = "f"
+
+[[keybind]]
+command = "NextLayout"
+value = ""
+modifier = ["modkey", "Control"]
+key = "k"
+
+[[keybind]]
+command = "PreviousLayout"
+value = ""
+modifier = ["modkey", "Control"]
+key = "j"
+
+[[keybind]]
+command = "FocusWorkspaceNext"
+value = ""
+modifier = ["modkey"]
+key = "l"
+
+# [[keybind]]
+# command = "FocusWorkspacePrevious"
+# value = ""
+# modifier = ["modkey"]
+# key = "h"
+
+[[keybind]]
+command = "IncreaseMainWidth"
+value = "5"
+modifier = ["modkey"]
+key = "l"
+
+[[keybind]]
+command = "DecreaseMainWidth"
+value = "5"
+modifier = ["modkey"]
+key = "h"
+
+[[keybind]]
+command = "MoveWindowUp"
+value = ""
+modifier = ["modkey", "Shift"]
+key = "Up"
+
+[[keybind]]
+command = "MoveWindowDown"
+value = ""
+modifier = ["modkey", "Shift"]
+key = "Down"
+
+[[keybind]]
+command = "FocusWindowUp"
+value = ""
+modifier = ["modkey"]
+key = "Up"
+
+[[keybind]]
+command = "FocusWindowDown"
+value = ""
+modifier = ["modkey"]
+key = "Down"
+
+[[keybind]]
+command = "NextLayout"
+value = ""
+modifier = ["modkey", "Control"]
+key = "Up"
+
+[[keybind]]
+command = "PreviousLayout"
+value = ""
+modifier = ["modkey", "Control"]
+key = "Down"
+
+[[keybind]]
+command = "FocusWorkspaceNext"
+value = ""
+modifier = ["modkey"]
+key = "Right"
+
+# [[keybind]]
+# command = "FocusWorkspacePrevious"
+# value = ""
+# modifier = ["modkey"]
+# key = "Left"
+
+[[keybind]]
+command = "GotoTag"
+value = "1"
+modifier = ["modkey"]
+key = "1"
+
+[[keybind]]
+command = "GotoTag"
+value = "2"
+modifier = ["modkey"]
+key = "2"
+
+[[keybind]]
+command = "GotoTag"
+value = "3"
+modifier = ["modkey"]
+key = "3"
+
+[[keybind]]
+command = "GotoTag"
+value = "4"
+modifier = ["modkey"]
+key = "4"
+
+[[keybind]]
+command = "GotoTag"
+value = "5"
+modifier = ["modkey"]
+key = "5"
+
+[[keybind]]
+command = "GotoTag"
+value = "6"
+modifier = ["modkey"]
+key = "6"
+
+[[keybind]]
+command = "GotoTag"
+value = "7"
+modifier = ["modkey"]
+key = "7"
+
+[[keybind]]
+command = "GotoTag"
+value = "8"
+modifier = ["modkey"]
+key = "8"
+
+[[keybind]]
+command = "GotoTag"
+value = "9"
+modifier = ["modkey"]
+key = "9"
+
+[[keybind]]
+command = "MoveToTag"
+value = "1"
+modifier = ["modkey", "Shift"]
+key = "1"
+
+[[keybind]]
+command = "MoveToTag"
+value = "2"
+modifier = ["modkey", "Shift"]
+key = "2"
+
+[[keybind]]
+command = "MoveToTag"
+value = "3"
+modifier = ["modkey", "Shift"]
+key = "3"
+
+[[keybind]]
+command = "MoveToTag"
+value = "4"
+modifier = ["modkey", "Shift"]
+key = "4"
+
+[[keybind]]
+command = "MoveToTag"
+value = "5"
+modifier = ["modkey", "Shift"]
+key = "5"
+
+[[keybind]]
+command = "MoveToTag"
+value = "6"
+modifier = ["modkey", "Shift"]
+key = "6"
+
+[[keybind]]
+command = "MoveToTag"
+value = "7"
+modifier = ["modkey", "Shift"]
+key = "7"
+
+[[keybind]]
+command = "MoveToTag"
+value = "8"
+modifier = ["modkey", "Shift"]
+key = "8"
+
+[[keybind]]
+command = "MoveToTag"
+value = "9"
+modifier = ["modkey", "Shift"]
+key = "9"
+
+
+#  ____                                          
+# |  _ \ _ __ ___   __ _ _ __ __ _ _ __ ___  ___ 
+# | |_) | '__/ _ \ / _` | '__/ _` | '_ ` _ \/ __|
+# |  __/| | | (_) | (_| | | | (_| | | | | | \__ \
+# |_|   |_|  \___/ \__, |_|  \__,_|_| |_| |_|___/
+#                  |___/                         
+
+# # terminal tui applications
+
+[[keybind]]
+command = "Execute"
+value = "alacritty -t ncspot -e ncspot"
+modifier = ["modkey", "Control", "Shift"]
+key = "Return"
+
+[[keybind]]
+command = "Execute"
+value = "cpupowersave"
+modifier = ["modkey"]
+key = "Down"
+
+[[keybind]]
+command = "Execute"
+value = "jackrun"
+modifier = ["modkey"]
+key = "F1"
+
+[[keybind]]
+command = "Execute"
+value = "jackkill"
+modifier = ["modkey"]
+key = "F2"
+
+[[keybind]]
+command = "Execute"
+value = "displayselect"
+modifier = ["modkey"]
+key = "F3"
+
+[[keybind]]
+command = "Execute"
+value = "alacritty -t PulseMixer -e pulsemixer"
+modifier = ["modkey"]
+key = "F4"
+
+[[keybind]]
+command = "Execute"
+value = ""
+modifier = ["modkey"]
+key = "F5"
+
+[[keybind]]
+command = "Execute"
+value = "torwrap"
+modifier = ["modkey"]
+key = "F6"
+
+[[keybind]]
+command = "Execute"
+value = "td-toggle"
+modifier = ["modkey"]
+key = "F7"
+
+[[keybind]]
+command = "Execute"
+value = "dmenumount"
+modifier = ["modkey"]
+key = "F8"
+
+[[keybind]]
+command = "Execute"
+value = "dmenuumount"
+modifier = ["modkey"]
+key = "F9"
+
+[[keybind]]
+command = "Execute"
+value = "poweroff"
+modifier = ["modkey", "Shift", "Control"]
+key = "p"
+
+[[keybind]]
+command = "Execute"
+value = "reboot"
+modifier = ["modkey", "Shift", "Control"]
+key = "r"
+
+[[keybind]]
+command = "Execute"
+value = "bluetoothctl disconnect 74:5C:4B:D2:86:F7"
+modifier = ["modkey", "Shift"]
+key = "b"
+
+[[keybind]]
+command = "Execute"
+value = "alacritty -t calcurse -e calcurse"
+modifier = ["modkey", "Shift"]
+key = "c"
+
+[[keybind]]
+command = "Execute"
+value = "alacritty -t Vifm -e vifmrun"
+modifier = ["modkey", "Shift"]
+key = "comma"
+
+[[keybind]]
+command = "Execute"
+value = "mullvaddisconnect"
+modifier = ["modkey", "Shift"]
+key = "m"
+
+[[keybind]]
+command = "Execute"
+value = "alacritty -t stack --working-directory ~/.local/src/stack -e nvim ~/.local/src/stack/stack"
+modifier = ["modkey", "Shift"]
+key = "n"
+
+[[keybind]]
+command = "Execute"
+value = "passmenu"
+modifier = ["modkey", "Shift"]
+key = "p"
+
+[[keybind]]
+command = "Execute"
+value = "clipdownload"
+modifier = ["modkey", "Shift"]
+key = "semicolon"
+
+[[keybind]]
+command = "Execute"
+value = "alacritty -t typingtest -e tt -theme dracula"
+modifier = ["modkey", "Shift"]
+key = "t"
+
+[[keybind]]
+command = "Execute"
+value = "ytfzfclipboard"
+modifier = ["modkey", "Shift"]
+key = "y"
+
+[[keybind]]
+command = "Execute"
+value = ""
+modifier = ["modkey", "Shift"]
+key = ""
+
+[[keybind]]
+command = "Execute"
+value = "cpuperformance"
+modifier = ["modkey", "Shift"]
+key = "Up"
+
+[[keybind]]
+command = "Execute"
+value = "bluetoothconnect 74:5C:4B:D2:86:F7"
+modifier = ["modkey"]
+key = "b"
+
+[[keybind]]
+command = "Execute"
+value = "alacritty -t NeoMutt -e neomutt"
+modifier = ["modkey"]
+key = "e"
+
+[[keybind]]
+command = "Execute"
+value = "calc"
+modifier = ["modkey"]
+key = "g"
+
+[[keybind]]
+command = "Execute"
+value = "dmenuunicode"
+modifier = ["modkey"]
+key = "grave"
+
+[[keybind]]
+command = "Execute"
+value = "mullvadconnect"
+modifier = ["modkey"]
+key = "m"
+
+[[keybind]]
+command = "Execute"
+value = "alacritty -t VimWiki --working-directory ~/Dropbox/NOTES/ -e nvim -c VimwikiIndex"
+modifier = ["modkey"]
+key = "n"
+
+[[keybind]]
+command = "Execute"
+value = "stack -p"
+modifier = ["modkey"]
+key = "p"
+
+[[keybind]]
+command = "Execute"
+value = "alacritty -t Newsboat -e newsboat"
+modifier = ["modkey"]
+key = "r"
+
+[[keybind]]
+command = "Execute"
+value = "supercollider"
+modifier = ["modkey"]
+key = "s"
+
+[[keybind]]
+command = "Execute"
+value = "clipstream"
+modifier = ["modkey"]
+key = "semicolon"
+
+[[keybind]]
+command = "Execute"
+value = "alacritty -t Htop -e htop"
+modifier = ["modkey"]
+key = "t"
+
+[[keybind]]
+command = "Execute"
+value = "stack -y"
+modifier = ["modkey"]
+key = "y"
+
+[[keybind]]
+command = "Execute"
+value = "sleep 0.2 && xdotool type --clearmodifiers $(date +\"%F \")"
+modifier = ["modkey"]
+key = "d"
+
+[[keybind]]
+command = "Execute"
+value = "alacritty -t ncmpcpp -e ncmpcpp"
+modifier = ["Control", "Shift"]
+key = "Return"
+
+[[keybind]]
+command = "Execute"
+value = "musicseekbackward"
+modifier = ["Control", "Shift"]
+key = "h"
+
+[[keybind]]
+command = "Execute"
+value = "musicnext"
+modifier = ["Control", "Shift"]
+key = "j"
+
+[[keybind]]
+command = "Execute"
+value = "musicprev"
+modifier = ["Control", "Shift"]
+key = "k"
+
+[[keybind]]
+command = "Execute"
+value = "musicseekforward"
+modifier = ["Control", "Shift"]
+key = "l"
+
+[[keybind]]
+command = "Execute"
+value = "musicplaypause"
+modifier = ["Control", "Shift"]
+key = "space"
+
+[[keybind]]
+command = "Execute"
+value = "maim -f jpg -m 9 \"/home/flex/Pictures/SCREENSHOTS/$(date +'%F %H_%M_%S.jpg')\""
+modifier = [""]
+key = "Print"
+
+[[keybind]]
+	command = "Execute"
+	value = "maim -f jpg -m 9 -s \"/home/flex/Pictures/SCREENSHOTS/$(date +'%F %H_%M_%S.jpg')\""
+modifier = ["Shift"]
+key = "Print"
+
+[[keybind]]
+command = "Execute"
+value = "qutebrowser"
+modifier = ["modkey", "Shift"]
+key = "period"
+
+[[keybind]]
+command = "Execute"
+value = "xkill"
+modifier = ["modkey", "Shift"]
+key = "x"
+
+[[keybind]]
+command = "Execute"
+value = "qpwgraph"
+modifier = ["modkey"]
+key = "q"
+
+[[keybind]]
+command = "Execute"
+value = "pavucontrol"
+modifier = ["modkey", "Shift"]
+key = "Shift+F4"
+
+[[keybind]]
+command = "Execute"
+value = "audacious"
+modifier = ["modkey", "Control"]
+key = "Return"
+
+[[keybind]]
+command = "Execute"
+value = "leftwmfocustoggle 1.3"
+modifier = ["modkey"]
+key = "a"
+

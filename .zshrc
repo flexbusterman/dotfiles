@@ -271,6 +271,7 @@ alias vq="cd /home/flex/.config/qutebrowser/; nvim autoconfig.yml"
 alias ve="cd /home/flex/; nvim .zshenv"
 alias vb="cd /home/flex/.config/bspwm/; nvim bspwmrc"
 alias vk="cd /home/flex/.config/sxhkd/; nvim sxhkdrc"
+alias vl="cd /home/flex/.config/leftwm/; nvim config.toml"
 
 # Keymap aliases
 alias se="setxkbmap se; setxkbmap -option caps:swapescape; xset r rate 300 50"
