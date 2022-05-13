@@ -13,6 +13,8 @@ yank() {
 put() {
 	# push
 	printf '%s\n%s\n' "$(xclip -sel clip -o)" "$(cat $stack)" > $stack
+	awk '!visited[$0]++' $stack > $stack.new
+	mv $stack.new $stack
 	notify-send "$(xclip -sel clip -o)"
 }
 
