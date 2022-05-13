@@ -37,4 +37,4 @@ leftwm-command "LoadTheme $SCRIPTPATH/theme.toml"
   # let index=indextemp
 # done
 
-~/.config/polybar/launch.sh
+# ~/.config/polybar/launch.sh

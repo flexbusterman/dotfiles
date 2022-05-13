@@ -6,7 +6,18 @@ killall -q polybar
 # polybar-msg cmd quit
 
 # Launch Polybar, using default config location ~/.config/polybar/config.ini
-polybar mybar -c $HOME/.config/polybar/config.ini 2>&1 | tee -a /tmp/polybar.log & disown
+pgrep polybar || polybar mybar -c $HOME/.config/polybar/config.ini 2>&1 | tee -a /tmp/polybar.log & disown
 
-# autohide
-(xdo id -m -N Polybar && polybar-msg cmd hide) &
+# autohide if focus variable is set
+
+# (xdo id -m -N Polybar && )
+
+focus=$(cat ~/.config/leftwm/focus | while read line; do echo $line; done)
+
+if [[ $focus == "true" ]]; then
+	wait
+	(xdo id -m -N Polybar && polybar-msg cmd hide)
+else
+	wait
+	(xdo id -m -N Polybar && polybar-msg cmd show)
+fi

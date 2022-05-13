@@ -1,12 +1,14 @@
 #!/bin/bash
-
+pgrep polybar || $HOME/.config/polybar/launch.sh
 focus=$(cat ~/.config/leftwm/focus | while read line; do echo $line; done)
 if [[ $focus == "true" ]]; then
-	leftwm-command "SetMarginMultiplier 0.0"
-	polybar-msg cmd show
+	# echo "toggle script: focus is true hide polybar"
+	(xdo id -m -N Polybar && polybar-msg cmd hide)
+	leftwm-command "SetMarginMultiplier $1"
 	echo "false" > ~/.config/leftwm/focus
 else
-	leftwm-command "SetMarginMultiplier $1"
-	polybar-msg cmd hide
+	# echo "toggle script: focus is false show"
+	(xdo id -m -N Polybar && polybar-msg cmd show)
+	leftwm-command "SetMarginMultiplier 0.0"
 	echo "true" > ~/.config/leftwm/focus
 fi
