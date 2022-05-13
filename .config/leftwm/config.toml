@@ -294,6 +294,60 @@ value = "9"
 modifier = ["modkey", "Shift"]
 key = "9"
 
+[[keybind]]
+command = "Execute"
+value = "xbacklight -inc $(bc <<< \"$(xbacklight) * 0.75 + 0.15\")"
+modifier = [""]
+key = "XF86XK_MonBrightnessUp"
+
+[[keybind]]
+command = "Execute"
+value = "xbacklight -dec $(bc <<< \"$(xbacklight) * 0.5\")"
+modifier = [""]
+key = "XF86XK_MonBrightnessDown"
+
+[[keybind]]
+command = "Execute"
+value = "pactl set-sink-volume @DEFAULT_SINK@ +5%"
+modifier = [""]
+key = "XF86XK_AudioRaiseVolume"
+
+[[keybind]]
+command = "Execute"
+value = "pactl set-sink-volume @DEFAULT_SINK@ -5%"
+modifier = [""]
+key = "XF86XK_AudioLowerVolume"
+
+[[keybind]]
+command = "Execute"
+value = "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+modifier = [""]
+key = "XF86XK_AudioMute"
+
+[[keybind]]
+command = "Execute"
+value = "pactl set-source-mute @DEFAULT_SOURCE@ toggle"
+modifier = [""]
+key = "XF86XK_AudioMicMute"
+
+[[keybind]]
+command = "Execute"
+value = ""
+modifier = [""]
+key = ""
+
+[[keybind]]
+command = "Execute"
+value = ""
+modifier = [""]
+key = ""
+
+[[keybind]]
+command = "Execute"
+value = ""
+modifier = [""]
+key = ""
+
 #  ____            _       _       
 # / ___|  ___ _ __(_)_ __ | |_ ___ 
 # \___ \ / __| '__| | '_ \| __/ __|
@@ -404,11 +458,11 @@ value = "calc"
 modifier = ["modkey"]
 key = "g"
 
-[[keybind]]
-command = "Execute"
-value = "dmenuunicode"
-modifier = ["modkey"]
-key = "grave"
+# [[keybind]]
+# command = "Execute"
+# value = "dmenuunicode"
+# modifier = ["modkey"]
+# key = "grave"
 
 [[keybind]]
 command = "Execute"
