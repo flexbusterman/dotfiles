@@ -5,9 +5,9 @@ tags = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
 layouts = ["MainAndVertStack", "MainAndHorizontalStack", "MainAndDeck", "GridHorizontal", "EvenHorizontal", "EvenVertical", "Fibonacci", "LeftMain", "CenterMain", "CenterMainBalanced", "CenterMainFluid", "Monocle", "RightWiderLeftStack", "LeftWiderRightStack"]
 layout_mode = "Workspace"
 insert_behavior = "Top"
-scratchpad = []
+# scratchpad = []
 window_rules = []
-disable_current_tag_swap = false
+disable_current_tag_swap = true
 disable_tile_drag = false
 focus_behaviour = "Sloppy"
 focus_new_windows = true
@@ -570,15 +570,37 @@ key = "comma"
 
 [[keybind]]
 command = "Execute"
-value = "alacritty -t VimWiki --working-directory ~/Dropbox/NOTES/ -e nvim -c VimwikiIndex"
+value = "alacritty -t VimWiki --working-directory ~/Dropbox/NOTES/ -e nvim TODO.md"
 modifier = ["modkey"]
 key = "n"
 
 [[keybind]]
 command = "Execute"
-value = "alacritty -t stack --working-directory ~/.local/src/stack -e nvim ~/.local/src/stack/stack"
+value = "alacritty -t VimWiki --working-directory ~/Dropbox/NOTES/ -e nvim -c VimwikiIndex"
 modifier = ["modkey", "Shift"]
 key = "n"
+
+# Create a scratchpad for alacritty
+[[scratchpad]]
+name = "stack" # This is the name which is referenced when calling (case-sensitive)
+value = "alacritty -t stack --working-directory ~/.local/src/stack -e nvim ~/.local/src/stack/stack" # The command to load the application if it isn't started
+# x, y, width, height are in pixels when an integer is inputted or a percentage when a float is inputted.
+# These values are relative to the size of the workspace, and will be restricted depending on the workspace size.
+x = 0.2
+y = 0.2
+height = 0.6
+width = 0.6
+
+[[keybind]]
+command = "ToggleScratchPad"
+value = "stack" # Name set for the scratchpad
+# modifier = ["modkey"]
+key = "grave"
+
+[[keybind]]
+command = "ToggleSticky"
+modifier = ["modkey"]
+key = "v"
 
 [[keybind]]
 command = "Execute"
