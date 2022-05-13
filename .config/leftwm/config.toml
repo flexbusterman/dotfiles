@@ -26,13 +26,13 @@ key = "Return"
 
 [[keybind]]
 command = "CloseWindow"
-value = ""
+# value = ""
 modifier = ["modkey"]
 key = "w"
 
 [[keybind]]
 command = "SoftReload"
-value = ""
+# value = ""
 modifier = ["modkey", "Shift"]
 key = "r"
 
@@ -62,43 +62,43 @@ key = "l"
 
 [[keybind]]
 command = "MoveWindowUp"
-value = ""
+# value = ""
 modifier = ["modkey", "Shift"]
 key = "k"
 
 [[keybind]]
 command = "MoveWindowDown"
-value = ""
+# value = ""
 modifier = ["modkey", "Shift"]
 key = "j"
 
 [[keybind]]
 command = "MoveWindowTop"
-value = ""
+# value = ""
 modifier = ["modkey"]
 key = "space"
 
 [[keybind]]
 command = "ToggleFloating"
-value = ""
+# value = ""
 modifier = ["modkey", "Shift"]
 key = "space"
 
 [[keybind]]
 command = "FocusWindowUp"
-value = ""
+# value = ""
 modifier = ["modkey"]
 key = "k"
 
 [[keybind]]
 command = "FocusWindowDown"
-value = ""
+# value = ""
 modifier = ["modkey"]
 key = "j"
 
 [[keybind]]
 command = "ToggleFullScreen"
-value = ""
+# value = ""
 modifier = ["modkey"]
 key = "f"
 
@@ -138,45 +138,45 @@ value = "5"
 modifier = ["modkey"]
 key = "h"
 
-[[keybind]]
-command = "MoveWindowUp"
-value = ""
-modifier = ["modkey", "Shift"]
-key = "Up"
+# [[keybind]]
+# command = "MoveWindowUp"
+# # value = ""
+# modifier = ["modkey", "Shift"]
+# key = "Up"
 
-[[keybind]]
-command = "MoveWindowDown"
-value = ""
-modifier = ["modkey", "Shift"]
-key = "Down"
+# [[keybind]]
+# command = "MoveWindowDown"
+# # value = ""
+# modifier = ["modkey", "Shift"]
+# key = "Down"
 
-[[keybind]]
-command = "FocusWindowUp"
-value = ""
-modifier = ["modkey"]
-key = "Up"
+# [[keybind]]
+# command = "FocusWindowUp"
+# # value = ""
+# modifier = ["modkey"]
+# key = "Up"
 
-[[keybind]]
-command = "FocusWindowDown"
-value = ""
-modifier = ["modkey"]
-key = "Down"
+# [[keybind]]
+# command = "FocusWindowDown"
+# # value = ""
+# modifier = ["modkey"]
+# key = "Down"
 
 [[keybind]]
 command = "NextLayout"
-value = ""
+# value = ""
 modifier = ["modkey", "Control"]
 key = "Up"
 
 [[keybind]]
 command = "PreviousLayout"
-value = ""
+# value = ""
 modifier = ["modkey", "Control"]
 key = "Down"
 
 [[keybind]]
 command = "FocusWorkspaceNext"
-value = ""
+# value = ""
 modifier = ["modkey"]
 key = "Right"
 
@@ -297,56 +297,38 @@ key = "9"
 [[keybind]]
 command = "Execute"
 value = "xbacklight -inc $(bc <<< \"$(xbacklight) * 0.75 + 0.15\")"
-modifier = [""]
+modifier = []
 key = "XF86XK_MonBrightnessUp"
 
 [[keybind]]
 command = "Execute"
 value = "xbacklight -dec $(bc <<< \"$(xbacklight) * 0.5\")"
-modifier = [""]
+modifier = []
 key = "XF86XK_MonBrightnessDown"
 
 [[keybind]]
 command = "Execute"
 value = "pactl set-sink-volume @DEFAULT_SINK@ +5%"
-modifier = [""]
+modifier = []
 key = "XF86XK_AudioRaiseVolume"
 
 [[keybind]]
 command = "Execute"
 value = "pactl set-sink-volume @DEFAULT_SINK@ -5%"
-modifier = [""]
+modifier = []
 key = "XF86XK_AudioLowerVolume"
 
 [[keybind]]
 command = "Execute"
 value = "pactl set-sink-mute @DEFAULT_SINK@ toggle"
-modifier = [""]
+modifier = []
 key = "XF86XK_AudioMute"
 
 [[keybind]]
 command = "Execute"
 value = "pactl set-source-mute @DEFAULT_SOURCE@ toggle"
-modifier = [""]
+modifier = []
 key = "XF86XK_AudioMicMute"
-
-[[keybind]]
-command = "Execute"
-value = ""
-modifier = [""]
-key = ""
-
-[[keybind]]
-command = "Execute"
-value = ""
-modifier = [""]
-key = ""
-
-[[keybind]]
-command = "Execute"
-value = ""
-modifier = [""]
-key = ""
 
 #  ____            _       _       
 # / ___|  ___ _ __(_)_ __ | |_ ___ 
@@ -527,12 +509,12 @@ key = "space"
 [[keybind]]
 command = "Execute"
 value = "maim -f jpg -m 9 \"/home/flex/Pictures/SCREENSHOTS/$(date +'%F %H_%M_%S.jpg')\""
-modifier = [""]
+modifier = []
 key = "Print"
 
 [[keybind]]
-	command = "Execute"
-	value = "maim -f jpg -m 9 -s \"/home/flex/Pictures/SCREENSHOTS/$(date +'%F %H_%M_%S.jpg')\""
+command = "Execute"
+value = "maim -f jpg -m 9 -s \"/home/flex/Pictures/SCREENSHOTS/$(date +'%F %H_%M_%S.jpg')\""
 modifier = ["Shift"]
 key = "Print"
 
@@ -664,7 +646,7 @@ key = "period"
 command = "Execute"
 value = "pavucontrol"
 modifier = ["modkey", "Shift"]
-key = "Shift+F4"
+key = "F4"
 
 [[keybind]]
 command = "Execute"
