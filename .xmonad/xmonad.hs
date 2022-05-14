@@ -39,6 +39,7 @@ import XMonad.Layout.BinarySpacePartition
 import XMonad.Layout.Mosaic
 import XMonad.Layout.ThreeColumns
 
+import XMonad.Layout.NoBorders
 import XMonad.Layout.Spacing
 
 myTerminal = "alacritty"
@@ -356,7 +357,7 @@ myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
     -- you may also bind events to the mouse scroll wheel (button4 and button5)
     ]
 
-myLayoutHook = avoidStruts (
+myLayoutHook = smartBorders $ avoidStruts (
     spiral (6/7) ||| toggleLayouts Full (Grid) ||| toggleLayouts Full (ThreeColMid 1 (1/20) (1/2)) ||| simpleTabbed ||| toggleLayouts Full (tiled) ||| Mirror tiled)
         where
     -- default tiling algorithm partitions the screen into two panes
