@@ -90,7 +90,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask,               xK_Tab ), sendMessage NextLayout)
 
     --  Reset the layouts on the current workspace to default
-    , ((modMask .|. shiftMask, xK_space ), setLayout $ XMonad.layoutHook conf)
+    -- , ((modMask .|. shiftMask, xK_space ), setLayout $ XMonad.layoutHook conf)
 
     -- Resize viewed windows to the correct size
     , ((modMask,               xK_n     ), refresh)
@@ -109,8 +109,8 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((0, xF86XK_AudioRaiseVolume), spawn "amixer set Master 5%+ unmute")
 
     -- Brightness Control
-    , ((0, xF86XK_MonBrightnessDown), spawn "xbacklight -dec 10")
-    , ((0, xF86XK_MonBrightnessUp), spawn "xbacklight -inc 10")
+    , ((0, xF86XK_MonBrightnessUp), spawn "xbacklight -inc $(bc <<< \"$(xbacklight) * 0.5 + 0.15\")")
+    , ((0, xF86XK_MonBrightnessDown), spawn "xbacklight -dec $(bc <<< \"$(xbacklight) * 0.5\")")
 
     -- Move focus to the master window
     , ((modMask,               xK_m     ), windows W.focusMaster  )
@@ -145,6 +145,8 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     -- See also the statusBar function from Hooks.DynamicLog.
      , ((modMask              , xK_b     ), sendMessage ToggleStruts)
 
+     -- , ((modMask              , xK_u     ), sendMessage JumpToLayout "tiled")
+
     -- Quit xmonad
     , ((modMask .|. shiftMask, xK_q     ), io (exitWith ExitSuccess))
 
@@ -155,10 +157,10 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask              , xK_f), sendMessage (Toggle "Full"))
 
     -- moving floating windows
- , ((mod4Mask,               xK_h     ), withFocused (keysMoveWindow (-15,0)))
- , ((mod4Mask,               xK_l     ), withFocused (keysMoveWindow (15,0)))
- , ((mod4Mask,               xK_k     ), withFocused (keysMoveWindow (0,-15)))
- , ((mod4Mask,               xK_j     ), withFocused (keysMoveWindow (0,15)))
+   , ((mod4Mask,               xK_h     ), withFocused (keysMoveWindow (-15,0)))
+   , ((mod4Mask,               xK_l     ), withFocused (keysMoveWindow (15,0)))
+   , ((mod4Mask,               xK_k     ), withFocused (keysMoveWindow (0,-15)))
+   , ((mod4Mask,               xK_j     ), withFocused (keysMoveWindow (0,15)))
 
     -- resizing floating windows
  , ((mod4Mask .|. shiftMask,               xK_h     ), withFocused (keysResizeWindow (-30,0) (1/2,0)))
