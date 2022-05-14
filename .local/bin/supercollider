@@ -10,5 +10,6 @@ if [ $installed == 'true' ]; then
 		# sleep 1
 		# PIPEWIRE_LATENCY="1024/48000" reaper -audiocfg &
 		# reaper -audiocfg &
-		alacritty -t SuperCollider -e zsh -c "cd ~/Dropbox/SUPERCOLLIDER/; nvim -c \"set filetype=supercollider | SCNvimStart\"" &
+		
+		alacritty -t SuperCollider -e zsh -c "cd ~/Dropbox/SUPERCOLLIDER/; nvim \"$(ls ~/Dropbox/SUPERCOLLIDER | awk '/^[0-9]/{print}' | awk 'END{printf $0}')\" -c \"set filetype=supercollider | SCNvimStart\"" &
 fi
