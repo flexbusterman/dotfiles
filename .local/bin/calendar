@@ -1,0 +1,5 @@
+#!/bin/bash
+running=false
+ps -C calcurse >/dev/null && running=true
+ps -C calcurse-caldav >/dev/null && running=true
+$running && notify-send "Not updating because caldav is running or calendar is already updating" || CALCURSE_CALDAV_PASSWORD=$(cat ~/.netrc) calcurse-caldav && notify-send "Updated calendar" 

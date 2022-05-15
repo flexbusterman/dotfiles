@@ -16,11 +16,6 @@ dropbox &
 dunst &
 qpwgraph -m &
 pidof mpd || mpd &
-# displaydefault &
-exec dwm
-# exec i3
-# exec awesome
-# exec frankenwm
-# exec leftwm
-# exec qtile
-# exec xmonad
+
+# script that loops to restart dwm
+exec startdwm
