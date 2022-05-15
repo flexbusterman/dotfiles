@@ -194,18 +194,6 @@ modifier = ["modkey", "Control"]
 key = "Down"
 
 [[keybind]]
-command = "FocusWorkspaceNext"
-# value = ""
-modifier = ["modkey"]
-key = "Right"
-
-# [[keybind]]
-# command = "FocusWorkspacePrevious"
-# value = ""
-# modifier = ["modkey"]
-# key = "Left"
-
-[[keybind]]
 command = "GotoTag"
 value = "1"
 modifier = ["modkey"]

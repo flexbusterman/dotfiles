@@ -16,9 +16,10 @@ dropbox &
 dunst &
 qpwgraph -m &
 mpd &
+exec dwm
 # exec i3
 # exec awesome
 # exec frankenwm
-exec leftwm
+# exec leftwm
 # exec qtile
 # exec xmonad
