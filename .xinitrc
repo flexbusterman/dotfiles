@@ -16,6 +16,7 @@ dropbox &
 dunst &
 qpwgraph -m &
 pidof mpd || mpd &
+# displaydefault &
 exec dwm
 # exec i3
 # exec awesome

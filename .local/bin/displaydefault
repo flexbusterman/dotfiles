@@ -1,6 +1,7 @@
 #!/bin/sh
 
-xrandr --output HDMI1 --auto --scale 1.0x1.0 --output eDP1 --right-of HDMI1 --auto --scale 1.0x1.0
+xrandr --output eDP1 --auto --scale 1.0x1.0 --output HDMI1 --above eDP1 --auto --scale 1.0x1.0
+
 setbg
 remaps
 killall dunst
