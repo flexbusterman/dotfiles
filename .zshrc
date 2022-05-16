@@ -257,8 +257,8 @@ alias vn="cd /home/flex/.config/nvim/; nvim init.vim"
 alias vp="cd /home/flex/.config/polybar/; nvim config.ini"
 alias vP="cd /home/flex/.config/nvim/; nvim plugins.vim"
 # alias vp="cd /home/flex/; nvim .xprofile"
-alias vs="cd /home/flex/.config/coc/ultisnips; nvim all.snippets"
-alias vS="cd /home/flex/.local/src/st/; nvim config.h"
+alias vS="cd /home/flex/.config/coc/ultisnips; nvim all.snippets"
+alias vs="cd /home/flex/.local/src/st/; nvim config.def.h"
 alias vu="cd /home/flex/.config/newsboat/; nvim urls"
 alias vv="cd /home/flex/.config/vifm/; nvim vifmrc"
 alias vX="cd /home/flex/.xmonad/; nvim xmonad.hs"
@@ -544,11 +544,10 @@ dp() {
   # ;}
 
 # asks too often to show all suggestions, but nice that it shows flags
-# source ~/.local/src/zsh-autocomplete/zsh-autocomplete.plugin.zsh
-
+source ~/.local/src/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 source ~/.zsh/plugins/zsh-system-clipboard/zsh-system-clipboard.zsh
-
-source ~/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+# source ~/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+#
 # Load syntax highlighting; should be last according to Luke.
 source ~/.zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null
 alias dot="/usr/bin/git --git-dir=$HOME/.dot.git/ --work-tree=$HOME"
