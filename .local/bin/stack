@@ -1,6 +1,6 @@
 #!/bin/bash
 # using this file as a clipboard stack
-stack=~/.local/src/stack/stack
+stack=~/Dropbox/STACK/stack
 
 yank() {
 	# pop
