@@ -7,10 +7,10 @@ column_widths=10,275,333,10,175,175,10,100,41,10,275,275,275,10,275
 infoarea_show_art=FALSE
 infoarea_show_vis=FALSE
 infoarea_visible=FALSE
-player_height=1024
-player_width=1864
-player_x=25
-player_y=25
+player_height=1061
+player_width=1050
+player_x=0
+player_y=13
 
 [gtkui-layout]
 item0_name=Search Tool
