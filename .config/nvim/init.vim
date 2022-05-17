@@ -103,12 +103,14 @@ highlight SignColumn ctermbg=none guibg=none guifg=White
 if (has("termguicolors"))
 	set termguicolors
 endif
+
 "  _  __          _     _           _ _
 " | |/ /___ _   _| |__ (_)_ __   __| (_)_ __   __ _ ___
 " | ' // _ \ | | | '_ \| | '_ \ / _` | | '_ \ / _` / __|
 " | . \  __/ |_| | |_) | | | | | (_| | | | | | (_| \__ \
 " |_|\_\___|\__, |_.__/|_|_| |_|\__,_|_|_| |_|\__, |___/
 "           |___/                             |___/
+"
 let mapleader = " "
 let g:mapleader = " "
 nnoremap <silent> <nowait> <leader>j :w<CR>
