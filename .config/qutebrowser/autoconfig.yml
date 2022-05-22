@@ -27,6 +27,7 @@ settings:
   content.geolocation:
     https://www.google.com: true
     https://www.google.com.ar: false
+    https://www.sj.se: true
   content.mute:
     facebook.com: true
   content.notifications.enabled:
