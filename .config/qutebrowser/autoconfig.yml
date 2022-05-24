@@ -45,9 +45,9 @@ settings:
     https://mail.google.com?extsrc=mailto&url=%25s: true
     https://mail.protonmail.com#mailto=%25s: false
   fonts.default_family:
-    global: Px437 IBM BIOS
+    global: Fixedsys Excelsior
   fonts.default_size:
-    global: 10px
+    global: 16px
   hints.border:
     global: '1px solid #000000'
   url.default_page:
