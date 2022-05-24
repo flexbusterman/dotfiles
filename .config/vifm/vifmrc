@@ -24,6 +24,8 @@ set syscalls
 
 set trash
 
+set trashdir=$HOME/.trash
+
 " This is how many directories to store in the directory history.
 
 set history=100
@@ -613,7 +615,6 @@ nnoremap <f8> :delete<cr>
 "" I recommend not changing this until you are familiar with vifm.
 "" This probably shouldn't be an option.
 "set trash
-"" set trashdir=$HOME/.cache/trash
 "" Automatically resolve symbolic links on l or Enter.
 "" set followlinks
 "set nofollowlinks
