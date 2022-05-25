@@ -58,27 +58,28 @@ hide_cursor_when_typing: false
 font:
   normal:
     # family: Source Code Pro
-    family: Px437 IBM BIOS
+    # family: Px437 IBM BIOS
+    family: PxPlus IBM VGA 9x16
     style: Regular
     # style: Bold
 
   bold:
-    family: Px437 IBM BIOS
-    style: Bold
+    family: PxPlus IBM VGA 9x16
+    style: Regular
 
   italic:
-    family: Px437 IBM BIOS
+    family: PxPlus IBM VGA 9x16
     style: Italic
     # style: Bold
 
   bold_italic:
-    family: Px437 IBM BIOS
-    style: Bold Italic
+    family: PxPlus IBM VGA 9x16
+    style: Italic
 
-  size: 4.5
+  size: 6.5
   offset:
       x: 0
-      y: 0
+      y: 1
 
 shell:
  program: /usr/bin/zsh
