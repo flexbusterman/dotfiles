@@ -29,7 +29,7 @@ settings:
     https://www.google.com.ar: false
     https://www.sj.se: true
   content.mute:
-    facebook.com: true
+    https://www.facebook.com: true
   content.notifications.enabled:
     https://cutewallpaper.org: false
     https://mail.one.com: false
