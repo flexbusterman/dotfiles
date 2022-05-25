@@ -37,11 +37,15 @@
 while read file
 do
         case "$1" in
-        "C-d")
+        "d")
                 mv "$file" ~/.trash ;;
-        "C-period")
+        "period")
                 convert -rotate 90 "$file" "$file" ;;
-        "C-comma")
+        "comma")
+                convert -rotate 270 "$file" "$file" ;;
+        "Right")
+                convert -rotate 90 "$file" "$file" ;;
+        "Left")
                 convert -rotate 270 "$file" "$file" ;;
         "C-c")
                 echo -n "$file" | xclip -selection clipboard ;;
