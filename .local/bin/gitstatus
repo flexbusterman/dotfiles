@@ -1,0 +1,15 @@
+#!/bin/sh
+
+eval "$(ssh-agent -s)" &> /dev/null
+ssh-add ~/.ssh/git &> /dev/null
+
+cd $1
+folders=$(find ~+ -mindepth 1 -maxdepth 1 -type d) &> /dev/null
+
+for folder in $folders
+do
+	cd $folder
+	if [[ $(git status | grep modified)  ]]; then
+		echo "Changes in $folder"
+	fi
+done
