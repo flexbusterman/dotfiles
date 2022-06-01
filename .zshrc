@@ -1,28 +1,30 @@
-# Augustins version of Luke's config for the Zoomer Shell!
-
-# no duplicates in history
 HISTFILE=/home/flex/.history/zsh/history
 HISTSIZE=10000000
 SAVEHIST=10000000
 path+=($HOME/.ghcup/bin)
 path+=($HOME/go/bin/)
+
+setopt APPEND_HISTORY # Allow multiple terminal sessions to all append to one zsh command history
+setopt autocd   # Automatically cd into typed directory.
 setopt BANG_HIST                 # Treat the '!' character specially during expansion.
 setopt EXTENDED_HISTORY          # Write the history file in the ":start:elapsed;command" format.
-setopt INC_APPEND_HISTORY        # Write to the history file immediately, not when the shell exits.
-setopt SHARE_HISTORY             # Share history between all sessions.
+# setopt HIST_BEEP                 # Beep when accessing nonexisten
 setopt HIST_EXPIRE_DUPS_FIRST    # Expire duplicate entries first when trimming history.
-setopt HIST_IGNORE_DUPS          # Don't record an entry that was just recorded again.
-setopt HIST_IGNORE_ALL_DUPS      # Delete old recorded entry if new entry is a duplicate.
 setopt HIST_FIND_NO_DUPS         # Do not display a line previously found.
+setopt HIST_IGNORE_ALL_DUPS      # Delete old recorded entry if new entry is a duplicate.
+setopt HIST_IGNORE_DUPS          # Don't record an entry that was just recorded again.
 setopt HIST_IGNORE_SPACE         # Don't record an entry starting with a space.
-setopt HIST_SAVE_NO_DUPS         # Don't write duplicate entries in the history file.
 setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording entry.
+setopt HIST_SAVE_NO_DUPS         # Don't write duplicate entries in the history file.
 setopt HIST_VERIFY               # Don't execute immediately upon history expansion.
-setopt HIST_BEEP                 # Beep when accessing nonexisten
+setopt INC_APPEND_HISTORY        # Write to the history file immediately, not when the shell exits.
+setopt MARK_DIRS # append a trailing ‘/’ to all directory names resulting from filename generation
+setopt SHARE_HISTORY             # Share history between all sessions.
+stty stop undef   # Disable ctrl-s to freeze terminal.
 
 # bind ctrl+space accept completion
-bindkey -r '^L'
-bindkey '^L' autosuggest-accept
+# bindkey -r '^L'
+# bindkey '^L' autosuggest-accept
 
 autoload -U up-line-or-beginning-search
 autoload -U down-line-or-beginning-search
@@ -35,15 +37,17 @@ bindkey "^J" down-line-or-beginning-search # Down
 autoload -U colors && colors  # Load colors
 PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
 # PS1="%B%{$fg[blue]%}>%{$reset_color%}%b "
-setopt autocd   # Automatically cd into typed directory.
-stty stop undef   # Disable ctrl-s to freeze terminal.
-
-# History in cache directory:
 
 # Load aliases and shortcuts if existent.
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shortcutrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shortcutrc"
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/aliasrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/aliasrc"
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/zshnameddirrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/zshnameddirrc"
+
+# vi mode
+bindkey -v
+export KEYTIMEOUT=1
+export MPD_HOST=127.0.0.1
+export MPD_PORT=6600
 
 # Basic auto/tab complete:
 # autoload -U compinit
@@ -51,13 +55,7 @@ stty stop undef   # Disable ctrl-s to freeze terminal.
 # zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 # zmodload zsh/complist
 # compinit
-# _comp_options+=(globdots)   # Include hidden files.
-
-# vi mode
-bindkey -v
-export KEYTIMEOUT=1
-export MPD_HOST=127.0.0.1
-export MPD_PORT=6600
+# _comp_options+=(globdots)   Include hidden files.
 
 # Use vim keys in tab complete menu:
 # bindkey -M menuselect 'h' vi-backward-char
@@ -67,68 +65,24 @@ export MPD_PORT=6600
 # bindkey -v '^?' backward-delete-char
 # bindkey -v '^H' vi-backward-kill-word
 
-# Change cursor shape for different vi modes.
-function zle-keymap-select {
-  if [[ ${KEYMAP} == vicmd ]] ||
-    [[ $1 = 'block' ]]; then
-      echo -ne '\e[1 q'
-    elif [[ ${KEYMAP} == main ]] ||
-      [[ ${KEYMAP} == viins ]] ||
-      [[ ${KEYMAP} = '' ]] ||
-      [[ $1 = 'beam' ]]; then
-          echo -ne '\e[5 q'
-  fi
-}
-zle -N zle-keymap-select
-zle-line-init() {
-zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
-echo -ne "\e[5 q"
-}
-zle -N zle-line-init
-echo -ne '\e[5 q' # Use beam shape cursor on startup.
-preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
-
 # Use lf to switch directories and bind it to ctrl-o
-lfcd () {
-  tmp="$(mktemp)"
-  lf -last-dir-path="$tmp" "$@"
-  if [ -f "$tmp" ]; then
-    dir="$(cat "$tmp")"
-    rm -f "$tmp" >/dev/null
-    [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
-  fi
-}
-bindkey -s '^o' 'lfcd\n'
-bindkey -s '^a' 'bc -l\n'
-bindkey -s '^f' 'cd "$(dirname "$(fzf)")"\n'
-bindkey '^[[P' delete-char
+# lfcd () {
+  # tmp="$(mktemp)"
+  # lf -last-dir-path="$tmp" "$@"
+  # if [ -f "$tmp" ]; then
+    # dir="$(cat "$tmp")"
+    # rm -f "$tmp" >/dev/null
+    # [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
+  # fi
+# }
+# bindkey -s '^o' 'lfcd\n'
+# bindkey -s '^a' 'bc -l\n'
+# bindkey -s '^f' 'cd "$(dirname "$(fzf)")"\n'
+# bindkey '^[[P' delete-char
 
 # Edit line in vim with ctrl-e:
-autoload edit-command-line; zle -N edit-command-line
-bindkey '^e' edit-command-line
-
-# append a trailing ‘/’ to all directory names resulting from filename generation
-setopt MARK_DIRS
-
-# ===== History
-# Allow multiple terminal sessions to all append to one zsh command history
-setopt APPEND_HISTORY
-# Save each command’s beginning timestamp (in seconds since the epoch) and the duration (in seconds) to the history file
-# setopt EXTENDED_HISTORY
-# Add commands as they are typed, don't wait until shell exit
-setopt INC_APPEND_HISTORY
-# If the internal history needs to be trimmed to add the current command line, setting this option will cause the oldest history event that has a duplicate to be lost before losing a unique event
-setopt HIST_EXPIRE_DUPS_FIRST
-# Do not enter command lines into the history list if they are duplicates of the previous event
-setopt HIST_IGNORE_DUPS
-# remove command lines from the history list when the first character on the line is a space
-setopt HIST_IGNORE_SPACE
-# When searching history don't display results already cycled through twice
-setopt HIST_FIND_NO_DUPS
-
-# vi mode
-bindkey -v
-export KEYTIMEOUT=1
+# autoload edit-command-line; zle -N edit-command-line
+# bindkey '^e' edit-command-line
 
 # Change cursor shape for different vi modes.
 function zle-keymap-select {
@@ -205,16 +159,8 @@ alias pa="pulseaudio"
 alias ra="sudo alsa force-reload"
 alias al="asoundconf"
 alias als="asoundconf is-active"
-# get|delete PARAMETER
-# set PARAMETER VALUE
-# alias alls="asoundconf list"
 alias alls="asoundconf list-all"
 alias ald="asoundconf set-default-card"
-# reset-default-card
-# set-pulseaudio
-# unset-pulseaudio
-# set-oss PARAMETER
-# unset-oss
 
 # Navigation shortcuts
 alias b='cd ~/.local/bin/; exa'
@@ -225,7 +171,6 @@ alias S='cd ~/Dropbox/SUPERCOLLIDER; exa'
 alias n='cd ~/Dropbox/NOTES; exa'
 alias c='cd ~/.config/; exa'
 alias w='cd ~/.wine/drive_c/; exa'
-# alias g='cd ~/GIT/; exa'
 
 # Dropbox aliases
 alias dadd="dropbox-cli exclude remove"
@@ -402,28 +347,6 @@ t(){
 	termdown --no-figlet $* && notify-send "$* has passed"
 }
 
-beer(){
-	while true
-	do
-		echo '                       '
-		echo '  .   *   ..  . *  *   '
-		echo '*  * @()Ooc()*   o  .  '
-		echo '    (Q@*0CG*O()  ___   '
-		echo '   |\_________/|/ _ \  '
-		echo '   |  |  |  |  | / | | '
-		echo '   |  |  |  |  | | | | '
-		echo '   |  |  |  |  | | | | '
-		echo '   |  |  |  |  | | | | '
-		echo '   |  |  |  |  | | | | '
-		echo '   |  |  |  |  | \_| | '
-		echo '   |  |  |  |  |\___/  '
-		echo '   |\_|__|__|_/|       '
-		echo '    \_________/        '
-		echo '                       '
-		sleep 5
-	done
-}
-
 # pdf2mp3() {
 	# pdftotext $* | sed ebook.txt
 	# espeak -f ebook.txt -w ebook_audio.wav
@@ -481,13 +404,6 @@ mind() {
 	# # st -e zsh -c "cd ~/Documents/; nvim -c \"autocmd! CursorHold * CocDisable\" Buffalo\ Bill\ Gates.wiki" &
 	# # cd ~/GIT/kalle2019/; nvim;
 # }
-
-dev() {
-	alacritty -t Dev -e zsh -c "cd ~/.local/src/$*/; nvim -c NERDTreeToggle" &
-  
-	cd ~/.local/src/$*
-  npm run dev
-}
 
 # aug() {
   # st -t SuperCollider -e zsh -c "cd ~/Dropbox/; nvim -c \"NERDTreeToggle | set filetype=supercollider | SCNvimStart\"" &

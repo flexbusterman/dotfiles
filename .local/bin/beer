@@ -1,0 +1,21 @@
+#!/bin/sh 
+
+while true
+do
+	echo '                       '
+	echo '  .   *   ..  . *  *   '
+	echo '*  * @()Ooc()*   o  .  '
+	echo '    (Q@*0CG*O()  ___   '
+	echo '   |\_________/|/ _ \  '
+	echo '   |  |  |  |  | / | | '
+	echo '   |  |  |  |  | | | | '
+	echo '   |  |  |  |  | | | | '
+	echo '   |  |  |  |  | | | | '
+	echo '   |  |  |  |  | | | | '
+	echo '   |  |  |  |  | \_| | '
+	echo '   |  |  |  |  |\___/  '
+	echo '   |\_|__|__|_/|       '
+	echo '    \_________/        '
+	echo '                       '
+	sleep 5
+done
