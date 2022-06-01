@@ -383,40 +383,6 @@ merge() {
 
 hg() { history 0 | grep --color=always -i $* }
 
-mind() {
-	cd /home/flex/GIT/mind
-	alacritty -t dev -e zsh -c "cd ~/GIT/mind/; zsh -c \"npm run dev\"" &
-	sleep 2
-	firefox --devtools --new-window localhost:8000 &
-	firefox --new-window https://xd.adobe.com/view/035ce4d8-ddd4-4c00-752c-3f6187a5d998-756d/grid &
-	alacritty -t wiki -e zsh -c "cd ~/Documents/; nvim Scandinavian\ Mind.wiki" &
-	alacritty -t terminal -e zsh -c "cd ~/GIT/mind/; eval \"$(ssh-agent -s)\" && ssh-add ~/.ssh/mind;" &
-	# sleep 0.5
-	alacritty -t main -e zsh -c "cd ~/GIT/mind/; eval \"$(ssh-agent -s)\" && ssh-add ~/.ssh/mind; cd ~/GIT/mind/; nvim pages/index.vue;" &
-}
-
-# dev() {
-	# # st -e cd ~/GIT/$* &
-	# # st -e cd ~/GIT/$*; &
-	# alacritty -t Dev -e zsh -c "cd ~/GIT/$*/; nvim ./js/02.js" &
-	# cd ~/GIT/$*;
-	# browser-sync start --server --no-notify --files "**/*"
-	# # st -e zsh -c "cd ~/Documents/; nvim -c \"autocmd! CursorHold * CocDisable\" Buffalo\ Bill\ Gates.wiki" &
-	# # cd ~/GIT/kalle2019/; nvim;
-# }
-
-# aug() {
-  # st -t SuperCollider -e zsh -c "cd ~/Dropbox/; nvim -c \"NERDTreeToggle | set filetype=supercollider | SCNvimStart\"" &
-  # bitwig-studio &
-  # st -t aug -e zsh -c "sleep 5; aconnect 128:7 16:0"
-# }
-
-# aug() {
-  # st -t SuperCollider -e zsh -c "cd ~/Dropbox/SUPERCOLLIDER; nvim -O ~/Dropbox/SUPERCOLLIDER/2021-03-15\ Augustin\ Piece\ 001.sc ~/Dropbox/SUPERCOLLIDER/2021-03-15\ Augustin\ Setup\ 001.sc -c \"set filetype=supercollider | SCNvimStart\"" &
-  # # bitwig-studio &
-  # # st -t aug -e zsh -c "sleep 5; aconnect 128:7 16:0"
-# }
-
 # Locate and Edit
 le(){
 	locate $* | sed 1q | xargs nvim
@@ -454,22 +420,15 @@ dp() {
   dot push
 }
 
-# calc() {
-  # awk "BEGIN{ print $* }"
-  # # bc <<< "$*"
-  # ;}
-
 # asks too often to show all suggestions, but nice that it shows flags
 source ~/.local/src/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 source ~/.zsh/plugins/zsh-system-clipboard/zsh-system-clipboard.zsh
 source ~/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-#
+
 # Load syntax highlighting; should be last according to Luke.
 source ~/.zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null
 alias dot="/usr/bin/git --git-dir=$HOME/.dot.git/ --work-tree=$HOME"
 
-# xcape -e 'Mode_switch=Escape' &
-#
 LANG=en_US.UTF-8
 LC_CTYPE="en_US.UTF-8"
 LC_NUMERIC="en_US.UTF-8"
