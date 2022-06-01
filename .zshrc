@@ -49,41 +49,6 @@ export KEYTIMEOUT=1
 export MPD_HOST=127.0.0.1
 export MPD_PORT=6600
 
-# Basic auto/tab complete:
-# autoload -U compinit
-# zstyle ':completion:*' menu select
-# zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
-# zmodload zsh/complist
-# compinit
-# _comp_options+=(globdots)   Include hidden files.
-
-# Use vim keys in tab complete menu:
-# bindkey -M menuselect 'h' vi-backward-char
-# bindkey -M menuselect 'k' vi-up-line-or-history
-# bindkey -M menuselect 'l' vi-forward-char
-# bindkey -M menuselect 'j' vi-down-line-or-history
-# bindkey -v '^?' backward-delete-char
-# bindkey -v '^H' vi-backward-kill-word
-
-# Use lf to switch directories and bind it to ctrl-o
-# lfcd () {
-  # tmp="$(mktemp)"
-  # lf -last-dir-path="$tmp" "$@"
-  # if [ -f "$tmp" ]; then
-    # dir="$(cat "$tmp")"
-    # rm -f "$tmp" >/dev/null
-    # [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
-  # fi
-# }
-# bindkey -s '^o' 'lfcd\n'
-# bindkey -s '^a' 'bc -l\n'
-# bindkey -s '^f' 'cd "$(dirname "$(fzf)")"\n'
-# bindkey '^[[P' delete-char
-
-# Edit line in vim with ctrl-e:
-# autoload edit-command-line; zle -N edit-command-line
-# bindkey '^e' edit-command-line
-
 # Change cursor shape for different vi modes.
 function zle-keymap-select {
   if [[ ${KEYMAP} == vicmd ]] ||
@@ -187,9 +152,9 @@ alias wls="nmcli dev wifi"
 alias wla="nmcli c"
 alias ws="nmcli device status"
 alias wd="nmcli device disconnect wlp2s0"
-wrm() { nmcli con delete $* }
-wc() { nmcli device wifi connect $1 password $2 }
-wdisable() { nmcli connection down $* }
+alias wrm='f() { nmcli con delete $*};f'
+alias wc='f() { nmcli device wifi connect $1 password $2 };f'
+alias wdisable='f() { nmcli connection down $* };f'
 
 # VIM aliases for editing common files
 # alias va="cd /home/flex/.config/awesome/; nvim rc.lua"
@@ -261,13 +226,6 @@ yrm () { yay -Rs $* }
 yup () { yay --nocleanmenu --nodiffmenu -Syu }
 yf () { yay -Ss $* }
 yls () { yay -Q }
-
-minutes () {
-  SUM=$(bc<<<"$*")
-  HOURS=$(bc <<< "$SUM/60")
-  MINUTES=$(bc <<< "$SUM%60")
-  echo "$HOURS:$MINUTES"
-}
 
 underscorefolder(){
 for f in *; do
