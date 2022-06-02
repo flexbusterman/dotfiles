@@ -129,8 +129,8 @@ mark D ~/Dropbox/DROPSYNC/
 mark g ~/.local/src/
 mark h ~/
 mark j ~/Downloads/
-mark m ~/Dropbox/MUSIC/
-mark M /run/media/flex/
+mark M ~/Dropbox/MUSIC/
+mark m /run/media/flex/
 mark p ~/Pictures/
 mark P ~/Dropbox/PDF/
 mark r /

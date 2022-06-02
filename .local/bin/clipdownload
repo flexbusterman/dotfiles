@@ -1,4 +1,4 @@
-#/bin/bash
+#!/bin/bash
 ifinstalled xsel yt-dlp || exit 1
 clipboard=$(xsel -ob)
 
@@ -36,7 +36,7 @@ if [[ $MP3 == true ]]
 then
 		yt-dlp -x --audio-format mp3 --audio-quality 320K -P ~/Downloads/ "$clipboard" || notify-send 'Clipboard not valid'
 else
-		yt-dlp -P ~/Downloads/VIDEO/ "$clipboard" || notify-send 'Clipboard not valid'
+		yt-dlp -f "bv*[height=1080]+ba" -P ~/Downloads/VIDEO/ "$clipboard" || notify-send "Clipboard not valid"
 fi
 else
 	notify-send 'Clipboard empty'
