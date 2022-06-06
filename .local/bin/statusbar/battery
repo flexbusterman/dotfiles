@@ -1,4 +1,4 @@
-#!/bin/sh
+#/bin/sh
 
 # Loop through all attached batteries.
 for battery in /sys/class/power_supply/BAT?
@@ -18,7 +18,7 @@ do
 done
 
 # convert to HH:MM:SS
-timeLeft=$(date -d@$sumSeconds -u +%H:%M:%S)
+timeLeft=$(date -d@$sumSeconds -u +%H:%M)
 printf "%s%s%s" "$status$percentage% $timeLeft"
 
 # percentage=$(bc <<< "$(cat "/sys/class/power_supply/BAT0/capacity" + 2>/dev/null) ")
