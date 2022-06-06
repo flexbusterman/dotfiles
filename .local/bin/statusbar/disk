@@ -23,4 +23,4 @@
 # printf "%s: %s\n" "$icon" "$(df -h "$location" | awk ' /[0-9]/ {print $3 "/" $2}')"
 #printf " DISK $(df -h | awk ' /[0-9]/ {print $3 "/" $2 " "} ')"
  #printf " DISK %s%s\n" "$(df -h "$location" | awk ' /[0-9]/ {print $3 "/" $2 " "} ')"
- printf "%s%s" "$(df -h / | awk ' /[0-9]/ {print $4}')$(df -h /mnt/STUFF | awk ' /[0-9]/ {print $4 " "} ')"
+ printf "/ %s%s" "$(df -h / | awk ' /[0-9]/ {print $4}')$(df -h /mnt/STUFF | awk ' /[0-9]/ {print $4 " "} ')"
