@@ -38,4 +38,4 @@ unread3="$(find "${XDG_DATA_HOME:-$HOME/.local/share}"/mail/aug*/[Ii][Nn][Bb][Oo
 # only displays if there is unread 
 # [ "$unread" = "0" ] || printf " M $unread "
 
-printf "     $color1$unread1^d^ $color2$unread2^d^ $color3$unread3^d^"
+printf " $color1$unread1^d^ $color2$unread2^d^ $color3$unread3^d^"
