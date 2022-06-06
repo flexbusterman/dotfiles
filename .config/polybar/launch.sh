@@ -12,12 +12,12 @@ pgrep polybar || polybar mybar -c $HOME/.config/polybar/config.ini 2>&1 | tee -a
 
 # (xdo id -m -N Polybar && )
 
-focus=$(cat ~/.config/leftwm/focus | while read line; do echo $line; done)
+# focus=$(cat ~/.config/leftwm/focus | while read line; do echo $line; done)
 
-if [[ $focus == "true" ]]; then
-	wait
-	(xdo id -m -N Polybar && polybar-msg cmd hide)
-else
-	wait
-	(xdo id -m -N Polybar && polybar-msg cmd show)
-fi
+# if [[ $focus == "true" ]]; then
+	# wait
+	# (xdo id -m -N Polybar && polybar-msg cmd hide)
+# else
+	# wait
+	# (xdo id -m -N Polybar && polybar-msg cmd show)
+# fi
