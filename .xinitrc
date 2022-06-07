@@ -19,4 +19,5 @@ pidof mpd || mpd &
 pidof dwmblocks || dwmblocks &
 
 # script that loops to restart dwm
-exec startdwm
+# exec startdwm
+exec bspwm
