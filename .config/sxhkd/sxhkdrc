@@ -21,6 +21,7 @@ alt + shift + Return
 # # quit/restart bspwm
 alt + shift + {q,r}
 	bspc {quit,wm -r}
+	pkill -USR1 -x sxhkd
 
 # # close and kill
 alt + {_,shift + }w
