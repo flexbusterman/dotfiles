@@ -7,27 +7,27 @@ alt + Return
 	dmenu_run
 
 # program launcher
+# alt + shift + Return
 alt + shift + Return
 	st
 
-# # make sxhkd reload its configuration files:
-# alt + Escape
-	# pkill -USR1 -x sxhkd
+#
+# bspwm hotkeys
+#
 
-# #
-# # bspwm hotkeys
-# #
-
-# # quit/restart bspwm
+# quit/restart bspwm
 alt + shift + {q,r}
 	bspc {quit,wm -r}
+
+# restart sxhkd
+alt + shift + k
 	pkill -USR1 -x sxhkd
 
-# # close and kill
+# close and kill
 alt + {_,shift + }w
 	bspc node -{c,k}
 
-# # alternate between the tiled and monocle layout
+# alternate between the tiled and monocle layout
 # alt + m
 	# bspc desktop -l next
 
@@ -39,21 +39,21 @@ alt + {_,shift + }w
 alt + space
 	bspc node -s biggest.window
 
-# #
-# # state/flags
-# #
+#
+# state/flags
+#
 
-# # set the window state
+# set the window state
 # alt + {t,shift + t,s,f}
 	# bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
 
-# # set the node flags
+# set the node flags
 # alt + ctrl + {m,x,y,z}
 	# bspc node -g {marked,locked,sticky,private}
 
-# #
-# # focus/swap
-# #
+#
+# focus/swap
+#
 
 # focus the node in the given direction
 alt + {_,shift + }{h,j,k,l}
@@ -82,12 +82,12 @@ alt + {_,shift + }{h,j,k,l}
 	# bspc wm -h on
 
 # # focus or send to the given desktop
-# alt + {_,shift + }{1-9,0}
-	# bspc {desktop -f,node -d} '^{1-9,10}'
+alt + {_,shift + }{1-9,0}
+	bspc {desktop -f,node -d} '^{1-9,10}'
 
-# #
-# # preselect
-# #
+#
+# preselect
+#
 
 # # preselect the direction
 # alt + ctrl + {h,j,k,l}
@@ -120,3 +120,129 @@ alt + {_,shift + }{h,j,k,l}
 # # move a floating window
 # alt + {Left,Down,Up,Right}
 	# bspc node -v {-20 0,0 20,0 -20,20 0}
+
+
+	# // ____      _    _    
+	# // / ___| ___ _ __(_)_ __ | |_ ___ 
+	# // \___ \ / __| '__| | '_ \| __/ __|
+	# // ___) | (__| | | | |_) | |_\__ \
+	# // |____/ \___|_| |_| .__/ \__|___/
+	# //          |_|      
+	# // bindings to run scripts
+alt + shift + c
+	calc
+alt + shift + control + l
+	slock
+# alt + d
+	# sleep 0.2 && xdotool type --clearmodifiers
+alt + b
+	bluetoothconnect 74:5C:4B:D2:86:F7
+alt + shift + b
+	bluetoothctl disconnect 74:5C:4B:D2:86:F7
+alt + grave
+	dmenuunicode
+alt + m
+	mullvadconnect
+alt + shift + m
+	mullvaddisconnect
+# alt + shift + control + m
+	# mailsync
+alt + F1
+	jackrun
+alt + F2
+	jackkill
+alt + F3
+	displaydefault
+alt + shift + F3
+	displayselect
+alt + F7
+	td-toggle
+alt + F8
+	dmenumount
+alt + F9
+	dmenuumount
+alt + shift + control + r
+	reboot
+alt + shift + control + p
+	poweroff
+alt + semicolon
+	clipstream
+alt + shift + semicolon
+	clipdownload
+alt + p
+	stack -p
+alt + y
+	stack -y
+alt + shift + p
+	passmenu
+alt + Up
+	cpuperformance
+alt + Down
+	cpupowersave
+control + shift + j
+	musicnext
+control + shift + k
+	musicprev
+control + shift + h
+	musicseekbackward
+control + shift + l
+	musicseekforward
+control + shift + space
+	musicplaypause
+alt + shift + i
+	xcalib -i -a
+alt + slash
+	st -e ~/.local/bin/fzfvim
+	# # // _____ _  _ ___ 
+	# # // |_  _| | | |_ _|
+	# # //  | | | | | || | 
+	# # //  | | | |_| || | 
+	# # //  |_| \___/|___|
+	# # //         
+	# # // terminal applications
+alt + shift + comma
+	st -t Vifm -e vifmrun
+alt + e
+	st -t NeoMutt -e neomutt
+alt + shift + t
+	st -t typingtest -e tt -theme dracula
+alt + t
+	st -t Htop -e htop
+alt + n
+	cd ~/Dropbox/NOTES/; st -t TODO -e nvim ~/Dropbox/NOTES/TODO.md
+alt + shift + n
+	cd ~/Dropbox/NOTES/; st -t VimWiki -e nvim -c VimwikiIndex
+alt + r
+	st -t Newsboat -e newsboat
+alt + F4
+	st -t PulseMixer -e pulsemixer
+alt + F6
+	torwrap
+# alt + shift + e
+	# cd ~/.local/src/dwm/; st -t DWMconfig -e nvim config.def.h
+control + shift + Return
+	st -t ncmpcpp -e ncmpcpp
+alt + control + shift + Return
+	st -t ncspot -e ncspot
+alt + s
+	supercollider
+
+	# # //  ____ _  _ ___ 
+	# # // / ___| | | |_ _|
+	# # // | | _| | | || | 
+	# # // | |_| | |_| || | 
+	# # // \____|\___/|___|
+	# # // 
+	# # // gui applications
+alt + q
+	qpwgraph
+alt + shift + period
+	qutebrowser
+alt + shift + control + period
+	bravestart
+alt + shift + x
+	xkill
+alt + shift + F4
+	pavucontrol
+alt + control + Return
+	audacious
