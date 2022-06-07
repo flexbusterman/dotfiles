@@ -13,20 +13,21 @@ done
 percentage=$((percentageSum / numberOfBatteries))
 
 # get time remaining from all batteries and sum
-for seconds in $(TZ=utc date -d "1970-01-01 $(acpi | awk '/remaining/ {print $5}')" +%s)
-do
-	sumSeconds=$((sumSeconds + seconds))
-done
+# for seconds in $(TZ=utc date -d "1970-01-01 $(acpi | awk '/remaining/ {print $5}')" +%s)
+# do
+	# sumSeconds=$((sumSeconds + seconds))
+# done
 
 # convert to HH:MM:SS
-timeLeft=$(date -d@$sumSeconds -u +%H:%M)
+# timeLeft=$(date -d@$sumSeconds -u +%H:%M)
 
-if [[ $sumSeconds > 0 ]]; then
-	printf "%s%s%s" "$status$percentage% $timeLeft"
-else
-	printf "%s%s%s" "$status$percentage%"
-fi
+# if [[ $sumSeconds > 0 ]]; then
+	# printf "%s%s%s" "$status$percentage% $timeLeft"
+# else
+	# printf "%s%s%s" "$status$percentage%"
+# fi
 
+printf "%s%s%s" "$status$percentage%"
 
 # percentage=$(bc <<< "$(cat "/sys/class/power_supply/BAT0/capacity" + 2>/dev/null) ")
 
