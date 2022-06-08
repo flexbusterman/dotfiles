@@ -27,7 +27,7 @@ percentage=$((percentageSum / numberOfBatteries))
 	# printf "%s%s%s" "$status$percentage%"
 # fi
 
-printf "%s%s%s" "$status$percentage%"
+printf "%s" "BAT $status$percentage%"
 
 # percentage=$(bc <<< "$(cat "/sys/class/power_supply/BAT0/capacity" + 2>/dev/null) ")
 
