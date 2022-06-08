@@ -17,6 +17,7 @@ dunst &
 qpwgraph -m &
 pidof mpd || mpd &
 pidof dwmblocks || dwmblocks &
+srandrd displayhandler &
 
 # script that loops to restart dwm
 exec startdwm
