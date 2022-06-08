@@ -6,7 +6,7 @@ do
 	# Get its remaining capacity and charge status
 	capacity=$(cat "$battery"/capacity 2>/dev/null) || break
 	# status=$(sed "s/[Dd]ischarging/-/;s/[Nn]ot charging//;s/[Cc]harging/+/;s/[Uu]nknown//;s/[Ff]ull//" "$battery"/status)
-	status=$(sed "s/[Dd]ischarging/-/;s/[Cc]harging/+/;s/[Nn]ot//; s/[Uu]nknown//;s/[Ff]ull//" "$battery"/status)
+	status=$(sed "s/[Dd]ischarging/-/;s/[Cc]harging/+/;s/[Nn]ot //; s/[Uu]nknown//;s/[Ff]ull//" "$battery"/status)
 	percentageSum=$((percentageSum + capacity))
 	numberOfBatteries=$((numberOfBatteries + 1))
 done
