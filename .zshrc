@@ -153,7 +153,7 @@ alias wla="nmcli c"
 alias ws="nmcli device status"
 alias wd="nmcli device disconnect wlp2s0"
 alias wrm='f() { nmcli con delete $*};f'
-alias wc='f() { nmcli device wifi connect $1 password $2 };f'
+alias wconnect='f() { nmcli device wifi connect $1 password $2 };f'
 alias wdisable='f() { nmcli connection down $* };f'
 
 # VIM aliases for editing common files
