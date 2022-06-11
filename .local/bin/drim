@@ -1,0 +1,24 @@
+#!/bin/bash
+
+programs=("python" "dialog" "dropbox" "elementeee")
+
+for program in "${programs[@]}"
+do
+	if [[ ! $(pacman -Qq $program) ]]
+	then
+		echo "$program is not installed"
+		read -p "Install dependency $program? [y/n] " -n 1 -r
+		if [[ $REPLY =~ ^[Yy]$ ]]
+		then
+			echo
+			echo "code to install $program"
+			# sudo pacman -S $program
+		fi
+	fi
+done
+
+if [ ! -d ~/.local/bine ]; then
+	echo
+	echo ".local/bin desn't exist, code to create directory"
+  # mkdir -p ~/.local/bin;
+fi

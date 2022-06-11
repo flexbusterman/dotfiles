@@ -19,7 +19,7 @@ settings:
   colors.hints.match.fg:
     global: rgba(255,255,255,1)
   colors.webpage.bg:
-    global: black
+    global: white
   colors.webpage.darkmode.enabled:
     global: false
   content.blocking.enabled:
@@ -59,7 +59,8 @@ settings:
       DEFAULT: https://www.google.com/search?q={}
       d: https://duckduckgo.com/?q={}
       o: https://odysee.com/$/search?q={}
-      p: https://pirate-proxy.cc/search?q={}
+      p: https://pirate-proxy.club/search.php?q={}
+      # p: https://pirate-proxy.cc/search?q={}
       w: https://wallpaperaccess.com/search?q={}
       y: https://www.youtube.com/results?search_query={}
   url.start_pages:
