@@ -701,7 +701,7 @@ nmap <space> tj
 "nnoremap va ggVG
 "vnoremap u :This is disabled to avoid mistakes
 "map gd :!dropbox-cli exclude add %f<cr>
-"" map sl :!dropbox-cli sharelink %c | xclip -sel clip<cr>
+" map sl :!python ~/.local/bin/dropbox.py sharelink %c | xclip -sel clip<cr>
 nmap <C-p> :dragon<CR>
 "
 "fileview */ tree %c -L 1 --dirsfirst
@@ -810,7 +810,8 @@ command! dragon dragon-drop -a -x %f
 "" yank current directory path into the clipboard
 nnoremap yd :!echo -n %d | xclip -selection clipboard %i<cr>:echo expand('%"d') "is yanked to clipboard"<cr>
 "
-nnoremap yl :!dropbox-cli sharelink %c | xclip -sel clip<cr>
+" nnoremap yl :!dropbox-cli sharelink %c | xclip -sel clip<cr>
+nnoremap yl :!/usr/bin/python ~/.local/bin/dropbox.py sharelink %c | xclip -sel clip<cr>
 "
 "" yank current file path into the clipboard
 nnoremap yf :!echo -n %c:p | xclip -selection clipboard %i<cr>:echo expand('%"c:p') "is yanked to clipboard"<cr>
