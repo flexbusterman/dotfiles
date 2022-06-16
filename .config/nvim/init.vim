@@ -188,6 +188,9 @@ nmap <leader>gl :diffget //3<CR>
 let @s='dt_xllla-lla-lllr lla_lla_0j'
 let @u='f/;;;lD0jf+f=pldf i l0kddci"~ q€kb'
 let @f='5Wdt;ofont-family: pa;k0wWWWWdwjofont-size: pa;kkf/ldwjjofont€kb€kb€kb€kbline-height: pi;kkk0WWWWdw3jofont-weight:a pi;kkkkdd'
+let @r=':s/\v([^(: ]+): +/\\\1.kr(/g|:s/\v, +/), /g|:s/\v$/)/g'
+
+
 " resizing splits
 " autocmd VimResized * wincmd =
 
