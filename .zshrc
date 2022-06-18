@@ -182,7 +182,7 @@ alias vq="cd /home/flex/.config/qutebrowser/; nvim autoconfig.yml"
 alias ve="cd /home/flex/; nvim .zshenv"
 alias vb="cd /home/flex/.config/bspwm/; nvim bspwmrc"
 alias vk="cd /home/flex/.config/sxhkd/; nvim sxhkdrc"
-alias vl="cd /home/flex/.config/leftwm/; nvim config.toml"
+alias vl="cd /home/flex/.config/lf/; nvim lfrc"
 alias vt="cd /home/flex/.config/leftwm/themes/flex/; nvim"
 
 # Keymap aliases

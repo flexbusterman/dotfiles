@@ -690,6 +690,7 @@ map <C-l> <C-w>l
 map mkd :mkdir<space>""<left>
 map bg :!setbg %f &<CR>
 map X :!7z x %c &<CR>
+map f :execute 'cd' fnameescape(term('find -type d | fzf 2> /dev/tty'))<CR>
 "nnoremap w :view<cr>
 "vnoremap w :view<cr>gv
 "nnoremap I cw<c-a>
@@ -763,25 +764,7 @@ nmap <C-p> :dragon<CR>
 "		\ vifmimg clear
 "filextype *.svg inkscape %f 2>/dev/null &
 "filextype *.xcf gimp %f 2>/dev/null &
-"
-"" :mark mark /full/directory/path [filename]
-"mark h ~/
-"mark b ~/.local/bin/
-"mark B ~/bin/
-"mark d ~/Dropbox/
-"mark j ~/Downloads/
-"mark w ~/Pictures/WALLPAPERS/
-"mark p ~/Pictures/
-"mark m ~/Music/
-"mark c ~/.config/
-"mark g ~/GIT/
-"mark s ~/Pictures/SCREENSHOTS/
-"mark S ~/.local/src/
-"mark r /
-"mark m /run/media/flex/
-"mark a "~/Dropbox/ADMINISTRATIVT/AUGUSTIN SUPREMACY 2021"
-"mark v ~/Downloads/VIDEO/
-"
+
 "" :com[mand][!] command_name action
 "" The following macros can be used in a command
 "" %a is replaced with the user arguments.
