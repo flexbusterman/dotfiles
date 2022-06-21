@@ -7,8 +7,9 @@ column_widths=10,275,333,10,175,175,10,100,41,10,275,275,275,10,275
 infoarea_show_art=FALSE
 infoarea_show_vis=FALSE
 infoarea_visible=FALSE
-player_height=497
-player_x=1121
+player_height=1024
+player_width=1065
+player_x=25
 player_y=25
 
 [gtkui-layout]
