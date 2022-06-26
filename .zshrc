@@ -305,7 +305,7 @@ tf(){
 }
 
 t(){
-	termdown --no-figlet $* && notify-send "$* has passed"
+  termdown --no-figlet $* && notify-send "$* has passed"
 }
 
 # pdf2mp3() {
