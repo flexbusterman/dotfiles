@@ -12,8 +12,8 @@ Plug 'vimwiki/vimwiki'
 " Plug 'markonm/traces.vim' " previews substitution and sort using regex
 Plug 'flw-cn/vim-nerdtree-l-open-h-close' " NERDTree h l open and close
 Plug 'andymass/vim-matchup' " To matchit in vue
-" Plug 'leafOfTree/vim-vue-plugin'
-" Plug 'posva/vim-vue'
+Plug 'leafOfTree/vim-vue-plugin'
+Plug 'posva/vim-vue'
 Plug 'davidgranstrom/scnvim', { 'do': {-> scnvim#install() } }
 Plug 'vim-pandoc/vim-pandoc' " to show sc documentation in nvim
 Plug 'vim-pandoc/vim-pandoc-syntax' 
