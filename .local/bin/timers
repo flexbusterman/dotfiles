@@ -1,0 +1,29 @@
+#!/bin/bash
+
+for ((i = 1; i <= $#; i++ )); do
+  # printf '%s\n' "Arg $i: ${!i}"
+	notify-send "Starting timer #$i: ${!i}m"
+	hour=$(expr ${!i} / 60)
+	min=$(expr ${!i} % 60)
+	sec=0
+	while [ $hour -ge 0 ]; do
+		while [ $min -ge 0 ]; do
+			while [ $sec -ge 0 ]; do
+				echo -ne "Timer #$i (${!i}m): $hour:$min:$sec\033[0K\r"
+				let "sec=sec-1"
+				sleep 1
+			done
+			sec=59
+			if [ $min == 1 ]; then
+				notify-send "Last minute of timer #$i"
+			fi
+			let "min=min-1"
+		done
+		min=59
+		let "hour=hour-1"
+	done
+	# notify-send "Timer #$i ${!i}m done"
+	aplay ~/Dropbox/SAMPLES/TONES/bell02.wav &
+done
+notify-send "All timers done"
+aplay ~/Dropbox/SAMPLES/TONES/bell01.wav &
