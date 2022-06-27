@@ -10,7 +10,7 @@ infoarea_visible=FALSE
 player_height=1054
 player_width=1108
 player_x=0
-player_y=20
+player_y=1100
 
 [gtkui-layout]
 item0_name=Search Tool
