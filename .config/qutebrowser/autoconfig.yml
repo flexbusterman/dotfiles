@@ -21,7 +21,7 @@ settings:
   colors.webpage.bg:
     global: black
   colors.webpage.darkmode.enabled:
-    global: false
+    global: true
   content.blocking.enabled:
     global: true
   content.geolocation:
