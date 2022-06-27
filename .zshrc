@@ -185,6 +185,7 @@ alias vk="cd /home/flex/.config/sxhkd/; nvim sxhkdrc"
 alias vl="cd /home/flex/.config/lf/; nvim lfrc"
 alias vt="cd /home/flex/.config/leftwm/themes/flex/; nvim"
 alias vh="cd /home/flex/.history/zsh/; nvim history"
+alias vw="cd /home/flex/.w3m/; nvim keymap"
 
 # Keymap aliases
 alias se="setxkbmap se; setxkbmap -option caps:swapescape; xset r rate 300 50"
