@@ -291,7 +291,7 @@ fileviewer *.html,*.go,*.css,*.scd,*.vue,*.md,*.js,*.json,*.h,*.diff,*.c,*.bak,*
 " Web
 filextype *.html,*.htm
         \ {Open with qutebrowser}
-        \ qutebrowser %c,
+        \ qutebrowser %c &,
         \ {Open with w3m}
         \ w3m %c,
         \ {Open with emacs}
