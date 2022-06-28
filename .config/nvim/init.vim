@@ -488,6 +488,7 @@ let g:scnvim_eval_flash_repeats = 1
 highlight SCNvimEval guifg=black guibg=cyan ctermfg=black ctermbg=cyan
 autocmd BufRead,BufWritePre *.sc normal magg=G`a
 autocmd BufRead,BufWritePre *.scd normal magg=G`a
+autocmd BufWritePre *.cpp :silent exec "!make"
 " path to the sclang executable
 " scnvim will look in some known locations for sclang, but if it can't find it use this variable instead
 " (also improves startup time slightly)
