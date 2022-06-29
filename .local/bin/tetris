@@ -1,2 +1,2 @@
 #!/bin/sh 
-mednafen /home/flex/Dropbox/ROMS/NES/Tetris.nes 2>/dev/null &
+retroarch --libretro ~/.config/retroarch/cores/mesen_libretro.so ~/Dropbox/ROMS/NES/Tetris.nes
