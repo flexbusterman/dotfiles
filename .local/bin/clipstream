@@ -9,8 +9,8 @@ then
 		choice=$(webtorrent --mpv $clipboard --select | awk '/^[0-9]/' | dmenu -i -l 40 -p "Index:" )
 		index=$(echo $choice | sed -e "s/ .*//g")
 		webtorrent --mpv $clipboard --select $index
-	elif [[ "$clipboard" = *"youtube"* ]]; then
-		# notify-send "this is youtube"
+	elif [[ "$clipboard" = *"https"* ]]; then
+		# notify-send "Let's attempt to stream with mpv"
 		# strips duplicate time values
 		clipboard=$(echo $clipboard | sed 's/&[^&]*//')
 		mpv --ytdl-raw-options=netrc=,mark-watched= "$clipboard"
