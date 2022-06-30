@@ -1,0 +1,9 @@
+type = normal
+name = Amit
+species = Troll
+background = Fighter
+weapon = claws
+game_seed = 17163898100160051134
+fully_random = no
+default_manual_training = no
+quiver_menu_focus = false

@@ -23,7 +23,7 @@ function sharePermalink()
   local pipe = io.popen("xclip -silent -in -selection clipboard", "w")
   pipe:write(bookmark)
   pipe:close()
-  mp.osd_message("YouTube link copied to clipboard")
+  mp.osd_message("Link copied to clipboard")
 end
 
 -- mp.register_script_message("copy-permalink", copyPermalink)
