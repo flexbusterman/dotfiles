@@ -1,8 +1,9 @@
 type = normal
 name = Flex
-species = Human
-background = Necromancer
-game_seed = 14080637280734928870
+species = Demonspawn
+background = Gladiator
+weapon = viable
+game_seed = 16539014936731062735
 fully_random = no
 default_manual_training = no
 quiver_menu_focus = false
