@@ -1,9 +1,9 @@
 type = normal
 name = Flex
-species = Demonspawn
-background = Gladiator
-weapon = viable
-game_seed = 16539014936731062735
+species = Hill Orc
+background = Berserker
+weapon = hand axe
+game_seed = 3084076456455619175
 fully_random = no
 default_manual_training = no
 quiver_menu_focus = false

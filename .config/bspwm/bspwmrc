@@ -26,7 +26,7 @@ bspc config remove_disabled_monitors      true
 bspc config right_padding                 0
 bspc config single_monocle                false
 bspc config split_ratio                   0.50
-bspc config top_padding                   20
+bspc config top_padding                   0
 bspc config window_gap                    12
 
 #### BSPWM coloring ####

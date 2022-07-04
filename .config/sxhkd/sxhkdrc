@@ -13,8 +13,8 @@ alt + shift + Return
 
 # toggle bar and resize
 alt + a
-{polybar-msg cmd hide; bspc config -m focused top_padding 5,
-polybar-msg cmd show; bspc config -m focused top_padding 30}
+	{polybar-msg cmd hide; bspc config -m focused top_padding 0, polybar-msg cmd show; bspc config -m focused top_padding 30}
+	# {notify-send "test 1"; notify-send "test 2", notify-send "test 3"; notify-send "test 4"}
 
 #
 # bspwm hotkeys
@@ -25,7 +25,8 @@ alt + shift + {q,r}
 	bspc {quit,wm -r}
 
 # restart sxhkd
-alt + shift + k
+# alt + shift + k
+super + r
 	pkill -usr1 -x sxhkd; notify-send 'sxhkd' 'Reloaded config'
 
 # close and kill
@@ -115,12 +116,16 @@ alt + {_,shift + }{1-9,0}
 # #
 
 # # expand a window by moving one of its side outward
-# alt + alt + {h,j,k,l}
+# super + {h,j,k,l}
 	# bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
 
+# # expand / shrink
+super + {k,l,h,j}
+	bspc node -z {bottom 0 -20,left 20 0,left -20 0,bottom 0 20}
+
 # # contract a window by moving one of its side inward
-# alt + alt + shift + {h,j,k,l}
-	# bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+# super + {h,j,k,l}
+	# bspc node -z {right -20 0,top 0 20,}
 
 # # move a floating window
 # alt + {Left,Down,Up,Right}

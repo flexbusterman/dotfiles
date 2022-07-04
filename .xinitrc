@@ -21,4 +21,3 @@ srandrd displayhandler &
 
 # script that loops to restart dwm
 exec startdwm
-# exec bspwm
