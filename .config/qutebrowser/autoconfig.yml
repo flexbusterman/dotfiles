@@ -21,7 +21,7 @@ settings:
   colors.hints.match.fg:
     global: rgba(255,255,255,1)
   colors.webpage.bg:
-    global: black
+    global: white
   colors.webpage.darkmode.enabled:
     global: true
   content.blocking.enabled:

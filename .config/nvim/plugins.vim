@@ -23,8 +23,8 @@ Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'tpope/vim-fugitive' " git wrapper
 Plug 'vim-airline/vim-airline'
 " Plug 'wincent/loupe' " very magic searching Greg Hurrell
-" Plug 'lervag/vimtex'
-" Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
+Plug 'lervag/vimtex'
+Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 " Plug 'nvim-lua/popup.nvim' " telescope
 " Plug 'nvim-lua/plenary.nvim'
 " Plug 'nvim-telescope/telescope.nvim'

@@ -188,7 +188,9 @@ nmap <leader>gl :diffget //3<CR>
 let @s='dt_xllla-lla-lllr lla_lla_0j'
 let @u='f/;;;lD0jf+f=pldf i l0kddci"~ q€kb'
 let @f='5Wdt;ofont-family: pa;k0wWWWWdwjofont-size: pa;kkf/ldwjjofont€kb€kb€kb€kbline-height: pi;kkk0WWWWdw3jofont-weight:a pi;kkkkdd'
-let @r=':s/\v([^(: ]+): +/\\\1.kr(/g|:s/\v, +/), /g|:s/\v$/)/g'
+" reformat for supercollider pbind
+" let @r=':s/\v([^(: ]+): +/\\\1.kr(/g'
+" let @t=':s/\v, +/), /g|:s/\v$/)/g'
 
 
 " resizing splits
@@ -451,6 +453,7 @@ let g:coc_snippet_prev = '<S-TAB>'
 
 " latex
 let g:livepreview_previewer = 'zathura'
+let g:livepreview_cursorhold_recompile = 0
 
 "  ____                         ____      _ _ _     _
 " / ___| _   _ _ __   ___ _ __ / ___|___ | | (_) __| | ___ _ __

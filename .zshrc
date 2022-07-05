@@ -136,6 +136,7 @@ alias S='cd ~/Dropbox/SUPERCOLLIDER; exa'
 alias n='cd ~/Dropbox/NOTES; exa'
 alias c='cd ~/.config/; exa'
 alias w='cd ~/.wine/drive_c/; exa'
+alias M='cd ~/Music/; exa'
 
 # Dropbox aliases
 alias dadd="dropbox-cli exclude remove"

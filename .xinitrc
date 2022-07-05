@@ -15,7 +15,7 @@ mailsync &
 dropbox &
 dunst &
 qpwgraph -m &
-pidof mpd || mpd &
+# pidof mpd || mpd &
 pidof dwmblocks || dwmblocks &
 srandrd displayhandler &
 
