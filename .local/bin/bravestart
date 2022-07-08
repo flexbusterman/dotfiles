@@ -1,6 +1,6 @@
 #!/bin/bash
-STATUS=$(mullvad status | awk '{print $NF}')
-if [[ $STATUS == "UDP" ]]; then
+STATUS=$(mullvad status | awk '{print $1}')
+if [[ $STATUS == "Connected" ]]; then
 	nohup brave --incognito --new-window "https://duckduckgo.com" &
 else
   nohup brave --new-window "https://youtube.com" &
