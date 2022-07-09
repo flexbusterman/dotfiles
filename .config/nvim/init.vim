@@ -392,8 +392,8 @@ let g:scnvim_scdoc = 1
 let g:scnvim_eval_flash_repeats = 1
 " configure the color
 highlight SCNvimEval guifg=black guibg=cyan ctermfg=black ctermbg=cyan
-autocmd BufRead,BufWritePre *.sc normal magg=G`a
-autocmd BufRead,BufWritePre *.scd normal magg=G`a
+autocmd BufRead,BufWritePre *.sc normal magg=G`azt
+autocmd BufRead,BufWritePre *.scd normal magg=G`azt
 autocmd BufWritePre *.cpp :silent exec "!make"
 " path to the sclang executable
 " scnvim will look in some known locations for sclang, but if it can't find it use this variable instead
