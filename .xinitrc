@@ -20,4 +20,5 @@ pidof dwmblocks || dwmblocks &
 srandrd displayhandler &
 
 # script that loops to restart dwm
-exec startdwm
+# exec startdwm
+exec i3

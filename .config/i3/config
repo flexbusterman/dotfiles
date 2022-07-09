@@ -10,12 +10,12 @@
 #
 
 set $mod Mod1
-set $terminal alacritty
+set $terminal st
 
 exec_always --no-startup-id "$HOME/.config/polybar/launch.sh"
-# exec_always --no-startup-id "autotiling"
-exec_always --no-startup-id "i3-layouts"
-exec_always --no-startup-id i3l spiral 0.6
+# exec_always --no-startup-id "i3-layouts"
+exec_always --no-startup-id "autotiling"
+# exec_always --no-startup-id i3l spiral 0.6
 exec --no-startup-id "dropbox"
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -27,11 +27,12 @@ hide_edge_borders smart
 gaps inner 24
 gaps outer 0
 
-set $i3l spiral 0.6
+# set $i3l spiral 0.6
 
 # set $i3l spiral
 
 bindsym $mod+a exec --no-startup-id "i3focustoggle 24"
+bindsym $mod+z exec --no-startup-id "i3-msg gaps inner all set 0"
 # smart_gaps on
 
 # Default Colors
@@ -107,7 +108,9 @@ bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec $(bc <<< "$(x
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+shift+Return exec --no-startup-id "$terminal" exec --no-startup-id i3l swap container with mark 1
+bindsym $mod+shift+Return exec --no-startup-id "$terminal"
+# bindsym $mod+shift+space exec --no-startup-id i3l swap container with mark 1
+bindsym $mod+space exec --no-startup-id i3promotewindow
 
 # kill focused window
 bindsym $mod+w kill
@@ -122,15 +125,15 @@ bindsym $mod+k focus up
 bindsym $mod+l focus right
 
 # move focused window
-# bindsym $mod+Shift+h move left 40
-# bindsym $mod+Shift+j move down 40
-# bindsym $mod+Shift+k move up 40
-# bindsym $mod+Shift+l move right 40
+bindsym $mod+Shift+h move left 40
+bindsym $mod+Shift+j move down 40
+bindsym $mod+Shift+k move up 40
+bindsym $mod+Shift+l move right 40
 
-bindsym $mod+Shift+h exec --no-startup-id i4l move left
-bindsym $mod+Shift+j exec --no-startup-id i4l move down
-bindsym $mod+Shift+k exec --no-startup-id i4l move up
-bindsym $mod+Shift+l exec --no-startup-id i4l move right
+# bindsym $mod+Shift+h exec --no-startup-id i3l move left
+# bindsym $mod+Shift+j exec --no-startup-id i3l move down
+# bindsym $mod+Shift+k exec --no-startup-id i3l move up
+# bindsym $mod+Shift+l exec --no-startup-id i3l move right
 
 # split in horizontal orientation
 bindsym $mod+period split h
@@ -153,10 +156,11 @@ bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
 bindsym $mod+o focus mode_toggle
- bindsym $mod+space exec --no-startup-id i3l swap container with mark 1
+
+ # bindsym $mod+space exec --no-startup-id i3l swap container with mark 1
 
 # focus the parent container
-bindsym $mod+slash focus parent
+# bindsym $mod+slash focus parent
 
 # focus the child container
 #bindsym $mod+d focus child
