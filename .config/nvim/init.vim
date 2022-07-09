@@ -1,18 +1,6 @@
 scriptencoding utf-8
 source ~/.config/nvim/plugins.vim
-"   ____                           _    ___        _   _
-"  / ___| ___ _ __   ___ _ __ __ _| |  / _ \ _ __ | |_(_) ___  _ __  ___
-" | |  _ / _ \ '_ \ / _ \ '__/ _` | | | | | | '_ \| __| |/ _ \| '_ \/ __|
-" | |_| |  __/ | | |  __/ | | (_| | | | |_| | |_) | |_| | (_) | | | \__ \
-"  \____|\___|_| |_|\___|_|  \__,_|_|  \___/| .__/ \__|_|\___/|_| |_|___/
-"                                           |_|
-"
-if has ('autocmd') " Remain compatible with earlier versions
-  augroup vimrc " Source vim configuration upon save
-    autocmd! BufWritePost $MYVIMRC source % | echom "Reloaded " . $MYVIMRC | redraw
-    autocmd! BufWritePost $MYGVIMRC if has('gui_running') | so % | echom "Reloaded " . $MYGVIMRC | endif | redraw
-  augroup END
-endif " has autocmd
+" options
 set cursorline
 set nocompatible
 set number relativenumber
@@ -24,93 +12,61 @@ set numberwidth=2
 set autoread
 set scrolloff=10
 set nohlsearch
-" Fixes syntax highlighting from stopping
-autocmd BufEnter * :syntax sync fromstart | set nohlsearch
-autocmd FileType mail set textwidth=0 wrapmargin=0
-autocmd BufEnter,BufWinEnter,BufNewFile,BufRead *.jsfx set filetype=eel2
-
-" Alacritty full size
-autocmd VimEnter * :silent exec "!kill -s SIGWINCH $PPID"
-
-au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown | set nospell
-
-"here a function was defined
-function! s:twitvim_my_settings()
-  "this function just do one thing, set nowrap option. (text is gonna be displayed without wrap.)
-  set nowrap
-endfunction
-
-let g:vimwiki_list = [{'path': '~/Dropbox/NOTES/',
-                      \ 'syntax': 'markdown', 'ext': '.md'}]
-" Yank and paste with the system clipboard
 set clipboard+=unnamedplus
-" set transparent background
-" Set floating window to be slightly transparent
-" Some servers have issues with backup files, see #649 set nobackup set nowritebackup " Better display for messages set cmdheight=2 " You will have bad experience for diagnostic messages when it's default 4000.
-set updatetime=300
-" don't give |ins-completion-menu| messages.
+set updatetime=50
+" set signcolumn=yes
 set shortmess+=c
-" always show signcolumns
-set signcolumn=yes
-filetype indent on
-" Use 256 colours (Use this setting only if your terminal supports 256 colours)
 set t_Co=256
-set smartcase
 set ignorecase
+set smartcase
 set smartindent
 set noswapfile
-set nobackup
 " this directory needs to be created
 set undodir=~/.config/nvim/undodir
-" incremental searching
 set incsearch
-" TextEdit might fail if hidden is not set.
 set hidden
-" Some servers have issues with backup files, see #649.
 set nobackup
 set nowritebackup
 set cmdheight=1
-" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
-" delays and poor user experience.
-set updatetime=300
-" Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
-" Always show the signcolumn, otherwise it would shift the text each time
-" diagnostics appear/become resolved.
-if has("patch-8.1.1564")
-  " Recently vim can merge signcolumn and number column into one
-  set signcolumn=number
-else
-  set signcolumn=yes
-endif
-" Splits open at the bottom and right, which is non-retarded, unlike vim defaults.
+set signcolumn=number
 set splitbelow splitright
-" Color
-" hi=NONE guibg=NONE ctermbg=NONE
+set whichwrap+=b,s
+set virtualedit=onemore
+
+filetype indent on
 colorscheme dracula
+if (has("termguicolors"))
+	set termguicolors
+endif
+
 highlight Normal ctermbg=none guibg=none guifg=White
 highlight NonText ctermbg=none guibg=none guifg=White
 highlight EndOfBuffer ctermbg=none ctermfg=none guibg=none guifg=none
 highlight CursorLine ctermbg=Black
 highlight SignColumn ctermbg=none guibg=none guifg=White
-" set winbl=10
-" highlight Normal guibg=none
-" highlight NonText guibg=none
-" highlight Normal ctermbg=Black
-" highlight NonText ctermbg=Black
-" set winbl=10
 
-if (has("termguicolors"))
-	set termguicolors
-endif
+augroup vimrc " Source vim configuration upon save
+  autocmd! BufWritePost $MYVIMRC source % | echom "Reloaded " . $MYVIMRC | redraw
+  autocmd! BufWritePost $MYGVIMRC if has('gui_running') | so % | echom "Reloaded " . $MYGVIMRC | endif | redraw
+augroup END
+" Fixes syntax highlighting from stopping
+autocmd BufEnter * :syntax sync fromstart | set nohlsearch
+autocmd FileType mail set textwidth=0 wrapmargin=0
+autocmd BufEnter,BufWinEnter,BufNewFile,BufRead *.jsfx set filetype=eel2
+" Alacritty full size
+autocmd VimEnter * :silent exec "!kill -s SIGWINCH $PPID"
+autocmd BufNewFile,BufFilePre,BufRead *.md set filetype=markdown | set nospell
 
-"  _  __          _     _           _ _
-" | |/ /___ _   _| |__ (_)_ __   __| (_)_ __   __ _ ___
-" | ' // _ \ | | | '_ \| | '_ \ / _` | | '_ \ / _` / __|
-" | . \  __/ |_| | |_) | | | | | (_| | | | | | (_| \__ \
-" |_|\_\___|\__, |_.__/|_|_| |_|\__,_|_|_| |_|\__, |___/
-"           |___/                             |___/
-"
+let g:vimwiki_list = [{'path': '~/Dropbox/NOTES/',
+                      \ 'syntax': 'markdown', 'ext': '.md'}]
+
+"  ____
+" |  _ \ ___ _ __ ___   __ _ _ __  ___
+" | |_) / _ \ '_ ` _ \ / _` | '_ \/ __|
+" |  _ <  __/ | | | | | (_| | |_) \__ \
+" |_| \_\___|_| |_| |_|\__,_| .__/|___/
+" remaps                    |_|
 let mapleader = " "
 let g:mapleader = " "
 nnoremap <silent> <nowait> <leader>j :w<CR>
@@ -121,18 +77,10 @@ xnoremap <silent> <nowait> <leader>q <esc>:q!<CR>
 nnoremap <silent> <nowait> <M-`>:w<CR>
 "delete duplicate empty lines
 nnoremap <silent> <nowait> <leader>l :g/^\s\+$/s/\s\+//e <CR> <bar> :g/^$/,/./-j<CR><c-o>
-" nnoremap <silent> <nowait> <leader>l :g/^\s\+$/s/\s\+//<CR><c-o>
-" nnoremap <silent> <nowait> <leader>l :%s/\s\+$//e <CR> <bar> %s/\n\{3,}/\r\r/e<CR><c-o>
 " tabs
 nnoremap <silent> <nowait> <leader><tab> :tabn<CR>
-" nnoremap <silent> <nowait> <leader>t :tabedit<CR>
-"
 " Format capitalization to title 
 nnoremap <silent> <nowait> <leader>t :s/\v<(.)(\w*)/\u\1\L\2/g<CR>
-
-" vnoremap J :m '>+1<CR>gv=gv
-" vnoremap K :m '<-2<CR>gv=gv
-" nnoremap <leader>rw :CocSearch <C-R>=expand("<cword>")<CR><CR>
 " center matches on screen
 nnoremap n nzz
 nnoremap N Nzz
@@ -140,7 +88,6 @@ nnoremap * *zz
 nnoremap # #zz
 nnoremap g* g*zz
 nnoremap g# g#zz
-" Because double pressing key is slow
 nmap <silent> <nowait> <leader>d dd
 vmap <silent> <nowait> <leader>d dd
 nmap <silent> <nowait> <leader>g gg
@@ -150,9 +97,7 @@ vmap <silent> <nowait> <leader>y yy
 nmap <silent> <nowait> <leader>z zz
 vmap <silent> <nowait> <leader>z zz
 " remove previous WORD without exiting insert mode
-inoremap <silent> <C-h> <esc>bcaW
-" accept suggestion
-" inoremap <C-space> <C-y>
+inoremap <silent> <C-h> <esc>bciW
 " Quick window switching
 nmap <C-h> <C-w>h
 nmap <C-j> <C-w>j
@@ -161,7 +106,6 @@ nmap <C-l> <C-w>l
 " nmap <leader>y :StripWhitespace<CR>
 nmap <leader>f <Plug>(easymotion-bd-w)
 vmap <leader>f <Plug>(easymotion-bd-w)
-
 noremap <F3> :Autoformat<CR>
 " * and # search for next/previous of selected text when used in visual mode
 xno * :<c-u>cal<SID>VisualSearch()<cr>/<cr>
@@ -171,67 +115,46 @@ fun! s:VisualSearch()
   let @/ = '\V'.substitute(escape(@", '\'), '\n', '\\n', 'g')
   let @" = old
 endf
-" remove empty lines in selection
-" vmap <leader>e :s/\n\n/\r/g<CR>
-" nmap <leader>n <Plug>VimwikiNextLink
-" nmap <leader>p <Plug>VimwikiPrevLink
 nmap <F13> <Plug>VimwikiNextLink
 nmap <F14> <Plug>VimwikiPrevLink
 nmap <leader>i <Plug>VimwikiIndex
-" nmap <F15> <Plug>VimwikiAddHeaderLevel
-
 " Fugitive bindings
 nmap <leader>gs :G<CR>
 nmap <leader>gh :diffget //2<CR>
 nmap <leader>gl :diffget //3<CR>
-" mobile screenshot renaming
-let @s='dt_xllla-lla-lllr lla_lla_0j'
-let @u='f/;;;lD0jf+f=pldf i l0kddci"~ q€kb'
-let @f='5Wdt;ofont-family: pa;k0wWWWWdwjofont-size: pa;kkf/ldwjjofont€kb€kb€kb€kbline-height: pi;kkk0WWWWdw3jofont-weight:a pi;kkkkdd'
-" reformat for supercollider pbind
-" let @r=':s/\v([^(: ]+): +/\\\1.kr(/g'
-" let @t=':s/\v, +/), /g|:s/\v$/)/g'
-
-
-" resizing splits
-" autocmd VimResized * wincmd =
-
-" autocmd VimResized * :exe 'vertical resize' . float2nr(&columns * 0.5) | exe resize . float2nr(&lines * 0.75)
-" autocmd WinEnter *.sc,*.scd :exe 'vertical resize' . float2nr(&columns * 0.5) | exe 'resize' . float2nr(&lines * 0.75)
-" autocmd VimResized *.sc,*.scd :exe 'vertical resize' . float2nr(&columns * 0.5) | exe 'resize' . float2nr(&lines * 0.75)
-
-" autocmd WinResize * :exe 50wincmd |
-
-" autocmd WinResize * 50wincmd
-" autocmd WinResize * :exe vertical resize  . float2nr(&columns * 0.5) | exe resize  . float2nr(&lines * 0.75)
-" autocmd WinEnter * :call ResizeSplits()
-" autocmd WinResize * call ResizeSplits()
-
+" window resizing
 nmap <silent> <leader>ww <C-w>=
 nnoremap <silent> <leader>wk :exe "resize " . float2nr(&lines * 0.75)<CR>
 nnoremap <silent> <leader>wj :exe "resize " . float2nr(&lines * 0.25)<CR>
 nnoremap <silent> <leader>w= :res 50<CR>
 nmap <silent> <Leader>wh :vertical resize -20<CR>
 nmap <silent> <Leader>wl :vertical resize +20<CR>
-
-" exe "vertical resize " . float2nr(&columns * 0.5)
-
 " jump to first / last of paragraph
-set whichwrap+=b,s
-set virtualedit=onemore
 nnoremap { k{<Space>0
 vnoremap { k{<Space>0
 nnoremap } j}<BS>0
 vnoremap } j}<BS>0
-"
 map <C-p> :Telescope find_files<CR>
 
-"  _   _ _____ ____  ____ _____
-" | \ | | ____|  _ \|  _ \_   _| __ ___  ___
-" |  \| |  _| | |_) | | | || || '__/ _ \/ _ \
-" | |\  | |___|  _ <| |_| || || | |  __/  __/
-" |_| \_|_____|_| \_\____/ |_||_|  \___|\___|
-"
+"  __  __
+" |  \/  | __ _  ___ _ __ ___  ___
+" | |\/| |/ _` |/ __| '__/ _ \/ __|
+" | |  | | (_| | (__| | | (_) \__ \
+" |_|  |_|\__,_|\___|_|  \___/|___/
+" macros
+" mobile screenshot renaming
+let @s='dt_xllla-lla-lllr lla_lla_0j'
+let @u='f/;;;lD0jf+f=pldf i l0kddci"~ q€kb'
+let @f='5Wdt;ofont-family: pa;k0wWWWWdwjofont-size: pa;kkf/ldwjjofont€kb€kb€kb€kbline-height: pi;kkk0WWWWdw3jofont-weight:a pi;kkkkdd'
+
+"  ____  _             _
+" |  _ \| |_   _  __ _(_)_ __  ___
+" | |_) | | | | |/ _` | | '_ \/ __|
+" |  __/| | |_| | (_| | | | | \__ \
+" |_|   |_|\__,_|\__, |_|_| |_|___/
+" plugins        |___/
+
+" NERDTree
 " Add spaces after comment delimiters by default
 let NERDSpaceDelims=1
 " Show hidden files/directories
@@ -252,19 +175,11 @@ let g:NERDSpaceDelims = 1
 let g:NERDCompactSexyComs = 1
 let g:NERDCustomDelimiters = { 'text': { 'left': '"','right': '' } }
 let g:NERDCustomDelimiters = { 'html': { 'left': '// ','right': '' } }
-"       _        _
-"   ___| |_ _ __| |_ __
-"  / __| __| '__| | '_ \
-" | (__| |_| |  | | |_) |
-"  \___|\__|_|  |_| .__/
-"                 |_|
+
+" ctrlp
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
-"  ____            _         ____      _            _       _
-" | __ )  __ _ ___(_) ___   / ___|__ _| | ___ _   _| | __ _| |_ ___  _ __
-" |  _ \ / _` / __| |/ __| | |   / _` | |/ __| | | | |/ _` | __/ _ \| '__|
-" | |_) | (_| \__ \ | (__  | |__| (_| | | (__| |_| | | (_| | || (_) | |
-" |____/ \__,_|___/_|\___|  \____\__,_|_|\___|\__,_|_|\__,_|\__\___/|_|
-"
+
+" basic calculator
 vnoremap <leader>r "ey:call CalcBC()<CR>
 function! CalcBC()
   let has_equal = 0
@@ -293,12 +208,8 @@ function! CalcBC()
     echo "answer = " . answer
   endif
 endfunction
-"   ____                                           __    ____                      _      _   _
-"  / ___|___  _ __   __ _ _   _  ___ _ __    ___  / _|  / ___|___  _ __ ___  _ __ | | ___| |_(_) ___  _ __
-" | |   / _ \| '_ \ / _` | | | |/ _ \ '__|  / _ \| |_  | |   / _ \| '_ ` _ \| '_ \| |/ _ \ __| |/ _ \| '_ \
-" | |__| (_) | | | | (_| | |_| |  __/ |    | (_) |  _| | |__| (_) | | | | | | |_) | |  __/ |_| | (_) | | | |
-"  \____\___/|_| |_|\__, |\__,_|\___|_|     \___/|_|    \____\___/|_| |_| |_| .__/|_|\___|\__|_|\___/|_| |_|
-"                      |_|                                                  |_|
+
+" CoC - Conquer of Completion
 let g:coc_global_extensions = [
   \ 'coc-snippets',
   \ 'coc-pairs',
@@ -313,8 +224,6 @@ let g:UltiSnipsSnippetDirectories = ['UltiSnips', 'scnvim-data']
 let g:scnvim_sclang_executable = '/usr/bin/sclang'
 " prettier command for coc
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
-" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
-" Coc only does snippet and additional edit on confirm.
 " Remap for rename current word
 nmap <F2> <Plug>(coc-rename)
 nmap <leader>k :Prettier<CR>
@@ -443,7 +352,6 @@ nnoremap <silent><nowait> <leader>cn  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <leader>cp  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <leader>cr  :<C-u>CocListResume<CR>
-
 " coc snippet bindings
 let g:UltiSnipsExpandTrigger='<Nop>'
 let g:UltiSnipsJumpForwardTrigger = '<TAB>'
@@ -451,45 +359,12 @@ let g:UltiSnipsJumpBackwardTrigger = '<S-TAB>'
 let g:coc_snippet_next = '<TAB>'
 let g:coc_snippet_prev = '<S-TAB>'
 
-" latex
-" let g:livepreview_previewer = 'zathura'
-" let g:livepreview_cursorhold_recompile = 0
-
-" This is necessary for VimTeX to load properly. The "indent" is optional.
-" Note that most plugin managers will do this automatically.
+" LaTeX
 filetype plugin indent on
-
-" This enables Vim's and neovim's syntax-related features. Without this, some
-" VimTeX features will not work (see ":help vimtex-requirements" for more
-" info).
 syntax enable
-
-" Viewer options: One may configure the viewer either by specifying a built-in
-" viewer method:
 let g:vimtex_view_method = 'zathura'
 
-" Or with a generic interface:
-" let g:vimtex_view_general_viewer = 'okular'
-" let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
-
-" VimTeX uses latexmk as the default compiler backend. If you use it, which is
-" strongly recommended, you probably don't need to configure anything. If you
-" want another compiler backend, you can change it as follows. The list of
-" supported backends and further explanation is provided in the documentation,
-" see ":help vimtex-compiler".
-" let g:vimtex_compiler_method = 'latexrun'
-
-" Most VimTeX mappings rely on localleader and this can be changed with the
-" following line. The default is usually fine and is the symbol "\".
-" let maplocalleader = ","
-
-"  ____                         ____      _ _ _     _
-" / ___| _   _ _ __   ___ _ __ / ___|___ | | (_) __| | ___ _ __
-" \___ \| | | | '_ \ / _ \ '__| |   / _ \| | | |/ _` |/ _ \ '__|
-"  ___) | |_| | |_) |  __/ |  | |__| (_) | | | | (_| |  __/ |
-" |____/ \__,_| .__/ \___|_|   \____\___/|_|_|_|\__,_|\___|_|
-"             |_|
-"
+" SuperCollider
 au BufEnter,BufWinEnter,BufNewFile,BufRead *.sc,*.scd set filetype=supercollider
 " au Filetype supercollider packadd scvim
 let g:sclangTerm = "st -e zsh -ic"
@@ -538,7 +413,3 @@ let g:scnvim_sclang_options = ['-u', 9999]
 " help
 let g:scnvim_scdoc_render_prg = '/usr/bin/pandoc'
 " let g:scnvim_scdoc_render_args = '% -o %'
-"
-" tidalcycles
-let g:tidal_target = "terminal"
-let g:Hexokinase_highlighters = ['backgroundfull']

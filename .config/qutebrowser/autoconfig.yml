@@ -23,7 +23,7 @@ settings:
   colors.webpage.bg:
     global: white
   colors.webpage.darkmode.enabled:
-    global: true
+    global: false
   content.blocking.enabled:
     global: true
   content.geolocation:
@@ -37,6 +37,7 @@ settings:
     https://mail.one.com: false
     https://mspoweruser.com: false
     https://splendidprizeforyou.com: false
+    https://thepiratebay.org: false
     https://wowroms.com: false
     https://www.adsrsounds.com: false
     https://www.facebook.com: false
