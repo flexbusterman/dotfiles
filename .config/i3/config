@@ -301,7 +301,7 @@ bindsym $mod+Shift+n exec --no-startup-id "cd ~/Dropbox/NOTES/; st -t VimWiki -e
 bindsym $mod+Shift+comma exec --no-startup-id "st -t Vifm -e vifmrun & i3promotewindow"
 bindsym $mod+e exec --no-startup-id "$terminal -t NeoMutt -e neomutt & i3promotewindow"
 bindsym $mod+t exec --no-startup-id "$terminal -t Htop -e htop & i3promotewindow"
-bindsym $mod+r exec --no-startup-id "$terminal -t Newsboat -e newsboat & i3promotewindow"
+# bindsym $mod+Shift+r exec --no-startup-id "$terminal -t Newsboat -e newsboat & i3promotewindow"
 bindsym $mod+F4 exec --no-startup-id "$terminal -t PulseMixer -e pulsemixer & i3promotewindow"
 bindsym $mod+F6 exec --no-startup-id "torwrap & i3promotewindow"
 bindsym $mod+s exec --no-startup-id "supercollider & i3promotewindow"
@@ -318,6 +318,7 @@ bindsym --release $mod+Shift+x exec --no-startup-id "xkill"
 bindsym $mod+q exec --no-startup-id "qpwgraph & i3promotewindow"
 bindsym $mod+Shift+F4 exec --no-startup-id "pavucontrol & i3promotewindow"
 bindsym $mod+Control+Return exec --no-startup-id "audacious & i3promotewindow"
+bindsym $mod+r exec --no-startup-id "reaper & i3promotewindow"
 
 # rules
 # assign [class="Audacious"] 9
