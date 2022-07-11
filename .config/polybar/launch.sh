@@ -3,11 +3,15 @@
 # Terminate already running bar instances
 killall -q polybar
 
+sleep 0.1
 # If all your bars have ipc enabled, you can also use 
 # polybar-msg cmd quit
 
 # Launch Polybar, using default config location ~/.config/polybar/config.ini
-# wait
+wait
+
+sleep 0.1
+
 # pgrep polybar || polybar mybar -c $HOME/.config/polybar/config.ini 2>&1 | tee -a /tmp/polybar.log & disown
 polybar mybar -c $HOME/.config/polybar/config.ini 2>&1 | tee -a /tmp/polybar.log & disown
 
@@ -16,13 +20,17 @@ polybar mybar -c $HOME/.config/polybar/config.ini 2>&1 | tee -a /tmp/polybar.log
 
 focus=$(cat ~/.config/i3/focus | while read line; do echo $line; done)
 bar=$(cat ~/.config/i3/bar | while read line; do echo $line; done)
-notify-send "focus: $focus"
-notify-send "bar: $bar"
+# notify-send "focus: $focus"
+# notify-send "bar: $bar"
+
+sleep 0.1
 
 if [[ $focus == "true" || $bar == "false" ]]; then
 	wait
-	(xdo id -m -N Polybar && polybar-msg cmd hide)
+	polybar-msg cmd hide
+	# (xdo id -m -N Polybar && polybar-msg cmd hide)
 else
 	wait
-	(xdo id -m -N Polybar && polybar-msg cmd show)
+	polybar-msg cmd show
+	# (xdo id -m -N Polybar && polybar-msg cmd show)
 fi
