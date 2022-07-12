@@ -157,37 +157,6 @@ alias wrm='f() { nmcli con delete $*};f'
 alias wconnect='f() { nmcli device wifi connect $1 password $2 };f'
 alias wdisable='f() { nmcli connection down $* };f'
 
-# VIM aliases for editing common files
-# alias va="cd /home/flex/.config/awesome/; nvim rc.lua"
-alias va="cd /home/flex/.config/alacritty/; nvim alacritty.yml"
-alias vb="cd /home/flex/.config/bspwm/; nvim bspwmrc"
-alias vA="cd /home/flex/.config/awesome/; nvim rc.lua"
-alias vc="cd /home/flex/.config/nvim/; nvim coc-settings.json"
-alias vD="cd /home/flex/.local/src/dmenu/; nvim config.def.h"
-alias vd="cd /home/flex/.local/src/dwm/; nvim config.def.h"
-alias vn="cd /home/flex/.config/nvim/; nvim init.vim"
-alias vp="cd /home/flex/.config/polybar/; nvim config.ini"
-alias vP="cd /home/flex/.config/nvim/; nvim plugins.vim"
-# alias vp="cd /home/flex/; nvim .xprofile"
-alias vS="cd /home/flex/.config/coc/ultisnips; nvim all.snippets"
-alias vs="cd /home/flex/.local/src/st/; nvim config.h"
-alias vu="cd /home/flex/.config/newsboat/; nvim urls"
-alias vv="cd /home/flex/.config/vifm/; nvim vifmrc"
-alias vX="cd /home/flex/.xmonad/; nvim xmonad.hs"
-alias vx="cd /home/flex/; nvim .xinitrc"
-alias vk="cd /home/flex/.config/sxhkd; nvim sxhkdrc"
-alias vz="cd /home/flex/; nvim .zshrc"
-alias vi="cd /home/flex/.config/i3/; nvim config"
-# alias vI="cd /home/flex/.config/i3status/; nvim config"
-alias vq="cd /home/flex/.config/qutebrowser/; nvim autoconfig.yml"
-alias ve="cd /home/flex/; nvim .zshenv"
-alias vb="cd /home/flex/.config/bspwm/; nvim bspwmrc"
-alias vk="cd /home/flex/.config/sxhkd/; nvim sxhkdrc"
-alias vl="cd /home/flex/.config/lf/; nvim lfrc"
-alias vt="cd /home/flex/.config/leftwm/themes/flex/; nvim"
-alias vh="cd /home/flex/.history/zsh/; nvim history"
-alias vw="cd /home/flex/.w3m/; nvim keymap"
-
 # Keymap aliases
 alias se="setxkbmap se; setxkbmap -option caps:swapescape; xset r rate 300 50"
 alias us="setxkbmap us; setxkbmap -option caps:swapescape; xset r rate 300 50"

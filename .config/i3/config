@@ -296,6 +296,7 @@ bindsym Control+Shift+space exec --no-startup-id "musicplaypause"
 bindsym $mod+Shift+Control+m exec --no-startup-id "mailsync"
 bindsym $mod+Shift+i exec --no-startup-id "xcalib -i -a"
 bindsym $mod+slash exec --no-startup-id "st -e ~/.local/bin/fzfvim & i3promotewindow"
+bindsym $mod+Shift+slash exec --no-startup-id "st -e vimshortcuts & i3promotewindow"
 bindsym $mod+Shift+d exec --no-startup-id "cd ~/.local/src/; dev $(ls -d */ | dmenu) & i3promotewindow"
 
 # terminal tui applications
