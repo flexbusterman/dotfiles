@@ -2,6 +2,29 @@
 
 validArguments=("bar" "gaps" "focus")
 
+showGaps () {
+	echo "true" > ~/.config/i3/gaps
+	i3-msg gaps inner all set 24
+	i3-msg gaps outer all set 0
+}
+
+hideGaps () {
+	i3-msg gaps inner all set 0
+	i3-msg gaps outer all set 0
+	echo "false" > ~/.config/i3/gaps
+}
+
+showBar () {
+	pidof polybar || polybar mybar -c $HOME/.config/polybar/config.ini 2>&1 | tee -a /tmp/polybar.log & disown
+	polybar-msg cmd show
+	echo "true" > ~/.config/i3/bar
+}
+
+hideBar () {
+	polybar-msg cmd hide
+	echo "false" > ~/.config/i3/bar
+}
+
 # check if argument is valid
 if [[ " ${validArguments[*]} " =~ " $1 " ]]; then
 	# if file for argument doesnt exist
@@ -17,45 +40,31 @@ fi
 case $1 in
 	bar)
 		bar=$(cat /home/$USER/.config/i3/bar | while read line; do echo $line; done)
-		if [[ $bar == "false" ]]; then
-			pidof polybar || polybar mybar -c $HOME/.config/polybar/config.ini 2>&1 | tee -a /tmp/polybar.log & disown
-			polybar-msg cmd show
-			echo "true" > ~/.config/i3/bar
+		if [[ $bar == "true" ]]; then
+			hideBar
 		else
-			echo "false" > ~/.config/i3/bar
-			polybar-msg cmd hide
+			showBar
 		fi
-		echo $focus
 		;;
 
 	gaps)
 		gaps=$(cat /home/$USER/.config/i3/gaps | while read line; do echo $line; done)
 		if [[ $gaps == "true" ]]; then
-			i3-msg gaps inner all set 0
-			i3-msg gaps outer all set 0
-			echo "false" > ~/.config/i3/gaps
+			hideGaps
 		else
-			echo "true" > ~/.config/i3/gaps
-			i3-msg gaps inner all set 24
-			i3-msg gaps outer all set 0
+			showGaps
 		fi
 		;;
 
 	focus)
-		focus=$(cat /home/$USER/.config/i3/focus | while read line; do echo $line; done)
-		if [[ $focus == "true" ]]; then
-			i3-msg gaps inner all set 0
-			i3-msg gaps outer all set 0
-			pidof polybar || polybar mybar -c $HOME/.config/polybar/config.ini 2>&1 | tee -a /tmp/polybar.log & disown
-			polybar-msg cmd show
-			echo "false" > ~/.config/i3/focus
-			echo "true" > ~/.config/i3/bar
+		bar=$(cat /home/$USER/.config/i3/bar | while read line; do echo $line; done)
+		gaps=$(cat /home/$USER/.config/i3/gaps | while read line; do echo $line; done)
+		if [[ $gaps == "true" ]] && [[ $bar == "false" ]]; then
+			hideGaps
+			showBar
 		else
-			i3-msg gaps inner all set 24
-			i3-msg gaps outer all set 0
-			polybar-msg cmd hide
-			echo "true" > ~/.config/i3/focus
-			echo "false" > ~/.config/i3/bar
+			showGaps
+			hideBar
 		fi
 		;;
 
