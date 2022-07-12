@@ -3,7 +3,7 @@
 mapfile -t programs < <(cat ~/.config/shortcuts | awk '{ printf "%s\n",$1 }')
 mapfile -t files < <(cat ~/.config/shortcuts | awk '{ printf "%s\n",$(NF) }')
 
-program=$(printf "%s\n" "${programs[@]}" | dmenu)
+program=$(printf "%s\n" "${programs[@]}" | fzf)
 
 if [[ -z $program ]]; then
    # notify-send "nothing selected, exiting"
