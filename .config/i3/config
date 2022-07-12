@@ -12,9 +12,6 @@
 set $mod Mod1
 set $terminal st
 
-exec_always --no-startup-id "i3resetfiles"
-exec_always --no-startup-id "$HOME/.config/polybar/launch.sh"
-# exec_always --no-startup-id "polybarhide"
 # exec_always --no-startup-id "$HOME/.config/polybar/launch.sh"
 # exec_always --no-startup-id "i3-layouts"
 exec_always --no-startup-id "autotiling"

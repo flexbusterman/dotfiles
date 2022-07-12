@@ -11,7 +11,6 @@ settings:
       normal:
         ',m': hint links spawn mpv {hint-url} --ytdl-raw-options=mark-watched=
         <Ctrl+Shift+d>: set colors.webpage.darkmode.enabled false
-        # <Ctrl+d>: set colors.webpage.darkmode.enabled true
         j: scroll-px 0 100
         k: scroll-px 0 -100
   colors.hints.bg:
@@ -23,7 +22,7 @@ settings:
   colors.webpage.bg:
     global: white
   colors.webpage.darkmode.enabled:
-    global: true
+    global: false
   content.blocking.enabled:
     global: true
   content.geolocation:

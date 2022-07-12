@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Terminate already running bar instances
-killall -q polybar
+# killall -q polybar
 
 # sleep 0.1
 # If all your bars have ipc enabled, you can also use 
@@ -13,20 +13,7 @@ killall -q polybar
 # sleep 0.1
 
 # pgrep polybar || polybar mybar -c $HOME/.config/polybar/config.ini 2>&1 | tee -a /tmp/polybar.log 
-polybar mybar -c $HOME/.config/polybar/config.ini 2>&1 | tee -a /tmp/polybar.log & disown
-
-# while ! pidof polybar > /dev/null; do
-    # # Set optional delay
-		# notify-send "waiting"
-# sleep 0.5
-# done
-
-for i in {1..30}
-do
-    # notify-send "hide"
-    polybar-msg cmd hide
-    sleep 0.1
-done
+pidof polybar || polybar mybar -c $HOME/.config/polybar/config.ini 2>&1 | tee -a /tmp/polybar.log & disown
 
 # autohide if focus variable is set
 # (xdo id -m -N Polybar && )

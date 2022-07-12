@@ -1,5 +1,0 @@
-#!/bin/bash
-echo "true" > $HOME/.config/i3/gaps
-echo "true" > $HOME/.config/i3/focus
-echo "false" > $HOME/.config/i3/bar
-# notify-send "i3 files reset"

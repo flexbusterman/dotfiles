@@ -1,0 +1,8 @@
+#!/bin/bash
+echo "true" > ~/.config/i3/gaps
+i3-msg gaps inner all set 24
+i3-msg gaps outer all set 0
+echo "false" > ~/.config/i3/bar
+for i in {1..10}; do
+	polybar-msg cmd hide
+done;

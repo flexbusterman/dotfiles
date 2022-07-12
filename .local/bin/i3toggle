@@ -18,6 +18,7 @@ case $1 in
 	bar)
 		bar=$(cat /home/$USER/.config/i3/bar | while read line; do echo $line; done)
 		if [[ $bar == "false" ]]; then
+			pidof polybar || polybar mybar -c $HOME/.config/polybar/config.ini 2>&1 | tee -a /tmp/polybar.log & disown
 			polybar-msg cmd show
 			echo "true" > ~/.config/i3/bar
 		else
@@ -45,13 +46,16 @@ case $1 in
 		if [[ $focus == "true" ]]; then
 			i3-msg gaps inner all set 0
 			i3-msg gaps outer all set 0
+			pidof polybar || polybar mybar -c $HOME/.config/polybar/config.ini 2>&1 | tee -a /tmp/polybar.log & disown
 			polybar-msg cmd show
 			echo "false" > ~/.config/i3/focus
+			echo "true" > ~/.config/i3/bar
 		else
-			echo "true" > ~/.config/i3/focus
 			i3-msg gaps inner all set 24
 			i3-msg gaps outer all set 0
 			polybar-msg cmd hide
+			echo "true" > ~/.config/i3/focus
+			echo "false" > ~/.config/i3/bar
 		fi
 		;;
 
