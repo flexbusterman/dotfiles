@@ -1,9 +1,7 @@
 type = normal
 name = Flex
-species = Hill Orc
-background = Berserker
-weapon = hand axe
-game_seed = 3084076456455619175
+species = Merfolk
+background = Summoner
 fully_random = no
 default_manual_training = no
 quiver_menu_focus = false
