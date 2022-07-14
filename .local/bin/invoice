@@ -1,0 +1,3 @@
+#!/bin/bash
+cd /home/flex/.local/src/invoice/
+/home/flex/.local/src/invoice/invoice
