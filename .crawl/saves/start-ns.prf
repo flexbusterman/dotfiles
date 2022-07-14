@@ -1,7 +1,8 @@
 type = normal
 name = Flex
-species = Merfolk
-background = Summoner
+species = random
+background = random
+game_seed = 2129901940191164579
 fully_random = no
 default_manual_training = no
 quiver_menu_focus = false

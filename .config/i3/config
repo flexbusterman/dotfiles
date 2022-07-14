@@ -309,7 +309,7 @@ bindsym $mod+t exec --no-startup-id "$terminal -t Htop -e htop & i3promotewindow
 # bindsym $mod+Shift+r exec --no-startup-id "$terminal -t Newsboat -e newsboat & i3promotewindow"
 bindsym $mod+F4 exec --no-startup-id "$terminal -t PulseMixer -e pulsemixer & i3promotewindow"
 bindsym $mod+F6 exec --no-startup-id "torwrap & i3promotewindow"
-bindsym $mod+s exec --no-startup-id "supercollider & i3promotewindow"
+bindsym $mod+s exec --no-startup-id "st -e supercollider & i3promotewindow"
 bindsym $mod+Control+Shift+Return exec --no-startup-id "$terminal -t ncspot -e ncspot & i3promotewindow"
 bindsym Control+Shift+Return exec --no-startup-id "$terminal -t ncmpcpp -e ncmpcpp & i3promotewindow"
 bindsym $mod+Shift+t exec --no-startup-id "$terminal -t typingtest -e tt -theme dracula & i3promotewindow"
