@@ -50,6 +50,8 @@ alt + space
 #
 
 # set the window state
+# alt + f
+	# bspc node -t fullscreen
 # alt + {t,shift + t,s,f}
 	# bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
 

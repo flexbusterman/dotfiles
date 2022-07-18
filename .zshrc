@@ -167,6 +167,37 @@ alias igdlinit="cd ~/Dropbox/MEMES && instaloader --no-video-thumbnails --no-met
 alias igdll="cd ~/Dropbox/MEMES && instaloader -F --login _christian_augustin --no-video-thumbnails --no-metadata-json --no-captions --no-profile-pic memeforyouandhim"
 alias igdl="cd ~/Dropbox/MEMES && instaloader -F --no-video-thumbnails --no-metadata-json --no-captions --no-profile-pic memeseducational dank_memes_world_1 dank_memes_world_1 casual.nihilism mvme.hub memefolk.ig stinky420memes memes epicallyepicmemes baked_meme_god stolenmemesawakens memesinyourdms omgzucc"
 
+# VIM aliases for editing common files
+# alias va="cd /home/flex/.config/awesome/; nvim rc.lua"
+alias va="cd /home/flex/.config/alacritty/; nvim alacritty.yml"
+alias vb="cd /home/flex/.config/bspwm/; nvim bspwmrc"
+alias vA="cd /home/flex/.config/awesome/; nvim rc.lua"
+alias vc="cd /home/flex/.config/nvim/; nvim coc-settings.json"
+alias vD="cd /home/flex/.local/src/dmenu/; nvim config.def.h"
+alias vd="cd /home/flex/.local/src/dwm/; nvim config.def.h"
+alias vn="cd /home/flex/.config/nvim/; nvim init.vim"
+alias vp="cd /home/flex/.config/polybar/; nvim config.ini"
+alias vP="cd /home/flex/.config/nvim/; nvim plugins.vim"
+# alias vp="cd /home/flex/; nvim .xprofile"
+alias vS="cd /home/flex/.config/coc/ultisnips; nvim all.snippets"
+alias vs="cd /home/flex/.local/src/st/; nvim config.h"
+alias vu="cd /home/flex/.config/newsboat/; nvim urls"
+alias vv="cd /home/flex/.config/vifm/; nvim vifmrc"
+alias vX="cd /home/flex/.xmonad/; nvim xmonad.hs"
+alias vx="cd /home/flex/; nvim .xinitrc"
+alias vk="cd /home/flex/.config/sxhkd; nvim sxhkdrc"
+alias vz="cd /home/flex/; nvim .zshrc"
+alias vi="cd /home/flex/.config/i3/; nvim config"
+# alias vI="cd /home/flex/.config/i3status/; nvim config"
+alias vq="cd /home/flex/.config/qutebrowser/; nvim autoconfig.yml"
+alias ve="cd /home/flex/; nvim .zshenv"
+alias vb="cd /home/flex/.config/bspwm/; nvim bspwmrc"
+alias vk="cd /home/flex/.config/sxhkd/; nvim sxhkdrc"
+alias vl="cd /home/flex/.config/lf/; nvim lfrc"
+alias vt="cd /home/flex/.config/leftwm/themes/flex/; nvim"
+alias vh="cd /home/flex/.history/zsh/; nvim history"
+alias vw="cd /home/flex/.w3m/; nvim keymap"
+
 #   __                  _   _
 #  / _|_   _ _ __   ___| |_(_) ___  _ __  ___
 # | |_| | | | '_ \ / __| __| |/ _ \| '_ \/ __|
