@@ -1,9 +1,8 @@
 type = normal
 name = Flex
 species = random
-background = random
-weapon = falchion
-game_seed = 2369971142007285354
+background = viable
+game_seed = 10032137799052781706
 fully_random = no
 default_manual_training = no
 quiver_menu_focus = false
