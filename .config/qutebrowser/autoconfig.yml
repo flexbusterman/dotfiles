@@ -66,6 +66,7 @@ settings:
       p: https://thepiratebay.org/search.php?q={}
       w: https://wallpaperaccess.com/search?q={}
       y: https://www.youtube.com/results?search_query={}
+      b: https://www.blocket.se/annonser/hela_sverige?q={}&f=p
   url.start_pages:
     global: about:blank
   zoom.default:
