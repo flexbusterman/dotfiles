@@ -120,7 +120,7 @@ set relativenumber
 " marks
 " :mark mark /full/directory/path [filename]
 
-mark a "~/Dropbox/ADMINISTRATIVT/AUGUSTIN SUPREMACY 2022"
+mark a "~/Dropbox/ADMINISTRATIVT/2022 CHRISTIAN AUGUSTIN/"
 mark b ~/.local/bin/
 mark c ~/.config/
 mark C ~/Dropbox/DROPSYNC/Camera/

@@ -67,6 +67,7 @@ settings:
       w: https://wallpaperaccess.com/search?q={}
       y: https://www.youtube.com/results?search_query={}
       b: https://www.blocket.se/annonser/hela_sverige?q={}&f=p
+      s: https://www.opensubtitles.org/en/search2/sublanguageid-eng/subtrusted-on/hd-on/moviename-{}
   url.start_pages:
     global: about:blank
   zoom.default:
