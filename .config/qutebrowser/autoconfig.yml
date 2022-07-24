@@ -10,6 +10,7 @@ settings:
     global:
       normal:
         ',m': hint links spawn mpv {hint-url} --ytdl-raw-options=mark-watched=
+        ',d': hint links spawn yt-dlp -f 'bestvideo[height<=1080]+bestaudio/best[height<=1080]' -P ~/Downloads/VIDEO/ {hint-url}
         <Ctrl+Shift+d>: set colors.webpage.darkmode.enabled false
         j: scroll-px 0 100
         k: scroll-px 0 -100
