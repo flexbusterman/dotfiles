@@ -20,6 +20,7 @@ pidof dwmblocks || dwmblocks &
 srandrd displayhandler &
 # script that loops to restart dwm
 xcape -e 'Mode_switch=Escape' &
+blueberry-tray &
 exec startdwm
 # exec i3 
 # exec bspwm
