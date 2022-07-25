@@ -1,0 +1,10 @@
+#!/bin/bash
+target=$1
+diff=$((target - 20))
+increment=$((diff/4))
+echo "5x20"
+echo "5x20"
+echo "5x$((20+increment))"
+echo "3x$((20+increment*2))"
+echo "2x$((20+increment*3))"
+echo "1x$((20+increment*3+increment/2))"
