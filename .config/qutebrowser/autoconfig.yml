@@ -9,8 +9,9 @@ settings:
   bindings.commands:
     global:
       normal:
+        ',d': hint links spawn yt-dlp -f 'bestvideo[height<=1080]+bestaudio/best[height<=1080]'
+          -P ~/Downloads/VIDEO/ {hint-url}
         ',m': hint links spawn mpv {hint-url} --ytdl-raw-options=mark-watched=
-        ',d': hint links spawn yt-dlp -f 'bestvideo[height<=1080]+bestaudio/best[height<=1080]' -P ~/Downloads/VIDEO/ {hint-url}
         <Ctrl+Shift+d>: set colors.webpage.darkmode.enabled false
         j: scroll-px 0 100
         k: scroll-px 0 -100
@@ -26,6 +27,8 @@ settings:
     global: false
   content.blocking.enabled:
     global: true
+  content.blocking.method:
+    global: both
   content.geolocation:
     https://www.google.com: true
     https://www.google.com.ar: false
@@ -51,6 +54,8 @@ settings:
     https://mail.protonmail.com#mailto=%25s: false
   content.user_stylesheets:
     global: null
+  downloads.remove_finished:
+    global: 1
   fonts.default_family:
     global: PxPlus IBM VGA 9x16
   fonts.default_size:
@@ -62,14 +67,14 @@ settings:
   url.searchengines:
     global:
       DEFAULT: https://www.google.com/search?q={}
+      b: https://www.blocket.se/annonser/hela_sverige?q={}&f=p
       d: https://duckduckgo.com/?q={}
+      i: https://www.instagram.com/explore/tags/{}/
       o: https://odysee.com/$/search?q={}
       p: https://thepiratebay.org/search.php?q={}
+      s: https://www.opensubtitles.org/en/search2/sublanguageid-eng/subtrusted-on/hd-on/moviename-{}
       w: https://wallpaperaccess.com/search?q={}
       y: https://www.youtube.com/results?search_query={}
-      b: https://www.blocket.se/annonser/hela_sverige?q={}&f=p
-      s: https://www.opensubtitles.org/en/search2/sublanguageid-eng/subtrusted-on/hd-on/moviename-{}
-      i: https://www.instagram.com/explore/tags/{}/
   url.start_pages:
     global: about:blank
   zoom.default:
