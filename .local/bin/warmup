@@ -1,5 +1,5 @@
 #!/bin/bash
-start=60
+start=20
 target=$1
 diff=$((target - start))
 increment=$((diff/4))
