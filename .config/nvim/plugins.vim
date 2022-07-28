@@ -46,4 +46,8 @@ Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' } " show colors as color
 " Plug 'supercollider/scvim'
 " Plug 'sersorrel/vim-lilypond'
 " Plug 'vim-scripts/tetris'
+"
+Plug 'othree/html5.vim'
+Plug 'pangloss/vim-javascript'
+Plug 'evanleck/vim-svelte', {'branch': 'main'}
 call plug#end()

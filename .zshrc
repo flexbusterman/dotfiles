@@ -137,6 +137,7 @@ alias n='cd ~/Dropbox/NOTES; exa'
 alias c='cd ~/.config/; exa'
 alias w='cd ~/.wine/drive_c/; exa'
 alias M='cd ~/Music/; exa'
+alias g='cd ~/.local/src/; exa'
 
 # Dropbox aliases
 alias dadd="dropbox-cli exclude remove"
@@ -176,8 +177,8 @@ alias vc="cd /home/flex/.config/nvim/; nvim coc-settings.json"
 alias vD="cd /home/flex/.local/src/dmenu/; nvim config.def.h"
 alias vd="cd /home/flex/.local/src/dwm/; nvim config.def.h"
 alias vn="cd /home/flex/.config/nvim/; nvim init.vim"
-alias vp="cd /home/flex/.config/polybar/; nvim config.ini"
-alias vP="cd /home/flex/.config/nvim/; nvim plugins.vim"
+alias vP="cd /home/flex/.config/polybar/; nvim config.ini"
+alias vp="cd /home/flex/.config/nvim/; nvim plugins.vim"
 # alias vp="cd /home/flex/; nvim .xprofile"
 alias vS="cd /home/flex/.config/coc/ultisnips; nvim all.snippets"
 alias vs="cd /home/flex/.local/src/st/; nvim config.h"
