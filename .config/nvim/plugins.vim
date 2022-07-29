@@ -14,7 +14,7 @@ Plug 'flw-cn/vim-nerdtree-l-open-h-close' " NERDTree h l open and close
 Plug 'andymass/vim-matchup' " To matchit in vue
 Plug 'leafOfTree/vim-vue-plugin'
 Plug 'posva/vim-vue'
-Plug 'davidgranstrom/scnvim', { 'do': {-> scnvim#install() } }
+Plug 'davidgranstrom/scnvim'
 Plug 'vim-pandoc/vim-pandoc' " to show sc documentation in nvim
 Plug 'vim-pandoc/vim-pandoc-syntax' 
 " Plug 'sainnhe/sonokai'
@@ -51,3 +51,7 @@ Plug 'othree/html5.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'evanleck/vim-svelte', {'branch': 'main'}
 call plug#end()
+
+lua << EOF
+require('scnvim').setup()
+EOF
