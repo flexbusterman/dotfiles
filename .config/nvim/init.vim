@@ -366,50 +366,143 @@ let g:vimtex_view_method = 'zathura'
 
 " SuperCollider
 au BufEnter,BufWinEnter,BufNewFile,BufRead *.sc,*.scd set filetype=supercollider
-" au Filetype supercollider packadd scvim
-let g:sclangTerm = "st -e zsh -ic"
-" let g:scFlash = 1
-nmap <silent><nowait> <CR> <Plug>(scnvim-send-block)
-vmap <silent><nowait> <CR> <Plug>(scnvim-send-selection)
-nmap <silent><nowait> <leader>. <Plug>(scnvim-hard-stop)
-" map <silent><nowait> <leader>p <Plug>(scnvim-postwindow-toggle)
-map <silent><nowait> <leader>b <Plug>(scnvim-hard-stop)
-nmap <silent><nowait> <leader>p <Plug>(scnvim-postwindow-clear)
-map <silent><nowait> <leader>s :SCNvimStart<CR>
-" vertical 'v' or horizontal 'h' split
-let g:scnvim_postwin_orientation = 'h'
-" position of the post window 'right' or 'left'
-let g:scnvim_postwin_direction = 'right'
-" default is half the terminal size for vertical and a third for horizontal
-let g:scnvim_postwin_size = 15
-" automatically open post window on a SuperCollider error
-let g:scnvim_postwin_auto_toggle = 1
-" duration of the highlight
-let g:scnvim_eval_flash_duration = 25
-" set this variable to browse SuperCollider documentation in nvim (requires `pandoc`)
-let g:scnvim_scdoc = 1
-" number of flashes. A value of 0 disables this feature.
-let g:scnvim_eval_flash_repeats = 1
 " configure the color
 highlight SCNvimEval guifg=black guibg=cyan ctermfg=black ctermbg=cyan
 autocmd BufRead,BufWritePre *.sc normal magg=G`azt
 autocmd BufRead,BufWritePre *.scd normal magg=G`azt
-autocmd BufWritePre *.cpp :silent exec "!make"
+" au Filetype supercollider packadd scvim
+let g:sclangTerm = "st -e zsh -ic"
+" let g:scFlash = 1
+" nmap <silent><nowait> <CR> <Plug>(scnvim-send-block)
+" vmap <silent><nowait> <CR> <Plug>(scnvim-send-selection)
+" nmap <silent><nowait> <leader>. <Plug>(scnvim-hard-stop)
+" map <silent><nowait> <leader>p <Plug>(scnvim-postwindow-toggle)
+" map <silent><nowait> <leader>b <Plug>(scnvim-hard-stop)
+" nmap <silent><nowait> <leader>p <Plug>(scnvim-postwindow-clear)
+map <silent><nowait> <leader>s :SCNvimStart<CR>
+lua << EOF
+local scnvim = require 'scnvim'
+local map = scnvim.map
+local map_expr = scnvim.map_expr
+
+scnvim.setup {
+ ensure_installed = true,
+  sclang = {
+    cmd = nil,
+    args = {},
+  },
+  keymaps = {},
+  documentation = {
+    cmd = nil,
+    horizontal = true,
+    direction = 'top',
+    keymaps = true,
+  },
+  postwin = {
+    highlight = true,
+    auto_toggle_error = true,
+    scrollback = 5000,
+    horizontal = true,
+    direction = 'bot',
+    size = nil,
+    fixed_size = nil,
+    keymaps = nil,
+    float = {
+      enabled = false,
+      row = 0,
+      col = function()
+        return vim.o.columns
+      end,
+      width = 64,
+      height = 14,
+      config = {
+        border = 'single',
+      },
+      callback = function(id)
+        vim.api.nvim_win_set_option(id, 'winblend', 10)
+      end,
+    },
+  },
+  editor = {
+    force_ft_supercollider = true,
+    highlight = {
+      color = 'TermCursor',
+      type = 'flash',
+      flash = {
+        duration = 100,
+        repeats = 1,
+      },
+      fade = {
+        duration = 375,
+      },
+    },
+    signature = {
+      float = true,
+      auto = true,
+    },
+  },
+  snippet = {
+    engine = {
+      name = 'luasnip',
+      options = {
+        descriptions = true,
+      },
+    },
+  },
+  statusline = {
+    poll_interval = 1,
+  },
+  extensions = {},
+  keymaps = {
+    ['<leader>f'] = map('editor.send_line', {'i', 'n'}),
+    ['f'] = {
+      map('editor.send_block', {'i', 'n'}),
+      map('editor.send_selection', 'x'),
+    },
+    ['<leader>t'] = map('postwin.toggle'),
+    ['<M-CR>'] = map('postwin.toggle', 'i'),
+    ['<leader>p'] = map('postwin.clear', {'n', 'i'}),
+    ['<C-k>'] = map('signature.show', {'n', 'i'}),
+    ['<leader>.'] = map('sclang.hard_stop', {'n', 'x', 'i'}),
+    ['<leader>s'] = map('sclang.start'),
+    ['<leader>r'] = map('sclang.recompile'),
+    ['<F1>'] = map_expr('s.boot'),
+    ['<F2>'] = map_expr('s.meter'),
+  },
+}
+EOF
+
+" vertical 'v' or horizontal 'h' split
+" let g:scnvim_postwin_orientation = 'h'
+" position of the post window 'right' or 'left'
+" let g:scnvim_postwin_direction = 'right'
+" default is half the terminal size for vertical and a third for horizontal
+" let g:scnvim_postwin_size = 15
+" automatically open post window on a SuperCollider error
+" let g:scnvim_postwin_auto_toggle = 1
+" duration of the highlight
+" let g:scnvim_eval_flash_duration = 25
+" set this variable to browse SuperCollider documentation in nvim (requires `pandoc`)
+" let g:scnvim_scdoc = 1
+" number of flashes. A value of 0 disables this feature.
+" let g:scnvim_eval_flash_repeats = 1
 " path to the sclang executable
 " scnvim will look in some known locations for sclang, but if it can't find it use this variable instead
 " (also improves startup time slightly)
-let g:scnvim_sclang_executable = ''
+" let g:scnvim_sclang_executable = ''
 " update rate for server info in status line (seconds)
 " (don't set this to low or vim will get slow)
-let g:scnvim_statusline_interval = 1
+" let g:scnvim_statusline_interval = 1
 " set this variable if you don't want the "echo args" feature
-let g:scnvim_echo_args = 0
+" let g:scnvim_echo_args = 0
 " set this variable if you don't want any default mappings
-let g:scnvim_no_mappings = 1
+" let g:scnvim_no_mappings = 1
 " set this variable to browse SuperCollider documentation in nvim (requires `pandoc`)
-let g:scnvim_scdoc = 1
+" let g:scnvim_scdoc = 1
 " pass flags directly to sclang - see help file for more details, caveats, and further examples
-let g:scnvim_sclang_options = ['-u', 9999]
+" let g:scnvim_sclang_options = ['-u', 9999]
 " help
-let g:scnvim_scdoc_render_prg = '/usr/bin/pandoc'
+" let g:scnvim_scdoc_render_prg = '/usr/bin/pandoc'
 " let g:scnvim_scdoc_render_args = '% -o %'
+"
+autocmd BufWritePre *.cpp :silent exec "!make"

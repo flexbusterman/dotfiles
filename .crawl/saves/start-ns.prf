@@ -2,6 +2,7 @@ type = normal
 name = Flex
 species = random
 background = viable
+game_seed = 18185912442732783973
 fully_random = no
 default_manual_training = no
 quiver_menu_focus = false

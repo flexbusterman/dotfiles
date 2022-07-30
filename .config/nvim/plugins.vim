@@ -9,7 +9,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'easymotion/vim-easymotion' " Improved motion in Vim
 Plug 'dracula/vim'
 Plug 'vimwiki/vimwiki'
-" Plug 'markonm/traces.vim' " previews substitution and sort using regex
+Plug 'markonm/traces.vim' " previews substitution and sort using regex
 Plug 'flw-cn/vim-nerdtree-l-open-h-close' " NERDTree h l open and close
 Plug 'andymass/vim-matchup' " To matchit in vue
 Plug 'leafOfTree/vim-vue-plugin'
