@@ -34,7 +34,11 @@ set splitbelow splitright
 set whichwrap+=b,s
 set virtualedit=onemore
 
-filetype indent on
+filetype off
+set runtimepath+=/usr/share/lilypond/current/vim/
+filetype on
+syntax on
+
 colorscheme dracula
 if (has("termguicolors"))
 	set termguicolors
@@ -429,7 +433,7 @@ scnvim.setup {
       color = 'TermCursor',
       type = 'flash',
       flash = {
-        duration = 100,
+        duration = 50,
         repeats = 1,
       },
       fade = {

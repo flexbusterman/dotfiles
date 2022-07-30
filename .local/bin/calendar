@@ -2,10 +2,14 @@
 running=false
 ps -C calcurse >/dev/null && running=true
 ps -C calcurse-caldav >/dev/null && running=true
-
-if [[ $running == true ]]; then
-	notify-send "Not updating because caldav is running or calendar is already updating"
-else
-	CALCURSE_CALDAV_PASSWORD=$(cat ~/.netrcs/.calendar) calcurse-caldav && notify-send "Updated calendar" 
+STATUS=$(mullvad status | awk '{print $NF}')
+if [[ $STATUS == "Connected" ]]; then
+	running=true
 fi
 
+if [[ $running == true ]]; then
+	notify-send "Not updating because vpn, caldav is running or calendar is already updating"
+else
+	rm /home/flex/.calcurse/caldav/lock
+	CALCURSE_CALDAV_PASSWORD=$(cat ~/.netrcs/.calendar) calcurse-caldav && notify-send "Updated calendar" 
+fi
