@@ -510,4 +510,5 @@ EOF
 " let g:scnvim_scdoc_render_args = '% -o %'
 "
 autocmd BufWritePre *.cpp :silent exec "!make"
-autocmd BufWritePre *.ly :silent exec "!lilypond $(basename -s .ly %); killall zathura; zathura $(basename -s .ly %).pdf &"
+autocmd BufWritePre *.ly :silent exec "!./makescore %"
+autocmd BufWritePre avistamagic :silent exec "!./avistamagic"
