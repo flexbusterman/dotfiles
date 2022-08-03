@@ -511,4 +511,4 @@ EOF
 "
 autocmd BufWritePre *.cpp :silent exec "!make"
 autocmd BufWritePre *.ly :silent exec "!./makescore %"
-autocmd BufWritePre avistamagic :silent exec "!./avistamagic"
+" autocmd BufWritePre avistamagic :silent exec "!./avistamagic"
