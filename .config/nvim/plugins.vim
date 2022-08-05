@@ -8,7 +8,7 @@ Plug 'scrooloose/nerdcommenter'
 " Plug 'HerringtonDarkholme/yats.vim' " TS Syntax
 Plug 'easymotion/vim-easymotion' " Improved motion in Vim
 Plug 'dracula/vim'
- " Plug 'vimwiki/vimwiki'
+Plug 'vimwiki/vimwiki'
 Plug 'markonm/traces.vim' " previews substitution and sort using regex
 Plug 'flw-cn/vim-nerdtree-l-open-h-close' " NERDTree h l open and close
 Plug 'andymass/vim-matchup' " To matchit in vue
@@ -35,8 +35,6 @@ Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' } " show colors as color
 Plug 'othree/html5.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'evanleck/vim-svelte', {'branch': 'main'}
-Plug 'godlygeek/tabular'
-Plug 'preservim/vim-markdown'
 
 " OLD
 " Plug 'tsony-tsonev/nerdtree-git-plugin'
