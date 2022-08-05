@@ -62,8 +62,8 @@ autocmd BufEnter,BufWinEnter,BufNewFile,BufRead *.jsfx set filetype=eel2
 autocmd VimEnter * :silent exec "!kill -s SIGWINCH $PPID"
 autocmd BufNewFile,BufFilePre,BufRead *.md set filetype=markdown | set nospell
 
-let g:vimwiki_list = [{'path': '~/Dropbox/NOTES/',
-                      \ 'syntax': 'markdown', 'ext': '.md'}]
+" let g:vimwiki_list = [{'path': '~/Dropbox/NOTES/',
+                      " \ 'syntax': 'markdown', 'ext': '.md'}]
 
 "  ____
 " |  _ \ ___ _ __ ___   __ _ _ __  ___
@@ -119,9 +119,9 @@ fun! s:VisualSearch()
   let @/ = '\V'.substitute(escape(@", '\'), '\n', '\\n', 'g')
   let @" = old
 endf
-nmap <F13> <Plug>VimwikiNextLink
-nmap <F14> <Plug>VimwikiPrevLink
-nmap <leader>i <Plug>VimwikiIndex
+" nmap <F13> <Plug>VimwikiNextLink
+" nmap <F14> <Plug>VimwikiPrevLink
+" nmap <leader>i <Plug>VimwikiIndex
 " Fugitive bindings
 nmap <leader>gs :G<CR>
 nmap <leader>gh :diffget //2<CR>
