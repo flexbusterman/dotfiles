@@ -1,3 +1,4 @@
+
 call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdtree'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
@@ -37,6 +38,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'evanleck/vim-svelte', {'branch': 'main'}
 "
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'madskjeldgaard/vim-supercollider-snippets'
 
 " OLD
 " Plug 'tsony-tsonev/nerdtree-git-plugin'
@@ -51,7 +53,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Plug 'supercollider/scvim'
 " Plug 'sersorrel/vim-lilypond'
 " Plug 'vim-scripts/tetris'
-"
+
 call plug#end()
 
 lua << EOF

@@ -223,9 +223,9 @@ let g:coc_global_extensions = [
   \ 'coc-json',
   \ 'coc-vetur',
   \ ]
-let g:scnvim_snippet_format = "ultisnips"
-let g:UltiSnipsSnippetDirectories = ['UltiSnips', 'scnvim-data']
-let g:scnvim_sclang_executable = '/usr/bin/sclang'
+" let g:scnvim_snippet_format = "ultisnips"
+let g:UltiSnipsSnippetDirectories = ['UltiSnips', '/home/flex/.cache/nvim/scnvim/']
+" let g:scnvim_sclang_executable = '/usr/bin/sclang'
 " prettier command for coc
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 " Remap for rename current word
@@ -270,11 +270,14 @@ endfunction
 " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
 " position. Coc only does snippet and additional edit on confirm.
 " <cr> could be remapped by other vim plugin, try `:verbose imap <CR>`.
-if exists('*complete_info')
-  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-else
-  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-endif
+" if exists('*complete_info')
+  " inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+" else
+  " inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+" endif
+
+" coc confirm with enter
+inoremap <silent><expr> <cr> coc#pum#visible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
@@ -432,11 +435,11 @@ scnvim.setup {
       color = 'TermCursor',
       type = 'flash',
       flash = {
-        duration = 50,
+        duration = 30,
         repeats = 1,
       },
       fade = {
-        duration = 50,
+        duration = 30,
       },
     },
     signature = {
@@ -446,7 +449,7 @@ scnvim.setup {
   },
   snippet = {
     engine = {
-      name = 'luasnip',
+      name = 'ultisnips',
       options = {
         descriptions = true,
       },
@@ -462,11 +465,11 @@ scnvim.setup {
       map('editor.send_block', 'n'),
       map('editor.send_selection', 'x'),
     },
-    ['<leader><CR>'] = map('postwin.toggle'),
+    ['<leader><CR>'] = map('postwin.toggle', 'n'),
     ['<M-CR>'] = map('postwin.toggle', 'i'),
     ['<M-L>'] = map('postwin.clear', {'n', 'i'}),
     ['<K>'] = map('signature.show', 'n'),
-    ['<leader>.'] = map('sclang.hard_stop', {'n', 'x', 'i'}),
+    ['<leader>.'] = map('sclang.hard_stop', {'n', 'x'}),
     ['<leader>st'] = map('sclang.start'),
     ['<leader>sk'] = map('sclang.recompile'),
     ['<F1>'] = map_expr('s.boot'),
@@ -474,6 +477,9 @@ scnvim.setup {
   },
 }
 EOF
+
+
+" name = 'luasnip',
 
 " ['<F12>'] = map('sclang.hard_stop', {'n', 'x', 'i'}),
 
