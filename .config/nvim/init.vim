@@ -384,20 +384,19 @@ let g:sclangTerm = "st -e zsh -ic"
 " map <silent><nowait> <leader>b <Plug>(scnvim-hard-stop)
 " nmap <silent><nowait> <leader>p <Plug>(scnvim-postwindow-clear)
 map <silent><nowait> <leader>s :SCNvimStart<CR>
+
 lua << EOF
 local scnvim = require 'scnvim'
 local map = scnvim.map
 local map_expr = scnvim.map_expr
-
 scnvim.setup {
  ensure_installed = true,
   sclang = {
     cmd = nil,
     args = {},
   },
-  keymaps = {},
   documentation = {
-    cmd = nil,
+    cmd = '/usr/bin/pandoc',
     horizontal = true,
     direction = 'top',
     keymaps = true,
@@ -408,8 +407,8 @@ scnvim.setup {
     scrollback = 5000,
     horizontal = true,
     direction = 'bot',
-    size = nil,
-    fixed_size = nil,
+    size = 10,
+    fixed_size = 10,
     keymaps = nil,
     float = {
       enabled = false,
@@ -433,11 +432,11 @@ scnvim.setup {
       color = 'TermCursor',
       type = 'flash',
       flash = {
-        duration = 50,
-        repeats = 1,
+        duration = 100,
+        repeats = 2,
       },
       fade = {
-        duration = 50,
+        duration = 375,
       },
     },
     signature = {
@@ -458,23 +457,41 @@ scnvim.setup {
   },
   extensions = {},
   keymaps = {
-    ['<leader>f'] = map('editor.send_line', {'i', 'n'}),
-    ['f'] = {
+    ['<M-e>'] = map('editor.send_line', {'i', 'n'}),
+    ['<C-e>'] = {
       map('editor.send_block', {'i', 'n'}),
       map('editor.send_selection', 'x'),
     },
-    ['<leader>t'] = map('postwin.toggle'),
+    ['<CR>'] = map('postwin.toggle'),
     ['<M-CR>'] = map('postwin.toggle', 'i'),
-    ['<leader>p'] = map('postwin.clear', {'n', 'i'}),
+    ['<M-L>'] = map('postwin.clear', {'n', 'i'}),
     ['<C-k>'] = map('signature.show', {'n', 'i'}),
-    ['<leader>.'] = map('sclang.hard_stop', {'n', 'x', 'i'}),
-    ['<leader>s'] = map('sclang.start'),
-    ['<leader>r'] = map('sclang.recompile'),
+    ['<F12>'] = map('sclang.hard_stop', {'n', 'x', 'i'}),
+    ['<leader>st'] = map('sclang.start'),
+    ['<leader>sk'] = map('sclang.recompile'),
     ['<F1>'] = map_expr('s.boot'),
     ['<F2>'] = map_expr('s.meter'),
   },
 }
 EOF
+
+" keymaps = {
+  " ['<M-e>'] = map('editor.send_line', {'i', 'n'}),
+  " ['<C-e>'] = {
+    " map('editor.send_block', {'i', 'n'}),
+    " map('editor.send_selection', 'x'),
+  " },
+  " ['<CR>'] = map('postwin.toggle'),
+  " ['<M-CR>'] = map('postwin.toggle', 'i'),
+  " ['<M-L>'] = map('postwin.clear', {'n', 'i'}),
+  " ['<C-k>'] = map('signature.show', {'n', 'i'}),
+  " ['<F12>'] = map('sclang.hard_stop', {'n', 'x', 'i'}),
+  " ['<leader>st'] = map('sclang.start'),
+  " ['<leader>sk'] = map('sclang.recompile'),
+  " ['<F1>'] = map_expr('s.boot'),
+  " ['<F2>'] = map_expr('s.meter'),
+" },
+
 
 " vertical 'v' or horizontal 'h' split
 " let g:scnvim_postwin_orientation = 'h'
@@ -511,4 +528,4 @@ EOF
 "
 autocmd BufWritePre *.cpp :silent exec "!make"
 autocmd BufWritePre *.ly :silent exec "!./makescore %"
-" autocmd BufWritePre avistamagic :silent exec "!./avistamagic"
+" autocmd BufWritePre avistamagic :silent exec \"!./avistamagic"
