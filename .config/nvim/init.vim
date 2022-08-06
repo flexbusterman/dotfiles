@@ -432,11 +432,11 @@ scnvim.setup {
       color = 'TermCursor',
       type = 'flash',
       flash = {
-        duration = 100,
-        repeats = 2,
+        duration = 50,
+        repeats = 1,
       },
       fade = {
-        duration = 375,
+        duration = 50,
       },
     },
     signature = {
@@ -458,15 +458,15 @@ scnvim.setup {
   extensions = {},
   keymaps = {
     ['<M-e>'] = map('editor.send_line', {'i', 'n'}),
-    ['<C-e>'] = {
-      map('editor.send_block', {'i', 'n'}),
+    ['<CR>'] = {
+      map('editor.send_block', 'n'),
       map('editor.send_selection', 'x'),
     },
-    ['<CR>'] = map('postwin.toggle'),
+    ['<leader><CR>'] = map('postwin.toggle'),
     ['<M-CR>'] = map('postwin.toggle', 'i'),
     ['<M-L>'] = map('postwin.clear', {'n', 'i'}),
-    ['<C-k>'] = map('signature.show', {'n', 'i'}),
-    ['<F12>'] = map('sclang.hard_stop', {'n', 'x', 'i'}),
+    ['<K>'] = map('signature.show', 'n'),
+    ['<leader>.'] = map('sclang.hard_stop', {'n', 'x', 'i'}),
     ['<leader>st'] = map('sclang.start'),
     ['<leader>sk'] = map('sclang.recompile'),
     ['<F1>'] = map_expr('s.boot'),
@@ -474,6 +474,8 @@ scnvim.setup {
   },
 }
 EOF
+
+" ['<F12>'] = map('sclang.hard_stop', {'n', 'x', 'i'}),
 
 " keymaps = {
   " ['<M-e>'] = map('editor.send_line', {'i', 'n'}),
