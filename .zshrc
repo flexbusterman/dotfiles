@@ -170,7 +170,8 @@ alias igdl="cd ~/Dropbox/MEMES && instaloader -F --no-video-thumbnails --no-meta
 
 # VIM aliases for editing common files
 # alias va="cd /home/flex/.config/awesome/; nvim rc.lua"
-alias va="cd /home/flex/.config/alacritty/; nvim alacritty.yml"
+# alias va="cd /home/flex/.config/alacritty/; nvim alacritty.yml"
+alias va="cd /home/flex/.abook/addressbook; nvim adressbook"
 alias vb="cd /home/flex/.config/bspwm/; nvim bspwmrc"
 alias vA="cd /home/flex/.config/awesome/; nvim rc.lua"
 alias vc="cd /home/flex/.config/nvim/; nvim coc-settings.json"
