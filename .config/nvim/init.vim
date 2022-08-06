@@ -372,8 +372,8 @@ let g:vimtex_view_method = 'zathura'
 au BufEnter,BufWinEnter,BufNewFile,BufRead *.sc,*.scd set filetype=supercollider
 " configure the color
 highlight SCNvimEval guifg=black guibg=cyan ctermfg=black ctermbg=cyan
-autocmd BufRead,BufWritePre *.sc normal magg=G`azt
-autocmd BufRead,BufWritePre *.scd normal magg=G`azt
+autocmd BufRead,BufWritePre *.sc normal magg=G`a
+autocmd BufRead,BufWritePre *.scd normal magg=G`a
 " au Filetype supercollider packadd scvim
 let g:sclangTerm = "st -e zsh -ic"
 " let g:scFlash = 1
@@ -437,7 +437,7 @@ scnvim.setup {
         repeats = 1,
       },
       fade = {
-        duration = 375,
+        duration = 50,
       },
     },
     signature = {

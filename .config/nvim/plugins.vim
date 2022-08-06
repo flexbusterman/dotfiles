@@ -1,5 +1,4 @@
 call plug#begin('~/.vim/plugged')
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'scrooloose/nerdtree'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'ctrlpvim/ctrlp.vim' " fuzzy find files
@@ -35,6 +34,7 @@ Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' } " show colors as color
 Plug 'othree/html5.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'evanleck/vim-svelte', {'branch': 'main'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " OLD
 " Plug 'tsony-tsonev/nerdtree-git-plugin'
