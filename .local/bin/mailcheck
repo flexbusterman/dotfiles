@@ -2,9 +2,9 @@
 
 STATUS=$(mullvad status | awk '{print $NF}')
 if [[ $STATUS == "Connected" ]]; then
-    notify-send "Mullvad connected, not checking mail."
+    echo "Mullvad connected, not checking mail."
     exit 1
 else
-    notify-send "Checking mail"
+    echo "Checking mail"
     mailsync
 fi

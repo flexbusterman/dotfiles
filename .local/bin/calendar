@@ -8,8 +8,8 @@ if [[ $STATUS == "Connected" ]]; then
 fi
 
 if [[ $running == true ]]; then
-	notify-send "Not updating because vpn, caldav is running or calendar is already updating"
+	echo "Not updating because vpn, caldav is running or calendar is already updating"
 else
 	rm /home/flex/.calcurse/caldav/lock
-	CALCURSE_CALDAV_PASSWORD=$(cat ~/.netrcs/.calendar) calcurse-caldav && notify-send "Updated calendar" 
+	CALCURSE_CALDAV_PASSWORD=$(cat ~/.netrcs/.calendar) calcurse-caldav && echo "Updated calendar" 
 fi
