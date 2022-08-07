@@ -1,8 +1,7 @@
 type = normal
 name = Flex
-species = Merfolk
-background = Gladiator
-weapon = trident
+species = Demonspawn
+background = Venom Mage
 fully_random = no
 default_manual_training = no
 quiver_menu_focus = false

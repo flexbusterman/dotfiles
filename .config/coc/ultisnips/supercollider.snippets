@@ -1544,6 +1544,70 @@ snippet DFM1.ar
 DFM1.ar(${1:\in.kr(nil)}, ${2:\freq.kr(1000.0)}, ${3:\res.kr(0.1)}, ${4:\inputgain.kr(1.0)}, ${5:\type.kr(0.0)}, ${6:\noiselevel.kr(0.0003)}, ${7:\mul.kr(1.0)}, ${8:\add.kr(0.0)})
 endsnippet
 
+snippet DMX.new
+DMX.new(${1:})
+endsnippet
+
+snippet DMXColor.initClass
+DMXColor.initClass(${1:})
+endsnippet
+
+snippet DMXColor.get
+DMXColor.get(${1:\color.kr(nil)})
+endsnippet
+
+snippet DMXConsole.new
+DMXConsole.new(${1:\dmx.kr(nil)}, ${2:\w.kr(nil)})
+endsnippet
+
+snippet DMXCue.initClass
+DMXCue.initClass(${1:})
+endsnippet
+
+snippet DMXCue.new
+DMXCue.new(${1:\offset.kr(nil)}, ${2:\maxch.kr(nil)})
+endsnippet
+
+snippet DMXGroup.new
+DMXGroup.new(${1:\name.kr(nil)})
+endsnippet
+
+snippet DMXGui.new
+DMXGui.new(${1:\dmx.kr(nil)}, ${2:\w.kr(nil)})
+endsnippet
+
+snippet DMXLight.new
+DMXLight.new(${1:\name.kr(nil)})
+endsnippet
+
+snippet DMXMap.initClass
+DMXMap.initClass(${1:})
+endsnippet
+
+snippet DMXMap.addMap
+DMXMap.addMap(${1:\name.kr(nil)})
+endsnippet
+
+snippet DMXMap.at
+DMXMap.at(${1:\name.kr(nil)})
+endsnippet
+
+snippet DMXMap.putItem
+DMXMap.putItem(${1:\name.kr(nil)}, ${2:\itemName.kr(nil)}, ${3:\value.kr(nil)})
+endsnippet
+
+snippet DMXSet.new
+DMXSet.new(${1:\name.kr(nil)})
+endsnippet
+
+snippet DMXSlider.new
+DMXSlider.new(${1:\dmx.kr(nil)}, ${2:\parent.kr(nil)}, ${3:\xoff.kr(nil)})
+endsnippet
+
+snippet DMXSubCue.new
+DMXSubCue.new(${1:})
+endsnippet
+
 snippet DNoiseRing.new
 DNoiseRing.new(${1:\change.kr(0.5)}, ${2:\chance.kr(0.5)}, ${3:\shift.kr(1)}, ${4:\numBits.kr(8)}, ${5:\resetval.kr(0)})
 endsnippet
@@ -2026,6 +2090,10 @@ endsnippet
 
 snippet EmbedOnce.new
 EmbedOnce.new(${1:\stream.kr(nil)}, ${2:\cleanup.kr(nil)})
+endsnippet
+
+snippet EntTecDMXUSBPro.new
+EntTecDMXUSBPro.new(${1:\port.kr(nil)})
 endsnippet
 
 snippet Env.new
