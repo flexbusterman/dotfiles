@@ -1,0 +1,5 @@
+#!/bin/bash
+cp ~/.cache/nvim/scnvim/supercollider.snippets /home/flex/.config/coc/ultisnips/
+cd ~/.config/coc/ultisnips/
+nvim supercollider.snippets -c ':%s/\${\(\d\+\):\%[ ]\([^:]*\):\%[ ]\([^}]*\)}/${\1:\\\2.kr(\3)}/g | wq'
+exit
