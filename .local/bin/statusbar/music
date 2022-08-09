@@ -2,5 +2,5 @@
 status=$(mpc status)
 playing=$(echo $status | awk '/playing/')
 if [ "$playing" ]; then
-	printf " $status" | awk 'NR==1'
+	echo " $status" | awk 'NR==1'
 fi

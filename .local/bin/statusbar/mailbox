@@ -39,4 +39,4 @@ unread1="$(find /home/flex/.local/share/mail/mail@christianaugustin.com/INBOX/ne
 # [ "$unread" = "0" ] || printf " M $unread "
 
 # printf " $color1$unread1^d^ $color2$unread2^d^ $color3$unread3^d^"
-printf " $unread1"
+printf "$unread1"
