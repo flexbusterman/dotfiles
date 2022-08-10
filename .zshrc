@@ -416,3 +416,9 @@ LC_TELEPHONE="en_US.UTF-8"
 LC_MEASUREMENT="en_US.UTF-8"
 LC_IDENTIFICATION="en_US.UTF-8"
 LC_ALL=
+
+
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/git
+ssh-add ~/.ssh/digitalocean
+clear
