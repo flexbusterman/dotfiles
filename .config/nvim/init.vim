@@ -534,6 +534,6 @@ EOF
 " let g:scnvim_scdoc_render_prg = '/usr/bin/pandoc'
 " let g:scnvim_scdoc_render_args = '% -o %'
 "
-autocmd BufWritePre *.cpp :silent exec "!make"
+autocmd BufWritePre *.cpp,*.c :silent exec "!make"
 autocmd BufWritePre *.ly :silent exec "!./makescore %"
 " autocmd BufWritePre avistamagic :silent exec \"!./avistamagic"
