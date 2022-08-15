@@ -1,8 +1,9 @@
 type = normal
 name = Flex
-species = Draconian
-background = Transmuter
-game_seed = 12158669490050189217
+species = Ghoul
+background = Gladiator
+weapon = claws
+game_seed = 5311328562325366204
 fully_random = no
 default_manual_training = no
 quiver_menu_focus = false
