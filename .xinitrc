@@ -6,7 +6,10 @@ picom --no-fading-openclose -o 0 &
 unclutter &		# Remove mouse when idle
 xinput set-prop "TPPS/2 IBM TrackPoint" "libinput Accel Speed" -0.65 &
 xinput set-prop "TPPS/2 Elan TrackPoint" "libinput Accel Speed" -0.65 &
-xmodmap ~/.Xmodmap &
+xmodmap ~/.Xmodmap; 
+# setxkbmap -option shift:both_capslock_cancel;
+# setxkbmap -option swapescape;
+xcape -e 'Mode_switch=Escape';
 udiskie -ta &
 xset r rate 300 50 &
 xinput disable "Synaptics TM3288-011" &
@@ -19,7 +22,6 @@ qpwgraph -m &
 pidof dwmblocks || dwmblocks &
 srandrd displayhandler &
 # script that loops to restart dwm
-xcape -e 'Mode_switch=Escape' &
 blueberry-tray &
 exec startdwm
 # exec i3 

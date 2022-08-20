@@ -7,7 +7,9 @@ if [[ $STATUS == "UDP" ]]; then
     notify-send "Reconnecting Mullvad" 
     mullvad reconnect
 else
-    notify-send "Connecting Mullvad" 
     mullvad connect
-    # SUDO_ASKPASS=~/.local/bin/dmenupass sudo -A cpupower frequency-set -g powersave && notify-send 'Powersave CPU governor'
+    sleep 1
+    if [[ $(mullvad status | awk '{print $1}') == "Connected" ]]; then
+        notify-send "Mullvad Connected" 
+    fi
 fi
