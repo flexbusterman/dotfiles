@@ -71,7 +71,7 @@ settings:
       d: https://duckduckgo.com/?q={}
       i: https://www.instagram.com/explore/tags/{}/
       o: https://odysee.com/$/search?q={}
-      p: https://thepiratebay.org/search.php?q={}
+      p: https://pirate-bays.net/search?q={}
       s: https://www.opensubtitles.org/en/search2/sublanguageid-eng/subtrusted-on/hd-on/moviename-{}
       w: https://wallpaperaccess.com/search?q={}
       y: https://www.youtube.com/results?search_query={}
