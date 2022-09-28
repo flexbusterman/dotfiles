@@ -423,5 +423,5 @@ LC_ALL=
 eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/git
 ssh-add ~/.ssh/digitalocean
-ssh-add ~/.ssh/vultr
+ssh-add ~/.ssh/mind
 clear
