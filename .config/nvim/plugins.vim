@@ -1,16 +1,15 @@
-
 call plug#begin('~/.vim/plugged')
-Plug 'scrooloose/nerdtree'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+" Plug 'scrooloose/nerdtree'
+" Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'ctrlpvim/ctrlp.vim' " fuzzy find files
 Plug 'scrooloose/nerdcommenter'
 " Plug 'christoomey/vim-tmux-navigator'
 " Plug 'HerringtonDarkholme/yats.vim' " TS Syntax
-Plug 'easymotion/vim-easymotion' " Improved motion in Vim
+Plug 'easymotion/vim-easymotion' " Improved /home/flex/.vim/plugged/vim-nerdtree-l-open-h-closemotion in Vim
 Plug 'dracula/vim'
 Plug 'vimwiki/vimwiki'
 Plug 'markonm/traces.vim' " previews substitution and sort using regex
-Plug 'flw-cn/vim-nerdtree-l-open-h-close' " NERDTree h l open and close
+" Plug 'flw-cn/vim-nerdtree-l-open-h-close' " NERDTree h l open and close
 Plug 'andymass/vim-matchup' " To matchit in vue
 Plug 'leafOfTree/vim-vue-plugin'
 Plug 'posva/vim-vue'

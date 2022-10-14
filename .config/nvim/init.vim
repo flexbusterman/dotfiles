@@ -160,20 +160,20 @@ let @f='5Wdt;ofont-family: pa;k0wWWWWdwjofont-size: pa;kkf/ldwjjofont€kb€kb€
 
 " NERDTree
 " Add spaces after comment delimiters by default
-let NERDSpaceDelims=1
+" let NERDSpaceDelims=1
 " Show hidden files/directories
-let g:NERDTreeShowHidden = 1
+" let g:NERDTreeShowHidden = 1
 " enable line numbers
-let NERDTreeShowLineNumbers=1
-let NERDTreeMinimalUI=1
-let NERDTreeQuitOnOpen = 1
+" let NERDTreeShowLineNumbers=1
+" let NERDTreeMinimalUI=1
+" let NERDTreeQuitOnOpen = 1
 " make sure relative line numbers are used
-autocmd FileType nerdtree setlocal relativenumber
-let g:NERDTreeGitStatusWithFlags = 0
-let g:NERDTreeIgnore = ['^node_modules$']
+" autocmd FileType nerdtree setlocal relativenumber
+" let g:NERDTreeGitStatusWithFlags = 0
+" let g:NERDTreeIgnore = ['^node_modules$']
 vmap <leader>; <plug>NERDCommenterToggle
 nmap <leader>; <plug>NERDCommenterToggle
-nmap <leader>h :NERDTreeToggle<CR>
+nmap <leader>h :e .<CR>
 let g:NERDSpaceDelims = 1
 " Use compact syntax for prettified multi-line comments
 let g:NERDCompactSexyComs = 1
