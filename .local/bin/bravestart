@@ -3,5 +3,5 @@ STATUS=$(mullvad status | awk '{print $1}')
 if [[ $STATUS == "Connected" ]]; then
 	nohup brave --incognito --new-window "https://duckduckgo.com" &
 else
-  nohup brave --new-window "https://youtube.com" &
+  nohup brave --new-window "https://youtube.com/" &
 fi

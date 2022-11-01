@@ -20,6 +20,10 @@ snippet AY.freqtotone
 AY.freqtotone(${1:\freq.kr(nil)})
 endsnippet
 
+snippet AbsLayout.new
+AbsLayout.new(${1:\parent.kr(nil)})
+endsnippet
+
 snippet AbstractDispatcher.new
 AbstractDispatcher.new(${1:})
 endsnippet
@@ -180,6 +184,18 @@ snippet AbstractSystemAction.objects_
 AbstractSystemAction.objects_(${1:\obj.kr(nil)})
 endsnippet
 
+snippet ActionFunc.new
+ActionFunc.new(${1:\type.kr(nil)}, ${2:\action.kr(nil)}, ${3:\extra.kr(nil)}, ${4:\startVal.kr(nil)})
+endsnippet
+
+snippet ActionFunc.initClass
+ActionFunc.initClass(${1:})
+endsnippet
+
+snippet ActionFuncList.new
+ActionFuncList.new(${1:\nodes.kr([  ])})
+endsnippet
+
 snippet Allpass1.ar
 Allpass1.ar(${1:\in.kr(nil)}, ${2:\freq.kr(1200.0)}, ${3:\mul.kr(1.0)}, ${4:\add.kr(0.0)})
 endsnippet
@@ -218,6 +234,10 @@ endsnippet
 
 snippet Amplitude.kr
 Amplitude.kr(${1:\in.kr(0.0)}, ${2:\attackTime.kr(0.01)}, ${3:\releaseTime.kr(0.01)}, ${4:\mul.kr(1.0)}, ${5:\add.kr(0.0)})
+endsnippet
+
+snippet Amplitude.new
+Amplitude.new(${1:\in.kr(nil)})
 endsnippet
 
 snippet AmplitudeMod.ar
@@ -300,6 +320,26 @@ snippet Array.with
 Array.with(${1:\args.kr([  ])})
 endsnippet
 
+snippet Array.makeScaleMidi
+Array.makeScaleMidi(${1:\groundNote.kr(60)}, ${2:\type.kr(major)}, ${3:\startNote.kr(nil)}, ${4:\endNote.kr(nil)})
+endsnippet
+
+snippet Array.makeScale
+Array.makeScale(${1:\groundNote.kr(C3)}, ${2:\type.kr(major)}, ${3:\startNote.kr(nil)}, ${4:\endNote.kr(nil)})
+endsnippet
+
+snippet Array.makeScaleName
+Array.makeScaleName(${1:\groundNote.kr(C3)}, ${2:\type.kr(major)}, ${3:\startNote.kr(nil)}, ${4:\endNote.kr(nil)})
+endsnippet
+
+snippet Array.makeScaleCps
+Array.makeScaleCps(${1:\groundNote.kr(261.62556530114)}, ${2:\type.kr(major)}, ${3:\startNote.kr(nil)}, ${4:\endNote.kr(nil)})
+endsnippet
+
+snippet Array.fillNoteNames
+Array.fillNoteNames(${1:\startNote.kr(C3)}, ${2:\endNote.kr(B3)}, ${3:\step.kr(1)})
+endsnippet
+
 snippet Array2D.new
 Array2D.new(${1:\rows.kr(1)}, ${2:\cols.kr(1)})
 endsnippet
@@ -330,6 +370,26 @@ endsnippet
 
 snippet Association.new
 Association.new(${1:\key.kr(nil)}, ${2:\value.kr(nil)})
+endsnippet
+
+snippet Atan2.ar
+Atan2.ar(${1:\a.kr(0)}, ${2:\b.kr(1)})
+endsnippet
+
+snippet Atan2.kr
+Atan2.kr(${1:\a.kr(0)}, ${2:\b.kr(1)})
+endsnippet
+
+snippet Atan2Table.new
+Atan2Table.new(${1:})
+endsnippet
+
+snippet Atan2Table.createBuffer
+Atan2Table.createBuffer(${1:})
+endsnippet
+
+snippet Atan2Table.scaleInput
+Atan2Table.scaleInput(${1:\input.kr(nil)})
 endsnippet
 
 snippet AtsAmp.ar
@@ -428,8 +488,48 @@ snippet AudioMSG.ar
 AudioMSG.ar(${1:\in.kr(nil)}, ${2:\index.kr(0.0)}, ${3:\mul.kr(1.0)}, ${4:\add.kr(0.0)})
 endsnippet
 
+snippet AutoBackup.initClass
+AutoBackup.initClass(${1:})
+endsnippet
+
+snippet AutoBackup.start
+AutoBackup.start(${1:})
+endsnippet
+
+snippet AutoBackup.stop
+AutoBackup.stop(${1:\deleteAll.kr(true)})
+endsnippet
+
+snippet AutoBackup.deleteBackups
+AutoBackup.deleteBackups(${1:})
+endsnippet
+
+snippet AutoBackup.cleanBackupFolder
+AutoBackup.cleanBackupFolder(${1:})
+endsnippet
+
+snippet AutoBackup.show
+AutoBackup.show(${1:})
+endsnippet
+
 snippet AutoTrack.kr
 AutoTrack.kr(${1:\in.kr(nil)}, ${2:\lock.kr(0)})
+endsnippet
+
+snippet AvailableFonts.initClass
+AvailableFonts.initClass(${1:})
+endsnippet
+
+snippet AvailableFonts.getFonts
+AvailableFonts.getFonts(${1:})
+endsnippet
+
+snippet AvailableFonts.includesName
+AvailableFonts.includesName(${1:\fontName.kr(nil)})
+endsnippet
+
+snippet AvailableFonts.includes
+AvailableFonts.includes(${1:\font.kr(nil)})
 endsnippet
 
 snippet AverageOutput.ar
@@ -438,6 +538,10 @@ endsnippet
 
 snippet AverageOutput.kr
 AverageOutput.kr(${1:\in.kr(nil)}, ${2:\trig.kr(0.0)}, ${3:\mul.kr(1.0)}, ${4:\add.kr(0.0)})
+endsnippet
+
+snippet AxialGradient.new
+AxialGradient.new(${1:\startPoint.kr(nil)}, ${2:\endPoint.kr(nil)}, ${3:\color0.kr(nil)}, ${4:\color1.kr(nil)})
 endsnippet
 
 snippet B2A.ar
@@ -460,6 +564,10 @@ snippet BAllPass.sc
 BAllPass.sc(${1:\dummy.kr(nil)}, ${2:\freq.kr(1200.0)}, ${3:\rq.kr(1.0)})
 endsnippet
 
+snippet BAllPass.coeffs
+BAllPass.coeffs(${1:\sr.kr(44100)}, ${2:\freq.kr(1200.0)}, ${3:\rq.kr(1.0)})
+endsnippet
+
 snippet BBandPass.ar
 BBandPass.ar(${1:\in.kr(nil)}, ${2:\freq.kr(1200.0)}, ${3:\bw.kr(1.0)}, ${4:\mul.kr(1.0)}, ${5:\add.kr(0.0)})
 endsnippet
@@ -468,12 +576,20 @@ snippet BBandPass.sc
 BBandPass.sc(${1:\dummy.kr(nil)}, ${2:\freq.kr(1200.0)}, ${3:\bw.kr(1.0)})
 endsnippet
 
+snippet BBandPass.coeffs
+BBandPass.coeffs(${1:\sr.kr(44100)}, ${2:\freq.kr(1200.0)}, ${3:\bw.kr(1.0)})
+endsnippet
+
 snippet BBandStop.ar
 BBandStop.ar(${1:\in.kr(nil)}, ${2:\freq.kr(1200.0)}, ${3:\bw.kr(1.0)}, ${4:\mul.kr(1.0)}, ${5:\add.kr(0.0)})
 endsnippet
 
 snippet BBandStop.sc
 BBandStop.sc(${1:\dummy.kr(nil)}, ${2:\freq.kr(1200.0)}, ${3:\bw.kr(1.0)})
+endsnippet
+
+snippet BBandStop.coeffs
+BBandStop.coeffs(${1:\sr.kr(44100)}, ${2:\freq.kr(1200.0)}, ${3:\bw.kr(1.0)})
 endsnippet
 
 snippet BBlockerBuf.ar
@@ -624,12 +740,52 @@ snippet BHPF.ar
 BHPF.ar(${1:\in.kr(nil)}, ${2:\order.kr(4)}, ${3:\freq.kr(440)}, ${4:\mul.kr(1)}, ${5:\add.kr(0)})
 endsnippet
 
+snippet BHiCut.initClass
+BHiCut.initClass(${1:})
+endsnippet
+
+snippet BHiCut.filterClass
+BHiCut.filterClass(${1:})
+endsnippet
+
+snippet BHiCut.coeffs
+BHiCut.coeffs(${1:\sr.kr(nil)}, ${2:\freq.kr(1200)}, ${3:\order.kr(2)})
+endsnippet
+
+snippet BHiCut.new1
+BHiCut.new1(${1:\rate.kr(audio)}, ${2:\in.kr(nil)}, ${3:\freq.kr(nil)}, ${4:\order.kr(2)}, ${5:\maxOrder.kr(5)})
+endsnippet
+
+snippet BHiCut.newFixed
+BHiCut.newFixed(${1:\rate.kr(audio)}, ${2:\in.kr(nil)}, ${3:\freq.kr(nil)}, ${4:\order.kr(2)})
+endsnippet
+
+snippet BHiCut.newVari
+BHiCut.newVari(${1:\rate.kr(audio)}, ${2:\in.kr(nil)}, ${3:\freq.kr(nil)}, ${4:\order.kr(2)}, ${5:\maxOrder.kr(5)})
+endsnippet
+
+snippet BHiCut.ar
+BHiCut.ar(${1:\in.kr(nil)}, ${2:\freq.kr(nil)}, ${3:\order.kr(2)}, ${4:\maxOrder.kr(5)})
+endsnippet
+
+snippet BHiCut.kr
+BHiCut.kr(${1:\in.kr(nil)}, ${2:\freq.kr(nil)}, ${3:\order.kr(2)}, ${4:\maxOrder.kr(5)})
+endsnippet
+
+snippet BHiCut.magResponse
+BHiCut.magResponse(${1:\freqs.kr(1000)}, ${2:\sr.kr(44100)}, ${3:\freq.kr(1200)}, ${4:\order.kr(2)})
+endsnippet
+
 snippet BHiPass.ar
 BHiPass.ar(${1:\in.kr(nil)}, ${2:\freq.kr(1200.0)}, ${3:\rq.kr(1.0)}, ${4:\mul.kr(1.0)}, ${5:\add.kr(0.0)})
 endsnippet
 
 snippet BHiPass.sc
 BHiPass.sc(${1:\dummy.kr(nil)}, ${2:\freq.kr(1200.0)}, ${3:\rq.kr(1.0)})
+endsnippet
+
+snippet BHiPass.coeffs
+BHiPass.coeffs(${1:\sr.kr(44100)}, ${2:\freq.kr(1200.0)}, ${3:\rq.kr(1.0)})
 endsnippet
 
 snippet BHiPass4.ar
@@ -644,6 +800,10 @@ snippet BHiShelf.sc
 BHiShelf.sc(${1:\dummy.kr(nil)}, ${2:\freq.kr(120.0)}, ${3:\rs.kr(1.0)}, ${4:\db.kr(0.0)})
 endsnippet
 
+snippet BHiShelf.coeffs
+BHiShelf.coeffs(${1:\sr.kr(44100)}, ${2:\freq.kr(120.0)}, ${3:\rs.kr(1.0)}, ${4:\db.kr(0.0)})
+endsnippet
+
 snippet BLBufRd.ar
 BLBufRd.ar(${1:\bufnum.kr(0)}, ${2:\phase.kr(0)}, ${3:\ratio.kr(1)})
 endsnippet
@@ -656,12 +816,20 @@ snippet BLPF.ar
 BLPF.ar(${1:\in.kr(nil)}, ${2:\order.kr(4)}, ${3:\freq.kr(440)}, ${4:\mul.kr(1)}, ${5:\add.kr(0)})
 endsnippet
 
+snippet BLowCut.filterClass
+BLowCut.filterClass(${1:})
+endsnippet
+
 snippet BLowPass.ar
 BLowPass.ar(${1:\in.kr(nil)}, ${2:\freq.kr(1200.0)}, ${3:\rq.kr(1.0)}, ${4:\mul.kr(1.0)}, ${5:\add.kr(0.0)})
 endsnippet
 
 snippet BLowPass.sc
 BLowPass.sc(${1:\dummy.kr(nil)}, ${2:\freq.kr(1200.0)}, ${3:\rq.kr(1.0)})
+endsnippet
+
+snippet BLowPass.coeffs
+BLowPass.coeffs(${1:\sr.kr(44100)}, ${2:\freq.kr(1200.0)}, ${3:\rq.kr(1.0)})
 endsnippet
 
 snippet BLowPass4.ar
@@ -676,6 +844,10 @@ snippet BLowShelf.sc
 BLowShelf.sc(${1:\dummy.kr(nil)}, ${2:\freq.kr(120.0)}, ${3:\rs.kr(1.0)}, ${4:\db.kr(0.0)})
 endsnippet
 
+snippet BLowShelf.coeffs
+BLowShelf.coeffs(${1:\sr.kr(44100)}, ${2:\freq.kr(120.0)}, ${3:\rs.kr(1.0)}, ${4:\db.kr(0.0)})
+endsnippet
+
 snippet BMoog.ar
 BMoog.ar(${1:\in.kr(nil)}, ${2:\freq.kr(440.0)}, ${3:\q.kr(0.2)}, ${4:\mode.kr(0.0)}, ${5:\saturation.kr(0.95)}, ${6:\mul.kr(1.0)}, ${7:\add.kr(0.0)})
 endsnippet
@@ -688,12 +860,24 @@ snippet BPF.kr
 BPF.kr(${1:\in.kr(0.0)}, ${2:\freq.kr(440.0)}, ${3:\rq.kr(1.0)}, ${4:\mul.kr(1.0)}, ${5:\add.kr(0.0)})
 endsnippet
 
+snippet BPZ2.coeffs
+BPZ2.coeffs(${1:})
+endsnippet
+
 snippet BPeakEQ.ar
 BPeakEQ.ar(${1:\in.kr(nil)}, ${2:\freq.kr(1200.0)}, ${3:\rq.kr(1.0)}, ${4:\db.kr(0.0)}, ${5:\mul.kr(1.0)}, ${6:\add.kr(0.0)})
 endsnippet
 
 snippet BPeakEQ.sc
 BPeakEQ.sc(${1:\dummy.kr(nil)}, ${2:\freq.kr(1200.0)}, ${3:\rq.kr(1.0)}, ${4:\db.kr(0.0)})
+endsnippet
+
+snippet BPeakEQ.coeffs
+BPeakEQ.coeffs(${1:\sr.kr(44100)}, ${2:\freq.kr(1200.0)}, ${3:\rq.kr(1.0)}, ${4:\db.kr(0.0)})
+endsnippet
+
+snippet BRZ2.coeffs
+BRZ2.coeffs(${1:})
 endsnippet
 
 snippet Bag.new
@@ -718,6 +902,42 @@ endsnippet
 
 snippet Ball.kr
 Ball.kr(${1:\in.kr(0.0)}, ${2:\g.kr(1)}, ${3:\damp.kr(0)}, ${4:\friction.kr(0.01)})
+endsnippet
+
+snippet BasicMIDIWindow.addFaderAction
+BasicMIDIWindow.addFaderAction(${1:\n.kr(0)}, ${2:\action.kr(nil)})
+endsnippet
+
+snippet BasicMIDIWindow.addTreshAction
+BasicMIDIWindow.addTreshAction(${1:\n.kr(0)}, ${2:\val.kr(0.5)}, ${3:\up.kr(nil)}, ${4:\down.kr(nil)})
+endsnippet
+
+snippet BasicMIDIWindow.midiRecorderAdd
+BasicMIDIWindow.midiRecorderAdd(${1:\i.kr(nil)}, ${2:\val.kr(nil)})
+endsnippet
+
+snippet BasicMIDIWindow.playFile
+BasicMIDIWindow.playFile(${1:\file.kr(nil)}, ${2:\doneAction.kr(nil)})
+endsnippet
+
+snippet BasicMIDIWindow.importFile
+BasicMIDIWindow.importFile(${1:\file.kr(nil)}, ${2:\doBefore.kr(nil)})
+endsnippet
+
+snippet BasicMIDIWindow.playMIDIFile
+BasicMIDIWindow.playMIDIFile(${1:\path.kr(nil)})
+endsnippet
+
+snippet BasicMIDIWindow.close
+BasicMIDIWindow.close(${1:})
+endsnippet
+
+snippet BasicMIDIWindow.resetActions
+BasicMIDIWindow.resetActions(${1:})
+endsnippet
+
+snippet BasicMIDIWindow.new1
+BasicMIDIWindow.new1(${1:\nC.kr(16)}, ${2:\busOffset.kr(0)}, ${3:\initValues.kr(nil)}, ${4:\historySize.kr(1)}, ${5:\maxMIDIVal.kr(127)}, ${6:\inAction.kr(nil)}, ${7:\windowName.kr(nil)}, ${8:\windowOffset.kr(nil)}, ${9:\windowH.kr(290)})
 endsnippet
 
 snippet BeatStatistics.kr
@@ -826,6 +1046,22 @@ endsnippet
 
 snippet BinaryOpXStream.new
 BinaryOpXStream.new(${1:\operator.kr(nil)}, ${2:\a.kr(nil)}, ${3:\b.kr(nil)})
+endsnippet
+
+snippet BinauralDistance.new
+BinauralDistance.new(${1:\d.kr(1.4)}, ${2:\a.kr(0)}, ${3:\hr.kr(0.09)})
+endsnippet
+
+snippet BinauralDistance.calcDelays
+BinauralDistance.calcDelays(${1:\l.kr(0)}, ${2:\r.kr(0)}, ${3:\speedOfSound.kr(334)})
+endsnippet
+
+snippet BinauralDistance.calcDelaysNoDoppler
+BinauralDistance.calcDelaysNoDoppler(${1:\l.kr(0)}, ${2:\r.kr(0)}, ${3:\speedOfSound.kr(334)})
+endsnippet
+
+snippet BinauralDistance.calcLevels
+BinauralDistance.calcLevels(${1:\l.kr(0)}, ${2:\r.kr(0)}, ${3:\ref.kr(0.5)})
 endsnippet
 
 snippet Bjorklund.new
@@ -1030,6 +1266,34 @@ endsnippet
 
 snippet Buffer.loadDialog
 Buffer.loadDialog(${1:\server.kr(nil)}, ${2:\startFrame.kr(0)}, ${3:\numFrames.kr(nil)}, ${4:\action.kr(nil)}, ${5:\bufnum.kr(nil)})
+endsnippet
+
+snippet Buffer.playDialog
+Buffer.playDialog(${1:\mul.kr(1)}, ${2:\rate.kr(1)}, ${3:\out.kr(0)}, ${4:\server.kr(nil)}, ${5:\free.kr(true)}, ${6:\startFrame.kr(0)}, ${7:\numFrames.kr(nil)}, ${8:\bufnum.kr(nil)})
+endsnippet
+
+snippet Buffer.readPlay
+Buffer.readPlay(${1:\server.kr(nil)}, ${2:\path.kr(nil)}, ${3:\free.kr(false)}, ${4:\startFrame.kr(0)}, ${5:\numFrames.kr(nil)}, ${6:\bufnum.kr(nil)}, ${7:\mul.kr(1)}, ${8:\rate.kr(1)}, ${9:\out.kr(0)})
+endsnippet
+
+snippet Buffer.readMultiple
+Buffer.readMultiple(${1:\names.kr(nil)}, ${2:\path.kr(nil)}, ${3:\bufnumOffset.kr(nil)}, ${4:\server.kr(nil)}, ${5:\notify.kr(true)}, ${6:\action.kr(nil)})
+endsnippet
+
+snippet Buffer.readDir
+Buffer.readDir(${1:\path.kr(nil)}, ${2:\bufnumOffset.kr(nil)}, ${3:\ext.kr(wav)}, ${4:\server.kr(nil)}, ${5:\notify.kr(true)}, ${6:\nlevels.kr(inf)}, ${7:\action.kr(nil)})
+endsnippet
+
+snippet Buffer.readDefault
+Buffer.readDefault(${1:\server.kr(nil)}, ${2:\action.kr(nil)}, ${3:\bufnum.kr(nil)})
+endsnippet
+
+snippet Buffer.readDefault44_1
+Buffer.readDefault44_1(${1:\server.kr(nil)}, ${2:\action.kr(nil)}, ${3:\bufnum.kr(nil)})
+endsnippet
+
+snippet Buffer.loadFunction
+Buffer.loadFunction(${1:\function.kr(nil)}, ${2:\duration.kr(nil)}, ${3:\bufnum.kr(nil)})
 endsnippet
 
 snippet BundleNetAddr.copyFrom
@@ -1272,6 +1536,74 @@ snippet CoinGate.kr
 CoinGate.kr(${1:\prob.kr(nil)}, ${2:\in.kr(nil)})
 endsnippet
 
+snippet ColPen.clear
+ColPen.clear(${1:})
+endsnippet
+
+snippet ColPen.use
+ColPen.use(${1:\function.kr(nil)})
+endsnippet
+
+snippet ColPen.push
+ColPen.push(${1:})
+endsnippet
+
+snippet ColPen.pop
+ColPen.pop(${1:})
+endsnippet
+
+snippet ColPen.line
+ColPen.line(${1:\p1.kr(nil)}, ${2:\p2.kr(nil)})
+endsnippet
+
+snippet ColPen.doesNotUnderstand
+ColPen.doesNotUnderstand(${1:\selector.kr(nil)}, ${2:\args.kr([  ])})
+endsnippet
+
+snippet ColPen.respondsTo
+ColPen.respondsTo(${1:\aSymbol.kr(nil)})
+endsnippet
+
+snippet ColPen.draw
+ColPen.draw(${1:\penClass.kr(nil)}, ${2:\clear.kr(true)}, ${3:\inCmds.kr(nil)})
+endsnippet
+
+snippet ColPen.asCode
+ColPen.asCode(${1:\penClass.kr(nil)}, ${2:\clear.kr(true)}, ${3:\inCmds.kr(nil)}, ${4:\indent.kr(0)})
+endsnippet
+
+snippet ColPen.collectUse
+ColPen.collectUse(${1:\inCmds.kr(nil)})
+endsnippet
+
+snippet ColPen.asSVGGroup
+ColPen.asSVGGroup(${1:\clear.kr(true)}, ${2:\inCmds.kr(nil)}, ${3:\index.kr(0)}, ${4:\inTransform.kr(nil)})
+endsnippet
+
+snippet ColPen.asSVGFile
+ColPen.asSVGFile(${1:\path.kr(nil)}, ${2:\clear.kr(true)})
+endsnippet
+
+snippet ColPen.asPostScript
+ColPen.asPostScript(${1:\clear.kr(true)}, ${2:\pageSize.kr(nil)}, ${3:\header.kr(nil)})
+endsnippet
+
+snippet ColPenGUI.initClass
+ColPenGUI.initClass(${1:\mustInitGUI.kr(true)})
+endsnippet
+
+snippet ColPenGUI.id
+ColPenGUI.id(${1:})
+endsnippet
+
+snippet ColPenGUI.pen
+ColPenGUI.pen(${1:})
+endsnippet
+
+snippet ColPenGUI.doesNotUnderstand
+ColPenGUI.doesNotUnderstand(${1:\selector.kr(nil)}, ${2:\args.kr([  ])})
+endsnippet
+
 snippet CollStream.new
 CollStream.new(${1:\collection.kr(nil)})
 endsnippet
@@ -1370,6 +1702,42 @@ endsnippet
 
 snippet Color.fromHexString
 Color.fromHexString(${1:\string.kr(nil)})
+endsnippet
+
+snippet Color.newHex
+Color.newHex(${1:\hexName.kr(000000)}, ${2:\alpha.kr(255)})
+endsnippet
+
+snippet Color.newName
+Color.newName(${1:\name.kr(nil)}, ${2:\table.kr(nil)}, ${3:\includeXWindows.kr(false)})
+endsnippet
+
+snippet Color.webNameIndex
+Color.webNameIndex(${1:\name.kr(white)}, ${2:\table.kr(nil)})
+endsnippet
+
+snippet Color.sortedWebColors
+Color.sortedWebColors(${1:\index.kr(nil)}, ${2:\table.kr(nil)})
+endsnippet
+
+snippet Color.web16
+Color.web16(${1:\name.kr(nil)}, ${2:\alpha.kr(1.0)})
+endsnippet
+
+snippet Color.web
+Color.web(${1:\name.kr(nil)}, ${2:\alpha.kr(1.0)})
+endsnippet
+
+snippet Color.xwindowsBW
+Color.xwindowsBW(${1:\name.kr(nil)}, ${2:\alpha.kr(1.0)}, ${3:\includeGrayShades.kr(true)})
+endsnippet
+
+snippet Color.xwindows
+Color.xwindows(${1:\name.kr(nil)}, ${2:\alpha.kr(1.0)}, ${3:\includeGrayShades.kr(false)})
+endsnippet
+
+snippet CombFormlet.ar
+CombFormlet.ar(${1:\in.kr(0.0)}, ${2:\freq.kr(440.0)}, ${3:\attacktime.kr(1.0)}, ${4:\decaytime.kr(1.0)}, ${5:\mul.kr(1.0)}, ${6:\add.kr(0.0)}, ${7:\minFreq.kr(20)})
 endsnippet
 
 snippet CombLP.ar
@@ -1612,6 +1980,50 @@ snippet DNoiseRing.new
 DNoiseRing.new(${1:\change.kr(0.5)}, ${2:\chance.kr(0.5)}, ${3:\shift.kr(1)}, ${4:\numBits.kr(8)}, ${5:\resetval.kr(0)})
 endsnippet
 
+snippet DOMCDATASection.new
+DOMCDATASection.new(${1:\owner.kr(nil)}, ${2:\cdata.kr(nil)})
+endsnippet
+
+snippet DOMComment.new
+DOMComment.new(${1:\owner.kr(nil)}, ${2:\comment.kr(nil)})
+endsnippet
+
+snippet DOMDocument.new
+DOMDocument.new(${1:\filename.kr(nil)})
+endsnippet
+
+snippet DOMDocument.initStandardEntities
+DOMDocument.initStandardEntities(${1:})
+endsnippet
+
+snippet DOMDocument.decodeStandardEntities
+DOMDocument.decodeStandardEntities(${1:\s.kr(nil)})
+endsnippet
+
+snippet DOMDocument.encodeStandardEntities
+DOMDocument.encodeStandardEntities(${1:\s.kr(nil)})
+endsnippet
+
+snippet DOMDocumentFragment.new
+DOMDocumentFragment.new(${1:\owner.kr(nil)})
+endsnippet
+
+snippet DOMElement.new
+DOMElement.new(${1:\owner.kr(nil)}, ${2:\tagname.kr(nil)})
+endsnippet
+
+snippet DOMImplementation.instance
+DOMImplementation.instance(${1:})
+endsnippet
+
+snippet DOMProcessingInstruction.new
+DOMProcessingInstruction.new(${1:\owner.kr(nil)}, ${2:\target.kr(nil)}, ${3:\data.kr(nil)})
+endsnippet
+
+snippet DOMText.new
+DOMText.new(${1:\owner.kr(nil)}, ${2:\text.kr(nil)})
+endsnippet
+
 snippet DPW3Tri.ar
 DPW3Tri.ar(${1:\freq.kr(440.0)}, ${2:\mul.kr(1.0)}, ${3:\add.kr(0.0)})
 endsnippet
@@ -1666,6 +2078,14 @@ endsnippet
 
 snippet Date.seed
 Date.seed(${1:})
+endsnippet
+
+snippet Date.fromSMPTE
+Date.fromSMPTE(${1:\smpte.kr(nil)}, ${2:\daylightSavings.kr(1)})
+endsnippet
+
+snippet Date.fromRawSeconds
+Date.fromRawSeconds(${1:\rawSeconds.kr(0)}, ${2:\daylightSavings.kr(1)})
 endsnippet
 
 snippet Dbrown.new
@@ -1726,6 +2146,10 @@ endsnippet
 
 snippet DecodeB2.kr
 DecodeB2.kr(${1:\numChans.kr(nil)}, ${2:\w.kr(nil)}, ${3:\x.kr(nil)}, ${4:\y.kr(nil)}, ${5:\orientation.kr(0.5)})
+endsnippet
+
+snippet DeferredView.new
+DeferredView.new(${1:\view.kr(nil)})
 endsnippet
 
 snippet DegreeToKey.ar
@@ -1880,6 +2304,18 @@ snippet DiskOut.ar
 DiskOut.ar(${1:\bufnum.kr(nil)}, ${2:\channelsArray.kr(nil)})
 endsnippet
 
+snippet DistToSource2D.new
+DistToSource2D.new(${1:\sourceX.kr(0)}, ${2:\sourceY.kr(0)}, ${3:\micX.kr(0)}, ${4:\micY.kr(0)})
+endsnippet
+
+snippet DistToSource2D.stereo
+DistToSource2D.stereo(${1:\sourceX.kr(0)}, ${2:\sourceY.kr(0)}, ${3:\width.kr(0.3)})
+endsnippet
+
+snippet DistToSource2D.quad
+DistToSource2D.quad(${1:\sourceX.kr(0)}, ${2:\sourceY.kr(0)}, ${3:\width.kr(0.3)})
+endsnippet
+
 snippet Dneuromodule.new
 Dneuromodule.new(${1:\numChannels.kr(nil)}, ${2:\theta.kr(nil)}, ${3:\x.kr(nil)}, ${4:\weights.kr(nil)})
 endsnippet
@@ -1962,6 +2398,22 @@ endsnippet
 
 snippet DrawGridX.new
 DrawGridX.new(${1:\grid.kr(nil)})
+endsnippet
+
+snippet DrawIcon.new
+DrawIcon.new(${1:\name.kr(nil)}, ${2:\rect.kr(nil)}, ${3:\more.kr([  ])})
+endsnippet
+
+snippet DrawIcon.symbolArgs
+DrawIcon.symbolArgs(${1:\name.kr(nil)}, ${2:\rect.kr(nil)})
+endsnippet
+
+snippet DrawIcon.names
+DrawIcon.names(${1:})
+endsnippet
+
+snippet DrawIcon.initClass
+DrawIcon.initClass(${1:})
 endsnippet
 
 snippet Dreset.new
@@ -2054,6 +2506,14 @@ endsnippet
 
 snippet DynKlank.new1
 DynKlank.new1(${1:\rate.kr(nil)}, ${2:\specificationsArrayRef.kr(nil)}, ${3:\input.kr(nil)}, ${4:\freqscale.kr(1.0)}, ${5:\freqoffset.kr(0.0)}, ${6:\decayscale.kr(1.0)})
+endsnippet
+
+snippet EM.new
+EM.new(${1:\pairs.kr([  ])})
+endsnippet
+
+snippet EM.with
+EM.with(${1:\args.kr([  ])})
 endsnippet
 
 snippet EZControlSpecEditor.new
@@ -2158,6 +2618,10 @@ endsnippet
 
 snippet Env.shapeNumber
 Env.shapeNumber(${1:\shapeName.kr(nil)})
+endsnippet
+
+snippet Env.fromSVGPolyLine
+Env.fromSVGPolyLine(${1:\polyline.kr(nil)}, ${2:\min.kr(-1)}, ${3:\max.kr(1)}, ${4:\duration.kr(1)})
 endsnippet
 
 snippet EnvDetect.ar
@@ -2326,6 +2790,10 @@ endsnippet
 
 snippet ExpRand.new
 ExpRand.new(${1:\lo.kr(0.01)}, ${2:\hi.kr(1.0)})
+endsnippet
+
+snippet ExpandView.new
+ExpandView.new(${1:\parent.kr(nil)}, ${2:\bigBounds.kr(nil)}, ${3:\smallBounds.kr(nil)}, ${4:\collapsed.kr(true)})
 endsnippet
 
 snippet FBSineN.ar
@@ -2588,6 +3056,10 @@ snippet FOS.kr
 FOS.kr(${1:\in.kr(0.0)}, ${2:\a0.kr(0.0)}, ${3:\a1.kr(0.0)}, ${4:\b1.kr(0.0)}, ${5:\mul.kr(1.0)}, ${6:\add.kr(0.0)})
 endsnippet
 
+snippet FOS.coeffs
+FOS.coeffs(${1:\sr.kr(44100)}, ${2:\a0.kr(0.0)}, ${3:\a1.kr(0.0)}, ${4:\b1.kr(0.0)})
+endsnippet
+
 snippet FSinOsc.ar
 FSinOsc.ar(${1:\freq.kr(440.0)}, ${2:\iphase.kr(0.0)}, ${3:\mul.kr(1.0)}, ${4:\add.kr(0.0)})
 endsnippet
@@ -2724,6 +3196,26 @@ snippet File.saveDialog
 File.saveDialog(${1:\prompt.kr(nil)}, ${2:\defaultName.kr(nil)}, ${3:\successFunc.kr(nil)}, ${4:\cancelFunc.kr(nil)})
 endsnippet
 
+snippet File.isWesleyanBuild
+File.isWesleyanBuild(${1:})
+endsnippet
+
+snippet File.getBuildDate
+File.getBuildDate(${1:})
+endsnippet
+
+snippet File.tgzSC
+File.tgzSC(${1:})
+endsnippet
+
+snippet File.makeDir
+File.makeDir(${1:\dir.kr()})
+endsnippet
+
+snippet File.checkDo
+File.checkDo(${1:\pathName.kr(nil)}, ${2:\function.kr(nil)}, ${3:\overwrite.kr(false)}, ${4:\ask.kr(true)}, ${5:\mode.kr(w)}, ${6:\doneAction.kr(nil)})
+endsnippet
+
 snippet FileDialog.qtClass
 FileDialog.qtClass(${1:})
 endsnippet
@@ -2744,8 +3236,44 @@ snippet FileReader.readInterpret
 FileReader.readInterpret(${1:\path.kr(nil)}, ${2:\skipEmptyLines.kr(false)}, ${3:\skipBlanks.kr(false)}, ${4:\delimiter.kr(nil)}, ${5:\startRow.kr(0)}, ${6:\skipSize.kr(0)})
 endsnippet
 
+snippet FileSystem.new
+FileSystem.new(${1:\location.kr(nil)}, ${2:\projectName.kr(nil)}, ${3:\fileSystemType.kr(nil)}, ${4:\check.kr(true)})
+endsnippet
+
+snippet FileSystemType.new
+FileSystemType.new(${1:\subFolders.kr(nil)})
+endsnippet
+
+snippet FileSystemType.fromPath
+FileSystemType.fromPath(${1:\path.kr(nil)})
+endsnippet
+
+snippet FileSystemType.initClass
+FileSystemType.initClass(${1:})
+endsnippet
+
 snippet Filter.scopeResponse
 Filter.scopeResponse(${1:\server.kr(nil)}, ${2:\freqMode.kr(1)}, ${3:\label.kr(nil)}, ${4:\args.kr(nil)})
+endsnippet
+
+snippet Filter.coeffs
+Filter.coeffs(${1:})
+endsnippet
+
+snippet Filter.magResponse
+Filter.magResponse(${1:\freqs.kr(1000)}, ${2:\sr.kr(44100)}, ${3:\rest.kr([  ])})
+endsnippet
+
+snippet Filter.magResponse2
+Filter.magResponse2(${1:\freqs.kr(nil)}, ${2:\sr.kr(nil)}, ${3:\ma.kr(nil)}, ${4:\ar.kr(nil)})
+endsnippet
+
+snippet Filter.magResponse5
+Filter.magResponse5(${1:\freqs.kr(nil)}, ${2:\sr.kr(nil)}, ${3:\ma.kr(nil)}, ${4:\ar.kr(nil)})
+endsnippet
+
+snippet Filter.magResponseN
+Filter.magResponseN(${1:\freqs.kr(nil)}, ${2:\sr.kr(nil)}, ${3:\ma.kr(nil)}, ${4:\ar.kr(nil)}, ${5:\size.kr(nil)})
 endsnippet
 
 snippet FilterPattern.new
@@ -2774,6 +3302,10 @@ endsnippet
 
 snippet FincoSprottS.categories
 FincoSprottS.categories(${1:})
+endsnippet
+
+snippet FirstPrivateBus.ir
+FirstPrivateBus.ir(${1:})
 endsnippet
 
 snippet FitzHughNagumo.ar
@@ -2810,6 +3342,18 @@ endsnippet
 
 snippet FlowViewLayout.new
 FlowViewLayout.new(${1:\bounds.kr(nil)}, ${2:\margin.kr(nil)}, ${3:\gap.kr(nil)})
+endsnippet
+
+snippet FolderLibrary.new
+FolderLibrary.new(${1:\baseName.kr(~/scwork)}, ${2:\contents.kr(nil)})
+endsnippet
+
+snippet FolderLibraryElement.new
+FolderLibraryElement.new(${1:\name.kr(New)}, ${2:\contents.kr(nil)}, ${3:\type.kr(folder)})
+endsnippet
+
+snippet FolderLibraryElement.newFromPath
+FolderLibraryElement.newFromPath(${1:\path.kr(New/New)})
 endsnippet
 
 snippet Font.initClass
@@ -2886,6 +3430,14 @@ endsnippet
 
 snippet FormantTable.rand
 FormantTable.rand(${1:})
+endsnippet
+
+snippet Formatter.initClass
+Formatter.initClass(${1:})
+endsnippet
+
+snippet Formatter.new
+Formatter.new(${1:\dict.kr(nil)})
 endsnippet
 
 snippet Formlet.ar
@@ -4328,6 +4880,14 @@ snippet HOARotator4.kr
 HOARotator4.kr(${1:\in1.kr(nil)}, ${2:\in2.kr(nil)}, ${3:\in3.kr(nil)}, ${4:\in4.kr(nil)}, ${5:\in5.kr(nil)}, ${6:\in6.kr(nil)}, ${7:\in7.kr(nil)}, ${8:\in8.kr(nil)}, ${9:\in9.kr(nil)}, ${10:\in10.kr(nil)}, ${11:\in11.kr(nil)}, ${12:\in12.kr(nil)}, ${13:\in13.kr(nil)}, ${14:\in14.kr(nil)}, ${15:\in15.kr(nil)}, ${16:\in16.kr(nil)}, ${17:\in17.kr(nil)}, ${18:\in18.kr(nil)}, ${19:\in19.kr(nil)}, ${20:\in20.kr(nil)}, ${21:\in21.kr(nil)}, ${22:\in22.kr(nil)}, ${23:\in23.kr(nil)}, ${24:\in24.kr(nil)}, ${25:\in25.kr(nil)}, ${26:\pitch.kr(0.0)}, ${27:\roll.kr(0.0)}, ${28:\yaw.kr(0.0)})
 endsnippet
 
+snippet HPZ1.coeffs
+HPZ1.coeffs(${1:})
+endsnippet
+
+snippet HPZ2.coeffs
+HPZ2.coeffs(${1:})
+endsnippet
+
 snippet HairCell.ar
 HairCell.ar(${1:\input.kr(nil)}, ${2:\spontaneousrate.kr(0.0)}, ${3:\boostrate.kr(200.0)}, ${4:\restorerate.kr(1000.0)}, ${5:\loss.kr(0.99)}, ${6:\mul.kr(1.0)}, ${7:\add.kr(0.0)})
 endsnippet
@@ -4828,6 +5388,26 @@ snippet InfoUGenBase.ir
 InfoUGenBase.ir(${1:})
 endsnippet
 
+snippet InputRouter.new
+InputRouter.new(${1:\server.kr(nil)}, ${2:\name.kr(nil)}, ${3:\outputLabels.kr(nil)})
+endsnippet
+
+snippet InputRouter.unique
+InputRouter.unique(${1:\server.kr(nil)}, ${2:\name.kr(nil)}, ${3:\outputLabels.kr(nil)})
+endsnippet
+
+snippet InputRouter.remove
+InputRouter.remove(${1:\name.kr(nil)})
+endsnippet
+
+snippet InputRouter.removeAll
+InputRouter.removeAll(${1:})
+endsnippet
+
+snippet InputRouterGUI.new
+InputRouterGUI.new(${1:\inputRouter.kr(nil)}, ${2:\parent.kr(nil)}, ${3:\bounds.kr(nil)})
+endsnippet
+
 snippet InsideOut.ar
 InsideOut.ar(${1:\in.kr(0.0)}, ${2:\mul.kr(1.0)}, ${3:\add.kr(0.0)})
 endsnippet
@@ -4862,6 +5442,10 @@ endsnippet
 
 snippet Integrator.kr
 Integrator.kr(${1:\in.kr(0.0)}, ${2:\coef.kr(1.0)}, ${3:\mul.kr(1.0)}, ${4:\add.kr(0.0)})
+endsnippet
+
+snippet Integrator.coeffs
+Integrator.coeffs(${1:\sr.kr(44100)}, ${2:\coef.kr(1.0)})
 endsnippet
 
 snippet Interpreter.new
@@ -4930,6 +5514,30 @@ endsnippet
 
 snippet KeyTrack.kr
 KeyTrack.kr(${1:\chain.kr(nil)}, ${2:\keydecay.kr(2.0)}, ${3:\chromaleak.kr(0.5)})
+endsnippet
+
+snippet KeyboardWindow.initClass
+KeyboardWindow.initClass(${1:})
+endsnippet
+
+snippet KeyboardWindow.new
+KeyboardWindow.new(${1:\nKeys.kr(36)}, ${2:\startOctave.kr(1)}, ${3:\channel.kr(0)}, ${4:\bounds.kr(nil)})
+endsnippet
+
+snippet KeyboardWindow.scale
+KeyboardWindow.scale(${1:})
+endsnippet
+
+snippet KeyboardWindow.pressNote
+KeyboardWindow.pressNote(${1:\noteNumber.kr(64)}, ${2:\velo.kr(64)}, ${3:\channel.kr(0)})
+endsnippet
+
+snippet KeyboardWindow.unPressNote
+KeyboardWindow.unPressNote(${1:\noteNumber.kr(64)}, ${2:\velo.kr(64)}, ${3:\channel.kr(0)})
+endsnippet
+
+snippet KeyboardWindow.unPressAll
+KeyboardWindow.unPressAll(${1:\velo.kr(64)}, ${2:\channel.kr(nil)})
 endsnippet
 
 snippet Klang.ar
@@ -5168,6 +5776,10 @@ snippet LPZ1.kr
 LPZ1.kr(${1:\in.kr(0.0)}, ${2:\mul.kr(1.0)}, ${3:\add.kr(0.0)})
 endsnippet
 
+snippet LPZ1.coeffs
+LPZ1.coeffs(${1:})
+endsnippet
+
 snippet LPZ2.ar
 LPZ2.ar(${1:\in.kr(0.0)}, ${2:\mul.kr(1.0)}, ${3:\add.kr(0.0)})
 endsnippet
@@ -5176,12 +5788,40 @@ snippet LPZ2.kr
 LPZ2.kr(${1:\in.kr(0.0)}, ${2:\mul.kr(1.0)}, ${3:\add.kr(0.0)})
 endsnippet
 
+snippet LPZ2.coeffs
+LPZ2.coeffs(${1:})
+endsnippet
+
 snippet LRHPF.ar
 LRHPF.ar(${1:\in.kr(nil)}, ${2:\order.kr(4)}, ${3:\freq.kr(440)}, ${4:\mul.kr(1)}, ${5:\add.kr(0)})
 endsnippet
 
+snippet LRHiCut.ar
+LRHiCut.ar(${1:\in.kr(nil)}, ${2:\freq.kr(nil)}, ${3:\order.kr(2)}, ${4:\maxOrder.kr(5)})
+endsnippet
+
+snippet LRHiCut.kr
+LRHiCut.kr(${1:\in.kr(nil)}, ${2:\freq.kr(nil)}, ${3:\order.kr(2)}, ${4:\maxOrder.kr(5)})
+endsnippet
+
+snippet LRHiCut.magResponse
+LRHiCut.magResponse(${1:\freqs.kr(1000)}, ${2:\sr.kr(44100)}, ${3:\freq.kr(1200)}, ${4:\order.kr(2)})
+endsnippet
+
 snippet LRLPF.ar
 LRLPF.ar(${1:\in.kr(nil)}, ${2:\order.kr(4)}, ${3:\freq.kr(440)}, ${4:\mul.kr(1)}, ${5:\add.kr(0)})
+endsnippet
+
+snippet LRLowCut.ar
+LRLowCut.ar(${1:\in.kr(nil)}, ${2:\freq.kr(nil)}, ${3:\order.kr(2)}, ${4:\maxOrder.kr(5)})
+endsnippet
+
+snippet LRLowCut.kr
+LRLowCut.kr(${1:\in.kr(nil)}, ${2:\freq.kr(nil)}, ${3:\order.kr(2)}, ${4:\maxOrder.kr(5)})
+endsnippet
+
+snippet LRLowCut.magResponse
+LRLowCut.magResponse(${1:\freqs.kr(1000)}, ${2:\sr.kr(44100)}, ${3:\freq.kr(1200)}, ${4:\order.kr(2)})
 endsnippet
 
 snippet LRUNumberAllocator.new
@@ -5214,6 +5854,22 @@ endsnippet
 
 snippet LagIn.kr
 LagIn.kr(${1:\bus.kr(0)}, ${2:\numChannels.kr(1)}, ${3:\lag.kr(0.1)})
+endsnippet
+
+snippet LagSelectX.new
+LagSelectX.new(${1:\which.kr(0)}, ${2:\array.kr(nil)}, ${3:\lag.kr(0.1)})
+endsnippet
+
+snippet LagSelectX.getAmps
+LagSelectX.getAmps(${1:\which.kr(0)}, ${2:\size.kr(10)})
+endsnippet
+
+snippet LagSelectX.kr
+LagSelectX.kr(${1:\which.kr(0)}, ${2:\array.kr(nil)}, ${3:\lag.kr(0.1)})
+endsnippet
+
+snippet LagSelectX.ar
+LagSelectX.ar(${1:\which.kr(0)}, ${2:\array.kr(nil)}, ${3:\lag.kr(0.1)})
 endsnippet
 
 snippet LagUD.ar
@@ -5402,6 +6058,14 @@ endsnippet
 
 snippet LinLin.kr
 LinLin.kr(${1:\in.kr(0.0)}, ${2:\srclo.kr(0.0)}, ${3:\srchi.kr(1.0)}, ${4:\dstlo.kr(1.0)}, ${5:\dsthi.kr(2.0)})
+endsnippet
+
+snippet LinPanAz.ar
+LinPanAz.ar(${1:\numChans.kr(nil)}, ${2:\in.kr(nil)}, ${3:\pos.kr(0.0)}, ${4:\level.kr(1.0)}, ${5:\width.kr(2.0)}, ${6:\orientation.kr(0.5)})
+endsnippet
+
+snippet LinPanAz.kr
+LinPanAz.kr(${1:\numChans.kr(nil)}, ${2:\in.kr(nil)}, ${3:\pos.kr(0.0)}, ${4:\level.kr(1.0)}, ${5:\width.kr(2.0)}, ${6:\orientation.kr(0.5)})
 endsnippet
 
 snippet LinRand.new
@@ -5596,6 +6260,50 @@ snippet MFCC.kr
 MFCC.kr(${1:\chain.kr(nil)}, ${2:\numcoeff.kr(13)})
 endsnippet
 
+snippet MIDIBendWindow.initClass
+MIDIBendWindow.initClass(${1:})
+endsnippet
+
+snippet MIDIBendWindow.new
+MIDIBendWindow.new(${1:\nC.kr(16)}, ${2:\busOffset.kr(0)}, ${3:\initValues.kr(nil)}, ${4:\historySize.kr(1)}, ${5:\maxMIDIVal.kr(16383)}, ${6:\inAction.kr(nil)}, ${7:\left.kr(580)}, ${8:\bottom.kr(30)}, ${9:\height.kr(290)})
+endsnippet
+
+snippet MIDIBendWindow.new1024
+MIDIBendWindow.new1024(${1:\inAction.kr(nil)})
+endsnippet
+
+snippet MIDIBendWindow.connect
+MIDIBendWindow.connect(${1:\midiFunc.kr(nil)})
+endsnippet
+
+snippet MIDIBendWindow.disconnect
+MIDIBendWindow.disconnect(${1:})
+endsnippet
+
+snippet MIDIBendWindow.midiRecorderAdd
+MIDIBendWindow.midiRecorderAdd(${1:\i.kr(nil)}, ${2:\val.kr(nil)})
+endsnippet
+
+snippet MIDIBendWindow.playFile
+MIDIBendWindow.playFile(${1:\file.kr(nil)}, ${2:\doneAction.kr(nil)})
+endsnippet
+
+snippet MIDIBendWindow.importFile
+MIDIBendWindow.importFile(${1:\file.kr(nil)})
+endsnippet
+
+snippet MIDICinetixWindow.close
+MIDICinetixWindow.close(${1:})
+endsnippet
+
+snippet MIDICinetixWindow.wheels
+MIDICinetixWindow.wheels(${1:\busOffset.kr(32)}, ${2:\inAction.kr(nil)})
+endsnippet
+
+snippet MIDICinetixWindow.new
+MIDICinetixWindow.new(${1:\channels.kr(4)}, ${2:\busOffset.kr(32)}, ${3:\reverse.kr(nil)}, ${4:\inAction.kr(nil)})
+endsnippet
+
 snippet MIDIClient.init
 MIDIClient.init(${1:\inports.kr(nil)}, ${2:\outports.kr(nil)}, ${3:\verbose.kr(true)})
 endsnippet
@@ -5640,12 +6348,48 @@ snippet MIDIClient.getClientID
 MIDIClient.getClientID(${1:})
 endsnippet
 
+snippet MIDIControlWindow.close
+MIDIControlWindow.close(${1:})
+endsnippet
+
+snippet MIDIControlWindow.initClass
+MIDIControlWindow.initClass(${1:})
+endsnippet
+
+snippet MIDIControlWindow.addFaderAction
+MIDIControlWindow.addFaderAction(${1:\n.kr(0)}, ${2:\action.kr(nil)})
+endsnippet
+
+snippet MIDIControlWindow.addTreshAction
+MIDIControlWindow.addTreshAction(${1:\n.kr(0)}, ${2:\val.kr(0.5)}, ${3:\up.kr(nil)}, ${4:\down.kr(nil)})
+endsnippet
+
+snippet MIDIControlWindow.new
+MIDIControlWindow.new(${1:\nC.kr(16)}, ${2:\busOffset.kr(48)}, ${3:\type.kr(channel)}, ${4:\cc.kr(7)}, ${5:\ch.kr(0)}, ${6:\initValues.kr(nil)}, ${7:\historySize.kr(1)}, ${8:\inAction.kr(nil)})
+endsnippet
+
 snippet MIDIEndPoint.new
 MIDIEndPoint.new(${1:\device.kr(nil)}, ${2:\name.kr(nil)}, ${3:\uid.kr(nil)})
 endsnippet
 
 snippet MIDIEvent.new
 MIDIEvent.new(${1:\status.kr(nil)}, ${2:\port.kr(nil)}, ${3:\chan.kr(nil)}, ${4:\b.kr(nil)}, ${5:\c.kr(nil)}, ${6:\thread.kr(nil)})
+endsnippet
+
+snippet MIDIEventRecorder.new
+MIDIEventRecorder.new(${1:\maxEvents.kr(nil)}, ${2:\startTime.kr(nil)})
+endsnippet
+
+snippet MIDIEventRecorder.arm
+MIDIEventRecorder.arm(${1:\maxEvents.kr(nil)})
+endsnippet
+
+snippet MIDIEventRecorder.with
+MIDIEventRecorder.with(${1:\events.kr([  ])})
+endsnippet
+
+snippet MIDIEventRecorder.initClass
+MIDIEventRecorder.initClass(${1:})
 endsnippet
 
 snippet MIDIFunc.initClass
@@ -5928,8 +6672,48 @@ snippet MIDISMPTEAssembler.new
 MIDISMPTEAssembler.new(${1:\func.kr(nil)})
 endsnippet
 
+snippet MIDITouchWindow.initClass
+MIDITouchWindow.initClass(${1:})
+endsnippet
+
+snippet MIDITouchWindow.new
+MIDITouchWindow.new(${1:\nC.kr(16)}, ${2:\busOffset.kr(48)}, ${3:\initValues.kr(nil)}, ${4:\historySize.kr(1)}, ${5:\inAction.kr(nil)})
+endsnippet
+
+snippet MIDITouchWindow.connect
+MIDITouchWindow.connect(${1:\midiFunc.kr(nil)})
+endsnippet
+
+snippet MIDITouchWindow.disconnect
+MIDITouchWindow.disconnect(${1:})
+endsnippet
+
+snippet MIDITouchWindow.midiRecorderAdd
+MIDITouchWindow.midiRecorderAdd(${1:\i.kr(nil)}, ${2:\val.kr(nil)})
+endsnippet
+
+snippet MIDITouchWindow.playFile
+MIDITouchWindow.playFile(${1:\file.kr(nil)}, ${2:\doneAction.kr(nil)})
+endsnippet
+
+snippet MIDITouchWindow.importFile
+MIDITouchWindow.importFile(${1:\file.kr(nil)})
+endsnippet
+
+snippet MIDITouchWindow.buttonActions
+MIDITouchWindow.buttonActions(${1:\downAction.kr(nil)}, ${2:\upAction.kr(nil)})
+endsnippet
+
+snippet MIDITouchWindow.buttons
+MIDITouchWindow.buttons(${1:\nC.kr(16)}, ${2:\downAction.kr(nil)}, ${3:\upAction.kr(nil)}, ${4:\busOffset.kr(48)}, ${5:\toBusses.kr(false)})
+endsnippet
+
 snippet MIDIValueMatcher.new
 MIDIValueMatcher.new(${1:\argTemplate.kr(nil)}, ${2:\func.kr(nil)})
+endsnippet
+
+snippet MIDIWindow.new
+MIDIWindow.new(${1:\connect.kr(false)}, ${2:\current.kr(nil)})
 endsnippet
 
 snippet MIDIdef.initClass
@@ -6026,6 +6810,14 @@ endsnippet
 
 snippet MIDIdef.freeAll
 MIDIdef.freeAll(${1:})
+endsnippet
+
+snippet MServer.new
+MServer.new(${1:\name.kr(nil)}, ${2:\addr.kr(nil)}, ${3:\options.kr(nil)}, ${4:\clientID.kr(0)}, ${5:\n.kr(nil)})
+endsnippet
+
+snippet MServer.new1
+MServer.new1(${1:\names.kr(nil)}, ${2:\adresses.kr(nil)}, ${3:\options.kr(nil)}, ${4:\hostName.kr(nil)}, ${5:\synthDefDir.kr(nil)}, ${6:\clientID.kr(0)})
 endsnippet
 
 snippet Main.version
@@ -6144,6 +6936,46 @@ snippet MarkovSynth.ar
 MarkovSynth.ar(${1:\in.kr(0.0)}, ${2:\isRecording.kr(1)}, ${3:\waitTime.kr(2)}, ${4:\tableSize.kr(10)})
 endsnippet
 
+snippet MasterEQ.new
+MasterEQ.new(${1:\numCha.kr(2)}, ${2:\server.kr(nil)})
+endsnippet
+
+snippet MasterEQ.stop
+MasterEQ.stop(${1:})
+endsnippet
+
+snippet MasterEQ.start
+MasterEQ.start(${1:})
+endsnippet
+
+snippet MasterEQ.newEQ
+MasterEQ.newEQ(${1:\numCha.kr(2)}, ${2:\server.kr(nil)})
+endsnippet
+
+snippet MasterSplay.initClass
+MasterSplay.initClass(${1:})
+endsnippet
+
+snippet MasterSplay.new
+MasterSplay.new(${1:\inFrom.kr(4)}, ${2:\inTo.kr(2)})
+endsnippet
+
+snippet MasterSplay.synthDef
+MasterSplay.synthDef(${1:})
+endsnippet
+
+snippet MasterSplay.cmdPeriod
+MasterSplay.cmdPeriod(${1:})
+endsnippet
+
+snippet MasterSplay.start
+MasterSplay.start(${1:})
+endsnippet
+
+snippet MasterSplay.stop
+MasterSplay.stop(${1:})
+endsnippet
+
 snippet MatchingP.ar
 MatchingP.ar(${1:\dict.kr(0)}, ${2:\in.kr(0)}, ${3:\dictsize.kr(1)}, ${4:\ntofind.kr(1)}, ${5:\hop.kr(1)}, ${6:\method.kr(0)})
 endsnippet
@@ -6170,6 +7002,18 @@ endsnippet
 
 snippet Max.kr
 Max.kr(${1:\in.kr(nil)}, ${2:\numsamp.kr(64)})
+endsnippet
+
+snippet MaxItem.new
+MaxItem.new(${1:\array.kr(nil)}, ${2:\force.kr(false)})
+endsnippet
+
+snippet MaxItem.abs
+MaxItem.abs(${1:\array.kr(nil)})
+endsnippet
+
+snippet MaxItem.switch
+MaxItem.switch(${1:\array.kr(nil)}, ${2:\switchArray.kr(nil)})
 endsnippet
 
 snippet MaxLocalBufs.new
@@ -6312,6 +7156,22 @@ snippet MidEQ.kr
 MidEQ.kr(${1:\in.kr(0.0)}, ${2:\freq.kr(440.0)}, ${3:\rq.kr(1.0)}, ${4:\db.kr(0.0)}, ${5:\mul.kr(1.0)}, ${6:\add.kr(0.0)})
 endsnippet
 
+snippet MidEQ.coeffs
+MidEQ.coeffs(${1:\sr.kr(nil)}, ${2:\freq.kr(440)}, ${3:\rq.kr(1.0)}, ${4:\db.kr(0.0)})
+endsnippet
+
+snippet MinItem.new
+MinItem.new(${1:\array.kr(nil)}, ${2:\force.kr(false)})
+endsnippet
+
+snippet MinItem.abs
+MinItem.abs(${1:\array.kr(nil)})
+endsnippet
+
+snippet MinItem.switch
+MinItem.switch(${1:\array.kr(nil)}, ${2:\switchArray.kr(nil)})
+endsnippet
+
 snippet Mix.new
 Mix.new(${1:\array.kr(nil)})
 endsnippet
@@ -6334,6 +7194,14 @@ endsnippet
 
 snippet Mix.krFill
 Mix.krFill(${1:\n.kr(nil)}, ${2:\function.kr(nil)})
+endsnippet
+
+snippet Mix.panSpread
+Mix.panSpread(${1:\array.kr(nil)}, ${2:\nCha.kr(2)}, ${3:\width.kr(2)}, ${4:\offset.kr(0)})
+endsnippet
+
+snippet Mix.panSpreadFill
+Mix.panSpreadFill(${1:\n.kr(nil)}, ${2:\func.kr(nil)}, ${3:\nCha.kr(2)}, ${4:\width.kr(2)}, ${5:\offset.kr(0)})
 endsnippet
 
 snippet MixedBundleTester.reset
@@ -6364,12 +7232,36 @@ snippet ModDif.ir
 ModDif.ir(${1:\x.kr(0.0)}, ${2:\y.kr(0.0)}, ${3:\mod.kr(1.0)})
 endsnippet
 
+snippet ModKey.initClass
+ModKey.initClass(${1:})
+endsnippet
+
+snippet ModKey.new
+ModKey.new(${1:\args.kr([  ])})
+endsnippet
+
+snippet ModKey.fromList
+ModKey.fromList(${1:\args.kr([  ])})
+endsnippet
+
+snippet ModKey.fromNumber
+ModKey.fromNumber(${1:\number.kr(nil)})
+endsnippet
+
 snippet MonitorGui.initClass
 MonitorGui.initClass(${1:})
 endsnippet
 
 snippet MonitorGui.new
 MonitorGui.new(${1:\object.kr(nil)}, ${2:\parent.kr(nil)}, ${3:\bounds.kr(nil)}, ${4:\makeSkip.kr(true)}, ${5:\options.kr([  ])})
+endsnippet
+
+snippet MonitorOSC.value
+MonitorOSC.value(${1:\time.kr(0)}, ${2:\addr.kr(nil)}, ${3:\port.kr(nil)}, ${4:\msg.kr(nil)})
+endsnippet
+
+snippet MonitorOSC.valueArray
+MonitorOSC.valueArray(${1:\args.kr(nil)})
 endsnippet
 
 snippet MonoGrain.ar
@@ -6464,6 +7356,30 @@ snippet MultiOutUGen.newFromDesc
 MultiOutUGen.newFromDesc(${1:\rate.kr(nil)}, ${2:\numOutputs.kr(nil)}, ${3:\inputs.kr(nil)})
 endsnippet
 
+snippet MultiPlot.new
+MultiPlot.new(${1:\arrays.kr(nil)}, ${2:\width.kr(600)}, ${3:\height.kr(400)}, ${4:\colors.kr(nil)}, ${5:\background.kr(nil)}, ${6:\hLinesAt.kr(nil)}, ${7:\vLinesAt.kr(nil)}, ${8:\linesAlpha.kr(0.5)}, ${9:\discrete.kr(false)}, ${10:\min.kr(nil)}, ${11:\max.kr(nil)})
+endsnippet
+
+snippet MultiPlot.inRect
+MultiPlot.inRect(${1:\arrays.kr(nil)}, ${2:\rect.kr(nil)}, ${3:\colors.kr(nil)}, ${4:\hLinesAt.kr(nil)}, ${5:\vLinesAt.kr(nil)}, ${6:\linesAlpha.kr(0.5)}, ${7:\discrete.kr(false)}, ${8:\min.kr(nil)}, ${9:\max.kr(nil)})
+endsnippet
+
+snippet MultiPlot.plotOne
+MultiPlot.plotOne(${1:\array.kr(nil)}, ${2:\rect.kr(nil)}, ${3:\color.kr(nil)}, ${4:\min.kr(nil)}, ${5:\max.kr(nil)}, ${6:\arrSize.kr(nil)}, ${7:\discrete.kr(false)})
+endsnippet
+
+snippet MultiServer.new
+MultiServer.new(${1:\names.kr(nil)}, ${2:\adresses.kr(nil)}, ${3:\options.kr(nil)}, ${4:\hostName.kr(nil)}, ${5:\synthDefDir.kr(nil)}, ${6:\clientID.kr(0)})
+endsnippet
+
+snippet MultiServer.row
+MultiServer.row(${1:\n.kr(1)}, ${2:\startName.kr(server)}, ${3:\startAddr.kr(nil)}, ${4:\options.kr(nil)}, ${5:\hostName.kr(nil)}, ${6:\synthDefDir.kr(nil)}, ${7:\clientID.kr(0)})
+endsnippet
+
+snippet MultiServer.rowFindHost
+MultiServer.rowFindHost(${1:\hostName.kr(nil)}, ${2:\n.kr(1)}, ${3:\startName.kr(server)}, ${4:\startPort.kr(58000)}, ${5:\options.kr(nil)}, ${6:\synthDefDir.kr(nil)}, ${7:\clientID.kr(0)})
+endsnippet
+
 snippet MultiSliderView.qtClass
 MultiSliderView.qtClass(${1:})
 endsnippet
@@ -6542,6 +7458,46 @@ endsnippet
 
 snippet NamedControl.initDict
 NamedControl.initDict(${1:})
+endsnippet
+
+snippet NanoKONTROL.new
+NanoKONTROL.new(${1:\height.kr(120)}, ${2:\initMIDI.kr(true)})
+endsnippet
+
+snippet NanoKONTROL.findPort
+NanoKONTROL.findPort(${1:})
+endsnippet
+
+snippet NanoKONTROL.buttons
+NanoKONTROL.buttons(${1:\scene.kr(nil)})
+endsnippet
+
+snippet NanoKONTROL.sliders
+NanoKONTROL.sliders(${1:\scene.kr(nil)})
+endsnippet
+
+snippet NanoKONTROL.knobs
+NanoKONTROL.knobs(${1:\scene.kr(nil)})
+endsnippet
+
+snippet NanoKONTROL.setScene
+NanoKONTROL.setScene(${1:\scene.kr(0)})
+endsnippet
+
+snippet NanoKONTROL.currentScene
+NanoKONTROL.currentScene(${1:})
+endsnippet
+
+snippet NanoKONTROL.isInScene
+NanoKONTROL.isInScene(${1:\scene.kr(nil)})
+endsnippet
+
+snippet NanoKONTROL.makeWindow
+NanoKONTROL.makeWindow(${1:\height.kr(120)})
+endsnippet
+
+snippet NanoKONTROL.makeScene
+NanoKONTROL.makeScene(${1:\height.kr(120)}, ${2:\scene.kr(1)}, ${3:\view.kr(nil)})
 endsnippet
 
 snippet Ndef.initClass
@@ -6744,6 +7700,22 @@ snippet Notch.ar
 Notch.ar(${1:\in.kr(nil)}, ${2:\freq.kr(440)}, ${3:\rq.kr(0.1)}, ${4:\mul.kr(1)}, ${5:\add.kr(0)})
 endsnippet
 
+snippet Note.new
+Note.new(${1:\name.kr(nil)}, ${2:\midi.kr(nil)}, ${3:\freq.kr(nil)}, ${4:\cents.kr(0)})
+endsnippet
+
+snippet Note.calculate
+Note.calculate(${1:\name.kr(nil)}, ${2:\midi.kr(nil)}, ${3:\freq.kr(nil)}, ${4:\cents.kr(nil)}, ${5:\changeName.kr(nil)}, ${6:\forceSign.kr(nil)})
+endsnippet
+
+snippet Note.rand
+Note.rand(${1:\lo.kr(C-2)}, ${2:\hi.kr(G8)}, ${3:\step.kr(1)})
+endsnippet
+
+snippet Note.makeScale
+Note.makeScale(${1:\groundNote.kr(C3)}, ${2:\type.kr(major)}, ${3:\startNote.kr(nil)}, ${4:\endNote.kr(nil)})
+endsnippet
+
 snippet NoteOffResponder.init
 NoteOffResponder.init(${1:})
 endsnippet
@@ -6830,6 +7802,10 @@ endsnippet
 
 snippet NumRunningSynths.kr
 NumRunningSynths.kr(${1:})
+endsnippet
+
+snippet Number.speedOfSound
+Number.speedOfSound(${1:\temp.kr(15)}, ${2:\substance.kr(air)})
 endsnippet
 
 snippet NumberBox.qtClass
@@ -6984,6 +7960,14 @@ snippet Object.implClass
 Object.implClass(${1:})
 endsnippet
 
+snippet Object.help
+Object.help(${1:})
+endsnippet
+
+snippet Object.newFromDict
+Object.newFromDict(${1:\dict.kr(nil)})
+endsnippet
+
 snippet ObjectGui.new
 ObjectGui.new(${1:\model.kr(nil)})
 endsnippet
@@ -7036,8 +8020,16 @@ snippet OnePole.kr
 OnePole.kr(${1:\in.kr(0.0)}, ${2:\coef.kr(0.5)}, ${3:\mul.kr(1.0)}, ${4:\add.kr(0.0)})
 endsnippet
 
+snippet OnePole.coeffs
+OnePole.coeffs(${1:\sr.kr(44100)}, ${2:\coef.kr(0.5)})
+endsnippet
+
 snippet OneShotStream.new
 OneShotStream.new(${1:\value.kr(nil)})
+endsnippet
+
+snippet OneZero.coeffs
+OneZero.coeffs(${1:\sr.kr(44100)}, ${2:\coef.kr(0.5)})
 endsnippet
 
 snippet OnsetStatistics.kr
@@ -7054,6 +8046,10 @@ endsnippet
 
 snippet Operand.new
 Operand.new(${1:\value.kr(nil)})
+endsnippet
+
+snippet OptionView.new
+OptionView.new(${1:\parent.kr(nil)}, ${2:\bounds.kr(nil)})
 endsnippet
 
 snippet Order.new
@@ -7456,6 +8452,26 @@ snippet PanB2.kr
 PanB2.kr(${1:\in.kr(nil)}, ${2:\azimuth.kr(0)}, ${3:\gain.kr(1)})
 endsnippet
 
+snippet PanBin.ar
+PanBin.ar(${1:\in.kr(nil)}, ${2:\distance.kr(1.4)}, ${3:\angle.kr(0)}, ${4:\maxDist.kr(500)})
+endsnippet
+
+snippet PanBinAz.ar
+PanBinAz.ar(${1:\numChans.kr(nil)}, ${2:\in.kr(nil)}, ${3:\distance.kr(1.4)}, ${4:\angle.kr(0)}, ${5:\maxDist.kr(500)})
+endsnippet
+
+snippet PanOut.pan
+PanOut.pan(${1:\in.kr(nil)}, ${2:\pos.kr(0)})
+endsnippet
+
+snippet PanOut.switchBus
+PanOut.switchBus(${1:\bus.kr(0)}, ${2:\in.kr(nil)}, ${3:\wrap.kr(nil)})
+endsnippet
+
+snippet PanOut.ar
+PanOut.ar(${1:\bus.kr(0)}, ${2:\channel.kr(nil)}, ${3:\wrap.kr(nil)})
+endsnippet
+
 snippet PanX.ar
 PanX.ar(${1:\numChans.kr(nil)}, ${2:\in.kr(nil)}, ${3:\pos.kr(0.0)}, ${4:\level.kr(1.0)}, ${5:\width.kr(2.0)})
 endsnippet
@@ -7478,6 +8494,10 @@ endsnippet
 
 snippet ParamView.new
 ParamView.new(${1:\parent.kr(nil)}, ${2:\bounds.kr(nil)}, ${3:\label.kr(nil)}, ${4:\spec.kr(nil)}, ${5:\action.kr(nil)}, ${6:\initVal.kr(nil)}, ${7:\initAction.kr(false)})
+endsnippet
+
+snippet ParsedString.new
+ParsedString.new(${1:\string.kr()})
 endsnippet
 
 snippet PartConv.ar
@@ -7610,6 +8630,10 @@ endsnippet
 
 snippet Pcauchy.new
 Pcauchy.new(${1:\mean.kr(0.0)}, ${2:\spread.kr(1.0)}, ${3:\length.kr(inf)})
+endsnippet
+
+snippet Pcbrown.new
+Pcbrown.new(${1:\lo.kr(0.0)}, ${2:\hi.kr(1.0)}, ${3:\step.kr(0.125)}, ${4:\center.kr(nil)}, ${5:\length.kr(inf)}, ${6:\startVal.kr(nil)})
 endsnippet
 
 snippet Pchain.new
@@ -7996,8 +9020,64 @@ snippet Pen.nonimpl
 Pen.nonimpl(${1:\methodName.kr(nil)})
 endsnippet
 
+snippet Pen.splineCurve
+Pen.splineCurve(${1:\point1.kr(nil)}, ${2:\point2.kr(nil)}, ${3:\cpoint1.kr(nil)}, ${4:\cpoint2.kr(nil)}, ${5:\div.kr(10)})
+endsnippet
+
+snippet Pen.roundedRect
+Pen.roundedRect(${1:\rect.kr(nil)}, ${2:\radius.kr(nil)})
+endsnippet
+
+snippet Pen.extrudedRect
+Pen.extrudedRect(${1:\rect.kr(nil)}, ${2:\radius.kr(nil)}, ${3:\width.kr(2)}, ${4:\angle.kr(nil)}, ${5:\inverse.kr(false)}, ${6:\colors.kr(nil)})
+endsnippet
+
+snippet Pen.circle
+Pen.circle(${1:\rect.kr(nil)})
+endsnippet
+
+snippet Pen.extrudedCircle
+Pen.extrudedCircle(${1:\rect.kr(nil)}, ${2:\width.kr(2)}, ${3:\angle.kr(nil)}, ${4:\inverse.kr(false)}, ${5:\colors.kr(nil)})
+endsnippet
+
+snippet Pen.transformToRect
+Pen.transformToRect(${1:\rect.kr(nil)}, ${2:\fromRect.kr(nil)}, ${3:\keepRatio.kr(false)}, ${4:\scale.kr(1)}, ${5:\move.kr(0.5)})
+endsnippet
+
+snippet Pen.drawIcon
+Pen.drawIcon(${1:\symbol.kr(play)}, ${2:\rect.kr(nil)}, ${3:\args.kr([  ])})
+endsnippet
+
+snippet Pen.addCurve
+Pen.addCurve(${1:\start.kr(nil)}, ${2:\c1.kr(nil)}, ${3:\c2.kr(nil)}, ${4:\end.kr(nil)}, ${5:\div.kr(10)})
+endsnippet
+
+snippet Pen.addQuadCurve
+Pen.addQuadCurve(${1:\start.kr(nil)}, ${2:\c1.kr(nil)}, ${3:\end.kr(nil)}, ${4:\div.kr(10)})
+endsnippet
+
+snippet Pen.drawSpline
+Pen.drawSpline(${1:\start.kr(nil)}, ${2:\c1.kr(nil)}, ${3:\c2.kr(nil)}, ${4:\end.kr(nil)}, ${5:\strokeColor.kr(nil)}, ${6:\controlColor.kr(nil)}, ${7:\div.kr(10)})
+endsnippet
+
+snippet Pen.arrow
+Pen.arrow(${1:\start.kr(nil)}, ${2:\end.kr(nil)}, ${3:\width.kr(5)}, ${4:\arrowAngle.kr(1.5707963267949)})
+endsnippet
+
+snippet Pen.arrow_round
+Pen.arrow_round(${1:\start.kr(nil)}, ${2:\end.kr(nil)}, ${3:\width.kr(5)}, ${4:\arrowAngle.kr(1.5707963267949)})
+endsnippet
+
+snippet Pen.cross
+Pen.cross(${1:\center.kr(nil)}, ${2:\radius.kr(5)}, ${3:\shape.kr(+)})
+endsnippet
+
 snippet Penvir.new
 Penvir.new(${1:\envir.kr(nil)}, ${2:\pattern.kr(nil)}, ${3:\independent.kr(true)})
+endsnippet
+
+snippet PenvirGet.new
+PenvirGet.new(${1:\key.kr(nil)}, ${2:\default.kr(0)}, ${3:\environment.kr(nil)})
 endsnippet
 
 snippet Perlin3.ar
@@ -8128,6 +9208,10 @@ snippet Phenon.new
 Phenon.new(${1:\a.kr(1.3)}, ${2:\b.kr(0.3)}, ${3:\x.kr(0.30501993062401)}, ${4:\y.kr(0.20938865431933)}, ${5:\n.kr(true)})
 endsnippet
 
+snippet Phrand.new
+Phrand.new(${1:\list.kr(nil)}, ${2:\histSize.kr(2)}, ${3:\repeats.kr(1)})
+endsnippet
+
 snippet Phrase.new
 Phrase.new(${1:\phrase.kr(nil)}, ${2:\returnProbs.kr(nil)}, ${3:\loopReturns.kr(true)})
 endsnippet
@@ -8142,6 +9226,26 @@ endsnippet
 
 snippet PingPong.ar
 PingPong.ar(${1:\bufnum.kr(0)}, ${2:\inputs.kr(nil)}, ${3:\delayTime.kr(nil)}, ${4:\feedback.kr(0.7)}, ${5:\rotate.kr(1)})
+endsnippet
+
+snippet Pint.initClass
+Pint.initClass(${1:})
+endsnippet
+
+snippet Pint.new
+Pint.new(${1:\pattern.kr(0.0)}, ${2:\rate.kr(1)}, ${3:\length.kr(inf)}, ${4:\interpolation.kr(2)})
+endsnippet
+
+snippet PintC.new
+PintC.new(${1:\pattern.kr(0.0)}, ${2:\rate.kr(1)}, ${3:\length.kr(inf)})
+endsnippet
+
+snippet PintL.new
+PintL.new(${1:\pattern.kr(0.0)}, ${2:\rate.kr(1)}, ${3:\length.kr(inf)})
+endsnippet
+
+snippet PintN.new
+PintN.new(${1:\pattern.kr(0.0)}, ${2:\rate.kr(1)}, ${3:\length.kr(inf)})
 endsnippet
 
 snippet Pipe.new
@@ -8308,6 +9412,38 @@ snippet PlayBuf.kr
 PlayBuf.kr(${1:\numChannels.kr(nil)}, ${2:\bufnum.kr(0)}, ${3:\rate.kr(1.0)}, ${4:\trigger.kr(1.0)}, ${5:\startPos.kr(0.0)}, ${6:\loop.kr(0.0)}, ${7:\doneAction.kr(0)})
 endsnippet
 
+snippet PlayBufAlt.ar
+PlayBufAlt.ar(${1:\numChannels.kr(nil)}, ${2:\bufnum.kr(0)}, ${3:\rate.kr(1.0)}, ${4:\trigger.kr(1.0)}, ${5:\startPos.kr(0.0)}, ${6:\loop.kr(1.0)}, ${7:\lag.kr(0.05)}, ${8:\n.kr(2)})
+endsnippet
+
+snippet PlayBufAlt.arOld
+PlayBufAlt.arOld(${1:\numChannels.kr(nil)}, ${2:\bufnum.kr(0)}, ${3:\rate.kr(1.0)}, ${4:\trigger.kr(1.0)}, ${5:\startPos.kr(0.0)}, ${6:\loop.kr(1.0)}, ${7:\lag.kr(0.05)})
+endsnippet
+
+snippet PlayBufAlt.ar1
+PlayBufAlt.ar1(${1:\numChannels.kr(nil)}, ${2:\bufnum.kr(0)}, ${3:\rate.kr(1.0)}, ${4:\trigger.kr(1.0)}, ${5:\startPos.kr(0.0)}, ${6:\loop.kr(1.0)}, ${7:\lag.kr(0.05)})
+endsnippet
+
+snippet PlayBufCF.ar
+PlayBufCF.ar(${1:\numChannels.kr(nil)}, ${2:\bufnum.kr(0)}, ${3:\rate.kr(1.0)}, ${4:\trigger.kr(1.0)}, ${5:\startPos.kr(0.0)}, ${6:\loop.kr(0.0)}, ${7:\lag.kr(0.1)}, ${8:\n.kr(2)})
+endsnippet
+
+snippet PlayBufCF.arOld
+PlayBufCF.arOld(${1:\numChannels.kr(nil)}, ${2:\bufnum.kr(0)}, ${3:\rate.kr(1.0)}, ${4:\trigger.kr(1.0)}, ${5:\startPos.kr(0.0)}, ${6:\loop.kr(0.0)}, ${7:\lag.kr(0.1)}, ${8:\safeMode.kr(true)})
+endsnippet
+
+snippet PlayBufFree.ar
+PlayBufFree.ar(${1:\numChannels.kr(nil)}, ${2:\bufnum.kr(0)}, ${3:\rate.kr(1.0)}, ${4:\trigger.kr(1.0)}, ${5:\startPos.kr(0.0)}, ${6:\loop.kr(0.0)})
+endsnippet
+
+snippet PlayBufFree.generateSynthDef
+PlayBufFree.generateSynthDef(${1:\numCha.kr(1)})
+endsnippet
+
+snippet PlayBufLoop.ar
+PlayBufLoop.ar(${1:\numChannels.kr(nil)}, ${2:\bufnum.kr(0)}, ${3:\rate.kr(1.0)}, ${4:\startPos.kr(0.0)}, ${5:\endPos.kr(1.0)}, ${6:\loop.kr(0.0)}, ${7:\keepLoop.kr(0)})
+endsnippet
+
 snippet Plazy.new
 Plazy.new(${1:\func.kr(nil)})
 endsnippet
@@ -8334,6 +9470,10 @@ endsnippet
 
 snippet Plot.new
 Plot.new(${1:\plotter.kr(nil)})
+endsnippet
+
+snippet PlotPoint.new
+PlotPoint.new(${1:\point.kr(nil)})
 endsnippet
 
 snippet Plotter.new
@@ -8368,6 +9508,14 @@ snippet Point.big
 Point.big(${1:\x.kr(nil)}, ${2:\y.kr(nil)})
 endsnippet
 
+snippet Point.rand
+Point.rand(${1:\x.kr(1.0)}, ${2:\y.kr(1.0)})
+endsnippet
+
+snippet Point.rand2
+Point.rand2(${1:\x.kr(1.0)}, ${2:\y.kr(1.0)})
+endsnippet
+
 snippet PointArray.new
 PointArray.new(${1:\n.kr(nil)})
 endsnippet
@@ -8398,6 +9546,14 @@ endsnippet
 
 snippet Poll.new1
 Poll.new1(${1:\rate.kr(nil)}, ${2:\trig.kr(nil)}, ${3:\in.kr(nil)}, ${4:\label.kr(nil)}, ${5:\trigid.kr(nil)})
+endsnippet
+
+snippet PolyLine.new
+PolyLine.new(${1:\points.kr([  ])})
+endsnippet
+
+snippet PolySpline.new
+PolySpline.new(${1:\points.kr([  ])})
 endsnippet
 
 snippet PopUpMenu.qtClass
@@ -8468,6 +9624,10 @@ snippet Ppoisson.new
 Ppoisson.new(${1:\mean.kr(1)}, ${2:\length.kr(inf)})
 endsnippet
 
+snippet Ppostln.new
+Ppostln.new(${1:\pattern.kr(nil)}, ${2:\prefix.kr(nil)})
+endsnippet
+
 snippet Pprob.new
 Pprob.new(${1:\distribution.kr(nil)}, ${2:\lo.kr(0.0)}, ${3:\hi.kr(1.0)}, ${4:\length.kr(inf)}, ${5:\tableSize.kr(nil)})
 endsnippet
@@ -8502,6 +9662,46 @@ endsnippet
 
 snippet PrintVal.kr
 PrintVal.kr(${1:\in.kr(nil)}, ${2:\numblocks.kr(100)}, ${3:\id.kr(0)})
+endsnippet
+
+snippet PrivateIn.busClass
+PrivateIn.busClass(${1:})
+endsnippet
+
+snippet PrivateIn.ar
+PrivateIn.ar(${1:\bus.kr(0)}, ${2:\numChannels.kr(1)})
+endsnippet
+
+snippet PrivateInFeedback.busClass
+PrivateInFeedback.busClass(${1:})
+endsnippet
+
+snippet PrivateOffsetOut.busClass
+PrivateOffsetOut.busClass(${1:})
+endsnippet
+
+snippet PrivateOut.busClass
+PrivateOut.busClass(${1:})
+endsnippet
+
+snippet PrivateOut.ar
+PrivateOut.ar(${1:\bus.kr(0)}, ${2:\channelsArray.kr(nil)})
+endsnippet
+
+snippet PrivatePanOut.busClass
+PrivatePanOut.busClass(${1:})
+endsnippet
+
+snippet PrivateReplaceOut.busClass
+PrivateReplaceOut.busClass(${1:})
+endsnippet
+
+snippet PrivateXOut.busClass
+PrivateXOut.busClass(${1:})
+endsnippet
+
+snippet PrivateXOut.ar
+PrivateXOut.ar(${1:\bus.kr(0)}, ${2:\xfade.kr(nil)}, ${3:\channelsArray.kr(nil)})
 endsnippet
 
 snippet Process.tailCallOptimize
@@ -8718,6 +9918,18 @@ endsnippet
 
 snippet PulseDivider.kr
 PulseDivider.kr(${1:\trig.kr(0.0)}, ${2:\div.kr(2.0)}, ${3:\start.kr(0.0)})
+endsnippet
+
+snippet PulseTrain.ar
+PulseTrain.ar(${1:\in.kr(nil)}, ${2:\n.kr(4)}, ${3:\t.kr(0.25)}, ${4:\lfirst.kr(0)}, ${5:\lrest.kr(1)})
+endsnippet
+
+snippet PulseTrain.arD
+PulseTrain.arD(${1:\in.kr(nil)}, ${2:\n.kr(3)}, ${3:\t.kr(0.25)}, ${4:\lfirst.kr(0)}, ${5:\lrest.kr(1)}, ${6:\maxN.kr(3)}, ${7:\maxDel.kr(1.0)})
+endsnippet
+
+snippet PulseTrain.kr
+PulseTrain.kr(${1:\in.kr(nil)}, ${2:\n.kr(4)}, ${3:\t.kr(0.25)}, ${4:\lfirst.kr(0)}, ${5:\lrest.kr(1)})
 endsnippet
 
 snippet Punop.new
@@ -9360,6 +10572,10 @@ snippet RMShelf2.ar
 RMShelf2.ar(${1:\in.kr(nil)}, ${2:\freq.kr(440.0)}, ${3:\k.kr(0)}, ${4:\mul.kr(1.0)}, ${5:\add.kr(0.0)})
 endsnippet
 
+snippet RadialGradient.new
+RadialGradient.new(${1:\innerCircleCenter.kr(nil)}, ${2:\outerCircleCenter.kr(nil)}, ${3:\startRadius.kr(nil)}, ${4:\endRadius.kr(nil)}, ${5:\color0.kr(nil)}, ${6:\color1.kr(nil)})
+endsnippet
+
 snippet Rand.new
 Rand.new(${1:\lo.kr(0.0)}, ${2:\hi.kr(1.0)})
 endsnippet
@@ -9400,6 +10616,42 @@ snippet ReadableNodeIDAllocator.new
 ReadableNodeIDAllocator.new(${1:\clientID.kr(0)}, ${2:\lowestTempID.kr(1000)}, ${3:\numClients.kr(32)})
 endsnippet
 
+snippet ReceiveReply.defaultCmdName
+ReceiveReply.defaultCmdName(${1:})
+endsnippet
+
+snippet ReceiveReply.initClass
+ReceiveReply.initClass(${1:})
+endsnippet
+
+snippet ReceiveReply.new
+ReceiveReply.new(${1:\source.kr(nil)}, ${2:\action.kr(nil)}, ${3:\cmdName.kr(nil)}, ${4:\id.kr(nil)})
+endsnippet
+
+snippet ReceiveReply.free
+ReceiveReply.free(${1:})
+endsnippet
+
+snippet ReceiveReply.remove
+ReceiveReply.remove(${1:})
+endsnippet
+
+snippet ReceiveReply.cmdPeriod
+ReceiveReply.cmdPeriod(${1:})
+endsnippet
+
+snippet ReceiveReply.oneShot
+ReceiveReply.oneShot(${1:\source.kr(nil)}, ${2:\action.kr(nil)}, ${3:\cmdName.kr(nil)}, ${4:\id.kr(nil)})
+endsnippet
+
+snippet ReceiveTrig.defaultCmdName
+ReceiveTrig.defaultCmdName(${1:})
+endsnippet
+
+snippet ReceiveTrig.new
+ReceiveTrig.new(${1:\source.kr(nil)}, ${2:\action.kr(nil)}, ${3:\id.kr(nil)})
+endsnippet
+
 snippet RecordBuf.ar
 RecordBuf.ar(${1:\inputArray.kr(nil)}, ${2:\bufnum.kr(0)}, ${3:\offset.kr(0.0)}, ${4:\recLevel.kr(1.0)}, ${5:\preLevel.kr(0.0)}, ${6:\run.kr(1.0)}, ${7:\loop.kr(1.0)}, ${8:\trigger.kr(1.0)}, ${9:\doneAction.kr(0)})
 endsnippet
@@ -9436,12 +10688,32 @@ snippet Rect.aboutPoint
 Rect.aboutPoint(${1:\point.kr(nil)}, ${2:\dx.kr(nil)}, ${3:\dy.kr(nil)})
 endsnippet
 
+snippet Rect.multiNew
+Rect.multiNew(${1:\args.kr([  ])})
+endsnippet
+
+snippet Rect.rand
+Rect.rand(${1:\x.kr(1.0)}, ${2:\y.kr(1.0)}, ${3:\w.kr(1.0)}, ${4:\h.kr(1.0)})
+endsnippet
+
+snippet Rect.rand2
+Rect.rand2(${1:\x.kr(1.0)}, ${2:\y.kr(1.0)}, ${3:\w.kr(1.0)}, ${4:\h.kr(1.0)})
+endsnippet
+
 snippet Ref.new
 Ref.new(${1:\thing.kr(nil)})
 endsnippet
 
 snippet Reflections.ar
 Reflections.ar(${1:\pointsource.kr(nil)}, ${2:\rooml.kr(nil)}, ${3:\roomw.kr(nil)}, ${4:\absorbtion.kr(0.9)}, ${5:\directivity.kr(nil)}, ${6:\spkrs.kr([  ])})
+endsnippet
+
+snippet RemoveBadValues.ar
+RemoveBadValues.ar(${1:\in.kr(nil)}, ${2:\post.kr(2)})
+endsnippet
+
+snippet RemoveBadValues.kr
+RemoveBadValues.kr(${1:\in.kr(nil)}, ${2:\post.kr(2)})
 endsnippet
 
 snippet Resonz.ar
@@ -9516,6 +10788,86 @@ snippet Rotate2.kr
 Rotate2.kr(${1:\x.kr(nil)}, ${2:\y.kr(nil)}, ${3:\pos.kr(0.0)})
 endsnippet
 
+snippet RotateL.selectClass
+RotateL.selectClass(${1:})
+endsnippet
+
+snippet RotateN.new1
+RotateN.new1(${1:\rate.kr(nil)}, ${2:\n.kr(0)}, ${3:\array.kr(nil)})
+endsnippet
+
+snippet RotateN.ar
+RotateN.ar(${1:\n.kr(0)}, ${2:\array.kr(nil)})
+endsnippet
+
+snippet RotateN.kr
+RotateN.kr(${1:\n.kr(0)}, ${2:\array.kr(nil)})
+endsnippet
+
+snippet RotateN.selectClass
+RotateN.selectClass(${1:})
+endsnippet
+
+snippet RoundButton.paletteExample
+RoundButton.paletteExample(${1:\parent.kr(nil)}, ${2:\bounds.kr(nil)})
+endsnippet
+
+snippet RoundNumberBox.initClass
+RoundNumberBox.initClass(${1:})
+endsnippet
+
+snippet RoundNumberBox.defaultFont
+RoundNumberBox.defaultFont(${1:})
+endsnippet
+
+snippet RoundNumberBox.defaultFont_
+RoundNumberBox.defaultFont_(${1:\font.kr(nil)})
+endsnippet
+
+snippet RoundNumberBox.paletteExample
+RoundNumberBox.paletteExample(${1:\parent.kr(nil)}, ${2:\bounds.kr(nil)})
+endsnippet
+
+snippet RoundPan.ar
+RoundPan.ar(${1:\numChans.kr(2)}, ${2:\in.kr(nil)}, ${3:\pos.kr(0.0)}, ${4:\level.kr(1)}, ${5:\distance.kr(1)}, ${6:\orientation.kr(0.5)}, ${7:\speakerRadius.kr(0.19)}, ${8:\dbFactor.kr(0)}, ${9:\panAzAmt.kr(1)})
+endsnippet
+
+snippet RoundView.new
+RoundView.new(${1:\parent.kr(nil)}, ${2:\bounds.kr(nil)}, ${3:\rest.kr([  ])})
+endsnippet
+
+snippet RoundView.prShouldExpand
+RoundView.prShouldExpand(${1:\v.kr(nil)})
+endsnippet
+
+snippet RoundView.useWithSkin
+RoundView.useWithSkin(${1:\skin.kr(nil)}, ${2:\function.kr(nil)})
+endsnippet
+
+snippet RoundView.pushSkin
+RoundView.pushSkin(${1:\skin.kr(nil)})
+endsnippet
+
+snippet RoundView.popSkin
+RoundView.popSkin(${1:})
+endsnippet
+
+snippet RoundView.skin_
+RoundView.skin_(${1:\skin.kr(nil)})
+endsnippet
+
+snippet RoundView.skin
+RoundView.skin(${1:})
+endsnippet
+
+snippet RoundedRect.new
+RoundedRect.new(${1:\left.kr(0)}, ${2:\top.kr(0)}, ${3:\width.kr(0)}, ${4:\height.kr(0)}, ${5:\radius.kr(nil)})
+endsnippet
+
+snippet RoundedRect.fromRect
+RoundedRect.fromRect(${1:\inRect.kr(nil)}, ${2:\radius.kr(nil)})
+endsnippet
+
 snippet Routine.run
 Routine.run(${1:\func.kr(nil)}, ${2:\stackSize.kr(nil)}, ${3:\clock.kr(nil)}, ${4:\quant.kr(nil)})
 endsnippet
@@ -9530,6 +10882,10 @@ endsnippet
 
 snippet RunningSum.rms
 RunningSum.rms(${1:\in.kr(nil)}, ${2:\numsamp.kr(40)})
+endsnippet
+
+snippet SCAlert.new
+SCAlert.new(${1:\string.kr(Warning!)}, ${2:\buttons.kr(nil)}, ${3:\actions.kr(nil)}, ${4:\color.kr(nil)}, ${5:\background.kr(nil)}, ${6:\iconName.kr(warning)}, ${7:\border.kr(true)})
 endsnippet
 
 snippet SCDoc.parseFileFull
@@ -9828,12 +11184,76 @@ snippet SCNvimJSON.prAddAssoc
 SCNvimJSON.prAddAssoc(${1:\key.kr(nil)}, ${2:\value.kr(nil)}, ${3:\isLastItem.kr(nil)})
 endsnippet
 
+snippet SCRequestString.new
+SCRequestString.new(${1:\default.kr()}, ${2:\question.kr(Please enter string:)}, ${3:\action.kr(nil)})
+endsnippet
+
 snippet SCScope.qtClass
 SCScope.qtClass(${1:})
 endsnippet
 
 snippet SLOnset.kr
 SLOnset.kr(${1:\input.kr(nil)}, ${2:\memorysize1.kr(20)}, ${3:\before.kr(5)}, ${4:\after.kr(5)}, ${5:\threshold.kr(10)}, ${6:\hysteresis.kr(10)}, ${7:\mul.kr(1.0)}, ${8:\add.kr(0.0)})
+endsnippet
+
+snippet SMPTE.initClass
+SMPTE.initClass(${1:})
+endsnippet
+
+snippet SMPTE.new
+SMPTE.new(${1:\inSeconds.kr(0)}, ${2:\fps.kr(nil)})
+endsnippet
+
+snippet SMPTE.hours
+SMPTE.hours(${1:\inHours.kr(0)}, ${2:\fps.kr(nil)})
+endsnippet
+
+snippet SMPTE.minutes
+SMPTE.minutes(${1:\inMinutes.kr(0)}, ${2:\fps.kr(nil)})
+endsnippet
+
+snippet SMPTE.frames
+SMPTE.frames(${1:\inFrames.kr(0)}, ${2:\fps.kr(nil)})
+endsnippet
+
+snippet SMPTE.subFrames
+SMPTE.subFrames(${1:\inSubFrames.kr(0)}, ${2:\fps.kr(nil)})
+endsnippet
+
+snippet SMPTE.array
+SMPTE.array(${1:\inArray.kr(nil)}, ${2:\fps.kr(nil)})
+endsnippet
+
+snippet SMPTE.type
+SMPTE.type(${1:\input.kr(0)}, ${2:\type.kr(nil)}, ${3:\fps.kr(nil)})
+endsnippet
+
+snippet SMPTE.fromMIDIFileArray
+SMPTE.fromMIDIFileArray(${1:\inArray.kr(nil)})
+endsnippet
+
+snippet SMPTE.fromDate
+SMPTE.fromDate(${1:\date.kr(nil)})
+endsnippet
+
+snippet SMPTE.fromDateHours
+SMPTE.fromDateHours(${1:\date.kr(nil)})
+endsnippet
+
+snippet SMPTE.localtime
+SMPTE.localtime(${1:})
+endsnippet
+
+snippet SMPTE.fromString
+SMPTE.fromString(${1:\string.kr(nil)}, ${2:\fps.kr(nil)})
+endsnippet
+
+snippet SMPTE.minSec
+SMPTE.minSec(${1:\minutes.kr(0)}, ${2:\seconds.kr(0)})
+endsnippet
+
+snippet SMPTEView.new
+SMPTEView.new(${1:\parent.kr(nil)}, ${2:\bnds.kr(nil)}, ${3:\fontSize.kr(20)})
 endsnippet
 
 snippet SMS.ar
@@ -9904,12 +11324,176 @@ snippet SOS.kr
 SOS.kr(${1:\in.kr(0.0)}, ${2:\a0.kr(0.0)}, ${3:\a1.kr(0.0)}, ${4:\a2.kr(0.0)}, ${5:\b1.kr(0.0)}, ${6:\b2.kr(0.0)}, ${7:\mul.kr(1.0)}, ${8:\add.kr(0.0)})
 endsnippet
 
+snippet SOS.coeffs
+SOS.coeffs(${1:\sr.kr(44100)}, ${2:\a0.kr(0.0)}, ${3:\a1.kr(0.0)}, ${4:\a2.kr(0.0)}, ${5:\b1.kr(0.0)}, ${6:\b2.kr(0.0)})
+endsnippet
+
+snippet SSHServer.new
+SSHServer.new(${1:\name.kr(nil)}, ${2:\addr.kr(nil)}, ${3:\options.kr(nil)}, ${4:\clientID.kr(0)}, ${5:\sshLogin.kr(nil)})
+endsnippet
+
+snippet SSHServer.quitAll
+SSHServer.quitAll(${1:})
+endsnippet
+
+snippet SSHServer.killAll
+SSHServer.killAll(${1:\login.kr(nil)})
+endsnippet
+
 snippet SVF.ar
 SVF.ar(${1:\signal.kr(nil)}, ${2:\cutoff.kr(2200.0)}, ${3:\res.kr(0.1)}, ${4:\lowpass.kr(1.0)}, ${5:\bandpass.kr(0.0)}, ${6:\highpass.kr(0.0)}, ${7:\notch.kr(0.0)}, ${8:\peak.kr(0.0)}, ${9:\mul.kr(1.0)}, ${10:\add.kr(0.0)})
 endsnippet
 
 snippet SVF.kr
 SVF.kr(${1:\signal.kr(nil)}, ${2:\cutoff.kr(2200.0)}, ${3:\res.kr(0.1)}, ${4:\lowpass.kr(1.0)}, ${5:\bandpass.kr(0.0)}, ${6:\highpass.kr(0.0)}, ${7:\notch.kr(0.0)}, ${8:\peak.kr(0.0)}, ${9:\mul.kr(1.0)}, ${10:\add.kr(0.0)})
+endsnippet
+
+snippet SVGCircle.new
+SVGCircle.new(${1:\cx.kr(0)}, ${2:\cy.kr(0)}, ${3:\r.kr(0)}, ${4:\name.kr(nil)}, ${5:\strokeColor.kr(nil)}, ${6:\fillColor.kr(nil)}, ${7:\strokeWidth.kr(nil)}, ${8:\transform.kr(nil)})
+endsnippet
+
+snippet SVGCircle.fromDOMElement
+SVGCircle.fromDOMElement(${1:\tag.kr(nil)})
+endsnippet
+
+snippet SVGEllipse.new
+SVGEllipse.new(${1:\cx.kr(0)}, ${2:\cy.kr(0)}, ${3:\rx.kr(0)}, ${4:\ry.kr(0)}, ${5:\name.kr(nil)}, ${6:\strokeColor.kr(nil)}, ${7:\fillColor.kr(nil)}, ${8:\strokeWidth.kr(nil)}, ${9:\transform.kr(nil)})
+endsnippet
+
+snippet SVGEllipse.fromRect
+SVGEllipse.fromRect(${1:\rect.kr(nil)}, ${2:\name.kr(nil)}, ${3:\strokeColor.kr(nil)}, ${4:\fillColor.kr(nil)}, ${5:\strokeWidth.kr(nil)}, ${6:\transform.kr(nil)})
+endsnippet
+
+snippet SVGEllipse.fromDOMElement
+SVGEllipse.fromDOMElement(${1:\tag.kr(nil)})
+endsnippet
+
+snippet SVGFile.new
+SVGFile.new(${1:\path.kr(nil)}, ${2:\objects.kr(nil)}, ${3:\width.kr(nil)}, ${4:\height.kr(nil)})
+endsnippet
+
+snippet SVGFile.read
+SVGFile.read(${1:\path.kr(nil)})
+endsnippet
+
+snippet SVGFile.parseXML
+SVGFile.parseXML(${1:\xml.kr()}, ${2:\path.kr(nil)})
+endsnippet
+
+snippet SVGFile.headerFilePath
+SVGFile.headerFilePath(${1:})
+endsnippet
+
+snippet SVGGraphicObject.newCopyArgs
+SVGGraphicObject.newCopyArgs(${1:\args.kr([  ])})
+endsnippet
+
+snippet SVGGroup.new
+SVGGroup.new(${1:\objects.kr(nil)}, ${2:\name.kr(nil)}, ${3:\transform.kr(nil)})
+endsnippet
+
+snippet SVGGroup.fromDOMElement
+SVGGroup.fromDOMElement(${1:\tag.kr(nil)})
+endsnippet
+
+snippet SVGLine.new
+SVGLine.new(${1:\x1.kr(0)}, ${2:\y1.kr(0)}, ${3:\x2.kr(0)}, ${4:\y2.kr(0)}, ${5:\name.kr(nil)}, ${6:\strokeColor.kr(nil)}, ${7:\fillColor.kr(nil)}, ${8:\strokeWidth.kr(nil)}, ${9:\transform.kr(nil)})
+endsnippet
+
+snippet SVGLine.fromPoints
+SVGLine.fromPoints(${1:\points.kr(nil)}, ${2:\name.kr(nil)}, ${3:\strokeColor.kr(nil)}, ${4:\fillColor.kr(nil)}, ${5:\strokeWidth.kr(nil)}, ${6:\transform.kr(nil)})
+endsnippet
+
+snippet SVGLine.fromDOMElement
+SVGLine.fromDOMElement(${1:\tag.kr(nil)})
+endsnippet
+
+snippet SVGObject.classFromTagName
+SVGObject.classFromTagName(${1:\tagName.kr(desc)})
+endsnippet
+
+snippet SVGObject.prFromDOMElement
+SVGObject.prFromDOMElement(${1:\element.kr(nil)})
+endsnippet
+
+snippet SVGPath.new
+SVGPath.new(${1:\segments.kr(nil)}, ${2:\name.kr(nil)}, ${3:\strokeColor.kr(nil)}, ${4:\fillColor.kr(nil)}, ${5:\strokeWidth.kr(nil)}, ${6:\transform.kr(nil)}, ${7:\cleanSegments.kr(true)})
+endsnippet
+
+snippet SVGPath.fromSVGPolyLine
+SVGPath.fromSVGPolyLine(${1:\aSVGPolyLine.kr(nil)}, ${2:\curve.kr(true)}, ${3:\close.kr(false)})
+endsnippet
+
+snippet SVGPath.convertString
+SVGPath.convertString(${1:\string.kr()})
+endsnippet
+
+snippet SVGPath.convertToString
+SVGPath.convertToString(${1:\segmentsArray.kr(nil)})
+endsnippet
+
+snippet SVGPath.cleanSegments
+SVGPath.cleanSegments(${1:\segmentsArray.kr(nil)})
+endsnippet
+
+snippet SVGPath.fromDOMElement
+SVGPath.fromDOMElement(${1:\tag.kr(nil)})
+endsnippet
+
+snippet SVGPathSegment.initClass
+SVGPathSegment.initClass(${1:})
+endsnippet
+
+snippet SVGPathSegment.new
+SVGPathSegment.new(${1:\type.kr(nil)}, ${2:\args.kr([  ])})
+endsnippet
+
+snippet SVGPathSegment.getType
+SVGPathSegment.getType(${1:\type.kr(nil)})
+endsnippet
+
+snippet SVGPathSegment.getPropertiesFor
+SVGPathSegment.getPropertiesFor(${1:\type.kr(nil)})
+endsnippet
+
+snippet SVGPolyLine.new
+SVGPolyLine.new(${1:\points.kr(nil)}, ${2:\name.kr(nil)}, ${3:\strokeColor.kr(nil)}, ${4:\fillColor.kr(nil)}, ${5:\strokeWidth.kr(nil)}, ${6:\transform.kr(nil)})
+endsnippet
+
+snippet SVGPolyLine.fromDOMElement
+SVGPolyLine.fromDOMElement(${1:\tag.kr(nil)})
+endsnippet
+
+snippet SVGRect.new
+SVGRect.new(${1:\x.kr(0)}, ${2:\y.kr(0)}, ${3:\width.kr(0)}, ${4:\height.kr(0)}, ${5:\rx.kr(0)}, ${6:\ry.kr(0)}, ${7:\name.kr(nil)}, ${8:\strokeColor.kr(nil)}, ${9:\fillColor.kr(nil)}, ${10:\strokeWidth.kr(nil)}, ${11:\transform.kr(nil)})
+endsnippet
+
+snippet SVGRect.fromRect
+SVGRect.fromRect(${1:\rect.kr(nil)}, ${2:\name.kr(nil)}, ${3:\strokeColor.kr(nil)}, ${4:\fillColor.kr(nil)}, ${5:\strokeWidth.kr(nil)}, ${6:\transform.kr(nil)})
+endsnippet
+
+snippet SVGRect.fromDOMElement
+SVGRect.fromDOMElement(${1:\tag.kr(nil)})
+endsnippet
+
+snippet SVGText.new
+SVGText.new(${1:\string.kr(nil)}, ${2:\x.kr(nil)}, ${3:\y.kr(nil)}, ${4:\fontName.kr(nil)}, ${5:\fontSize.kr(nil)}, ${6:\fillColor.kr(nil)}, ${7:\dx.kr(nil)}, ${8:\dy.kr(nil)}, ${9:\name.kr(nil)}, ${10:\transform.kr(nil)})
+endsnippet
+
+snippet SVGText.fromDOMElement
+SVGText.fromDOMElement(${1:\tag.kr(nil)})
+endsnippet
+
+snippet SVGTransform.new
+SVGTransform.new(${1:\string.kr(nil)})
+endsnippet
+
+snippet SVGTransform.fromDOMElement
+SVGTransform.fromDOMElement(${1:\tag.kr(nil)})
+endsnippet
+
+snippet SVGUnknown.new
+SVGUnknown.new(${1:\element.kr(nil)})
 endsnippet
 
 snippet Sanitize.ar
@@ -9988,6 +11572,38 @@ snippet ScaleStream.new
 ScaleStream.new(${1:\scale.kr(nil)}, ${2:\startDegree.kr(0)})
 endsnippet
 
+snippet ScaledUserView.initClass
+ScaledUserView.initClass(${1:})
+endsnippet
+
+snippet ScaledUserView.new
+ScaledUserView.new(${1:\window.kr(nil)}, ${2:\bounds.kr(nil)}, ${3:\fromBounds.kr(nil)})
+endsnippet
+
+snippet ScaledUserView.window
+ScaledUserView.window(${1:\name.kr(nil)}, ${2:\bounds.kr(nil)}, ${3:\fromBounds.kr(nil)}, ${4:\viewOffset.kr(nil)})
+endsnippet
+
+snippet ScaledUserView.withSliders
+ScaledUserView.withSliders(${1:\window.kr(nil)}, ${2:\bounds.kr(nil)}, ${3:\fromBounds.kr(nil)})
+endsnippet
+
+snippet ScaledUserViewContainer.initClass
+ScaledUserViewContainer.initClass(${1:})
+endsnippet
+
+snippet ScaledUserViewContainer.new
+ScaledUserViewContainer.new(${1:\parent.kr(nil)}, ${2:\bounds.kr(nil)}, ${3:\fromBounds.kr(nil)}, ${4:\viewOffset.kr(nil)})
+endsnippet
+
+snippet ScaledUserViewWindow.initClass
+ScaledUserViewWindow.initClass(${1:})
+endsnippet
+
+snippet ScaledUserViewWindow.new
+ScaledUserViewWindow.new(${1:\name.kr(nil)}, ${2:\bounds.kr(nil)}, ${3:\fromBounds.kr(nil)}, ${4:\viewOffset.kr(nil)})
+endsnippet
+
 snippet Scheduler.new
 Scheduler.new(${1:\clock.kr(nil)}, ${2:\drift.kr(false)}, ${3:\recursive.kr(true)})
 endsnippet
@@ -10056,6 +11672,18 @@ snippet ScoreStreamPlayer.new
 ScoreStreamPlayer.new(${1:})
 endsnippet
 
+snippet Scramble.ar
+Scramble.ar(${1:\array.kr(nil)}, ${2:\trig.kr(1)})
+endsnippet
+
+snippet Scramble.kr
+Scramble.kr(${1:\array.kr(nil)}, ${2:\trig.kr(1)})
+endsnippet
+
+snippet Scramble.indices
+Scramble.indices(${1:\size.kr(10)}, ${2:\trig.kr(1)})
+endsnippet
+
 snippet ScrollCanvas.qtClass
 ScrollCanvas.qtClass(${1:})
 endsnippet
@@ -10076,12 +11704,60 @@ snippet ScrollView.qtClass
 ScrollView.qtClass(${1:})
 endsnippet
 
+snippet SegWarp.initClass
+SegWarp.initClass(${1:})
+endsnippet
+
+snippet SegWarp.new
+SegWarp.new(${1:\array.kr(nil)})
+endsnippet
+
+snippet SegWarp.cleanArray
+SegWarp.cleanArray(${1:\inArray.kr(nil)})
+endsnippet
+
+snippet SegWarp.simplifyArray
+SegWarp.simplifyArray(${1:\inArray.kr(nil)})
+endsnippet
+
+snippet SegWarp.arrayFromEnv
+SegWarp.arrayFromEnv(${1:\env.kr(nil)})
+endsnippet
+
 snippet Select.ar
 Select.ar(${1:\which.kr(nil)}, ${2:\array.kr(nil)})
 endsnippet
 
 snippet Select.kr
 Select.kr(${1:\which.kr(nil)}, ${2:\array.kr(nil)})
+endsnippet
+
+snippet SelectCF.new
+SelectCF.new(${1:\which.kr(nil)}, ${2:\array.kr(nil)}, ${3:\lag.kr(0.1)}, ${4:\equalPower.kr(1)})
+endsnippet
+
+snippet SelectCF.ar
+SelectCF.ar(${1:\which.kr(nil)}, ${2:\array.kr(nil)}, ${3:\lag.kr(0.1)}, ${4:\equalPower.kr(1)})
+endsnippet
+
+snippet SelectCF.kr
+SelectCF.kr(${1:\which.kr(nil)}, ${2:\array.kr(nil)}, ${3:\lag.kr(0.1)}, ${4:\equalPower.kr(1)})
+endsnippet
+
+snippet SelectCF.getLevels
+SelectCF.getLevels(${1:\which.kr(nil)}, ${2:\n.kr(10)}, ${3:\lag.kr(0.1)}, ${4:\equalPower.kr(1)})
+endsnippet
+
+snippet SelectL.ar
+SelectL.ar(${1:\which.kr(nil)}, ${2:\array.kr(nil)})
+endsnippet
+
+snippet SelectL.arSwitch
+SelectL.arSwitch(${1:\which.kr(nil)}, ${2:\array.kr(nil)})
+endsnippet
+
+snippet SelectL.kr
+SelectL.kr(${1:\which.kr(nil)}, ${2:\array.kr(nil)})
 endsnippet
 
 snippet SelectX.new1
@@ -10289,6 +11965,10 @@ snippet Server.set_
 Server.set_(${1:\item.kr(nil)})
 endsnippet
 
+snippet Server.freeAllRemote
+Server.freeAllRemote(${1:\includeLocal.kr(true)})
+endsnippet
+
 snippet ServerBoot.functionSelector
 ServerBoot.functionSelector(${1:})
 endsnippet
@@ -10331,6 +12011,10 @@ endsnippet
 
 snippet ServerQuit.functionSelector
 ServerQuit.functionSelector(${1:})
+endsnippet
+
+snippet ServerRecordWindow.new
+ServerRecordWindow.new(${1:\server.kr(nil)}, ${2:\nodeID.kr(nil)})
 endsnippet
 
 snippet ServerShmInterface.new
@@ -10433,6 +12117,18 @@ snippet SimpleController.new
 SimpleController.new(${1:\model.kr(nil)})
 endsnippet
 
+snippet SimpleMIDIFile.new
+SimpleMIDIFile.new(${1:\pathName.kr(nil)})
+endsnippet
+
+snippet SimpleMIDIFile.read
+SimpleMIDIFile.read(${1:\pathName.kr(nil)})
+endsnippet
+
+snippet SimpleMIDIFile.fromPattern
+SimpleMIDIFile.fromPattern(${1:\pattern.kr(nil)}, ${2:\maxEvents.kr(1000)}, ${3:\maxAmp.kr(0.2)}, ${4:\startTime.kr(0)}, ${5:\inTracks.kr(2)}, ${6:\inTempo.kr(120)}, ${7:\timeSignature.kr(nil)})
+endsnippet
+
 snippet SimpleNumber.new
 SimpleNumber.new(${1:})
 endsnippet
@@ -10483,6 +12179,14 @@ endsnippet
 
 snippet SineShaper.ar
 SineShaper.ar(${1:\in.kr(nil)}, ${2:\limit.kr(1.0)}, ${3:\mul.kr(1.0)}, ${4:\add.kr(0)})
+endsnippet
+
+snippet Siren.ar
+Siren.ar(${1:\freq.kr(nil)}, ${2:\sharpness.kr(2)}, ${3:\iphase.kr(0)}, ${4:\modPhase.kr(0)}, ${5:\noiseLevel.kr(0)}, ${6:\mul.kr(1)}, ${7:\add.kr(0)})
+endsnippet
+
+snippet Siren.kr
+Siren.kr(${1:\freq.kr(nil)}, ${2:\sharpness.kr(2)}, ${3:\iphase.kr(0)}, ${4:\modPhase.kr(0)}, ${5:\mul.kr(1)}, ${6:\add.kr(0)})
 endsnippet
 
 snippet Size.new
@@ -10549,6 +12253,14 @@ snippet SmoothDecimator.ar
 SmoothDecimator.ar(${1:\in.kr(nil)}, ${2:\rate.kr(44100.0)}, ${3:\smoothing.kr(0.5)}, ${4:\mul.kr(1.0)}, ${5:\add.kr(0)})
 endsnippet
 
+snippet SmoothScrollView.new
+SmoothScrollView.new(${1:\parent.kr(nil)}, ${2:\bounds.kr(nil)})
+endsnippet
+
+snippet SmoothSlider.viewClass
+SmoothSlider.viewClass(${1:})
+endsnippet
+
 snippet SoftClipAmp.ar
 SoftClipAmp.ar(${1:\in.kr(nil)}, ${2:\pregain.kr(1)}, ${3:\mul.kr(1)}, ${4:\add.kr(0)})
 endsnippet
@@ -10569,12 +12281,56 @@ snippet SoftClipper8.ar
 SoftClipper8.ar(${1:\in.kr(nil)})
 endsnippet
 
+snippet SoftKneeCompressor.ar
+SoftKneeCompressor.ar(${1:\in.kr(nil)}, ${2:\control.kr(nil)}, ${3:\thresh.kr(-10)}, ${4:\ratio.kr(1)}, ${5:\knee.kr(6)}, ${6:\attack.kr(0)}, ${7:\release.kr(0.05)}, ${8:\makeUp.kr(0)}, ${9:\rms.kr(0)})
+endsnippet
+
+snippet SoftKneeCompressor.kr
+SoftKneeCompressor.kr(${1:\in.kr(nil)}, ${2:\control.kr(nil)}, ${3:\thresh.kr(-10)}, ${4:\ratio.kr(1)}, ${5:\knee.kr(6)}, ${6:\attack.kr(0)}, ${7:\release.kr(0.05)}, ${8:\makeUp.kr(0)}, ${9:\rms.kr(0)})
+endsnippet
+
+snippet SoftKneeCompressor.peak
+SoftKneeCompressor.peak(${1:\in.kr(nil)}, ${2:\control.kr(nil)}, ${3:\thresh.kr(-10)}, ${4:\ratio.kr(1)}, ${5:\knee.kr(6)}, ${6:\attack.kr(0)}, ${7:\release.kr(0.05)}, ${8:\makeUp.kr(0)})
+endsnippet
+
+snippet SoftKneeCompressor.rms
+SoftKneeCompressor.rms(${1:\in.kr(nil)}, ${2:\control.kr(nil)}, ${3:\thresh.kr(-10)}, ${4:\ratio.kr(1)}, ${5:\knee.kr(6)}, ${6:\attack.kr(0)}, ${7:\release.kr(0.05)}, ${8:\makeUp.kr(0)}, ${9:\rms.kr(40)})
+endsnippet
+
+snippet SoftKneeCompressor.d
+SoftKneeCompressor.d(${1:\in.kr(nil)}, ${2:\control.kr(nil)}, ${3:\thresh.kr(-10)}, ${4:\ratio.kr(1)}, ${5:\knee.kr(6)}, ${6:\attack.kr(0.05)}, ${7:\release.kr(0.1)}, ${8:\makeUp.kr(0)}, ${9:\rms.kr(0)})
+endsnippet
+
+snippet SoftSwitchIn.ar
+SoftSwitchIn.ar(${1:\bus.kr(0)}, ${2:\numChannels.kr(1)}, ${3:\fadeTime.kr(0.1)}, ${4:\trigger.kr(nil)})
+endsnippet
+
 snippet SortBuf.ar
 SortBuf.ar(${1:\bufnum.kr(0)}, ${2:\sortrate.kr(10)}, ${3:\reset.kr(0)})
 endsnippet
 
 snippet SortedList.new
 SortedList.new(${1:\size.kr(8)}, ${2:\function.kr(nil)})
+endsnippet
+
+snippet SortedRand.new
+SortedRand.new(${1:\n.kr(10)}, ${2:\minVal.kr(0)}, ${3:\maxVal.kr(1)}, ${4:\warp.kr(lin)}, ${5:\spread.kr(1)})
+endsnippet
+
+snippet SortedRand.ir
+SortedRand.ir(${1:\n.kr(10)}, ${2:\minVal.kr(0)}, ${3:\maxVal.kr(1)}, ${4:\warp.kr(lin)}, ${5:\spread.kr(1)})
+endsnippet
+
+snippet SortedRand.kr
+SortedRand.kr(${1:\trig.kr(0)}, ${2:\n.kr(10)}, ${3:\minVal.kr(0)}, ${4:\maxVal.kr(1)}, ${5:\warp.kr(lin)}, ${6:\spread.kr(1)})
+endsnippet
+
+snippet SortedRand.ar
+SortedRand.ar(${1:\trig.kr(0)}, ${2:\n.kr(10)}, ${3:\minVal.kr(0)}, ${4:\maxVal.kr(1)}, ${5:\warp.kr(lin)}, ${6:\spread.kr(1)})
+endsnippet
+
+snippet SortedRand.prMapValues
+SortedRand.prMapValues(${1:\values.kr(nil)}, ${2:\minVal.kr(0)}, ${3:\maxVal.kr(1)}, ${4:\warp.kr(lin)}, ${5:\spread.kr(1)})
 endsnippet
 
 snippet SoundFile.closeAll
@@ -10989,6 +12745,26 @@ snippet String.scDir
 String.scDir(${1:})
 endsnippet
 
+snippet String.fillJoin
+String.fillJoin(${1:\size.kr(nil)}, ${2:\function.kr(nil)}, ${3:\joiner.kr(nil)}, ${4:\excludeNil.kr(true)})
+endsnippet
+
+snippet String.widthM9
+String.widthM9(${1:\n.kr(1)})
+endsnippet
+
+snippet String.heightM9
+String.heightM9(${1:\n.kr(1)})
+endsnippet
+
+snippet String.notesDict
+String.notesDict(${1:})
+endsnippet
+
+snippet String.makeNoteName
+String.makeNoteName(${1:\name.kr(C)}, ${2:\alt.kr(0)}, ${3:\octave.kr(3)}, ${4:\cents.kr(0)}, ${5:\maxAlt.kr(3)})
+endsnippet
+
 snippet SubclassResponsibilityError.new
 SubclassResponsibilityError.new(${1:\receiver.kr(nil)}, ${2:\method.kr(nil)}, ${3:\class.kr(nil)})
 endsnippet
@@ -11077,6 +12853,22 @@ snippet Synth.grain
 Synth.grain(${1:\defName.kr(nil)}, ${2:\args.kr(nil)}, ${3:\target.kr(nil)}, ${4:\addAction.kr(addToHead)})
 endsnippet
 
+snippet Synth.sched
+Synth.sched(${1:\time.kr(0.2)}, ${2:\defName.kr(nil)}, ${3:\args.kr(nil)}, ${4:\target.kr(nil)}, ${5:\addAction.kr(addToHead)}, ${6:\nodeID.kr(nil)})
+endsnippet
+
+snippet Synth.newMsg
+Synth.newMsg(${1:\defName.kr(nil)}, ${2:\args.kr(nil)}, ${3:\target.kr(nil)}, ${4:\addAction.kr(addToHead)}, ${5:\nodeID.kr(nil)})
+endsnippet
+
+snippet Synth.newKeepArgs
+Synth.newKeepArgs(${1:\defName.kr(nil)}, ${2:\args.kr(nil)}, ${3:\target.kr(nil)}, ${4:\addAction.kr(addToHead)})
+endsnippet
+
+snippet Synth.track
+Synth.track(${1:\defName.kr(nil)}, ${2:\args.kr(nil)}, ${3:\target.kr(nil)}, ${4:\addAction.kr(addToHead)}, ${5:\canRelease.kr(nil)}, ${6:\maxCount.kr(inf)})
+endsnippet
+
 snippet SynthDef.synthDefDir_
 SynthDef.synthDefDir_(${1:\dir.kr(nil)})
 endsnippet
@@ -11099,6 +12891,14 @@ endsnippet
 
 snippet SynthDef.removeAt
 SynthDef.removeAt(${1:\name.kr(nil)}, ${2:\libname.kr(global)})
+endsnippet
+
+snippet SynthDef.record
+SynthDef.record(${1:\name.kr(nil)}, ${2:\ugenGraphFunc.kr(nil)}, ${3:\duration.kr(1)}, ${4:\addPath.kr(sounds/)}, ${5:\headerFormat.kr(aiff)}, ${6:\sampleFormat.kr(int24)})
+endsnippet
+
+snippet SynthDef.recordDialog
+SynthDef.recordDialog(${1:\name.kr(nil)}, ${2:\ugenGraphFunc.kr(nil)}, ${3:\duration.kr(1)}, ${4:\headerFormat.kr(aiff)}, ${5:\sampleFormat.kr(int24)})
 endsnippet
 
 snippet SynthDefOld.new
@@ -11157,6 +12957,278 @@ snippet SynthDescLib.match
 SynthDescLib.match(${1:\key.kr(nil)})
 endsnippet
 
+snippet SynthTracker.new
+SynthTracker.new(${1:\defName.kr(nil)}, ${2:\args.kr(nil)}, ${3:\canRelease.kr(nil)}, ${4:\maxCount.kr(inf)}, ${5:\addAction.kr(addToTail)})
+endsnippet
+
+snippet SynthTracker.loadSavedDefs
+SynthTracker.loadSavedDefs(${1:\filter.kr(nil)})
+endsnippet
+
+snippet SynthTracker.fullReset
+SynthTracker.fullReset(${1:})
+endsnippet
+
+snippet SynthTracker.initClass
+SynthTracker.initClass(${1:})
+endsnippet
+
+snippet SynthTracker.initialize
+SynthTracker.initialize(${1:})
+endsnippet
+
+snippet SynthTracker.cmdPeriod
+SynthTracker.cmdPeriod(${1:})
+endsnippet
+
+snippet SynthTracker.window
+SynthTracker.window(${1:\names.kr(nil)})
+endsnippet
+
+snippet SynthTracker.deleteUnused
+SynthTracker.deleteUnused(${1:})
+endsnippet
+
+snippet SynthTracker.doWhenStopped
+SynthTracker.doWhenStopped(${1:\defName.kr(nil)}, ${2:\func.kr(nil)}, ${3:\time.kr(0.5)}, ${4:\minCount.kr(1)})
+endsnippet
+
+snippet SynthTracker.doAlwaysWhenStopped
+SynthTracker.doAlwaysWhenStopped(${1:\defName.kr(nil)}, ${2:\func.kr(nil)}, ${3:\time.kr(0.5)}, ${4:\minCount.kr(1)})
+endsnippet
+
+snippet SynthTracker.killRoutines
+SynthTracker.killRoutines(${1:})
+endsnippet
+
+snippet SynthTracker.killRoutine
+SynthTracker.killRoutine(${1:\defName.kr(nil)})
+endsnippet
+
+snippet SynthTracker.cleanRoutines
+SynthTracker.cleanRoutines(${1:})
+endsnippet
+
+snippet SynthTracker.routinesPlaying
+SynthTracker.routinesPlaying(${1:})
+endsnippet
+
+snippet SynthTracker.register
+SynthTracker.register(${1:\synthToRegister.kr(nil)}, ${2:\canRelease.kr(nil)}, ${3:\isPlaying.kr(true)})
+endsnippet
+
+snippet SynthTracker.unregister
+SynthTracker.unregister(${1:\synthToUnRegister.kr(nil)})
+endsnippet
+
+snippet SynthTracker.reset
+SynthTracker.reset(${1:\defName.kr(nil)})
+endsnippet
+
+snippet SynthTracker.report
+SynthTracker.report(${1:\defName.kr(nil)}, ${2:\nodeIDs.kr(true)}, ${3:\cleanUp.kr(true)})
+endsnippet
+
+snippet SynthTracker.fullReport
+SynthTracker.fullReport(${1:\cleanUp.kr(false)}, ${2:\includeNonPlaying.kr(false)}, ${3:\includeReleasable.kr(true)})
+endsnippet
+
+snippet SynthTracker.canRelease
+SynthTracker.canRelease(${1:\defName.kr(nil)})
+endsnippet
+
+snippet SynthTracker.findByNodeID
+SynthTracker.findByNodeID(${1:\nodeID.kr(1000)})
+endsnippet
+
+snippet SynthTracker.findNameByNodeID
+SynthTracker.findNameByNodeID(${1:\nodeID.kr(1000)})
+endsnippet
+
+snippet SynthTracker.findSynth
+SynthTracker.findSynth(${1:\synth.kr(nil)})
+endsnippet
+
+snippet SynthTracker.allSynths
+SynthTracker.allSynths(${1:\defName.kr(nil)})
+endsnippet
+
+snippet SynthTracker.getSavedDefs
+SynthTracker.getSavedDefs(${1:})
+endsnippet
+
+snippet SynthTracker.getUserDefs
+SynthTracker.getUserDefs(${1:})
+endsnippet
+
+snippet SynthTracker.reportSavedDefs
+SynthTracker.reportSavedDefs(${1:\post.kr(true)})
+endsnippet
+
+snippet SynthTracker.cleanUp
+SynthTracker.cleanUp(${1:\go.kr(true)})
+endsnippet
+
+snippet SynthTracker.isRunning
+SynthTracker.isRunning(${1:\defName.kr(nil)}, ${2:\minCount.kr(1)}, ${3:\cleanUp.kr(true)})
+endsnippet
+
+snippet SynthTracker.synthIsRunning
+SynthTracker.synthIsRunning(${1:\synth.kr(nil)})
+endsnippet
+
+snippet SynthTracker.nodeIDIsRunning
+SynthTracker.nodeIDIsRunning(${1:\nodeID.kr(1000)})
+endsnippet
+
+snippet SynthTracker.remove
+SynthTracker.remove(${1:\defName.kr(nil)}, ${2:\index.kr(0)}, ${3:\cleanUp.kr(true)})
+endsnippet
+
+snippet SynthTracker.removeAll
+SynthTracker.removeAll(${1:\defName.kr(nil)})
+endsnippet
+
+snippet SynthTracker.removeSynth
+SynthTracker.removeSynth(${1:\synth.kr(nil)})
+endsnippet
+
+snippet SynthTracker.release
+SynthTracker.release(${1:\defName.kr(nil)}, ${2:\cleanUp.kr(true)})
+endsnippet
+
+snippet SynthTracker.releaseLast
+SynthTracker.releaseLast(${1:\defName.kr(nil)}, ${2:\cleanUp.kr(true)})
+endsnippet
+
+snippet SynthTracker.releaseAt
+SynthTracker.releaseAt(${1:\defName.kr(nil)}, ${2:\index.kr(0)}, ${3:\cleanUp.kr(true)})
+endsnippet
+
+snippet SynthTracker.releaseAll
+SynthTracker.releaseAll(${1:\defName.kr(nil)}, ${2:\cleanUp.kr(true)})
+endsnippet
+
+snippet SynthTracker.free
+SynthTracker.free(${1:\defName.kr(nil)}, ${2:\cleanUp.kr(true)})
+endsnippet
+
+snippet SynthTracker.freeLast
+SynthTracker.freeLast(${1:\defName.kr(nil)}, ${2:\cleanUp.kr(true)})
+endsnippet
+
+snippet SynthTracker.freeAt
+SynthTracker.freeAt(${1:\defName.kr(nil)}, ${2:\index.kr(0)}, ${3:\cleanUp.kr(true)})
+endsnippet
+
+snippet SynthTracker.freeAll
+SynthTracker.freeAll(${1:\defName.kr(nil)}, ${2:\cleanUp.kr(true)})
+endsnippet
+
+snippet SynthTracker.matchArgs
+SynthTracker.matchArgs(${1:\args.kr(nil)}, ${2:\defName.kr(default)})
+endsnippet
+
+snippet SynthTracker.matchArgsAsIndexes
+SynthTracker.matchArgsAsIndexes(${1:\args.kr(nil)}, ${2:\defName.kr(default)})
+endsnippet
+
+snippet SynthTracker.releaseArgs
+SynthTracker.releaseArgs(${1:\defName.kr(nil)}, ${2:\args.kr(nil)}, ${3:\cleanUp.kr(true)})
+endsnippet
+
+snippet SynthTracker.freeArgs
+SynthTracker.freeArgs(${1:\defName.kr(nil)}, ${2:\args.kr(nil)}, ${3:\cleanUp.kr(true)})
+endsnippet
+
+snippet SynthTracker.toggle
+SynthTracker.toggle(${1:\defName.kr(nil)}, ${2:\args.kr(nil)}, ${3:\canRelease.kr(nil)}, ${4:\maxCount.kr(1)}, ${5:\addAction.kr(addToTail)})
+endsnippet
+
+snippet SynthTracker.replace
+SynthTracker.replace(${1:\defName.kr(nil)}, ${2:\args.kr(nil)}, ${3:\canRelease.kr(nil)}, ${4:\maxCount.kr(1)}, ${5:\addAction.kr(addToTail)})
+endsnippet
+
+snippet SynthTracker.controls
+SynthTracker.controls(${1:\defName.kr(default)})
+endsnippet
+
+snippet SynthTracker.set
+SynthTracker.set(${1:\defName.kr(default)}, ${2:\argsArray.kr(nil)})
+endsnippet
+
+snippet SynthTracker.setLast
+SynthTracker.setLast(${1:\defName.kr(default)}, ${2:\argsArray.kr(nil)})
+endsnippet
+
+snippet SynthTracker.setAt
+SynthTracker.setAt(${1:\index.kr(0)}, ${2:\defName.kr(default)}, ${3:\argsArray.kr(nil)})
+endsnippet
+
+snippet SynthTracker.setMatchArgs
+SynthTracker.setMatchArgs(${1:\defname.kr(default)}, ${2:\argsToSet.kr(nil)}, ${3:\argsToMatch.kr(nil)})
+endsnippet
+
+snippet SynthTracker.setn
+SynthTracker.setn(${1:\defName.kr(default)}, ${2:\argsArray.kr(nil)})
+endsnippet
+
+snippet SynthTracker.setnLast
+SynthTracker.setnLast(${1:\defName.kr(default)}, ${2:\argsArray.kr(nil)})
+endsnippet
+
+snippet SynthTracker.setnAt
+SynthTracker.setnAt(${1:\index.kr(0)}, ${2:\defName.kr(default)}, ${3:\argsArray.kr(nil)})
+endsnippet
+
+snippet SynthTrackerWindow.new
+SynthTrackerWindow.new(${1:\names.kr(nil)}, ${2:\mode.kr(toggle)})
+endsnippet
+
+snippet SynthTrackerWindow.cmdPeriod
+SynthTrackerWindow.cmdPeriod(${1:})
+endsnippet
+
+snippet SynthTrackerWindow.update
+SynthTrackerWindow.update(${1:\name.kr(nil)})
+endsnippet
+
+snippet SynthTrackerWindow.updateAll
+SynthTrackerWindow.updateAll(${1:\names.kr(nil)})
+endsnippet
+
+snippet SynthWithArgs.newKeepArgs
+SynthWithArgs.newKeepArgs(${1:\defName.kr(nil)}, ${2:\args.kr(nil)}, ${3:\target.kr(nil)}, ${4:\addAction.kr(addToHead)})
+endsnippet
+
+snippet Synth_ID.new
+Synth_ID.new(${1:\defName.kr(nil)}, ${2:\args.kr(nil)}, ${3:\target.kr(nil)}, ${4:\addAction.kr(addToHead)}, ${5:\nodeID.kr(nil)})
+endsnippet
+
+snippet Synth_ID.newPaused
+Synth_ID.newPaused(${1:\defName.kr(nil)}, ${2:\args.kr(nil)}, ${3:\target.kr(nil)}, ${4:\addAction.kr(addToHead)}, ${5:\nodeID.kr(nil)})
+endsnippet
+
+snippet Synth_ID.after
+Synth_ID.after(${1:\aNode.kr(nil)}, ${2:\defName.kr(nil)}, ${3:\args.kr(nil)}, ${4:\nodeID.kr(nil)})
+endsnippet
+
+snippet Synth_ID.before
+Synth_ID.before(${1:\aNode.kr(nil)}, ${2:\defName.kr(nil)}, ${3:\args.kr(nil)}, ${4:\nodeID.kr(nil)})
+endsnippet
+
+snippet Synth_ID.head
+Synth_ID.head(${1:\aGroup.kr(nil)}, ${2:\defName.kr(nil)}, ${3:\args.kr(nil)}, ${4:\nodeID.kr(nil)})
+endsnippet
+
+snippet Synth_ID.tail
+Synth_ID.tail(${1:\aGroup.kr(nil)}, ${2:\defName.kr(nil)}, ${3:\args.kr(nil)}, ${4:\nodeID.kr(nil)})
+endsnippet
+
+snippet Synth_ID.replace
+Synth_ID.replace(${1:\nodeToReplace.kr(nil)}, ${2:\defName.kr(nil)}, ${3:\args.kr(nil)}, ${4:\nodeID.kr(nil)})
+endsnippet
+
 snippet SystemClock.clear
 SystemClock.clear(${1:})
 endsnippet
@@ -11171,6 +13243,14 @@ endsnippet
 
 snippet SystemClock.prClear
 SystemClock.prClear(${1:})
+endsnippet
+
+snippet SystemClock.tempo_
+SystemClock.tempo_(${1:})
+endsnippet
+
+snippet SystemClock.tempo
+SystemClock.tempo(${1:})
 endsnippet
 
 snippet SystemSynthDefs.generateTempName
@@ -11271,6 +13351,22 @@ endsnippet
 
 snippet TRand.kr
 TRand.kr(${1:\lo.kr(0.0)}, ${2:\hi.kr(1.0)}, ${3:\trig.kr(0.0)})
+endsnippet
+
+snippet TScramble.kr
+TScramble.kr(${1:\array.kr(nil)}, ${2:\trigger.kr(nil)}, ${3:\lag.kr(0)})
+endsnippet
+
+snippet TScramble.ar
+TScramble.ar(${1:\array.kr(nil)}, ${2:\trigger.kr(nil)}, ${3:\lag.kr(0)})
+endsnippet
+
+snippet TScramble.new1
+TScramble.new1(${1:\rate.kr(audio)}, ${2:\array.kr(nil)}, ${3:\trigger.kr(nil)}, ${4:\lag.kr(0)})
+endsnippet
+
+snippet TScramble.getIndices
+TScramble.getIndices(${1:\trigger.kr(nil)}, ${2:\size.kr(10)})
 endsnippet
 
 snippet TTendency.ar
@@ -11497,6 +13593,10 @@ snippet TempoClock.isRunning
 TempoClock.isRunning(${1:})
 endsnippet
 
+snippet TempoClock.newBig
+TempoClock.newBig(${1:\tempo.kr(nil)}, ${2:\beats.kr(nil)}, ${3:\seconds.kr(nil)}, ${4:\size.kr(1024)})
+endsnippet
+
 snippet TermanWang.ar
 TermanWang.ar(${1:\input.kr(0)}, ${2:\reset.kr(0)}, ${3:\ratex.kr(0.01)}, ${4:\ratey.kr(0.01)}, ${5:\alpha.kr(1.0)}, ${6:\beta.kr(1.0)}, ${7:\eta.kr(1.0)}, ${8:\initx.kr(0)}, ${9:\inity.kr(0)}, ${10:\mul.kr(1.0)}, ${11:\add.kr(0.0)})
 endsnippet
@@ -11581,6 +13681,54 @@ snippet ToolBar.new
 ToolBar.new(${1:\actions.kr([  ])})
 endsnippet
 
+snippet Toolbox.trimLeft
+Toolbox.trimLeft(${1:\s.kr(nil)})
+endsnippet
+
+snippet Toolbox.trimRight
+Toolbox.trimRight(${1:\s.kr(nil)})
+endsnippet
+
+snippet Toolbox.trim
+Toolbox.trim(${1:\s.kr(nil)})
+endsnippet
+
+snippet Toolbox.repeat
+Toolbox.repeat(${1:\s.kr(nil)}, ${2:\n.kr(nil)})
+endsnippet
+
+snippet Toolbox.isMultiline
+Toolbox.isMultiline(${1:\s.kr(nil)})
+endsnippet
+
+snippet Toolbox.split
+Toolbox.split(${1:\s.kr(nil)}, ${2:\delim.kr(nil)})
+endsnippet
+
+snippet Toolbox.splitLines
+Toolbox.splitLines(${1:\s.kr(nil)})
+endsnippet
+
+snippet Toolbox.join
+Toolbox.join(${1:\l.kr(nil)}, ${2:\delim.kr(nil)})
+endsnippet
+
+snippet Toolbox.joinLines
+Toolbox.joinLines(${1:\l.kr(nil)})
+endsnippet
+
+snippet Toolbox.indent
+Toolbox.indent(${1:\s.kr(nil)}, ${2:\shift.kr(nil)})
+endsnippet
+
+snippet Toolbox.unindent
+Toolbox.unindent(${1:\s.kr(nil)}, ${2:\shift.kr(nil)})
+endsnippet
+
+snippet Toolbox.indentAbs
+Toolbox.indentAbs(${1:\s.kr(nil)}, ${2:\shift.kr(nil)})
+endsnippet
+
 snippet TopView.qtClass
 TopView.qtClass(${1:})
 endsnippet
@@ -11611,6 +13759,10 @@ endsnippet
 
 snippet TouchResponder.remove
 TouchResponder.remove(${1:\resp.kr(nil)})
+endsnippet
+
+snippet TransportWindow.new
+TransportWindow.new(${1:\name.kr(transport)}, ${2:\startPos.kr(0)})
 endsnippet
 
 snippet TreeView.qtClass
@@ -11693,12 +13845,20 @@ snippet TwoPole.kr
 TwoPole.kr(${1:\in.kr(0.0)}, ${2:\freq.kr(440.0)}, ${3:\radius.kr(0.8)}, ${4:\mul.kr(1.0)}, ${5:\add.kr(0.0)})
 endsnippet
 
+snippet TwoPole.coeffs
+TwoPole.coeffs(${1:\sr.kr(44100)}, ${2:\freq.kr(440)}, ${3:\radius.kr(0.8)})
+endsnippet
+
 snippet TwoTube.ar
 TwoTube.ar(${1:\input.kr(0)}, ${2:\k.kr(0.01)}, ${3:\loss.kr(1.0)}, ${4:\d1length.kr(100)}, ${5:\d2length.kr(100)}, ${6:\mul.kr(1.0)}, ${7:\add.kr(0.0)})
 endsnippet
 
 snippet TwoWayIdentityDictionary.new
 TwoWayIdentityDictionary.new(${1:})
+endsnippet
+
+snippet TwoZero.coeffs
+TwoZero.coeffs(${1:\sr.kr(44100)}, ${2:\freq.kr(440)}, ${3:\radius.kr(0.8)})
 endsnippet
 
 snippet UGen.new1
@@ -11897,6 +14057,14 @@ snippet UnpackFFT.new
 UnpackFFT.new(${1:\chain.kr(nil)}, ${2:\bufsize.kr(nil)}, ${3:\frombin.kr(0)}, ${4:\tobin.kr(nil)})
 endsnippet
 
+snippet Unwrap.ar
+Unwrap.ar(${1:\in.kr(0.0)}, ${2:\lo.kr(0.0)}, ${3:\hi.kr(1.0)})
+endsnippet
+
+snippet Unwrap.kr
+Unwrap.kr(${1:\in.kr(0.0)}, ${2:\lo.kr(0.0)}, ${3:\hi.kr(1.0)})
+endsnippet
+
 snippet UserView.qtClass
 UserView.qtClass(${1:})
 endsnippet
@@ -11907,6 +14075,10 @@ endsnippet
 
 snippet UserView.sizeHint
 UserView.sizeHint(${1:})
+endsnippet
+
+snippet UserViewHolder.new
+UserViewHolder.new(${1:\args.kr([  ])})
 endsnippet
 
 snippet VBAP.ar
@@ -12049,6 +14221,10 @@ snippet View.debug
 View.debug(${1:\level.kr(1)}, ${2:\msg.kr()})
 endsnippet
 
+snippet VirtualMics.ar
+VirtualMics.ar(${1:\micPos.kr(nil)}, ${2:\in.kr(nil)}, ${3:\pos.kr(nil)}, ${4:\dbFactor.kr(-6)}, ${5:\dbLimit.kr(0)})
+endsnippet
+
 snippet Vocode.ar
 Vocode.ar(${1:\src.kr(nil)}, ${2:\harm.kr(nil)}, ${3:\noise.kr(nil)}, ${4:\anabwscale.kr(0.5)}, ${5:\outbw.kr(0.01)}, ${6:\freqmul.kr(1)}, ${7:\mul.kr(1)}, ${8:\add.kr(0)})
 endsnippet
@@ -12075,6 +14251,10 @@ endsnippet
 
 snippet WAmp.kr
 WAmp.kr(${1:\in.kr(0.0)}, ${2:\winSize.kr(0.1)})
+endsnippet
+
+snippet WSPopUpMenu.new
+WSPopUpMenu.new(${1:\parent.kr(nil)}, ${2:\bounds.kr(nil)})
 endsnippet
 
 snippet WalshHadamard.ar
@@ -12231,6 +14411,18 @@ endsnippet
 
 snippet XFade2.kr
 XFade2.kr(${1:\inA.kr(nil)}, ${2:\inB.kr(0.0)}, ${3:\pan.kr(0.0)}, ${4:\level.kr(1.0)})
+endsnippet
+
+snippet XFadeDelay.ar
+XFadeDelay.ar(${1:\in.kr(0)}, ${2:\max.kr(0.2)}, ${3:\delay.kr(0.2)}, ${4:\fadeTime.kr(0.1)}, ${5:\trigger.kr(nil)}, ${6:\mul.kr(1)}, ${7:\add.kr(0)})
+endsnippet
+
+snippet XFadeRotate.ar
+XFadeRotate.ar(${1:\n.kr(0)}, ${2:\in.kr(nil)})
+endsnippet
+
+snippet XFadeRotate.kr
+XFadeRotate.kr(${1:\n.kr(0)}, ${2:\in.kr(nil)})
 endsnippet
 
 snippet XIn.ar

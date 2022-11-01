@@ -108,6 +108,7 @@ alias vim="nvim"
 alias wine32="WINEPREFIX=~/.wine32 WINEARCH=win32"
 alias mnt="sudo mount -o loop $* /mnt/ISO/"
 alias vimdiff='nvim -d'
+alias gs="git status"
 
 # audio
 alias play="ffplay -nodisp -autoexit"

@@ -37,6 +37,7 @@ settings:
     https://www.facebook.com: true
   content.notifications.enabled:
     https://cutewallpaper.org: false
+    https://epicstream.com: false
     https://mail.one.com: false
     https://mspoweruser.com: false
     https://splendidprizeforyou.com: false

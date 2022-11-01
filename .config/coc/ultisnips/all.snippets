@@ -114,6 +114,29 @@ endsnippet
 # x = Synth(\\$1);
 # endsnippet
 
+snippet pbd "Augustin Pbindef" b
+(
+Pbindef(\\${1:sines},
+	\instrument, \\${2:sine},
+	\amp, ${3:0.2},
+	\stretch, 4*60/${4:120}, 
+	\dur, ${5:1/4},
+	\rel, 4,
+	// \degree, Pfunc{~notes.next},
+	// \scale, Pfunc{~scale},
+	// \octave, 5,
+	// \root, Pfunc{~root % 12},
+	// \amp, Pfunc{~mix[\sines] / 2} ,
+	\out, ~masterBus,
+	\auxOut, ~reverbBus,
+	\pan, 0,
+	\group, ~sourceGroup,
+).play.quant_(${6:4*60/$4})
+);
+
+Pbindef(\\$1).stop;
+endsnippet
+
 snippet sd "Simple Synth" b
 (
 SynthDef(\\${1:blip}, {
