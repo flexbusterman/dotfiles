@@ -424,3 +424,5 @@ ssh-add ~/.ssh/git
 ssh-add ~/.ssh/digitalocean
 ssh-add ~/.ssh/mind
 clear
+
+source /usr/share/nvm/init-nvm.sh
