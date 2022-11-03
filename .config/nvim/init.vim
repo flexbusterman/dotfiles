@@ -33,6 +33,8 @@ set signcolumn=number
 set splitbelow splitright
 set whichwrap+=b,s
 set virtualedit=onemore
+" relative numbers in netrw
+let g:netrw_bufsettings="noma nomod nonu nobl nowrap ro rnu"
 
 filetype off
 set runtimepath+=/usr/share/lilypond/current/vim/
