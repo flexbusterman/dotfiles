@@ -363,8 +363,6 @@ fr(){
 }
 
 gp() {
-  eval "$(ssh-agent -s)"
-  ssh-add ~/.ssh/git
   result="\"$*\""
   git add .
   git commit -m $result
