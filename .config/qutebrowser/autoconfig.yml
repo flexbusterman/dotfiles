@@ -30,6 +30,7 @@ settings:
   content.blocking.method:
     global: both
   content.geolocation:
+    https://www.elgiganten.se: true
     https://www.google.com: true
     https://www.google.com.ar: false
     https://www.sj.se: true
