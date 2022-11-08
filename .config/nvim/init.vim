@@ -34,7 +34,23 @@ set splitbelow splitright
 set whichwrap+=b,s
 set virtualedit=onemore
 " relative numbers in netrw
+"
 let g:netrw_bufsettings="noma nomod nonu nobl nowrap ro rnu"
+
+function! NetrwMapping()
+  nmap <buffer> H u
+  nmap <buffer> h -^
+  nmap <buffer> l <CR>
+  nmap <buffer> . gh
+  nmap <buffer> P <C-w>z
+  nmap <buffer> L <CR>:Lexplore<CR>
+  nmap <buffer> <Leader>dd :Lexplore<CR>
+endfunction
+
+augroup netrw_mapping
+  autocmd!
+  autocmd filetype netrw call NetrwMapping()
+augroup END
 
 filetype off
 set runtimepath+=/usr/share/lilypond/current/vim/
