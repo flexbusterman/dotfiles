@@ -1,0 +1,3 @@
+#!/bin/sh
+packages="$(paru -Qu | wc -l)"
+printf "$packages"

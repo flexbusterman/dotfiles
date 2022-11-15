@@ -812,3 +812,6 @@ nnoremap yr :!echo -n %c:r | xclip -selection clipboard %i<cr>:echo expand('%"c:
 
 " edit filename in vim
 nnoremap cw :rename<cr>
+
+" run script to prepend creation date
+nnoremap gd :!datefile %c<cr>
