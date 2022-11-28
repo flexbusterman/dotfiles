@@ -1,4 +1,5 @@
 {
+  "vetur.ignoreProjectWarning": true,
   "prettier.semi": false,
   "suggest.noselect": false,
   "coc.preferences.snippets.enable": true,
@@ -29,5 +30,6 @@
       "filetypes": ["haskell", "lhaskell"]
     }
   },
-  "svelte.enable-ts-plugin": true
+  "svelte.enable-ts-plugin": true,
+  "snippets.ultisnips.pythonPrompt": false
 }

@@ -157,6 +157,8 @@ vnoremap { k{<Space>0
 nnoremap } j}<BS>0
 vnoremap } j}<BS>0
 map <C-p> :Telescope find_files<CR>
+map <F4> :execute "vimgrep /" . expand("<cword>") . "/j ** --exclude-dir=node_modules" <Bar> cw<CR>
+
 
 "  __  __
 " |  \/  | __ _  ___ _ __ ___  ___

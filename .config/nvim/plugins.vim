@@ -31,12 +31,16 @@ Plug 'sheerun/vim-polyglot' " syntax and indenting for multiple languages
 " Plug 'TristanCrawford/vim-eel2' " reaper syntax highlighting
 " Plug 'tidalcycles/vim-tidal'
 "
-Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' } " show colors as colors
+" Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' } " show colors as colors
 Plug 'othree/html5.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'evanleck/vim-svelte', {'branch': 'main'}
 "
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" quickfix list jumping
+Plug 'tpope/vim-unimpaired'
+
 " Plug 'madskjeldgaard/vim-supercollider-snippets'
 
 " OLD
