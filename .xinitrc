@@ -5,7 +5,7 @@ setbg &			# set the background with the `setbg` script
 picom --no-fading-openclose -o 0 &
 unclutter &		# Remove mouse when idle
 xinput set-prop "TPPS/2 IBM TrackPoint" "libinput Accel Speed" -0.85 &
-xinput set-prop "TPPS/2 Elan TrackPoint" "libinput Accel Speed" -0.45 &
+xinput set-prop "TPPS/2 Elan TrackPoint" "libinput Accel Speed" -0.55 &
 setxkbmap -option shift:both_capslock_cancel;
 xmodmap ~/.Xmodmap 
 xcape -e 'Mode_switch=Escape'
