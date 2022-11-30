@@ -1,5 +1,9 @@
 #!/bin/sh
-st -t Server -e zsh -c "cd ~/.local/src/$1; npm run dev" &
+if [ $1 == "mind" ]; then
+	st -t Server -e zsh -c "cd ~/.local/src/$1; source /usr/share/nvm/init-nvm.sh; nvm use 14.16.0; npm run dev" &
+else
+	st -t Server -e zsh -c "cd ~/.local/src/$1; npm run dev" &
+fi
 st -t Timer -e zsh -c "termdown --no-figlet" &
 sleep 0.2 && st -t Git -e zsh -c "cd ~/.local/src/$1; zsh" &
 notefile=$(find ~/Dropbox/NOTES/ -maxdepth 1 -type f -iname "*$1*")
