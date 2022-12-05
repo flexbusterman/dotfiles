@@ -1,6 +1,8 @@
 #!/bin/sh
 if [ $1 == "mind" ]; then
 	st -t Server -e zsh -c "cd ~/.local/src/$1; source /usr/share/nvm/init-nvm.sh; nvm use 14.16.0; npm run dev" &
+elif [ $1 == "sandhamn" ]; then
+	st -t Server -e zsh -c "cd ~/.local/src/$1; source /usr/share/nvm/init-nvm.sh; nvm use v16.18.1; npm run dev" &
 else
 	st -t Server -e zsh -c "cd ~/.local/src/$1; npm run dev" &
 fi
