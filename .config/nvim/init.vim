@@ -98,7 +98,7 @@ vnoremap <silent> <nowait> <leader>q <esc>:q!<CR>
 xnoremap <silent> <nowait> <leader>q <esc>:q!<CR>
 nnoremap <silent> <nowait> <M-`>:w<CR>
 "delete duplicate empty lines
-nnoremap <silent> <nowait> <leader>l :g/^\s\+$/s/\s\+//e <CR> <bar> :g/^$/,/./-j<CR><c-o>
+nnoremap <silent> <nowait> <leader>l :g/^\s\+$/s/\s\+//e <CR> <bar> :silent! g/^$/,/./-j<CR><c-o>
 " tabs
 nnoremap <silent> <nowait> <leader><tab> :tabn<CR>
 " Format capitalization to title 
