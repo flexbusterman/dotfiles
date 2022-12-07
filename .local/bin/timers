@@ -24,8 +24,8 @@ for ((i = 1; i <= $#; i++ )); do
 		let "hour=hour-1"
 	done
 	# notify-send "Timer #$i ${!i}m done"
-	aplay ~/Dropbox/SAMPLES/TONES/bell02.wav &
+	aplay ~/.local/bin/assets/bell02.wav &
 	clear
 done
 notify-send "All timers done"
-aplay ~/Dropbox/SAMPLES/TONES/bell01.wav &
+aplay ~/.local/bin/assets/bell01.wav &
