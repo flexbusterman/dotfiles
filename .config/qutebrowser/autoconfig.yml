@@ -12,7 +12,6 @@ settings:
         ',d': hint links spawn yt-dlp -f 'bestvideo[height<=1080]+bestaudio/best[height<=1080]'
           -P ~/Downloads/VIDEO/ {hint-url}
         ',m': hint links spawn mpv {hint-url} --ytdl-raw-options=mark-watched=
-        # <Ctrl+Shift+d>: set colors.webpage.darkmode.enabled false
         j: scroll-px 0 100
         k: scroll-px 0 -100
   colors.hints.bg:
@@ -21,8 +20,6 @@ settings:
     global: rgba(200,200,200,1)
   colors.hints.match.fg:
     global: rgba(255,255,255,1)
-  # colors.webpage.bg:
-    # global: black
   colors.webpage.darkmode.enabled:
     global: false
   content.blocking.enabled:
@@ -78,6 +75,6 @@ settings:
       w: https://wallpaperaccess.com/search?q={}
       y: https://www.youtube.com/results?search_query={}
   url.start_pages:
-    global: about:blank
+    global: ~/.config/qutebrowser/start.html
   zoom.default:
     global: 100%
