@@ -34,8 +34,8 @@ set splitbelow splitright
 set whichwrap+=b,s
 set virtualedit=onemore
 " relative numbers in netrw
-"
 let g:netrw_bufsettings="noma nomod nonu nobl nowrap ro rnu"
+" ignore node_modules folder
 
 function! NetrwMapping()
   nmap <buffer> H u
@@ -157,8 +157,10 @@ vnoremap { k{<Space>0
 nnoremap } j}<BS>0
 vnoremap } j}<BS>0
 map <C-p> :Telescope find_files<CR>
-map <F4> :execute "vimgrep /" . expand("<cword>") . "/j ** --exclude-dir=node_modules" <Bar> cw<CR>
 
+" vimgrep
+set wildignore+=node_modules/**
+map <F4> :execute "vimgrep /" . expand("<cword>") . "/j ** " <Bar> cw<CR>
 
 "  __  __
 " |  \/  | __ _  ___ _ __ ___  ___

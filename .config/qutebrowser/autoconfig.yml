@@ -20,6 +20,8 @@ settings:
     global: rgba(200,200,200,1)
   colors.hints.match.fg:
     global: rgba(255,255,255,1)
+  colors.webpage.bg:
+    global: black
   colors.webpage.darkmode.enabled:
     global: false
   content.blocking.enabled:
@@ -75,6 +77,6 @@ settings:
       w: https://wallpaperaccess.com/search?q={}
       y: https://www.youtube.com/results?search_query={}
   url.start_pages:
-    global: ~/.config/qutebrowser/start.html
+    global: about:empty
   zoom.default:
     global: 100%
