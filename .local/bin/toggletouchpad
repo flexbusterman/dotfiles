@@ -9,6 +9,7 @@ if [[ $DEVICE ]]; then
 		echo "Enabling TouchPad"
 		xinput enable "$DEVICE"
 		xinput set-prop "$DEVICE" "libinput Tapping Enabled" 1
+		xinput set-prop "$DEVICE" "libinput Accel Speed" +0.2
 	fi
 else
 	echo "No suitable device found"
