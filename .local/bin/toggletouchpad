@@ -1,0 +1,3 @@
+#!/bin/bash
+DEVICE=$(xinput --list | grep -o "SynPS/2 Synaptics TouchPad\|Synaptics TM3288-011")
+echo "$DEVICE"
