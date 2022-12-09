@@ -13,8 +13,12 @@ xmodmap ~/.Xmodmap
 xcape -e 'Mode_switch=Escape'
 udiskie -ta &
 xset r rate 300 50 &
-xinput disable "Synaptics TM3288-011" &
-xinput disable "SynPS/2 Synaptics TouchPad" &
+# xinput disable "Synaptics TM3288-011" &
+# xinput disable "SynPS/2 Synaptics TouchPad" &
+xinput set-prop "Synaptics TM3288-011" "libinput Tapping Enabled" 1 &
+xinput set-prop "Synaptics TM3288-011" "libinput Accel Speed" +0.2 &
+xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Tapping Enabled" 1 &
+xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Accel Speed" +0.2 &
 mailsync &
 dropbox &
 dunst &
