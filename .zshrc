@@ -203,6 +203,7 @@ alias vl="cd /home/flex/.config/lf/; nvim lfrc"
 alias vt="cd /home/flex/.config/leftwm/themes/flex/; nvim"
 alias vh="cd /home/flex/.history/zsh/; nvim history"
 alias vw="cd /home/flex/.w3m/; nvim keymap"
+alias vr="cd /home/flex/.config/REAPER/Scripts/reaper-keys/definitions; nvim bindings.lua"
 
 #   __                  _   _
 #  / _|_   _ _ __   ___| |_(_) ___  _ __  ___
