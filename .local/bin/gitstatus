@@ -9,7 +9,8 @@ folders=$(find ~+ -mindepth 1 -maxdepth 1 -type d) &> /dev/null
 for folder in $folders
 do
 	cd $folder
-	if [[ $(git status | grep modified)  ]]; then
+	git remote update
+	if [[ $(git status | grep modified) ]]; then
 		echo "Changes in $folder"
 	fi
 done
