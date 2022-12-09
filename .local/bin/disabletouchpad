@@ -6,11 +6,8 @@ if [[ $DEVICE ]]; then
 		echo "Disabling TouchPad"
 		xinput disable "$DEVICE"
 	else
-		echo "Enabling TouchPad"
-		xinput enable "$DEVICE"
-		xinput set-prop "$DEVICE" "libinput Tapping Enabled" 1
+		echo "Device is already disabled"
 	fi
 else
 	echo "No suitable device found"
-	exit 1
 fi

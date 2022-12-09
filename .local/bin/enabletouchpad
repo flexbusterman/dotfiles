@@ -3,8 +3,7 @@ DEVICE=$(xinput --list | grep -o "SynPS/2 Synaptics TouchPad\|Synaptics TM3288-0
 if [[ $DEVICE ]]; then
 	ENABLED=$(xinput --list-props "$DEVICE" | grep "Device Enabled" | awk '{print $NF}') 
 	if [[ $ENABLED == 1 ]]; then
-		echo "Disabling TouchPad"
-		xinput disable "$DEVICE"
+		echo "Device is already enabled"
 	else
 		echo "Enabling TouchPad"
 		xinput enable "$DEVICE"
@@ -12,5 +11,4 @@ if [[ $DEVICE ]]; then
 	fi
 else
 	echo "No suitable device found"
-	exit 1
 fi
