@@ -24,6 +24,6 @@ pidof dwmblocks || dwmblocks &
 srandrd displayhandler &
 # script that loops to restart dwm
 blueberry-tray &
-exec startdwm
+exec dwmstart
 # exec i3 
 # exec bspwm
