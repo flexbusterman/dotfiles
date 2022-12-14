@@ -12,7 +12,7 @@ set numberwidth=2
 set autoread
 set scrolloff=10
 set nohlsearch
-set clipboard+=unnamedplus
+" set clipboard+=unnamedplus
 set updatetime=50
 " set signcolumn=yes
 set shortmess+=c
