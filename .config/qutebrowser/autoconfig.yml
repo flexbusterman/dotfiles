@@ -58,9 +58,10 @@ settings:
   downloads.remove_finished:
     global: 1
   fonts.default_family:
-    global: PxPlus IBM VGA 9x16
+    # global: PxPlus IBM VGA 9x16
+    global: MxPlus IBM BIOS
   fonts.default_size:
-    global: 16px
+    global: 11px
   hints.border:
     global: '1px solid #000000'
   url.default_page:
