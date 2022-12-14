@@ -1,6 +1,7 @@
 {
   "vetur.ignoreProjectWarning": true,
   "prettier.semi": false,
+  "prettier.endOfLine": "auto",
   "suggest.noselect": false,
   "coc.preferences.snippets.enable": true,
   "coc.preferences.formatOnSaveFiletypes": [
