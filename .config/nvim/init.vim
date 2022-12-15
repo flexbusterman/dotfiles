@@ -112,8 +112,6 @@ nnoremap g* g*zz
 nnoremap g# g#zz
 nmap <silent> <nowait> <leader>d dd
 vmap <silent> <nowait> <leader>d dd
-nmap <silent> <nowait> <leader>g gg
-vmap <silent> <nowait> <leader>g gg
 nmap <silent> <nowait> <leader>y yy
 vmap <silent> <nowait> <leader>y yy
 nmap <silent> <nowait> <leader>z zz
@@ -158,9 +156,30 @@ nnoremap } j}<BS>0
 vnoremap } j}<BS>0
 map <C-p> :Telescope find_files<CR>
 
-" vimgrep
-set wildignore+=node_modules/**
-map <F4> :execute "vimgrep /" . expand("<cword>") . "/j ** " <Bar> cw<CR>
+" faster grep with quickfix window
+" https://gist.github.com/romainl/56f0c28ef953ffc157f36cc495947ab3
+" install the_silver_searcher (ag)
+set grepprg=ag\ --vimgrep
+function! Grep(...)
+	return system(join([&grepprg] + [expandcmd(join(a:000, ' '))], ' '))
+endfunction
+command! -nargs=+ -complete=file_in_path -bar Grep  cgetexpr Grep(<f-args>)
+command! -nargs=+ -complete=file_in_path -bar LGrep lgetexpr Grep(<f-args>)
+cnoreabbrev <expr> grep  (getcmdtype() ==# ':' && getcmdline() ==# 'grep')  ? 'Grep'  : 'grep'
+cnoreabbrev <expr> lgrep (getcmdtype() ==# ':' && getcmdline() ==# 'lgrep') ? 'LGrep' : 'lgrep'
+augroup quickfix
+	autocmd!
+	autocmd QuickFixCmdPost cgetexpr cwindow
+	autocmd QuickFixCmdPost lgetexpr lwindow
+augroup END
+
+
+nmap <leader>/ :Grep 
+nmap <leader>n :cnext<CR>
+nmap <leader>p :cprevious<CR>
+" this is getting overwritten by some plugin
+autocmd VimEnter * noremap <leader>p :cprevious<CR>
+nmap <leader>x :cclose<CR>
 
 "  __  __
 " |  \/  | __ _  ___ _ __ ___  ___
@@ -502,7 +521,6 @@ scnvim.setup {
 }
 EOF
 
-
 " name = 'luasnip',
 
 " ['<F12>'] = map('sclang.hard_stop', {'n', 'x', 'i'}),
@@ -523,7 +541,6 @@ EOF
   " ['<F1>'] = map_expr('s.boot'),
   " ['<F2>'] = map_expr('s.meter'),
 " },
-
 
 " vertical 'v' or horizontal 'h' split
 " let g:scnvim_postwin_orientation = 'h'
