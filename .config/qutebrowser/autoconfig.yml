@@ -14,6 +14,7 @@ settings:
         ',m': hint links spawn mpv {hint-url} --ytdl-raw-options=mark-watched=
         j: scroll-px 0 100
         k: scroll-px 0 -100
+        <Ctrl-m>: bookmark-del
   colors.hints.bg:
     global: rgba(0,0,0,1)
   colors.hints.fg:
