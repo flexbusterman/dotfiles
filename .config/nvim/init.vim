@@ -179,6 +179,7 @@ nmap <leader>n :cnext<CR>
 nmap <leader>p :cprevious<CR>
 " this is getting overwritten by some plugin
 autocmd VimEnter * noremap <leader>p :cprevious<CR>
+nmap <leader>z :copen<CR>
 nmap <leader>x :cclose<CR>
 
 "  __  __
