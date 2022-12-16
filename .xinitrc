@@ -15,6 +15,7 @@ udiskie -ta &
 xset r rate 300 50 &
 # xinput disable "Synaptics TM3288-011" &
 # xinput disable "SynPS/2 Synaptics TouchPad" &
+xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Accel Speed" 0.3 &
 mailsync &
 dropbox &
 dunst &
