@@ -1,12 +1,12 @@
 includePaths:
-    -   /home/flex/.local/share/SuperCollider/downloaded-quarks/Bjorklund
-    -   /home/flex/.local/share/SuperCollider/downloaded-quarks/BatLib
-    -   /home/flex/.local/share/SuperCollider/downloaded-quarks/dmx
-    -   /home/flex/.local/share/SuperCollider/downloaded-quarks/XML
-    -   /home/flex/.local/share/SuperCollider/downloaded-quarks/wslib
     -   /home/flex/.local/share/SuperCollider/downloaded-quarks/Vowel
     -   /home/flex/.local/share/SuperCollider/downloaded-quarks/Dirt-Samples
     -   /home/flex/.local/share/SuperCollider/downloaded-quarks/SuperDirt
+    -   /home/flex/.local/share/SuperCollider/downloaded-quarks/Bjorklund
+    -   /home/flex/.local/share/SuperCollider/downloaded-quarks/BatLib
+    -   /home/flex/.local/share/SuperCollider/downloaded-quarks/XML
+    -   /home/flex/.local/share/SuperCollider/downloaded-quarks/wslib
+    -   /home/flex/.local/share/SuperCollider/downloaded-quarks/DMX
 excludePaths:
     []
 postInlineWarnings: false

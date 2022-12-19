@@ -33,6 +33,9 @@ set signcolumn=number
 set splitbelow splitright
 set whichwrap+=b,s
 set virtualedit=onemore
+set equalalways
+"
+
 " relative numbers in netrw
 let g:netrw_bufsettings="noma nomod nonu nobl nowrap ro rnu"
 " ignore node_modules folder
@@ -56,7 +59,6 @@ filetype off
 set runtimepath+=/usr/share/lilypond/current/vim/
 filetype on
 syntax on
-
 
 colorscheme dracula
 if (has("termguicolors"))
