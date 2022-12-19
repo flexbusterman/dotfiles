@@ -35,7 +35,7 @@ set whichwrap+=b,s
 set virtualedit=onemore
 " set equalalways
 autocmd VimResized *  exec 'vertical resize ' . string(&columns *  0.5) | 
-autocmd VimResized *.tidal,*.scd exec 'resize ' . string(&lines *  0.85)
+" autocmd VimResized *.tidal,*.scd exec 'resize ' . string(&lines *  0.85)
 
 " relative numbers in netrw
 let g:netrw_bufsettings="noma nomod nonu nobl nowrap ro rnu"
