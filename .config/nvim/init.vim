@@ -36,7 +36,7 @@ set virtualedit=onemore
 " relative numbers in netrw
 let g:netrw_bufsettings="noma nomod nonu nobl nowrap ro rnu"
 " ignore node_modules folder
-
+"
 function! NetrwMapping()
   nmap <buffer> H u
   nmap <buffer> h -^
@@ -76,8 +76,6 @@ augroup END
 autocmd BufEnter * :syntax sync fromstart | set nohlsearch
 autocmd FileType mail set textwidth=0 wrapmargin=0
 autocmd BufEnter,BufWinEnter,BufNewFile,BufRead *.jsfx set filetype=eel2
-" Alacritty full size
-autocmd VimEnter * :silent exec "!kill -s SIGWINCH $PPID"
 autocmd BufNewFile,BufFilePre,BufRead *.md set filetype=markdown | set nospell
 
 let g:vimwiki_list = [{'path': '~/Dropbox/NOTES/',
@@ -119,7 +117,7 @@ vmap <silent> <nowait> <leader>z zz
 " remove previous WORD without exiting insert mode
 inoremap <silent> <C-h> <esc>bciW
 " Quick window switching
-nmap <C-h> <C-w>h
+autocmd VimEnter * nmap <C-h> <C-w>h
 nmap <C-j> <C-w>j
 nmap <C-k> <C-w>k
 nmap <C-l> <C-w>l
@@ -173,11 +171,8 @@ augroup quickfix
 	autocmd QuickFixCmdPost lgetexpr lwindow
 augroup END
 
-
 nmap <leader>/ :Grep 
 nmap <leader>n :cnext<CR>
-nmap <leader>p :cprevious<CR>
-" this is getting overwritten by some plugin
 autocmd VimEnter * noremap <leader>p :cprevious<CR>
 nmap <leader>z :copen<CR>
 nmap <leader>x :cclose<CR>
@@ -220,7 +215,8 @@ let g:NERDSpaceDelims = 1
 " Use compact syntax for prettified multi-line comments
 let g:NERDCompactSexyComs = 1
 let g:NERDCustomDelimiters = { 'text': { 'left': '"','right': '' } }
-let g:NERDCustomDelimiters = { 'html': { 'left': '// ','right': '' } }
+let g:NERDCustomDelimiters = { 'html': { 'left': '<-- ','right': '-- >' } }
+let g:NERDCustomDelimiters = { 'tidal': { 'left': '-- ','right': '' } }
 
 " ctrlp
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
@@ -431,6 +427,12 @@ let g:sclangTerm = "st -e zsh -ic"
 " map <silent><nowait> <leader>b <Plug>(scnvim-hard-stop)
 " nmap <silent><nowait> <leader>p <Plug>(scnvim-postwindow-clear)
 map <silent><nowait> <leader>s :SCNvimStart<CR>
+
+" Tidalcycles
+let g:tidal_target = "terminal"
+autocmd FileType tidal nmap <buffer> <CR> <Plug>TidalParagraphSend
+autocmd FileType tidal nnoremap <buffer> <leader>. :TidalHush<cr>
+autocmd FileType tidal xmap <buffer> <CR> <Plug>TidalRegionSend
 
 lua << EOF
 local scnvim = require 'scnvim'

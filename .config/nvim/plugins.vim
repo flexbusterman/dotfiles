@@ -40,7 +40,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " quickfix list jumping
 Plug 'tpope/vim-unimpaired'
 
-" Plug 'madskjeldgaard/vim-supercollider-snippets'
+Plug 'madskjeldgaard/vim-supercollider-snippets'
+Plug 'tidalcycles/vim-tidal'
 
 " OLD
 " Plug 'tsony-tsonev/nerdtree-git-plugin'
