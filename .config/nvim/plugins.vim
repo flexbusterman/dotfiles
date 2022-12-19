@@ -43,6 +43,9 @@ Plug 'tpope/vim-unimpaired'
 Plug 'madskjeldgaard/vim-supercollider-snippets'
 Plug 'tidalcycles/vim-tidal'
 
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
+
 " OLD
 " Plug 'tsony-tsonev/nerdtree-git-plugin'
 " Plug 'Xuyuanp/nerdtree-git-plugin'

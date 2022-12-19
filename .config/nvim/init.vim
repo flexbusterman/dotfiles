@@ -57,6 +57,7 @@ set runtimepath+=/usr/share/lilypond/current/vim/
 filetype on
 syntax on
 
+
 colorscheme dracula
 if (has("termguicolors"))
 	set termguicolors
