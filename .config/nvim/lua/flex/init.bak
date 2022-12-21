@@ -34,7 +34,7 @@ set splitbelow splitright
 set whichwrap+=b,s
 set virtualedit=onemore
 " set equalalways
-autocmd VimResized *  exec 'vertical resize ' . string(&columns *  0.5) | 
+autocmd VimResized *  exec 'vertical resize ' . string(&columns *  0.5) |
 " autocmd VimResized *.tidal,*.scd exec 'resize ' . string(&lines *  0.85)
 
 " relative numbers in netrw
@@ -103,7 +103,7 @@ nnoremap <silent> <nowait> <M-`>:w<CR>
 nnoremap <silent> <nowait> <leader>l :g/^\s\+$/s/\s\+//e <CR> <bar> :silent! g/^$/,/./-j<CR><c-o>
 " tabs
 nnoremap <silent> <nowait> <leader><tab> :tabn<CR>
-" Format capitalization to title 
+" Format capitalization to title
 nnoremap <silent> <nowait> <leader>t :s/\v<(.)(\w*)/\u\1\L\2/g<CR>
 " center matches on screen
 nnoremap n nzz
@@ -175,7 +175,7 @@ augroup quickfix
 	autocmd QuickFixCmdPost lgetexpr lwindow
 augroup END
 
-nmap <leader>/ :Grep 
+nmap <leader>/ :Grep
 nmap <leader>n :cnext<CR>
 autocmd VimEnter * noremap <leader>p :cprevious<CR>
 nmap <leader>z :copen<CR>

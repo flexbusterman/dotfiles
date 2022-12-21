@@ -21,6 +21,9 @@ vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
 vim.opt.clipboard = "unnamedplus"
 vim.opt.cursorline = true
+vim.opt.splitbelow = true
+vim.opt.splitright = true
 -- vim.opt.colorcolumn = "80"
 vim.opt.filetype.plugin = "on"
 vim.g.cmdheight = 1
+vim.opt.equalalways = true

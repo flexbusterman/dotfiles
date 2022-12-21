@@ -32,3 +32,9 @@ autocmd({"BufWritePre"}, {
 -- vim.g.netrw_browse_split = 0
 -- vim.g.netrw_banner = 0
 -- vim.g.netrw_winsize = 25
+
+autocmd({"VimResized"}, {
+    group = FlexGroup,
+    pattern = "*",
+    command = "exec 'vertical resize ' . string(&columns *  0.5)",
+})
