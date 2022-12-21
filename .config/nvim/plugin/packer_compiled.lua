@@ -200,6 +200,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/flex/.local/share/nvim/site/pack/packer/start/vim-fugitive",
     url = "https://github.com/tpope/vim-fugitive"
+  },
+  vimwiki = {
+    loaded = true,
+    path = "/home/flex/.local/share/nvim/site/pack/packer/start/vimwiki",
+    url = "https://github.com/vimwiki/vimwiki"
   }
 }
 
