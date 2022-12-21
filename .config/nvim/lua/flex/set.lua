@@ -23,3 +23,4 @@ vim.opt.clipboard = "unnamedplus"
 vim.opt.cursorline = true
 -- vim.opt.colorcolumn = "80"
 vim.opt.filetype.plugin = "on"
+vim.g.cmdheight = 1
