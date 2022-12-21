@@ -114,11 +114,6 @@ _G.packer_plugins = {
     path = "/home/flex/.local/share/nvim/site/pack/packer/start/friendly-snippets",
     url = "https://github.com/rafamadriz/friendly-snippets"
   },
-  harpoon = {
-    loaded = true,
-    path = "/home/flex/.local/share/nvim/site/pack/packer/start/harpoon",
-    url = "https://github.com/theprimeagen/harpoon"
-  },
   ["hop.nvim"] = {
     loaded = true,
     path = "/home/flex/.local/share/nvim/site/pack/packer/start/hop.nvim",
@@ -138,6 +133,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/flex/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
+  },
+  nerdcommenter = {
+    loaded = true,
+    path = "/home/flex/.local/share/nvim/site/pack/packer/start/nerdcommenter",
+    url = "https://github.com/preservim/nerdcommenter"
   },
   ["nvim-cmp"] = {
     loaded = true,

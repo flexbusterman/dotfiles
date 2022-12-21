@@ -47,5 +47,3 @@ vim.keymap.set("n", "<leader>l", ":g/^\\s\\+$/s/\\s\\+//e <CR> <bar> :silent! g/
 
 -- remove previous WORD without exiting insert mode
 vim.keymap.set("i", "<C-h>", "<esc>bciW")
-
-vim.keymap.set("n", "<leader>f", vim.easymotion.easymotion-bd-w)
