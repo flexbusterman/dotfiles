@@ -79,7 +79,7 @@ scnvim.setup {
     ['<M-L>'] = map('postwin.clear', {'n', 'i'}),
     ['<K>'] = map('signature.show', 'n'),
     ['<leader>.'] = map('sclang.hard_stop', {'n', 'x'}),
-    ['<leader>st'] = map('sclang.start'),
+    ['<leader>s'] = map('sclang.start'),
     ['<leader>sk'] = map('sclang.recompile'),
     ['<F1>'] = map_expr('s.boot'),
     ['<F2>'] = map_expr('s.meter'),

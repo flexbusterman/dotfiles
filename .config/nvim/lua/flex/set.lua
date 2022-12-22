@@ -34,3 +34,5 @@ vim.opt.filetype.plugin = "on"
 vim.g.cmdheight = 1
 vim.g.nocompatible = true
 vim.opt.syntax = "on"
+
+vim.fn.setreg('s', 'dt_xllla-lla-lllr lla_lla_0j')

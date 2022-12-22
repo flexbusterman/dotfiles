@@ -39,7 +39,7 @@ vim.keymap.set({"n"}, "<C-l>", "<C-w>l")
 -- vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
 -- vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
--- vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+vim.keymap.set("n", "<leader>r", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
 -- no duplicate lines
@@ -47,3 +47,8 @@ vim.keymap.set("n", "<leader>l", ":g/^\\s\\+$/s/\\s\\+//e <CR> <bar> :silent! g/
 
 -- remove previous WORD without exiting insert mode
 vim.keymap.set("i", "<C-h>", "<esc>bciW")
+
+-- calculate and return result after =
+vim.keymap.set("n", "<leader>i", ":VimwikiIndex<CR>")
+vim.keymap.set("n", "<leader>k", ":Prettier<CR>")
+vim.keymap.set("x", "<leader>k", ":Prettier<CR>")
