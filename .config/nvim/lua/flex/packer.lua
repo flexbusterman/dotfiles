@@ -24,6 +24,8 @@ return require('packer').startup(function(use)
 
   use('preservim/nerdcommenter')
 
+	use('leafoftree/vim-vue-plugin')
+
   use {
     'nvim-lualine/lualine.nvim',
     requires = { 'kyazdani42/nvim-web-devicons', opt = true }
@@ -41,8 +43,10 @@ return require('packer').startup(function(use)
       }
     end
   }
+
   use('jose-elias-alvarez/null-ls.nvim')
   use('MunifTanjim/prettier.nvim')
+
   use {
     'VonHeikemen/lsp-zero.nvim',
     requires = {
