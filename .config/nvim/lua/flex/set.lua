@@ -1,12 +1,16 @@
 -- vim.opt.guicursor = ""
 vim.opt.nu = true
 vim.opt.relativenumber = true
-vim.opt.tabstop = 2
-vim.opt.softtabstop = 2
-vim.opt.shiftwidth = 2
+
+-- indenting
 vim.opt.expandtab = false
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 0
+vim.opt.softtabstop = 0
+vim.opt.smarttab = true
 vim.opt.autoindent = true
 vim.opt.smartindent = true
+
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.wrap = true
