@@ -29,7 +29,18 @@ return require('packer').startup(function(use)
 		requires = { 'kyazdani42/nvim-web-devicons', opt = true }
 	}
 
-	use ('vimwiki/vimwiki')
+	use {
+			'vimwiki/vimwiki',
+			config = function()
+					vim.g.vimwiki_list = {
+							{
+									path = '/home/flex/Dropbox/NOTES/',
+									syntax = 'markdown',
+									ext = '.md',
+							}
+					}
+			end
+	}
 
   use {
 	  'VonHeikemen/lsp-zero.nvim',
