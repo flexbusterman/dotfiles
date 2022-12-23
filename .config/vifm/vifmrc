@@ -694,8 +694,9 @@ map <C-l> <C-w>l
 "map E :!$EDITOR %f<CR>
 map mkd :mkdir<space>""<left>
 map bg :!setbg %f &<CR>
-" map X :!7z x %c &<CR>
-map X :!7z x %c -o%c:r<CR>
+map X :!~/.local/bin/7zxdir %f &<CR>
+" map X :!7z x %c -o%c:r<CR>
+" :!echo %f | xargs
 
 map f :execute 'cd' fnameescape(term('find -type d | fzf 2> /dev/tty'))<CR>
 "nnoremap w :view<cr>
