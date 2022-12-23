@@ -177,13 +177,14 @@ alias igdl="cd ~/Dropbox/MEMES && instaloader -F --no-video-thumbnails --no-meta
 # VIM aliases for editing common files
 # alias va="cd /home/flex/.config/awesome/; nvim rc.lua"
 # alias va="cd /home/flex/.config/alacritty/; nvim alacritty.yml"
-alias va="cd /home/flex/.abook/addressbook; nvim adressbook"
 alias vb="cd /home/flex/.config/bspwm/; nvim bspwmrc"
 alias vA="cd /home/flex/.config/awesome/; nvim rc.lua"
 alias vc="cd /home/flex/.config/nvim/; nvim coc-settings.json"
 alias vD="cd /home/flex/.local/src/dmenu/; nvim config.def.h"
 alias vd="cd /home/flex/.local/src/dwm/; nvim config.def.h"
 alias vn="cd /home/flex/.config/nvim/; nvim lua/flex/set.lua"
+alias vr="cd /home/flex/.config/nvim/; nvim lua/flex/remap.lua"
+alias va="cd /home/flex/.config/nvim/; nvim -c :Ex after/plugin/"
 alias vP="cd /home/flex/.config/polybar/; nvim config.ini"
 alias vp="cd /home/flex/.config/nvim/; nvim lua/flex/packer.lua"
 # alias vp="cd /home/flex/; nvim .xprofile"
@@ -205,7 +206,6 @@ alias vl="cd /home/flex/.config/lf/; nvim lfrc"
 alias vt="cd /home/flex/.config/leftwm/themes/flex/; nvim"
 alias vh="cd /home/flex/.history/zsh/; nvim history"
 alias vw="cd /home/flex/.w3m/; nvim keymap"
-alias vr="cd /home/flex/.config/REAPER/Scripts/reaper-keys/definitions; nvim bindings.lua"
 
 #   __                  _   _
 #  / _|_   _ _ __   ___| |_(_) ___  _ __  ___
