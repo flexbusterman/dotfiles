@@ -39,14 +39,12 @@ do
         case "$1" in
         "d")
                 mv "$file" ~/.trash ;;
-        "period")
-                convert -rotate 90 "$file" "$file" ;;
-        "comma")
-                convert -rotate 270 "$file" "$file" ;;
-        "Right")
-                convert -rotate 90 "$file" "$file" ;;
-        "Left")
-                convert -rotate 270 "$file" "$file" ;;
+        "greater")
+                convert -auto-orient "$file" -rotate 90 "$file" ;;
+        "less")
+                convert -auto-orient "$file" -rotate 270 "$file" ;;
+        "question")
+                convert -auto-orient "$file" -rotate 180 "$file" ;;
         "C-c")
                 echo -n "$file" | xclip -selection clipboard ;;
         "C-w")
