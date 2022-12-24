@@ -572,8 +572,8 @@ nnoremap <f5> :copy<cr>
 nnoremap <f6> :move<cr>
 nnoremap <f7> :mkdir<space>
 nnoremap <f8> :delete<cr>
-nnoremap ,, :!convert -rotate 270 %f %f & <cr>
-nnoremap .. :!convert -rotate 90 %f %f & <cr>
+nnoremap <lt> :!convert -auto-orient %c -rotate 270 %c & <cr>
+nnoremap > :!convert -auto-orient %c -rotate 90 %c & <cr>
 
 
 " ------------------------------------------------------------------------------
