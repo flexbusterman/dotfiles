@@ -818,3 +818,6 @@ nnoremap cw :rename<cr>
 
 " run script to prepend creation date
 nnoremap gd :!datefile %c<cr>
+
+nmap rs :!exifrotate %f <cr>
+nmap ra :!exifrotate *.jpg <cr>
