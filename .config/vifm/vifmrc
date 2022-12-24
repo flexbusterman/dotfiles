@@ -307,7 +307,6 @@ filextype *.html,*.htm
         \ uzbl-browser %f %i &,
 filetype *.html,*.htm links, lynx
 
-
 fileviewer *.sc highlight -O xterm256 -s moria %c
 
 " spreadcheat
@@ -547,7 +546,7 @@ nnoremap gb :file &<cr>l
 nnoremap yd :!echo %d | xclip %i<cr>
 
 " Yank current file path into the clipboard
-nnoremap yf :!echo %c:p | xclip %i<cr>
+" nnoremap yf :!echo %c:p | xclip %i<cr>
 
 " Mappings for faster renaming
 nnoremap I cw<c-a>
@@ -574,7 +573,6 @@ nnoremap <f7> :mkdir<space>
 nnoremap <f8> :delete<cr>
 nnoremap > :!convert -auto-orient %c -rotate 90 %c & <cr>
 nnoremap <lt> :!convert -auto-orient %c -rotate 270 %c & <cr>
-
 
 " ------------------------------------------------------------------------------
 
@@ -805,13 +803,13 @@ nnoremap yl :!dropbox-cli sharelink %c | xclip -sel clip<cr>
 " nnoremap yl :!/usr/bin/python ~/.local/bin/dropbox.py sharelink %c | xclip -sel clip<cr>
 "
 "" yank current file path into the clipboard
-nnoremap yf :!echo -n %c:p | xclip -selection clipboard %i<cr>:echo expand('%"c:p') "is yanked to clipboard"<cr>
+nnoremap yp :!echo -n %c:p | xclip -selection clipboard %i<cr>:echo expand('%"c:p') "is yanked to clipboard"<cr>
 "
 "" yank current filename without path into the clipboard
 nnoremap yn :!echo -n %c | xclip -selection clipboard %i<cr>:echo expand('%"c') "is yanked to clipboard"<cr>
-"
-"" yank root of current file's name into the clipboard
-nnoremap yr :!echo -n %c:r | xclip -selection clipboard %i<cr>:echo expand('%"c:r') "is yanked to clipboard"<cr>
+
+" yank root of current file's name into the clipboard
+" nnoremap yr :!echo -n %c:r | xclip -selection clipboard %i<cr>:echo expand('%"c:r') "is yanked to clipboard<cr>
 
 " edit filename in vim
 nnoremap cw :rename<cr>
@@ -820,4 +818,11 @@ nnoremap cw :rename<cr>
 nnoremap gd :!datefile %c<cr>
 
 nmap rs :!exifrotate %f <cr>
+vmap rs :!exifrotate %f <cr>
 nmap ra :!exifrotate *.jpg <cr>
+
+nnoremap yf :!printf "\n%%s" %f:p | tail -c+2 | xclip -selection clipboard %i<cr>
+nnoremap yF :!printf "\n%%s" %f:p | tail -c+2 | awk '$0="\""$0"\""' | xclip -selection clipboard %i<cr>
+nnoremap yn :!printf "\n%%s" %f | tail -c+2 | xclip -selection clipboard %i<cr>
+nnoremap yN :!printf "\n%%s" %f | tail -c+2 | awk '$0="\""$0"\""' | xclip -selection clipboard %i<cr>
+
