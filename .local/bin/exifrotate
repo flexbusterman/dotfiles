@@ -1,19 +1,16 @@
 #!/bin/bash
-# https://superuser.com/questions/36645/how-to-rotate-images-automatically-based-on-exif-data
+# modified script from https://superuser.com/questions/36645/how-to-rotate-images-automatically-based-on-exif-data
 
 ifinstalled jhead
 
-JHEAD=jhead
-SED=sed
-CONVERT=convert
-
 for f in $@
 do
-	orientation=$($JHEAD -v "$f" | $SED -nr 's:.*Orientation = ([0-9]+).*:\1:p')
-
-	if [ $orientation -gt 1 ]
+	orientation=$(jhead -v "$f" | sed -nr 's:.*Orientation = ([0-9]+).*:\1:p')
+	orientation=$(echo $orientation | cut -c1-1)
+	# echo $orientation
+	if [ $orientation -gt 1 ];
 	then
 		echo Rotating "$f"...
-		$CONVERT -auto-orient "$f" "$f"
+		convert -auto-orient "$f" "$f"
 	fi
 done
