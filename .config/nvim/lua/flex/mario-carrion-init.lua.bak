@@ -1,0 +1,188 @@
+vim.g.mapleader = ","
+
+vim.opt.filetype="on"
+vim.opt.filetype.indent="on"
+vim.opt.filetype.plugin="on"
+
+vim.opt.encoding="utf-8"
+
+vim.opt.syntax="on"
+vim.opt.compatible=false
+vim.opt.hlsearch=true
+vim.opt.relativenumber=true
+vim.opt.laststatus=2
+vim.opt.vb=true
+vim.opt.ruler=true
+vim.opt.spelllang="en_us"
+vim.opt.autoindent=true
+vim.opt.colorcolumn="110"
+vim.opt.textwidth=110
+vim.opt.mouse="a"
+vim.opt.clipboard="unnamed"
+vim.opt.scrollbind=false
+vim.opt.wildmenu=true
+
+-- netrw stuff {{{
+vim.cmd([[
+nnoremap - :Explore<CR>
+autocmd FileType netrw setl bufhidden=delete
+]])
+
+vim.g.netrw_banner=0
+vim.g.netrw_liststyle=3
+vim.g.netrw_bufsettings="noma nomod nu nobl nowrap ro"
+-- }}}
+
+-- Plugings Configuraton
+
+-- vim-gitgutter {{
+vim.opt.updatetime=1000
+-- }}
+
+-- papercolor-theme {{
+vim.opt.termguicolors=true
+vim.opt.background="dark"
+vim.cmd("colorscheme PaperColor")
+-- }}
+
+-- lspsaga {{
+local saga = require 'lspsaga'
+saga.init_lsp_saga()
+
+vim.cmd([[
+nnoremap <silent> gh <cmd>lua require'lspsaga.provider'.lsp_finder()<CR>
+
+nnoremap <silent> K <cmd>lua require('lspsaga.hover').render_hover_doc()<CR>
+
+nnoremap <silent><leader>ca <cmd>lua require('lspsaga.codeaction').code_action()<CR>
+vnoremap <silent><leader>ca :<C-U>lua require('lspsaga.codeaction').range_code_action()<CR>
+
+nnoremap <silent>gr <cmd>lua require('lspsaga.rename').rename()<CR>
+]])
+-- }}
+
+-- nvim-cmp {{
+local cmp = require'cmp'
+cmp.setup({
+  snippet = {
+    expand = function(args)
+      vim.fn["UltiSnips#Anon"](args.body)
+    end,
+  },
+  mapping = {
+    ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
+    ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
+    ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+    ['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
+    ['<C-e>'] = cmp.mapping({
+      i = cmp.mapping.abort(),
+      c = cmp.mapping.close(),
+    }),
+    ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+  },
+  sources = cmp.config.sources({
+    { name = 'nvim_lsp' },
+    { name = 'ultisnips' },
+  }, {
+    { name = 'buffer' },
+  })
+})
+
+-- lspconfig {{
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
+local on_attach = function(client, bufnr)
+  -- Enable completion triggered by <c-x><c-o>
+  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+  -- Mappings.
+  -- See `:help vim.lsp.*` for documentation on any of the below functions
+  local bufopts = { noremap=true, silent=true, buffer=bufnr }
+  vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
+  vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
+  vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
+  vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
+  vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
+  vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
+  vim.keymap.set('n', 'rn', vim.lsp.buf.rename, bufopts)
+  vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
+  vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
+end
+
+require('lspconfig')['gopls'].setup {
+  capabilities = capabilities,
+  on_attach = on_attach
+}
+-- }}
+
+-- lspkind-nvim {{
+local lspkind = require('lspkind')
+
+cmp.setup {
+  formatting = {
+    format = lspkind.cmp_format({
+      mode = 'symbol_text',
+      maxwidth = 50,
+
+      before = function (entry, vim_item)
+        return vim_item
+      end
+    })
+  }
+}
+-- }}
+
+-- treesitter {{
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = { "go", "ruby" },
+  sync_install = false,
+  highlight = {
+    enable = true,
+    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+    -- Using this option may slow down your editor, and you may see some duplicate highlights.
+    -- Instead of true it can also be a list of languages
+    additional_vim_regex_highlighting = false,
+  },
+}
+-- }}
+
+-- Packer, install like: {{
+-- git clone --depth 1 https://github.com/wbthomason/packer.nvim \
+--   ~/.config/nvim/pack/packer/start/packer.nvim
+return require("packer").startup(function()
+  use "wbthomason/packer.nvim"
+
+  -- Must have
+  use "airblade/vim-gitgutter"          -- https://github.com/airblade/vim-gitgutter
+  use "bronson/vim-trailing-whitespace" -- https://github.com/bronson/vim-trailing-whitespace
+  use "ctrlpvim/ctrlp.vim"              -- https://github.com/ctrlpvim/ctrlp.vim
+  use "mkitt/tabline.vim"               -- https://github.com/mkitt/tabline.vim
+  use "rhysd/vim-clang-format"          -- https://github.com/rhysd/vim-clang-format
+  use "ryanoasis/vim-devicons"          -- https://github.com/ryanoasis/vim-devicons + https://github.com/ryanoasis/nerd-fonts/
+  use "tpope/vim-commentary"            -- https://github.com/tpope/vim-commentary
+  use "vim-airline/vim-airline"         -- https://github.com/vim-airline/vim-airline
+
+  -- Eye-candy
+  use "NLKNguyen/papercolor-theme" -- https://github.com/NLKNguyen/papercolor-theme
+
+  -- Filetypes
+  use "chrisbra/csv.vim" -- https://github.com/chrisbra/csv.vim
+
+  -- Go
+  use "fatih/vim-go" -- https://github.com/fatih/vim-go
+
+  -- Development
+  use "SirVer/ultisnips"                    -- https://github.com/sirver/UltiSnips
+  use "hrsh7th/cmp-nvim-lsp"                -- https://github.com/hrsh7th/cmp-nvim-lsp
+  use "hrsh7th/nvim-cmp"                    -- https://github.com/hrsh7th/nvim-cmp/
+  use "neovim/nvim-lspconfig"               -- https://github.com/neovim/nvim-lspconfig
+  use "onsails/lspkind-nvim"                -- https://github.com/onsails/lspkind-nvim
+  use "quangnguyen30192/cmp-nvim-ultisnips" -- https://github.com/quangnguyen30192/cmp-nvim-ultisnips
+  use "williamboman/nvim-lsp-installer"     -- https://github.com/williamboman/nvim-lsp-installer
+  use {
+    "nvim-treesitter/nvim-treesitter",      -- https://github.com/nvim-treesitter/nvim-treesitter
+    run = ':TSUpdate'
+  }
+end)
+-- }}

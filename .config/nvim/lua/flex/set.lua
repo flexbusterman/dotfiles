@@ -1,4 +1,6 @@
 -- vim.opt.guicursor = ""
+
+-- relative numbers
 vim.opt.nu = true
 vim.opt.relativenumber = true
 
@@ -34,5 +36,34 @@ vim.opt.filetype.plugin = "on"
 vim.g.cmdheight = 1
 vim.g.nocompatible = true
 vim.opt.syntax = "on"
+
+-- netrw stuff {{{
+vim.cmd([[
+	nnoremap - :Explore<CR>
+	autocmd FileType netrw setl bufhidden=delete
+]])
+vim.g.netrw_banner=0
+vim.g.netrw_liststyle=3
+vim.g.netrw_bufsettings="noma nomod nonu nobl nowrap ro rnu"
+
+vim.api.nvim_create_autocmd('filetype', {
+  pattern = 'netrw',
+  desc = 'Better mappings for netrw',
+  callback = function()
+    local bind = function(lhs, rhs)
+      vim.keymap.set('n', lhs, rhs, {remap = true, buffer = true})
+    end
+
+    bind('l', '<CR>')
+		bind('H', 'u')
+		bind('h', '-^')
+		bind('l', '<CR>')
+		bind('.', 'gh')
+		bind('P', '<C-w>z')
+		bind('L', '<CR>:Lexplore<CR>')
+		bind('<Leader>dd', ':Lexplore<CR>')
+  end
+})
+
 
 vim.fn.setreg('s', 'dt_xllla-lla-lllr lla_lla_0j')
