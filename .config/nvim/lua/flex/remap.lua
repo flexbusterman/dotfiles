@@ -39,8 +39,10 @@ vim.keymap.set({"n"}, "<C-l>", "<C-w>l")
 -- vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
 -- vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
-vim.keymap.set("n", "<leader>r", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+-- vim.keymap.set("n", "<leader>r", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
+-- title case
+vim.keymap.set("n", "<leader>t", "<cmd>s/\\v<(.)(\\w*)/\\u\\1\\L\\2/g<CR>", { silent = true })
 
 -- no duplicate lines
 vim.keymap.set("n", "<leader>l", ":g/^\\s\\+$/s/\\s\\+//e <CR> <bar> :silent! g/^$/,/./-j<CR><c-o>")

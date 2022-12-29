@@ -826,3 +826,6 @@ nnoremap yF :!printf "\n%%s" %f:p | tail -c+2 | awk '$0="\""$0"\""' | xclip -sel
 nnoremap yn :!printf "\n%%s" %f | tail -c+2 | xclip -selection clipboard %i<cr>
 nnoremap yN :!printf "\n%%s" %f | tail -c+2 | awk '$0="\""$0"\""' | xclip -selection clipboard %i<cr>
 
+" TODO
+" va select all files and directories
+" vf select all files
