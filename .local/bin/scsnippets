@@ -1,5 +1,12 @@
 #!/bin/bash
-cp ~/.cache/nvim/scnvim/supercollider.snippets /home/flex/.config/coc/ultisnips/
-cd ~/.config/coc/ultisnips/
-nvim supercollider.snippets -c ':%s/\${\(\d\+\):\%[ ]\([^:]*\):\%[ ]\([^}]*\)}/${\1:\\\2.kr(\3)}/g | wq'
-exit
+mkdir -p ~/.config/nvim/after/plugin/luasnippets/
+mv ~/.cache/nvim/scnvim/scnvim_snippets.lua ~/.config/nvim/after/plugin/luasnippets/supercollider.lua
+touch ~/.cache/nvim/scnvim/scnvim_snippets.lua
+# %s/dscr = "[^"]*"/
+# %s/\.new//g
+# %s/"\(\w\+\):/"\\\\\1.kr(/g
+# %s/\(i([^"]*"\)\([^"]*\)/\1\2)
+# %s/", "/"), "/g
+cd ~/.config/nvim/after/plugin/luasnippets/
+# nvim supercollider.lua -c ':%s/\${\(\d\+\):\%[ ]\([^:]*\):\%[ ]\([^}]*\)}/${\1:\\\2.kr(\3)}/g | wq'
+nvim supercollider.lua -c ':%s/dscr = "[^"]*"//g | %s/\.new//g | %s/"\(\w\+\):/"\\\\\1.kr(/g | %s/\(i([^"]*"\)\([^"]*\)/\1\2/g | %s/", "/"), "/g | %s/t(")"),}/t("))"),}/g | %s/\(\d*\)\.0/\1/g | wq'

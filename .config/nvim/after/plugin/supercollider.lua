@@ -56,14 +56,14 @@ scnvim.setup {
       auto = true,
     },
   },
-  snippet = {
-    engine = {
-      name = 'luasnip',
-      options = {
-        descriptions = true,
-      },
-    },
-  },
+	snippet = {
+		engine = {
+			name = 'luasnip',
+			options = {
+				descriptions = true,
+			},
+		},
+	},
   statusline = {
     poll_interval = 1,
   },
