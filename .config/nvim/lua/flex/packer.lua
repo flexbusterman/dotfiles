@@ -70,7 +70,7 @@ return require('packer').startup(function(use)
   }
 
   -- use("folke/zen-mode.nvim")
-  -- use("github/copilot.vim")
+	use("github/copilot.vim")
 
   use {
     'davidgranstrom/scnvim',
@@ -78,6 +78,21 @@ return require('packer').startup(function(use)
       require('scnvim').setup()
     end
   }
+
+	-- use({
+		-- "jackMort/ChatGPT.nvim",
+			-- config = function()
+				-- require("chatgpt").setup({
+					-- -- optional configuration
+				-- })
+			-- end,
+			-- requires = {
+				-- "MunifTanjim/nui.nvim",
+				-- "nvim-lua/plenary.nvim",
+				-- "nvim-telescope/telescope.nvim"
+			-- }
+	-- })
+
 
 end)
 

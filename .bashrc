@@ -7,6 +7,7 @@ export TERMINAL='st'
 export EDITOR='nvim'
 # export BROWSER=''
 export MANPAGER="/bin/sh -c \"col -b | nvim -c 'set ft=man ts=8 nomod nolist nonu noma' -\""
+# export $(grep -v '^#' .env | xargs)
 
 [[ $- != *i* ]] && return
 
