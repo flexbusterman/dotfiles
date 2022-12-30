@@ -20,6 +20,7 @@ setopt HIST_VERIFY               # Don't execute immediately upon history expans
 setopt INC_APPEND_HISTORY        # Write to the history file immediately, not when the shell exits.
 setopt MARK_DIRS # append a trailing ‘/’ to all directory names resulting from filename generation
 setopt SHARE_HISTORY             # Share history between all sessions.
+
 stty stop undef   # Disable ctrl-s to freeze terminal.
 
 # bind ctrl+space accept completion
@@ -179,7 +180,7 @@ alias igdl="cd ~/Dropbox/MEMES && instaloader -F --no-video-thumbnails --no-meta
 # alias va="cd /home/flex/.config/alacritty/; nvim alacritty.yml"
 alias vb="cd /home/flex/.config/bspwm/; nvim bspwmrc"
 alias vA="cd /home/flex/.config/awesome/; nvim rc.lua"
-alias vc="cd /home/flex/.config/nvim/; nvim coc-settings.json"
+alias vc="cd /home/flex/.config/nvim/after/plugin/; nvim copilot.lua"
 alias vD="cd /home/flex/.local/src/dmenu/; nvim config.def.h"
 alias vd="cd /home/flex/.local/src/dwm/; nvim config.def.h"
 alias vn="cd /home/flex/.config/nvim/; nvim lua/flex/set.lua"

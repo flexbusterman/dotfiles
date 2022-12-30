@@ -9,4 +9,9 @@ vim.g.copilot_filetypes = {
 	["c++"] = true,
 	["go"] = true,
 	["python"] = true,
+	["unix"] = true,
+	["bash"] = true,
+	["vue"] = true,
+	["json"] = true,
+	["zsh"] = true,
 }
