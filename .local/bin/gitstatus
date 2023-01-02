@@ -12,5 +12,13 @@ do
 	git remote update
 	if [[ $(git status | grep modified) ]]; then
 		echo "Changes in $folder"
+		# pull from github
+		git pull --force
+		# if folder contains file config.def.h or config.h
+		if [[ -f config.def.h ]] || [[ -f config.h ]]; then
+			# compile and install
+			make clean install
+		fi
 	fi
 done
+
