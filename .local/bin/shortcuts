@@ -1,0 +1,2 @@
+#!/bin/bash
+nvim $(cat /home/flex/Dropbox/NOTES/Shortcuts.md | fzf)
