@@ -825,6 +825,9 @@ nnoremap yf :!printf "\n%%s" %f:p | tail -c+2 | xclip -selection clipboard %i<cr
 nnoremap yF :!printf "\n%%s" %f:p | tail -c+2 | awk '$0="\""$0"\""' | xclip -selection clipboard %i<cr>
 nnoremap yn :!printf "\n%%s" %f | tail -c+2 | xclip -selection clipboard %i<cr>
 nnoremap yN :!printf "\n%%s" %f | tail -c+2 | awk '$0="\""$0"\""' | xclip -selection clipboard %i<cr>
+" nnoremap rs :!$(echo %f | sed -r 's/Screenshot_([0-9]{4})([0-9]{2})([0-9]{2})-([0-9]{2})([0-9]{2})([0-9]{2})([^.]*)/\1-\2-\3 \4_\5_\6\7/') | xargs -P 0 -I mv _ _
+nnoremap rs :!printf %f | xargs -P 0 -I {} mv {} `echo {} | sed 's/Screenshot_([0-9]{4})([0-9]{2})([0-9]{2})-([0-9]{2})([0-9]{2})([0-9]{2})([^.]*)/\1-\2-\3 \4_\5_\6\7/'`<CR>
+
 
 " TODO
 " va select all files and directories
