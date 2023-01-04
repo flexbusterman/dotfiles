@@ -17,7 +17,7 @@ generic-copy  c
 generic-paste  p ^V 
 generic-change-view  TAB 
 generic-prev-view  KEY_BTAB 
-generic-import  i I 
+generic-import  I 
 generic-export  x X 
 generic-goto  g G 
 generic-other-cmd  o O 
@@ -28,7 +28,7 @@ generic-add-todo  ^T
 generic-prev-day  T ^H 
 generic-next-day  t ^L 
 generic-prev-week  W ^K 
-generic-next-week  w 
+generic-next-week  w RET 
 generic-prev-month  M 
 generic-next-month  m 
 generic-prev-year  Y 
@@ -46,7 +46,7 @@ end-of-week  $
 add-item  a A 
 del-item  d D 
 edit-item  e E 
-view-item  v V RET 
+view-item  i 
 pipe-item  | 
 flag-item  ! 
 repeat  r 
