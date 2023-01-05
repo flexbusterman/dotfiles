@@ -5,6 +5,7 @@ vim.keymap.set('i', '<esc>', '<esc><Plug>(copilot-cancel)')
 vim.g.copilot_filetypes = {
 	["*"] = true,
 	["markdown"] = false,
+	["vimwiki"] = false,
 	-- ["javascript"] = true,
 	-- ["typescript"] = true,
 	-- ["lua"] = true,
