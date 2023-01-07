@@ -1,5 +1,16 @@
 #!/bin/bash
+# This script is used to create a shortcut to a file and open in nvim
+cd ~
 file=$(cat /home/flex/Dropbox/NOTES/Shortcuts.md | fzf)
 if [ -n "$file" ]; then
 		nvim "$file"
+	else
+		file="$(fzf)"
+		if [ -n "$file" ]; then
+			echo "/home/flex/$file" >> /home/flex/Dropbox/NOTES/Shortcuts.md
+			nvim "$file"
+		else
+			echo "No file selected"
+			exit 1
+		fi
 fi
