@@ -71,7 +71,7 @@ scnvim.setup {
 		tmux = {
 			path = vim.fn.tempname(),
 			horizontal = true,
-			size = '35%',
+			size = '20%',
 			-- cmd = 'tail',
 			-- args = { '-F', '$1' }
 			cmd = 'scnvim-tmux',
@@ -97,7 +97,7 @@ scnvim.setup {
 	},
 }
 
-scnvim.load_extension 'tmux'
+scnvim.load_extension('tmux')
 
 vim.g.scnvim_snippet_format = "luasnip"
 require("luasnip").add_snippets("supercollider", require("scnvim/utils").get_snippets())
