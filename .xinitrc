@@ -5,11 +5,11 @@ setbg &			# set the background with the `setbg` script
 picom --no-fading-openclose -o 0 &
 unclutter &		# Remove mouse when idle
 setxkbmap -option shift:both_capslock_cancel;
-xmodmap ~/.Xmodmap 
+xmodmap ~/.Xmodmap
 xcape -e 'Mode_switch=Escape'
 udiskie -ta &
 xset r rate 300 50 &
-# T460 
+# T460
 xinput set-prop "TPPS/2 IBM TrackPoint" "libinput Accel Speed" -0.45
 # xinput disable "Synaptics TM3288-011" &
 xinput set-prop "Synaptics TM3288-011" "libinput Accel Speed" 0.3
@@ -29,5 +29,5 @@ srandrd displayhandler &
 # script that loops to restart dwm
 blueberry-tray &
 exec dwmstart
-# exec i3 
+# exec i3
 # exec bspwm
