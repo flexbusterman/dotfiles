@@ -72,8 +72,10 @@ scnvim.setup {
 			path = vim.fn.tempname(),
 			horizontal = true,
 			size = '35%',
-			cmd = 'tail',
-			args = { '-F', '$1' }
+			-- cmd = 'tail',
+			-- args = { '-F', '$1' }
+			cmd = 'scnvim-tmux',
+			args = { '$1' },
 		},
 	},
 
