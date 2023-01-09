@@ -1,0 +1,8 @@
+#!/bin/bash
+# if tmux session Tmux is not running, start it
+if ! tmux has-session -t Tmux 2>/dev/null; then
+	tmux new -s Tmux
+else
+	# if it is running, attach to it
+	tmux attach -t Tmux
+fi
