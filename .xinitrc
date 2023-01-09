@@ -1,7 +1,9 @@
 #/bin/sh
 # arbtt-capture -r 10 &
 xrdb -load ~/.Xresources &
-setbg &			# set the background with the `setbg` script
+wallset -q
+wallset -V ~/Pictures/RANDOM/starfield.mp4 &
+# setbg &			# set the background with the `setbg` script
 picom --no-fading-openclose -o 0 &
 unclutter &		# Remove mouse when idle
 setxkbmap -option shift:both_capslock_cancel;
