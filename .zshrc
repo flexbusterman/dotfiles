@@ -112,6 +112,7 @@ alias vimdiff='nvim -d'
 alias gs="git status"
 alias ta="tmux attach"
 alias td="tmux detach"
+alias tks="tmux kill-server"
 
 # audio
 alias play="ffplay -nodisp -autoexit"

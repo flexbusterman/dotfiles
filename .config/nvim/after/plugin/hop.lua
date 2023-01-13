@@ -1,6 +1,7 @@
+vim.api.nvim_set_keymap("n", "<Leader>f", "<cmd>HopWord<CR>", {noremap=true})
+
 require'hop'.setup()
 
-vim.api.nvim_set_keymap("n", "<Leader>f", "<cmd>HopWord<CR>", {noremap=true})
 --
 -- normal mode (easymotion-like)
 -- vim.api.nvim_set_keymap("n", "<Leader><Leader>b", "<cmd>HopWordBC<CR>", {noremap=true})
