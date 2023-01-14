@@ -4,10 +4,10 @@ if ! tmux has-session -t $1 2>/dev/null; then
 	# if $2 is not empty
 	if [ -n "$2" ]; then
 		# start tmux session $1 running command $2
-		tmux new-session -s $1 "$2"
+		tmux -2 new-session -s $1 "$2"
 	else
 		# start tmux session $1
-		tmux new-session -s $1
+		tmux -2 new-session -s $1
 	fi
 else
 	# if it is running, attach to it

@@ -12,9 +12,9 @@ settings:
         ',d': hint links spawn yt-dlp -f 'bestvideo[height<=1080]+bestaudio/best[height<=1080]'
           -P ~/Downloads/VIDEO/ {hint-url}
         ',m': hint links spawn mpv {hint-url} --ytdl-raw-options=mark-watched=
+        <Ctrl-m>: bookmark-del
         j: scroll-px 0 100
         k: scroll-px 0 -100
-        <Ctrl-m>: bookmark-del
   colors.hints.bg:
     global: rgba(0,0,0,1)
   colors.hints.fg:
@@ -29,6 +29,9 @@ settings:
     global: true
   content.blocking.method:
     global: both
+  content.cookies.accept:
+    '*://qutebrowser.org/*': all
+    https://www.youtube.com/: all
   content.geolocation:
     https://www.elgiganten.se: true
     https://www.google.com: true
@@ -37,19 +40,7 @@ settings:
   content.mute:
     https://www.facebook.com: true
   content.notifications.enabled:
-    https://cutewallpaper.org: false
-    https://epicstream.com: false
-    https://mail.one.com: false
-    https://mspoweruser.com: false
-    https://splendidprizeforyou.com: false
-    https://thepiratebay.org: false
-    https://wowroms.com: false
-    https://www.adsrsounds.com: false
-    https://www.facebook.com: false
-    https://www.masteringthemix.com: false
-    https://www.networkworld.com: false
-    https://www.reddit.com: false
-    https://www.youtube.com: false
+    global: false
   content.register_protocol_handler:
     https://calendar.google.com?cid=%25s: true
     https://mail.google.com?extsrc=mailto&url=%25s: true
