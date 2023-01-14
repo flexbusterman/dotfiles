@@ -30,6 +30,7 @@ pidof dwmblocks || dwmblocks &
 srandrd displayhandler &
 # script that loops to restart dwm
 blueberry-tray &
+xdotool mousemove $(xdotool getdisplaygeometry | awk '{print $1-1, $2-1}') &
 exec dwmstart
 # exec i3
 # exec bspwm
