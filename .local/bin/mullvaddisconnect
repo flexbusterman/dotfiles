@@ -2,9 +2,9 @@
 
 STATUS=$(mullvad status | awk '{print $NF}')
 if [[ $STATUS == "Disconnected" ]]; then
-    notify-send "Mullvad not connected" 
+    echo "Mullvad not connected"
 else
-    notify-send "Disconnecting Mullvad" 
+    notify-send "Disconnecting Mullvad"
     mullvad disconnect
     # SUDO_ASKPASS=~/.local/bin/dmenupass sudo -A cpupower frequency-set -g powersave && notify-send 'Powersave CPU governor'
     nohup dropbox &
