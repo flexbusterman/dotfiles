@@ -38,6 +38,33 @@ scnvim.setup {
 			end,
 		},
 	},
+	-- postwin = {
+    -- highlight = true,
+    -- auto_toggle_error = true,
+    -- scrollback = 5000,
+    -- horizontal = false,
+    -- direction = 'right',
+    -- size = nil,
+    -- fixed_size = nil,
+    -- keymaps = nil,
+    -- float = {
+      -- enabled = true,
+      -- row = function()
+        -- return vim.o.lines
+      -- end,
+      -- col = function()
+        -- return vim.o.columns
+      -- end,
+      -- width = 44,
+      -- height = 10,
+      -- config = {
+        -- border = 'single',
+      -- },
+      -- callback = function(id)
+        -- vim.api.nvim_win_set_option(id, 'winblend', 30)
+      -- end,
+    -- },
+  -- },
 	editor = {
 		force_ft_supercollider = true,
 		highlight = {
@@ -78,7 +105,6 @@ scnvim.setup {
 			args = { '$1' },
 		},
 	},
-
 	keymaps = {
 		['<M-e>'] = map('editor.send_line', {'i', 'n'}),
 		['<CR>'] = {
