@@ -54,6 +54,8 @@ settings:
     global: PxPlus IBM VGA 9x16
   fonts.default_size:
     global: 15px
+  fonts.web.family.standard:
+    global: Arimo Nerd Font Regular
   hints.border:
     global: '1px solid #000000'
   url.default_page:
