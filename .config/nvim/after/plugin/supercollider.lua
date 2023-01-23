@@ -9,8 +9,8 @@ scnvim.setup {
 	},
 	documentation = {
 		cmd = '/usr/bin/pandoc',
-		horizontal = true,
-		direction = 'top',
+		horizontal = false,
+		direction = 'right',
 		keymaps = true,
 	},
 	-- postwin = {

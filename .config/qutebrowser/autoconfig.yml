@@ -51,7 +51,7 @@ settings:
   downloads.remove_finished:
     global: 1
   fonts.default_family:
-    global: PxPlus IBM VGA 9x16
+    global: FiraCode Nerd Font
   fonts.default_size:
     global: 15px
   fonts.web.family.standard:
