@@ -13,58 +13,31 @@ scnvim.setup {
 		direction = 'top',
 		keymaps = true,
 	},
-	postwin = {
-		highlight = false,
-		auto_toggle_error = true,
-		scrollback = 5000,
-		horizontal = true,
-		direction = 'bot',
-		size = 10,
-		fixed_size = 10,
-		keymaps = nil,
-		float = {
-			enabled = false,
-			row = 99,
-			col = function()
-				return vim.o.columns
-			end,
-			width = 64,
-			height = 14,
-			config = {
-				border = 'single',
-			},
-			callback = function(id)
-				vim.api.nvim_win_set_option(id, 'winblend', 10)
-			end,
-		},
-	},
 	-- postwin = {
-    -- highlight = true,
-    -- auto_toggle_error = true,
-    -- scrollback = 5000,
-    -- horizontal = false,
-    -- direction = 'right',
-    -- size = nil,
-    -- fixed_size = nil,
-    -- keymaps = nil,
-    -- float = {
-      -- enabled = true,
-      -- row = function()
-        -- return vim.o.lines
-      -- end,
-      -- col = function()
-        -- return vim.o.columns
-      -- end,
-      -- width = 44,
-      -- height = 10,
-      -- config = {
-        -- border = 'single',
-      -- },
-      -- callback = function(id)
-        -- vim.api.nvim_win_set_option(id, 'winblend', 30)
-      -- end,
-    -- },
-  -- },
+		-- highlight = false,
+		-- auto_toggle_error = true,
+		-- scrollback = 5000,
+		-- horizontal = true,
+		-- direction = 'bot',
+		-- size = 10,
+		-- fixed_size = 10,
+		-- keymaps = nil,
+		-- float = {
+			-- enabled = false,
+			-- row = 99,
+			-- col = function()
+				-- return vim.o.columns
+			-- end,
+			-- width = 64,
+			-- height = 14,
+			-- config = {
+				-- border = 'single',
+			-- },
+			-- callback = function(id)
+				-- vim.api.nvim_win_set_option(id, 'winblend', 10)
+			-- end,
+		-- },
+	-- },
 	editor = {
 		force_ft_supercollider = true,
 		highlight = {
