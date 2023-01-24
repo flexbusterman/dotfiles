@@ -136,6 +136,7 @@ mark n ~/Dropbox/NOTES/
 mark p ~/Pictures/
 mark P ~/Dropbox/PDF/
 mark r /
+mark R ~/.local/share/SuperCollider/Recordings/
 mark s ~/Dropbox/2023\ FOTO/SCREENSHOTS/
 mark S ~/Dropbox/SUPERCOLLIDER/
 mark t ~/Dropbox/DROPSYNC/!\ TRANSFER/
