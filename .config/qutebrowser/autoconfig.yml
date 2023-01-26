@@ -51,7 +51,7 @@ settings:
   downloads.remove_finished:
     global: 1
   fonts.default_family:
-    global: Fira Mono
+    global: Fira Mono Medium
   fonts.default_size:
     global: 15px
   fonts.web.family.standard:
