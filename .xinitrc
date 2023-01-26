@@ -4,6 +4,7 @@ xrdb -load ~/.Xresources &
 # wallset -q
 # wallset -V ~/Pictures/RANDOM/starfield.mp4 &
 setbg &			# set the background with the `setbg` script
+xset fp+ /usr/share/fonts/TTF/FiraMono-Medium.ttf
 picom --no-fading-openclose -o 0 &
 unclutter &		# Remove mouse when idle
 setxkbmap -option shift:both_capslock_cancel;

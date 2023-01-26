@@ -4,6 +4,7 @@ includePaths:
     -   /home/flex/.local/share/SuperCollider/downloaded-quarks/XML
     -   /home/flex/.local/share/SuperCollider/downloaded-quarks/wslib
     -   /home/flex/.local/share/SuperCollider/downloaded-quarks/dmx
+    -   /home/flex/.local/share/SuperCollider/downloaded-quarks/FMGen-Quark
 excludePaths:
     []
 postInlineWarnings: false
