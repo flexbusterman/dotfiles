@@ -1,6 +1,2 @@
 #!/bin/bash
-mkdir -p ~/.config/nvim/after/plugin/luasnippets/
-mv ~/.cache/nvim/scnvim/scnvim_snippets.lua ~/.config/nvim/after/plugin/luasnippets/supercollider.lua
-touch ~/.cache/nvim/scnvim/scnvim_snippets.lua
-cd ~/.config/nvim/after/plugin/luasnippets/
-nvim supercollider.lua -c ':%s/dscr = "[^"]*"//g | %s/\.new//g | %s/"\(\w\+\):/"\\\\\1.kr(/g | %s/\(i([^"]*"\)\([^"]*\)/\1\2/g | %s/", "/"), "/g | %s/t(")"),}/t("))"),}/g | %s/\(\d*\)\.0/\1/g | wq'
+nvim ~/.cache/nvim/scnvim/scnvim_snippets.lua -c ':%s/dscr = "[^"]*"//g | %s/\.new//g | %s/"\(\w\+\):/"\\\\\1.kr(/g | %s/\(i([^"]*"\)\([^"]*\)/\1\2/g | %s/", "/"), "/g | %s/t(")"),}/t("))"),}/g | %s/\(\d*\)\.0/\1/g | wq'

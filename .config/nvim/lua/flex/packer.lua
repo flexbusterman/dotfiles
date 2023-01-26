@@ -24,6 +24,8 @@ return require('packer').startup(function(use)
 
   use('preservim/nerdcommenter')
 
+  use('dstein64/vim-startuptime')
+
 	use('leafoftree/vim-vue-plugin')
 
   use {
