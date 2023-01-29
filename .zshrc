@@ -49,7 +49,6 @@ bindkey -v
 export KEYTIMEOUT=1
 export MPD_HOST=127.0.0.1
 export MPD_PORT=6600
-
 # Change cursor shape for different vi modes.
 function zle-keymap-select {
   if [[ ${KEYMAP} == vicmd ]] ||
@@ -70,6 +69,7 @@ zle-line-init() {
 zle -N zle-line-init
 echo -ne '\e[5 q' # Use beam shape cursor on startup.
 preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
+
 #        _ _
 #   __ _| (_) __ _ ___  ___  ___
 #  / _` | | |/ _` / __|/ _ \/ __|
