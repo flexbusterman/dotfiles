@@ -452,6 +452,11 @@ filextype */
         \ {View in thunar}
         \ Thunar %f &,
 
+" Flash
+filextype *.swf
+				\ {View in ruffle}
+				\ ruffle %f &
+
 " Syntax highlighting in preview
 "
 " Explicitly set highlight type for some extensions
