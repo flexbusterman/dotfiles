@@ -9,6 +9,7 @@ vim.g.copilot_filetypes = {
 	["markdown"] = false,
 	["vimwiki"] = false,
 	["mail"] = false,
+	["text"] = false,
 	-- ["javascript"] = true,
 	-- ["typescript"] = true,
 	-- ["lua"] = true,
