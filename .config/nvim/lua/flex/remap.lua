@@ -45,8 +45,9 @@ vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
 -- title case
 -- vim.keymap.set("n", "<leader>t", "<cmd>s/\\v<(.)(\\w*)/\\u\\1\\L\\2/g<CR>", { silent = true })
--- title case script
-vim.keymap.set("n", "<leader>t", "c<C-R>=system('titlecase', getreg('\"'))[:-2]<CR>", { silent = true })
+-- title case plugin
+vim.keymap.set("n", "<leader>t", "<Plug>TitlecaseLine", { silent = true })
+vim.keymap.set("v", "<leader>t", "<Plug>Titlecase", { silent = true })
 
 -- no duplicate lines
 vim.keymap.set("n", "<leader>l", ":g/^\\s\\+$/s/\\s\\+//e <CR> <bar> :silent! g/^$/,/./-j<CR><c-o>")
@@ -59,5 +60,5 @@ vim.keymap.set("n", "<leader>i", ":VimwikiIndex<CR>")
 vim.keymap.set("n", "<leader>k", ":Prettier<CR>")
 vim.keymap.set("x", "<leader>k", ":Prettier<CR>")
 
--- supercollider substitution
+-- supercollider synthdef to pbindef
 vim.keymap.set("v", "<leader>p", ":s/\\\\/\\r\\\\/g | '<,'>s/^[^\\\\].*$//g | '<,'>s/).*/)/g | '<,'>s/\\(\\.[ak]r(\\)\\([^)]*\\))/, \\2,/ | '<,'>s/ \\(-[^,]*\\)/ (\\1)/ | '<,'>s/^\\(.*\\)\\(\\n\\1\\)\\+$/\\1/ | '<,'>s/\\v^\\s*\\n//g | '<s/\\([^{]*\\).*/(\\rPbindef(\\\\name,\\r\\\\instrument, \\1\\r\\\\dur, 1,/ | '>s/\\(.*\\)/\\1).play(quant: 1);\\r)/<CR>")

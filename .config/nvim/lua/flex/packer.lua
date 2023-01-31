@@ -83,5 +83,7 @@ return require('packer').startup(function(use)
 
 	use { 'davidgranstrom/scnvim-tmux' }
 
+	use { 'christoomey/vim-titlecase' }
+
 end)
 
