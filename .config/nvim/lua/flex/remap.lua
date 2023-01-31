@@ -44,7 +44,9 @@ vim.keymap.set({"n"}, "<C-l>", "<C-w>l")
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
 -- title case
-vim.keymap.set("n", "<leader>t", "<cmd>s/\\v<(.)(\\w*)/\\u\\1\\L\\2/g<CR>", { silent = true })
+-- vim.keymap.set("n", "<leader>t", "<cmd>s/\\v<(.)(\\w*)/\\u\\1\\L\\2/g<CR>", { silent = true })
+-- title case script
+vim.keymap.set("n", "<leader>t", "c<C-R>=system('titlecase', getreg('\"'))[:-2]<CR>", { silent = true })
 
 -- no duplicate lines
 vim.keymap.set("n", "<leader>l", ":g/^\\s\\+$/s/\\s\\+//e <CR> <bar> :silent! g/^$/,/./-j<CR><c-o>")
