@@ -55,7 +55,9 @@ vim.keymap.set("n", "<leader>l", ":g/^\\s\\+$/s/\\s\\+//e <CR> <bar> :silent! g/
 -- remove previous WORD without exiting insert mode
 vim.keymap.set("i", "<C-h>", "<esc>bciW")
 
--- calculate and return result after =
+-- calculate and return result
+-- vim.keymap.set("n", "<leader>r", ":s/ = .*//e<cr> \0y$ \\!!sed 's/mean/avg/;s/^/round(/;s/$/,3)/'<cr> \\!!calc -p<cr> \\Pa = <esc>hh")
+
 vim.keymap.set("n", "<leader>i", ":VimwikiIndex<CR>")
 vim.keymap.set("n", "<leader>k", ":Prettier<CR>")
 vim.keymap.set("x", "<leader>k", ":Prettier<CR>")
