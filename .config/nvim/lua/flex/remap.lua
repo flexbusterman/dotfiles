@@ -19,16 +19,17 @@ vim.keymap.set("n", "N", "Nzzzv")
 
 -- vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])
 
-vim.keymap.set({"n"}, "<leader>j", vim.cmd.w)
-vim.keymap.set({"n"}, "<leader>q", vim.cmd.q)
-vim.keymap.set({"n"}, "<leader>Q", vim.cmd.x)
-vim.keymap.set({"n"}, "<leader>d", "dd")
+-- old bindings
+-- vim.keymap.set({"n"}, "<leader>j", vim.cmd.w)
+-- vim.keymap.set({"n"}, "<leader>q", vim.cmd.q)
+-- vim.keymap.set({"n"}, "<leader>Q", vim.cmd.x)
+-- vim.keymap.set({"n"}, "<leader>d", "dd")
+
 vim.keymap.set({"n"}, "<C-h>", "<C-w>h")
 vim.keymap.set({"n"}, "<C-j>", "<C-w>j")
 vim.keymap.set({"n"}, "<C-k>", "<C-w>k")
 vim.keymap.set({"n"}, "<C-l>", "<C-w>l")
 
--- This is going to get me cancelled
 -- vim.keymap.set("i", "<C-c>", "<Esc>")
 
 -- vim.keymap.set("n", "Q", "<nop>")
