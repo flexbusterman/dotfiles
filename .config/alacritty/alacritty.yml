@@ -1,6 +1,6 @@
 env:
   TERM: xterm-256color
-  WINIT_X11_SCALE_FACTOR: "1.8"  
+  WINIT_X11_SCALE_FACTOR: "1.8"
 
 dimensions:
   columns: 500
@@ -59,21 +59,24 @@ font:
   normal:
     # family: Source Code Pro
     # family: Px437 IBM BIOS
-    family: PxPlus IBM VGA 9x16
+    family: Fira Mono Medium
     style: Regular
     # style: Bold
 
   bold:
-    family: PxPlus IBM VGA 9x16
+    # family: PxPlus IBM VGA 9x16
+    family: Fira Mono Medium
     style: Regular
 
   italic:
-    family: PxPlus IBM VGA 9x16
+    # family: PxPlus IBM VGA 9x16
+    family: Fira Mono Medium
     style: Italic
     # style: Bold
 
   bold_italic:
-    family: PxPlus IBM VGA 9x16
+    # family: PxPlus IBM VGA 9x16
+    family: Fira Mono Medium
     style: Italic
 
   size: 6.5
@@ -835,8 +838,8 @@ key_bindings:
   - { key: V,      mods: Alt,          action: Paste }
   #- { key: L,         mods: Control,                    action: ClearLogNotice }
   #- { key: L,         mods: Control, mode: ~Vi|~Search, chars: "\x0c"          }
-  #- { key: PageUp,    mods: Shift,   mode: ~Alt,        action: ScrollPageUp,  }
-  #- { key: PageDown,  mods: Shift,   mode: ~Alt,        action: ScrollPageDown }
+  - { key: K,    mods: Shift|Control,   action: ScrollPageUp,  }
+  - { key: J,  mods: Shift|Control,   action: ScrollPageDown }
   #- { key: Home,      mods: Shift,   mode: ~Alt,        action: ScrollToTop,   }
   #- { key: End,       mods: Shift,   mode: ~Alt,        action: ScrollToBottom }
 
