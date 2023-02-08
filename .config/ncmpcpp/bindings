@@ -497,7 +497,7 @@ def_key "K"
 #def_key "n"
 #  move_sort_order_down
 #
-def_key "n"
+def_key "J"
  move_selected_items_down
 #
 #def_key "M"
