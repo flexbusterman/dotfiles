@@ -407,3 +407,4 @@ ssh-add ~/.ssh/mind
 clear
 
 source /usr/share/nvm/init-nvm.sh
+[ -f /opt/mambaforge/etc/profile.d/conda.sh ] && source /opt/mambaforge/etc/profile.d/conda.sh
