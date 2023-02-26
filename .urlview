@@ -1,1 +1,1 @@
-COMMAND $BROWSER &
+COMMAND /home/flex/.local/bin/browser %s
