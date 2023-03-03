@@ -38,3 +38,5 @@ vim.g.nocompatible = true
 vim.opt.syntax = "on"
 
 vim.fn.setreg('s', 'dt_xllla-lla-lllr lla_lla_0j')
+
+vim.g.base16_transparent_background = 1

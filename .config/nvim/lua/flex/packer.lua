@@ -100,4 +100,64 @@ return require('packer').startup(function(use)
 	require('mini.comment').setup({ mappings = { comment_line = '<leader>;' } })
 	require('mini.statusline').setup()
 
+  require('mini.base16').setup({
+    palette = {
+
+			base00 = "#282936", -- background
+			base01 = "#3a3c4e",
+			base02 = "#4d4f68",
+			base03 = "#626483",
+			base04 = "#62d6e8",
+			base05 = "#e9e9f4", -- foreground
+			base06 = "#f1f2f8",
+			base07 = "#f7f7fb",
+			base08 = "#ea51b2",
+			base09 = "#b45bcf",
+			base0A = "#00f769",
+			base0B = "#ebff87",
+			base0C = "#a1efe4",
+			base0D = "#62d6e8",
+			base0E = "#b45bcf",
+			base0F = "#00f769",
+
+      -- base00 = '#112641',
+      -- base01 = '#3a475e',
+      -- base02 = '#606b81',
+      -- base03 = '#8691a7',
+      -- base04 = '#d5dc81',
+      -- base05 = '#e2e98f',
+      -- base06 = '#eff69c',
+      -- base07 = '#fcffaa',
+      -- base08 = '#ffcfa0',
+      -- base09 = '#cc7e46',
+      -- base0A = '#46a436',
+      -- base0B = '#9ff895',
+      -- base0C = '#ca6ecf',
+      -- base0D = '#42f7ff',
+      -- base0E = '#ffc4ff',
+      -- base0F = '#00a5c5',
+
+    },
+    use_cterm = true,
+  })
+
+	use 'xiyaowong/nvim-transparent'
+
+	require("transparent").setup({
+		enable = true, -- boolean: enable transparent
+		extra_groups = { -- table/string: additional groups that should be cleared
+			-- In particular, when you set it to 'all', that means all available groups
+			-- example of akinsho/nvim-bufferline.lua
+			-- "BufferLineTabClose",
+			-- "BufferlineBufferSelected",
+			-- "BufferLineFill",
+			-- "BufferLineBackground",
+			-- "BufferLineSeparator",
+			-- "BufferLineIndicatorSelected",
+			"all"
+		},
+		exclude = {}, -- table: groups you don't want to clear
+		ignore_linked_group = true, -- boolean: don't clear a group that links to another group
+	})
+
 end)
