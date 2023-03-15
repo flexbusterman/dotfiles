@@ -96,7 +96,7 @@ return require('packer').startup(function(use)
 	use { 'christoomey/vim-titlecase' }
 
 	use 'echasnovski/mini.nvim'
-	require('mini.pairs').setup()
+	-- require('mini.pairs').setup()
 	require('mini.comment').setup({ mappings = { comment_line = '<leader>;' } })
 	require('mini.statusline').setup()
 

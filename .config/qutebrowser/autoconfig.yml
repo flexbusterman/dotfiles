@@ -37,6 +37,7 @@ settings:
     https://www.google.com: true
     https://www.google.com.ar: false
     https://www.sj.se: true
+    https://www.stockholmparkering.se: true
   content.mute:
     https://www.facebook.com: true
   content.notifications.enabled:

@@ -2,9 +2,9 @@
 notefile=$(find ~/Dropbox/NOTES/ -maxdepth 1 -type f -iname "*$1*" | head -n 1)
 if [ $1 == "mind" ]; then
 	notefile="/home/flex/Dropbox/NOTES/MIND.md"
-	st -t Server -e zsh -c "cd ~/.local/src/mind; source /usr/share/nvm/init-nvm.sh; nvm use 14.16.0; npm run dev" &
+	st -t Server -e zsh -c "cd ~/.local/src/mind; nvm use v14.21.3; npm run dev" &
 elif [ $1 == "sandhamn" ]; then
-	st -t Server -e zsh -c "cd ~/.local/src/sandhamn; source /usr/share/nvm/init-nvm.sh; nvm use v16.18.1; npm run dev" &
+	st -t Server -e zsh -c "cd ~/.local/src/sandhamn; nvm use v16.18.1; npm run dev" &
 else
 	st -t Server -e zsh -c "cd ~/.local/src/$1; npm run dev" &
 fi
