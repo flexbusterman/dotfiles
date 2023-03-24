@@ -199,6 +199,8 @@ command! reload :write | restart
 "
 filextype *.rpp reaper %f 2>/dev/null &,
 
+filextype *.smc snes9x-gtk -f %f 2>/dev/null &,
+
 filextype *.exe
         \ {Run with WINE}
         \ wine %f 2>/dev/null &,

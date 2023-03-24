@@ -161,9 +161,10 @@ alias wd="nmcli device disconnect $(nmcli device | awk '/^w/ {print $1}')"
 # alias wrm='f() { nmcli con delete $*};f'
 alias wrm='nmcli con delete'
 # alias wconnect='f() { nmcli device wifi connect $1 password $2 };f'
-alias wconnect='nmcli device wifi connect'
+# alias wconnect='nmcli device wifi connect'
 # alias wdisable='f() { nmcli connection down $* };f'
-alias wdisable='nmcli connection down'
+# alias wdisable='nmcli connection down'
+alias ndwc="nmcli device wifi connect"
 
 # Keymap aliases
 alias se="setxkbmap se; setxkbmap -option caps:swapescape; xset r rate 300 50"
