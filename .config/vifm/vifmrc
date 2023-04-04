@@ -804,7 +804,7 @@ command! dragon dragon-drop -a -x %f
 "map < :!vifmimg dec<CR>
 "
 "" yank current directory path into the clipboard
-nnoremap yd :!printf "%d" | sed 's/ /\ /g' | xclip -selection clipboard
+nnoremap yd :!printf "%d" | sed 's/ /\ /g' | xclip -selection clipboard<cr>
 nnoremap yD :!echo -n %d | xclip -selection clipboard %i<cr>:echo expand('%"d') "is yanked to clipboard"<cr>
 "
 nnoremap yl :!dropbox-cli sharelink %c | xclip -sel clip<cr>
