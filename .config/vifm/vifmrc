@@ -552,9 +552,6 @@ vnoremap w :view<cr>gv
 " Open file in the background using its default program
 nnoremap gb :file &<cr>l
 
-" Yank current directory path into the clipboard
-nnoremap yd :!echo %d | xclip %i<cr>
-
 " Yank current file path into the clipboard
 " nnoremap yf :!echo %c:p | xclip %i<cr>
 
@@ -807,7 +804,8 @@ command! dragon dragon-drop -a -x %f
 "map < :!vifmimg dec<CR>
 "
 "" yank current directory path into the clipboard
-nnoremap yd :!echo -n %d | xclip -selection clipboard %i<cr>:echo expand('%"d') "is yanked to clipboard"<cr>
+nnoremap yd :!printf "%d" | sed 's/ /\ /g' | xclip -selection clipboard
+nnoremap yD :!echo -n %d | xclip -selection clipboard %i<cr>:echo expand('%"d') "is yanked to clipboard"<cr>
 "
 nnoremap yl :!dropbox-cli sharelink %c | xclip -sel clip<cr>
 " nnoremap yl :!/usr/bin/python ~/.local/bin/dropbox.py sharelink %c | xclip -sel clip<cr>
@@ -816,7 +814,7 @@ nnoremap yl :!dropbox-cli sharelink %c | xclip -sel clip<cr>
 nnoremap yp :!echo -n %c:p | xclip -selection clipboard %i<cr>:echo expand('%"c:p') "is yanked to clipboard"<cr>
 "
 "" yank current filename without path into the clipboard
-nnoremap yn :!echo -n %c | xclip -selection clipboard %i<cr>:echo expand('%"c') "is yanked to clipboard"<cr>
+" nnoremap yn :!echo -n %c | xclip -selection clipboard %i<cr>:echo expand('%"c') "is yanked to clipboard"<cr>
 
 " yank root of current file's name into the clipboard
 " nnoremap yr :!echo -n %c:r | xclip -selection clipboard %i<cr>:echo expand('%"c:r') "is yanked to clipboard<cr>
