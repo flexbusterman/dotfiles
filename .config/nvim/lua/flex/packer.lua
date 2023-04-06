@@ -34,6 +34,7 @@ return require('packer').startup(function(use)
 	-- use('dstein64/vim-startuptime')
 
 	use('leafoftree/vim-vue-plugin')
+	use('TristanCrawford/vim-eel2')
 
 	-- use {
 	-- 'nvim-lualine/lualine.nvim',
@@ -143,21 +144,20 @@ return require('packer').startup(function(use)
 
 	use 'xiyaowong/nvim-transparent'
 
-	require("transparent").setup({
-		enable = true, -- boolean: enable transparent
-		extra_groups = { -- table/string: additional groups that should be cleared
-			-- In particular, when you set it to 'all', that means all available groups
-			-- example of akinsho/nvim-bufferline.lua
-			-- "BufferLineTabClose",
-			-- "BufferlineBufferSelected",
-			-- "BufferLineFill",
-			-- "BufferLineBackground",
-			-- "BufferLineSeparator",
-			-- "BufferLineIndicatorSelected",
-			"all"
-		},
-		exclude = {}, -- table: groups you don't want to clear
-		ignore_linked_group = true, -- boolean: don't clear a group that links to another group
-	})
+--	require("transparent").setup({
+--		extra_groups = { -- table/string: additional groups that should be cleared
+--			-- In particular, when you set it to 'all', that means all available groups
+--			-- example of akinsho/nvim-bufferline.lua
+--			-- "BufferLineTabClose",
+--			-- "BufferlineBufferSelected",
+--			-- "BufferLineFill",
+--			-- "BufferLineBackground",
+--			-- "BufferLineSeparator",
+--			-- "BufferLineIndicatorSelected",
+--			"all"
+--		},
+--		exclude = {}, -- table: groups you don't want to clear
+--		ignore_linked_group = true, -- boolean: don't clear a group that links to another group
+--	})
 
 end)
