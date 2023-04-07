@@ -112,6 +112,7 @@ alias gs="git status"
 alias ta="tmux attach"
 alias td="tmux detach"
 alias tks="tmux kill-server"
+alias pg="ping google.com"
 
 # audio
 alias play="ffplay -nodisp -autoexit"
