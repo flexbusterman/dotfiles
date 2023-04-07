@@ -63,9 +63,10 @@ settings:
     global: about:blank
   url.searchengines:
     global:
-      DEFAULT: https://www.google.com/search?q={}
+      DEFAULT: https://duckduckgo.com/?q={}
       b: https://www.blocket.se/annonser/hela_sverige?q={}&f=p
-      d: https://duckduckgo.com/?q={}
+      g: https://www.google.com/search?q={}
+      d: https://www.dropbox.com/search/work?path=%2F&query={}
       i: https://www.instagram.com/explore/tags/{}/
       o: https://odysee.com/$/search?q={}
       p: https://pirate-bays.net/search?q={}
