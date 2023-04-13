@@ -99,4 +99,12 @@ scnvim.setup {
 scnvim.load_extension('tmux')
 
 vim.g.scnvim_snippet_format = "luasnip"
-require("luasnip").add_snippets("supercollider", require("scnvim/utils").get_snippets())
+-- require("luasnip").add_snippets("supercollider", require("scnvim/utils").get_snippets())
+
+-- if filetype is supercollider, then load snippets
+vim.cmd [[
+augroup scnvim
+	autocmd!
+	autocmd FileType supercollider lua require("luasnip").add_snippets("supercollider", require("scnvim/utils").get_snippets())
+augroup END
+]]
