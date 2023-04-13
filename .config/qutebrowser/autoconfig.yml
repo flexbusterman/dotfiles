@@ -74,6 +74,7 @@ settings:
       w: https://wallpaperaccess.com/search?q={}
       y: https://www.youtube.com/results?search_query={}
       m: https://www.google.com/maps/search/{}
+      r: https://www.exchange-rates.org/exchange-rate-history/eur-sek-{}
   url.start_pages:
     global: about:empty
   zoom.default:
