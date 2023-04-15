@@ -75,4 +75,4 @@ lsp.nvim_workspace()
 vim.diagnostic.config({
     virtual_text = true,
 })
-
+vim.cmd([[autocmd FileType vimwiki setlocal completeopt=noinsert,menuone,noselect]])
