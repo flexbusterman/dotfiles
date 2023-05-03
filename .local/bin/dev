@@ -11,5 +11,5 @@ fi
 st -t Timer -e zsh -c "termdown --no-figlet" &
 sleep 0.2 && st -t Git -e zsh -c "cd ~/.local/src/$1; zsh" &
 st -t Notes -e zsh -c "cd ~/Dropbox/NOTES/; nvim \"$notefile\"" &
-sleep 0.5 && brave --new-window http://localhost:3000 &
+sleep 0.5 && firefox --new-window http://localhost:3000 &
 sleep 2 && st -e zsh -c "cd ~/.local/src/$1; nvim -c \"e .\"" &
