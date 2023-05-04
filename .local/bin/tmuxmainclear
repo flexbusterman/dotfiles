@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Check if the tmux session named 'main' exists
+tmux_session_exists=$(tmux ls 2>/dev/null | grep -c "^main")
+
+# If the session does not exist, create it
+if [ $tmux_session_exists -eq 0 ]; then
+  tmux new-session -d -s main
+fi
+
+# Send keypresses to clear the screen in the 'main' session
+tmux send-keys -t main C-u 'clear' Enter
+
+# Start the Kitty terminal emulator and attach it to the 'main' tmux session
+kitty tmux attach-session -t main
