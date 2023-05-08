@@ -7,7 +7,6 @@ else
     notify-send "Disconnecting Mullvad"
     mullvad disconnect
     # SUDO_ASKPASS=~/.local/bin/dmenupass sudo -A cpupower frequency-set -g powersave && notify-send 'Powersave CPU governor'
-    nohup dropbox &
     sleep 2
     nohup mailsync &
 fi
