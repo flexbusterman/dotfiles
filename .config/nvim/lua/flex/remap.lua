@@ -1,8 +1,8 @@
 vim.g.mapleader = " "
 vim.keymap.set("n", "<leader>h", vim.cmd.Ex)
 
-vim.keymap.set("v", "<C-J>", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "<C-K>", ":m '<-2<CR>gv=gv")
+-- vim.keymap.set("v", "<C-J>", ":m '>+1<CR>gv=gv")
+-- vim.keymap.set("v", "<C-K>", ":m '<-2<CR>gv=gv")
 
 vim.keymap.set("n", "J", "mzJ`z")
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
@@ -70,3 +70,8 @@ vim.keymap.set("v", "<leader>p", ":s/\\\\/\\r\\\\/g | '<,'>s/^[^\\\\].*$//g | '<
 -- end)
 
 vim.keymap.set("n", "<leader>t", ":Telescope live_grep<CR>")
+
+vim.api.nvim_set_keymap('i', '<C-j>', '<cmd>lua require("luasnip").jump(1)<Cr>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('i', '<C-k>', '<cmd>lua require("luasnip").jump(-1)<Cr>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('s', '<C-j>', '<cmd>lua require("luasnip").jump(1)<Cr>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('s', '<C-k>', '<cmd>lua require("luasnip").jump(-1)<Cr>', {noremap = true, silent = true})
