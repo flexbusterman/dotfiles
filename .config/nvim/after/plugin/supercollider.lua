@@ -1,6 +1,8 @@
 local scnvim = require 'scnvim'
 local map = scnvim.map
 local map_expr = scnvim.map_expr
+local scnvim_snippets_loaded = false
+
 scnvim.setup {
 	ensure_installed = true,
 	sclang = {
@@ -99,12 +101,4 @@ scnvim.setup {
 scnvim.load_extension('tmux')
 
 vim.g.scnvim_snippet_format = "luasnip"
--- require("luasnip").add_snippets("supercollider", require("scnvim/utils").get_snippets())
-
--- if filetype is supercollider, then load snippets
--- vim.cmd [[
--- augroup scnvim
--- 	autocmd!
--- 	autocmd FileType supercollider lua require("luasnip").add_snippets("supercollider", require("scnvim/utils").get_snippets())
--- augroup END
--- ]]
+require("luasnip").add_snippets("supercollider", require("scnvim/utils").get_snippets())

@@ -8,8 +8,5 @@ if [ $tmux_session_exists -eq 0 ]; then
   tmux new-session -d -s main
 fi
 
-# Send keypresses to clear the screen in the 'main' session
-tmux send-keys -t main C-u 'clear' Enter
-
 # Start the Kitty terminal emulator and attach it to the 'main' tmux session
 kitty tmux attach-session -t main
