@@ -21,8 +21,6 @@ settings:
     global: rgba(200,200,200,1)
   colors.hints.match.fg:
     global: rgba(255,255,255,1)
-  #  colors.webpage.bg:
-  #    global: black
   colors.webpage.darkmode.enabled:
     global: true
   content.blocking.enabled:
@@ -33,6 +31,7 @@ settings:
     '*://qutebrowser.org/*': all
     https://www.youtube.com/: all
   content.geolocation:
+    https://www.1177.se: true
     https://www.elgiganten.se: true
     https://www.google.com: true
     https://www.google.com.ar: false
@@ -63,18 +62,18 @@ settings:
     global: about:blank
   url.searchengines:
     global:
+      D: https://duckduckgo.com/?q={}
       DEFAULT: https://www.google.com/search?q={}
       b: https://www.blocket.se/annonser/hela_sverige?q={}&f=p
       d: https://www.dropbox.com/search/work?path=%2F&query={}
-      D: https://duckduckgo.com/?q={}
       i: https://www.instagram.com/explore/tags/{}/
+      m: https://www.google.com/maps/search/{}
       o: https://odysee.com/$/search?q={}
       p: https://pirate-bays.net/search?q={}
+      r: https://www.exchange-rates.org/exchange-rate-history/eur-sek-{}
       s: https://www.opensubtitles.org/en/search2/sublanguageid-eng/subtrusted-on/hd-on/moviename-{}
       w: https://wallpaperaccess.com/search?q={}
       y: https://www.youtube.com/results?search_query={}
-      m: https://www.google.com/maps/search/{}
-      r: https://www.exchange-rates.org/exchange-rate-history/eur-sek-{}
   url.start_pages:
     global: about:empty
   zoom.default:
