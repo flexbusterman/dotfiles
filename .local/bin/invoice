@@ -1,4 +1,4 @@
 #!/bin/bash
-cd /home/flex/.local/src/invoice/
-st -e nvim /home/flex/.local/src/invoice/invoicerc
-/home/flex/.local/src/invoice/invoice
+cd /home/$USER/.local/src/invoice/
+st -e nvim /home/$USER/.local/src/invoice/invoicerc
+/home/$USER/.local/src/invoice/invoice

@@ -1,2 +1,2 @@
 #!/bin/bash
-wine "/home/flex/.wine/drive_c/Program Files (x86)/2nd Speech Center/iisc.exe"
+wine "/home/$USER/.wine/drive_c/Program Files (x86)/2nd Speech Center/iisc.exe"

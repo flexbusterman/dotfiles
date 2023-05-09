@@ -1,2 +1,2 @@
 #!/bin/bash
-quakespasm -basedir /home/flex/Dropbox/QUAKE/
+quakespasm -basedir /home/$USER/Dropbox/QUAKE/
