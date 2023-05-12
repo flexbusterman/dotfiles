@@ -10,6 +10,7 @@ vim.g.copilot_filetypes = {
 	["vimwiki"] = false,
 	["mail"] = false,
 	["text"] = false,
+	["supercollider"] = false,
 	-- ["javascript"] = true,
 	-- ["typescript"] = true,
 	-- ["lua"] = true,
@@ -25,5 +26,4 @@ vim.g.copilot_filetypes = {
 	-- ["json"] = true,
 	-- ["zsh"] = true,
 	-- ["sh"] = true,
-	-- ["supercollider"] = true,
 }
