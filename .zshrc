@@ -406,11 +406,5 @@ LC_MEASUREMENT="en_US.UTF-8"
 LC_IDENTIFICATION="en_US.UTF-8"
 LC_ALL=
 
-eval "$(ssh-agent -s)"
-ssh-add ~/.ssh/git
-ssh-add ~/.ssh/digitalocean
-ssh-add ~/.ssh/mind
-clear
-
-source /usr/share/nvm/init-nvm.sh
-[ -f /opt/mambaforge/etc/profile.d/conda.sh ] && source /opt/mambaforge/etc/profile.d/conda.sh
+# source /usr/share/nvm/init-nvm.sh
+# [ -f /opt/mambaforge/etc/profile.d/conda.sh ] && source /opt/mambaforge/etc/profile.d/conda.sh
