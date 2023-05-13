@@ -1,12 +1,17 @@
 #!/bin/bash
 
-# Check if the tmux session named 'main' exists
-tmux_session_exists=$(tmux ls 2>/dev/null | grep -c "^main")
+# Function to check if the tmux session exists
+tmux_has_session() {
+  tmux has-session -t $1 2>/dev/null
+}
 
-# If the session does not exist, create it
-if [ $tmux_session_exists -eq 0 ]; then
-  tmux new-session -d -s main
+# Start a new tmux session if it doesn't exist
+if ! tmux_has_session "main"; then
+  tmux new-session -d -s "main"
 fi
 
-# Start the Kitty terminal emulator and attach it to the 'main' tmux session
-kitty tmux attach-session -t main
+# Send 'Ctrl+l' to clear the screen
+tmux send-keys -t "main" C-l
+
+# Start a new kitty terminal and attach to the tmux session
+kitty tmux attach -t "main" &
