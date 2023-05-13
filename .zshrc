@@ -1,4 +1,4 @@
-HISTFILE=/home/flex/.history/zsh/history
+HISTFILE=/home/$USER/.history/zsh/history
 HISTSIZE=10000000
 SAVEHIST=10000000
 path+=($HOME/.ghcup/bin)
@@ -181,36 +181,36 @@ alias igdll="cd ~/Dropbox/MEMES && instaloader -F --login _christian_augustin --
 alias igdl="cd ~/Dropbox/MEMES && instaloader -F --no-video-thumbnails --no-metadata-json --no-captions --no-profile-pic memeseducational dank_memes_world_1 dank_memes_world_1 casual.nihilism mvme.hub memefolk.ig stinky420memes memes epicallyepicmemes baked_meme_god stolenmemesawakens memesinyourdms omgzucc"
 
 # VIM aliases for editing common files
-# alias va="cd /home/flex/.config/awesome/; nvim rc.lua"
-# alias va="cd /home/flex/.config/alacritty/; nvim alacritty.yml"
-alias vb="cd /home/flex/.config/bspwm/; nvim bspwmrc"
-alias vA="cd /home/flex/.config/awesome/; nvim rc.lua"
-alias vc="cd /home/flex/.config/nvim/after/plugin/; nvim copilot.lua"
-alias vD="cd /home/flex/.local/src/dmenu/; nvim config.def.h"
-alias vd="cd /home/flex/.local/src/dwm/; nvim config.def.h"
-alias vn="cd /home/flex/.config/nvim/; nvim lua/flex/set.lua"
-alias vr="cd /home/flex/.config/nvim/; nvim lua/flex/remap.lua"
-alias va="cd /home/flex/.config/nvim/; nvim -c :Ex after/plugin/"
-alias vP="cd /home/flex/.config/polybar/; nvim config.ini"
-alias vp="cd /home/flex/.config/nvim/; nvim lua/flex/packer.lua"
-# alias vp="cd /home/flex/; nvim .xprofile"
-alias vs="cd /home/flex/.config/nvim/after/plugin/luasnippets/; nvim all.lua"
-alias vS="cd /home/flex/.local/src/st/; nvim config.h"
-alias vu="cd /home/flex/.config/newsboat/; nvim urls"
-alias vv="cd /home/flex/.config/vifm/; nvim vifmrc"
-alias vX="cd /home/flex/.xmonad/; nvim xmonad.hs"
-alias vx="cd /home/flex/; nvim .xinitrc"
-# alias vk="cd /home/flex/.config/sxhkd; nvim sxhkdrc"
-alias vz="cd /home/flex/; nvim .zshrc"
-alias vi="cd /home/flex/.config/i3/; nvim config"
-# alias vI="cd /home/flex/.config/i3status/; nvim config"
-alias vq="cd /home/flex/.config/qutebrowser/; nvim autoconfig.yml"
-alias ve="cd /home/flex/; nvim .zshenv"
-alias vb="cd /home/flex/.config/bspwm/; nvim bspwmrc"
-alias vl="cd /home/flex/.config/lf/; nvim lfrc"
-alias vt="cd /home/flex/.config/leftwm/themes/flex/; nvim"
-alias vh="cd /home/flex/.history/zsh/; nvim history"
-alias vw="cd /home/flex/.w3m/; nvim keymap"
+# alias va="cd /home/$USER/.config/awesome/; nvim rc.lua"
+# alias va="cd /home/$USER/.config/alacritty/; nvim alacritty.yml"
+alias vb="cd /home/$USER/.config/bspwm/; nvim bspwmrc"
+alias vA="cd /home/$USER/.config/awesome/; nvim rc.lua"
+alias vc="cd /home/$USER/.config/nvim/after/plugin/; nvim copilot.lua"
+alias vD="cd /home/$USER/.local/src/dmenu/; nvim config.def.h"
+alias vd="cd /home/$USER/.local/src/dwm/; nvim config.def.h"
+alias vn="cd /home/$USER/.config/nvim/; nvim lua/$USER/set.lua"
+alias vr="cd /home/$USER/.config/nvim/; nvim lua/$USER/remap.lua"
+alias va="cd /home/$USER/.config/nvim/; nvim -c :Ex after/plugin/"
+alias vP="cd /home/$USER/.config/polybar/; nvim config.ini"
+alias vp="cd /home/$USER/.config/nvim/; nvim lua/$USER/packer.lua"
+# alias vp="cd /home/$USER/; nvim .xprofile"
+alias vs="cd /home/$USER/.config/nvim/after/plugin/luasnippets/; nvim all.lua"
+alias vS="cd /home/$USER/.local/src/st/; nvim config.h"
+alias vu="cd /home/$USER/.config/newsboat/; nvim urls"
+alias vv="cd /home/$USER/.config/vifm/; nvim vifmrc"
+alias vX="cd /home/$USER/.xmonad/; nvim xmonad.hs"
+alias vx="cd /home/$USER/; nvim .xinitrc"
+# alias vk="cd /home/$USER/.config/sxhkd; nvim sxhkdrc"
+alias vz="cd /home/$USER/; nvim .zshrc"
+alias vi="cd /home/$USER/.config/i3/; nvim config"
+# alias vI="cd /home/$USER/.config/i3status/; nvim config"
+alias vq="cd /home/$USER/.config/qutebrowser/; nvim autoconfig.yml"
+alias ve="cd /home/$USER/; nvim .zshenv"
+alias vb="cd /home/$USER/.config/bspwm/; nvim bspwmrc"
+alias vl="cd /home/$USER/.config/lf/; nvim lfrc"
+alias vt="cd /home/$USER/; vim .tmux.conf"
+alias vh="cd /home/$USER/.history/zsh/; nvim history"
+alias vw="cd /home/$USER/.w3m/; nvim keymap"
 
 #   __                  _   _
 #  / _|_   _ _ __   ___| |_(_) ___  _ __  ___
@@ -295,7 +295,7 @@ done
 }
 
 tf(){
-	termdown --no-figlet $* && ffplay -nodisp -autoexit /home/flex/Dropbox/MUSIC/MP3/fanfare.mp3
+	termdown --no-figlet $* && ffplay -nodisp -autoexit /home/$USER/Dropbox/MUSIC/MP3/fanfare.mp3
 }
 
 t(){
