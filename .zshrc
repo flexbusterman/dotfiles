@@ -139,7 +139,7 @@ alias ald="asoundconf set-default-card"
 alias b='cd ~/.local/bin/; exa'
 alias D='cd ~/Downloads; exa'
 alias d='cd ~/Dropbox; exa'
-alias s='cd ~/Dropbox/2022\ FOTO/SCREENSHOTS; exa'
+alias s='cd ~/Dropbox/2023\ FOTO/SCREENSHOTS; exa'
 alias S='cd ~/Dropbox/SUPERCOLLIDER; exa'
 alias n='cd ~/Dropbox/NOTES; exa'
 alias c='cd ~/.config/; exa'
@@ -350,6 +350,8 @@ fr(){
 }
 
 gp() {
+	eval "$(ssh-agent -s)"
+	ssh-add ~/.ssh/git
   result="\"$*\""
   git add .
   git commit -m $result
@@ -368,7 +370,7 @@ gpd() {
   result="\"$*\""
   git add .
   git commit -m $result
-  git push origin dev
+	git push origin dev
 }
 
 dp() {
