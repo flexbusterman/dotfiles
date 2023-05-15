@@ -351,7 +351,7 @@ fr(){
 
 gp() {
 	eval "$(ssh-agent -s)"
-	ssh-add ~/.ssh/git
+	ssh-add ~/.ssh/$*
   result="\"$*\""
   git add .
   git commit -m $result
@@ -380,6 +380,15 @@ dp() {
   dot add -u
   dot commit -m $result
   dot push
+}
+
+pdp() {
+  eval "$(ssh-agent -s)"
+  ssh-add ~/.ssh/git
+  result="\"$*\""
+  pdot add -u
+  pdot commit -m $result
+  pdot push
 }
 
 # asks too often to show all suggestions, but nice that it shows flags
