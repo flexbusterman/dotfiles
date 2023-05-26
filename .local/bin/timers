@@ -2,54 +2,26 @@
 
 # Check if at least one argument was provided
 if [ "$#" -lt 1 ]; then
-    echo "Usage: $0 <minutes>..."
+    echo "Usage: timers <minutes> [minutes] ... "
     exit 1
 fi
-
-# Check if necessary commands are available
-for cmd in aplay notify-send; do
-    if ! command -v $cmd &> /dev/null; then
-        echo "Error: $cmd is not installed."
-        exit 1
-    fi
-done
-
-clear
 
 total_timers=$#
 echo "Total number of timers: $total_timers"
 
-# For each argument
-for ((i=1; i<="$#"; i++)); do
-    timer=${!i}  # Get the value of the i-th argument
-    echo "Starting timer $i of $total_timers for $timer minutes."
+# store all arguments as elemens in an array
+timers=("$@")
 
-    # Count down
-    for ((j=timer*60; j>=0; j--)); do
-        mins=$((j/60))
-        secs=$((j%60))
-        clear
-        echo "Total number of timers: $total_timers"
-        echo -ne "Remaining on timer $i: ${mins}m ${secs}s\033[0K\r"
-
-        # If it's the final minute, send a notification
-        if [ $j -eq 60 ]; then
-            notify-send "Last minute of timer $i"
-        fi
-
-        # Don't sleep on the last second
-        if [ $j -gt 0 ]; then
-            sleep 1
-        fi
-    done
-
-    # Play the sound for the end of a timer
-    aplay ~/.local/bin/assets/bell02.wav &>/dev/null
+# for each element in array
+for timer in "${timers[@]}"; do
+	echo $timer
 done
 
-# Play the sound for the end of all timers
-aplay ~/.local/bin/assets/bell01.wav &>/dev/null
-
-clear
-echo "Total number of timers: $total_timers"
-echo "All timers finished."
+# # Play the sound for the end of all timers
+# aplay ~/.local/bin/assets/bell02.wav &>/dev/null
+# aplay ~/.local/bin/assets/bell01.wav &>/dev/null
+#
+# clear
+# echo "Total number of timers: $total_timers"
+# echo "All timers finished."
+# exit 1
