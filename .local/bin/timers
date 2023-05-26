@@ -12,9 +12,36 @@ echo "Total number of timers: $total_timers"
 # store all arguments as elemens in an array
 timers=("$@")
 
-# for each element in array
-for timer in "${timers[@]}"; do
-	echo $timer
+# loop through all timers using index to access each element
+for (( i=0; i<${#timers[@]}; i++ )); do
+		# get the current timer
+		timer=${timers[$i]}
+
+		# check if the timer is a number
+		if [[ $timer =~ ^[0-9]+$ ]]; then
+				# convert minutes to seconds
+				timer=$((timer * 60))
+
+				# start the timer
+				echo "Timer $((i+1)) of $total_timers started."
+				# each second print the remaining time of current timer
+				for (( j=timer; j>0; j-- )); do
+						# clear the screen
+						clear
+						# print the remaining time
+						echo "Timer $((i+1)) of $total_timers: $((j/60)) minutes and $((j%60)) seconds remaining."
+						# sleep for one second
+						sleep 1
+				done
+
+				# clear the screen
+				clear
+				echo "Timer $((i+1)) of $total_timers finished."
+		else
+				# clear the screen
+				clear
+				echo "Timer $((i+1)) of $total_timers is not a number."
+		fi
 done
 
 # # Play the sound for the end of all timers
