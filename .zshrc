@@ -352,7 +352,8 @@ fr(){
 
 gp() {
 	eval "$(ssh-agent -s)"
-	ssh-add ~/.ssh/$*
+	# ssh-add all files without extension
+	ssh-add ~/.ssh/git
   result="\"$*\""
   git add .
   git commit -m $result
