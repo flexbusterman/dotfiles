@@ -1,61 +1,63 @@
 #!/bin/bash
 
-# Check if at least one argument was provided
-if [ "$#" -lt 1 ]; then
-    echo "Usage: timers <minutes> [minutes] ... "
-    exit 1
+# check if there are any arguments and if all arguments are numbers, else print usage message
+if [ $# -eq 0 ] || [[ $@ =~ [^0-9\ ] ]]; then
+	echo "Usage: timers <number> <number> ..."
+	exit 1
 fi
 
 total_timers=$#
-echo "Total number of timers: $total_timers"
 
 # store all arguments as elemens in an array
 timers=("$@")
 
 # loop through all timers using index to access each element
 for (( i=0; i<${#timers[@]}; i++ )); do
-		# get the current timer
-		timer=${timers[$i]}
+	# get the current timer
+	timer=${timers[$i]}
+	# convert minutes to seconds
+	timer=$((timer * 60))
 
-		# check if the timer is a number
-		if [[ $timer =~ ^[0-9]+$ ]]; then
-				# convert minutes to seconds
-				timer=$((timer * 60))
-
-				# start the timer
-				echo "Timer $((i+1)) of $total_timers started."
-				# each second print the remaining time of current timer
-				for (( j=timer; j>0; j-- )); do
-						# clear the screen
-						clear
-						# if total_timers is greater than 1, then set prefix
-						if [ $total_timers -gt 1 ]; then
-							prefix="Timer $((i+1)) of $total_timers: "
-						fi
-
-						# print the remaining time
-						echo "$prefix$(($j / 60)) minutes and $(($j % 60)) seconds remaining."
-
-						# sleep for one second
-						sleep 1
-				done
-
-
-				# clear the screen
-				clear
-				echo "Timer $((i+1)) of $total_timers finished."
-		else
-				# clear the screen
-				clear
-				echo "Timer $((i+1)) of $total_timers is not a number."
+	# start the timer
+	echo "Timer $((i+1)) of $total_timers started."
+	# each second print the remaining time of current timer
+	for (( j=timer; j>0; j-- )); do
+		# clear the screen
+		clear
+		# if total_timers is greater than 1, then set prefix
+		if [ $total_timers -gt 1 ]; then
+			prefix="Timer $((i+1)) of $total_timers: "
 		fi
+
+		minutes=$(($j / 60))
+
+		# if seconds is one digit, then add a zero before it
+		if [ $(($j % 60)) -lt 10 ]; then
+			seconds="0$(($j % 60))"
+		else
+			seconds=$(($j % 60))
+		fi
+
+		echo "$prefix$minutes:$seconds"
+
+		# sleep for one second
+		sleep 1
+	done
+
+	# clear the screen
+	clear
+	echo "Timer $((i+1)) of $total_timers finished."
+	aplay ~/.local/bin/assets/bell02.wav &>/dev/null &
 done
 
-# # Play the sound for the end of all timers
-# aplay ~/.local/bin/assets/bell02.wav &>/dev/null
-# aplay ~/.local/bin/assets/bell01.wav &>/dev/null
-#
-# clear
-# echo "Total number of timers: $total_timers"
-# echo "All timers finished."
-# exit 1
+# Play the sound for the end of all timers
+aplay ~/.local/bin/assets/bell01.wav &>/dev/null &
+
+clear
+# if there is more than one timer, then print all timers finished
+# else print timer finished
+if [ $total_timers -gt 1 ]; then
+	echo "All timers finished."
+else
+	echo "Timer finished."
+fi
