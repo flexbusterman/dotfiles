@@ -28,11 +28,18 @@ for (( i=0; i<${#timers[@]}; i++ )); do
 				for (( j=timer; j>0; j-- )); do
 						# clear the screen
 						clear
+						# if total_timers is greater than 1, then set prefix
+						if [ $total_timers -gt 1 ]; then
+							prefix="Timer $((i+1)) of $total_timers: "
+						fi
+
 						# print the remaining time
-						echo "Timer $((i+1)) of $total_timers: $((j/60)) minutes and $((j%60)) seconds remaining."
+						echo "$prefix$(($j / 60)) minutes and $(($j % 60)) seconds remaining."
+
 						# sleep for one second
 						sleep 1
 				done
+
 
 				# clear the screen
 				clear

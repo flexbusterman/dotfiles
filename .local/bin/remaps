@@ -1,5 +1,4 @@
 #!/bin/sh
-notify-send "running remaps"
 xrdb -load ~/.Xresources &
 setxkbmap -option shift:both_capslock_cancel;
 xmodmap ~/.Xmodmap
