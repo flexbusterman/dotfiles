@@ -74,6 +74,7 @@ settings:
       s: https://www.opensubtitles.org/en/search2/sublanguageid-eng/subtrusted-on/hd-on/moviename-{}
       w: https://wallpaperaccess.com/search?q={}
       y: https://www.youtube.com/results?search_query={}
+      f: https://freesound.org/search/?q={}
   url.start_pages:
     global: about:empty
   zoom.default:

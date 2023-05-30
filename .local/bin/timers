@@ -38,6 +38,11 @@ for (( i=0; i<${#timers[@]}; i++ )); do
 			seconds=$(($j % 60))
 		fi
 
+		# if it's the last minute, send a notification
+		if [ $j -eq 60 ]; then
+			notify-send "Last minute of timer $((i+1))"
+		fi
+
 		echo "$prefix$minutes:$seconds"
 
 		# sleep for one second
