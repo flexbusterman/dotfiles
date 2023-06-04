@@ -5,6 +5,7 @@ includePaths:
     -   /home/flex/.local/share/SuperCollider/downloaded-quarks/wslib
     -   /home/flex/.local/share/SuperCollider/downloaded-quarks/dmx
     -   /home/flex/.local/share/SuperCollider/downloaded-quarks/FMGen-Quark
+    -   /home/flex/.local/share/SuperCollider/downloaded-quarks/JITLibExtensions
 excludePaths:
     []
 postInlineWarnings: false

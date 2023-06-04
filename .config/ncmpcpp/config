@@ -250,8 +250,10 @@ mpd_music_dir = /home/flex/Music
 #current_item_inactive_column_suffix = $/r$(end)
 #
 #now_playing_prefix = $b
+now_playing_prefix = $6
 #
 #now_playing_suffix = $/b
+now_playing_suffix = $9
 #
 #browser_playlist_prefix = "$2playlist$9 "
 #

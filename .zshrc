@@ -3,6 +3,7 @@ HISTSIZE=10000000
 SAVEHIST=10000000
 path+=($HOME/.ghcup/bin)
 path+=($HOME/go/bin/)
+path+=($HOME/.cabal/bin/)
 
 setopt APPEND_HISTORY # Allow multiple terminal sessions to all append to one zsh command history
 setopt autocd   # Automatically cd into typed directory.
