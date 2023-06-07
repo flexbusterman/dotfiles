@@ -7,15 +7,16 @@ POWERED=$(bluetoothctl show | grep -i powered | grep -i yes)
 
 if [[ $POWERED ]]; then
     if [[ $CONNECTED == yes ]]; then
-        echo "Restarting bluetooth service" 
+        echo "Restarting bluetooth service"
         SUDO_ASKPASS=~/.local/bin/dmenupass sudo -A systemctl restart bluetooth.service && bluetoothctl power on && bluetoothctl -- connect $1
     else
-        echo "Bluetooth powered but not connected" 
+        echo "Bluetooth powered but not connected"
         bluetoothctl -- connect $1
     fi
     sleep 1
-    pactl set-card-profile bluez_card.$1 a2dp-sink
+		MAC=$(echo $1 | tr ":" "_")
+    pactl set-card-profile bluez_card.$MAC a2dp-sink
 else
-    echo "Bluetooth not powered" 
+    echo "Bluetooth not powered"
     bluetoothctl power on && bluetoothctl -- connect $1
 fi

@@ -15,8 +15,9 @@ fi
 
 # if array links doesn't contain bluez_output
 if [[ ! " ${links[@]} " =~ " bluez_output " ]]; then
-		pw-link REAPER:out1 bluez_output.C8_7B_23_C8_34_32.1:playback_FL
-		pw-link REAPER:out2 bluez_output.C8_7B_23_C8_34_32.1:playback_FR
+		MAC=$(echo $HEADPHONES | tr ":" "_")
+		pw-link REAPER:out1 bluez_output.$MAC.1:playback_FL
+		pw-link REAPER:out2 bluez_output.$MAC.1:playback_FR
 fi
 
 printf '%s\n' "${links[@]}"
