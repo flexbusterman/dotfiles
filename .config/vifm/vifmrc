@@ -255,7 +255,7 @@ filextype *.ps,*.eps,*.ps.gz
     " \ %pc
     " \ vifmimg clear
 fileviewer *.wav,*.mp3,*.flac,*.m4a,*.wma,*.ape,*.ac3,*.og[agx],*.spx,*.opus,*.hes,*.sid,*.mod,*.s3m,*.it,*.xm,*.nsf,*.ay,*.vtx,*.vgm,*.vgz,*.spc,*.aiff,*.aif soxi
-filetype *.wav,*.mp3,*.flac,*.m4a,*.wma,*.ape,*.ac3,*.og[agx],*.spx,*.opus,*.hes,*.sid,*.mod,*.s3m,*.it,*.xm,*.nsf,*.ay,*.vtx,*.vgm,*.vgz,*.spc,*.aiff,*.aif
+filetype *.wav,*.mp3,*.flac,*.m4a,*.wma,*.ape,*.ac3,*.og[agx],*.spx,*.opus,*.hes,*.sid,*.mod,*.s3m,*.it,*.xm,*.nsf,*.ay,*.vtx,*.vgm,*.vgz,*.spc,*.aiff,*.aif,*.mid,*.midi
        \ {Play using audacious}
         \ audacious %f 2>/dev/null &,
        \ {Play using Deadbeef}

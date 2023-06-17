@@ -37,8 +37,8 @@
 while read file
 do
         case "$1" in
-        "d")
-                mv "$file" ~/.trash ;;
+				"d")
+								mv -vf "$file" ~/.trash ;;
         "greater")
                 convert -auto-orient "$file" -rotate 90 "$file" ;;
         "less")

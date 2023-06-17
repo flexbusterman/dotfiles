@@ -19,6 +19,7 @@ vim.keymap.set("n", "N", "Nzzzv")
 
 -- vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])
 
+vim.keymap.set({"n"}, "<leader>j", "<nop>")
 vim.keymap.set({"n"}, "<leader>j", vim.cmd.w)
 vim.keymap.set({"n"}, "<leader>q", vim.cmd.q)
 vim.keymap.set({"n"}, "<leader>Q", vim.cmd.x)
@@ -59,8 +60,8 @@ vim.keymap.set("i", "<C-h>", "<esc>bciW")
 -- vim.keymap.set("n", "<leader>r", ":s/ = .*//e<cr> \0y$ \\!!sed 's/mean/avg/;s/^/round(/;s/$/,3)/'<cr> \\!!calc -p<cr> \\Pa = <esc>hh")
 
 vim.keymap.set("n", "<leader>i", ":VimwikiIndex<CR>")
-vim.keymap.set("n", "<leader>k", ":Prettier<CR>")
-vim.keymap.set("x", "<leader>k", ":Prettier<CR>")
+vim.keymap.set("n", "<leader>k", ":EslintFixAll<CR>")
+vim.keymap.set("x", "<leader>k", ":EslintFixAll<CR>")
 
 -- supercollider synthdef to pbindef
 vim.keymap.set("v", "<leader>p", ":s/\\\\/\\r\\\\/g | '<,'>s/^[^\\\\].*$//g | '<,'>s/).*/)/g | '<,'>s/\\(\\.[ak]r(\\)\\([^)]*\\))/, \\2,/ | '<,'>s/ \\(-[^,]*\\)/ (\\1)/ | '<,'>s/^\\(.*\\)\\(\\n\\1\\)\\+$/\\1/ | '<,'>s/\\v^\\s*\\n//g | '<s/\\([^{]*\\).*/(\\rPbindef(\\\\name,\\r\\\\instrument, \\1\\r\\\\dur, 1,/ | '>s/\\(.*\\)/\\1).play(quant: 1);\\r)/<CR>")
