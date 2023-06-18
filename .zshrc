@@ -214,6 +214,7 @@ alias vt="cd /home/$USER/; vim .tmux.conf"
 alias vh="cd /home/$USER/.history/zsh/; nvim history"
 alias vw="cd /home/$USER/.w3m/; nvim keymap"
 alias vrk="cd /home/$USER/.config/REAPER/Scripts/reaper-keys/definitions/; nvim -O bindings.lua actions.lua"
+alias locate="locate -i"
 
 #   __                  _   _
 #  / _|_   _ _ __   ___| |_(_) ___  _ __  ___
