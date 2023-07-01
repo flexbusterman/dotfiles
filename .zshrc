@@ -184,7 +184,7 @@ alias igdl="cd ~/Dropbox/MEMES && instaloader -F --no-video-thumbnails --no-meta
 # VIM aliases for editing common files
 # alias va="cd /home/$USER/.config/awesome/; nvim rc.lua"
 # alias va="cd /home/$USER/.config/alacritty/; nvim alacritty.yml"
-alias vb="cd /home/$USER/.config/bspwm/; nvim bspwmrc"
+alias vb="cd /home/$USER/; nvim .bashrc"
 alias vA="cd /home/$USER/.config/awesome/; nvim rc.lua"
 alias vc="cd /home/$USER/.config/nvim/after/plugin/; nvim copilot.lua"
 alias vD="cd /home/$USER/.local/src/dmenu/; nvim config.def.h"
