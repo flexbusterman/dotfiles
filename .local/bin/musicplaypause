@@ -17,6 +17,6 @@ then
 	fi
 # else send play/pause command to mpc
 else
-	mpc toggle
+	mpc --host ~/.mpd/socket toggle
 	exit
 fi

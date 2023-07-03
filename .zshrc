@@ -49,7 +49,7 @@ PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magent
 bindkey -v
 export KEYTIMEOUT=1
 export MPD_HOST=127.0.0.1
-export MPD_PORT=6600
+# export MPD_PORT=6600
 # Change cursor shape for different vi modes.
 function zle-keymap-select {
   if [[ ${KEYMAP} == vicmd ]] ||

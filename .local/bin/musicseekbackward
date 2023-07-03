@@ -1,2 +1,2 @@
 #!/bin/bash
-playerctl -a position "5-" || mpc seek -5
+playerctl -a position "5-" || mpc --host ~/.mpd/socket seek -5

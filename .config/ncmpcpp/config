@@ -23,10 +23,11 @@
 #
 ##### connection settings #####
 #
-mpd_host = localhost
+# mpd_host = localhost
+mpd_host = "~/.mpd/socket"
 #
-mpd_port = 6600
-#
+mpd_port = 49152
+
 #mpd_connection_timeout = 5
 #
 ## Needed for tag editor and file operations to work.
