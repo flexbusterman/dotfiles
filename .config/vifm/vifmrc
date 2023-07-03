@@ -256,6 +256,8 @@ filextype *.ps,*.eps,*.ps.gz
     " \ vifmimg clear
 fileviewer *.wav,*.mp3,*.flac,*.m4a,*.wma,*.ape,*.ac3,*.og[agx],*.spx,*.opus,*.hes,*.sid,*.mod,*.s3m,*.it,*.xm,*.nsf,*.ay,*.vtx,*.vgm,*.vgz,*.spc,*.aiff,*.aif soxi
 filetype *.wav,*.mp3,*.flac,*.m4a,*.wma,*.ape,*.ac3,*.og[agx],*.spx,*.opus,*.hes,*.sid,*.mod,*.s3m,*.it,*.xm,*.nsf,*.ay,*.vtx,*.vgm,*.vgz,*.spc,*.aiff,*.aif,*.mid,*.midi
+       \ {Play using mpd}
+        \ musicadd %f 2>/dev/null &,
        \ {Play using audacious}
         \ audacious %f 2>/dev/null &,
        \ {Play using Deadbeef}
@@ -580,6 +582,8 @@ nnoremap <f7> :mkdir<space>
 nnoremap <f8> :delete<cr>
 nnoremap > :!convert -auto-orient %c -rotate 90 %c & <cr>
 nnoremap <lt> :!convert -auto-orient %c -rotate 270 %c & <cr>
+
+nnoremap ad :!musicadd %f <cr>
 
 " ------------------------------------------------------------------------------
 
