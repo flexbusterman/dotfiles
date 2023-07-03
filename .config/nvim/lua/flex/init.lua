@@ -38,3 +38,9 @@ autocmd({"VimResized"}, {
     pattern = "*",
     command = "exec 'vertical resize ' . string(&columns *  0.5)",
 })
+
+autocmd({"BufWritePre"}, {
+    group = FlexGroup,
+		pattern = { '*.vue' },
+		command = 'silent! EslintFixAll',
+})
