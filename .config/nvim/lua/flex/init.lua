@@ -29,6 +29,12 @@ autocmd({"BufWritePre"}, {
     command = [[%s/\s\+$//e]],
 })
 
+autocmd({"BufWritePre"}, {
+    group = FlexGroup,
+		pattern = { '*.vue' },
+		command = 'silent! EslintFixAll',
+})
+
 -- vim.g.netrw_browse_split = 0
 -- vim.g.netrw_banner = 0
 -- vim.g.netrw_winsize = 25
@@ -37,10 +43,4 @@ autocmd({"VimResized"}, {
     group = FlexGroup,
     pattern = "*",
     command = "exec 'vertical resize ' . string(&columns *  0.5)",
-})
-
-autocmd({"BufWritePre"}, {
-    group = FlexGroup,
-		pattern = { '*.vue' },
-		command = 'silent! EslintFixAll',
 })

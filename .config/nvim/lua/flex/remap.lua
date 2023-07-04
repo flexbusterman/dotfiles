@@ -76,3 +76,5 @@ vim.api.nvim_set_keymap('i', '<C-j>', '<cmd>lua require("luasnip").jump(1)<Cr>',
 vim.api.nvim_set_keymap('i', '<C-k>', '<cmd>lua require("luasnip").jump(-1)<Cr>', {noremap = true, silent = true})
 vim.api.nvim_set_keymap('s', '<C-j>', '<cmd>lua require("luasnip").jump(1)<Cr>', {noremap = true, silent = true})
 vim.api.nvim_set_keymap('s', '<C-k>', '<cmd>lua require("luasnip").jump(-1)<Cr>', {noremap = true, silent = true})
+
+vim.keymap.set("n", "tt", ":tab split<CR>")
