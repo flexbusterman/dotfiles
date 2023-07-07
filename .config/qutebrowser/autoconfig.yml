@@ -37,6 +37,8 @@ settings:
     https://www.google.com.ar: false
     https://www.sj.se: true
     https://www.stockholmparkering.se: true
+  content.mouse_lock:
+    https://nusan.itch.io: true
   content.mute:
     https://www.facebook.com: true
   content.notifications.enabled:
@@ -66,6 +68,7 @@ settings:
       DEFAULT: https://www.google.com/search?q={}
       b: https://www.blocket.se/annonser/hela_sverige?q={}&f=p
       d: https://www.dropbox.com/search/work?path=%2F&query={}
+      f: https://freesound.org/search/?q={}
       i: https://www.instagram.com/explore/tags/{}/
       m: https://www.google.com/maps/search/{}
       o: https://odysee.com/$/search?q={}
@@ -74,7 +77,6 @@ settings:
       s: https://www.opensubtitles.org/en/search2/sublanguageid-eng/subtrusted-on/hd-on/moviename-{}
       w: https://wallpaperaccess.com/search?q={}
       y: https://www.youtube.com/results?search_query={}
-      f: https://freesound.org/search/?q={}
   url.start_pages:
     global: about:empty
   zoom.default:
