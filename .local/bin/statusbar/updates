@@ -1,3 +1,9 @@
-#!/bin/sh
-packages="$(paru -Qu | wc -l)"
-printf "$packages"
+#!/bin/bash
+
+# Check updates from the official repositories
+official_updates=$(paru -Qu | wc -l)
+
+# Check updates from the AUR
+aur_updates=$(paru -Qua | wc -l)
+
+printf " %s" $(($official_updates + $aur_updates))
