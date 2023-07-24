@@ -197,35 +197,35 @@ command! reload :write | restart
 " You can also add %CLEAR if you want to clear screen before running FUSE
 " program.
 "
-filextype *.rpp reaper %f 2>/dev/null &,
+filextype *.rpp,*.RPP reaper %f 2>/dev/null &,
 
-filextype *.smc snes9x-gtk -f %f 2>/dev/null &,
+filextype *.smc,*.SMC snes9x-gtk -f %f 2>/dev/null &,
 
-filextype *.exe
+filextype *.exe,*.EXE
         \ {Run with WINE}
         \ wine %f 2>/dev/null &,
 
-filextype *.bwproject
+filextype *.bwproject,*.BWPROJECT
         \ {Open with Bitwig}
         \ bitwig-studio %f 2>/dev/null &,
 
-fileviewer *.pdf
+fileviewer *.pdf,*.PDF
     \ vifmimg pdf %px %py %pw %ph %c
     \ %pc
     \ vifmimg clear
-filextype *.pdf zathura %c %i &, apvlv %c, xpdf %c
+filextype *.pdf,*.PDF zathura %c %i &, apvlv %c, xpdf %c
 
-fileviewer *.djvu
+fileviewer *.djvu,*.DJVU
     \ vifmimg djvu %px %py %pw %ph %c
     \ %pc
     \ vifmimg clear
-filextype *.djvu
+filextype *.djvu,*.DJVU
         \ {View in zathura}
         \ zathura %f,
         \ {View in apvlv}
         \ apvlv %f,
 
-fileviewer *.epub
+fileviewer *.epub,*.EPUB
     \ vifmimg epub %px %py %pw %ph %c
     \ %pc
     \ vifmimg clear
@@ -254,8 +254,8 @@ filextype *.ps,*.eps,*.ps.gz
     " \ vifmimg audio %px %py %pw %ph %c
     " \ %pc
     " \ vifmimg clear
-fileviewer *.wav,*.mp3,*.flac,*.m4a,*.wma,*.ape,*.ac3,*.og[agx],*.spx,*.opus,*.hes,*.sid,*.mod,*.s3m,*.it,*.xm,*.nsf,*.ay,*.vtx,*.vgm,*.vgz,*.spc,*.aiff,*.aif soxi
-filetype *.wav,*.mp3,*.flac,*.m4a,*.wma,*.ape,*.ac3,*.og[agx],*.spx,*.opus,*.hes,*.sid,*.mod,*.s3m,*.it,*.xm,*.nsf,*.ay,*.vtx,*.vgm,*.vgz,*.spc,*.aiff,*.aif,*.mid,*.midi
+fileviewer *.wav,*.mp3,*.flac,*.m4a,*.wma,*.ape,*.ac3,*.og[agx],*.spx,*.opus,*.hes,*.sid,*.mod,*.s3m,*.it,*.xm,*.nsf,*.ay,*.vtx,*.vgm,*.vgz,*.spc,*.aiff,*.aif,*.WAV,*.MP3,*.FLAC,*.M4A,*.WMA,*.APE,*.AC3,*.OG[AGX],*.SPX,*.OPUS,*.HES,*.SID,*.MOD,*.S3M,*.IT,*.XM,*.NSF,*.AY,*.VTX,*.VGM,*.VGZ,*.SPC,*.AIFF,*.AIF soxi
+filetype *.wav,*.mp3,*.flac,*.m4a,*.wma,*.ape,*.ac3,*.og[agx],*.spx,*.opus,*.hes,*.sid,*.mod,*.s3m,*.it,*.xm,*.nsf,*.ay,*.vtx,*.vgm,*.vgz,*.spc,*.aiff,*.aif,*.mid,*.midi,*.WAV,*.MP3,*.FLAC,*.M4A,*.WMA,*.APE,*.AC3,*.OG[AGX],*.SPX,*.OPUS,*.HES,*.SID,*.MOD,*.S3M,*.IT,*.XM,*.NSF,*.AY,*.VTX,*.VGM,*.VGZ,*.SPC,*.AIFF,*.AIF,*.MID,*.MIDI
        \ {Play using mpd}
         \ musicadd %f 2>/dev/null &,
        \ {Play using audacious}
@@ -344,7 +344,7 @@ fileviewer <image/*>
         " \ vifmimg gifpreview %px %py %pw %ph %c
         " \ %pc
         " \ vifmimg clear
-filextype *.bmp,*.jpg,*.JPG,*.jpeg,*.png,*.gif,*.xpm,*.webp,*.tiff
+filextype *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm,*.webp,*.tiff,*.BMP,*.JPG,*.JPEG,*.PNG,*.GIF,*.XPM,*.WEBP,*.TIFF
         \ {View in sxiv}
         " \ sxiv -ia %f &,
         \ rifle_sxiv %f &,
