@@ -254,8 +254,8 @@ filextype *.ps,*.eps,*.ps.gz
     " \ vifmimg audio %px %py %pw %ph %c
     " \ %pc
     " \ vifmimg clear
-fileviewer *.wav,*.mp3,*.flac,*.m4a,*.wma,*.ape,*.ac3,*.og[agx],*.spx,*.opus,*.hes,*.sid,*.mod,*.s3m,*.it,*.xm,*.nsf,*.ay,*.vtx,*.vgm,*.vgz,*.spc,*.aiff,*.aif,*.WAV,*.MP3,*.FLAC,*.M4A,*.WMA,*.APE,*.AC3,*.OG[AGX],*.SPX,*.OPUS,*.HES,*.SID,*.MOD,*.S3M,*.IT,*.XM,*.NSF,*.AY,*.VTX,*.VGM,*.VGZ,*.SPC,*.AIFF,*.AIF soxi
-filetype *.wav,*.mp3,*.flac,*.m4a,*.wma,*.ape,*.ac3,*.og[agx],*.spx,*.opus,*.hes,*.sid,*.mod,*.s3m,*.it,*.xm,*.nsf,*.ay,*.vtx,*.vgm,*.vgz,*.spc,*.aiff,*.aif,*.mid,*.midi,*.WAV,*.MP3,*.FLAC,*.M4A,*.WMA,*.APE,*.AC3,*.OG[AGX],*.SPX,*.OPUS,*.HES,*.SID,*.MOD,*.S3M,*.IT,*.XM,*.NSF,*.AY,*.VTX,*.VGM,*.VGZ,*.SPC,*.AIFF,*.AIF,*.MID,*.MIDI
+fileviewer *.wav,*.mp3,*.flac,*.m4a,*.wma,*.ape,*.ac3,*.og[agx],*.spx,*.opus,*.sid,*.mod,*.s3m,*.it,*.xm,*.nsf,*.ay,*.vtx,*.vgm,*.vgz,*.spc,*.aiff,*.aif,*.WAV,*.MP3,*.FLAC,*.M4A,*.WMA,*.APE,*.AC3,*.OG[AGX],*.SPX,*.OPUS,*.SID,*.MOD,*.S3M,*.IT,*.XM,*.NSF,*.AY,*.VTX,*.VGM,*.VGZ,*.SPC,*.AIFF,*.AIF soxi
+filetype *.wav,*.mp3,*.flac,*.m4a,*.wma,*.ape,*.ac3,*.og[agx],*.spx,*.opus,*.sid,*.mod,*.s3m,*.it,*.xm,*.nsf,*.ay,*.vtx,*.vgm,*.vgz,*.spc,*.aiff,*.aif,*.mid,*.midi,*.WAV,*.MP3,*.FLAC,*.M4A,*.WMA,*.APE,*.AC3,*.OG[AGX],*.SPX,*.OPUS,*.SID,*.MOD,*.S3M,*.IT,*.XM,*.NSF,*.AY,*.VTX,*.VGM,*.VGZ,*.SPC,*.AIFF,*.AIF,*.MID,*.MIDI
        \ {Play using mpd}
         \ musicadd %f 2>/dev/null &,
        \ {Play using audacious}
