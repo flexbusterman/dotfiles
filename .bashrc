@@ -6,7 +6,9 @@
 export TERMINAL='kitty'
 export EDITOR='nvim'
 export BROWSER='qutebrowser'
-export MANPAGER="/bin/sh -c \"col -b | nvim -c 'set ft=man ts=8 nomod nolist nonu noma' -\""
+# export MANPAGER="/bin/sh -c \"col -b | nvim -c 'set ft=man ts=8 nomod nolist nonu noma' -\""
+# export MANPAGER="/bin/sh -c \"col -b | less -R | nvim -c 'set ft=man ts=8 nomod nolist nonu noma' -\""
+export MANPAGER="nvim +Man!"
 export HEADPHONES='00:1B:66:11:8B:17'
 export MPD_PORT='49152'
 # export $(grep -v '^#' .env | xargs)
