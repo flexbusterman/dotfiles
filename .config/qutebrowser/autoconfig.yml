@@ -22,7 +22,7 @@ settings:
   colors.hints.match.fg:
     global: rgba(255,255,255,1)
   colors.webpage.darkmode.enabled:
-    global: true
+    global: false
   content.blocking.enabled:
     global: true
   content.blocking.method:
@@ -64,10 +64,10 @@ settings:
     global: about:blank
   url.searchengines:
     global:
-      D: https://duckduckgo.com/?q={}
+      d: https://duckduckgo.com/?q={}
       DEFAULT: https://www.google.com/search?q={}
       b: https://www.blocket.se/annonser/hela_sverige?q={}&f=p
-      d: https://www.dropbox.com/search/work?path=%2F&query={}
+      D: https://www.dropbox.com/search/work?path=%2F&query={}
       f: https://freesound.org/search/?q={}
       i: https://www.instagram.com/explore/tags/{}/
       m: https://www.google.com/maps/search/{}

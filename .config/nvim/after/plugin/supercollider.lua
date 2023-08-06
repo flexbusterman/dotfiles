@@ -88,7 +88,7 @@ scnvim.setup {
 		},
 		['<leader><CR>'] = map('postwin.toggle', 'n'),
 		['<M-CR>'] = map('postwin.toggle', 'i'),
-		['<M-L>'] = map('postwin.clear', {'n', 'i'}),
+		['<leader>c'] = map('postwin.clear', 'n'),
 		['<K>'] = map('signature.show', 'n'),
 		['<leader>.'] = map('sclang.hard_stop', {'n', 'x'}),
 		['<leader>s'] = map('sclang.start'),
