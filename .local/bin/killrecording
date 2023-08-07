@@ -1,0 +1,7 @@
+#!/bin/bash
+recpid="$(cat /tmp/recordingpid)"
+kill -15 "$recpid" && notify-send "Stopped recording" || notify-send "No active recording"
+rm -f /tmp/recordingpid
+updateicon ""
+pkill -RTMIN+9 "${STATUSBAR:-dwmblocks}"
+
