@@ -1,0 +1,31 @@
+#!/bin/bash
+
+# Function to handle termination
+terminate_recording() {
+    # Kill the background ffmpeg recording process
+    kill $RECORD_PID
+    exit 0
+}
+
+# Start the recording process in the background
+ffmpeg -y \
+-f v4l2 -framerate 30 -video_size 1280x720 -i /dev/video0 \
+-f pulse -ac 2 -i default \
+-c:v h264 -crf 0 -preset ultrafast -c:a aac \
+-filter_complex "[0:v]split=2[rec][prev]" \
+-map "[rec]" -map 1:a "$HOME/webcam-$(date '+%y%m%d-%H%M-%S').mkv" \
+-map "[prev]" -c:v rawvideo -pix_fmt yuv420p -f sdl "SDL output" &
+# Store the PID of the recording process
+RECORD_PID=$!
+
+# Set a trap to catch signals and run the terminate_recording function
+trap terminate_recording SIGINT SIGTERM
+
+# Loop to periodically check if the SDL window is still open
+while true; do
+    sleep 1
+    # Check if the SDL window titled "SDL output" still exists
+    if ! xdotool search --name "SDL output"; then
+        terminate_recording
+    fi
+done
