@@ -24,7 +24,8 @@ killrecording() {
 	pkill -RTMIN+9 "${STATUSBAR:-dwmblocks}"
 	}
 
-screencast() { \
+# Uses the default input as audio
+screencastinput() { \
 	ffmpeg -y \
 	-f x11grab \
 	-framerate 30 \
@@ -38,7 +39,39 @@ screencast() { \
 	"$HOME/screencast-$(date '+%y%m%d-%H%M-%S').mp4" &
 	echo $! > /tmp/recordingpid
 	updateicon "⏺️🎙️"
-       	}
+}
+
+# uses the default output as audio
+screencastoutput() {
+    default_monitor=$(pactl list short sources | grep "$(pactl info | grep "Default Sink" | cut -d' ' -f3).monitor" | cut -f2)
+    ffmpeg -y \
+    -f x11grab \
+    -framerate 30 \
+    -s "$(getdim)" \
+    -i "$DISPLAY" \
+    -f pulse -thread_queue_size 1024 -i "$default_monitor" \
+    -c:v h264 \
+    -crf 0 -preset ultrafast -c:a aac \
+    "$HOME/screencast-output-$(date '+%y%m%d-%H%M-%S').mp4" &
+    echo $! > /tmp/recordingpid
+    updateicon "⏺️🔊"
+}
+
+# uses the default output as lossless audio
+screencastoutputflac() {
+    default_monitor=$(pactl list short sources | grep "$(pactl info | grep "Default Sink" | cut -d' ' -f3).monitor" | cut -f2)
+    ffmpeg -y \
+    -f x11grab \
+    -framerate 30 \
+    -s "$(getdim)" \
+    -i "$DISPLAY" \
+    -f pulse -thread_queue_size 1024 -i "$default_monitor" \
+    -c:v h264 \
+    -crf 0 -preset ultrafast -c:a flac \
+    "$HOME/screencast-output-flac-$(date '+%y%m%d-%H%M-%S').mp4" &
+    echo $! > /tmp/recordingpid
+    updateicon "⏺️🔊"
+}
 
 video() { ffmpeg \
 	-f x11grab \
@@ -85,9 +118,11 @@ audio() { \
 	}
 
 askrecording() { \
-	choice=$(printf "screencast\\nvideo\\nvideo selected\\naudio\\nwebcam\\nwebcam (hi-def)" | dmenu -i -p "Select recording style:")
+	choice=$(printf "screencast input\\nscreencast output\\nscreencast output FLAC\\nvideo\\nvideo selected\\naudio\\nwebcam\\nwebcam (hi-def)" | dmenu -i -p "Select recording style:")
 	case "$choice" in
-		screencast) screencast;;
+		"screencast input") screencastinput;;
+		"screencast output") screencastoutput;;
+		"screencast output FLAC") screencastoutputflac;;
 		audio) audio;;
 		video) video;;
 		*selected) videoselected;;
