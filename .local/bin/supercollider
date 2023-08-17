@@ -1,12 +1,19 @@
 #!/bin/bash
+# cd ~/Dropbox/SUPERCOLLIDER/;
+# nvim -c "edit $(command ls -ltr ~/Dropbox/SUPERCOLLIDER/ | grep -Ev ^d | awk '/20[0-9]{2}/{print}' | tail -n 1 | sed 's/^[^:]*:[^ ]* //g')" \
+# -c "vsplit ~/Dropbox/SUPERCOLLIDER/synths.scd" \
+# -c "wincmd l" \
+# -c "split ~/Dropbox/SUPERCOLLIDER/startup.scd" \
+# -c "set filetype=supercollider" \
+# -c "SCNvimStart" \
+# -c "wincmd h" \
+# -c "sleep 1" \
+# -c "wincmd ="
 cd ~/Dropbox/SUPERCOLLIDER/;
-# nvim -O "$(command ls -ltr ~/Dropbox/SUPERCOLLIDER/ | grep -Ev ^d | awk '/20[0-9]{2}/{print}' | tail -n 1 | sed 's/^[^:]*:[^ ]* //g')" ~/Dropbox/SUPERCOLLIDER/synths.scd -c "set filetype=supercollider | SCNvimStart"
-# nvim -c "edit $(command ls -ltr ~/Dropbox/SUPERCOLLIDER/ | grep -Ev ^d | awk '/20[0-9]{2}/{print}' | tail -n 1 | sed 's/^[^:]*:[^ ]* //g') | vsplit ~/Dropbox/SUPERCOLLIDER/synths.scd | wincmd l | split ~/Dropbox/SUPERCOLLIDER/fieldsteel startup.scd | set filetype=supercollider | SCNvimStart | wincmd = | wincmd h"
-
-nvim -c "edit $(command ls -ltr ~/Dropbox/SUPERCOLLIDER/ | grep -Ev ^d | awk '/20[0-9]{2}/{print}' | tail -n 1 | sed 's/^[^:]*:[^ ]* //g')" \
+nice -n -10 nvim -c "edit $(command ls -ltr ~/Dropbox/SUPERCOLLIDER/ | grep -Ev ^d | awk '/20[0-9]{2}/{print}' | tail -n 1 | sed 's/^[^:]*:[^ ]* //g')" \
 -c "vsplit ~/Dropbox/SUPERCOLLIDER/synths.scd" \
 -c "wincmd l" \
--c "split ~/Dropbox/SUPERCOLLIDER/fieldsteel startup.scd" \
+-c "split ~/Dropbox/SUPERCOLLIDER/startup.scd" \
 -c "set filetype=supercollider" \
 -c "SCNvimStart" \
 -c "wincmd h" \
