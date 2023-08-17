@@ -9,8 +9,9 @@
 # -c "wincmd h" \
 # -c "sleep 1" \
 # -c "wincmd ="
+
 cd ~/Dropbox/SUPERCOLLIDER/;
-nice -n -10 nvim -c "edit $(command ls -ltr ~/Dropbox/SUPERCOLLIDER/ | grep -Ev ^d | awk '/20[0-9]{2}/{print}' | tail -n 1 | sed 's/^[^:]*:[^ ]* //g')" \
+nvim -c "edit $(command ls -ltr ~/Dropbox/SUPERCOLLIDER/ | grep -Ev ^d | awk '/20[0-9]{2}/{print}' | tail -n 1 | sed 's/^[^:]*:[^ ]* //g')" \
 -c "vsplit ~/Dropbox/SUPERCOLLIDER/synths.scd" \
 -c "wincmd l" \
 -c "split ~/Dropbox/SUPERCOLLIDER/startup.scd" \
