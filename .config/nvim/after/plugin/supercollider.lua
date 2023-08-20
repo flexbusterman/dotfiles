@@ -75,7 +75,7 @@ scnvim.setup {
 			-- horizontal = true,
 			horizontal = false,
 			-- size = '20%',
-			size = '38%',
+			size = '43%',
 			-- cmd = 'tail',
 			-- args = { '-F', '$1' }
 			cmd = 'scnvim-tmux',
