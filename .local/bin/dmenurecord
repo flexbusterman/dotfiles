@@ -36,7 +36,7 @@ screencastinput() { \
 	-f alsa -thread_queue_size 1024 -i default \
  	-c:v h264 \
 	-crf 0 -preset ultrafast -c:a aac \
-	"$HOME/screencast-$(date '+%y%m%d-%H%M-%S').mp4" &
+	"$HOME/screencast-$(date '+%y%m%d-%H%M-%S').mkv" &
 	echo $! > /tmp/recordingpid
 	updateicon "⏺️🎙️"
 }
@@ -52,7 +52,7 @@ screencastoutput() {
     -f pulse -thread_queue_size 1024 -i "$default_monitor" \
     -c:v h264 \
     -crf 0 -preset ultrafast -c:a aac \
-    "$HOME/screencast-output-$(date '+%y%m%d-%H%M-%S').mp4" &
+    "$HOME/screencast-output-$(date '+%y%m%d-%H%M-%S').mkv" &
     echo $! > /tmp/recordingpid
     updateicon "⏺️🔊"
 }
@@ -68,7 +68,7 @@ screencastoutputflac() {
     -f pulse -thread_queue_size 1024 -i "$default_monitor" \
     -c:v h264 \
     -crf 0 -preset ultrafast -c:a flac \
-    "$HOME/screencast-output-flac-$(date '+%y%m%d-%H%M-%S').mp4" &
+    "$HOME/screencast-output-flac-$(date '+%y%m%d-%H%M-%S').mkv" &
     echo $! > /tmp/recordingpid
     updateicon "⏺️🔊"
 }
