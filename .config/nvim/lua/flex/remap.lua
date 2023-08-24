@@ -72,9 +72,15 @@ vim.keymap.set("v", "<leader>p", ":s/\\\\/\\r\\\\/g | '<,'>s/^[^\\\\].*$//g | '<
 
 vim.keymap.set("n", "<leader>t", ":Telescope live_grep<CR>")
 
-vim.api.nvim_set_keymap('i', '<C-j>', '<cmd>lua require("luasnip").jump(1)<Cr>', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('i', '<C-k>', '<cmd>lua require("luasnip").jump(-1)<Cr>', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('s', '<C-j>', '<cmd>lua require("luasnip").jump(1)<Cr>', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('s', '<C-k>', '<cmd>lua require("luasnip").jump(-1)<Cr>', {noremap = true, silent = true})
+-- set tab as jump to next snippet field for luasnip
+vim.api.nvim_set_keymap('i', '<Tab>', 'luasnip#expand_or_jumpable() ? "<Plug>luasnip-expand-or-jump" : "<Tab>"', {expr = true})
+vim.api.nvim_set_keymap('s', '<Tab>', 'luasnip#expand_or_jumpable() ? "<Plug>luasnip-expand-or-jump" : "<Tab>"', {expr = true})
+vim.api.nvim_set_keymap('i', '<S-Tab>', 'luasnip#jumpable(-1) ? "<Plug>luasnip-jump-prev" : "<S-Tab>"', {expr = true})
+vim.api.nvim_set_keymap('s', '<S-Tab>', 'luasnip#jumpable(-1) ? "<Plug>luasnip-jump-prev" : "<S-Tab>"', {expr = true})
+
+-- vim.api.nvim_set_keymap('i', '<C-j>', '<cmd>lua require("luasnip").jump(1)<Cr>', {noremap = true, silent = true})
+-- vim.api.nvim_set_keymap('i', '<C-k>', '<cmd>lua require("luasnip").jump(-1)<Cr>', {noremap = true, silent = true})
+-- vim.api.nvim_set_keymap('s', '<C-j>', '<cmd>lua require("luasnip").jump(1)<Cr>', {noremap = true, silent = true})
+-- vim.api.nvim_set_keymap('s', '<C-k>', '<cmd>lua require("luasnip").jump(-1)<Cr>', {noremap = true, silent = true})
 
 vim.keymap.set("n", "tt", ":tab split<CR>")
