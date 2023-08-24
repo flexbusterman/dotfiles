@@ -104,9 +104,10 @@ vim.g.scnvim_snippet_format = "luasnip"
 -- require("luasnip").add_snippets("supercollider", require("scnvim/utils").get_snippets())
 
 -- conditionally load snippets if filetype is supercollider
+  -- autocmd FileType supercollider lua require("luasnip").add_snippets("supercollider", require("scnvim/utils").get_snippets())
 vim.cmd [[
 augroup SuperColliderSnippets
   autocmd!
-  autocmd FileType supercollider lua require("luasnip").add_snippets("supercollider", require("scnvim/utils").get_snippets())
+	autocmd FileType supercollider lua require("luasnip").add_snippets("supercollider", require("scnvim/utils").get_snippets())
 augroup END
 ]]
