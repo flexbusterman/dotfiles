@@ -84,3 +84,17 @@ vim.api.nvim_set_keymap('s', '<S-Tab>', 'luasnip#jumpable(-1) ? "<Plug>luasnip-j
 -- vim.api.nvim_set_keymap('s', '<C-k>', '<cmd>lua require("luasnip").jump(-1)<Cr>', {noremap = true, silent = true})
 
 vim.keymap.set("n", "tt", ":tab split<CR>")
+
+-- Smart Tag Jump function
+_G.smart_tag_jump = function()
+    local word = vim.fn.expand('<cword>')
+    local taglist = vim.fn.taglist('^' .. word .. '$')
+
+    if #taglist == 1 then
+        vim.cmd('tag ' .. word)
+    elseif #taglist > 1 then
+        vim.cmd('tjump ' .. word)
+    end
+end
+
+vim.keymap.set("n", "g]", "<cmd>lua _G.smart_tag_jump()<CR>")

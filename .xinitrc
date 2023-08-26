@@ -22,6 +22,7 @@ xinput set-prop "TPPS/2 Elan TrackPoint" "libinput Accel Speed" -0.55
 # xinput disable "SynPS/2 Synaptics TouchPad" &
 xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Accel Speed" 0.3
 xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Tapping Enabled" 1
+xss-lock -- sh -c "sleep 0.2; /home/$USER/.local/bin/slockunmute" &
 mailsync &
 dropbox &
 dunst &

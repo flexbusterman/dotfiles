@@ -1,4 +1,5 @@
 #!/bin/bash
+/home/$USER/.local/bin/mute
 /usr/local/bin/slock
 /home/$USER/.local/bin/unmute
 /home/$USER/.local/bin/remaps
