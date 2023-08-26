@@ -1,14 +1,5 @@
 #!/bin/bash
-echo "$(date) - Overwriting this file and starting script" > /tmp/slockunmute.log
-echo "$(date) - Muting" >> /tmp/slockunmute.log
 /home/$USER/.local/bin/mute
-
-echo "$(date) - Locking" >> /tmp/slockunmute.log
 /usr/local/bin/slock
-
-echo "$(date) - Remapping" >> /tmp/slockunmute.log
 /home/$USER/.local/bin/remaps
-
-echo "$(date) - Unmuting" >> /tmp/slockunmute.log
 /home/$USER/.local/bin/unmute
-
