@@ -36,10 +36,10 @@ return require('packer').startup(function(use)
 	use('leafoftree/vim-vue-plugin')
 	use('TristanCrawford/vim-eel2')
 
-	-- use {
-	-- 'nvim-lualine/lualine.nvim',
-	-- requires = { 'kyazdani42/nvim-web-devicons', opt = true }
-	-- }
+	use {
+		'nvim-lualine/lualine.nvim',
+		requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+	}
 
 	use {
 		'vimwiki/vimwiki',
@@ -100,7 +100,7 @@ return require('packer').startup(function(use)
 	use 'echasnovski/mini.nvim'
 	-- require('mini.pairs').setup()
 	require('mini.comment').setup({ mappings = { comment_line = '<leader>;' } })
-	require('mini.statusline').setup()
+	-- require('mini.statusline').setup()
 
 	require('mini.base16').setup({
 		palette = {

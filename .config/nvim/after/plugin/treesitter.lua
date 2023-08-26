@@ -5,9 +5,10 @@ local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
 require'nvim-treesitter.configs'.setup {
   ensure_installed = { "help", "javascript", "typescript", "lua", "supercollider" }, -- Add 'supercollider' here
 
-  indent = {
-    enable = true
-  },
+	indent = {
+		enable = {},
+		disable = {"supercollider"}
+	},
 
   sync_install = false,
   auto_install = true,
