@@ -24,3 +24,14 @@ vim.api.nvim_create_autocmd('filetype', {
 		bind('<Leader>dd', ':Lexplore<CR>')
   end
 })
+
+local M = {}
+
+M.adjust_cursor = function()
+    local line_content = vim.api.nvim_get_current_line()
+    if line_content == "../" then
+        vim.api.nvim_command('normal! j')
+    end
+end
+
+return M
