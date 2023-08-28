@@ -425,3 +425,8 @@ LC_ALL=
 
 # source /usr/share/nvm/init-nvm.sh
 # [ -f /opt/mambaforge/etc/profile.d/conda.sh ] && source /opt/mambaforge/etc/profile.d/conda.sh
+#
+# in your/custom/path you need to have a "plugins" folder and in there you clone the repository as zsh_codex
+export ZSH_CUSTOM="$HOME/.zsh/"
+source "$ZSH_CUSTOM/plugins/zsh_codex/zsh_codex.plugin.zsh"
+bindkey '^X' create_completion

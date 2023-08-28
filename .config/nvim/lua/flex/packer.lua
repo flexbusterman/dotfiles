@@ -93,6 +93,16 @@ return require('packer').startup(function(use)
 		end
 	}
 
+	-- use { 'madskjeldgaard/supercollider-h4x-nvim',
+	-- 	config = function()
+	-- 			require'supercollider-h4x'.setup()
+	-- 	end,
+	-- 	after = {'scnvim'},
+	-- 	requires = {
+	-- 		'davidgranstrom/scnvim'
+	-- 	}
+	-- }
+
 	use { 'davidgranstrom/scnvim-tmux' }
 
 	use { 'christoomey/vim-titlecase' }
@@ -160,5 +170,18 @@ return require('packer').startup(function(use)
 --		exclude = {}, -- table: groups you don't want to clear
 --		ignore_linked_group = true, -- boolean: don't clear a group that links to another group
 --	})
+
+-- Packer
+use({
+  "jackMort/ChatGPT.nvim",
+    config = function()
+      require("chatgpt").setup()
+    end,
+    requires = {
+      "MunifTanjim/nui.nvim",
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope.nvim"
+    }
+})
 
 end)

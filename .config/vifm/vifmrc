@@ -716,10 +716,11 @@ map f :execute 'cd' fnameescape(term('find -type d | fzf 2> /dev/tty'))<CR>
 "nnoremap ,w :set wrap!<cr>
 nmap <space> tj
 "nmap q ZQ
-"nnoremap va ggVG
 "vnoremap u :This is disabled to avoid mistakes
 "map gd :!dropbox-cli exclude add %f<cr>
 " map sl :!python ~/.local/bin/dropbox.py sharelink %c | xclip -sel clip<cr>
+nnoremap va ggVG<CR>
+
 nmap <C-p> :dragon<CR>
 "
 "fileview */ tree %c -L 1 --dirsfirst
