@@ -10,8 +10,8 @@ if ! tmux_has_session "main"; then
   tmux new-session -d -s "main"
 fi
 
-# Send 'Ctrl+l' to clear the screen
-tmux send-keys -t "main" C-l
+# # Send 'Ctrl+l' to clear the screen
+# tmux send-keys -t "main" C-l
 
 # Start a new kitty terminal and attach to the tmux session
 kitty tmux attach -t "main" &

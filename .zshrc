@@ -114,6 +114,7 @@ alias mnt="sudo mount -o loop $* /mnt/ISO/"
 alias vimdiff='nvim -d'
 alias gs="git status"
 alias ta="tmux attach"
+alias tam="tmux attach -t main"
 alias td="tmux detach"
 alias tks="tmux kill-server"
 alias pg="ping google.com"
