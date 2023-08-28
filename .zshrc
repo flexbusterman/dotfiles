@@ -391,9 +391,9 @@ pdp() {
   eval "$(ssh-agent -s)"
   ssh-add ~/.ssh/git
   result="\"$*\""
-  pdot add -u
-  pdot commit -m $result
-  pdot push
+  /usr/bin/git --git-dir=$HOME/.pdot.git/ --work-tree=$HOME add -u
+  /usr/bin/git --git-dir=$HOME/.pdot.git/ --work-tree=$HOME commit -m $result
+  /usr/bin/git --git-dir=$HOME/.pdot.git/ --work-tree=$HOME push
 }
 
 # asks too often to show all suggestions, but nice that it shows flags
