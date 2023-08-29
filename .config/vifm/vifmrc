@@ -141,7 +141,7 @@ mark R ~/.local/share/SuperCollider/Recordings/
 mark s ~/Dropbox/2023\ FOTO/SCREENSHOTS/
 mark S ~/Dropbox/SUPERCOLLIDER/
 mark t ~/Dropbox/DROPSYNC/!\ TRANSFER/
-mark v ~/Downloads/VIDEO/
+mark v ~/Downloads/\!\ VIDEO/
 mark W ~/Dropbox/WALLPAPERS/
 mark w ~/.wine/drive_c/
 mark k ~/Dropbox/ROMS/LINUX/Documents/
