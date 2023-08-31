@@ -6,6 +6,7 @@ if [[ $STATUS == "UDP" ]]; then
     mullvad reconnect
 else
     mullvad connect
+		killall slack
     sleep 1
     if [[ $(mullvad status | awk '{print $1}') == "Connected" ]]; then
         notify-send "Mullvad Connected"

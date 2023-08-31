@@ -1,0 +1,2 @@
+#!/bin/bash
+mstatus=$(mullvad status) && echo "$mstatus" && notify-send "$mstatus"

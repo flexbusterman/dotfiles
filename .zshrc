@@ -101,7 +101,7 @@ alias lsg="exa | grep --color=always -i"
 alias lt="exa -lar --sort=size"
 alias mc="mullvad connect"
 alias md="mullvad disconnect"
-alias ms="mullvad status"
+# alias ms='mstatus=$(mullvad status) && echo "$mstatus" && notify-send "$mstatus"'
 alias pw="openssl rand -base64 41 | xclip -sel clip"
 alias q="exit"
 alias res="xdpyinfo | awk '/dimensions/{print $2}'"
