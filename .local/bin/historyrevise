@@ -1,0 +1,14 @@
+#!/bin/bash
+
+input_file="$1"
+output_file="$1.processed"
+
+# 1. Extract commands from the history file and remove duplicates.
+# 2. Renumber entries.
+# 3. Re-add dummy meta information.
+awk -F';' '{print $2}' "$input_file" | sort -u |
+awk 'BEGIN {counter = 1} {print ": " counter ":0;" $0; counter++}' > "$output_file"
+
+# Optionally, you can move the processed file back to the original.
+mv "$output_file" "$input_file"
+
