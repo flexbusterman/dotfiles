@@ -14,4 +14,4 @@ fi
 # tmux send-keys -t "main" C-l
 
 # Start a new kitty terminal and attach to the tmux session
-kitty tmux attach -t "main" &
+kitty -T tmuxmain tmux attach -t "main" &

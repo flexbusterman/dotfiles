@@ -6,6 +6,8 @@ if [ $1 == "mind" ]; then
 	st -t Server -e zsh -c "cd ~/.local/src/mind; source /usr/share/nvm/init-nvm.sh; nvm use v14.21.3; npm run dev" &
 elif [ $1 == "sandhamn" ]; then
 	st -t Server -e zsh -c "cd ~/.local/src/sandhamn; source /usr/share/nvm/init-nvm.sh; nvm use v16.18.1; npm run dev" &
+elif [ $1 == "parking" ]; then
+	st -t Server -e zsh -c "cd ~/.local/src/parking; nvm use v18.17.1; npx expo start" &
 else
 	st -t Server -e zsh -c "cd ~/.local/src/$1; npm run dev" &
 fi

@@ -401,8 +401,10 @@ source ~/.local/src/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 source ~/.zsh/plugins/zsh-system-clipboard/zsh-system-clipboard.zsh
 source ~/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-# Load syntax highlighting; should be last according to Luke.
-source ~/.zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null
+# zsh nvm
+# export NVM_LAZY_LOAD=true
+source ~/.zsh/plugins/zsh-nvm/zsh-nvm.plugin.zsh
+
 alias dot="/usr/bin/git --git-dir=$HOME/.dot.git/ --work-tree=$HOME"
 alias pdot="/usr/bin/git --git-dir=$HOME/.pdot.git/ --work-tree=$HOME"
 
@@ -426,7 +428,15 @@ LC_ALL=
 # source /usr/share/nvm/init-nvm.sh
 # [ -f /opt/mambaforge/etc/profile.d/conda.sh ] && source /opt/mambaforge/etc/profile.d/conda.sh
 #
+#
+
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+
 # in your/custom/path you need to have a "plugins" folder and in there you clone the repository as zsh_codex
 export ZSH_CUSTOM="$HOME/.zsh/"
 source "$ZSH_CUSTOM/plugins/zsh_codex/zsh_codex.plugin.zsh"
 bindkey '^X' create_completion
+
+# Load syntax highlighting; should be last according to Luke Smith.
+source ~/.zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null
