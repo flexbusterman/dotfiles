@@ -1,5 +1,8 @@
 #!/bin/bash
-# pamixer -q set Master mute
-pactl set-sink-mute @DEFAULT_SINK@ 0
+
+for id in $(pactl list sinks | grep "Sink #" | sed 's/Sink #//g'); do
+	pactl set-sink-mute $id 0
+done
+
 amixer -c 1 set Master unmute
 amixer -c 1 set Speaker unmute
