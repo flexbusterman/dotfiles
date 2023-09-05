@@ -131,20 +131,21 @@ mark g ~/.local/src/
 mark G ~/Games/
 mark h ~/
 mark j ~/Downloads/
-mark M ~/Dropbox/MUSIC/
+mark k ~/Dropbox/ROMS/LINUX/Documents/
 mark m /run/media/flex/
+mark M ~/Dropbox/MUSIC/
 mark n ~/Dropbox/NOTES/
-mark p ~/Pictures/
 mark P ~/Dropbox/PDF/
+mark p ~/Pictures/
 mark r /
 mark R ~/.local/share/SuperCollider/Recordings/
 mark s ~/Dropbox/2023\ FOTO/SCREENSHOTS/
 mark S ~/Dropbox/SUPERCOLLIDER/
 mark t ~/Dropbox/DROPSYNC/!\ TRANSFER/
+mark T ~/Dropbox/TIDAL CYCLES/
 mark v ~/Downloads/\!\ VIDEO/
-mark W ~/Dropbox/WALLPAPERS/
 mark w ~/.wine/drive_c/
-mark k ~/Dropbox/ROMS/LINUX/Documents/
+mark W ~/Dropbox/WALLPAPERS/
 
 " ------------------------------------------------------------------------------
 
