@@ -4,15 +4,19 @@ notefile=$(find ~/Dropbox/NOTES/ -maxdepth 1 -type f -iname "*$1*" | head -n 1)
 if [ $1 == "mind" ]; then
 	notefile="/home/$USER/Dropbox/NOTES/MIND.md"
 	st -t Server -e zsh -c "cd ~/.local/src/mind; source /usr/share/nvm/init-nvm.sh; nvm use v14.21.3; npm run dev" &
+	port=3000
 elif [ $1 == "sandhamn" ]; then
 	st -t Server -e zsh -c "cd ~/.local/src/sandhamn; source /usr/share/nvm/init-nvm.sh; nvm use v16.18.1; npm run dev" &
+	port=3000
 elif [ $1 == "parking" ]; then
-	st -t Server -e zsh -c "cd ~/.local/src/parking; nvm use v18.17.1; npx expo start" &
+	kitty -T Server zsh -c "cd ~/.local/src/parking; nvm use v18.17.1; npx expo start" &
+	port=19006
 else
 	st -t Server -e zsh -c "cd ~/.local/src/$1; npm run dev" &
+	port=3000
 fi
 st -t Timer -e zsh -c "termdown --no-figlet" &
 sleep 0.2 && st -t Git -e zsh -c "cd ~/.local/src/$1; zsh" &
 st -t Notes -e zsh -c "cd ~/Dropbox/NOTES/; nvim \"$notefile\"" &
-sleep 1.5 && firefox --new-window http://localhost:3000 &
+sleep 1.5 && firefox --new-window http://localhost:$port &
 sleep 3 && kitty zsh -c "cd ~/.local/src/$1; nvim -c \"e .\"" &

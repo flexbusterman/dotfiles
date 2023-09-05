@@ -45,3 +45,7 @@ vim.opt.wildignore = {'*/node_modules/*'}
 
 -- disable completion in vimwiki
 vim.cmd [[ autocmd FileType vimwiki lua require('cmp').setup.buffer { enabled = false } ]]
+
+vim.g.nocompatible = true
+
+vim.g.tidal_target = "tmux"

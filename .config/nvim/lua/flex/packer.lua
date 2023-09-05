@@ -105,6 +105,8 @@ return require('packer').startup(function(use)
 
 	use { 'davidgranstrom/scnvim-tmux' }
 
+	use {'tidalcycles/vim-tidal' }
+
 	use { 'christoomey/vim-titlecase' }
 
 	use 'echasnovski/mini.nvim'

@@ -1,0 +1,34 @@
+#!/bin/bash
+
+VIM=${VIM:-"nvim"}
+TMUX=${TMUX:-"tmux"}
+
+FILE=${FILE:-"$(date +%F).tidal"}
+
+TIDAL_BOOT_PATH=${TIDAL_BOOT_PATH:-""}
+GHCI=${GHCI:-""}
+
+args=${@:-$FILE}
+
+# Check if the session "tidal" exists
+if ! $TMUX has-session -t tidal 2>/dev/null; then
+    echo "tmux doesn't have session tidal"
+
+    # Create session and panes
+    $TMUX new-session -d -s tidal
+    echo "starting session"
+    $TMUX split-window -h -t tidal
+    $TMUX split-window -v -t tidal
+
+    # Send commands to panes
+    $TMUX send-keys -t 2 "sclang" C-m
+    $TMUX send-keys -t 0 "$VIM $args" C-m
+    $TMUX send-keys -t 1 "TIDAL_BOOT_PATH=$TIDAL_BOOT_PATH GHCI=$GHCI tidal" C-m
+    $TMUX select-pane -t 0
+    $TMUX resize-pane -R 15
+else
+    echo "tmux session exists"
+fi
+
+# Attach to the session
+$TMUX attach-session -t tidal

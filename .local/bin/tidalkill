@@ -1,0 +1,3 @@
+#!/bin/bash
+killall scsynth sclang scide tidal
+tmux kill-server -t tidal
