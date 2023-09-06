@@ -99,4 +99,3 @@ end
 
 vim.keymap.set("n", "g]", "<cmd>lua _G.smart_tag_jump()<CR>")
 
-
