@@ -36,7 +36,6 @@ if [[ $MP3 == true ]]
 then
 		yt-dlp -x --audio-format mp3 --audio-quality 320K -P ~/Downloads/ "$clipboard" || notify-send 'Clipboard not valid'
 else
-
 		yt-dlp -f 'bestvideo[height<=1080]+bestaudio/best[height<=1080]' -P ~/Downloads/\!\ VIDEO/ -o '%(playlist_index|)s%(playlist_index& - |)s%(title)s.%(ext)s' "$clipboard" || yt-dlp -f "bv*[height=720]+ba" -P ~/Downloads/\!\ VIDEO/ -o '%(playlist_index|)s%(playlist_index& - |)s%(title)s.%(ext)s' "$clipboard" || notify-send "Clipboard not valid"
 fi
 else
