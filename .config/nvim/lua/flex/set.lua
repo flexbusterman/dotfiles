@@ -48,7 +48,3 @@ vim.cmd [[ autocmd FileType vimwiki lua require('cmp').setup.buffer { enabled = 
 
 vim.g.nocompatible = true
 
--- tidalcycles
-vim.g.tidal_target = "tmux"
-vim.g.tidal_no_mappings = 1
-
