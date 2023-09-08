@@ -1,4 +1,6 @@
 #!/bin/bash
+#
+ln -sf ~/Dropbox/SUPERCOLLIDER/tidalcycles\ startup.scd ~/.config/SuperCollider/startup.scd
 
 VIM=${VIM:-"nvim"}
 TMUX=${TMUX:-"tmux"}
