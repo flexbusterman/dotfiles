@@ -3,3 +3,5 @@
 /usr/local/bin/slock
 /home/$USER/.local/bin/remaps
 /home/$USER/.local/bin/unmute
+sleep 6
+[[ $(pactl list sinks | grep -i "bluetooth") ]] && notify-send "Delayed bluetooth unmute" && /home/$USER/.local/bin/unmute
