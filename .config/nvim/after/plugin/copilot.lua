@@ -11,6 +11,7 @@ vim.g.copilot_filetypes = {
 	["mail"] = false,
 	["text"] = false,
 	["supercollider"] = false,
+	["tidal"] = false,
 	-- ["javascript"] = true,
 	-- ["typescript"] = true,
 	-- ["lua"] = true,
