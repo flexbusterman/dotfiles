@@ -1,3 +1,4 @@
+vim.cmd("setlocal commentstring=--\\ %s")
 vim.g.tidal_target = "tmux"
 vim.g.tidal_no_mappings = 1
 
