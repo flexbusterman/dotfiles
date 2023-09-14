@@ -47,3 +47,8 @@ vim.opt.wildignore = {'*/node_modules/*'}
 vim.cmd [[ autocmd FileType vimwiki lua require('cmp').setup.buffer { enabled = false } ]]
 
 vim.g.nocompatible = true
+
+vim.g.base16_transparent_background = 1
+
+vim.g.sclang_executable_path = "/usr/bin/sclang"
+vim.g.python_executable_path = "/usr/bin/python3"

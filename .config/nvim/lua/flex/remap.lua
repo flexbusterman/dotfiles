@@ -53,9 +53,6 @@ vim.keymap.set("v", "<leader>t", "<Plug>Titlecase", { silent = true })
 -- no duplicate lines
 vim.keymap.set("n", "<leader>l", ":g/^\\s\\+$/s/\\s\\+//e <CR> <bar> :silent! g/^$/,/./-j<CR><c-o>")
 
--- remove previous WORD without exiting insert mode
-vim.keymap.set("i", "<C-h>", "<esc>bciW")
-
 -- calculate and return result
 -- vim.keymap.set("n", "<leader>r", ":s/ = .*//e<cr> \0y$ \\!!sed 's/mean/avg/;s/^/round(/;s/$/,3)/'<cr> \\!!calc -p<cr> \\Pa = <esc>hh")
 
@@ -89,7 +86,6 @@ vim.keymap.set("n", "tt", ":tab split<CR>")
 _G.smart_tag_jump = function()
     local word = vim.fn.expand('<cword>')
     local taglist = vim.fn.taglist('^' .. word .. '$')
-
     if #taglist == 1 then
         vim.cmd('tag ' .. word)
     elseif #taglist > 1 then

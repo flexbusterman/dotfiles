@@ -158,6 +158,8 @@ return require('packer').startup(function(use)
 	-- use 'xiyaowong/nvim-transparent'
 	use 'xiyaowong/transparent.nvim'
 
+	use 'simonhicks/foxdot.vim'
+
 -- use({
 --   "jackMort/ChatGPT.nvim",
 --     config = function()
