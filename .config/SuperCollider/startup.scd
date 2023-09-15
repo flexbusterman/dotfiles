@@ -1,1 +1,1 @@
-/home/flex/Dropbox/SUPERCOLLIDER/fieldsteel startup.scd
+/home/flex/Dropbox/SUPERCOLLIDER/tidalcycles startup.scd

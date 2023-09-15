@@ -10,7 +10,6 @@ includePaths:
     -   /home/flex/.local/share/SuperCollider/downloaded-quarks/Vowel
     -   /home/flex/.local/share/SuperCollider/downloaded-quarks/Dirt-Samples
     -   /home/flex/.local/share/SuperCollider/downloaded-quarks/SuperDirt
-    -   /home/flex/.local/share/SuperCollider/downloaded-quarks/FoxDot
 excludePaths:
     []
 postInlineWarnings: false
