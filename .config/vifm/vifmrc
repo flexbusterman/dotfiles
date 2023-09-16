@@ -144,6 +144,7 @@ mark S ~/Dropbox/SUPERCOLLIDER/
 mark t ~/Dropbox/DROPSYNC/!\ TRANSFER/
 mark T ~/Dropbox/TIDAL\ CYCLES/
 mark v ~/Downloads/\!\ VIDEO/
+mark V ~/.config/nvim/
 mark w ~/.wine/drive_c/
 mark W ~/Dropbox/WALLPAPERS/
 
