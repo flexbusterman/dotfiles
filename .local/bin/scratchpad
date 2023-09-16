@@ -14,4 +14,6 @@ fi
 # tmux send-keys -t "main" C-l
 
 # Start a new kitty terminal and attach to the tmux session
-kitty -T scratchpad -o initial_window_width=20 -o initial_window_height=400 -o background_opacity=1 tmux attach -t "main" &
+# kitty -T scratchpad -o initial_window_width=20 -o initial_window_height=400 -o background_opacity=1 tmux attach -t "main" &
+
+st -t scratchpad -g 80x45 -e tmux attach -t "main"

@@ -365,10 +365,10 @@ gp() {
   git push
 }
 
-pp() {
-  eval "$(ssh-agent -s)"
-  ssh-add ~/.ssh/digitalocean
-  pass git push
+pass() {
+	eval "$(ssh-agent -s)"
+	ssh-add ~/.ssh/digitalocean
+	command pass $*
 }
 
 gpd() {
