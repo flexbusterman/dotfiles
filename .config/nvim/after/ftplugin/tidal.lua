@@ -7,3 +7,6 @@ vim.keymap.set("n", "<leader>.", ":TidalHush<CR>")
 
 -- tidal plugin overwrites this
 vim.keymap.set({"n"}, "<C-h>", "<C-w>h")
+
+-- vim.g.maplocalleader = " "
+-- vim.keymap.set("n", "<C-e>", ":TidalSend<CR>")
