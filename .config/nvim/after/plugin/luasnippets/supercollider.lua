@@ -4,9 +4,10 @@ local i = ls.insert_node
 local t = ls.text_node
 
 local snippets = {
-s( { trig = "test", name = "Test SuperCollider audio" }, { t("{SinOsc.ar(freq: 440.0,  phase: 0.0,  mul: 0.2,  add: 0.0)!2}.play;"), }),
+s( { trig = "test", name = "Test SuperCollider audio" }, { t("Ndef(\\test, {SinOsc.ar(440)!2*0.2}).play"), }),
 s("nd", {
-    t({"Ndef(\\",}), i(1, "name"),
+    t({"Ndef(\\",}),
+		i(1, "name"),
     t({", {",}),
     i(2, "source"),
     t({"}).play;",}),

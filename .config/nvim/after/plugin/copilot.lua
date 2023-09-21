@@ -11,5 +11,5 @@ vim.g.copilot_filetypes = {
 	["mail"] = false,
 	["text"] = false,
 	["supercollider"] = false,
-	-- ["tidal"] = false,
+	["tidal"] = false,
 }

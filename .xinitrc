@@ -34,7 +34,7 @@ srandrd displayhandler &
 blueberry-tray &
 xdotool mousemove $(xdotool getdisplaygeometry | awk '{print $1-1, $2-1}') &
 tmux new-session -d -s main &
-command -v slack && slack -u &
+# command -v slack && slack -u &
 exec dwmstart
 # exec i3
 # exec bspwm
