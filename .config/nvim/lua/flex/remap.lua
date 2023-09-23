@@ -56,7 +56,6 @@ vim.keymap.set("n", "<leader>l", ":g/^\\s\\+$/s/\\s\\+//e <CR> <bar> :silent! g/
 -- calculate and return result
 -- vim.keymap.set("n", "<leader>r", ":s/ = .*//e<cr> \0y$ \\!!sed 's/mean/avg/;s/^/round(/;s/$/,3)/'<cr> \\!!calc -p<cr> \\Pa = <esc>hh")
 
-vim.keymap.set("n", "<leader>i", ":VimwikiIndex<CR>")
 vim.keymap.set("n", "<leader>k", ":EslintFixAll<CR>")
 vim.keymap.set("x", "<leader>k", ":EslintFixAll<CR>")
 
@@ -71,6 +70,7 @@ vim.keymap.set("v", "<leader>p", ":s/\\(\\w*\\):\\(\\-*[0-9]*\\.*\\d*\\)/\\\\\\1
 -- end)
 
 vim.keymap.set("n", "<leader>t", ":Telescope live_grep<CR>")
+
 
 -- set tab as jump to next snippet field for luasnip
 vim.api.nvim_set_keymap('i', '<Tab>', 'luasnip#expand_or_jumpable() ? "<Plug>luasnip-expand-or-jump" : "<Tab>"', {expr = true})
@@ -95,5 +95,35 @@ _G.smart_tag_jump = function()
         vim.cmd('tjump ' .. word)
     end
 end
-
 vim.keymap.set("n", "g]", "<cmd>lua _G.smart_tag_jump()<CR>")
+
+-- vim.keymap.set("n", "<C-m>", ":lua require(\"harpoon.mark\").add_file()<CR>")
+
+-- vimwiki
+-- unbinding C-m
+vim.g.vimwiki_key_mappings = {
+  all_maps = 1,
+  global = 1,
+  headers = 1,
+  text_objs = 1,
+  table_format = 1,
+  table_mappings = 1,
+  lists = 1,
+  links = 0,
+  html = 1,
+  mouse = 1,
+}
+
+vim.keymap.set("n", "<leader>i", ":VimwikiIndex<CR>")
+
+vim.keymap.set("n", "<C-a>", ":lua require('harpoon.mark').add_file()<CR>")
+vim.keymap.set("n", "<C-e>", ":lua require('harpoon.ui').toggle_quick_menu()<CR>")
+vim.keymap.set("n", "<leader>1", ":lua require('harpoon.ui').nav_file(1)<CR>")
+vim.keymap.set("n", "<leader>2", ":lua require('harpoon.ui').nav_file(2)<CR>")
+vim.keymap.set("n", "<leader>3", ":lua require('harpoon.ui').nav_file(3)<CR>")
+vim.keymap.set("n", "<leader>4", ":lua require('harpoon.ui').nav_file(4)<CR>")
+vim.keymap.set("n", "<leader>5", ":lua require('harpoon.ui').nav_file(5)<CR>")
+vim.keymap.set("n", "<leader>6", ":lua require('harpoon.ui').nav_file(6)<CR>")
+vim.keymap.set("n", "<leader>7", ":lua require('harpoon.ui').nav_file(7)<CR>")
+vim.keymap.set("n", "<leader>8", ":lua require('harpoon.ui').nav_file(8)<CR>")
+vim.keymap.set("n", "<leader>9", ":lua require('harpoon.ui').nav_file(9)<CR>")
