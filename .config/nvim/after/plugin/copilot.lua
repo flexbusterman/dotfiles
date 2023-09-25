@@ -1,7 +1,7 @@
--- vim.keymap.set('i', '<C-N>', '<Nop>')
--- vim.keymap.set('i', '<C-N>', '<Plug>(copilot-next)')
--- vim.keymap.set('i', '<C-P>', '<Nop>')
--- vim.keymap.set('i', '<C-P>', '<Plug>(copilot-previous)')
+vim.keymap.set('i', '<C-j>', '<Nop>')
+vim.keymap.set('i', '<C-j>', '<Plug>(copilot-next)')
+vim.keymap.set('i', '<C-k>', '<Nop>')
+vim.keymap.set('i', '<C-k>', '<Plug>(copilot-previous)')
 vim.keymap.set('i', '<esc>', '<esc><Plug>(copilot-cancel)')
 
 vim.g.copilot_filetypes = {
@@ -13,3 +13,4 @@ vim.g.copilot_filetypes = {
 	["supercollider"] = false,
 	["tidal"] = false,
 }
+
