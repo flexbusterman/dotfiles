@@ -711,6 +711,7 @@ map X :!~/.local/bin/7zxdir %f &<CR>
 
 " map f :execute 'cd' fnameescape(term('find -type d | fzf 2> /dev/tty'))<CR>
 map f :find -iname "**"<left><left>
+map F :grep -r -n -i -I ""<left>
 "nnoremap w :view<cr>
 "vnoremap w :view<cr>gv
 "nnoremap I cw<c-a>
