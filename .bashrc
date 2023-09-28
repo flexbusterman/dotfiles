@@ -5,7 +5,7 @@
 # environment variables
 export TERMINAL='st'
 export EDITOR='nvim'
-export BROWSER='qutebrowser'
+export BROWSER='firefox'
 # export MANPAGER="/bin/sh -c \"col -b | nvim -c 'set ft=man ts=8 nomod nolist nonu noma' -\""
 # export MANPAGER="/bin/sh -c \"col -b | less -R | nvim -c 'set ft=man ts=8 nomod nolist nonu noma' -\""
 export MANPAGER="nvim +Man!"
