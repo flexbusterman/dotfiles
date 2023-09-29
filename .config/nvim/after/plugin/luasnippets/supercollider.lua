@@ -618,6 +618,7 @@ s("granRec", {
     i(1, "granRec"),
     t({", Pbind(\\instrument, \\granRec, \\ptrIn, 0, \\sigIn, 0, \\bufL, 0, \\bufR, 0));"})
 })
+
 }
 
 return snippets
