@@ -617,7 +617,17 @@ s("granRec", {
     t({"Ndef(\\",}),
     i(1, "granRec"),
     t({", Pbind(\\instrument, \\granRec, \\ptrIn, 0, \\sigIn, 0, \\bufL, 0, \\bufR, 0));"})
-})
+}),
+
+s({ trig = "rev", name = "Ndef[50] JPverb" }, {
+  t({ 'Ndef(\\', }),
+  i(1, 'name'),
+  t({ ')[50] = \\filter -> {|in| JPverb.ar(in:in, t60:1.0, damp:0.0, size:1.0, earlyDiff:0.707, modDepth:0.1, modFreq:2.0, low:1.0, mid:1.0, high:1.0, lowcut:500.0, highcut:2000.0)}; Ndef(\\' }),
+  r(1),
+	t({").set(\\wet50, "}),
+	i(2, "0.3"),
+	t({" )"})
+}),
 
 }
 
