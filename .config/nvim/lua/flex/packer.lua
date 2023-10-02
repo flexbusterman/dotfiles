@@ -7,6 +7,7 @@ return require('packer').startup(function(use)
 	-- Packer can manage itself
 	use 'wbthomason/packer.nvim'
 
+
 	use {
 		'nvim-telescope/telescope.nvim', tag = '0.1.0',
 		-- or                            , branch = '0.1.x',
@@ -159,6 +160,8 @@ return require('packer').startup(function(use)
 
 	-- use 'xiyaowong/nvim-transparent'
 	use 'xiyaowong/transparent.nvim'
+
+	use 'folke/todo-comments.nvim'
 
 -- use({
 --   "jackMort/ChatGPT.nvim",

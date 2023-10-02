@@ -16,6 +16,7 @@ if [[ $POWERED ]]; then
     sleep 1
 		MAC=$(echo $1 | tr ":" "_")
     pactl set-card-profile bluez_card.$MAC a2dp-sink
+		/home/$USER/.local/bin/unmute
 else
     echo "Bluetooth not powered"
     bluetoothctl power on && bluetoothctl -- connect $1
