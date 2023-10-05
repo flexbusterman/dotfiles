@@ -63,8 +63,7 @@ vim.keymap.set("v", "<leader>p", ":s/\\(\\w*\\):\\(\\-*[0-9]*\\.*\\d*\\)/\\\\\\1
 -- 	builtin.grep_string({ search = vim.fn.input("Grep > ") })
 -- end)
 
-vim.keymap.set("n", "<leader>t", ":Telescope live_grep<CR>")
-
+-- vim.keymap.set("n", "<leader>t", ":Telescope live_grep<CR>")
 
 -- set tab as jump to next snippet field for luasnip
 vim.api.nvim_set_keymap('i', '<Tab>', 'luasnip#expand_or_jumpable() ? "<Plug>luasnip-expand-or-jump" : "<Tab>"', {expr = true})

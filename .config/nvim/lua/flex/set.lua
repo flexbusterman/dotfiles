@@ -39,8 +39,6 @@ vim.opt.syntax = "on"
 
 -- vim.fn.setreg('s', 'dt_xllla-lla-lllr lla_lla_0j')
 
-vim.g.base16_transparent_background = 1
-
 vim.opt.wildignore = {'*/node_modules/*'}
 
 -- disable completion in vimwiki
@@ -49,3 +47,8 @@ vim.cmd [[ autocmd FileType vimwiki lua require('cmp').setup.buffer { enabled = 
 vim.g.nocompatible = true
 
 vim.g.base16_transparent_background = 1
+
+-- vim.cmd [[ autocmd ColorScheme * hi Normal ctermbg=none guibg=none ]]
+
+-- au ColorScheme * hi Normal ctermbg=none guibg=none
+-- au ColorScheme myspecialcolors hi Normal ctermbg=red guibg=red
