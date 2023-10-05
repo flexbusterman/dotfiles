@@ -135,6 +135,7 @@ mark k ~/Dropbox/ROMS/LINUX/Documents/
 mark m /run/media/flex/
 mark M ~/Dropbox/MUSIC/
 mark n ~/Dropbox/NOTES/
+mark N ~/.config/nvim/
 mark P ~/Dropbox/PDF/
 mark p ~/Pictures/
 mark r /
