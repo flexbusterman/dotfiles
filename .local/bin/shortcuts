@@ -3,14 +3,16 @@
 cd /home/$USER/
 file=$(cat /home/$USER/Dropbox/NOTES/Shortcuts.md | fzf)
 if [ -n "$file" ]; then
-		nvim "$file"
-	else
-		file="$(fzf)"
-		if [ -n "$file" ]; then
-			echo "/home/$USER/$file" >> /home/$USER/Dropbox/NOTES/Shortcuts.md
-			nvim "$file"
-		else
-			echo "No file selected"
-			exit 1
-		fi
+  cd "$(dirname $file)"
+  nvim "$file"
+else
+  file="$(fzf)"
+  if [ -n "$file" ]; then
+    echo "/home/$USER/$file" >> /home/$USER/Dropbox/NOTES/Shortcuts.md
+    cd "$(dirname $file)"
+    nvim "$file"
+  else
+    echo "No file selected"
+    exit 1
+  fi
 fi
