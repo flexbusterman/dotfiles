@@ -32,7 +32,43 @@ return {
     end,
   },
   'xiyaowong/transparent.nvim',
-  'tidalcycles/vim-tidal',
+  {
+    'tidalcycles/vim-tidal',
+    config = function()
+      vim.cmd("setlocal commentstring=--\\ %s")
+      vim.g.tidal_target = "tmux"
+      vim.g.tidal_no_mappings = 1
+
+      vim.keymap.set("n", "<CR>", "<Plug>TidalParagraphSend")
+      vim.keymap.set("n", "<leader>.", ":TidalHush<CR>")
+
+      -- tidal plugin overwrites this
+      vim.keymap.set({"n"}, "<C-h>", "<C-w>h")
+
+      -- vim.g.maplocalleader = " "
+      -- vim.keymap.set("n", "<C-e>", ":TidalSend<CR>")
+      -- require('tidal').setup{
+      -- boot = {
+      --   tidal = {
+      --     file = vim.api.nvim_get_runtime_file("BootTidal.hs", false)[1],
+      --     args = {},
+      --   },
+      --   sclang = {
+      --     file = vim.api.nvim_get_runtime_file("BootSuperDirt.scd", false)[1],
+      --     enabled = false,
+      --   },
+      --   split = 'v',
+      -- },
+      -- keymaps = {
+      --   send_line = "<C-L>",
+      --   send_node = "<Leader>s",
+      --   send_visual = "<C-L>",
+      --   hush = "<C-H>"
+      -- }
+      --
+      -- }
+    end
+  },
   {
     'phaazon/hop.nvim',
     branch = 'v2', -- optional but strongly recommended
