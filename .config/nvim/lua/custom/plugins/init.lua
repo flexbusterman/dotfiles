@@ -35,7 +35,7 @@ return {
   {
     'tidalcycles/vim-tidal',
     config = function()
-      vim.cmd("setlocal commentstring=--\\ %s")
+			vim.bo.commentstring = "-- %s"
       vim.g.tidal_target = "tmux"
       vim.g.tidal_no_mappings = 1
 
@@ -45,49 +45,55 @@ return {
       -- tidal plugin overwrites this
       vim.keymap.set({"n"}, "<C-h>", "<C-w>h")
 
-      -- vim.g.maplocalleader = " "
-      -- vim.keymap.set("n", "<C-e>", ":TidalSend<CR>")
-      -- require('tidal').setup{
-      -- boot = {
-      --   tidal = {
-      --     file = vim.api.nvim_get_runtime_file("BootTidal.hs", false)[1],
-      --     args = {},
-      --   },
-      --   sclang = {
-      --     file = vim.api.nvim_get_runtime_file("BootSuperDirt.scd", false)[1],
-      --     enabled = false,
-      --   },
-      --   split = 'v',
-      -- },
-      -- keymaps = {
-      --   send_line = "<C-L>",
-      --   send_node = "<Leader>s",
-      --   send_visual = "<C-L>",
-      --   hush = "<C-H>"
-      -- }
-      --
-      -- }
-    end
-  },
-  {
-    'phaazon/hop.nvim',
-    branch = 'v2', -- optional but strongly recommended
-    config = function()
-      -- you can configure Hop the way you like here; see :h hop-config
-      require('hop').setup { keys = 'etovxqpdygfblzhckisuran' }
-      vim.api.nvim_set_keymap("n", "<Leader>f", "<cmd>HopWord<CR>", {noremap=true})
-    end
-  },
-  {
-    'vimwiki/vimwiki',
-    config = function()
-      vim.g.vimwiki_list = {
-        {
-          path = '/home/flex/Dropbox/NOTES/',
-          syntax = 'markdown',
-          ext = '.md',
-        }
-      }
-    end
-  }
+			-- vim.g.maplocalleader = " "
+			-- vim.keymap.set("n", "<C-e>", ":TidalSend<CR>")
+			-- require('tidal').setup{
+			-- boot = {
+			--   tidal = {
+			--     file = vim.api.nvim_get_runtime_file("BootTidal.hs", false)[1],
+			--     args = {},
+			--   },
+			--   sclang = {
+			--     file = vim.api.nvim_get_runtime_file("BootSuperDirt.scd", false)[1],
+			--     enabled = false,
+			--   },
+			--   split = 'v',
+			-- },
+			-- keymaps = {
+			--   send_line = "<C-L>",
+			--   send_node = "<Leader>s",
+			--   send_visual = "<C-L>",
+			--   hush = "<C-H>"
+			-- }
+			--
+			-- }
+		end
+	},
+	{
+		'phaazon/hop.nvim',
+		branch = 'v2', -- optional but strongly recommended
+		config = function()
+			-- you can configure Hop the way you like here; see :h hop-config
+			require('hop').setup { keys = 'etovxqpdygfblzhckisuran' }
+			vim.api.nvim_set_keymap("n", "<Leader>f", "<cmd>HopWord<CR>", {noremap=true})
+		end
+	},
+	{
+		'vimwiki/vimwiki',
+		config = function()
+			vim.g.vimwiki_list = {
+				{
+					path = '/home/flex/Dropbox/NOTES/',
+					syntax = 'markdown',
+					ext = '.md',
+				}
+			}
+		end
+	},
+	{ 'numToStr/Comment.nvim',
+		opts = {
+			ignore = '^$'
+		}
+	},
+
 }
