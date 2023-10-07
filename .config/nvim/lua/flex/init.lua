@@ -1,5 +1,6 @@
 require("flex.set")
 require("flex.remap")
+require("flex.netrw")
 
 local augroup = vim.api.nvim_create_augroup
 local FlexGroup = augroup('Flex', {})
