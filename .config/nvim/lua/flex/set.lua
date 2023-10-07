@@ -10,15 +10,15 @@ vim.opt.relativenumber = true
 -- vim.opt.shiftwidth = 2
 -- vim.opt.softtabstop = 2
 -- vim.opt.smarttab = true
--- vim.opt.autoindent = true
+vim.opt.autoindent = true
 -- vim.opt.smartindent = true
 -- vim.opt.shiftround = true
+
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
-vim.opt.expandtab = true
+vim.opt.expandtab = false
 vim.opt.smartindent = true
 vim.opt.shiftround = true
-
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.wrap = true
@@ -42,6 +42,7 @@ vim.opt.filetype.plugin = "on"
 vim.g.cmdheight = 1
 vim.g.nocompatible = true
 vim.opt.syntax = "on"
+vim.opt.modeline = false
 
 -- vim.fn.setreg('s', 'dt_xllla-lla-lllr lla_lla_0j')
 
