@@ -62,15 +62,11 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 -- NOTE: Here is where you install your plugins.
---  You can configure plugins using the `config` key.
---
---  You can also configure plugins after the setup call,
+-- You can configure plugins using the `config` key.
+
+-- You can also configure plugins after the setup call,
 --    as they will be available in your neovim runtime.
 require('lazy').setup({
-
-  change_detection = {
-    notify = false,
-  },
 
 	-- NOTE: First, some plugins that don't require any configuration
 
@@ -224,7 +220,11 @@ require('lazy').setup({
 	--
 	--    For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
 	{ import = 'custom.plugins' },
-}, {})
+}, {
+		change_detection = {
+			notify = false,
+		},
+	})
 
 -- [[ Setting options ]]
 -- See `:help vim.o`

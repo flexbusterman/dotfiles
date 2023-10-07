@@ -1,6 +1,5 @@
 vim.g.mapleader = " "
-vim.keymap.set("n", "<leader>h", vim.cmd.Ex)
-
+vim.keymap.set("n", "<leader>h", vim.cmd.Ex, { desc = 'netrw filemanager' })
 -- vim.keymap.set("v", "<C-J>", ":m '>+1<CR>gv=gv")
 -- vim.keymap.set("v", "<C-K>", ":m '<-2<CR>gv=gv")
 
@@ -17,7 +16,8 @@ vim.keymap.set({"n"}, "<leader>j", "<nop>")
 vim.keymap.set({"n"}, "<leader>j", vim.cmd.w)
 vim.keymap.set({"n"}, "<leader>q", vim.cmd.q)
 vim.keymap.set({"n"}, "<leader>Q", vim.cmd.x)
-vim.keymap.set({"n"}, "<leader>d", "dd")
+vim.keymap.set({"n"}, "<leader>d", "<nop>")
+-- vim.keymap.set({"n"}, "<leader>d", "dd")
 
 vim.keymap.set({"n"}, "<C-h>", "<C-w>h")
 vim.keymap.set({"n"}, "<C-j>", "<C-w>j")

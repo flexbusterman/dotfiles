@@ -5,6 +5,7 @@
 return {
   'theprimeagen/harpoon',
   'christoomey/vim-titlecase',
+
   {
     'echasnovski/mini.nvim',
     config = function()
