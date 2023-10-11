@@ -1,5 +1,5 @@
 #!/bin/sh
-# # echo "Remapping keys"
+echo "Remapping keys"
 # # echo "Loading xresources"
 xrdb -load ~/.Xresources &
 # echo "Setting capslock to shift"
