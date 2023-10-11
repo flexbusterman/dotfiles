@@ -1,6 +1,13 @@
+--  _                      ____  _             _
+-- | |    __ _ _____   _  |  _ \| |_   _  __ _(_)_ __  ___
+-- | |   / _` |_  / | | | | |_) | | | | |/ _` | | '_ \/ __|
+-- | |__| (_| |/ /| |_| | |  __/| | |_| | (_| | | | | \__ \
+-- |_____\__,_/___|\__, | |_|   |_|\__,_|\__, |_|_| |_|___/
+--                 |___/                 |___/
+
 return {
 
-  'xiyaowong/transparent.nvim',
+	'xiyaowong/transparent.nvim',
 
 	-- Git related plugins
 	'tpope/vim-fugitive',
@@ -24,7 +31,7 @@ return {
 
 			-- Useful status updates for LSP
 			-- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-			{ 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
+			{ 'j-hui/fidget.nvim',       tag = 'legacy', opts = {} },
 
 			-- Additional lua configuration, makes nvim stuff amazing!
 			'folke/neodev.nvim',
@@ -66,16 +73,16 @@ return {
 
 				-- don't override the built-in and fugitive keymaps
 				local gs = package.loaded.gitsigns
-				vim.keymap.set({'n', 'v'}, ']c', function()
+				vim.keymap.set({ 'n', 'v' }, ']c', function()
 					if vim.wo.diff then return ']c' end
 					vim.schedule(function() gs.next_hunk() end)
 					return '<Ignore>'
-				end, {expr=true, buffer = bufnr, desc = "Jump to next hunk"})
-				vim.keymap.set({'n', 'v'}, '[c', function()
+				end, { expr = true, buffer = bufnr, desc = "Jump to next hunk" })
+				vim.keymap.set({ 'n', 'v' }, '[c', function()
 					if vim.wo.diff then return '[c' end
 					vim.schedule(function() gs.prev_hunk() end)
 					return '<Ignore>'
-				end, {expr=true, buffer = bufnr, desc = "Jump to previous hunk"})
+				end, { expr = true, buffer = bufnr, desc = "Jump to previous hunk" })
 			end,
 		},
 	},
@@ -133,44 +140,44 @@ return {
 		build = ':TSUpdate',
 	},
 
-  'theprimeagen/harpoon',
-  'christoomey/vim-titlecase',
+	'theprimeagen/harpoon',
+	'christoomey/vim-titlecase',
 
-  {
-    'echasnovski/mini.nvim',
-    config = function()
-      require('mini.base16').setup {
-        palette = {
-          base00 = "#282936", -- background
-          base01 = "#3a3c4e",
-          base02 = "#4d4f68",
-          base03 = "#626483",
-          base04 = "#62d6e8",
-          base05 = "#e9e9f4", -- foreground
-          base06 = "#f1f2f8",
-          base07 = "#f7f7fb",
-          base08 = "#ea51b2",
-          base09 = "#b45bcf",
-          base0A = "#00f769",
-          base0B = "#ebff87",
-          base0C = "#a1efe4",
-          base0D = "#62d6e8",
-          base0E = "#b45bcf",
-          base0F = "#00f769",
-        },
-        use_cterm = true,
-      }
-    end,
-  },
-  {
-    'tidalcycles/vim-tidal',
-    config = function()
+	{
+		'echasnovski/mini.nvim',
+		config = function()
+			require('mini.base16').setup {
+				palette = {
+					base00 = "#282936", -- background
+					base01 = "#3a3c4e",
+					base02 = "#4d4f68",
+					base03 = "#626483",
+					base04 = "#62d6e8",
+					base05 = "#e9e9f4", -- foreground
+					base06 = "#f1f2f8",
+					base07 = "#f7f7fb",
+					base08 = "#ea51b2",
+					base09 = "#b45bcf",
+					base0A = "#00f769",
+					base0B = "#ebff87",
+					base0C = "#a1efe4",
+					base0D = "#62d6e8",
+					base0E = "#b45bcf",
+					base0F = "#00f769",
+				},
+				use_cterm = true,
+			}
+		end,
+	},
+	{
+		'tidalcycles/vim-tidal',
+		config = function()
 			vim.bo.commentstring = "-- %s"
-      vim.g.tidal_target = "tmux"
-      vim.g.tidal_no_mappings = 1
-      vim.keymap.set("n", "<CR>", "<Plug>TidalParagraphSend")
-      vim.keymap.set("n", "<leader>.", ":TidalHush<CR>")
-      vim.keymap.set({"n"}, "<C-h>", "<C-w>h") -- tidal cycles plugin overwrites this
+			vim.g.tidal_target = "tmux"
+			vim.g.tidal_no_mappings = 1
+			vim.keymap.set("n", "<CR>", "<Plug>TidalParagraphSend")
+			vim.keymap.set("n", "<leader>.", ":TidalHush<CR>")
+			vim.keymap.set({ "n" }, "<C-h>", "<C-w>h") -- tidal cycles plugin overwrites this
 		end
 	},
 	{
@@ -178,7 +185,7 @@ return {
 		branch = 'v2', -- optional but strongly recommended
 		config = function()
 			require('hop').setup { keys = 'etovxqpdygfblzhckisuran' }
-			vim.api.nvim_set_keymap("n", "<Leader>f", "<cmd>HopWord<CR>", {noremap=true})
+			vim.api.nvim_set_keymap("n", "<Leader>f", "<cmd>HopWord<CR>", { noremap = true })
 		end
 	},
 	{
@@ -193,13 +200,16 @@ return {
 			}
 		end
 	},
-	{ 'numToStr/Comment.nvim',
+	{
+		'numToStr/Comment.nvim',
 		opts = {
 			ignore = '^$'
 		},
 		config = function()
-			vim.api.nvim_set_keymap('n', '<leader>;', '<Plug>(comment_toggle_linewise_current)', { noremap = false, silent = true })
-			vim.api.nvim_set_keymap('x', '<leader>;', '<Plug>(comment_toggle_linewise_visual)', { noremap = false, silent = true })
+			vim.api.nvim_set_keymap('n', '<leader>;', '<Plug>(comment_toggle_linewise_current)',
+				{ noremap = false, silent = true })
+			vim.api.nvim_set_keymap('x', '<leader>;', '<Plug>(comment_toggle_linewise_visual)',
+				{ noremap = false, silent = true })
 		end
 	},
 

@@ -1,3 +1,10 @@
+--  _  __          _     _           _ _
+-- | |/ /___ _   _| |__ (_)_ __   __| (_)_ __   __ _ ___
+-- | ' // _ \ | | | '_ \| | '_ \ / _` | | '_ \ / _` / __|
+-- | . \  __/ |_| | |_) | | | | | (_| | | | | | (_| \__ \
+-- |_|\_\___|\__, |_.__/|_|_| |_|\__,_|_|_| |_|\__, |___/
+--           |___/                             |___/
+
 vim.g.mapleader = " "
 vim.keymap.set("n", "<leader>h", vim.cmd.Ex, { desc = 'netrw filemanager' })
 -- vim.keymap.set("v", "<C-J>", ":m '>+1<CR>gv=gv")
@@ -12,17 +19,17 @@ vim.keymap.set("n", "N", "Nzzzv")
 -- greatest remap ever according to ThePrimeagen
 -- vim.keymap.set("x", "<leader>p", [["_dP]])
 
-vim.keymap.set({"n"}, "<leader>j", "<nop>")
-vim.keymap.set({"n"}, "<leader>j", vim.cmd.w)
-vim.keymap.set({"n"}, "<leader>q", vim.cmd.q)
-vim.keymap.set({"n"}, "<leader>Q", vim.cmd.x)
-vim.keymap.set({"n"}, "<leader>d", "<nop>")
+vim.keymap.set({ "n" }, "<leader>j", "<nop>")
+vim.keymap.set({ "n" }, "<leader>j", vim.cmd.w)
+vim.keymap.set({ "n" }, "<leader>q", vim.cmd.q)
+vim.keymap.set({ "n" }, "<leader>Q", vim.cmd.x)
+vim.keymap.set({ "n" }, "<leader>d", "<nop>")
 -- vim.keymap.set({"n"}, "<leader>d", "dd")
 
-vim.keymap.set({"n"}, "<C-h>", "<C-w>h")
-vim.keymap.set({"n"}, "<C-j>", "<C-w>j")
-vim.keymap.set({"n"}, "<C-k>", "<C-w>k")
-vim.keymap.set({"n"}, "<C-l>", "<C-w>l")
+vim.keymap.set({ "n" }, "<C-h>", "<C-w>h")
+vim.keymap.set({ "n" }, "<C-j>", "<C-w>j")
+vim.keymap.set({ "n" }, "<C-k>", "<C-w>k")
+vim.keymap.set({ "n" }, "<C-l>", "<C-w>l")
 
 -- vim.keymap.set("i", "<C-c>", "<Esc>")
 
@@ -66,22 +73,24 @@ vim.keymap.set("v", "<leader>p", ":s/\\(\\w*\\):\\(\\-*[0-9]*\\.*\\d*\\)/\\\\\\1
 -- vim.keymap.set("n", "<leader>t", ":Telescope live_grep<CR>")
 
 -- set tab as jump to next snippet field for luasnip
-vim.api.nvim_set_keymap('i', '<Tab>', 'luasnip#expand_or_jumpable() ? "<Plug>luasnip-expand-or-jump" : "<Tab>"', {expr = true})
-vim.api.nvim_set_keymap('s', '<Tab>', 'luasnip#expand_or_jumpable() ? "<Plug>luasnip-expand-or-jump" : "<Tab>"', {expr = true})
-vim.api.nvim_set_keymap('i', '<S-Tab>', 'luasnip#jumpable(-1) ? "<Plug>luasnip-jump-prev" : "<S-Tab>"', {expr = true})
-vim.api.nvim_set_keymap('s', '<S-Tab>', 'luasnip#jumpable(-1) ? "<Plug>luasnip-jump-prev" : "<S-Tab>"', {expr = true})
+vim.api.nvim_set_keymap('i', '<Tab>', 'luasnip#expand_or_jumpable() ? "<Plug>luasnip-expand-or-jump" : "<Tab>"',
+	{ expr = true })
+vim.api.nvim_set_keymap('s', '<Tab>', 'luasnip#expand_or_jumpable() ? "<Plug>luasnip-expand-or-jump" : "<Tab>"',
+	{ expr = true })
+vim.api.nvim_set_keymap('i', '<S-Tab>', 'luasnip#jumpable(-1) ? "<Plug>luasnip-jump-prev" : "<S-Tab>"', { expr = true })
+vim.api.nvim_set_keymap('s', '<S-Tab>', 'luasnip#jumpable(-1) ? "<Plug>luasnip-jump-prev" : "<S-Tab>"', { expr = true })
 
 vim.keymap.set("n", "tt", ":tab split<CR>")
 
 -- Smart Tag Jump function
 _G.smart_tag_jump = function()
-    local word = vim.fn.expand('<cword>')
-    local taglist = vim.fn.taglist('^' .. word .. '$')
-    if #taglist == 1 then
-        vim.cmd('tag ' .. word)
-    elseif #taglist > 1 then
-        vim.cmd('tjump ' .. word)
-    end
+	local word = vim.fn.expand('<cword>')
+	local taglist = vim.fn.taglist('^' .. word .. '$')
+	if #taglist == 1 then
+		vim.cmd('tag ' .. word)
+	elseif #taglist > 1 then
+		vim.cmd('tjump ' .. word)
+	end
 end
 vim.keymap.set("n", "g]", "<cmd>lua _G.smart_tag_jump()<CR>")
 
