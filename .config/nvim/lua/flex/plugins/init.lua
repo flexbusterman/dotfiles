@@ -7,6 +7,14 @@
 
 return {
 
+	{
+	'simonhicks/foxdot.vim',
+			config = function()
+					vim.g.sclang_executable_path = '/usr/bin/sclang'
+					vim.g.python_executable_path = '/usr/bin/python3'
+			end
+	},
+
 	'xiyaowong/transparent.nvim',
 
 	-- Git related plugins
