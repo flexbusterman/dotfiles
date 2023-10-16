@@ -7,12 +7,19 @@
 
 return {
 
+	-- {
+	-- 	'lilyinstarlight/vim-sonic-pi',
+	-- 	config = function()
+	-- 		-- vim.g.sonic_pi_command = '/usr/bin/sonic_pi'
+	-- 	end
+	-- },
+
 	{
-	'simonhicks/foxdot.vim',
-			config = function()
-					vim.g.sclang_executable_path = '/usr/bin/sclang'
-					vim.g.python_executable_path = '/usr/bin/python3'
-			end
+		'simonhicks/foxdot.vim',
+		config = function()
+			vim.g.sclang_executable_path = '/usr/bin/sclang'
+			vim.g.python_executable_path = '/usr/bin/python3'
+		end
 	},
 
 	'xiyaowong/transparent.nvim',

@@ -76,7 +76,7 @@ settings:
       r: https://www.exchange-rates.org/exchange-rate-history/eur-sek-{}
       s: https://www.opensubtitles.org/en/search2/sublanguageid-eng/subtrusted-on/hd-on/moviename-{}
       t: https://www.opensubtitles.org/en/search2/sublanguageid-eng/subtrusted-on/hd-on/moviename-{}
-      w: https://wallpaperaccess.com/search?q={}
+      # w: https://wallpaperaccess.com/search?q={}
       y: https://www.youtube.com/results?search_query={}
   url.start_pages:
     global: about:empty
