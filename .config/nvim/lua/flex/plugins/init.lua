@@ -7,13 +7,6 @@
 
 return {
 
-	-- {
-	-- 	'lilyinstarlight/vim-sonic-pi',
-	-- 	config = function()
-	-- 		-- vim.g.sonic_pi_command = '/usr/bin/sonic_pi'
-	-- 	end
-	-- },
-
 	{
 		'simonhicks/foxdot.vim',
 		config = function()

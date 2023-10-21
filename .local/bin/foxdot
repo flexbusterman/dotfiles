@@ -1,0 +1,35 @@
+#!/bin/bash
+
+VIM=${VIM:-"nvim"}
+
+# FILE=${FILE:-"$(date +%F).tidal"}
+cd ~/Dropbox/FOXDOT/
+# FILE=$(command ls -ltr ~/Dropbox/TIDAL\ CYCLES/ | grep -Ev ^d | awk '/20[0-9]{2}/{print}' | tail -n 1 | sed 's/^[^:]*:[^ ]* //g')
+# FILE=$(ls -ltr ~/Dropbox/TIDAL\ CYCLES/ | grep -Ev '^d' | awk '/20[0-9]{2}/{print $NF}' | tail -n 1)
+FILE=$(command ls -tr ~/Dropbox/FOXDOT/ | grep -Ev ^d | awk '/20[0-9]{2}/{print}' | tail -n 1)
+
+ln -sf ~/Dropbox/SUPERCOLLIDER/tidalcycles\ startup.scd ~/.config/SuperCollider/startup.scd
+
+args=${@:-$FILE}
+
+# Check if the session "tidal" exists
+if ! tmux has-session -t foxdot 2>/dev/null; then
+    echo "tmux doesn't have session foxdot"
+
+    # Create session and panes
+    tmux new-session -d -s foxdot
+    echo "starting session"
+    tmux split-window -h -t foxdot
+
+    # Send commands to panes
+    tmux send-keys -t 1 "clear && sclang" C-m
+    tmux send-keys -t 0 "nvim \"$args\"" C-m
+    # tmux send-keys -t 1 "clear && foxdot_BOOT_PATH=$foxdot_BOOT_PATH GHCI=$GHCI foxdot" C-m
+    tmux select-pane -t 0
+    tmux resize-pane -R 15
+else
+    echo "tmux session exists"
+fi
+
+# Attach to the session
+tmux attach-session -t foxdot
