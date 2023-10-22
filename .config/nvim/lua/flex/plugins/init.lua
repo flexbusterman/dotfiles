@@ -8,8 +8,11 @@
 return {
 
 	{
-		'simonhicks/foxdot.vim',
+		dir = "/home/flex/.local/src/foxdot.vim",
+		ft = "python",
 		config = function()
+			vim.keymap.set("n", "<CR>", ":FoxDotEval<CR>")
+			vim.keymap.set("n", "<leader>.", ":FoxDotHush<CR>")
 			vim.g.sclang_executable_path = '/usr/bin/sclang'
 			vim.g.python_executable_path = '/usr/bin/python3'
 		end
@@ -121,7 +124,7 @@ return {
 	-- Fuzzy Finder (files, lsp, etc)
 	{
 		'nvim-telescope/telescope.nvim',
-		branch = '0.1.x',
+		-- branch = '0.1.x',
 		dependencies = {
 			'nvim-lua/plenary.nvim',
 			-- Fuzzy Finder Algorithm which requires local dependencies to be built.
