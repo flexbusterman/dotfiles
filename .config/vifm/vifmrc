@@ -127,6 +127,7 @@ mark c ~/.config/
 mark C ~/Dropbox/DROPSYNC/Camera/
 mark d ~/Dropbox/
 mark D ~/Dropbox/DROPSYNC/
+mark f ~/Dropbox/FOXDOT/
 mark g ~/.local/src/
 mark G ~/Games/
 mark h ~/
