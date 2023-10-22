@@ -17,14 +17,15 @@ if ! tmux has-session -t foxdot 2>/dev/null; then
     tmux new-session -d -s foxdot
     echo "starting session"
     tmux split-window -h -t foxdot
+    tmux split-window -v -t foxdot
 
     # Send commands to panes
-    tmux send-keys -t 1 "clear && sclang" C-m
+    tmux send-keys -t 2 "clear && sclang" C-m
 
 		sleep 10
 
     tmux send-keys -t 0 "nvim -c ':FoxDotStart' \"$args\"" C-m
-    # tmux send-keys -t 1 "clear && foxdot_BOOT_PATH=$foxdot_BOOT_PATH GHCI=$GHCI foxdot" C-m
+    tmux send-keys -t 1 "clear && python ~/.local/src/foxdot.vim/bin/foxdot_cli.py" C-m
     tmux select-pane -t 0
     tmux resize-pane -R 15
 else
