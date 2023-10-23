@@ -16,6 +16,7 @@ return {
 			["text"] = false,
 			["supercollider"] = false,
 			["tidal"] = false,
+			["python"] = false,
 		}
 	end
 }
