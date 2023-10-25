@@ -124,3 +124,6 @@ vim.keymap.set("n", "<leader>6", ":lua require('harpoon.ui').nav_file(6)<CR>")
 vim.keymap.set("n", "<leader>7", ":lua require('harpoon.ui').nav_file(7)<CR>")
 vim.keymap.set("n", "<leader>8", ":lua require('harpoon.ui').nav_file(8)<CR>")
 vim.keymap.set("n", "<leader>9", ":lua require('harpoon.ui').nav_file(9)<CR>")
+
+vim.keymap.set("n", "{", "{b")
+vim.keymap.set("n", "}", "}w")
