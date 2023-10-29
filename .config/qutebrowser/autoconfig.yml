@@ -60,8 +60,8 @@ settings:
     global: Arimo Nerd Font Regular
   hints.border:
     global: '1px solid #000000'
-  hints.chars:
-    global: abcdefghijklmnopqrstuvwxyz
+  # hints.chars:
+  #   global: abcdefghijklmnopqrstuvwxyz
   url.default_page:
     global: about:blank
   url.searchengines:
