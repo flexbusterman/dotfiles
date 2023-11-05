@@ -9,4 +9,4 @@ amixer -c 1 set Speaker unmute
 
 sleep 5
 
-pactl list sinks | grep "Mute: yes" && notify-send "Something still muted" && /home/$USER/.local/bin/unmute
+pactl list sinks | grep "Mute: yes" && /home/$USER/.local/bin/unmute

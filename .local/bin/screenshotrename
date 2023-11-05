@@ -1,50 +1,26 @@
 #!/bin/bash
-# script that renames Screenshot_20230103-164241.jpg or .png to "2023-01-03 16_42_41.jpg" or .png
-# for all files that matches the pattern "Screenshot*.jpg" or "Screenshot*.png"
-for file in Screenshot*.{jpg,png}
-do
-  # Check if the file exists
-  if [[ -e $file ]]; then
-    # get the date and time from the filename
-    dateTime=$(echo $file | cut -d'_' -f2)
-    date=$(echo $dateTime | cut -d'-' -f1)
-    # convert $date to yyyy-mm-dd
-    year=$(echo $date | cut -c1-4)
-    month=$(echo $date | cut -c5-6)
-    day=$(echo $date | cut -c7-8)
-    time=$(echo $dateTime | cut -d'-' -f2)
-    # convert $time to hh_mm_ss
-    hour=$(echo $time | cut -c1-2)
-    minute=$(echo $time | cut -c3-4)
-    second=$(echo $time | cut -c5-6)
-    # get the file extension
-    ext=$(echo $file | cut -d'.' -f2)
-    newName="$year-$month-$day $hour_$minute_$second.$ext"
-    # rename the file
-    mv "$file" "$newName"
-  fi
-done
 
 #!/bin/bash
-# script that renames Screenshot_20230103-164241.jpg to "2023-01-03 16_42_41.jpg"
-# for all files that matches the pattern "Screenshot*.jpg"
-# for file in Screenshot*.jpg
-# do
-#   # get the date and time from the filename
-#   dateTime=$(echo $file | cut -d'_' -f2)
-#   date=$(echo $dateTime | cut -d'-' -f1)
-#   # convert $date to yyyy-mm-dd
-#   year=$(echo $date | cut -c1-4)
-#   month=$(echo $date | cut -c5-6)
-#   day=$(echo $date | cut -c7-8)
-#   time=$(echo $dateTime | cut -d'-' -f2)
-#   # convert $time to hh_mm_ss
-#   hour=$(echo $time | cut -c1-2)
-#   minute=$(echo $time | cut -c3-4)
-#   second=$(echo $time | cut -c5-6)
-#   newName="$year-$month-$day $hour\_$minute\_$second.jpg"
-#   # trim all backslashes from $newName
-#   newName=$(echo $newName | tr -d '\\')
-#   # rename the file
-#   mv "$file" "$newName"
-# done
+# script that renames Screenshot_20230103-164241.jpg or .png to "2023-01-03 16_42_41.jpg" or .png
+# for all files that matches the pattern "Screenshot*.jpg or .png"
+
+for file in $(find . -name "Screenshot*.jpg" -o -name "Screenshot*.png");
+do
+  # get the date and time from the filename
+  dateTime=$(echo $file | cut -d'_' -f2)
+  date=$(echo $dateTime | cut -d'-' -f1)
+  # convert $date to yyyy-mm-dd
+  year=$(echo $date | cut -c1-4)
+  month=$(echo $date | cut -c5-6)
+  day=$(echo $date | cut -c7-8)
+  time=$(echo $dateTime | cut -d'-' -f2)
+  # convert $time to hh_mm_ss
+  hour=$(echo $time | cut -c1-2)
+  minute=$(echo $time | cut -c3-4)
+  second=$(echo $time | cut -c5-6)
+  newName="$year-$month-$day $hour\_$minute\_$second.jpg"
+  # trim all backslashes from $newName
+  newName=$(echo $newName | tr -d '\\')
+  # rename the file
+  mv "$file" "$newName"
+done
