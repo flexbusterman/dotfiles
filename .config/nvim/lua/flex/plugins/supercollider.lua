@@ -1,6 +1,6 @@
 return {
-	-- 'davidgranstrom/scnvim',
-	dir = "/home/flex/.local/src/scnvim/",
+	'davidgranstrom/scnvim',
+	-- dir = "/home/flex/.local/src/scnvim/",
 	ft = { 'supercollider' },
 	dependencies = {
 		'davidgranstrom/scnvim-tmux'

@@ -60,17 +60,11 @@ vim.keymap.set("n", "<leader>l", ":g/^\\s\\+$/s/\\s\\+//e <CR> <bar> :silent! g/
 vim.keymap.set("n", "<leader>k", ":EslintFixAll<CR>")
 vim.keymap.set("x", "<leader>k", ":EslintFixAll<CR>")
 
--- supercollider synthdef to pbindef
+-- supercollider synthdef to args
 -- vim.keymap.set("v", "<leader>p", ":s/\\\\/\\r\\\\/g | '<,'>s/^[^\\\\].*$//g | '<,'>s/).*/)/g | '<,'>s/\\(\\.[ak]r(\\)\\([^)]*\\))/, \\2,/ | '<,'>s/ \\(-[^,]*\\)/ (\\1)/ | '<,'>s/^\\(.*\\)\\(\\n\\1\\)\\+$/\\1/ | '<,'>s/\\v^\\s*\\n//g | '<s/\\([^{]*\\).*/(\\rPbindef(\\\\name,\\r\\\\instrument, \\1\\r\\\\dur, 1,/ | '>s/\\(.*\\)/\\1).play(quant: 1);\\r)/<CR>")
 
 -- supercollider args to kr
-vim.keymap.set("v", "<leader>p", ":s/\\(\\w*\\):\\(\\-*[0-9]*\\.*\\d*\\)/\\\\\\1.kr(\\2\\)/g<CR>")
-
--- vim.keymap.set('n', '<leader>ps', function()
--- 	builtin.grep_string({ search = vim.fn.input("Grep > ") })
--- end)
-
--- vim.keymap.set("n", "<leader>t", ":Telescope live_grep<CR>")
+-- vim.keymap.set("v", "<leader>p", ":s/\\(\\w*\\):\\(\\-*[0-9]*\\.*\\d*\\)/\\\\\\1.kr(\\2\\)/g<CR>")
 
 -- set tab as jump to next snippet field for luasnip
 vim.api.nvim_set_keymap('i', '<Tab>', 'luasnip#expand_or_jumpable() ? "<Plug>luasnip-expand-or-jump" : "<Tab>"',
@@ -127,3 +121,35 @@ vim.keymap.set("n", "<leader>9", ":lua require('harpoon.ui').nav_file(9)<CR>")
 
 vim.keymap.set("n", "{", "{b")
 vim.keymap.set("n", "}", "}w")
+
+vim.api.nvim_exec([[
+function! ProcessRange() range
+  " Substitution command
+  '<,'>s/\(\\[^.]*\)\.[ka]r(\([^)]*\))/\r\1, \2,\r/g
+
+  " Delete lines not starting with a backslash within the selection
+  '<,'>g!/^\s*\\/d
+
+  " Initialize the seen dictionary to track duplicates
+  let seen = {}
+
+  " Iterate over each line in the selection to remove duplicates
+  let line_num = line("'<")
+  while line_num <= line("'>")
+    let line_content = getline(line_num)
+    if has_key(seen, line_content)
+      " If the line is a duplicate, delete it
+      execute line_num . 'delete _'
+    else
+      " If the line is not a duplicate, add it to the seen dictionary
+      let seen[line_content] = 1
+      let line_num += 1
+    endif
+  endwhile
+
+  " Wrap negative numbers in parentheses within the selection
+  '<,'>s/\v-([0-9]+)/(-\1)/g
+endfunction
+]], false)
+
+vim.keymap.set("v", "<leader>p", ":'<,'>call ProcessRange()<CR>")
