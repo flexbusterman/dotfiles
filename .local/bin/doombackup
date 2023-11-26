@@ -1,3 +1,0 @@
-#!/bin/bash
-cp -r /home/flex/.config/gzdoom/savegames /home/flex/.config/gzdoom/savegames.bak
-cp /home/flex/.config/gzdoom/gzdoom.ini /home/flex/.config/gzdoom/gzdoom.ini.bak
