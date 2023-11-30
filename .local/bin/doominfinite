@@ -1,2 +1,2 @@
 #!/bin/bash
-gzdoom -iwad "/home/flex/.local/share/Steam/steamapps/common/Doom 2/base/DOOM2.WAD" -file "/home/flex/Downloads/DOOM_Infinite_DEMO_0978_6/DOOM_Infinite_DEMO_0978_6.pk3"
+gzdoom -iwad "/home/flex/.local/share/Steam/steamapps/common/Doom 2/base/DOOM2.WAD" -file "/home/flex/Dropbox/GAMES/Doom Infinite/DOOM_Infinite_DEMO_0978_6.pk3"

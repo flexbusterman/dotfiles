@@ -17,7 +17,6 @@ return {
 			["supercollider"] = false,
 			["tidal"] = false,
 			["python"] = false,
-			["vimwiki"] = false,
 		}
 	end
 }
