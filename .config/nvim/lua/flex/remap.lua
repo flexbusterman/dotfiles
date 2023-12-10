@@ -66,18 +66,6 @@ vim.keymap.set("x", "<leader>k", ":EslintFixAll<CR>")
 -- supercollider args to kr
 -- vim.keymap.set("v", "<leader>p", ":s/\\(\\w*\\):\\(\\-*[0-9]*\\.*\\d*\\)/\\\\\\1.kr(\\2\\)/g<CR>")
 
--- set tab as jump to next snippet field for luasnip
-vim.api.nvim_set_keymap('i', '<Tab>', 'luasnip#expand_or_jumpable() ? "<Plug>luasnip-jump-next" : "<Tab>"',
-	{ expr = true })
-vim.api.nvim_set_keymap('s', '<Tab>', 'luasnip#expand_or_jumpable() ? "<Plug>luasnip-jump-next" : "<Tab>"',
-	{ expr = true })
-vim.api.nvim_set_keymap('i', '<CR>', 'luasnip#expand_or_jumpable() ? "<Plug>luasnip-expand-snippet" : "<CR>"',
-	{ expr = true })
-vim.api.nvim_set_keymap('s', '<CR>', 'luasnip#expand_or_jumpable() ? "<Plug>luasnip-expand-snippet" : "<CR>"',
-	{ expr = true })
-vim.api.nvim_set_keymap('i', '<S-Tab>', 'luasnip#jumpable(-1) ? "<Plug>luasnip-jump-prev" : "<S-Tab>"', { expr = true })
-vim.api.nvim_set_keymap('s', '<S-Tab>', 'luasnip#jumpable(-1) ? "<Plug>luasnip-jump-prev" : "<S-Tab>"', { expr = true })
-
 vim.keymap.set("n", "tt", ":tab split<CR>")
 
 -- Smart Tag Jump function
