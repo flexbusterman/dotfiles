@@ -11,6 +11,7 @@ export BROWSER='firefox'
 export MANPAGER="nvim +Man!"
 export HEADPHONES='00:1B:66:14:74:55'
 export MPD_PORT='49152'
+export RANGER_LOAD_DEFAULT_RC=FALSE
 # export $(grep -v '^#' .env | xargs)
 # export FZF_DEFAULT_COMMAND="find -L"
 
