@@ -63,6 +63,9 @@ vim.g.base16_transparent_background = 1
 vim.opt.swapfile = false
 vim.opt.backup = false
 
+-- no autoamtic commenting on new lines
+vim.opt.formatoptions = "cro"
+
 -- Commands
 vim.cmd [[ autocmd FileType vimwiki lua require('cmp').setup.buffer { enabled = false } ]]
 
