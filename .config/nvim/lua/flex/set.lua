@@ -64,7 +64,7 @@ vim.opt.swapfile = false
 vim.opt.backup = false
 
 -- no autoamtic commenting on new lines
-vim.opt.formatoptions = "cro"
+vim.opt.formatoptions = "c"
 
 -- Commands
 vim.cmd [[ autocmd FileType vimwiki lua require('cmp').setup.buffer { enabled = false } ]]
