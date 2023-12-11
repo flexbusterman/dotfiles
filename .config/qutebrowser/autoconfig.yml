@@ -37,6 +37,10 @@ settings:
     https://www.google.com.ar: false
     https://www.sj.se: true
     https://www.stockholmparkering.se: true
+  content.media.audio_capture:
+    https://www.instagram.com: true
+  content.media.video_capture:
+    https://www.instagram.com: true
   content.mouse_lock:
     https://nusan.itch.io: true
   content.mute:
