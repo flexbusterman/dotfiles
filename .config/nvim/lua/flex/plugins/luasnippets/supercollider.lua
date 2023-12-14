@@ -9,9 +9,20 @@ local snippets = {
 		t({ "Pseg(Pseq([", }),
 		i(1, "0.0"),
 		t({ ", Pn(", }),
-		i(2, "0.1"),
+		i(2, "1"),
 		t({ ",inf)]), ", }),
 		i(3, "30"),
+		t({ ", ", }),
+		i(4, "\\sine"),
+		t({ ")" })
+	}),
+	s({ trig = "fo fadeout", name = "SuperCollider Pseg Fade" }, {
+		t({ "Pseg(Pseq([", }),
+		i(1, "1"),
+		t({ ", Pn(", }),
+		i(2, "0"),
+		t({ ",inf)]), ", }),
+		i(3, "60"),
 		t({ ", ", }),
 		i(4, "\\sine"),
 		t({ ")" })
