@@ -8,6 +8,9 @@
 --
 
 return {
+	{
+		'christoomey/vim-tmux-navigator'
+	},
 
 	{
 		dir = "/home/flex/.local/src/foxdot.vim",
