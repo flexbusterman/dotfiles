@@ -1,0 +1,7 @@
+#!/bin/bash
+# Use lame to convert argument to mp3
+# useing multiple threads to speed up the process
+
+for file in "$@"; do
+	lame -b 320 -h -q 0 --vbr-new "$file" "${file%.wav}.mp3" &
+done
