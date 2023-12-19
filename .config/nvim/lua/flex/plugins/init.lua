@@ -26,7 +26,15 @@ return {
 	'xiyaowong/transparent.nvim',
 
 	-- Git related plugins
-	'tpope/vim-fugitive',
+	{
+		'tpope/vim-fugitive',
+		config = function()
+			vim.keymap.set("n", "gh", ":diffget //2<CR>")
+			vim.keymap.set("n", "gl", ":diffget //3<CR>")
+			vim.keymap.set("n", "gj", "]c")
+			vim.keymap.set("n", "gk", "[c")
+		end
+	},
 	'tpope/vim-rhubarb',
 
 	require 'kickstart.plugins.autoformat',
