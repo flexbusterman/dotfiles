@@ -3,24 +3,24 @@ return {
 	config = function()
 		require('mini.base16').setup {
 			palette = {
-				-- Theme: Atelier Lakeside
-				base00 = "#161b1d",
-				base01 = "#1f292e",
-				base02 = "#516d7b",
-				base03 = "#5a7b8c",
-				base04 = "#7195a8",
-				base05 = "#7ea2b4",
-				base06 = "#c1e4f6",
-				base07 = "#ebf8ff",
-				base08 = "#d22d72",
-				base09 = "#935c25",
-				base0A = "#8a8a0f",
-				base0B = "#568c3b",
-				base0C = "#2d8f6f",
-				base0D = "#257fad",
-				base0E = "#6b6bb8",
-				base0F = "#b72dd2",
-				-- Theme: Ashes
+				-- -- Theme: Atelier Lakeside
+				-- base00 = "#161b1d",
+				-- base01 = "#1f292e",
+				-- base02 = "#516d7b",
+				-- base03 = "#5a7b8c",
+				-- base04 = "#7195a8",
+				-- base05 = "#7ea2b4",
+				-- base06 = "#c1e4f6",
+				-- base07 = "#ebf8ff",
+				-- base08 = "#d22d72",
+				-- base09 = "#935c25",
+				-- base0A = "#8a8a0f",
+				-- base0B = "#568c3b",
+				-- base0C = "#2d8f6f",
+				-- base0D = "#257fad",
+				-- base0E = "#6b6bb8",
+				-- base0F = "#b72dd2",
+				-- -- Theme: Ashes
 				-- base00 = "#1C2023",
 				-- base01 = "#393F45",
 				-- base02 = "#565E65",
@@ -105,6 +105,23 @@ return {
 				-- base0D = "#62d6e8",
 				-- base0E = "#b45bcf",
 				-- base0F = "#00f769",
+				-- Theme: Dracula Modified
+				base00 = "#13133a", -- background
+				base01 = "#282936", -- cmp background
+				base02 = "#4d4f68", -- middle line
+				base03 = "#626483", -- comment
+				base04 = "#f1f2f8", -- current line
+				base05 = "#e9e9f4", -- paranthesis methods normal text
+				base06 = "#b45bcf", -- unused?
+				base07 = "#f7f7fb", -- unused?
+				base08 = "#ea51b2", -- values in code and Classes in SC
+				base09 = "#62d6e8", -- booleans in code and ints and symbols in SC
+				base0A = "#00f769", -- var in SC
+				base0B = "#ebff87", -- strings in code
+				base0C = "#a1efe4", -- requires {} in code and +-=/* in SC
+				base0D = "#62d6e8", -- methods in code + vimwiki header
+				base0E = "#b45bcf", -- special keywords in code and global variables in SC
+				base0F = "#00f769", -- paranthesis, dots and commas in code
 				-- -- Theme: eris
 				-- base00 = "#0a0920",
 				-- base01 = "#13133a",
@@ -208,22 +225,39 @@ return {
 				-- base0E = "#4700a5",
 				-- base0F = "#90713a",
 				-- -- Theme: Nebula
-				-- base00 = "#22273b",
-				-- base01 = "#414f60",
-				-- base02 = "#5a8380",
-				-- base03 = "#6e6f72",
-				-- base04 = "#87888b",
-				-- base05 = "#a4a6a9",
-				-- base06 = "#c7c9cd",
-				-- base07 = "#8dbdaa",
-				-- base08 = "#777abc",
-				-- base09 = "#94929e",
-				-- base0A = "#4f9062",
-				-- base0B = "#6562a8",
-				-- base0C = "#226f68",
-				-- base0D = "#4d6bb6",
-				-- base0E = "#716cae",
-				-- base0F = "#8c70a7",
+				-- base00 = "#22273b", -- background
+				-- base01 = "#414f60", -- cmp background
+				-- base02 = "#5a8380", -- middle line
+				-- base03 = "#6e6f72", -- comment
+				-- base04 = "#87888b", -- current line
+				-- base05 = "#a4a6a9", -- paranthesis methods normal text
+				-- base06 = "#c7c9cd", -- unused?
+				-- base07 = "#8dbdaa", -- unused?
+				-- base08 = "#777abc", -- values in code and Classes in SC
+				-- base09 = "#94929e", -- booleans in code and ints and symbols in SC
+				-- base0A = "#4f9062", -- var in SC
+				-- base0B = "#6562a8", -- strings in code
+				-- base0C = "#226f68", -- requires {} in code and +-=/* in SC
+				-- base0D = "#4d6bb6", -- methods in code + vimwiki header
+				-- base0E = "#716cae", -- special keywords in code and global variables in SC
+				-- base0F = "#8c70a7", -- paranthesis, dots and commas in code
+				-- -- Theme: Nebula Modified
+				-- base00 = "#000000", -- background
+				-- base01 = "#17191E", -- cmp background
+				-- base02 = "#5a8380", -- middle line
+				-- base03 = "#555e70", -- comment
+				-- base04 = "#87888b", -- current line
+				-- base05 = "#c7c9cd", -- paranthesis methods normal text
+				-- base06 = "#ECEFF4", -- unused?
+				-- base07 = "#94929e", -- unused?
+				-- base08 = "#777abc", -- values in code and Classes in SC
+				-- base09 = "#8dbdaa", -- booleans in code and ints and symbols in SC
+				-- base0A = "#4f9062", -- var in SC
+				-- base0B = "#6562a8", -- strings in code
+				-- base0C = "#226f68", -- requires {} in code and +-=/* in SC
+				-- base0D = "#4d6bb6", -- methods in code + vimwiki header
+				-- base0E = "#8c70a7", -- special keywords in code and global variables in SC
+				-- base0F = "#716cae", -- paranthesis, dots and commas in code
 				-- -- Theme: Nord
 				-- base00 = "#2E3440",
 				-- base01 = "#3B4252",
@@ -248,23 +282,6 @@ return {
 				-- base03 = "#383a47",
 				-- base04 = "#555e70",
 				-- base05 = "#8b9cbe",
-				-- base06 = "#B2BFD9",
-				-- base07 = "#f4f4f7",
-				-- base08 = "#ff29a8",
-				-- base09 = "#85ffe0",
-				-- base0A = "#f0ffaa",
-				-- base0B = "#0badff",
-				-- base0C = "#8265ff",
-				-- base0D = "#00eaff",
-				-- base0E = "#00f6d9",
-				-- base0F = "#ff3d81",
-				-- -- Theme: vice modified
-				-- base00 = "#17191E", -- background
-				-- base01 = "#22262d", -- cmp background
-				-- base02 = "#3c3f4c", -- middle line
-				-- base03 = "#383a47", -- comment
-				-- base04 = "#555e70", -- current line
-				-- base05 = "#8b9cbe", -- paranthesis methods normal text
 				-- base06 = "#B2BFD9",
 				-- base07 = "#f4f4f7",
 				-- base08 = "#ff29a8",
