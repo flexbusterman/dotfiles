@@ -197,6 +197,16 @@ return {
 			}
 		end,
 	},
+
+	-- { 'mellow-theme/mellow.nvim' },
+
+	{
+		'NvChad/nvim-colorizer.lua',
+		config = function()
+			require 'colorizer'.setup()
+		end
+	},
+
 	{
 		'tidalcycles/vim-tidal',
 		config = function()
@@ -240,6 +250,5 @@ return {
 				{ noremap = false, silent = true })
 		end
 	},
-
 
 }
