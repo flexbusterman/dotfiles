@@ -28,8 +28,12 @@ vim.keymap.set({ "n" }, "<C-l>", "<C-w>l")
 
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
--- no duplicate lines
-vim.keymap.set("n", "<leader>l", ":g/^\\s\\+$/s/\\s\\+//e <CR> <bar> :silent! g/^$/,/./-j<CR><c-o>")
+vim.keymap.set("n", "<leader>l", function()
+  local curview = vim.fn.winsaveview()
+  vim.cmd(":%s/^\\s\\+$//e")
+  vim.cmd(":v/./,/./-1join")
+  vim.fn.winrestview(curview)
+end)
 
 vim.keymap.set("n", "<leader>k", ":EslintFixAll<CR>")
 vim.keymap.set("x", "<leader>k", ":EslintFixAll<CR>")
@@ -50,4 +54,3 @@ vim.keymap.set("n", "g]", "<cmd>lua _G.smart_tag_jump()<CR>")
 
 vim.keymap.set("n", "{", "{b")
 vim.keymap.set("n", "}", "}w")
-
