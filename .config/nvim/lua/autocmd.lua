@@ -1,8 +1,6 @@
-local augroup = vim.api.nvim_create_augroup
-local FlexGroup = augroup('Flex', {})
-
 local autocmd = vim.api.nvim_create_autocmd
--- local yank_group = augroup('HighlightYank', {})
+local FlexGroup = vim.api.nvim_create_augroup('Flex', {})
+
 
 function R(name)
 	require("plenary.reload").reload_module(name)
@@ -35,4 +33,15 @@ autocmd({ "VimResized" }, {
 	group = FlexGroup,
 	pattern = "*",
 	command = "exec 'vertical resize ' . string(&columns *  0.5)",
+})
+
+-- [[ Highlight on yank ]]
+-- See `:help vim.highlight.on_yank()`
+local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
+vim.api.nvim_create_autocmd('TextYankPost', {
+	callback = function()
+		vim.highlight.on_yank()
+	end,
+	group = highlight_group,
+	pattern = '*',
 })
