@@ -22,6 +22,8 @@ vim.api.nvim_create_autocmd('filetype', {
 		bind('P', '<C-w>z')
 		bind('L', '<CR>:Lexplore<CR>')
 		bind('<Leader>dd', ':Lexplore<CR>')
+		bind('<C-l>', '<C-w><C-l>')
+		bind('<C-h>', '<C-w><C-h>')
   end
 })
 

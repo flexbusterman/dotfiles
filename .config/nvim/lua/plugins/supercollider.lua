@@ -103,5 +103,41 @@ return {
             autocmd FileType supercollider lua load_scnvim_snippets()
         augroup END
         ]])
+
+
+		-- supercollider argument transformation
+
+		vim.api.nvim_exec([[
+		function! ProcessRange() range
+			" Substitution command
+			'<,'>s/\(\\[^.]*\)\.[ka]r(\([^)]*\))/\r\1, \2,\r/g
+
+			" Delete lines not starting with a backslash within the selection
+			'<,'>g!/^\s*\\/d
+
+			" Initialize the seen dictionary to track duplicates
+			let seen = {}
+
+			" Iterate over each line in the selection to remove duplicates
+			let line_num = line("'<")
+			while line_num <= line("'>")
+				let line_content = getline(line_num)
+				if has_key(seen, line_content)
+					" If the line is a duplicate, delete it
+					execute line_num . 'delete _'
+				else
+					" If the line is not a duplicate, add it to the seen dictionary
+					let seen[line_content] = 1
+					let line_num += 1
+				endif
+			endwhile
+
+			" Wrap negative numbers in parentheses within the selection
+			'<,'>s/\v-([0-9]+)/(-\1)/g
+		endfunction
+		]], false)
+
+		vim.keymap.set("v", "<leader>p", ":'<,'>call ProcessRange()<CR>")
+
 	end
 }
