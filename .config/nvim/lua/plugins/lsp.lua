@@ -97,12 +97,18 @@ return {
 		config = function()
 			require("mason-lspconfig").setup({
 				ensure_installed = {
-					"lua_ls",
 					"bashls",
-					"vuels",
-					"tsserver",
+					"cssls",
+					"eslint",
+					"graphql",
+					"html",
 					"jsonls",
+					"lua_ls",
+					"prismals",
 					"pyright",
+					"tailwindcss",
+					"tsserver",
+					"vuels",
 				}
 			})
 		end
@@ -111,12 +117,18 @@ return {
 		'neovim/nvim-lspconfig',
 		config = function()
 			local lspconfig = require('lspconfig')
-			lspconfig.lua_ls.setup {}
 			lspconfig.bashls.setup {}
-			lspconfig.vuels.setup {}
-			lspconfig.tsserver.setup {}
+			lspconfig.cssls.setup {}
+			lspconfig.eslint.setup {}
+			lspconfig.graphql.setup {}
+			lspconfig.html.setup {}
 			lspconfig.jsonls.setup {}
+			lspconfig.lua_ls.setup {}
+			lspconfig.prismals.setup {}
 			lspconfig.pyright.setup {}
+			lspconfig.tailwindcss.setup {}
+			lspconfig.tsserver.setup {}
+			lspconfig.vuels.setup {}
 
 			-- Global mappings.
 			-- See `:help vim.diagnostic.*` for documentation on any of the below functions

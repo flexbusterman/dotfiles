@@ -1,3 +1,7 @@
+# use temporary prompt while loading plugins
+source ~/.zsh/plugins/instant-zsh/instant-zsh.zsh
+instant-zsh-pre "%B%F{1}[%F{3}%n%F{2}@%F{4}%M %F{5}%~%F{1}]%f$%b "
+
 NVM_LAZY_LOAD=true
 HISTFILE=/home/$USER/.history/zsh/history
 HISTSIZE=10000000
@@ -440,3 +444,4 @@ bindkey '^X' create_completion
 
 # Load syntax highlighting; should be last according to Luke Smith.
 source ~/.zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null
+instant-zsh-post
