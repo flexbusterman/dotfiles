@@ -205,7 +205,7 @@ return {
 
 			mason_tool_installer.setup({
 				ensure_installed = {
-					"prettier", -- prettier formatter
+					"prettierd", -- prettier formatter
 					"stylua", -- lua formatter
 					"isort", -- python formatter
 					"black", -- python formatter
@@ -231,7 +231,7 @@ return {
 
 			mason_null_ls.setup({
 				ensure_installed = {
-					"prettier", -- prettier formatter
+					"prettierd", -- prettier formatter
 					"stylua", -- lua formatter
 					"black", -- python formatter
 					"pylint", -- python linter
@@ -254,7 +254,7 @@ return {
 				sources = {
 					--  to disable file types use
 					--  "formatting.prettier.with({disabled_filetypes: {}})" (see null-ls docs)
-					formatting.prettier.with({
+					formatting.prettierd.with({
 						extra_filetypes = { "svelte" },
 					}), -- js/ts formatter
 					formatting.stylua, -- lua formatter
