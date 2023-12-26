@@ -4,10 +4,10 @@
 -- | . \  __/ |_| | |_) | | | | | (_| | | | | | (_| \__ \
 -- |_|\_\___|\__, |_.__/|_|_| |_|\__,_|_|_| |_|\__, |___/
 --           |___/                             |___/
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
-vim.keymap.set("n", "<leader>h", vim.cmd.Ex, { desc = 'netrw filemanager' })
+vim.keymap.set("n", "<leader>h", vim.cmd.Ex, { desc = "netrw filemanager" })
 
 vim.keymap.set("n", "J", "mzJ`z")
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
@@ -29,25 +29,25 @@ vim.keymap.set({ "n" }, "<C-l>", "<C-w>l")
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
 vim.keymap.set("n", "<leader>l", function()
-  local curview = vim.fn.winsaveview()
-  vim.cmd(":%s/^\\s\\+$//e")
-  vim.cmd(":v/./,/./-1join")
-  vim.fn.winrestview(curview)
+	local curview = vim.fn.winsaveview()
+	vim.cmd(":%s/^\\s\\+$//e")
+	vim.cmd(":v/./,/./-1join")
+	vim.fn.winrestview(curview)
 end)
 
-vim.keymap.set("n", "<leader>k", ":EslintFixAll<CR>")
-vim.keymap.set("x", "<leader>k", ":EslintFixAll<CR>")
+-- vim.keymap.set("n", "<leader>k", ":EslintFixAll<CR>")
+-- vim.keymap.set("x", "<leader>k", ":EslintFixAll<CR>")
 
 vim.keymap.set("n", "tt", ":tab split<CR>")
 
 -- Smart Tag Jump function
 _G.smart_tag_jump = function()
-	local word = vim.fn.expand('<cword>')
-	local taglist = vim.fn.taglist('^' .. word .. '$')
+	local word = vim.fn.expand("<cword>")
+	local taglist = vim.fn.taglist("^" .. word .. "$")
 	if #taglist == 1 then
-		vim.cmd('tag ' .. word)
+		vim.cmd("tag " .. word)
 	elseif #taglist > 1 then
-		vim.cmd('tjump ' .. word)
+		vim.cmd("tjump " .. word)
 	end
 end
 vim.keymap.set("n", "g]", "<cmd>lua _G.smart_tag_jump()<CR>")

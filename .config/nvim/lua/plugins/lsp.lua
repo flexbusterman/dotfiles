@@ -1,172 +1,293 @@
 return {
-	-- Collection of configurations for built-in LSP client
-	'neovim/nvim-lspconfig',
 	{
-		-- Autocompletion plugin
-		'hrsh7th/nvim-cmp',
+		"neovim/nvim-lspconfig",
+		event = { "BufReadPre", "BufNewFile" },
+		dependencies = {
+			"hrsh7th/cmp-nvim-lsp",
+			{ "antosha417/nvim-lsp-file-operations", config = true },
+		},
 		config = function()
-			-- Add additional capabilities supported by nvim-cmp
-			local capabilities = require("cmp_nvim_lsp").default_capabilities()
-			local lspconfig = require('lspconfig')
-			-- Enable some language servers with the additional completion capabilities offered by nvim-cmp
-			local servers = { 'clangd', 'rust_analyzer', 'pyright', 'tsserver' }
-			for _, lsp in ipairs(servers) do
-				lspconfig[lsp].setup {
-					-- on_attach = my_custom_on_attach,
-					capabilities = capabilities,
-				}
+			-- import lspconfig plugin
+			local lspconfig = require("lspconfig")
+
+			-- import cmp-nvim-lsp plugin
+			local cmp_nvim_lsp = require("cmp_nvim_lsp")
+
+			local keymap = vim.keymap -- for conciseness
+
+			local opts = { noremap = true, silent = true }
+			local on_attach = function(client, bufnr)
+				opts.buffer = bufnr
+
+				-- set keybinds
+				opts.desc = "Show LSP references"
+				keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts) -- show definition, references
+
+				opts.desc = "Go to declaration"
+				keymap.set("n", "gD", vim.lsp.buf.declaration, opts) -- go to declaration
+
+				opts.desc = "Show LSP definitions"
+				keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts) -- show lsp definitions
+
+				opts.desc = "Show LSP implementations"
+				keymap.set("n", "gi", "<cmd>Telescope lsp_implementations<CR>", opts) -- show lsp implementations
+
+				opts.desc = "Show LSP type definitions"
+				keymap.set("n", "gt", "<cmd>Telescope lsp_type_definitions<CR>", opts) -- show lsp type definitions
+
+				opts.desc = "See available code actions"
+				keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts) -- see available code actions, in visual mode will apply to selection
+
+				opts.desc = "Smart rename"
+				keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts) -- smart rename
+
+				opts.desc = "Show buffer diagnostics"
+				keymap.set("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>", opts) -- show  diagnostics for file
+
+				opts.desc = "Show line diagnostics"
+				keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts) -- show diagnostics for line
+
+				opts.desc = "Go to previous diagnostic"
+				keymap.set("n", "[d", vim.diagnostic.goto_prev, opts) -- jump to previous diagnostic in buffer
+
+				opts.desc = "Go to next diagnostic"
+				keymap.set("n", "]d", vim.diagnostic.goto_next, opts) -- jump to next diagnostic in buffer
+
+				opts.desc = "Show documentation for what is under cursor"
+				keymap.set("n", "K", vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
+
+				opts.desc = "Restart LSP"
+				keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
 			end
 
-			local luasnip = require 'luasnip'
-			local cmp = require 'cmp'
-			require('luasnip.loaders.from_vscode').lazy_load()
+			-- used to enable autocompletion (assign to every lsp server config)
+			local capabilities = cmp_nvim_lsp.default_capabilities()
 
-			cmp.setup {
-				snippet = {
-					expand = function(args)
-						luasnip.lsp_expand(args.body)
-					end,
-				},
-				mapping = cmp.mapping.preset.insert({
-					['<C-n>'] = cmp.mapping.select_next_item(),
-					['<C-p>'] = cmp.mapping.select_prev_item(),
-					['<C-d>'] = cmp.mapping.scroll_docs(-4),
-					['<C-f>'] = cmp.mapping.scroll_docs(4),
-					-- ['<C-Space>'] = cmp.mapping.complete {},
-					['<C-Space>'] = cmp.mapping.confirm {
-						behavior = cmp.ConfirmBehavior.Replace,
-						select = true,
+			-- Change the Diagnostic symbols in the sign column (gutter)
+			-- (not in youtube nvim video)
+			local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
+			for type, icon in pairs(signs) do
+				local hl = "DiagnosticSign" .. type
+				vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+			end
+
+			-- configure html server
+			lspconfig["html"].setup({
+				capabilities = capabilities,
+				on_attach = on_attach,
+			})
+
+			-- configure typescript server with plugin
+			lspconfig["tsserver"].setup({
+				capabilities = capabilities,
+				on_attach = on_attach,
+			})
+
+			-- configure css server
+			lspconfig["cssls"].setup({
+				capabilities = capabilities,
+				on_attach = on_attach,
+			})
+
+			-- configure tailwindcss server
+			lspconfig["tailwindcss"].setup({
+				capabilities = capabilities,
+				on_attach = on_attach,
+			})
+
+			-- configure svelte server
+			lspconfig["svelte"].setup({
+				capabilities = capabilities,
+				on_attach = function(client, bufnr)
+					on_attach(client, bufnr)
+
+					vim.api.nvim_create_autocmd("BufWritePost", {
+						pattern = { "*.js", "*.ts" },
+						callback = function(ctx)
+							if client.name == "svelte" then
+								client.notify("$/onDidChangeTsOrJsFile", { uri = ctx.file })
+							end
+						end,
+					})
+				end,
+			})
+
+			-- configure prisma orm server
+			lspconfig["prismals"].setup({
+				capabilities = capabilities,
+				on_attach = on_attach,
+			})
+
+			-- configure graphql language server
+			lspconfig["graphql"].setup({
+				capabilities = capabilities,
+				on_attach = on_attach,
+				filetypes = { "graphql", "gql", "svelte", "typescriptreact", "javascriptreact" },
+			})
+
+			-- configure emmet language server
+			lspconfig["emmet_ls"].setup({
+				capabilities = capabilities,
+				on_attach = on_attach,
+				filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "svelte" },
+			})
+
+			-- configure python server
+			lspconfig["pyright"].setup({
+				capabilities = capabilities,
+				on_attach = on_attach,
+			})
+
+			-- configure lua server (with special settings)
+			lspconfig["lua_ls"].setup({
+				capabilities = capabilities,
+				on_attach = on_attach,
+				settings = { -- custom settings for lua
+					Lua = {
+						-- make the language server recognize "vim" global
+						diagnostics = {
+							globals = { "vim" },
+						},
+						workspace = {
+							-- make language server aware of runtime files
+							library = {
+								[vim.fn.expand("$VIMRUNTIME/lua")] = true,
+								[vim.fn.stdpath("config") .. "/lua"] = true,
+							},
+						},
 					},
-					['<Tab>'] = cmp.mapping(function(fallback)
-						if luasnip.expand_or_locally_jumpable() then
-							luasnip.expand_or_jump()
-						else
-							fallback()
-						end
-						-- if cmp.visible() then
-						-- 	cmp.select_next_item()
-						-- elseif luasnip.expand_or_locally_jumpable() then
-						-- 	luasnip.expand_or_jump()
-						-- else
-						-- 	fallback()
-						-- end
-					end, { 'i', 's' }),
-					['<S-Tab>'] = cmp.mapping(function(fallback)
-						if luasnip.locally_jumpable(-1) then
-							luasnip.jump(-1)
-						else
-							fallback()
-						end
-						-- if cmp.visible() then
-						-- 	cmp.select_prev_item()
-						-- elseif luasnip.locally_jumpable(-1) then
-						-- 	luasnip.jump(-1)
-						-- else
-						-- 	fallback()
-						-- end
-					end, { 'i', 's' }),
-				}),
-				sources = {
-					{ name = 'nvim_lsp' },
-					{ name = 'luasnip' },
 				},
-			}
-		end
-	},
-	-- LSP source for nvim-cmp
-	'hrsh7th/cmp-nvim-lsp',
-	-- Snippets source for nvim-cmp
-	'saadparwaiz1/cmp_luasnip',
-	{
-		-- Snippets plugin
-		'L3MON4D3/LuaSnip',
-		config = function()
-			require("luasnip.loaders.from_lua").lazy_load({ paths = "~/.config/nvim/lua/plugins/luasnippets/" })
-			require('luasnip').filetype_extend("javascript", { "javascriptreact" })
-			require('luasnip').filetype_extend("javascript", { "html" })
-		end
+			})
+		end,
 	},
 	{
 		"williamboman/mason.nvim",
+		dependencies = {
+			"williamboman/mason-lspconfig.nvim",
+			"WhoIsSethDaniel/mason-tool-installer.nvim",
+		},
 		config = function()
-			require("mason").setup()
-		end
-	},
-	{
-		"williamboman/mason-lspconfig.nvim",
-		config = function()
-			require("mason-lspconfig").setup({
+			-- import mason
+			local mason = require("mason")
+
+			-- import mason-lspconfig
+			local mason_lspconfig = require("mason-lspconfig")
+
+			local mason_tool_installer = require("mason-tool-installer")
+
+			-- enable mason and configure icons
+			mason.setup({
+				ui = {
+					icons = {
+						package_installed = "✓",
+						package_pending = "➜",
+						package_uninstalled = "✗",
+					},
+				},
+			})
+
+			mason_lspconfig.setup({
+				-- list of servers for mason to install
 				ensure_installed = {
-					"bashls",
-					"cssls",
-					"eslint",
-					"graphql",
+					"tsserver",
 					"html",
-					"jsonls",
+					"cssls",
+					"tailwindcss",
+					"svelte",
 					"lua_ls",
+					"graphql",
+					"emmet_ls",
 					"prismals",
 					"pyright",
-					"tailwindcss",
-					"tsserver",
-					"vuels",
-				}
+				},
+				-- auto-install configured servers (with lspconfig)
+				automatic_installation = true, -- not the same as ensure_installed
 			})
-		end
+
+			mason_tool_installer.setup({
+				ensure_installed = {
+					"prettier", -- prettier formatter
+					"stylua", -- lua formatter
+					"isort", -- python formatter
+					"black", -- python formatter
+					"pylint", -- python linter
+					"eslint_d", -- js linter
+				},
+			})
+		end,
 	},
 	{
-		'neovim/nvim-lspconfig',
+		"nvimtools/none-ls.nvim", -- configure formatters & linters
+		lazy = true,
+		-- event = { "BufReadPre", "BufNewFile" }, -- to enable uncomment this
+		dependencies = {
+			"jay-babu/mason-null-ls.nvim",
+		},
 		config = function()
-			local lspconfig = require('lspconfig')
-			lspconfig.bashls.setup {}
-			lspconfig.cssls.setup {}
-			lspconfig.eslint.setup {}
-			lspconfig.graphql.setup {}
-			lspconfig.html.setup {}
-			lspconfig.jsonls.setup {}
-			lspconfig.lua_ls.setup {}
-			lspconfig.prismals.setup {}
-			lspconfig.pyright.setup {}
-			lspconfig.tailwindcss.setup {}
-			lspconfig.tsserver.setup {}
-			lspconfig.vuels.setup {}
+			local mason_null_ls = require("mason-null-ls")
 
-			-- Global mappings.
-			-- See `:help vim.diagnostic.*` for documentation on any of the below functions
-			vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float)
-			vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
-			vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
-			-- vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
+			local null_ls = require("null-ls")
 
-			-- Use LspAttach autocommand to only map the following keys
-			-- after the language server attaches to the current buffer
-			vim.api.nvim_create_autocmd('LspAttach', {
-				group = vim.api.nvim_create_augroup('UserLspConfig', {}),
-				callback = function(ev)
-					-- Enable completion triggered by <c-x><c-o>
-					vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
+			local null_ls_utils = require("null-ls.utils")
 
-					-- Buffer local mappings.
-					-- See `:help vim.lsp.*` for documentation on any of the below functions
-					local opts = { buffer = ev.buf }
-					vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
-					vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-					vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-					vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
-					vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
-					vim.keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, opts)
-					vim.keymap.set('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, opts)
-					vim.keymap.set('n', '<leader>wl', function()
-						print(vim.inspect(vim.lsp.buf.list_workleader_folders()))
-					end, opts)
-					vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, opts)
-					vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
-					vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, opts)
-					vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
-					vim.keymap.set('n', '<leader>k', function()
-						vim.lsp.buf.format { async = true }
-					end, opts)
+			mason_null_ls.setup({
+				ensure_installed = {
+					"prettier", -- prettier formatter
+					"stylua", -- lua formatter
+					"black", -- python formatter
+					"pylint", -- python linter
+					"eslint_d", -- js linter
+				},
+			})
+
+			-- for conciseness
+			local formatting = null_ls.builtins.formatting -- to setup formatters
+			local diagnostics = null_ls.builtins.diagnostics -- to setup linters
+
+			-- to setup format on save
+			local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+
+			-- configure null_ls
+			null_ls.setup({
+				-- add package.json as identifier for root (for typescript monorepos)
+				root_dir = null_ls_utils.root_pattern(".null-ls-root", "Makefile", ".git", "package.json"),
+				-- setup formatters & linters
+				sources = {
+					--  to disable file types use
+					--  "formatting.prettier.with({disabled_filetypes: {}})" (see null-ls docs)
+					formatting.prettier.with({
+						extra_filetypes = { "svelte" },
+					}), -- js/ts formatter
+					formatting.stylua, -- lua formatter
+					formatting.isort,
+					formatting.black,
+					diagnostics.pylint,
+					diagnostics.eslint_d.with({ -- js/ts linter
+						condition = function(utils)
+							return utils.root_has_file({ ".eslintrc.js", ".eslintrc.cjs" }) -- only enable if root has .eslintrc.js or .eslintrc.cjs
+						end,
+					}),
+				},
+				-- configure format on save
+				on_attach = function(current_client, bufnr)
+					if current_client.supports_method("textDocument/formatting") then
+						vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+						vim.api.nvim_create_autocmd("BufWritePre", {
+							group = augroup,
+							buffer = bufnr,
+							callback = function()
+								vim.lsp.buf.format({
+									filter = function(client)
+										--  only use null-ls for formatting instead of lsp server
+										return client.name == "null-ls"
+									end,
+									bufnr = bufnr,
+								})
+							end,
+						})
+					end
 				end,
 			})
-		end
+		end,
 	}
 }
