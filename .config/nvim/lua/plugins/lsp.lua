@@ -176,13 +176,13 @@ return {
 
 			-- enable mason and configure icons
 			mason.setup({
-				ui = {
-					icons = {
-						package_installed = "✓",
-						package_pending = "➜",
-						package_uninstalled = "✗",
-					},
-				},
+				-- ui = {
+				-- 	icons = {
+				-- 		package_installed = "✓",
+				-- 		package_pending = "➜",
+				-- 		package_uninstalled = "✗",
+				-- 	},
+				-- },
 			})
 
 			mason_lspconfig.setup({

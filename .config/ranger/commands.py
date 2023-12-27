@@ -7,7 +7,7 @@
 # A simple command for demonstration purposes follows.
 # -----------------------------------------------------------------------------
 
-from __future__ import (absolute_import, division, print_function)
+from __future__ import absolute_import, division, print_function
 
 # You can import any python module as needed.
 import os
@@ -60,3 +60,20 @@ class my_edit(Command):
         # This is a generic tab-completion function that iterates through the
         # content of the current directory.
         return self._tab_directory_content()
+
+
+class StartupTabs(Command):
+    """
+    :startup_tabs
+
+    Command to open two tabs on startup.
+    """
+
+    def execute(self):
+        # close all open tabs
+        self.fm.tab_close(all=True)
+        self.fm.tab_new()  # Open a new tab
+        self.fm.cd("~")  # Change directory in the first tab
+
+        self.fm.tab_new()  # Open another new tab
+        self.fm.cd("~/Downloads/")  # Change directory in the second tab
