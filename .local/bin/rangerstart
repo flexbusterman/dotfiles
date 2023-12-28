@@ -1,2 +1,2 @@
 #!/bin/bash
-ranger ~/Dropbox ~/Downloads
+ranger ~/Downloads
