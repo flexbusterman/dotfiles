@@ -1,3 +1,5 @@
+40811
+
 #!/bin/sh
 echo "Remapping keys"
 # # echo "Loading xresources"
@@ -8,6 +10,7 @@ setxkbmap -option shift:both_capslock_cancel;
 xmodmap ~/.Xmodmap
 # echo "Setting capslock to escape"
 xcape -e 'Mode_switch=Escape'
+xcape -e 'Caps_Lock=Escape'
 # echo "Setting keyboard repeat rate"
 xset r rate 300 50 &
 # Define an associative array with device names as keys and desired properties as values
