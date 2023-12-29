@@ -24,6 +24,8 @@ return {
 		config = function()
 			local cmp = require("cmp")
 			local luasnip = require("luasnip")
+			-- remove existing mapping
+			vim.keymap.set("i", "<C-l>", "<Nop>")
 			cmp.setup({
 				window = {
 					documentation = cmp.config.window.bordered(),
@@ -35,6 +37,8 @@ return {
 					end,
 				},
 				mapping = cmp.mapping.preset.insert({
+					['<C-n>'] = cmp.config.disable,
+					['<C-p>'] = cmp.config.disable,
 					["<C-j>"] = cmp.mapping.select_next_item(),
 					["<C-k>"] = cmp.mapping.select_prev_item(),
 					["<C-d>"] = cmp.mapping.scroll_docs(-4),
