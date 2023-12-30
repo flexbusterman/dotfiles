@@ -9,7 +9,7 @@ INFO_DIR="$TRASH_DIR/info"
 # Function to delete a file
 delete_file() {
     local file=$1
-    rm -f "$file"
+    rm -rf "$file"
     echo "Deleted: $file"
 }
 
