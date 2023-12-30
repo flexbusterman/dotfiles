@@ -6,6 +6,9 @@
 export TERMINAL='st'
 export EDITOR='nvim'
 export BROWSER='firefox'
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.cache"
 # export MANPAGER="/bin/sh -c \"col -b | nvim -c 'set ft=man ts=8 nomod nolist nonu noma' -\""
 # export MANPAGER="/bin/sh -c \"col -b | less -R | nvim -c 'set ft=man ts=8 nomod nolist nonu noma' -\""
 export MANPAGER="nvim +Man!"
