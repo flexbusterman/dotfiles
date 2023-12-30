@@ -1147,16 +1147,16 @@ class bulkrename(Command):
             new_filenames = listfile.read().split("\n")
         os.unlink(listpath)
         if all(a == b for a, b in zip(filenames, new_filenames)):
-            self.fm.notify("No renaming to be done!")
+            # self.fm.notify("No renaming to be done!")
             return
 
         # Generate script
         with tempfile.NamedTemporaryFile() as cmdfile:
-            script_lines = []
-            script_lines.append("# This file will be executed when you close"
-                                " the editor.")
-            script_lines.append("# Please double-check everything, clear the"
-                                " file to abort.")
+            # script_lines = []
+            # script_lines.append("# This file will be executed when you close"
+            #                     " the editor.")
+            # script_lines.append("# Please double-check everything, clear the"
+            #                     " file to abort.")
             new_dirs = []
             for old, new in zip(filenames, new_filenames):
                 if old != new:
