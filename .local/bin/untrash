@@ -1,0 +1,36 @@
+#!/bin/bash
+
+# Define the trash directory
+XDG_DATA_HOME=${XDG_DATA_HOME:-$HOME/.local/share}
+TRASH_DIR="$XDG_DATA_HOME/Trash"
+FILES_DIR="$TRASH_DIR/files"
+INFO_DIR="$TRASH_DIR/info"
+
+# Current directory
+CURRENT_DIR=$(pwd)
+
+# Function to untrash a file
+untrash_file() {
+    local info_file=$1
+    local filename=$(basename "$info_file" .trashinfo)
+
+    # Read the original path from the .trashinfo file
+    local original_path=$(grep '^Path=' "$info_file" | sed 's/Path=//')
+    original_path=${original_path//%20/ }
+
+    # Check if the original path is in the current directory
+    if [[ "$original_path" == $CURRENT_DIR/* ]]; then
+        # Move the file back to its original location
+        if [[ -e "$FILES_DIR/$filename" ]]; then
+            mv "$FILES_DIR/$filename" "$original_path"
+            echo "Restored: $original_path"
+        fi
+    fi
+}
+
+# Process each .trashinfo file in the trash info directory
+for info_file in "$INFO_DIR"/*.trashinfo; do
+    if [[ -e "$info_file" ]]; then
+        untrash_file "$info_file"
+    fi
+done
