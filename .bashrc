@@ -9,6 +9,9 @@ export BROWSER='firefox'
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
+export ANDROID_HOME=$HOME/Android/
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/platform-tools
 # export MANPAGER="/bin/sh -c \"col -b | nvim -c 'set ft=man ts=8 nomod nolist nonu noma' -\""
 # export MANPAGER="/bin/sh -c \"col -b | less -R | nvim -c 'set ft=man ts=8 nomod nolist nonu noma' -\""
 export MANPAGER="nvim +Man!"

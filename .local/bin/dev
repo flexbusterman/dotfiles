@@ -13,6 +13,12 @@ elif [ $1 == "react" ]; then
 	st -t Server -e zsh -c "cd $folder; npm run web" &
 	port=19006
 	startBrowser=false
+elif [ $1 == "training" ]; then
+	folder=~/.local/src/training/
+	notefile="/home/$USER/Dropbox/NOTES/React Native.md"
+	st -t Server -e zsh -c "cd $folder; npm run web" &
+	# port=19006
+	startBrowser=false
 elif [ $1 == "sandhamn" ]; then
 	st -t Server -e zsh -c "cd ~/.local/src/sandhamn; source /usr/share/nvm/init-nvm.sh; nvm use v16.18.1; npm run dev" &
 	port=3000

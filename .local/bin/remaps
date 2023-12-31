@@ -1,5 +1,3 @@
-40811
-
 #!/bin/sh
 echo "Remapping keys"
 # # echo "Loading xresources"

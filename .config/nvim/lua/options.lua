@@ -11,10 +11,10 @@ vim.opt.nu = true
 vim.opt.relativenumber = true
 
 -- Enable mouse mode
-vim.o.mouse = 'a'
+vim.o.mouse = "a"
 
 -- Sync clipboard between OS and Neovim.
-vim.opt.clipboard = 'unnamedplus'
+vim.opt.clipboard = "unnamedplus"
 
 -- Save undo history
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
@@ -27,14 +27,14 @@ vim.opt.hlsearch = false
 vim.opt.incsearch = true
 
 -- Keep signcolumn on by default
-vim.opt.signcolumn = 'yes'
+vim.opt.signcolumn = "yes"
 
 -- Decrease update time
 vim.opt.updatetime = 50
 vim.opt.timeoutlen = 300
 
 -- Set completeopt to have a better completion experience
-vim.o.completeopt = 'menuone,noselect'
+vim.o.completeopt = "menuone,noselect"
 
 -- Enable termguicolors and other visual settings
 vim.opt.termguicolors = true
@@ -44,7 +44,7 @@ vim.opt.splitright = true
 vim.opt.filetype.plugin = "on"
 vim.opt.syntax = "on"
 vim.opt.scrolloff = 8
-vim.opt.wildignore = { '*/node_modules/*' }
+vim.opt.wildignore = { "*/node_modules/*" }
 vim.opt.modeline = false
 
 -- indenting
@@ -64,4 +64,4 @@ vim.opt.swapfile = false
 vim.opt.backup = false
 
 -- no autoamtic commenting on new lines
-vim.opt.formatoptions = "c"
+vim.opt.formatoptions = ""
