@@ -15,17 +15,31 @@ move_to_trash() {
     local file_path=$(realpath "$1")
     local filename=$(basename "$file_path")
     local deletion_date=$(date +"%Y-%m-%dT%H:%M:%S")
-
-    # Replace spaces with %20 for the trashinfo file
+    local trash_file="$FILES_DIR/$filename"
     local trashinfo_path=${file_path// /%20}
+    local count=0
+
+    # Handle file name collisions
+    while [[ -e "$trash_file" ]]; do
+        ((count++))
+        trash_file="$FILES_DIR/${filename}_${count}"
+    done
 
     # Move the file to the trash files directory
-    mv "$file_path" "$FILES_DIR/"
+    mv -f "$file_path" "$trash_file"
+
+    # Handle errors during move
+    if [[ $? -ne 0 ]]; then
+        echo "Error moving file: $file_path"
+        return 1
+    fi
 
     # Create the info file
-    echo "[Trash Info]" > "$INFO_DIR/${filename}.trashinfo"
-    echo "Path=$trashinfo_path" >> "$INFO_DIR/${filename}.trashinfo"
-    echo "DeletionDate=$deletion_date" >> "$INFO_DIR/${filename}.trashinfo"
+    local trashinfo_file="${filename}.trashinfo"
+    [[ $count -ne 0 ]] && trashinfo_file="${filename}_${count}.trashinfo"
+    echo "[Trash Info]" > "$INFO_DIR/$trashinfo_file"
+    echo "Path=$trashinfo_path" >> "$INFO_DIR/$trashinfo_file"
+    echo "DeletionDate=$deletion_date" >> "$INFO_DIR/$trashinfo_file"
 }
 
 # Process each file passed to the script

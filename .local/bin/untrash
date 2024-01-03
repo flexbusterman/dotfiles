@@ -9,21 +9,35 @@ INFO_DIR="$TRASH_DIR/info"
 # Current directory
 CURRENT_DIR=$(pwd)
 
-# Function to untrash a file
+# Function to untrash a file or directory
 untrash_file() {
     local info_file=$1
-    local filename=$(basename "$info_file" .trashinfo)
+    local basename=$(basename "$info_file" .trashinfo)
 
     # Read the original path from the .trashinfo file
     local original_path=$(grep '^Path=' "$info_file" | sed 's/Path=//')
     original_path=${original_path//%20/ }
 
-    # Check if the original path is in the current directory
-    if [[ "$original_path" == $CURRENT_DIR/* ]]; then
-        # Move the file back to its original location
-        if [[ -e "$FILES_DIR/$filename" ]]; then
-            mv "$FILES_DIR/$filename" "$original_path"
-            echo "Restored: $original_path"
+    # Determine the parent directory of the original path
+    local parent_dir=$(dirname "$original_path")
+
+    # Check if the parent directory of the original path is the current directory
+    if [[ "$parent_dir" == "$CURRENT_DIR" ]]; then
+        # Find the corresponding file or directory in the trash
+        local trash_item=$(find "$FILES_DIR" -name "${basename}*" -print -quit)
+
+        if [[ -e "$trash_item" ]]; then
+            # Move the item back to its original location
+            mv -f "$trash_item" "$original_path" 2>/dev/null
+
+            if [[ $? -eq 0 ]]; then
+                echo "Restored: $original_path"
+                rm -f "$info_file"  # Remove the .trashinfo file
+            else
+                echo "Failed to restore: $original_path"
+            fi
+        else
+            echo "File not found in trash: $basename"
         fi
     fi
 }
