@@ -1,0 +1,8 @@
+#!/bin/bash
+
+st -e bash -c '
+	find /home/flex/Downloads/\!\ VIDEO/ -type f -iregex ".*\.\(mp4\|avi\|mkv\|flv\|mov\|wmv\|webm\)" | fzf > /home/flex/.towatch
+'
+mpv "$(cat /home/flex/.towatch)" &
+sleep 0.2
+rm /home/flex/.towatch
