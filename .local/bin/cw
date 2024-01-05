@@ -1,0 +1,3 @@
+#!/bin/bash
+# move into work dir
+cd "$(cat ~/.workdir)"
