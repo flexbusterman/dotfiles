@@ -10,13 +10,25 @@ INFO_DIR="$TRASH_DIR/info"
 mkdir -p "$FILES_DIR"
 mkdir -p "$INFO_DIR"
 
+# Function to URL-encode strings
+urlencode() {
+    local length="${#1}"
+    for (( i = 0; i < length; i++ )); do
+        local c="${1:i:1}"
+        case $c in
+            [a-zA-Z0-9.~_-]) printf "$c" ;;
+            *) printf '%%%02X' "'$c" ;;
+        esac
+    done
+}
+
 # Function to move a file to the trash and create an info file
 move_to_trash() {
     local file_path=$(realpath "$1")
     local filename=$(basename "$file_path")
     local deletion_date=$(date +"%Y-%m-%dT%H:%M:%S")
     local trash_file="$FILES_DIR/$filename"
-    local trashinfo_path=${file_path// /%20}
+    local trashinfo_path=$(urlencode "$file_path")
     local count=0
 
     # Handle file name collisions
