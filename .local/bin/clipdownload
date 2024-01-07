@@ -19,9 +19,11 @@ while getopts ":h:a" option; do
 		h) # display Help
 			Help
 			exit;;
-		a) # download mp3
+		a) # display Help
 			MP3=true
 			;;
+		# n) # Enter a name
+			# Name=$OPTARG;;
 		\?) # Invalid option
 			echo "Error: Invalid option"
 			exit;;
@@ -32,9 +34,9 @@ if [ -n "$clipboard" ]
 then
 	if [[ $MP3 == true ]]
 	then
-		yt-dlp -x --audio-format mp3 --audio-quality 320K -P ~/Downloads/ -o '%(uploader)s - %(title)s.%(ext)s' "$clipboard" || notify-send 'Clipboard not valid'
+		yt-dlp -x --audio-format mp3 --audio-quality 320K -P ~/Downloads/ "$clipboard" || notify-send 'Clipboard not valid'
 	else
-		yt-dlp -f 'bestvideo[height<=1080]+bestaudio/best[height<=1080]' -P ~/Downloads/\!\ VIDEO/ -o '%(uploader)s - %(playlist_index|)s%(playlist_index& - |)s%(title)s.%(ext)s' "$clipboard" || yt-dlp -f "bv*[height=720]+ba" -P ~/Downloads/\!\ VIDEO/ -o '%(uploader)s - %(playlist_index|)s%(playlist_index& - |)s%(title)s.%(ext)s' "$clipboard" || notify-send "Clipboard not valid"
+yt-dlp --mark-watched --username oauth2 --password '$YT_KEY' -f 'bestvideo[height<=?1080]+bestaudio' -P ~/Downloads/\!\ VIDEO/ -o '%(uploader)s - %(playlist_index|)s%(playlist_index& - |)s%(title)s.%(ext)s' "$clipboard" || notify-send "Download unsuccessful"
 	fi
 else
 	notify-send 'Clipboard empty'
