@@ -13,7 +13,8 @@ then
 		# notify-send "Let's attempt to stream with mpv"
 		# strips duplicate time values
 		clipboard=$(echo $clipboard | sed 's/&[^&]*//')
-		mpv --ytdl-raw-options=netrc=,mark-watched= "$clipboard"
+		# mpv --ytdl-raw-options=netrc=,mark-watched= "$clipboard"
+		mpv --ytdl-raw-options=mark-watched=,username=oauth2,password="$YT_KEY" "$clipboard"
 	else
 		# notify-send "not youtube"
 		# strips time and path info
@@ -30,4 +31,3 @@ then
 else
 	notify-send 'Clipboard empty'
 fi
-
