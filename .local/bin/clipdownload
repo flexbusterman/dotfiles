@@ -4,40 +4,38 @@ clipboard=$(xsel -ob)
 
 Help()
 {
-   # Display Help
-   echo "Download video in clipboard to your ~/Downloads folder."
-   echo
-   echo "Syntax: clipdownload [-h|a]"
-   echo "options:"
-   echo "-h     Print this Help."
-   echo "-a     Download 320kb/s MP3 format."
-   echo
+	# Display Help
+	echo "Download video in clipboard to your ~/Downloads folder."
+	echo
+	echo "Syntax: clipdownload [-h|a]"
+	echo "options:"
+	echo "-h     Print this Help."
+	echo "-a     Download 320kb/s MP3 format."
+	echo
 }
 
 while getopts ":h:a" option; do
-   case $option in
-      h) # display Help
-         Help
-         exit;;
-      a) # display Help
-         MP3=true
-         ;;
-			 # n) # Enter a name
-         # Name=$OPTARG;;
-     \?) # Invalid option
-         echo "Error: Invalid option"
-         exit;;
-   esac
+	case $option in
+		h) # display Help
+			Help
+			exit;;
+		a) # download mp3
+			MP3=true
+			;;
+		\?) # Invalid option
+			echo "Error: Invalid option"
+			exit;;
+	esac
 done
 
 if [ -n "$clipboard" ]
 then
-if [[ $MP3 == true ]]
-then
-		yt-dlp -x --audio-format mp3 --audio-quality 320K -P ~/Downloads/ "$clipboard" || notify-send 'Clipboard not valid'
-else
-		yt-dlp -f 'bestvideo[height<=1080]+bestaudio/best[height<=1080]' -P ~/Downloads/\!\ VIDEO/ -o '%(playlist_index|)s%(playlist_index& - |)s%(title)s.%(ext)s' "$clipboard" || yt-dlp -f "bv*[height=720]+ba" -P ~/Downloads/\!\ VIDEO/ -o '%(playlist_index|)s%(playlist_index& - |)s%(title)s.%(ext)s' "$clipboard" || notify-send "Clipboard not valid"
-fi
+	if [[ $MP3 == true ]]
+	then
+		yt-dlp -x --audio-format mp3 --audio-quality 320K -P ~/Downloads/ -o '%(uploader)s - %(title)s.%(ext)s' "$clipboard" || notify-send 'Clipboard not valid'
+	else
+		yt-dlp -f 'bestvideo[height<=1080]+bestaudio/best[height<=1080]' -P ~/Downloads/\!\ VIDEO/ -o '%(uploader)s - %(playlist_index|)s%(playlist_index& - |)s%(title)s.%(ext)s' "$clipboard" || yt-dlp -f "bv*[height=720]+ba" -P ~/Downloads/\!\ VIDEO/ -o '%(uploader)s - %(playlist_index|)s%(playlist_index& - |)s%(title)s.%(ext)s' "$clipboard" || notify-send "Clipboard not valid"
+	fi
 else
 	notify-send 'Clipboard empty'
 fi
