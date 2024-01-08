@@ -16,7 +16,7 @@ if [ $1 == "mind" ]; then
 elif [ $1 == "react" ]; then
 	folder=~/.local/src/donewithit/
 	notefile="/home/$USER/Dropbox/NOTES/React Native.md"
-	st -t Server -e zsh -c "cd $folder; npm run web" &
+	st -t Server -e zsh -c "cd $folder; npm run android" &
 	port=19006
 	startBrowser=false
 elif [ $1 == "training" ]; then
