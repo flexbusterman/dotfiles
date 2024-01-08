@@ -17,7 +17,7 @@ return {
 			["text"] = false,
 			["supercollider"] = false,
 			["tidal"] = false,
-			-- ["python"] = false,
+			["sh.env"] = false,
 		}
 	end,
 }

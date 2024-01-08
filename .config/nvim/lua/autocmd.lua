@@ -5,6 +5,11 @@ function R(name)
 	require("plenary.reload").reload_module(name)
 end
 
+vim.api.nvim_create_autocmd({ "BufEnter", "BufNewFile" }, {
+	pattern = ".env*",
+	command = "set filetype=sh.env",
+})
+
 autocmd({
 	"BufWritePre",
 }, {
