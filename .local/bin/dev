@@ -3,6 +3,12 @@ notefile=$(find ~/Dropbox/NOTES/ -maxdepth 1 -type f -iname "*$1*" | head -n 1)
 folder=~/.local/src/$1
 startBrowser=true
 
+# if $1 isn't a folder, exit
+if [ ! -d "$folder" ]; then
+	notify-send "Folder $folder doesn't exist"
+	exit 1
+fi
+
 if [ $1 == "mind" ]; then
 	notefile="/home/$USER/Dropbox/NOTES/MIND.md"
 	st -t Server -e zsh -c "cd ~/.local/src/mind; source /usr/share/nvm/init-nvm.sh; nvm use v14.21.3; npm run dev" &
