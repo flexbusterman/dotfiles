@@ -18,7 +18,7 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 # export MANPAGER="/bin/sh -c \"col -b | nvim -c 'set ft=man ts=8 nomod nolist nonu noma' -\""
 # export MANPAGER="/bin/sh -c \"col -b | less -R | nvim -c 'set ft=man ts=8 nomod nolist nonu noma' -\""
 export MANPAGER="nvim +Man!"
-export HEADPHONES='00:1B:66:14:74:55'
+export HEADPHONES='50:C2:75:29:C7:6E'
 export MPD_PORT='49152'
 export RANGER_LOAD_DEFAULT_RC=FALSE
 # export $(grep -v '^#' .env | xargs)

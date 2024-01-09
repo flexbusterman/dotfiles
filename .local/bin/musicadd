@@ -8,12 +8,19 @@ first=""
 
 for i in "$@"
 do
+    # Check if the path is absolute
+    # if [[ "$i" = /* ]]; then
+    #     filepath="$i"
+    # else
+    #     filepath="$(pwd)/$i"
+    # fi
 	# if argument is in the filetypes array, add it to mpd using mpc
 	# if the argument contains full path, add it as is
 	# prepend the path to the file with the current directory
 	# if the argument is a directory, add all files in it if they are in the filetypes array
 	if [[ " ${filetypes[@]} " =~ " ${i##*.} " ]]; then
-		mpc --host ~/.mpd/socket add "$(pwd)/$i"
+		mpc --host ~/.mpd/socket add "$i"
+		notify-send "$i"
 		# if it's the first song, set $first to filename
 		if [[ -z "$first" ]]; then
 			first="$i"
@@ -26,7 +33,7 @@ do
 	elif [[ -d "$i" ]]; then
 		for j in "$i"/*; do
 			if [[ " ${filetypes[@]} " =~ " ${j##*.} " ]]; then
-				mpc --host ~/.mpd/socket add "$(pwd)/$j"
+				mpc --host ~/.mpd/socket add "$filepath/$j"
 				if [[ -z "$first" ]]; then
 					first="$j"
 				fi
