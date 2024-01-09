@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Define the array of supported file types
-declare -a filetypes=("mp3" "ogg" "flac" "wav" "m4a" "opus" "mp4" "m4p" "m4b" "m4r" "3gp" "aac" "mka" "wma" "ape" "mpc" "tta" "wv" "spx" "aiff" "mod" "s3m" "xm" "it" "mo3" "mtm" "umx" "mid" "midi" "sid" "ac3" "dts")
+declare -a filetypes=("3gp" "aac" "ac3" "ahx" "aiff" "ape" "dts" "flac" "flac" "hes" "it" "m4a" "m4p" "m4r" "mid" "midi" "mka" "mo3" "mod" "mods" "mp3" "mp4" "mpc" "mtm" "nsf" "ogg" "opm" "opus" "psf" "s3m" "scl" "sid" "spc" "spx" "tta" "umx" "vgz" "wav" "win" "wma" "wv" "xm")
 
 # Variable to keep track of the first file added
 first=""
