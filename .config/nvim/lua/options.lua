@@ -59,7 +59,6 @@ vim.opt.wrap = true
 -- global settings
 vim.g.cmdheight = 1
 vim.g.nocompatible = true
-vim.g.base16_transparent_background = 1
 vim.opt.swapfile = false
 vim.opt.backup = false
 
