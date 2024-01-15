@@ -20,7 +20,7 @@ elif [ $1 == "react" ]; then
 	port=19006
 	startBrowser=false
 elif [ $1 == "training" ]; then
-	folder=~/.local/src/training/
+	folder=~/.local/src/train2024/
 	notefile="/home/$USER/Dropbox/NOTES/Training App.md"
 	st -t Server -e zsh -c "cd $folder; npm run web" &
 	# port=19006
