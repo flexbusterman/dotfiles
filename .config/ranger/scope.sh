@@ -169,7 +169,6 @@ handle_image() {
         #              -- "${FILE_PATH}" "${IMAGE_CACHE_PATH%.*}" \
         #         && exit 6 || exit 1;;
 
-
         ## ePub, MOBI, FB2 (using Calibre)
         # application/epub+zip|application/x-mobipocket-ebook|\
         # application/x-fictionbook+xml)
@@ -289,8 +288,8 @@ handle_mime() {
             xls2csv -- "${FILE_PATH}" && exit 5
             exit 1;;
 
-        ## Text
-        text/* | */xml)
+						## Text
+						text/* | */xml | application/javascript)
             ## Syntax highlight
             if [[ "$( stat --printf='%s' -- "${FILE_PATH}" )" -gt "${HIGHLIGHT_SIZE_MAX}" ]]; then
                 exit 2
@@ -337,7 +336,6 @@ handle_fallback() {
     echo '----- File Type Classification -----' && file --dereference --brief -- "${FILE_PATH}" && exit 5
     exit 1
 }
-
 
 MIMETYPE="$( file --dereference --brief --mime-type -- "${FILE_PATH}" )"
 if [[ "${PV_IMAGE_ENABLED}" == 'True' ]]; then
