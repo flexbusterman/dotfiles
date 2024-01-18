@@ -20,9 +20,10 @@ elif [ $1 == "react" ]; then
 	port=19006
 	startBrowser=false
 elif [ $1 == "training" ]; then
-	folder=~/.local/src/train2024/
+	java=/usr/lib/jvm/java-17-openjdk
+	folder=~/.local/src/training/
 	notefile="/home/$USER/Dropbox/NOTES/Training App.md"
-	st -t Server -e zsh -c "cd $folder; npm run web" &
+	st -t Server -e zsh -c "cd $folder; JAVA_HOME=$java; npx expo run:android" &
 	# port=19006
 	startBrowser=false
 elif [ $1 == "sandhamn" ]; then
