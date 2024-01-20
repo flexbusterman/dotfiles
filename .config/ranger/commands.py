@@ -12,8 +12,11 @@ from __future__ import absolute_import, division, print_function
 # You can import any python module as needed.
 import os
 
+from plugins.ranger_udisk_menu.mounter import mount
+
 # You always need to import ranger.api.commands here to get the Command class:
 from ranger.api.commands import Command
+
 
 # Any class that is a subclass of "Command" will be integrated into ranger as a
 # command.  Try typing ":my_edit<ENTER>" in ranger!
@@ -60,6 +63,7 @@ class my_edit(Command):
         # content of the current directory.
         return self._tab_directory_content()
 
+
 class StartupTabs(Command):
     """
     :startup_tabs
@@ -75,6 +79,7 @@ class StartupTabs(Command):
 
         self.fm.tab_new()  # Open another new tab
         self.fm.cd("~/Downloads/")  # Change directory in the second tab
+
 
 # https://github.com/ranger/ranger/wiki/Integrating-File-Search-with-fzf
 # Now, simply bind this function to a key, by adding this to your ~/.config/ranger/rc.conf: map <C-f> fzf_select
@@ -109,6 +114,7 @@ class fzf_select(Command):
             else:
                 self.fm.select_file(fzf_file)
 
+
 # fzf_locate
 class fzf_locate(Command):
     """
@@ -137,6 +143,7 @@ class fzf_locate(Command):
             else:
                 self.fm.select_file(fzf_file)
 
+
 class bulkrename(Command):
     """:bulkrename
 
@@ -152,8 +159,10 @@ class bulkrename(Command):
         # pylint: disable=too-many-locals,too-many-statements,too-many-branches
         import sys
         import tempfile
+
         from ranger.container.file import File
         from ranger.ext.shell_escape import shell_escape as esc
+
         py3 = sys.version_info[0] >= 3
 
         # Create and edit the file list
@@ -161,13 +170,19 @@ class bulkrename(Command):
         with tempfile.NamedTemporaryFile(delete=False) as listfile:
             listpath = listfile.name
             if py3:
-                listfile.write("\n".join(filenames).encode(
-                    encoding="utf-8", errors="surrogateescape"))
+                listfile.write(
+                    "\n".join(filenames).encode(
+                        encoding="utf-8", errors="surrogateescape"
+                    )
+                )
             else:
                 listfile.write("\n".join(filenames))
-        self.fm.execute_file([File(listpath)], app='editor')
-        with (open(listpath, 'r', encoding="utf-8", errors="surrogateescape") if
-              py3 else open(listpath, 'r')) as listfile:
+        self.fm.execute_file([File(listpath)], app="editor")
+        with (
+            open(listpath, "r", encoding="utf-8", errors="surrogateescape")
+            if py3
+            else open(listpath, "r")
+        ) as listfile:
             new_filenames = listfile.read().split("\n")
         os.unlink(listpath)
         if all(a == b for a, b in zip(filenames, new_filenames)):
@@ -185,18 +200,24 @@ class bulkrename(Command):
             for old, new in zip(filenames, new_filenames):
                 if old != new:
                     basepath, _ = os.path.split(new)
-                    if (basepath and basepath not in new_dirs
-                            and not os.path.isdir(basepath)):
-                        script_lines.append("mkdir -vp -- {dir}".format(
-                            dir=esc(basepath)))
+                    if (
+                        basepath
+                        and basepath not in new_dirs
+                        and not os.path.isdir(basepath)
+                    ):
+                        script_lines.append(
+                            "mkdir -vp -- {dir}".format(dir=esc(basepath))
+                        )
                         new_dirs.append(basepath)
-                    script_lines.append("mv -vi -- {old} {new}".format(
-                        old=esc(old), new=esc(new)))
+                    script_lines.append(
+                        "mv -vi -- {old} {new}".format(old=esc(old), new=esc(new))
+                    )
             # Make sure not to forget the ending newline
             script_content = "\n".join(script_lines) + "\n"
             if py3:
-                cmdfile.write(script_content.encode(encoding="utf-8",
-                                                    errors="surrogateescape"))
+                cmdfile.write(
+                    script_content.encode(encoding="utf-8", errors="surrogateescape")
+                )
             else:
                 cmdfile.write(script_content)
             cmdfile.flush()
@@ -205,10 +226,10 @@ class bulkrename(Command):
             # script was modified by the user
             # self.fm.execute_file([File(cmdfile.name)], app='editor')
             # cmdfile.seek(0)
-            script_was_edited = (script_content != cmdfile.read())
+            script_was_edited = script_content != cmdfile.read()
 
             # Do the renaming
-            self.fm.run(['/bin/sh', cmdfile.name], flags='s')
+            self.fm.run(["/bin/sh", cmdfile.name], flags="s")
 
         # Retag the files, but only if the script wasn't changed during review,
         # because only then we know which are the source and destination files.
@@ -216,8 +237,8 @@ class bulkrename(Command):
             tags_changed = False
             for old, new in zip(filenames, new_filenames):
                 if old != new:
-                    oldpath = self.fm.thisdir.path + '/' + old
-                    newpath = self.fm.thisdir.path + '/' + new
+                    oldpath = self.fm.thisdir.path + "/" + old
+                    newpath = self.fm.thisdir.path + "/" + new
                     if oldpath in self.fm.tags:
                         old_tag = self.fm.tags.tags[oldpath]
                         self.fm.tags.remove(oldpath)

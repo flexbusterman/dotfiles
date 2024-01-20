@@ -229,9 +229,11 @@ alias vw="cd /home/$USER/.w3m/; nvim keymap"
 alias vrk="cd /home/$USER/.config/REAPER/Scripts/reaper-keys/definitions/; nvim -O bindings.lua actions.lua"
 alias vm="cd /home/$USER/.config/mutt/; nvim muttrc"
 alias vy="cd /home/$USER/.config/yazi/; nvim ."
-alias cw="cd '$(cat ~/.workdir)'"
 
 alias locate="locate -i"
+
+alias sw='echo $PWD > ~/.workdir'
+alias cw='cd "$(cat ~/.workdir)"'
 
 #   __                  _   _
 #  / _|_   _ _ __   ___| |_(_) ___  _ __  ___
