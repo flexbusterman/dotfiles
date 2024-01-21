@@ -23,7 +23,8 @@ elif [ $1 == "training" ]; then
 	java=/usr/lib/jvm/java-17-openjdk
 	folder=~/.local/src/training/
 	notefile="/home/$USER/Dropbox/NOTES/trainingapp.md"
-	st -t Server -e zsh -c "cd $folder; JAVA_HOME=$java; npx expo run:android" &
+	# st -t Server -e zsh -c "cd $folder; JAVA_HOME=$java; npx expo run:android" &
+	st -t Server -e zsh -c "cd $folder; JAVA_HOME=$java; npm run web" &
 	# port=19006
 	startBrowser=false
 elif [ $1 == "sandhamn" ]; then
