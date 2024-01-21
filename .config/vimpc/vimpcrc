@@ -13,9 +13,9 @@ map <F1> :help<C-M>
 " Turn consume on when we connect
 "consume on
 
-update
-connect
+connect ~/.mpd/socket 49152
 
-set ignorecase           
+update
+
 set windows library,directory,browse
 set window library
