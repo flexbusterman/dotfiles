@@ -36,12 +36,6 @@ autocmd({
 	end,
 })
 
-autocmd({ "BufWritePre" }, {
-	group = FlexGroup,
-	pattern = { "*.vue" },
-	command = "silent! EslintFixAll",
-})
-
 autocmd({ "VimResized" }, {
 	group = FlexGroup,
 	pattern = "*",

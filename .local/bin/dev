@@ -27,6 +27,14 @@ elif [ $1 == "training" ]; then
 	st -t Server -e zsh -c "cd $folder; JAVA_HOME=$java; npm run web" &
 	# port=19006
 	startBrowser=false
+elif [ $1 == "train" ]; then
+	# java=/usr/lib/jvm/java-17-openjdk
+	folder=~/.local/src/train/
+	notefile="/home/$USER/Dropbox/NOTES/trainingapp.md"
+	# st -t Server -e zsh -c "cd $folder; JAVA_HOME=$java; npx expo run:android" &
+	st -t Server -e zsh -c "cd $folder; npm run web" &
+	# port=19006
+	startBrowser=false
 elif [ $1 == "sandhamn" ]; then
 	st -t Server -e zsh -c "cd ~/.local/src/sandhamn; source /usr/share/nvm/init-nvm.sh; nvm use v16.18.1; npm run dev" &
 	port=3000
