@@ -9,10 +9,9 @@ settings:
   bindings.commands:
     global:
       normal:
-        ",d":
-          hint links spawn yt-dlp -f 'bestvideo[height<=1080]+bestaudio/best[height<=1080]'
+        ',d': hint links spawn yt-dlp -f 'bestvideo[height<=1080]+bestaudio/best[height<=1080]'
           -P ~/Downloads/VIDEO/ {hint-url}
-        ",m": hint links spawn mpv {hint-url} --ytdl-raw-options=mark-watched=
+        ',m': hint links spawn mpv {hint-url} --ytdl-raw-options=mark-watched=
         <Ctrl-m>: bookmark-del
         j: scroll-px 0 100
         k: scroll-px 0 -100
@@ -29,7 +28,7 @@ settings:
   content.blocking.method:
     global: both
   content.cookies.accept:
-    "*://qutebrowser.org/*": all
+    '*://qutebrowser.org/*': all
     https://www.youtube.com/: all
   content.geolocation:
     https://www.1177.se: true
@@ -39,8 +38,10 @@ settings:
     https://www.sj.se: true
     https://www.stockholmparkering.se: true
   content.media.audio_capture:
+    https://app.zoom.us: true
     https://www.instagram.com: true
   content.media.video_capture:
+    https://app.zoom.us: true
     https://www.instagram.com: true
   content.mouse_lock:
     https://nusan.itch.io: true
@@ -64,7 +65,7 @@ settings:
   fonts.web.family.standard:
     global: Arimo Nerd Font Regular
   hints.border:
-    global: "1px solid #000000"
+    global: '1px solid #000000'
   url.default_page:
     global: about:blank
   url.searchengines:
@@ -79,7 +80,6 @@ settings:
       o: https://odysee.com/$/search?q={}
       p: https://pirate-bays.net/search?q={}
       r: https://www.exchange-rates.org/exchange-rate-history/eur-sek-{}
-      # s: https://www.opensubtitles.org/en/search2/sublanguageid-eng/subtrusted-on/hd-on/moviename-{}
       t: https://www.opensubtitles.org/en/search2/sublanguageid-eng/subtrusted-on/hd-on/moviename-{}
       y: https://www.youtube.com/results?search_query={}
   url.start_pages:
