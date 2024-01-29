@@ -37,8 +37,8 @@ return {
 					end,
 				},
 				mapping = cmp.mapping.preset.insert({
-					['<C-n>'] = cmp.config.disable,
-					['<C-p>'] = cmp.config.disable,
+					["<C-n>"] = cmp.config.disable,
+					["<C-p>"] = cmp.config.disable,
 					["<C-j>"] = cmp.mapping.select_next_item(),
 					["<C-k>"] = cmp.mapping.select_prev_item(),
 					["<C-d>"] = cmp.mapping.scroll_docs(-4),

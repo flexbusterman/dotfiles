@@ -20,6 +20,8 @@ vim.keymap.set({ "n" }, "<leader>j", vim.cmd.w)
 vim.keymap.set({ "n" }, "<leader>q", vim.cmd.q)
 vim.keymap.set({ "n" }, "<leader>Q", vim.cmd.x)
 vim.keymap.set({ "n" }, "<leader>d", "<nop>")
+vim.keymap.set({ "n", "i", "x" }, "<C-s>", "<nop>")
+vim.keymap.set({ "n", "i", "x" }, "<C-s>", vim.cmd.w)
 
 vim.keymap.set({ "n" }, "<C-h>", "<C-w>h")
 vim.keymap.set({ "n" }, "<C-j>", "<C-w>j")
