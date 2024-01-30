@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# Check if the session "tidal" exists
+if ! tmux has-session -t webdev 2>/dev/null; then
+    echo "tmux doesn't have session webdev"
+
+    # Create session and panes
+    tmux new-session -d -s webdev
+    echo "starting session"
+    tmux split-window -h -t webdev
+    tmux split-window -v -t webdev
+
+    # Send commands to panes
+    tmux send-keys -t 2 "clear && journalctl --follow -u nginx.service" C-m
+
+    tmux send-keys -t 1 "clear && journalctl --follow -u php-fpm.service" C-m
+    tmux select-pane -t 0
+    tmux send-keys -t 0 "su root" C-m
+    tmux resize-pane -R 15
+else
+    echo "tmux session exists"
+fi
+
+# Attach to the session
+tmux attach-session -t webdev
