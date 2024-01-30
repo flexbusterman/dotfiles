@@ -1,25 +1,54 @@
 #!/bin/bash
 
-# Check if the session "tidal" exists
+# Check if the session "webdev" exists
 if ! tmux has-session -t webdev 2>/dev/null; then
     echo "tmux doesn't have session webdev"
 
-    # Create session and panes
+    # Create a new session named 'webdev' and start nvim as root in the specified directory
     tmux new-session -d -s webdev
     echo "starting session"
-    tmux split-window -h -t webdev
-    tmux split-window -v -t webdev
+    tmux send-keys -t webdev "su root" C-m
+    tmux send-keys -t webdev "cd /opt/lampp/htdocs/wp-content/themes/sm-wp/scandmind24" C-m
+    tmux send-keys -t webdev "nvim" C-m
 
-    # Send commands to panes
-    tmux send-keys -t 2 "clear && journalctl --follow -u nginx.service" C-m
+    # Create a new window with a vertical split for server commands
+    tmux new-window -t webdev:1 -n 'server'
+    tmux split-window -h -t webdev:1
 
-    tmux send-keys -t 1 "clear && journalctl --follow -u php-fpm.service" C-m
-    tmux select-pane -t 0
-    tmux send-keys -t 0 "su root" C-m
-    tmux resize-pane -R 15
+    # Send commands to panes in the new window
+    tmux send-keys -t webdev:1.0 "cd /opt/lampp/htdocs/wp-content/themes/sm-wp/scandmind24 && sudo browser-sync start --no-notify --https --proxy 'localhost' --files '**/*'" C-m
+    tmux send-keys -t webdev:1.1 "sudo xampp restart" C-m
+
 else
     echo "tmux session exists"
 fi
 
 # Attach to the session
 tmux attach-session -t webdev
+
+# #!/bin/bash
+#
+# # Check if the session "webdev" exists
+# if ! tmux has-session -t webdev 2>/dev/null; then
+#     echo "tmux doesn't have session webdev"
+#
+#     # Create session and panes
+#     tmux new-session -d -s webdev
+#     echo "starting session"
+#     tmux split-window -h -t webdev
+#     # tmux split-window -v -t webdev
+#
+#     # Send commands to panes
+#     tmux send-keys -t 2 "sudo xampp restart" C-m
+#     # tmux send-keys -t 1 "clear && journalctl --follow -u php-fpm.service" C-m
+#     tmux send-keys -t 1 "su root" C-m
+#     tmux select-pane -t 0
+#     # tmux send-keys -t 0 "su root" C-m
+#     # tmux resize-pane -R 15
+# 		tmux new-window -t webdev:2 -n 'nvim'
+# else
+#     echo "tmux session exists"
+# fi
+#
+# # Attach to the session
+# tmux attach-session -t webdev
