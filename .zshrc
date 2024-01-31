@@ -122,7 +122,7 @@ alias wine32="WINEPREFIX=~/.wine32 WINEARCH=win32"
 alias mnt="sudo mount -o loop $* /mnt/ISO/"
 alias vimdiff='nvim -d'
 alias gs="git status"
-alias ta="tmux attach"
+alias ta="tmux attach -t "
 alias tam="tmux attach -t main"
 alias td="tmux detach"
 alias tks="tmux kill-server"

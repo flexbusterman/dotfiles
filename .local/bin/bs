@@ -1,0 +1,2 @@
+#!/bin/bash
+browser-sync start --no-notify --proxy 'localhost' --files '**/*'
