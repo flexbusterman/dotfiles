@@ -41,6 +41,35 @@ return {
 			lspconfig.tsserver.setup({
 				capabilites = capabilities,
 			})
+			lspconfig.intelephense.setup({
+				capabilites = capabilities,
+				settings = {
+					intelephense = {
+						stubs = {
+							"bcmath",
+							"bz2",
+							"calendar",
+							"Core",
+							"curl",
+							"zip",
+							"zlib",
+							"wordpress",
+							"woocommerce",
+							"acf-pro",
+							"wordpress-globals",
+							"wp-cli",
+							"genesis",
+							"polylang",
+						},
+						environment = {
+							-- includePaths = "/home/flex/.config/composer/vendor/php-stubs/", -- this line forces the composer path for the stubs in case inteliphense don't find it...
+						},
+						files = {
+							maxSize = 5000000,
+						},
+					},
+				},
+			})
 			lspconfig.html.setup({
 				capabilites = capabilities,
 			})
