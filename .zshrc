@@ -172,7 +172,7 @@ alias dsl="dropbox-cli sharelink | xclip -sel clip"
 alias wls="nmcli dev wifi"
 alias wla="nmcli c"
 alias ws="nmcli device status"
-alias wdissconnect="nmcli device disconnect $(nmcli device | awk '/^w/ {print $1}')"
+alias wd"nmcli device disconnect $(nmcli device | awk '/^w/ {print $1}')"
 # alias wrm='f() { nmcli con delete $*};f'
 alias wrm='nmcli con delete'
 # alias wconnect='f() { nmcli device wifi connect $1 password $2 };f'
