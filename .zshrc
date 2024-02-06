@@ -38,12 +38,12 @@ stty stop undef   # Disable ctrl-s to freeze terminal.
 # bindkey -r '^L'
 # bindkey '^L' autosuggest-accept
 
-autoload -U up-line-or-beginning-search
-autoload -U down-line-or-beginning-search
-zle -N up-line-or-beginning-search
-zle -N down-line-or-beginning-search
-bindkey "^K" up-line-or-beginning-search # Up
-bindkey "^J" down-line-or-beginning-search # Down
+# autoload -U up-line-or-beginning-search
+# autoload -U down-line-or-beginning-search
+# zle -N up-line-or-beginning-search
+# zle -N down-line-or-beginning-search
+# bindkey "^K" up-line-or-beginning-search # Up
+# bindkey "^J" down-line-or-beginning-search # Down
 
 # Enable colors and change prompt:
 autoload -U colors && colors  # Load colors
@@ -55,34 +55,51 @@ PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magent
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/aliasrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/aliasrc"
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/zshnameddirrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/zshnameddirrc"
 
-# vi mode
-bindkey -v
 export KEYTIMEOUT=1
 export MPD_HOST=127.0.0.1
 # export MPD_PORT=6600
-# Change cursor shape for different vi modes.
-function zle-keymap-select {
-  if [[ ${KEYMAP} == vicmd ]] ||
-     [[ $1 = 'block' ]]; then
-    echo -ne '\e[1 q'
-  elif [[ ${KEYMAP} == main ]] ||
-       [[ ${KEYMAP} == viins ]] ||
-       [[ ${KEYMAP} = '' ]] ||
-       [[ $1 = 'beam' ]]; then
-    echo -ne '\e[5 q'
-  fi
-}
-zle -N zle-keymap-select
-zle-line-init() {
-    zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
-    echo -ne "\e[5 q"
-}
-zle -N zle-line-init
-echo -ne '\e[5 q' # Use beam shape cursor on startup.
-preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 
+# bash-like bindings
+bindkey -e
 bindkey '^A' beginning-of-line
 bindkey '^E' end-of-line
+bindkey '^P' history-search-backward
+bindkey '^N' history-search-forward
+# bindkey '\e[A' history-search-backward
+# bindkey '\e[B' history-search-forward
+# Bash-like navigation
+autoload -U select-word-style
+select-word-style bash
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey '^X^E' edit-command-line
+
+# vi mode
+# bindkey -v
+
+# Change cursor shape for different vi modes.
+# function zle-keymap-select {
+#   if [[ ${KEYMAP} == vicmd ]] ||
+#      [[ $1 = 'block' ]]; then
+#     echo -ne '\e[1 q'
+#   elif [[ ${KEYMAP} == main ]] ||
+#        [[ ${KEYMAP} == viins ]] ||
+#        [[ ${KEYMAP} = '' ]] ||
+#        [[ $1 = 'beam' ]]; then
+#     echo -ne '\e[5 q'
+#   fi
+# }
+# zle -N zle-keymap-select
+# zle-line-init() {
+#     zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
+#     echo -ne "\e[5 q"
+# }
+# zle -N zle-line-init
+# echo -ne '\e[5 q' # Use beam shape cursor on startup.
+# preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
+
+# bindkey '^A' beginning-of-line
+# bindkey '^E' end-of-line
 
 #        _ _
 #   __ _| (_) __ _ ___  ___  ___
@@ -444,8 +461,8 @@ LC_ALL=
 
 # in your/custom/path you need to have a "plugins" folder and in there you clone the repository as zsh_codex
 export ZSH_CUSTOM="$HOME/.zsh/"
-source "$ZSH_CUSTOM/plugins/zsh_codex/zsh_codex.plugin.zsh"
-bindkey '^X' create_completion
+# source "$ZSH_CUSTOM/plugins/zsh_codex/zsh_codex.plugin.zsh"
+# bindkey '^X' create_completion
 
 # Load syntax highlighting; should be last according to Luke Smith.
 source ~/.zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null
