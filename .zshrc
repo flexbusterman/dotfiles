@@ -2,7 +2,7 @@
 source ~/.zsh/plugins/instant-zsh/instant-zsh.zsh
 instant-zsh-pre "%B%F{1}[%F{3}%n%F{2}@%F{4}%M %F{5}%~%F{1}]%f$%b "
 
-NVM_LAZY_LOAD=true
+# NVM_LAZY_LOAD=true
 HISTFILE=/home/$USER/.history/zsh/history
 HISTSIZE=10000000
 SAVEHIST=10000000
@@ -13,7 +13,7 @@ path+=($HOME/.cabal/bin/)
 source ~/.local/src/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 source ~/.zsh/plugins/zsh-system-clipboard/zsh-system-clipboard.zsh
 source ~/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-source ~/.zsh/plugins/zsh-nvm/zsh-nvm.plugin.zsh
+# source ~/.zsh/plugins/zsh-nvm/zsh-nvm.plugin.zsh
 
 setopt APPEND_HISTORY # Allow multiple terminal sessions to all append to one zsh command history
 setopt autocd   # Automatically cd into typed directory.
@@ -109,6 +109,16 @@ bindkey '^X^E' edit-command-line
 # aliases
 
 # Misc aliases
+command_not_found_handler() {
+  # Check if the command matches the pattern "rebo*ot"
+  if [[ $1 == rebo*t ]]; then
+    echo "Interpreting $1 as 'reboot'"
+    sudo reboot
+  else
+    echo "Command not found: $1"
+  fi
+}
+
 alias bs='browser-sync start --server --no-notify --files "**/*"'
 alias cat="bat"
 alias copy='xclip -sel clip'
