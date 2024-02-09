@@ -10,7 +10,13 @@ path+=($HOME/.ghcup/bin)
 path+=($HOME/go/bin/)
 path+=($HOME/.cabal/bin/)
 
-source ~/.local/src/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+# autocomplete plugin and settings
+source ~/.zsh/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+## Autocompletion
+zstyle -e ':autocomplete:list-choices:*' list-lines 'reply=( $(( LINES / 3 )) )'
+# Override history search.
+zstyle ':autocomplete:history-incremental-search-backward:*' list-lines 8
+
 source ~/.zsh/plugins/zsh-system-clipboard/zsh-system-clipboard.zsh
 source ~/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 # source ~/.zsh/plugins/zsh-nvm/zsh-nvm.plugin.zsh

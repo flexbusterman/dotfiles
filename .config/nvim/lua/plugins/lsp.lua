@@ -136,6 +136,18 @@ return {
 			lspconfig.html.setup({
 				capabilites = capabilities,
 			})
+			-- lspconfig.prettier.setup({
+			-- 	capabilites = capabilities,
+			-- 	filetypes = {
+			-- 		"css",
+			-- 		"html",
+			-- 		"javascript",
+			-- 		"javascriptreact",
+			-- 		"typescriptreact",
+			-- 		"php",
+			-- 		"json",
+			-- 	},
+			-- })
 			lspconfig.lua_ls.setup({
 				capabilites = capabilities,
 			})
