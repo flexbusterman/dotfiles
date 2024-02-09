@@ -13,9 +13,9 @@ path+=($HOME/.cabal/bin/)
 # autocomplete plugin and settings
 source ~/.zsh/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 ## Autocompletion
-zstyle -e ':autocomplete:list-choices:*' list-lines 'reply=( $(( LINES / 3 )) )'
+# zstyle -e ':autocomplete:list-choices:*' list-lines 'reply=( $(( LINES / 2 )) )'
 # Override history search.
-zstyle ':autocomplete:history-incremental-search-backward:*' list-lines 8
+zstyle ':autocomplete:history-incremental-search-backward:*' list-lines 16
 
 source ~/.zsh/plugins/zsh-system-clipboard/zsh-system-clipboard.zsh
 source ~/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
