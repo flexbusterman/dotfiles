@@ -40,7 +40,7 @@ autocmd({
 	"InsertLeave",
 }, {
 	group = FlexGroup,
-	pattern = "*.php",
+	pattern = "*.php,*.css",
 	command = "write",
 })
 
