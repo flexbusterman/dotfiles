@@ -19,6 +19,7 @@ return {
 					"typescript",
 					"typescriptreact",
 					"yaml",
+					"php",
 				},
 				cli_options = {
 					semi = false,

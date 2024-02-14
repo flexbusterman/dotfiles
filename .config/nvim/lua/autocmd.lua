@@ -36,6 +36,14 @@ autocmd({
 	end,
 })
 
+autocmd({
+	"InsertLeave",
+}, {
+	group = FlexGroup,
+	pattern = "*.php",
+	command = "write",
+})
+
 autocmd({ "VimResized" }, {
 	group = FlexGroup,
 	pattern = "*",

@@ -1,32 +1,32 @@
 return {
-	'davidgranstrom/scnvim',
+	"davidgranstrom/scnvim",
 	-- dir = "/home/flex/.local/src/scnvim/",
-	ft = { 'supercollider' },
+	ft = { "supercollider" },
 	dependencies = {
-		'davidgranstrom/scnvim-tmux'
+		"davidgranstrom/scnvim-tmux",
 	},
 	config = function()
-		local scnvim = require 'scnvim'
+		local scnvim = require("scnvim")
 		local map = scnvim.map
 		local map_expr = scnvim.map_expr
 
-		scnvim.setup {
+		scnvim.setup({
 			ensure_installed = true,
 			sclang = {
 				cmd = nil,
 				args = {},
 			},
 			documentation = {
-				cmd = '/usr/bin/pandoc',
+				cmd = "/usr/bin/pandoc",
 				horizontal = false,
-				direction = 'right',
+				direction = "right",
 				keymaps = true,
 			},
 			editor = {
 				force_ft_supercollider = true,
 				highlight = {
-					color = 'TermCursor',
-					type = 'flash',
+					color = "TermCursor",
+					type = "flash",
 					flash = {
 						duration = 30,
 						repeats = 1,
@@ -42,7 +42,7 @@ return {
 			},
 			snippet = {
 				engine = {
-					name = 'luasnip',
+					name = "luasnip",
 					options = {
 						descriptions = true,
 					},
@@ -55,30 +55,30 @@ return {
 				tmux = {
 					path = vim.fn.tempname(),
 					horizontal = true,
-					size = '20%',
-					cmd = 'scnvim-tmux',
-					args = { '$1' },
+					size = "20%",
+					cmd = "scnvim-tmux",
+					args = { "$1" },
 				},
 			},
 			keymaps = {
-				['<M-e>'] = map('editor.send_line', { 'i', 'n' }),
-				['<CR>'] = {
-					map('editor.send_block', 'n'),
-					map('editor.send_selection', 'x'),
+				["<M-e>"] = map("editor.send_line", { "i", "n" }),
+				["<CR>"] = {
+					map("editor.send_block", "n"),
+					map("editor.send_selection", "x"),
 				},
-				['<leader><CR>'] = map('postwin.toggle', 'n'),
-				['<M-CR>'] = map('postwin.toggle', 'i'),
-				['<leader>c'] = map('postwin.clear', 'n'),
-				['<K>'] = map('signature.show', 'n'),
-				['<leader>.'] = map('sclang.hard_stop', { 'n', 'x' }),
-				['<leader>s'] = map('sclang.start'),
-				['<leader>sk'] = map('sclang.recompile'),
-				['<F1>'] = map_expr('s.boot'),
-				['<F2>'] = map_expr('s.meter'),
+				["<leader><CR>"] = map("postwin.toggle", "n"),
+				["<M-CR>"] = map("postwin.toggle", "i"),
+				["<leader>c"] = map("postwin.clear", "n"),
+				["<K>"] = map("signature.show", "n"),
+				["<leader>."] = map("sclang.hard_stop", { "n", "x" }),
+				["<leader>s"] = map("sclang.start"),
+				["<leader>sk"] = map("sclang.recompile"),
+				["<F1>"] = map_expr("s.boot"),
+				["<F2>"] = map_expr("s.meter"),
 			},
-		}
+		})
 
-		scnvim.load_extension('tmux')
+		scnvim.load_extension("tmux")
 
 		vim.g.scnvim_snippet_format = "luasnip"
 
@@ -104,10 +104,10 @@ return {
         augroup END
         ]])
 
-
 		-- supercollider argument transformation
 
-		vim.api.nvim_exec([[
+		vim.api.nvim_exec(
+			[[
 		function! ProcessRange() range
 			" Substitution command
 			'<,'>s/\(\\[^.]*\)\.[ka]r(\([^)]*\))/\r\1, \2,\r/g
@@ -135,9 +135,10 @@ return {
 			" Wrap negative numbers in parentheses within the selection
 			'<,'>s/\v-([0-9]+)/(-\1)/g
 		endfunction
-		]], false)
+		]],
+			false
+		)
 
 		vim.keymap.set("v", "<leader>p", ":'<,'>call ProcessRange()<CR>")
-
-	end
+	end,
 }
