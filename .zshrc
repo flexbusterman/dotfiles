@@ -2,7 +2,7 @@
 source ~/.zsh/plugins/instant-zsh/instant-zsh.zsh
 instant-zsh-pre "%B%F{1}[%F{3}%n%F{2}@%F{4}%M %F{5}%~%F{1}]%f$%b "
 
-# NVM_LAZY_LOAD=true
+NVM_LAZY_LOAD=true
 HISTFILE=/home/$USER/.history/zsh/history
 HISTSIZE=10000000
 SAVEHIST=10000000
@@ -10,16 +10,10 @@ path+=($HOME/.ghcup/bin)
 path+=($HOME/go/bin/)
 path+=($HOME/.cabal/bin/)
 
-# autocomplete plugin and settings
-source ~/.zsh/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
-## Autocompletion
-# zstyle -e ':autocomplete:list-choices:*' list-lines 'reply=( $(( LINES / 2 )) )'
-# Override history search.
-zstyle ':autocomplete:history-incremental-search-backward:*' list-lines 16
-
+source ~/.local/src/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 source ~/.zsh/plugins/zsh-system-clipboard/zsh-system-clipboard.zsh
 source ~/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-# source ~/.zsh/plugins/zsh-nvm/zsh-nvm.plugin.zsh
+source ~/.zsh/plugins/zsh-nvm/zsh-nvm.plugin.zsh
 
 setopt APPEND_HISTORY # Allow multiple terminal sessions to all append to one zsh command history
 setopt autocd   # Automatically cd into typed directory.
@@ -44,12 +38,12 @@ stty stop undef   # Disable ctrl-s to freeze terminal.
 # bindkey -r '^L'
 # bindkey '^L' autosuggest-accept
 
-# autoload -U up-line-or-beginning-search
-# autoload -U down-line-or-beginning-search
-# zle -N up-line-or-beginning-search
-# zle -N down-line-or-beginning-search
-# bindkey "^K" up-line-or-beginning-search # Up
-# bindkey "^J" down-line-or-beginning-search # Down
+autoload -U up-line-or-beginning-search
+autoload -U down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+bindkey "^K" up-line-or-beginning-search # Up
+bindkey "^J" down-line-or-beginning-search # Down
 
 # Enable colors and change prompt:
 autoload -U colors && colors  # Load colors
@@ -61,28 +55,11 @@ PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magent
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/aliasrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/aliasrc"
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/zshnameddirrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/zshnameddirrc"
 
+# vi mode
+bindkey -v
 export KEYTIMEOUT=1
 export MPD_HOST=127.0.0.1
 # export MPD_PORT=6600
-
-# bash-like bindings
-# bindkey -e
-# bindkey '^A' beginning-of-line
-# bindkey '^E' end-of-line
-# bindkey '^P' history-search-backward
-# bindkey '^N' history-search-forward
-# # bindkey '\e[A' history-search-backward
-# # bindkey '\e[B' history-search-forward
-# # Bash-like navigation
-# autoload -U select-word-style
-# select-word-style bash
-# autoload -Uz edit-command-line
-# zle -N edit-command-line
-# bindkey '^X^E' edit-command-line
-
-# vi mode
-bindkey -v
-
 # Change cursor shape for different vi modes.
 function zle-keymap-select {
   if [[ ${KEYMAP} == vicmd ]] ||
@@ -104,8 +81,8 @@ zle -N zle-line-init
 echo -ne '\e[5 q' # Use beam shape cursor on startup.
 preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 
-# bindkey '^A' beginning-of-line
-# bindkey '^E' end-of-line
+bindkey '^A' beginning-of-line
+bindkey '^E' end-of-line
 
 #        _ _
 #   __ _| (_) __ _ ___  ___  ___
@@ -115,16 +92,6 @@ preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 # aliases
 
 # Misc aliases
-command_not_found_handler() {
-  # Check if the command matches the pattern "rebo*ot"
-  if [[ $1 == rebo*t ]]; then
-    echo "Interpreting $1 as 'reboot'"
-    sudo reboot
-  else
-    echo "Command not found: $1"
-  fi
-}
-
 alias bs='browser-sync start --server --no-notify --files "**/*"'
 alias cat="bat"
 alias copy='xclip -sel clip'
@@ -205,9 +172,9 @@ alias dsl="dropbox-cli sharelink | xclip -sel clip"
 alias wls="nmcli dev wifi"
 alias wla="nmcli c"
 alias ws="nmcli device status"
+alias wd"nmcli device disconnect $(nmcli device | awk '/^w/ {print $1}')"
 # alias wrm='f() { nmcli con delete $*};f'
 alias wrm='nmcli con delete'
-alias wd="nmcli device disconnect $(nmcli device | awk '/^w/ {print $1}')"
 # alias wconnect='f() { nmcli device wifi connect $1 password $2 };f'
 # alias wconnect='nmcli device wifi connect'
 # alias wdisable='f() { nmcli connection down $* };f'
@@ -407,7 +374,7 @@ fr(){
 gp() {
 	eval "$(ssh-agent -s)"
 	# ssh-add all files without extension
-	ssh-add /home/flex/.ssh/git
+	ssh-add ~/.ssh/git
   result="\"$*\""
   git add .
   git commit -m $result
@@ -477,8 +444,8 @@ LC_ALL=
 
 # in your/custom/path you need to have a "plugins" folder and in there you clone the repository as zsh_codex
 export ZSH_CUSTOM="$HOME/.zsh/"
-# source "$ZSH_CUSTOM/plugins/zsh_codex/zsh_codex.plugin.zsh"
-# bindkey '^X' create_completion
+source "$ZSH_CUSTOM/plugins/zsh_codex/zsh_codex.plugin.zsh"
+bindkey '^X' create_completion
 
 # Load syntax highlighting; should be last according to Luke Smith.
 source ~/.zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null
