@@ -1,52 +1,54 @@
 #!/bin/bash
 
-# create an array with all filetypes supported by mpd
-declare -a filetypes=("mp3" "ogg" "flac" "wav" "m4a" "opus" "m4p" "m4b" "m4r" "3gp" "aac" "mka" "wma" "ape" "mpc" "tta" "wv" "spx" "aiff" "mod" "s3m" "xm" "it" "mo3" "mtm" "umx" "mid" "midi" "sid" "ac3" "dts" "wma" "wv" "spx" "aiff" "mod" "s3m" "xm" "it" "mo3" "mtm" "umx" "mid" "midi" "sid" "ac3" "dts")
+# Define supported filetypes in lowercase
+declare -a filetypes=("mp3" "ogg" "flac" "wav" "m4a" "opus" "m4p" "m4b" "m4r" "3gp" "aac" "mka" "wma" "ape" "mpc" "tta" "wv" "spx" "aiff" "mod" "s3m" "xm" "it" "mo3" "mtm" "umx" "mid" "midi" "sid" "ac3" "dts")
 
-# create a variable containing a nil value
 first=""
 
 for i in "$@"
 do
-    # Check if the path is absolute
-    # if [[ "$i" = /* ]]; then
-    #     filepath="$i"
-    # else
-    #     filepath="$(pwd)/$i"
-    # fi
-	# if argument is in the filetypes array, add it to mpd using mpc
-	# if the argument contains full path, add it as is
-	# prepend the path to the file with the current directory
-	# if the argument is a directory, add all files in it if they are in the filetypes array
-	if [[ " ${filetypes[@]} " =~ " ${i##*.} " ]]; then
-		mpc --host ~/.mpd/socket add "$i"
-		notify-send "$i"
-		# if it's the first song, set $first to filename
-		if [[ -z "$first" ]]; then
-			first="$i"
-		fi
-	elif [[ "$i" == *"/"* ]]; then
-		mpc --host ~/.mpd/socket add "$i"
-		if [[ -z "$first" ]]; then
-			first="$i"
-		fi
-	elif [[ -d "$i" ]]; then
-		for j in "$i"/*; do
-			if [[ " ${filetypes[@]} " =~ " ${j##*.} " ]]; then
-				mpc --host ~/.mpd/socket add "$filepath/$j"
-				if [[ -z "$first" ]]; then
-					first="$j"
-				fi
-			fi
-		done
-	fi
+    # Determine the full path of the file or directory
+    if [[ "$i" == /* ]] || [[ "$i" == ~* ]]; then
+        filepath="$i"
+    else
+        filepath="$(pwd)/$i"
+    fi
 
-	# if $first contains path, only keep the filename, removing filetype
-	if [[ "$first" == *"/"* ]]; then
-		first="${first##*/}"
-	fi
+    # Extract the file extension and convert it to lowercase
+    extension="${i##*.}"
+    extension="${extension,,}"
 
-	# searchplay $first
-	mpc --host ~/.mpd/socket searchplay filename "$first"
+    if [[ " ${filetypes[*],,} " =~ " ${extension} " ]]; then
+        # Add the file to MPD using its full path
+        mpc --host ~/.mpd/socket add "$filepath"
+        notify-send "$filepath added to MPD"
+        # Set first to the first song added
+        if [[ -z "$first" ]]; then
+            first="$filepath"
+        fi
+    elif [[ -d "$i" ]]; then
+        for j in "$i"/*; do
+            # Extract the file extension and convert it to lowercase
+            extension="${j##*.}"
+            extension="${extension,,}"
 
+            if [[ " ${filetypes[*],,} " =~ " ${extension} " ]]; then
+                mpc --host ~/.mpd/socket add "$j"
+                notify-send "$j added to MPD"
+                # Set first to the first song added, if not already set
+                if [[ -z "$first" ]]; then
+                    first="$j"
+                fi
+            fi
+        done
+    fi
 done
+
+# After adding songs, play the first song added if it exists
+if [[ -n "$first" ]]; then
+    # Extract just the filename from the path
+    first_filename="${first##*/}"
+    # Use mpc searchplay to play the first song added
+    mpc --host ~/.mpd/socket searchplay filename "${first_filename}"
+    echo "Playing: $first_filename"
+fi
