@@ -66,43 +66,43 @@ export MPD_HOST=127.0.0.1
 # export MPD_PORT=6600
 
 # bash-like bindings
-bindkey -e
-bindkey '^A' beginning-of-line
-bindkey '^E' end-of-line
-bindkey '^P' history-search-backward
-bindkey '^N' history-search-forward
-# bindkey '\e[A' history-search-backward
-# bindkey '\e[B' history-search-forward
-# Bash-like navigation
-autoload -U select-word-style
-select-word-style bash
-autoload -Uz edit-command-line
-zle -N edit-command-line
-bindkey '^X^E' edit-command-line
+# bindkey -e
+# bindkey '^A' beginning-of-line
+# bindkey '^E' end-of-line
+# bindkey '^P' history-search-backward
+# bindkey '^N' history-search-forward
+# # bindkey '\e[A' history-search-backward
+# # bindkey '\e[B' history-search-forward
+# # Bash-like navigation
+# autoload -U select-word-style
+# select-word-style bash
+# autoload -Uz edit-command-line
+# zle -N edit-command-line
+# bindkey '^X^E' edit-command-line
 
 # vi mode
-# bindkey -v
+bindkey -v
 
 # Change cursor shape for different vi modes.
-# function zle-keymap-select {
-#   if [[ ${KEYMAP} == vicmd ]] ||
-#      [[ $1 = 'block' ]]; then
-#     echo -ne '\e[1 q'
-#   elif [[ ${KEYMAP} == main ]] ||
-#        [[ ${KEYMAP} == viins ]] ||
-#        [[ ${KEYMAP} = '' ]] ||
-#        [[ $1 = 'beam' ]]; then
-#     echo -ne '\e[5 q'
-#   fi
-# }
-# zle -N zle-keymap-select
-# zle-line-init() {
-#     zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
-#     echo -ne "\e[5 q"
-# }
-# zle -N zle-line-init
-# echo -ne '\e[5 q' # Use beam shape cursor on startup.
-# preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
+function zle-keymap-select {
+  if [[ ${KEYMAP} == vicmd ]] ||
+     [[ $1 = 'block' ]]; then
+    echo -ne '\e[1 q'
+  elif [[ ${KEYMAP} == main ]] ||
+       [[ ${KEYMAP} == viins ]] ||
+       [[ ${KEYMAP} = '' ]] ||
+       [[ $1 = 'beam' ]]; then
+    echo -ne '\e[5 q'
+  fi
+}
+zle -N zle-keymap-select
+zle-line-init() {
+    zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
+    echo -ne "\e[5 q"
+}
+zle -N zle-line-init
+echo -ne '\e[5 q' # Use beam shape cursor on startup.
+preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 
 # bindkey '^A' beginning-of-line
 # bindkey '^E' end-of-line
