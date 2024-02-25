@@ -146,18 +146,6 @@ alias als="asoundconf is-active"
 alias alls="asoundconf list-all"
 alias ald="asoundconf set-default-card"
 
-# Navigation shortcuts
-alias b='cd ~/.local/bin/; exa'
-alias D='cd ~/Downloads; exa'
-alias d='cd ~/Dropbox; exa'
-alias s='cd ~/Dropbox/2023\ FOTO/SCREENSHOTS; exa'
-alias S='cd ~/Dropbox/SUPERCOLLIDER; exa'
-alias n='cd ~/Dropbox/NOTES; exa'
-alias c='cd ~/.config/; exa'
-alias w='cd ~/.wine/drive_c/; exa'
-alias M='cd ~/Music/; exa'
-alias g='cd ~/.local/src/; exa'
-
 # Dropbox aliases
 alias dadd="dropbox-cli exclude remove"
 alias deg="dropbox-cli exclude | grep --color=always -i"
@@ -446,6 +434,8 @@ LC_ALL=
 export ZSH_CUSTOM="$HOME/.zsh/"
 source "$ZSH_CUSTOM/plugins/zsh_codex/zsh_codex.plugin.zsh"
 bindkey '^X' create_completion
+
+eval "$(zoxide init --cmd cd zsh)"
 
 # Load syntax highlighting; should be last according to Luke Smith.
 source ~/.zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null

@@ -10,6 +10,14 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufNewFile" }, {
 	command = "set filetype=sh.env",
 })
 
+vim.api.nvim_create_autocmd({ "BufEnter", "BufNewFile" }, {
+	pattern = "*",
+	callback = function()
+		vim.cmd("set formatoptions-=cro")
+		vim.cmd("setlocal formatoptions-=cro")
+	end,
+})
+
 autocmd({
 	"BufWritePre",
 }, {
