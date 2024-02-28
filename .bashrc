@@ -24,7 +24,6 @@ export RANGER_LOAD_DEFAULT_RC=FALSE
 # export $(grep -v '^#' .env | xargs)
 # export FZF_DEFAULT_COMMAND="find -L"
 export JAVA_HOME=/usr/lib/jvm/java-21-openjdk/
-unset MAILCHECK
 
 [[ $- != *i* ]] && return
 
