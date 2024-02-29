@@ -63,9 +63,10 @@ settings:
   downloads.remove_finished:
     global: 1
   fonts.default_family:
-    global: Fira Mono Medium
+    # global: Fira Mono Medium
+    global: "PxPlus IBM VGA 8x16"
   fonts.default_size:
-    global: 14px
+    global: 16px
   fonts.web.family.standard:
     global: Arimo Nerd Font Regular
   hints.border:
