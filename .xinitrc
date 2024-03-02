@@ -12,7 +12,7 @@ dunst &
 qpwgraph -m &
 pidof dwmblocks || dwmblocks &
 srandrd displayhandler &
-blueberry-tray &
+blueman-applet &
 xdotool mousemove $(xdotool getdisplaygeometry | awk '{print $1-1, $2-1}') &
 tmux new-session -d -s main &
 exec dwmstart
