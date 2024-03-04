@@ -230,16 +230,16 @@ vim.keymap.set({ 'n', 'i', 'x' }, '<C-s>', vim.cmd.w, { desc = 'Save' })
 
 vim.keymap.set({ 'n' }, '<leader>q', vim.cmd.q, { desc = 'Quit' })
 
-vim.keymap.set('n', 'J', 'mzJ`z')
-vim.keymap.set('n', '<C-d>', '<C-d>zz')
-vim.keymap.set('n', '<C-u>', '<C-u>zz')
-vim.keymap.set('n', 'n', 'nzzzv')
-vim.keymap.set('n', 'N', 'Nzzzv')
+vim.keymap.set('n', 'J', 'mzJ`z', { desc = 'Join lines' })
+vim.keymap.set('n', '<C-d>', '<C-d>zz', { desc = 'Jump down and center view' })
+vim.keymap.set('n', '<C-u>', '<C-u>zz', { desc = 'Jump up and center view' })
+vim.keymap.set('n', 'n', 'nzzzv', { desc = 'Jump to next search result and center view' })
+vim.keymap.set('n', 'N', 'Nzzzv', { desc = 'Jump to previous search result and center view' })
 
-vim.keymap.set('n', 'tt', ':tab split<CR>')
+vim.keymap.set('n', 'tt', ':tab split<CR>', { desc = 'Open buffer in a new full size tab' })
 
-vim.keymap.set('n', '{', '{b')
-vim.keymap.set('n', '}', '}w')
+vim.keymap.set('n', '{', '{b', { desc = 'Better jumping to previous paragraph' })
+vim.keymap.set('n', '}', '}w', { desc = 'Better jumping to next paragraph' })
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
