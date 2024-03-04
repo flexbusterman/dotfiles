@@ -457,9 +457,11 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
       vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
       vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
+      vim.keymap.set('n', '<leader>f', builtin.find_files, { desc = 'Search files' })
       vim.keymap.set('n', '<leader>ss', builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
       vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
       vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
+      vim.keymap.set('n', '<leader>g', builtin.live_grep, { desc = 'Search by grep' })
       vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
       vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
       vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
@@ -697,14 +699,50 @@ require('lazy').setup({
 
   { -- Autoformat
     'stevearc/conform.nvim',
+    event = {
+      'BufReadPre',
+      'BufNewFile',
+    },
     opts = {
       notify_on_error = false,
       format_on_save = {
-        timeout_ms = 500,
         lsp_fallback = true,
+        async = false,
+        timeout_ms = 500,
       },
       formatters_by_ft = {
         lua = { 'stylua' },
+        javascript = {
+          'prettier',
+        },
+        typescript = {
+          'prettier',
+        },
+        javascriptreact = {
+          'prettier',
+        },
+        typescriptreact = {
+          'prettier',
+        },
+        svelte = {
+          'prettier',
+        },
+        css = {
+          'prettier',
+        },
+        html = {
+          'prettier',
+        },
+        json = {
+          'prettier',
+        },
+        markdown = {
+          'prettier',
+        },
+        python = {
+          'isort',
+          'black',
+        },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         --
@@ -713,6 +751,13 @@ require('lazy').setup({
         -- javascript = { { "prettierd", "prettier" } },
       },
     },
+    vim.keymap.set({ 'n', 'v' }, '<leader>mp', function()
+      require('conform').format {
+        lsp_fallback = true,
+        async = false,
+        timeout_ms = 500,
+      }
+    end, { desc = 'Format current buffer' }),
   },
 
   { -- Autocompletion
@@ -722,6 +767,12 @@ require('lazy').setup({
       -- Snippet Engine & its associated nvim-cmp source
       {
         'L3MON4D3/LuaSnip',
+        config = function()
+          require('luasnip.loaders.from_vscode').lazy_load()
+          require('luasnip.loaders.from_lua').lazy_load { paths = '/home/flex/.config/nvim/lua/custom/plugins/luasnippets/' }
+          require('luasnip').filetype_extend('javascript', { 'javascriptreact' })
+          require('luasnip').filetype_extend('javascript', { 'html' })
+        end,
         build = (function()
           -- Build Step is needed for regex support in snippets
           -- This step is not supported in many windows environments
@@ -765,38 +816,44 @@ require('lazy').setup({
         --
         -- No, but seriously. Please read `:help ins-completion`, it is really good!
         mapping = cmp.mapping.preset.insert {
-          -- Select the [n]ext item
-          ['<C-n>'] = cmp.mapping.select_next_item(),
-          -- Select the [p]revious item
-          ['<C-p>'] = cmp.mapping.select_prev_item(),
-
-          -- Accept ([y]es) the completion.
-          --  This will auto-import if your LSP supports it.
-          --  This will expand snippets if the LSP sent a snippet.
-          ['<C-y>'] = cmp.mapping.confirm { select = true },
-
-          -- Manually trigger a completion from nvim-cmp.
-          --  Generally you don't need this, because nvim-cmp will display
-          --  completions whenever it has completion options available.
-          ['<C-Space>'] = cmp.mapping.complete {},
-
-          -- Think of <c-l> as moving to the right of your snippet expansion.
-          --  So if you have a snippet that's like:
-          --  function $name($args)
-          --    $body
-          --  end
-          --
-          -- <c-l> will move you to the right of each of the expansion locations.
-          -- <c-h> is similar, except moving you backwards.
-          ['<C-l>'] = cmp.mapping(function()
+          ['<C-n>'] = cmp.config.disable,
+          ['<C-p>'] = cmp.config.disable,
+          ['<C-j>'] = cmp.mapping.select_next_item(),
+          ['<C-k>'] = cmp.mapping.select_prev_item(),
+          ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+          ['<C-u>'] = cmp.mapping.scroll_docs(4),
+          -- ['<C-Space>'] = cmp.mapping.complete {},
+          ['<C-l>'] = cmp.mapping.confirm {
+            behavior = cmp.ConfirmBehavior.Replace,
+            select = true,
+          },
+          ['<Tab>'] = cmp.mapping(function(fallback)
             if luasnip.expand_or_locally_jumpable() then
               luasnip.expand_or_jump()
+            else
+              fallback()
             end
+            -- if cmp.visible() then
+            -- 	cmp.select_next_item()
+            -- elseif luasnip.expand_or_locally_jumpable() then
+            -- 	luasnip.expand_or_jump()
+            -- else
+            -- 	fallback()
+            -- end
           end, { 'i', 's' }),
-          ['<C-h>'] = cmp.mapping(function()
+          ['<S-Tab>'] = cmp.mapping(function(fallback)
             if luasnip.locally_jumpable(-1) then
               luasnip.jump(-1)
+            else
+              fallback()
             end
+            -- if cmp.visible() then
+            -- 	cmp.select_prev_item()
+            -- elseif luasnip.locally_jumpable(-1) then
+            -- 	luasnip.jump(-1)
+            -- else
+            -- 	fallback()
+            -- end
           end, { 'i', 's' }),
         },
         sources = {

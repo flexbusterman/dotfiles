@@ -6,9 +6,14 @@ return {
     'nvim-tree/nvim-web-devicons',
   },
   config = function()
-    vim.keymap.set('n', '<leader>h', ':NvimTreeToggle<CR>', {
-      noremap = true,
-    })
+    local api = require 'nvim-tree.api'
+
+    local function opts(desc)
+      return { desc = 'nvim-tree: ' .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+    end
+    vim.keymap.set('n', '<leader>h', ':NvimTreeToggle<CR>', { noremap = true })
+    vim.keymap.set('n', 'l', api.node.open.edit, opts 'Open')
+    vim.keymap.set('n', 'h', api.node.navigate.parent_close, opts 'Close Directory')
     require('nvim-tree').setup { -- BEGIN_DEFAULT_OPTS
       on_attach = 'default',
       hijack_cursor = false,
