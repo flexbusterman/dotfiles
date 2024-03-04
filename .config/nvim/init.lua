@@ -91,6 +91,12 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- [[ Setting options ]]
+--   ___        _   _
+--  / _ \ _ __ | |_(_) ___  _ __  ___
+-- | | | | '_ \| __| |/ _ \| '_ \/ __|
+-- | |_| | |_) | |_| | (_) | | | \__ \
+--  \___/| .__/ \__|_|\___/|_| |_|___/
+--       |_|
 -- See `:help vim.opt`
 -- NOTE: You can change these options as you wish!
 --  For more options, you can see `:help option-list`
@@ -116,6 +122,7 @@ vim.opt.clipboard = 'unnamedplus'
 vim.opt.breakindent = true
 
 -- Save undo history
+vim.opt.undodir = os.getenv 'HOME' .. '/.vim/undodir'
 vim.opt.undofile = true
 
 -- Case-insensitive searching UNLESS \C or capital in search
@@ -126,7 +133,7 @@ vim.opt.smartcase = true
 vim.opt.signcolumn = 'yes'
 
 -- Decrease update time
-vim.opt.updatetime = 250
+vim.opt.updatetime = 50
 vim.opt.timeoutlen = 300
 
 -- Configure how new splits should be opened
@@ -146,7 +153,7 @@ vim.opt.inccommand = 'split'
 vim.opt.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
-vim.opt.scrolloff = 10
+vim.opt.scrolloff = 8
 
 -- [[ custom options ]]
 
@@ -157,11 +164,36 @@ vim.g.loaded_netrwPlugin = 1
 -- optionally enable 24-bit colour
 vim.opt.termguicolors = true
 
+vim.opt.wildignore = { '*/node_modules/*' }
+
+-- indenting
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
+vim.opt.expandtab = false
+vim.opt.autoindent = true
+vim.opt.smartindent = true
+vim.opt.shiftround = true
+vim.opt.wrap = true
+
+vim.opt.swapfile = false
+vim.opt.backup = false
+
+-- no autoamtic commenting on new lines
+vim.opt.formatoptions = ''
+
 -- [[ Basic Keymaps ]]
+--  _  __
+-- | |/ /___ _   _ _ __ ___   __ _ _ __  ___
+-- | ' // _ \ | | | '_ ` _ \ / _` | '_ \/ __|
+-- | . \  __/ |_| | | | | | | (_| | |_) \__ \
+-- |_|\_\___|\__, |_| |_| |_|\__,_| .__/|___/
+--           |___/                |_|
 --  See `:help vim.keymap.set()`
 
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
-vim.opt.hlsearch = true
+vim.opt.hlsearch = false
+vim.opt.incsearch = true
+
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 -- Diagnostic keymaps
@@ -193,6 +225,22 @@ vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right win
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
+vim.keymap.set({ 'n' }, '<leader>j', vim.cmd.w, { desc = 'Save' })
+vim.keymap.set({ 'n', 'i', 'x' }, '<C-s>', vim.cmd.w, { desc = 'Save' })
+
+vim.keymap.set({ 'n' }, '<leader>q', vim.cmd.q, { desc = 'Quit' })
+
+vim.keymap.set('n', 'J', 'mzJ`z')
+vim.keymap.set('n', '<C-d>', '<C-d>zz')
+vim.keymap.set('n', '<C-u>', '<C-u>zz')
+vim.keymap.set('n', 'n', 'nzzzv')
+vim.keymap.set('n', 'N', 'Nzzzv')
+
+vim.keymap.set('n', 'tt', ':tab split<CR>')
+
+vim.keymap.set('n', '{', '{b')
+vim.keymap.set('n', '}', '}w')
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
@@ -216,8 +264,46 @@ if not vim.loop.fs_stat(lazypath) then
 end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
+-- [[ Custom autocommands ]]
+
+vim.api.nvim_create_autocmd({ 'BufEnter', 'BufNewFile' }, {
+  pattern = '.env*',
+  command = 'set filetype=sh.env',
+})
+
+vim.api.nvim_create_autocmd({ 'BufEnter', 'BufNewFile' }, {
+  pattern = '*',
+  callback = function()
+    vim.cmd 'set formatoptions-=cro'
+    vim.cmd 'setlocal formatoptions-=cro'
+  end,
+})
+
+local FlexGroup = vim.api.nvim_create_augroup('Flex', {})
+
+vim.api.nvim_create_autocmd({
+  'InsertLeave',
+}, {
+  group = FlexGroup,
+  pattern = '*.php,*.css',
+  command = 'write',
+})
+
+vim.api.nvim_create_autocmd({
+  'VimResized',
+}, {
+  group = FlexGroup,
+  pattern = '*',
+  command = "exec 'vertical resize ' . string(&columns *  0.5)",
+})
+
 -- [[ Configure and install plugins ]]
---
+--  ____  _             _
+-- |  _ \| |_   _  __ _(_)_ __  ___
+-- | |_) | | | | |/ _` | | '_ \/ __|
+-- |  __/| | |_| | (_| | | | | \__ \
+-- |_|   |_|\__,_|\__, |_|_| |_|___/
+--                |___/
 --  To check the current status of your plugins, run
 --    :Lazy
 --
@@ -229,7 +315,7 @@ vim.opt.rtp:prepend(lazypath)
 -- NOTE: Here is where you install your plugins.
 require('lazy').setup({
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
-  'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
+  -- 'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
 
   -- NOTE: Plugins can also be added by using a table,
   -- with the first argument being the link and the following
@@ -239,9 +325,6 @@ require('lazy').setup({
   --
   --  This is equivalent to:
   --    require('Comment').setup({})
-
-  -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim', opts = {} },
 
   -- Here is a more advanced example where we pass configuration
   -- options to `gitsigns.nvim`. This is equivalent to the following lua:
