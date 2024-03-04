@@ -8,6 +8,7 @@ return {
 	config = function()
 		-- toggle nvim-tree
 
+		-- global mappings
 		vim.keymap.set("n", "<leader>h", ":NvimTreeToggle<CR>", {
 			noremap = true,
 		})
@@ -22,8 +23,9 @@ return {
 			-- default mappings
 			api.config.mappings.default_on_attach(bufnr)
 
-			-- custom mappings
-			vim.keymap.set("n", "<C-t>", api.tree.change_root_to_parent, opts("Up"))
+			-- custom local mappings
+			vim.keymap.set("n", "<BS>", api.tree.change_root_to_parent, opts("Up"))
+			vim.keymap.set("n", "<CR>", api.tree.change_root_to_node, opts("CD"))
 			vim.keymap.set("n", "?", api.tree.toggle_help, opts("Help"))
 			vim.keymap.set("n", "l", api.node.open.edit, opts("Open"))
 			vim.keymap.set("n", "h", api.node.navigate.parent_close, opts("Close Directory"))
@@ -83,9 +85,8 @@ return {
 			view = {
 				width = 30,
 				side = "left",
-				-- auto_resize = true,
-				number = false,
-				relativenumber = false,
+				number = true,
+				relativenumber = true,
 			},
 		}
 

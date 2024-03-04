@@ -828,11 +828,17 @@ require("lazy").setup({
 					["<C-k>"] = cmp.mapping.select_prev_item(),
 					["<C-d>"] = cmp.mapping.scroll_docs(-4),
 					["<C-u>"] = cmp.mapping.scroll_docs(4),
-					-- ['<C-Space>'] = cmp.mapping.complete {},
-					["<C-l>"] = cmp.mapping.confirm({
-						behavior = cmp.ConfirmBehavior.Replace,
-						select = true,
-					}),
+					["<C-Space>"] = cmp.mapping.complete({}),
+					["<C-l>"] = cmp.mapping(function()
+						if cmp.visible() then
+							cmp.confirm({
+								behavior = cmp.ConfirmBehavior.Replace,
+								select = true,
+							})
+						else
+							cmp.complete({})
+						end
+					end, { "i", "s" }),
 					["<Tab>"] = cmp.mapping(function(fallback)
 						if luasnip.expand_or_locally_jumpable() then
 							luasnip.expand_or_jump()
