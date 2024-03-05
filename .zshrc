@@ -10,9 +10,9 @@ path+=($HOME/.ghcup/bin)
 path+=($HOME/go/bin/)
 path+=($HOME/.cabal/bin/)
 
-source ~/.local/src/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+# source ~/.local/src/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 source ~/.zsh/plugins/zsh-system-clipboard/zsh-system-clipboard.zsh
-# source ~/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.zsh/plugins/zsh-nvm/zsh-nvm.plugin.zsh
 
 setopt APPEND_HISTORY # Allow multiple terminal sessions to all append to one zsh command history
