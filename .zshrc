@@ -12,7 +12,7 @@ path+=($HOME/.cabal/bin/)
 
 source ~/.local/src/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 source ~/.zsh/plugins/zsh-system-clipboard/zsh-system-clipboard.zsh
-source ~/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+# source ~/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.zsh/plugins/zsh-nvm/zsh-nvm.plugin.zsh
 
 setopt APPEND_HISTORY # Allow multiple terminal sessions to all append to one zsh command history
@@ -38,12 +38,18 @@ stty stop undef   # Disable ctrl-s to freeze terminal.
 # bindkey -r '^L'
 # bindkey '^L' autosuggest-accept
 
-autoload -U up-line-or-beginning-search
-autoload -U down-line-or-beginning-search
-zle -N up-line-or-beginning-search
-zle -N down-line-or-beginning-search
-bindkey "^K" up-line-or-beginning-search # Up
-bindkey "^J" down-line-or-beginning-search # Down
+# autoload -U up-line-or-beginning-search
+# autoload -U down-line-or-beginning-search
+# zle -N up-line-or-beginning-search
+# zle -N down-line-or-beginning-search
+# bindkey "^K" up-line-or-beginning-search # Up
+bindkey "^R" history-incremental-pattern-search-backward
+# bindkey "^J" down-line-or-beginning-search # Down
+
+bindkey '^P' history-search-backward
+bindkey '^N' history-search-forward
+bindkey '\e[A' history-search-backward
+bindkey '\e[B' history-search-forward
 
 # Enable colors and change prompt:
 autoload -U colors && colors  # Load colors
@@ -436,6 +442,7 @@ source "$ZSH_CUSTOM/plugins/zsh_codex/zsh_codex.plugin.zsh"
 bindkey '^X' create_completion
 
 eval "$(zoxide init --cmd cd zsh)"
+alias pdot="/usr/bin/git --git-dir=$HOME/.pdot.git/ --work-tree=$HOME"
 
 # Load syntax highlighting; should be last according to Luke Smith.
 source ~/.zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null
