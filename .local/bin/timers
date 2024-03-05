@@ -53,11 +53,11 @@ for (( i=0; i<${#timers[@]}; i++ )); do
     # clear the screen
     clear
     echo "Timer $((i+1)) of $total_timers finished."
-    aplay ~/.local/bin/assets/bell02.wav &>/dev/null &
+    aplay ~/.local/share/flex/bell02.wav &>/dev/null &
 done
 
 # Play the sound for the end of all timers
-aplay ~/.local/bin/assets/bell01.wav &>/dev/null &
+aplay ~/.local/share/flex/bell01.wav &>/dev/null &
 
 clear
 # if there is more than one timer, then print all timers finished
