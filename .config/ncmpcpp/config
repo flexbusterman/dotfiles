@@ -24,7 +24,7 @@
 ##### connection settings #####
 #
 # mpd_host = localhost
-mpd_host = "~/.mpd/socket"
+mpd_host = "/home/flex/.mpd/socket"
 #
 mpd_port = 49152
 

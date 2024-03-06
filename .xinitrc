@@ -15,7 +15,6 @@ srandrd displayhandler &
 blueman-applet &
 xdotool mousemove $(xdotool getdisplaygeometry | awk '{print $1-1, $2-1}') &
 tmux new-session -d -s main &
-# if the computer name is T460, start xfce screemsaver
 if [ "$HOST" = "T460" ]; then
 	 xfce4-screensaver &
 fi
