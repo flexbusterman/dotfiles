@@ -107,7 +107,7 @@ alias dot='/usr/bin/git --git-dir=$HOME/.dot.git/ --work-tree=$HOME'
 alias du='du -h'
 # alias fs="df -h | grep --color='never' 'Filesystem\|sd'"
 alias gb="git branch"
-alias grep="grep --color=always -i"
+# alias grep="grep --color=always -i"
 alias la="exa -la --group-directories-first"
 alias lag="exa -la | grep --color=always -i"
 alias less="bat"
