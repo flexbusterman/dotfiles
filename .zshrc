@@ -451,7 +451,7 @@ export ZSH_CUSTOM="$HOME/.zsh/"
 source "$ZSH_CUSTOM/plugins/zsh_codex/zsh_codex.plugin.zsh"
 bindkey '^X' create_completion
 
-eval "$(zoxide init --cmd cd zsh)"
+# eval "$(zoxide init --cmd cd zsh)"
 alias pdot="/usr/bin/git --git-dir=$HOME/.pdot.git/ --work-tree=$HOME"
 
 # Load syntax highlighting; should be last according to Luke Smith.
