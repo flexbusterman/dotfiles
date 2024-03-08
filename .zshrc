@@ -15,6 +15,9 @@ source ~/.zsh/plugins/zsh-system-clipboard/zsh-system-clipboard.zsh
 source ~/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.zsh/plugins/zsh-nvm/zsh-nvm.plugin.zsh
 
+source /usr/share/fzf/key-bindings.zsh
+source /usr/share/fzf/completion.zsh
+
 setopt APPEND_HISTORY # Allow multiple terminal sessions to all append to one zsh command history
 setopt autocd   # Automatically cd into typed directory.
 setopt BANG_HIST                 # Treat the '!' character specially during expansion.
@@ -50,6 +53,12 @@ bindkey '^P' history-search-backward
 bindkey '^N' history-search-forward
 bindkey '\e[A' history-search-backward
 bindkey '\e[B' history-search-forward
+
+zle     -N            fzf-cd-widget
+bindkey -M emacs '^f' fzf-cd-widget
+bindkey -M vicmd '^f' fzf-cd-widget
+bindkey -M viins '^f' fzf-cd-widget
+
 
 # Enable colors and change prompt:
 autoload -U colors && colors  # Load colors
@@ -133,6 +142,7 @@ alias tam="tmux attach -t main"
 alias td="tmux detach"
 alias tks="tmux kill-server"
 alias pg="ping google.com"
+alias sd="cd ~ && cd \$(find * -type d | fzf)"
 
 # audio
 alias play="ffplay -nodisp -autoexit"
