@@ -241,6 +241,13 @@ vim.keymap.set("n", "tt", ":tab split<CR>", { desc = "Open buffer in a new full 
 vim.keymap.set("n", "{", "{b", { desc = "Better jumping to previous paragraph" })
 vim.keymap.set("n", "}", "}w", { desc = "Better jumping to next paragraph" })
 
+vim.keymap.set("n", "<leader>l", function()
+	local curview = vim.fn.winsaveview()
+	vim.cmd(":%s/^\\s\\+$//e")
+	vim.cmd(":v/./,/./-1join")
+	vim.fn.winrestview(curview)
+end)
+
 -- [[ Basic Autocommands ]]
 --     _         _                           _
 --    / \  _   _| |_ ___   ___ _ __ ___   __| |
@@ -502,11 +509,11 @@ require("lazy").setup({
 			vim.keymap.set("n", "<leader>sh", builtin.help_tags, { desc = "[S]earch [H]elp" })
 			vim.keymap.set("n", "<leader>sk", builtin.keymaps, { desc = "[S]earch [K]eymaps" })
 			vim.keymap.set("n", "<leader>sf", builtin.find_files, { desc = "[S]earch [F]iles" })
-			vim.keymap.set("n", "<leader>f", builtin.find_files, { desc = "Search files" })
+			-- vim.keymap.set("n", "<leader>f", builtin.find_files, { desc = "Search files" })
 			vim.keymap.set("n", "<leader>ss", builtin.builtin, { desc = "[S]earch [S]elect Telescope" })
 			vim.keymap.set("n", "<leader>sw", builtin.grep_string, { desc = "[S]earch current [W]ord" })
 			vim.keymap.set("n", "<leader>sg", builtin.live_grep, { desc = "[S]earch by [G]rep" })
-			vim.keymap.set("n", "<leader>g", builtin.live_grep, { desc = "Search by grep" })
+			-- vim.keymap.set("n", "<leader>g", builtin.live_grep, { desc = "Search by grep" })
 			vim.keymap.set("n", "<leader>sd", builtin.diagnostics, { desc = "[S]earch [D]iagnostics" })
 			vim.keymap.set("n", "<leader>sr", builtin.resume, { desc = "[S]earch [R]esume" })
 			vim.keymap.set("n", "<leader>s.", builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
