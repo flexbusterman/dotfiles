@@ -1003,14 +1003,15 @@ require("lazy").setup({
 					["<C-d>"] = cmp.mapping.scroll_docs(-4),
 					["<C-u>"] = cmp.mapping.scroll_docs(4),
 					["<C-Space>"] = cmp.mapping.complete({}),
-					["<C-l>"] = cmp.mapping(function()
+					["<C-l>"] = cmp.mapping(function(fallback)
 						if cmp.visible() then
 							cmp.confirm({
 								behavior = cmp.ConfirmBehavior.Replace,
 								select = true,
 							})
 						else
-							cmp.complete({})
+							-- cmp.complete({})
+							fallback()
 						end
 					end, { "i", "s" }),
 					["<Tab>"] = cmp.mapping(function(fallback)
