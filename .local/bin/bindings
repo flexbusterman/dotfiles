@@ -67,7 +67,7 @@ for key in "${!keybindings[@]}"; do
 done
 
 # Pipe the list into dmenu
-selected=$(echo -e "$keybindings_list" | dmenu -i -l 20 -p "Select Keybinding:")
+selected=$(echo -e "$keybindings_list" | dmenu -i -l 20 -p "Keys:")
 
 # Display the selected keybinding (optional)
 # notify-send "Selected Keybinding" "$selected"
