@@ -242,6 +242,13 @@ vim.keymap.set("n", "{", "{b", { desc = "Better jumping to previous paragraph" }
 vim.keymap.set("n", "}", "}w", { desc = "Better jumping to next paragraph" })
 
 -- [[ Basic Autocommands ]]
+--     _         _                           _
+--    / \  _   _| |_ ___   ___ _ __ ___   __| |
+--   / _ \| | | | __/ _ \ / __| '_ ` _ \ / _` |
+--  / ___ \ |_| | || (_) | (__| | | | | | (_| |
+-- /_/   \_\__,_|\__\___/ \___|_| |_| |_|\__,_|
+-- autocmd
+--
 --  See `:help lua-guide-autocommands`
 
 -- Highlight when yanking (copying) text
@@ -254,17 +261,6 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 		vim.highlight.on_yank()
 	end,
 })
-
--- [[ Install `lazy.nvim` plugin manager ]]
---    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-	local lazyrepo = "https://github.com/folke/lazy.nvim.git"
-	vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
-end ---@diagnostic disable-next-line: undefined-field
-vim.opt.rtp:prepend(lazypath)
-
--- [[ Custom autocommands ]]
 
 vim.api.nvim_create_autocmd({ "BufEnter", "BufNewFile" }, {
 	pattern = ".env*",
@@ -281,13 +277,13 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufNewFile" }, {
 
 local FlexGroup = vim.api.nvim_create_augroup("Flex", {})
 
-vim.api.nvim_create_autocmd({
-	"InsertLeave",
-}, {
-	group = FlexGroup,
-	pattern = "*.php,*.css",
-	command = "write",
-})
+-- vim.api.nvim_create_autocmd({
+-- 	"InsertLeave",
+-- }, {
+-- 	group = FlexGroup,
+-- 	pattern = "*.php,*.css",
+-- 	command = "write",
+-- })
 
 vim.api.nvim_create_autocmd({
 	"VimResized",
@@ -297,6 +293,45 @@ vim.api.nvim_create_autocmd({
 	command = "exec 'vertical resize ' . string(&columns *  0.5)",
 })
 
+vim.api.nvim_create_autocmd({ "BufEnter", "BufNewFile" }, {
+	pattern = ".env*",
+	command = "set filetype=sh.env",
+})
+
+vim.api.nvim_create_autocmd({ "BufEnter", "BufNewFile" }, {
+	pattern = "*",
+	callback = function()
+		vim.cmd("set formatoptions-=cro")
+		vim.cmd("setlocal formatoptions-=cro")
+	end,
+})
+
+vim.api.nvim_create_autocmd({
+	"BufWritePre",
+}, {
+	group = FlexGroup,
+	pattern = "*",
+	callback = function()
+		-- Save current cursor position
+		local save_cursor = vim.api.nvim_win_get_cursor(0)
+		-- https://vim.fandom.com/wiki/Remove_unwanted_empty_lines
+		-- The following will delete all trailing whitespace from each line, then replace three or more consecutive line endings with two line endings (a single blank line)
+		vim.cmd([[ %s/\s\+$//e]])
+		vim.cmd([[ %s/\n\{3,}/\r\r/e]])
+		-- Remove trailing empty lines from the document
+		vim.cmd([[ %s/\(\n\s*\)\+\%$//e ]])
+		-- Get the total number of lines in the current buffer
+		local total_lines = vim.api.nvim_buf_line_count(0)
+		-- Check if the saved cursor line is within the new buffer range
+		if save_cursor[1] > total_lines then
+			-- If not, set the cursor to the last line of the buffer
+			save_cursor[1] = total_lines
+		end
+		-- Restore cursor position
+		vim.api.nvim_win_set_cursor(0, save_cursor)
+	end,
+})
+
 -- [[ Configure and install plugins ]]
 --  ____  _             _
 -- |  _ \| |_   _  __ _(_)_ __  ___
@@ -304,6 +339,16 @@ vim.api.nvim_create_autocmd({
 -- |  __/| | |_| | (_| | | | | \__ \
 -- |_|   |_|\__,_|\__, |_|_| |_|___/
 --                |___/
+
+-- [[ Install `lazy.nvim` plugin manager ]]
+--    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+	local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+	vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+end ---@diagnostic disable-next-line: undefined-field
+vim.opt.rtp:prepend(lazypath)
+
 --  To check the current status of your plugins, run
 --    :Lazy
 --
