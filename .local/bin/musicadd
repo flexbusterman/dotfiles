@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Define supported filetypes in lowercase
-declare -a filetypes=("mp3" "ogg" "flac" "wav" "m4a" "opus" "m4p" "m4b" "m4r" "3gp" "aac" "mka" "wma" "ape" "mpc" "tta" "wv" "spx" "aiff" "mod" "s3m" "xm" "it" "mo3" "mtm" "umx" "mid" "midi" "sid" "ac3" "dts")
+declare -a filetypes=("mp3" "ogg" "flac" "wav" "m4a" "opus" "m4p" "m4b" "m4r" "3gp" "aac" "mka" "wma" "ape" "mpc" "tta" "wv" "spx" "aiff" "mod" "s3m" "xm" "it" "mo3" "mtm" "umx" "mid" "midi" "sid" "ac3" "dts" "vgz")
 
 first=""
 
