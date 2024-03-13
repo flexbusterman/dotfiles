@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+# Use xmeasure to capture the measurements and save it to a variable
+MEASUREMENT=$(xmeasure)
+
+echo $MEASUREMENT
+
+# Extract Width and Height using grep and awk
+WIDTH=$(echo "$MEASUREMENT" | grep 'Width:' | awk '{print $2}')
+HEIGHT=$(echo "$MEASUREMENT" | grep 'Height:' | awk '{print $2}')
+
+# Combine Width and Height in the desired format
+DIMENSIONS="${WIDTH}x${HEIGHT}"
+
+# Use notify-send to display the dimensions
+notify-send "$DIMENSIONS"
+
+printf "%s" "$DIMENSIONS" | xclip -selection clipboard

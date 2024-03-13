@@ -59,7 +59,6 @@ bindkey -M emacs '^f' fzf-cd-widget
 bindkey -M vicmd '^f' fzf-cd-widget
 bindkey -M viins '^f' fzf-cd-widget
 
-
 # Enable colors and change prompt:
 autoload -U colors && colors  # Load colors
 PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
@@ -238,6 +237,13 @@ alias locate="locate -i"
 
 alias sw='echo $PWD > ~/.workdir'
 alias cw='cd "$(cat ~/.workdir)"'
+
+# navigation
+alias d='cd ~/Dropbox/'
+alias D='cd ~/Downloads/'
+alias c='cd ~/.config/'
+alias b='cd ~/.local/bin/'
+alias m='cd /run/media/$USER/'
 
 #   __                  _   _
 #  / _|_   _ _ __   ___| |_(_) ___  _ __  ___
