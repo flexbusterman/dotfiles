@@ -519,6 +519,15 @@ require("lazy").setup({
 			vim.keymap.set("n", "<leader>s.", builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
 			vim.keymap.set("n", "<leader><leader>", builtin.buffers, { desc = "[ ] Find existing buffers" })
 
+			-- Tabs
+			vim.keymap.set("n", "th", ":tabfirst<CR>", { desc = "Jump to first tab" })
+			vim.keymap.set("n", "tl", ":tablast<CR>", { desc = "Jump to last tab" })
+			vim.keymap.set("n", "tj", ":tabnext<CR>", { desc = "Next tab" })
+			vim.keymap.set("n", "tk", ":tabprev<CR>", { desc = "Previous tab" })
+			vim.keymap.set("n", "td", ":tabclose<CR>", { desc = "Close tab" })
+			vim.keymap.set("n", "tn", ":tabnew<CR>", { desc = "New tab" })
+			vim.keymap.set("n", "tr", ":TabRenamer<CR>", { desc = "Rename tab" })
+
 			-- Slightly advanced example of overriding default behavior and theme
 			vim.keymap.set("n", "<leader>/", function()
 				-- You can pass additional configuration to telescope to change theme, layout, etc.
