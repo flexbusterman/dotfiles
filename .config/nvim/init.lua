@@ -526,7 +526,7 @@ require("lazy").setup({
 			vim.keymap.set("n", "tk", ":tabprev<CR>", { desc = "Previous tab" })
 			vim.keymap.set("n", "td", ":tabclose<CR>", { desc = "Close tab" })
 			vim.keymap.set("n", "tn", ":tabnew<CR>", { desc = "New tab" })
-			vim.keymap.set("n", "tr", ":TabRenamer<CR>", { desc = "Rename tab" })
+			vim.keymap.set("n", "tr", ":tabedit ", { desc = "Rename tab" })
 
 			-- Slightly advanced example of overriding default behavior and theme
 			vim.keymap.set("n", "<leader>/", function()
