@@ -2,6 +2,8 @@
 source ~/.zsh/plugins/instant-zsh/instant-zsh.zsh
 instant-zsh-pre "%B%F{1}[%F{3}%n%F{2}@%F{4}%M %F{5}%~%F{1}]%f$%b "
 
+export MPD_HOST=127.0.0.1
+
 NVM_LAZY_LOAD=true
 HISTFILE=/home/$USER/.history/zsh/history
 HISTSIZE=10000000
@@ -41,6 +43,14 @@ stty stop undef   # Disable ctrl-s to freeze terminal.
 # bindkey -r '^L'
 # bindkey '^L' autosuggest-accept
 
+# bash like command edit in editor (nvim)
+# export VISUAL=nvim
+# autoload edit-command-line; zle -N edit-command-line
+# bindkey -M vicmd v edit-command-line
+autoload -z edit-command-line
+zle -N edit-command-line
+bindkey "^X^E" edit-command-line
+
 # autoload -U up-line-or-beginning-search
 # autoload -U down-line-or-beginning-search
 # zle -N up-line-or-beginning-search
@@ -72,7 +82,6 @@ PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magent
 # vi mode
 bindkey -v
 export KEYTIMEOUT=1
-export MPD_HOST=127.0.0.1
 # export MPD_PORT=6600
 # Change cursor shape for different vi modes.
 function zle-keymap-select {
