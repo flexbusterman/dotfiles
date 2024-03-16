@@ -691,6 +691,13 @@ require("lazy").setup({
 			--        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
 			local servers = {
 
+				-- haskell language server
+				hls = {
+					settings = {
+						filetypes = { "haskell", "cabal" },
+					},
+				},
+
 				emmet_language_server = {
 					settings = {
 						filetypes = {

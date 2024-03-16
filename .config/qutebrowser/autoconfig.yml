@@ -77,11 +77,13 @@ settings:
     global:
       D: https://duckduckgo.com/?q={}
       DEFAULT: https://www.google.com/search?q={}
-      b: https://www.blocket.se/annonser/hela_sverige?q={}&f=p
+      B: https://www.blocket.se/annonser/hela_sverige?q={}&f=p
+      b: https://bandcamp.com/search?q={}
       d: https://www.dropbox.com/search/work?path=%2F&query={}
       f: https://freesound.org/search/?g=1&q={}&f=type%3A%22wav%22+samplerate%3A%2244100%22+channels%3A%222%22+bitdepth%3A%2216%22+&s=Automatic%20by%20relevance&cluster_id=None&w=
       i: https://www.instagram.com/explore/tags/{}/
       m: https://www.google.com/maps/search/{}
+      n: https://search.nixos.org/packages?channel=unstable&query={}
       o: https://odysee.com/$/search?q={}
       p: https://pirate-bays.net/search?q={}
       r: https://www.exchange-rates.org/exchange-rate-history/eur-sek-{}
