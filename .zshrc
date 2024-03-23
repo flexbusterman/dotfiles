@@ -120,7 +120,7 @@ alias cat="bat"
 alias copy='xclip -sel clip'
 alias ct="cointop"
 alias de='find . -empty -type d -delete'
-alias dot='/usr/bin/git --git-dir=$HOME/.dot.git/ --work-tree=$HOME'
+alias dot='/usr/bin/env git --git-dir=$HOME/.dot.git/ --work-tree=$HOME'
 alias du='du -h'
 # alias fs="df -h | grep --color='never' 'Filesystem\|sd'"
 alias gb="git branch"
@@ -238,11 +238,15 @@ alias ve="cd /home/$USER/; nvim .zshenv"
 # alias vb="cd /home/$USER/.config/bspwm/; nvim bspwmrc"
 alias vl="cd /home/$USER/.config/lf/; nvim lfrc"
 alias vt="cd /home/$USER/; vim .tmux.conf"
-alias vh="cd /home/$USER/.history/zsh/; nvim history"
+alias vH="cd /home/$USER/.history/zsh/; nvim history"
 alias vw="cd /home/$USER/.w3m/; nvim keymap"
 alias vrk="cd /home/$USER/.config/REAPER/Scripts/reaper-keys/definitions/; nvim -O bindings.lua actions.lua"
 alias vm="cd /home/$USER/.config/mutt/; nvim muttrc"
 alias vy="cd /home/$USER/.config/yazi/; nvim ."
+# alias vh="cd /home/$USER/.config/home-manager/; nvim home.nix"
+# alias hr="home-manager switch"
+alias vf="cd /home/$USER/.local/src/flarbs/; nvim configuration.nix"
+alias fr="sudo nixos-rebuild switch --flake ~/.local/src/flarbs#default"
 
 alias locate="locate -i"
 
@@ -388,9 +392,9 @@ le(){
 }
 
 # Find Recursively and case-insensitive
-fr(){
-  find . -path '**' -iname '$*'
-}
+# fr(){
+#   find . -path '**' -iname '$*'
+# }
 
 gp() {
 	eval "$(ssh-agent -s)"
@@ -430,13 +434,13 @@ pdp() {
   eval "$(ssh-agent -s)"
   ssh-add ~/.ssh/git
   result="$*"
-  /usr/bin/git --git-dir=$HOME/.pdot.git/ --work-tree=$HOME add -u
-  /usr/bin/git --git-dir=$HOME/.pdot.git/ --work-tree=$HOME commit -m $result
-  /usr/bin/git --git-dir=$HOME/.pdot.git/ --work-tree=$HOME push
+  /usr/bin/env git --git-dir=$HOME/.pdot.git/ --work-tree=$HOME add -u
+  /usr/bin/env git --git-dir=$HOME/.pdot.git/ --work-tree=$HOME commit -m $result
+  /usr/bin/env git --git-dir=$HOME/.pdot.git/ --work-tree=$HOME push
 }
 
-alias dot="/usr/bin/git --git-dir=$HOME/.dot.git/ --work-tree=$HOME"
-alias pdot="/usr/bin/git --git-dir=$HOME/.pdot.git/ --work-tree=$HOME"
+alias dot="/usr/bin/env git --git-dir=$HOME/.dot.git/ --work-tree=$HOME"
+alias pdot="/usr/bin/env git --git-dir=$HOME/.pdot.git/ --work-tree=$HOME"
 
 export XDG_CONFIG_HOME=~/.config
 
@@ -468,7 +472,7 @@ source "$ZSH_CUSTOM/plugins/zsh_codex/zsh_codex.plugin.zsh"
 bindkey '^X' create_completion
 
 # eval "$(zoxide init --cmd cd zsh)"
-alias pdot="/usr/bin/git --git-dir=$HOME/.pdot.git/ --work-tree=$HOME"
+alias pdot="/usr/bin/env git --git-dir=$HOME/.pdot.git/ --work-tree=$HOME"
 
 # Load syntax highlighting; should be last according to Luke Smith.
 source ~/.zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null
