@@ -2,14 +2,13 @@
 # wm independent hotkeys
 #
 
-# terminal emulator
+# program launcher
 alt + Return
 	dmenu_run
 
-# program launcher
-# alt + shift + Return
+# terminal emulator
 alt + shift + Return
-	st
+	kitty
 
 # toggle bar and resize
 alt + a
@@ -26,7 +25,7 @@ alt + shift + {q,r}
 
 # restart sxhkd
 # alt + shift + k
-super + r
+alt + r
 	pkill -usr1 -x sxhkd; notify-send 'sxhkd' 'Reloaded config'
 
 # close and kill
@@ -99,7 +98,7 @@ alt + {_,shift + }{1-9,0}
 
 # # preselect the direction
 # alt + ctrl + {h,j,k,l}
-	# bspc node -p {west,south,north,east}
+# 	bspc node -p {west,south,north,east}
 
 # # preselect the ratio
 # alt + ctrl + {1-9}
@@ -133,7 +132,6 @@ super + {k,l,h,j}
 # alt + {Left,Down,Up,Right}
 	# bspc node -v {-20 0,0 20,0 -20,20 0}
 
-
 # Changing the Volume
 
 XF86AudioMute
@@ -149,17 +147,16 @@ XF86MonBrightnessUp
 XF86MonBrightnessDown
 	xbacklight -dec $(bc <<< "$(xbacklight) * 0.5")
 
-
-	# // ____      _    _    
-	# // / ___| ___ _ __(_)_ __ | |_ ___ 
+	# // ____      _    _
+	# // / ___| ___ _ __(_)_ __ | |_ ___
 	# // \___ \ / __| '__| | '_ \| __/ __|
 	# // ___) | (__| | | | |_) | |_\__ \
 	# // |____/ \___|_| |_| .__/ \__|___/
-	# //          |_|      
+	# //          |_|
 	# // bindings to run scripts
 alt + shift + c
 	calc
-alt + shift + control + l
+alt + alt + control + l
 	slock
 # alt + d
 	# sleep 0.2 && xdotool type --clearmodifiers
@@ -221,12 +218,12 @@ alt + shift + i
 	xcalib -i -a
 alt + slash
 	st -e ~/.local/bin/fzfvim
-	# # // _____ _  _ ___ 
+	# # // _____ _  _ ___
 	# # // |_  _| | | |_ _|
-	# # //  | | | | | || | 
-	# # //  | | | |_| || | 
+	# # //  | | | | | || |
+	# # //  | | | |_| || |
 	# # //  |_| \___/|___|
-	# # //         
+	# # //
 	# # // terminal applications
 alt + shift + comma
 	st -t Vifm -e vifmrun
@@ -255,16 +252,16 @@ alt + control + shift + Return
 alt + s
 	supercollider
 
-	# # //  ____ _  _ ___ 
+	# # //  ____ _  _ ___
 	# # // / ___| | | |_ _|
-	# # // | | _| | | || | 
-	# # // | |_| | |_| || | 
+	# # // | | _| | | || |
+	# # // | |_| | |_| || |
 	# # // \____|\___/|___|
-	# # // 
+	# # //
 	# # // gui applications
 alt + q
 	qpwgraph
-alt + shift + period
+alt + period
 	qutebrowser
 alt + shift + control + period
 	bravestart
