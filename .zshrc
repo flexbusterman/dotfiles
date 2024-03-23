@@ -396,7 +396,7 @@ gp() {
 	eval "$(ssh-agent -s)"
 	# ssh-add all files without extension
 	ssh-add ~/.ssh/git
-  result="\"$*\""
+  result="$*"
   git add .
   git commit -m $result
   git push
@@ -420,7 +420,7 @@ gpd() {
 dp() {
   eval "$(ssh-agent -s)"
   ssh-add ~/.ssh/git
-  result="\"$*\""
+  result="$*"
   dot add -u
   dot commit -m $result
   dot push
@@ -429,7 +429,7 @@ dp() {
 pdp() {
   eval "$(ssh-agent -s)"
   ssh-add ~/.ssh/git
-  result="\"$*\""
+  result="$*"
   /usr/bin/git --git-dir=$HOME/.pdot.git/ --work-tree=$HOME add -u
   /usr/bin/git --git-dir=$HOME/.pdot.git/ --work-tree=$HOME commit -m $result
   /usr/bin/git --git-dir=$HOME/.pdot.git/ --work-tree=$HOME push
