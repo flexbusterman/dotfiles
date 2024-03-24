@@ -10,7 +10,6 @@ dimensions:
   # x: 16
   # y: 16
 
-
 # scale_with_dpi: true
 
 draw_bold_text_with_bright_colors: true
@@ -52,7 +51,6 @@ colors:
 bell:
   animation: EaseOutExpo
   duration: 0
-
 
 hide_cursor_when_typing: false
 font:
@@ -526,11 +524,11 @@ window:
 # shell.
 #
 # Default:
-#   - (macOS) /bin/bash --login
+#   - (macOS) /usr/bin/env bash --login
 #   - (Linux/BSD) user login shell
 #   - (Windows) powershell
 #shell:
-#  program: /bin/bash
+#  program: /usr/bin/env bash
 #  args:
 #    - --login
 
