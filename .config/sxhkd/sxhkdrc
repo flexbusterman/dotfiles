@@ -2,6 +2,8 @@
 # wm independent hotkeys
 #
 
+# {notify-send "test 1"; notify-send "test 2", notify-send "test 3"; notify-send "test 4"}
+
 # program launcher
 alt + Return
 	dmenu_run
@@ -12,8 +14,9 @@ alt + shift + Return
 
 # toggle bar and resize
 alt + a
-	{polybar-msg cmd hide; bspc config -m focused top_padding 0, polybar-msg cmd show; bspc config -m focused top_padding 30}
-	# {notify-send "test 1"; notify-send "test 2", notify-send "test 3"; notify-send "test 4"}
+	{polybar-msg cmd hide; bspc config -m focused top_padding 0, polybar-msg cmd show; bspc config -m focused top_padding 21}
+alt + z
+	{bspc config window_gap 0, bspc config window_gap 16}
 
 #
 # bspwm hotkeys

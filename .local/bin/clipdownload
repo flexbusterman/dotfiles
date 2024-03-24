@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-ifinstalled xsel yt-dlp || exit 1
+# ifinstalled xsel yt-dlp || exit 1
 clipboard=$(xsel -ob)
 
 Help()

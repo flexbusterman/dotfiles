@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 searchdirectory="$HOME/Downloads/"
-ifinstalled xsel webtorrent mpv || exit 1
+# ifinstalled xsel webtorrent mpv || exit 1
 clipboard=$(xsel -ob)
 
 if [ -n "$clipboard" ]
