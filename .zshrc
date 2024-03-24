@@ -1,10 +1,10 @@
 # use temporary prompt while loading plugins
-source ~/.zsh/plugins/instant-zsh/instant-zsh.zsh
-instant-zsh-pre "%B%F{1}[%F{3}%n%F{2}@%F{4}%M %F{5}%~%F{1}]%f$%b "
+# source ~/.zsh/plugins/instant-zsh/instant-zsh.zsh
+# instant-zsh-pre "%B%F{1}[%F{3}%n%F{2}@%F{4}%M %F{5}%~%F{1}]%f$%b "
 
 export MPD_HOST=127.0.0.1
 
-NVM_LAZY_LOAD=true
+# NVM_LAZY_LOAD=true
 HISTFILE=/home/$USER/.history/zsh/history
 HISTSIZE=10000000
 SAVEHIST=10000000
@@ -13,12 +13,17 @@ path+=($HOME/go/bin/)
 path+=($HOME/.cabal/bin/)
 
 # source ~/.local/src/zsh-autocomplete/zsh-autocomplete.plugin.zsh
-source ~/.zsh/plugins/zsh-system-clipboard/zsh-system-clipboard.zsh
-source ~/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-source ~/.zsh/plugins/zsh-nvm/zsh-nvm.plugin.zsh
+# source ~/.zsh/plugins/zsh-system-clipboard/zsh-system-clipboard.zsh
+# source ~/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+# source ~/.zsh/plugins/zsh-nvm/zsh-nvm.plugin.zsh
+# source /usr/share/fzf/key-bindings.zsh
+# source /usr/share/fzf/completion.zsh
 
-source /usr/share/fzf/key-bindings.zsh
-source /usr/share/fzf/completion.zsh
+# nixos
+if [ -n "${commands[fzf-share]}" ]; then
+  source "$(fzf-share)/key-bindings.zsh"
+  source "$(fzf-share)/completion.zsh"
+fi
 
 setopt APPEND_HISTORY # Allow multiple terminal sessions to all append to one zsh command history
 setopt autocd   # Automatically cd into typed directory.
@@ -261,6 +266,7 @@ alias D='cd ~/Downloads/'
 alias c='cd ~/.config/'
 alias b='cd ~/.local/bin/'
 alias m='cd /run/media/$USER/'
+alias g='cd ~/.local/src/'
 
 #   __                  _   _
 #  / _|_   _ _ __   ___| |_(_) ___  _ __  ___
@@ -469,13 +475,14 @@ LC_ALL=
 # [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
 # in your/custom/path you need to have a "plugins" folder and in there you clone the repository as zsh_codex
-export ZSH_CUSTOM="$HOME/.zsh/"
-source "$ZSH_CUSTOM/plugins/zsh_codex/zsh_codex.plugin.zsh"
-bindkey '^X' create_completion
+# export ZSH_CUSTOM="$HOME/.zsh/"
+# source "$ZSH_CUSTOM/plugins/zsh_codex/zsh_codex.plugin.zsh"
+# bindkey '^X' create_completion
 
 # eval "$(zoxide init --cmd cd zsh)"
 alias pdot="/usr/bin/env git --git-dir=$HOME/.pdot.git/ --work-tree=$HOME"
 
 # Load syntax highlighting; should be last according to Luke Smith.
-source ~/.zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null
-instant-zsh-post
+# source ~/.zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null
+
+# instant-zsh-post
