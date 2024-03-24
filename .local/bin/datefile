@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Rename files to include the date they were created
 # Usage: datefile file1 file2 file3 ...

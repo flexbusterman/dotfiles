@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # if audacious is running, send play/pause command
 if pgrep -x "audacious" > /dev/null
 then

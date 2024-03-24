@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 for x in "ytfzf" "xclip";do
 	pacman -Qq "$x" >/dev/null 2>&1 && installed='true' ||
@@ -10,6 +10,6 @@ if [ $installed == 'true' ]; then
 	echo $link | xclip -sel clip
 	notify-send "$link"
 else
-	notify-send "Failed" 
+	notify-send "Failed"
 	exit 1
 fi

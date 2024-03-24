@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # using this file as a clipboard stack
 stack=~/Dropbox/STACK/stack
 

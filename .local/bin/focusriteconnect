@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Extract Focusrite Scarlett 18i20 outputs and Reaper inputs
 focusrite_outputs=$(pw-link -oI | grep 'alsa_input.usb-Focusrite_Scarlett_18i20_USB' | awk '{print $1}')

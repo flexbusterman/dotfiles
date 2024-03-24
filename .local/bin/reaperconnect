@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # save the output from pw-link -lI to an array named links
 # remove whitespace from beginning of lines
 readarray -t links < <(pw-link -lI | sed 's/^[ \t]*//')
@@ -30,7 +30,7 @@ if [[ ! " ${links[@]} " =~ " bluez_output " ]]; then
 fi
 
 printf '%s\n' "${links[@]}"#
-# #!/bin/bash
+# #!/usr/bin/env bash
 # # save the output from pw-link -lI to an array named links
 # # remove whitespace from beginning of lines
 # readarray -t links < <(pw-link -lI | sed 's/^[ \t]*//')

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # if $1 is empty, then exit
 if [ -z "$1" ]; then

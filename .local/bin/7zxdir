@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 for file in "$@"
 do
 	7z x -y "$file" -o"${file%.*}"

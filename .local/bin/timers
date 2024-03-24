@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # check if there are any arguments and if all arguments are numbers, else print usage message
 if [ $# -eq 0 ] || ! echo "$@" | egrep -q "^([0-9]*\.?[0-9]+ ?)+$"; then

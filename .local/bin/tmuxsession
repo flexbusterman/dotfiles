@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # if tmux session $1 is not running, start it
 if ! tmux has-session -t $1 2>/dev/null; then
 	# if $2 is not empty

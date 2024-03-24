@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 ifinstalled xsel yt-dlp || exit 1
 clipboard=$(xsel -ob)
 

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Define the array of supported file types
 declare -a filetypes=("3gp" "aac" "ac3" "ahx" "aiff" "ape" "dts" "flac" "flac" "hes" "it" "m4a" "m4p" "m4r" "mid" "midi" "mka" "mo3" "mod" "mods" "mp3" "mp4" "mpc" "mtm" "nsf" "ogg" "opm" "opus" "psf" "s3m" "scl" "sid" "spc" "spx" "tta" "umx" "vgz" "wav" "win" "wma" "wv" "xm")

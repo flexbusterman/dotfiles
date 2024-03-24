@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Use lame to convert argument to mp3 using multithreading
 
 for file in "$@"; do

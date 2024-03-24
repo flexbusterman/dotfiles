@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 declare -A device_info
 declare -a options
@@ -12,7 +12,7 @@ device_files=$(v4l2-ctl --list-devices | grep -oP '/dev/video\d+')
 while read -r device; do
     # Extract the device name and remove extra characters
     device_name=$(v4l2-ctl --list-devices | grep -B1 "$device" | head -n1 | sed 's/:\s.*//')
-    
+
     highest_fps=0
     highest_res=""
 

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 start=20
 target=$1
 diff=$((target - start))

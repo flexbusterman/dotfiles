@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # modified script from https://superuser.com/questions/36645/how-to-rotate-images-automatically-based-on-exif-data
 
 ifinstalled jhead

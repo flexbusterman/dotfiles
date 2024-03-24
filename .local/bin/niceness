@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #
 # pipewire to -20
 for pid in $(pgrep pipewire); do

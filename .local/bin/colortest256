@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #
 # generates an 8 bit color table (256 colors) for
 # reference purposes, using the \033[48;5;${val}m

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 for id in $(pactl list sinks | grep "Sink #" | sed 's/Sink #//g'); do
 	pactl set-sink-mute $id 0

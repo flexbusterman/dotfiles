@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # FILE=${FILE:-"$(date +%F).tidal"}
 cd ~/Dropbox/FOXDOT/
