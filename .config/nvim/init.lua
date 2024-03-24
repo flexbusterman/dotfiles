@@ -694,11 +694,11 @@ require("lazy").setup({
 			local servers = {
 
 				-- haskell language server
-				hls = {
-					settings = {
-						filetypes = { "haskell", "cabal" },
-					},
-				},
+				-- hls = {
+				-- 	settings = {
+				-- 		filetypes = { "haskell", "cabal" },
+				-- 	},
+				-- },
 
 				emmet_language_server = {
 					settings = {
