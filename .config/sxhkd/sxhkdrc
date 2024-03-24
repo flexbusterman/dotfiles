@@ -50,9 +50,11 @@ alt + space
 
 # set the window state
 # alt + f
-	# bspc node -t fullscreen
+# 	bspc node -t fullscreen
+alt + f
+	bspc node --state ~fullscreen
 # alt + {t,shift + t,s,f}
-	# bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+	# bspc node -T {tiled,pseudo_tiled,floating,fullscreen}
 
 # set the node flags
 # alt + ctrl + {m,x,y,z}
@@ -135,7 +137,7 @@ super + {k,l,h,j}
 # Changing the Volume
 
 XF86AudioMute
-	pamixer -t; kill -44 $(pidof dwmblocks)
+	pamixer -T; kill -44 $(pidof dwmblocks)
 XF86AudioRaiseVolume
 	pamixer --allow-boost -i 3; kill -44 $(pidof dwmblocks)
 XF86AudioLowerVolume
@@ -161,9 +163,9 @@ alt + alt + control + l
 # alt + d
 	# sleep 0.2 && xdotool type --clearmodifiers
 alt + b
-	bluetoothconnect 74:5C:4B:D2:86:F7
+	bluetoothconnect $HEADPHONES
 alt + shift + b
-	bluetoothctl disconnect 74:5C:4B:D2:86:F7
+	bluetoothctl disconnect $HEADPHONES
 alt + grave
 	dmenuunicode
 alt + m
@@ -181,7 +183,7 @@ alt + F3
 alt + shift + F3
 	displayselect
 alt + F7
-	td-toggle
+	td-Toggle
 alt + F8
 	dmenumount
 alt + F9
@@ -225,30 +227,30 @@ alt + slash
 	# # //  |_| \___/|___|
 	# # //
 	# # // terminal applications
-alt + shift + comma
-	st -t Vifm -e vifmrun
+alt + comma
+	kitty ranger
 alt + e
-	st -t NeoMutt -e neomutt
+	# st -T NeoMutt -e neomutt
 alt + shift + t
-	st -t typingtest -e tt -theme dracula
-alt + t
-	st -t Htop -e htop
+	kitty tt -Theme dracula
+alt + shift + h
+	kitty btop
 alt + n
-	cd ~/Dropbox/NOTES/; st -t TODO -e nvim ~/Dropbox/NOTES/TODO.md
+	cd ~/Dropbox/NOTES/; kitty -T TODO -e nvim ~/Dropbox/NOTES/TODO.md
 alt + shift + n
-	cd ~/Dropbox/NOTES/; st -t VimWiki -e nvim -c VimwikiIndex
+	cd ~/Dropbox/NOTES/; kitty -T VimWiki -e nvim -c VimwikiIndex
 alt + r
-	st -t Newsboat -e newsboat
+	# st -T Newsboat -e newsboat
 alt + F4
-	st -t PulseMixer -e pulsemixer
+	kitty -T PulseMixer -e pulsemixer
 alt + F6
 	torwrap
 # alt + shift + e
-	# cd ~/.local/src/dwm/; st -t DWMconfig -e nvim config.def.h
+	# cd ~/.local/src/dwm/; st -T DWMconfig -e nvim config.def.h
 control + shift + Return
-	st -t ncmpcpp -e ncmpcpp
-alt + control + shift + Return
-	st -t ncspot -e ncspot
+	kitty ncmpcpp
+# alt + control + shift + Return
+	# st -T ncspot -e ncspot
 alt + s
 	supercollider
 
@@ -263,11 +265,11 @@ alt + q
 	qpwgraph
 alt + period
 	qutebrowser
-alt + shift + control + period
+alt + shift + period
 	bravestart
 alt + shift + x
 	xkill
 alt + shift + F4
 	pavucontrol
-alt + control + Return
-	audacious
+# alt + control + Return
+# 	audacious
