@@ -1,0 +1,5 @@
+#!/bin/env bash
+for file in "$@"
+do
+	ffmpeg -i "$file" -c:v libx265 -crf 28 "${file%.*}-compressed.mp4"
+done
