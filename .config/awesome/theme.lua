@@ -102,6 +102,7 @@ theme.menu_width  = dpi(100)
 
 -- theme.wallpaper = themes_path.."default/background.png"
 -- theme.wallpaper = "/home/flex/Dropbox/2021/2021 FOTO/WALLPAPERS/xp.jpg"
+theme.wallpaper = "~/.local/share/flex/background.jpg"
 
 -- You can use your own layout icons like this:
 -- theme.layout_fairh = themes_path.."default/layouts/fairhw.png"
