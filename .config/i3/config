@@ -16,6 +16,8 @@ set $terminal alacritty
 # exec_always --no-startup-id "i3-layouts"
 exec_always --no-startup-id "i3reset"
 exec_always --no-startup-id "autotiling"
+exec_always "maestral"
+exec_always "blueman-applet"
 # exec_always --no-startup-id i3l spiral 0.6
 # exec_always --no-startup-id "dropbox"
 
