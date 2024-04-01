@@ -97,4 +97,3 @@ read_file uptime {
 time {
         format = "%Y-%m-%d %H:%M"
 }
-

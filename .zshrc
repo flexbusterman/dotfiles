@@ -5,7 +5,7 @@
 export MPD_HOST=127.0.0.1
 
 # NVM_LAZY_LOAD=true
-HISTFILE=/home/$USER/.history/zsh/history
+HISTFILE=~/.history/zsh/history
 HISTSIZE=10000000
 SAVEHIST=10000000
 path+=($HOME/.ghcup/bin)
@@ -210,50 +210,49 @@ alias igdll="cd ~/Dropbox/MEMES && instaloader -F --login _christian_augustin --
 alias igdl="cd ~/Dropbox/MEMES && instaloader -F --no-video-thumbnails --no-metadata-json --no-captions --no-profile-pic memeseducational dank_memes_world_1 dank_memes_world_1 casual.nihilism mvme.hub memefolk.ig stinky420memes memes epicallyepicmemes baked_meme_god stolenmemesawakens memesinyourdms omgzucc"
 
 # VIM aliases for editing common files
-# alias va="cd /home/$USER/.config/awesome/; nvim rc.lua"
-alias vA="cd /home/$USER/.config/alacritty/; nvim alacritty.toml"
-alias vB="cd /home/$USER/; nvim .bashrc"
-alias vb="cd /home/$USER/.config/bspwm/; nvim bspwmrc"
-# alias vA="cd /home/$USER/.config/awesome/; nvim rc.lua"
-alias vc="cd /home/$USER/.config/nvim/after/plugin/; nvim copilot.lua"
-# alias vd="cd /home/$USER/.local/src/react-native-tutorial/; nvim App.js"
-alias vD="cd /home/$USER/.local/src/dmenu/; nvim config.def.h"
-alias vn="cd /home/$USER/.config/nvim; nvim init.lua"
-alias vf="cd /home/$USER/.local/src/flarbs; nvim configuration.nix"
-alias vk="cd /home/$USER/.config/kitty/; nvim kitty.conf"
-alias vr="cd /home/$USER/.config/ranger/; nvim rc.conf"
-alias vR="cd /home/$USER/.config/nvim/; nvim lua/$USER/remap.lua"
-alias va="cd /home/$USER/.config/awesome/; nvim rc.lua"
-alias vp="cd /home/$USER/.config/polybar/; nvim config.ini"
-# alias vp="cd /home/$USER/.config/nvim/; nvim lua/$USER/packer.lua"
-# alias vp="cd /home/$USER/.config/nvim/; nvim /home/$USER/.config/nvim/lua/flex/plugins/init.lua"
-# alias vp="cd /home/$USER/; nvim .xprofile"
-# alias vs="cd /home/$USER/.local/src/st/; nvim config.h"
-alias vS="cd /home/$USER/Dropbox/NOTES/; nvim Shortcuts.md"
-alias vs="cd /home/$USER/.config/spectrwm; nvim spectrwm.conf"
-# alias vS="cd /home/$USER/.config/nvim/after/plugin/luasnippets/; nvim all.lua"
-alias vu="cd /home/$USER/.config/newsboat/; nvim urls"
-alias vv="cd /home/$USER/.config/vifm/; nvim vifmrc"
-alias vX="cd /home/$USER/.xmonad/; nvim xmonad.hs"
-alias vx="cd /home/$USER/; nvim .xinitrc"
-# alias vk="cd /home/$USER/.config/sxhkd; nvim sxhkdrc"
-alias vz="cd /home/$USER/; nvim .zshrc"
-alias vi="cd /home/$USER/.config/i3/; nvim config"
-# alias vI="cd /home/$USER/.config/i3status/; nvim config"
-alias vq="cd /home/$USER/.config/qutebrowser/; nvim autoconfig.yml"
-alias ve="cd /home/$USER/; nvim .zshenv"
-# alias vb="cd /home/$USER/.config/bspwm/; nvim bspwmrc"
-alias vl="cd /home/$USER/.config/lf/; nvim lfrc"
-alias vt="cd /home/$USER/; vim .tmux.conf"
-alias vH="cd /home/$USER/.history/zsh/; nvim history"
-alias vw="cd /home/$USER/.w3m/; nvim keymap"
-alias vrk="cd /home/$USER/.config/REAPER/Scripts/reaper-keys/definitions/; nvim -O bindings.lua actions.lua"
-alias vm="cd /home/$USER/.config/mutt/; nvim muttrc"
-alias vy="cd /home/$USER/.config/yazi/; nvim ."
-# alias vh="cd /home/$USER/.config/home-manager/; nvim home.nix"
+# alias va="cd ~/.config/awesome/; nvim rc.lua"
+alias va="cd ~/.config/alacritty/; nvim alacritty.toml"
+alias vB="cd ~/; nvim .bashrc"
+alias vb="cd ~/.config/bspwm/; nvim bspwmrc"
+# alias vA="cd ~/.config/awesome/; nvim rc.lua"
+alias vc="cd ~/.config/nvim/after/plugin/; nvim copilot.lua"
+# alias vd="cd ~/.local/src/react-native-tutorial/; nvim App.js"
+alias vD="cd ~/.local/src/dmenu/; nvim config.def.h"
+alias vn="cd ~/.config/nvim; nvim init.lua"
+alias vf="cd ~/.flarbs; nvim nixos/configuration.nix"
+alias vk="cd ~/.config/kitty/; nvim kitty.conf"
+alias vr="cd ~/.config/ranger/; nvim rc.conf"
+alias vR="cd ~/.config/nvim/; nvim lua/$USER/remap.lua"
+alias vA="cd ~/.config/awesome/; nvim rc.lua"
+alias vp="cd ~/.config/polybar/; nvim config.ini"
+# alias vp="cd ~/.config/nvim/; nvim lua/$USER/packer.lua"
+# alias vp="cd ~/.config/nvim/; nvim /home/$USER/.config/nvim/lua/flex/plugins/init.lua"
+# alias vp="cd ~/; nvim .xprofile"
+# alias vs="cd ~/.local/src/st/; nvim config.h"
+alias vS="cd ~/Dropbox/NOTES/; nvim Shortcuts.md"
+alias vs="cd ~/.config/spectrwm; nvim spectrwm.conf"
+# alias vS="cd ~/.config/nvim/after/plugin/luasnippets/; nvim all.lua"
+alias vu="cd ~/.config/newsboat/; nvim urls"
+alias vv="cd ~/.config/vifm/; nvim vifmrc"
+alias vX="cd ~/.xmonad/; nvim xmonad.hs"
+alias vx="cd ~/; nvim .xinitrc"
+# alias vk="cd ~/.config/sxhkd; nvim sxhkdrc"
+alias vz="cd ~/; nvim .zshrc"
+alias vi="cd ~/.config/i3/; nvim config"
+# alias vI="cd ~/.config/i3status/; nvim config"
+alias vq="cd ~/.config/qutebrowser/; nvim autoconfig.yml"
+alias ve="cd ~/; nvim .zshenv"
+# alias vb="cd ~/.config/bspwm/; nvim bspwmrc"
+alias vl="cd ~/.config/lf/; nvim lfrc"
+alias vt="cd ~/; vim .tmux.conf"
+alias vH="cd ~/.history/zsh/; nvim history"
+alias vw="cd ~/.w3m/; nvim keymap"
+alias vrk="cd ~/.config/REAPER/Scripts/reaper-keys/definitions/; nvim -O bindings.lua actions.lua"
+alias vm="cd ~/.config/mutt/; nvim muttrc"
+alias vy="cd ~/.config/yazi/; nvim ."
+# alias vh="cd ~/.config/home-manager/; nvim home.nix"
 # alias hr="home-manager switch"
-alias vf="cd /home/$USER/.local/src/flarbs/; nvim configuration.nix"
-alias fr="sudo nixos-rebuild switch --flake ~/.local/src/flarbs#default"
+alias fr="sudo nixos-rebuild switch --flake ~/.flarbs"
 
 alias locate="locate -i"
 
@@ -351,7 +350,7 @@ done
 }
 
 tf(){
-	termdown --no-figlet $* && ffplay -nodisp -autoexit /home/$USER/Dropbox/MUSIC/MP3/fanfare.mp3
+	termdown --no-figlet $* && ffplay -nodisp -autoexit ~/Dropbox/MUSIC/MP3/fanfare.mp3
 }
 
 t(){
