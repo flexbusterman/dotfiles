@@ -217,7 +217,7 @@ awful.screen.connect_for_each_screen(function(s)
 		{ -- Right widgets
 			layout = wibox.layout.fixed.horizontal,
 			-- mykeyboardlayout,
-			mySeparator,
+			-- mySeparator,
 			-- awful.widget.watch('bash -c "sensors | grep temp1"', 15),
 			-- awful.widget.watch(amixer sget Master, 5),
 			-- awful.widget.watch('bash -c "sensors | grep temp1"', 15),
@@ -242,15 +242,15 @@ awful.screen.connect_for_each_screen(function(s)
 			-- end),
 			-- awful.widget.watch('mailbox', 5),
 			-- mySeparator,
-			awful.widget.watch('localip', 10),
-			mySeparator,
-			awful.widget.watch('curl ipinfo.io/ip', 10),
-			mySeparator,
-			awful.widget.watch('trafdown', 1),
-			mySeparator,
-			awful.widget.watch('trafup', 1),
-			mySeparator,
-			awful.widget.watch('cpu', 1),
+			-- awful.widget.watch('~/.local/bin/statusbar/localip', 10),
+			-- mySeparator,
+			-- awful.widget.watch('curl ipinfo.io/ip', 10),
+			-- mySeparator,
+			-- awful.widget.watch('trafdown', 1),
+			-- mySeparator,
+			-- awful.widget.watch('trafup', 1),
+			-- mySeparator,
+			-- awful.widget.watch('cpu', 1),
 			-- wibox.container.background (awful.widget.watch('cpu', 1)),
 			-- wibox.widget {
 			-- widget = wibox.widget.textbox,
@@ -260,24 +260,27 @@ awful.screen.connect_for_each_screen(function(s)
 			-- text = "test",
 			-- color = "8be9fd",
 			-- },
-			mySeparator,
-			awful.widget.watch('battery', 30),
-			mySeparator,
-			awful.widget.watch('disk', 10),
-			mySeparator,
+			-- mySeparator,
+			-- awful.widget.watch('battery', 30),
+			-- mySeparator,
+			-- awful.widget.watch('disk', 10),
+			-- mySeparator,
 			-- awful.widget.watch('nettraf', 5),
 			-- mySeparator,
-			awful.widget.watch('memory', 10),
-			mySeparator,
-			awful.widget.watch('volume', 10),
-			mySeparator,
+			-- awful.widget.watch('memory', 10),
+			-- mySeparator,
+			-- awful.widget.watch('volume', 10),
+			-- mySeparator,
 			-- wibox.widget.textbox("<span color=\"#ff79c6\">0 </span>"),
 			-- wibox.widget.textbox("<span color=\"#8be9fd\">0 </span>"),
 			-- wibox.widget.textbox("<span color=\"#50fa7b\">0 </span>"),
 			-- wibox.widget.textbox("<span color=\"#f1fa8c\">0 </span>"),
 			-- wibox.widget.textbox("<span color=\"#bd93f9\">0</span>"),
+			awful.widget.watch('printf " "', 60),
 			wibox.widget.textclock("%F %H:%M ",10),
-			wibox.widget.systray(),
+			-- wibox.widget.systray(),
+			-- added margins to systray icons
+			wibox.layout.margin(wibox.widget.systray(), 3, 3, 3, 3)
 		},
 	}
 end)
@@ -750,3 +753,6 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 --
 -- autostart startup
 -- awful.util.spawn_with_shell("~/.config/polybar/launch.sh")
+awful.util.spawn("nm-applet")
+awful.util.spawn("blueman-applet")
+-- awful.util.spawn("picom --no-fading-openclose -o 0")

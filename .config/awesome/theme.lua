@@ -13,7 +13,8 @@ local theme = {}
 
 -- theme.font          = "sans 8"
 -- theme.font          = "Source Code Pro Bold 10"
-theme.font          = "Px437 IBM BIOS 7"
+-- theme.font          = "Px437 IBM BIOS 7"
+theme.font          = "PxPlus IBM VGA 8x16"
 
 theme.bg_normal     = "#222222"
 theme.bg_focus      = "#535d6c"
