@@ -297,47 +297,48 @@ root.buttons(gears.table.join(
 -- {{{ Key bindings
 globalkeys = gears.table.join(
 
-	-- Flexbindings launch programs
+	-- special keys
 	awful.key({modkey}, "Return", function () awful.util.spawn("dmenu_run") end),
-	awful.key({modkey}, "n", function () awful.util.spawn_with_shell("cd ~/Dropbox/NOTES/; alacritty -t VimWiki -e nvim -c VimwikiIndex") end),
-	awful.key({modkey, "Shift" }, "n", function () awful.util.spawn_with_shell("cd ~/Dropbox/NOTES/; alacritty -t VimWiki -e nvim ~/Dropbox/NOTES/TODO.md") end),
+	awful.key({modkey, "Shift" }, "Return", function () awful.util.spawn("alacritty -t zsh -e zsh") end),
+	awful.key({"Control", "Shift"}, "Return", function () awful.util.spawn("ncspottoggle", {tag="9"}) end),
+	awful.key({modkey, "Control", "Shift"}, "Return", function () awful.util.spawn_with_shell("pgrep deadbeef && kill $(pgrep deadbeef) || deadbeef") end),
+	awful.key({"Control", "Shift"}, "space", function () awful.util.spawn("musicplaypause") end),
+	awful.key({modkey}, "comma", function () awful.util.spawn("alacritty -e rangerstart") end),
+	awful.key({modkey, "Shift"}, "comma", function () awful.util.spawn("thunar" ) end),
+	awful.key({modkey, Shift}, "semicolon", function () awful.util.spawn("clipdownload") end),
+	awful.key({modkey}, "period", function () awful.util.spawn("qutebrowser") end),
+	awful.key({modkey}, "semicolon", function () awful.util.spawn("clipstream") end),
+	awful.key({}, "Print", function () awful.util.spawn_with_shell("maim -f jpg -m 9 \"/home/flex/Pictures/SCREENSHOTS/$(date +\"%F %H_%M_%S.jpg\")\"") end),
+	awful.key({ "Shift"}, "Print", function () awful.util.spawn_with_shell("maim -f jpg -m 9 -s \"/home/flex/Pictures/SCREENSHOTS/$(date +\"%F %H_%M_%S.jpg\")\"") end),
+
+	-- letters
+	awful.key({modkey}, "a", function () awful.util.spawn("ytfzf -Dm") end, {description = "search youtube and choose format", group = "flexbindings"}),
+	awful.key({modkey, "Shift"}, "a", function () awful.util.spawn("ytfzf -Dmd") end, {description = "search youtube and choose format", group = "flexbindings"}),
+	awful.key({modkey}, "b", function () awful.util.spawn_with_shell("bluetoothconnect 74:5C:4B:D2:86:F7") end),
+	awful.key({modkey, "Shift"}, "b", function () awful.util.spawn("bluetoothctl disconnect 74:5C:4B:D2:86:F7") end),
+	awful.key({modkey}, "d", function () awful.util.spawn_with_shell("sleep 0.2 && xdotool type --clearmodifiers \"$(date +\"%F \")\"") end),
+	awful.key({modkey, "Shift"}, "i", function () awful.util.spawn("xcalib -invert -alter") end),
 	awful.key({modkey}, "m", function () awful.util.spawn_with_shell("mullvadconnect") end),
 	awful.key({modkey, "Shift" }, "m", function () awful.util.spawn_with_shell("mullvaddisconnect") end),
-	-- awful.key({modkey, "Control", "Shift" }, "m", function () awful.util.spawn_with_shell("mailsync") end),
-	-- awful.key({modkey}, "r", function () awful.util.spawn("alacritty -t Newsboat -e newsboat") end),
-	-- awful.key({modkey}, "q", function () awful.util.spawn("qjackctl") end),
-	-- awful.key({modkey}, "q", function () awful.util.spawn("qpwgraph") end),
-	awful.key({modkey, "Shift" }, "Return", function () awful.util.spawn("alacritty -t zsh -e zsh") end),
-	awful.key({modkey}, "comma", function () awful.util.spawn("alacritty -e rangerstart") end),
-	awful.key({modkey}, "semicolon", function () awful.util.spawn("clipstream") end),
-	-- awful.key({modkey, "Shift" }, "comma", function () awful.util.spawn("alacritty -t Ranger -e ranger") end),
-	awful.key({modkey}, "period", function () awful.util.spawn("qutebrowser") end),
-	-- awful.key({modkey, "Control", "Shift" }, "period", function () awful.util.spawn("brave https://youtube.com") end),
-	awful.key({modkey, "Control", "Shift" }, "period", function () awful.util.spawn("vieb") end),
+	awful.key({modkey}, "n", function () awful.util.spawn_with_shell("cd ~/Dropbox/NOTES/; alacritty -t VimWiki -e nvim TODO.md") end),
+	awful.key({modkey, "Shift"}, "n", function () awful.util.spawn_with_shell("cd ~/Dropbox/NOTES/; alacritty -t FzfNotes -e fzfnotes") end),
 	awful.key({modkey, "Shift"}, "p", function () awful.util.spawn("passmenu") end),
-	-- awful.key({modkey}, "e", function () awful.util.spawn_with_shell("cd ~/Downloads/; alacritty -t Neomutt -e neomutt") end),
-	-- awful.key({modkey, "Shift"}, "t", function () awful.util.spawn("alacritty -t Telegram -e tg") end),
-	-- awful.key({modkey, "Control", "Shift"}, "l", function () awful.util.spawn("slock") end),
-	-- awful.key({modkey, "Shift"}, "c", function () awful.util.spawn("alacritty -t Calcurse -e calcurse") end),
 	awful.key({modkey}, "t", function () awful.util.spawn("alacritty -t Btop -e btop") end),
-	-- awful.key({modkey, "Control", "Shift"}, "s", function () awful.util.spawn("alacritty -t SC-IM -e sc-im") end),
 	awful.key({modkey, "Shift"}, "x", function () awful.util.spawn("xkill") end),
-	awful.key({modkey, "Shift"}, "comma", function () awful.util.spawn("thunar" ) end),
-	-- awful.key({modkey}, "F1", function () awful.util.spawn("jackrun") end),
-	-- awful.key({modkey}, "F2", function () awful.util.spawn("jackkill") end),
+	awful.key({modkey}, "y", function () awful.util.spawn("ytfzf -D") end, {description = "search youtube and choose format", group = "flexbindings"}),
+	awful.key({modkey, "Shift"}, "y", function () awful.util.spawn_with_shell("cd ~/Downloads/; ytfzf -Dd") end, {description = "search youtube and choose format", group = "flexbindings"}),
+
+	-- f-keys
 	awful.key({modkey}, "F3", function () awful.util.spawn("displayselect") end),
 	awful.key({modkey}, "F4", function () awful.util.spawn("alacritty -t PulseMixer -e pulsemixer") end),
-	-- awful.key({modkey}, "F4", function () awful.util.spawn("alacritty -t AlsaMixer -e alsamixer") end),
 	awful.key({modkey, "Shift"}, "F4", function () awful.util.spawn("pavucontrol") end),
 	awful.key({modkey}, "F6", function () awful.util.spawn("torwrap") end),
 	awful.key({modkey}, "F7", function () awful.util.spawn("td-toggle") end),
 	awful.key({modkey}, "F9", function () awful.util.spawn("dmenumount") end),
 	awful.key({modkey}, "F10", function () awful.util.spawn("dmenuumount") end),
-	-- awful.key({modkey}, "Up", function () awful.util.spawn_with_shell("cpuperformance") end),
-	-- awful.key({modkey}, "Down", function () awful.util.spawn_with_shell("cpupowersave") end),
-	awful.key({modkey}, "#49", function () awful.util.spawn("dmenuunicode") end),
-	-- Flexbindings HID control
 
+	-- media and other keys
+	awful.key({modkey}, "#49", function () awful.util.spawn("dmenuunicode") end),
 	awful.key({}, "#122", function () awful.util.spawn("pamixer --allow-boost -d 3") end),
 	awful.key({}, "#123", function () awful.util.spawn("pamixer --allow-boost -i 3") end),
 	awful.key({}, "#121", function () awful.util.spawn("pamixer -t") end),
@@ -345,39 +346,40 @@ globalkeys = gears.table.join(
 	awful.key({}, "#232", function () awful.util.spawn_with_shell("xbacklight -dec $(bc <<< \"$(xbacklight) * 0.5\")") end),
 	awful.key({}, "#233", function () awful.util.spawn_with_shell("xbacklight -inc $(bc <<< \"$(xbacklight) * 0.5 + 0.15\")") end),
 	awful.key({}, "#233", function () awful.util.spawn_with_shell("xbacklight -inc $(bc <<< \"$(xbacklight) * 0.5 + 0.15\")") end),
-	awful.key({modkey}, "b", function () awful.util.spawn_with_shell("bluetoothconnect 74:5C:4B:D2:86:F7") end),
-	awful.key({modkey, "Shift"}, "b", function () awful.util.spawn("bluetoothctl disconnect 74:5C:4B:D2:86:F7") end),
 
-	-- Flexbindings audio and media
-	awful.key({"Control", "Shift"}, "Return", function () awful.util.spawn("ncspottoggle", {tag="9"}) end),
-
-	awful.key({modkey, "Control", "Shift"}, "Return", function () awful.util.spawn_with_shell("pgrep deadbeef && kill $(pgrep deadbeef) || deadbeef") end),
+	-- vim movement keys
 	awful.key({"Control", "Shift"}, "j", function () awful.util.spawn("musicnext") end),
 	awful.key({"Control", "Shift"}, "k", function () awful.util.spawn("musicprev") end),
 	awful.key({"Control", "Shift"}, "h", function () awful.util.spawn("musicseekbackward") end),
 	awful.key({"Control", "Shift"}, "l", function () awful.util.spawn("musicseekforward") end),
-	-- awful.key({"Control", "Shift"}, "q", function () awful.util.spawn("deadbeef --quit") end),
-	awful.key({"Control", "Shift"}, "space", function () awful.util.spawn("musicplaypause") end),
-	awful.key({modkey, "Shift"}, "p", function () awful.util.spawn("pulseeffects") end),
 
-	-- Flexbindings youtube-dl
-	awful.key({modkey}, "y", function () awful.util.spawn("ytfzf -D") end, {description = "search youtube and choose format", group = "flexbindings"}),
-	awful.key({modkey, "Shift"}, "y", function () awful.util.spawn_with_shell("cd ~/Downloads/; ytfzf -Dd") end, {description = "search youtube and choose format", group = "flexbindings"}),
-	awful.key({modkey}, "a", function () awful.util.spawn("ytfzf -Dm") end, {description = "search youtube and choose format", group = "flexbindings"}),
-	awful.key({modkey, "Shift"}, "a", function () awful.util.spawn("ytfzf -Dmd") end, {description = "search youtube and choose format", group = "flexbindings"}),
-	awful.key({modkey}, "s", function () awful.util.spawn("jackstart") end),
-	awful.key({modkey, "Shift"}, "s", function () awful.util.spawn("jackkill") end),
-	awful.key({modkey, "Control", "Shift" }, "s", function () awful.util.spawn("slock") end),
-	-- awful.key({modkey}, "m", function () awful.util.spawn("ytfzf -Dm") end),
-	-- awful.key({modkey,"Control", "Shift"}, "m", function () awful.util.spawn_with_shell("cd ~/Downloads; ytfzf -Dmd") end),
-	awful.key({modkey}, "d", function () awful.util.spawn_with_shell("sleep 0.2 && xdotool type --clearmodifiers \"$(date +\"%F \")\"") end),
-	awful.key({modkey, "Shift"}, "i", function () awful.util.spawn("xcalib -invert -alter") end),
-	awful.key({}, "Print", function () awful.util.spawn_with_shell("maim -f jpg -m 9 \"/home/flex/Pictures/SCREENSHOTS/$(date +\"%F %H_%M_%S.jpg\")\"") end),
-	awful.key({ "Shift"}, "Print", function () awful.util.spawn_with_shell("maim -f jpg -m 9 -s \"/home/flex/Pictures/SCREENSHOTS/$(date +\"%F %H_%M_%S.jpg\")\"") end),
 	awful.key({modkey,"Control", "Shift"}, "p",	function () awful.util.spawn("poweroff") end),
 	awful.key({modkey,"Control", "Shift"}, "r",	function () awful.util.spawn("reboot") end),
 	awful.key({modkey, "Shift"}, "Up", function () awful.util.spawn("xdotool keydown --clearmodifiers w") end),
 	awful.key({modkey, "Shift"}, "Down", function () awful.util.spawn("xdotool keydown shift w") end),
+
+	-- awful.key({modkey, "Control", "Shift" }, "period", function () awful.util.spawn("vieb") end),
+	-- awful.key({modkey, "Control", "Shift" }, "m", function () awful.util.spawn_with_shell("mailsync") end),
+	-- awful.key({modkey, "Control", "Shift" }, "period", function () awful.util.spawn("brave https://youtube.com") end),
+	-- awful.key({modkey, "Control", "Shift"}, "l", function () awful.util.spawn("slock") end),
+	-- awful.key({modkey, "Control", "Shift"}, "s", function () awful.util.spawn("alacritty -t SC-IM -e sc-im") end),
+	-- awful.key({modkey, "Shift" }, "comma", function () awful.util.spawn("alacritty -t Ranger -e ranger") end),
+	-- awful.key({modkey, "Shift" }, "n", function () awful.util.spawn_with_shell("cd ~/Dropbox/NOTES/; alacritty -t VimWiki -e nvim ~/Dropbox/NOTES/TODO.md") end),
+	-- awful.key({modkey, "Shift"}, "c", function () awful.util.spawn("alacritty -t Calcurse -e calcurse") end),
+	-- awful.key({modkey, "Shift"}, "t", function () awful.util.spawn("alacritty -t Telegram -e tg") end),
+	-- awful.key({modkey}, "Down", function () awful.util.spawn_with_shell("cpupowersave") end),
+	-- awful.key({modkey}, "F1", function () awful.util.spawn("jackrun") end),
+	-- awful.key({modkey}, "F2", function () awful.util.spawn("jackkill") end),
+	-- awful.key({modkey}, "F4", function () awful.util.spawn("alacritty -t AlsaMixer -e alsamixer") end),
+	-- awful.key({modkey}, "Up", function () awful.util.spawn_with_shell("cpuperformance") end),
+	-- awful.key({modkey}, "e", function () awful.util.spawn_with_shell("cd ~/Downloads/; alacritty -t Neomutt -e neomutt") end),
+	-- awful.key({modkey}, "q", function () awful.util.spawn("qjackctl") end),
+	-- awful.key({modkey}, "q", function () awful.util.spawn("qpwgraph") end),
+	-- awful.key({modkey}, "r", function () awful.util.spawn("alacritty -t Newsboat -e newsboat") end),
+
+	-- Flexbindings audio and media
+
+	-- Flexbindings youtube-dl
 
 	-- other
 	-- awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
@@ -509,6 +511,7 @@ clientkeys = gears.table.join(
 			c:raise()
 		end ,
 		{description = "(un)maximize", group = "client"}),
+
 	awful.key({ modkey, "Control", "Shift" }, "=",
 		-- awful.key({ modkey, "Control" }, "m",
 		function (c)
