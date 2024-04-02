@@ -241,7 +241,8 @@ alias vx="cd ~/; nvim .xinitrc"
 alias vz="cd ~/; nvim .zshrc"
 alias vi="cd ~/.config/i3/; nvim config"
 # alias vI="cd ~/.config/i3status/; nvim config"
-alias vq="cd ~/.config/qutebrowser/; nvim autoconfig.yml"
+alias vq="cd ~/.config/qtile/; nvim config.py"
+alias vQ="cd ~/.config/qutebrowser/; nvim autoconfig.yml"
 alias ve="cd ~/; nvim .zshenv"
 # alias vb="cd ~/.config/bspwm/; nvim bspwmrc"
 alias vl="cd ~/.config/lf/; nvim lfrc"
@@ -487,3 +488,4 @@ alias pdot="/usr/bin/env git --git-dir=$HOME/.pdot.git/ --work-tree=$HOME"
 # source ~/.zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null
 
 # instant-zsh-post
+alias pdot="/usr/bin/env git --git-dir=$HOME/.pdot.git/ --work-tree=$HOME"
