@@ -314,8 +314,8 @@ globalkeys = gears.table.join(
 	-- letters
 	awful.key({modkey}, "a", function () awful.util.spawn("ytfzf -Dm") end, {description = "search youtube and choose format", group = "flexbindings"}),
 	awful.key({modkey, "Shift"}, "a", function () awful.util.spawn("ytfzf -Dmd") end, {description = "search youtube and choose format", group = "flexbindings"}),
-	awful.key({modkey}, "b", function () awful.util.spawn_with_shell("bluetoothconnect 74:5C:4B:D2:86:F7") end),
-	awful.key({modkey, "Shift"}, "b", function () awful.util.spawn("bluetoothctl disconnect 74:5C:4B:D2:86:F7") end),
+	awful.key({modkey}, "b", function () awful.util.spawn_with_shell("bluetoothconnect $HEADPHONES") end),
+	awful.key({modkey, "Shift"}, "b", function () awful.util.spawn_with_shell("bluetoothctl disconnect $HEADPHONES") end),
 	awful.key({modkey}, "d", function () awful.util.spawn_with_shell("sleep 0.2 && xdotool type --clearmodifiers \"$(date +\"%F \")\"") end),
 	awful.key({modkey, "Shift"}, "i", function () awful.util.spawn("xcalib -invert -alter") end),
 	awful.key({modkey}, "m", function () awful.util.spawn_with_shell("mullvadconnect") end),
@@ -497,20 +497,20 @@ clientkeys = gears.table.join(
 		{description = "move to screen", group = "client"}),
 	awful.key({ modkey,           }, "t",      function (c) c.ontop = not c.ontop            end,
 		{description = "toggle keep on top", group = "client"}),
-	awful.key({ modkey,           }, "n",
-		function (c)
-			-- The client currently has the input focus, so it cannot be
-			-- minimized, since minimized clients can't have the focus.
-			c.minimized = true
-		end ,
-		{description = "minimize", group = "client"}),
+	-- awful.key({ modkey,           }, "n",
+	-- 	function (c)
+	-- 		-- The client currently has the input focus, so it cannot be
+	-- 		-- minimized, since minimized clients can't have the focus.
+	-- 		c.minimized = true
+	-- 	end ,
+	-- 	{description = "minimize", group = "client"}),
 	-- awful.key({ modkey, "Control", "Shift" }, "m",
-	awful.key({ modkey, "Control", "Shift" }, "space",
-		function (c)
-			c.maximized = not c.maximized
-			c:raise()
-		end ,
-		{description = "(un)maximize", group = "client"}),
+	-- awful.key({ modkey, "Control", "Shift" }, "space",
+	-- 	function (c)
+	-- 		c.maximized = not c.maximized
+	-- 		c:raise()
+	-- 	end ,
+	-- 	{description = "(un)maximize", group = "client"}),
 
 	awful.key({ modkey, "Control", "Shift" }, "=",
 		-- awful.key({ modkey, "Control" }, "m",
