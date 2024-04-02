@@ -113,7 +113,7 @@ keys = [
     # Key([mod, "control"], "h", lazy.spawn(), desc=""),
     # Key([mod, "shift", "control"], "h", lazy.spawn(), desc=""),
     # Key([mod], "i", lazy.spawn(), desc=""),
-    # Key([mod, "shift"], "i", lazy.spawn(), desc=""),
+    Key([mod, "shift"], "i", lazy.spawn("xcalib -i -a"), desc="Invert screen colors (invert dark mode)"),
     # Key([mod, "control"], "i", lazy.spawn(), desc=""),
     # Key([mod, "shift", "control"], "i", lazy.spawn(), desc=""),
     # Key([mod], "j", lazy.spawn(), desc=""),
@@ -143,7 +143,7 @@ keys = [
     # Key([mod], "p", lazy.spawn(), desc=""),
     # Key([mod, "shift"], "p", lazy.spawn(), desc=""),
     # Key([mod, "control"], "p", lazy.spawn(), desc=""),
-    # Key([mod, "shift", "control"], "p", lazy.spawn(), desc=""),
+    Key([mod, "shift", "control"], "p", lazy.spawn("poweroff"), desc="Poweroff"),
     # Key([mod], "q", lazy.spawn(), desc=""),
     # Key([mod, "shift"], "q", lazy.spawn(), desc=""),
     # Key([mod, "control"], "q", lazy.spawn(), desc=""),
@@ -151,7 +151,7 @@ keys = [
     # Key([mod], "r", lazy.spawn(), desc=""),
     # Key([mod, "shift"], "r", lazy.spawn(), desc=""),
     # Key([mod, "control"], "r", lazy.spawn(), desc=""),
-    # Key([mod, "shift", "control"], "r", lazy.spawn(), desc=""),
+    Key([mod, "shift", "control"], "r", lazy.spawn("reboot"), desc="Reboot"),
     # Key([mod], "s", lazy.spawn(), desc=""),
     # Key([mod, "shift"], "s", lazy.spawn(), desc=""),
     # Key([mod, "control"], "s", lazy.spawn(), desc=""),
@@ -237,6 +237,9 @@ keys = [
     Key([mod], "equal", lazy.spawn("calculate"), desc="Dmenu calculator, result in clipboard"),
     Key([mod, "shift"], "grave", lazy.spawn("dmenuunicode"), desc="Choose emoji and put in clipboard"),
     Key([mod], "Return", lazy.spawn("dmenu_run"), desc="Launch program using dmenu"),
+    Key([mod], "semicolon", lazy.spawn("clipstream"), desc="Stream clipboard link with yt-dlp and webtorrent"),
+    Key([mod, "shift"], "semicolon", lazy.spawn("clipdownload"), desc="Download clipboard link as video using yt-dlp"),
+    Key([mod, "shift", "control"], "semicolon", lazy.spawn("clipdownload -a"), desc="Download clipboard link as audio using yt-dlp"),
 
 Key([], "XF86AudioLowerVolume", lazy.spawn("amixer sset Master 5%-"), desc="Lower Volume by 5%"),
 
@@ -262,6 +265,9 @@ Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessdown"), desc="Decrease di
   # { ShiftMask,											XK_Print,			spawn,					SHCMD("maim -f jpg -m 9 -s \"/home/flex/Pictures/SCREENSHOTS/$(date +\"%F %H_%M_%S.jpg\")\"")},
     # Mail
 	# { MODKEY,													XK_F10,				spawn,					SHCMD("campreview") },
+	# { MODKEY,													XK_p,					spawn,					SHCMD("stack -p")},
+	# { MODKEY,													XK_y,					spawn,					SHCMD("stack -y")},
+	# { MODKEY|ShiftMask,								XK_p,					spawn,					SHCMD("passmenu")},
 
 ]
 
