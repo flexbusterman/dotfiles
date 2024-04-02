@@ -53,7 +53,7 @@ keys = [
     Key([mod, "control"], "l", lazy.layout.grow_right(), desc="Grow window to the right"),
     Key([mod, "control"], "j", lazy.layout.grow_down(), desc="Grow window down"),
     Key([mod, "control"], "k", lazy.layout.grow_up(), desc="Grow window up"),
-    Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
+    # Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
     # Toggle between split and unsplit sides of stack.
     # Split = all windows displayed
     # Unsplit = 1 window displayed, like Max layout, but still with
@@ -74,7 +74,7 @@ keys = [
         lazy.window.toggle_fullscreen(),
         desc="Toggle fullscreen on the focused window",
     ),
-    Key([mod], "t", lazy.window.toggle_floating(), desc="Toggle floating on the focused window"),
+    Key([mod, "shift"], "space", lazy.window.toggle_floating(), desc="Toggle floating on the focused window"),
     Key([mod, "shift"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "shift"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     # Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
@@ -88,7 +88,7 @@ keys = [
     # Key([mod, "control"], "b", lazy.spawn(), desc=""),
     Key([mod, "shift", "control"], "b", lazy.spawn("blueman-manager"), desc="Blueman bluetooth manager"),
     Key([mod], "c", lazy.spawn("reaperconnect"), desc="Connect Reaper outputs to bluetooth headphones outputs"),
-    # Key([mod, "shift"], "c", lazy.spawn(), desc=""),
+    Key([mod, "shift"], "c", lazy.spawn("qutebrowser https://calendar.google.com/calendar/r/month"), desc="Open Google calendar in Qutebrowser"),
     # Key([mod, "control"], "c", lazy.spawn(), desc=""),
     # Key([mod, "shift", "control"], "c", lazy.spawn(), desc=""),
     # Key([mod], "d", lazy.spawn("xdotool keyup Alt_L Alt_R Control_L Control_R Shift_L Shift_R; xdotool type $(date \+\%F)"), desc="Insert current date using xdotool"),
@@ -132,8 +132,8 @@ keys = [
     Key([mod, "shift"], "m", lazy.spawn("mullvaddisconnect"), desc="Disconnect Mullvad VPN"),
     Key([mod, "control"], "m", lazy.spawn("kruler"), desc="Screen ruler"),
     # Key([mod, "shift", "control"], "m", lazy.spawn(), desc=""),
-    # Key([mod], "n", lazy.spawn(), desc=""),
-    # Key([mod, "shift"], "n", lazy.spawn(), desc=""),
+    Key([mod], "n", lazy.spawn("alacritty -e zsh -c 'cd ~/Dropbox/NOTES/; nvim ~/Dropbox/NOTES/TODO.md'"), desc="Nvim edit TODO.md"),
+    Key([mod, "shift"], "n", lazy.spawn("alacritty -e fzfnotes"), desc="Fuzzy find note file and open in nvim"),
     # Key([mod, "control"], "n", lazy.spawn(), desc=""),
     # Key([mod, "shift", "control"], "n", lazy.spawn(), desc=""),
     # TODO: add video folder as variable
@@ -153,12 +153,12 @@ keys = [
     # Key([mod, "shift"], "r", lazy.spawn(), desc=""),
     # Key([mod, "control"], "r", lazy.spawn(), desc=""),
     Key([mod, "shift", "control"], "r", lazy.spawn("reboot"), desc="Reboot"),
-    # Key([mod], "s", lazy.spawn(), desc=""),
-    # Key([mod, "shift"], "s", lazy.spawn(), desc=""),
+    Key([mod], "s", lazy.spawn("alacritty -e tmuxsession SuperCollider 'supercollider'"), desc="Start nvim SuperCollider session with scnvim and tmux"),
+    Key([mod, "shift"], "s", lazy.spawn("tmux kill-session -t SuperCollider"), desc="Kill nvim SuperCollider tmux session"),
     # Key([mod, "control"], "s", lazy.spawn(), desc=""),
     # Key([mod, "shift", "control"], "s", lazy.spawn(), desc=""),
-    # Key([mod], "t", lazy.spawn(), desc=""),
-    # Key([mod, "shift"], "t", lazy.spawn(), desc=""),
+    Key([mod], "t", lazy.spawn("alacritty -e btop"), desc="Btop system monitor"),
+    Key([mod, "shift"], "t", lazy.spawn("alacritty -e htop"), desc="Htop system monitor (htop-vim)"),
     # Key([mod, "control"], "t", lazy.spawn(), desc=""),
     # Key([mod, "shift", "control"], "t", lazy.spawn(), desc=""),
     # Key([mod], "u", lazy.spawn(), desc=""),
@@ -173,7 +173,7 @@ keys = [
     # Key([mod, "shift"], "w", lazy.spawn(), desc=""),
     # Key([mod, "control"], "w", lazy.spawn(), desc=""),
     # Key([mod, "shift", "control"], "w", lazy.spawn(), desc=""),
-    # Key([mod], "x", lazy.spawn(), desc=""),
+    Key([mod], "x", lazy.spawn("xkill"), desc="Click to kill window"),
     # Key([mod, "shift"], "x", lazy.spawn(), desc=""),
     # Key([mod, "control"], "x", lazy.spawn(), desc=""),
     # Key([mod, "shift", "control"], "x", lazy.spawn(), desc=""),
@@ -197,8 +197,8 @@ keys = [
     Key([mod, "shift"], "F3", lazy.spawn("displayselect"), desc="Luke Smith LARBS display select script"),
     # Key([mod, "control"], "F3", lazy.spawn(), desc=""),
     # Key([mod, "shift", "control"], "F3", lazy.spawn(), desc=""),
-    # Key([mod], "F4", lazy.spawn(), desc=""),
-    # Key([mod, "shift"], "F4", lazy.spawn(), desc=""),
+    Key([mod], "F4", lazy.spawn("alacritty -e pulsemixer"), desc="Pulsemixer TUI audio device management"),
+    Key([mod, "shift"], "F4", lazy.spawn("pavucontrol"), desc="Pavucontrol GUI audio device management"),
     # Key([mod, "control"], "F4", lazy.spawn(), desc=""),
     # Key([mod, "shift", "control"], "F4", lazy.spawn(), desc=""),
     # Key([mod], "F5", lazy.spawn(), desc=""),
@@ -235,6 +235,8 @@ keys = [
     # Key([mod, "shift", "control"], "F12", lazy.spawn(), desc=""),
 
     Key([mod], "period", lazy.spawn("qutebrowser"), desc="Qutebrowser web browser"),
+    Key([mod, "shift"], "period", lazy.spawn("bravestart"), desc="Brave web browser"),
+    Key([mod, "shift", "control"], "period", lazy.spawn("firefox"), desc="Firefox web browser"),
     Key([mod], "equal", lazy.spawn("calculate"), desc="Dmenu calculator, result in clipboard"),
     Key([mod], "comma", lazy.spawn("alacritty -e rangerstart"), desc="Start Ranger file manager with image preview support"),
     Key([mod, "shift"], "grave", lazy.spawn("dmenuunicode"), desc="Choose emoji and put in clipboard"),
@@ -245,6 +247,7 @@ keys = [
 
     Key([mod], "slash", lazy.spawn("alacritty -e shortcuts"), desc="Fuzzy finds in, or adds to, Shortcuts.md"),
     Key([mod, "shift"], "slash", lazy.spawn("alacritty -e fzfvim"), desc="Fuzzy find file in home folder and open in nvim"),
+    Key([mod, "control"], "slash", lazy.spawn("alacritty -e fzfmusic"), desc="Fuzzy find music and play with mpd"),
 
 Key([], "XF86AudioLowerVolume", lazy.spawn("amixer sset Master 5%-"), desc="Lower Volume by 5%"),
 
@@ -276,6 +279,14 @@ Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessdown"), desc="Decrease di
 	# { MODKEY|ShiftMask,								XK_o,					spawn,					SHCMD("ytfzf -m --mpv-opts='--ytdl-format=bestvideo[height<=480]+bestaudio/best[height<=480]' -D")},
 	# // { MODKEY|ShiftMask,								XK_o,					spawn,					SHCMD("ytfzf -dD -P ~/Downloads/VIDEO/")},
 	# { MODKEY|ControlMask,							XK_d,					spawn,          SHCMD("mpc --host ~/.mpd/socket clear" ) },
+	# { MODKEY|ControlMask|ShiftMask,		XK_t,					spawn,					SHCMD("st -T typingtest -e tt -notheme") },
+    # transmission-cli
+	# { MODKEY|ControlMask,						 	XK_Return,		spawn,					SHCMD("st -T ncmpcpp -e ncmpcpp")},
+	# { MODKEY,													XK_s,					spawn,					SHCMD("st -T SuperCollider -e tmuxsession SuperCollider 'supercollider'")},
+	# { MODKEY,													XK_t,					spawn,					SHCMD("st -T FoxDot -e foxdot")},
+	# // { MODKEY,													XK_t,					spawn,					SHCMD("st -T TidalCycles -e tidalcycles")},
+	# { MODKEY|ShiftMask,								XK_t,					spawn,					SHCMD("foxdotkill")},
+	# // { MODKEY|ShiftMask,								XK_t,					spawn,					SHCMD("tidalkill")},
 
 ]
 
