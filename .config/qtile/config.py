@@ -145,11 +145,11 @@ keys = [
     # Key([mod, "shift"], "p", lazy.spawn(), desc=""),
     # Key([mod, "control"], "p", lazy.spawn(), desc=""),
     Key([mod, "shift", "control"], "p", lazy.spawn("poweroff"), desc="Poweroff"),
-    # Key([mod], "q", lazy.spawn(), desc=""),
+    Key([mod], "q", lazy.spawn("qpwgraph"), desc="Manage PipeWire connections"),
     # Key([mod, "shift"], "q", lazy.spawn(), desc=""),
     # Key([mod, "control"], "q", lazy.spawn(), desc=""),
     # Key([mod, "shift", "control"], "q", lazy.spawn(), desc=""),
-    # Key([mod], "r", lazy.spawn(), desc=""),
+    Key([mod], "r", lazy.spawn("reaper"), desc="Reaper DAW"),
     # Key([mod, "shift"], "r", lazy.spawn(), desc=""),
     # Key([mod, "control"], "r", lazy.spawn(), desc=""),
     Key([mod, "shift", "control"], "r", lazy.spawn("reboot"), desc="Reboot"),
@@ -241,30 +241,23 @@ keys = [
     Key([mod], "comma", lazy.spawn("alacritty -e rangerstart"), desc="Start Ranger file manager with image preview support"),
     Key([mod, "shift"], "grave", lazy.spawn("dmenuunicode"), desc="Choose emoji and put in clipboard"),
     Key([mod], "Return", lazy.spawn("dmenu_run"), desc="Launch program using dmenu"),
+    Key([mod, "shift", "control"], "Return", lazy.spawn("tidal-hifi"), desc="Tidal music player"),
     Key([mod], "semicolon", lazy.spawn("clipstream"), desc="Stream clipboard link with yt-dlp and webtorrent"),
     Key([mod, "shift"], "semicolon", lazy.spawn("clipdownload"), desc="Download clipboard link as video using yt-dlp"),
     Key([mod, "shift", "control"], "semicolon", lazy.spawn("clipdownload -a"), desc="Download clipboard link as audio using yt-dlp"),
-
     Key([mod], "slash", lazy.spawn("alacritty -e shortcuts"), desc="Fuzzy finds in, or adds to, Shortcuts.md"),
     Key([mod, "shift"], "slash", lazy.spawn("alacritty -e fzfvim"), desc="Fuzzy find file in home folder and open in nvim"),
     Key([mod, "control"], "slash", lazy.spawn("alacritty -e fzfmusic"), desc="Fuzzy find music and play with mpd"),
 
-Key([], "XF86AudioLowerVolume", lazy.spawn("amixer sset Master 5%-"), desc="Lower Volume by 5%"),
-
-Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer sset Master 5%+"), desc="Raise Volume by 5%"),
-
-Key([], "XF86AudioMute", lazy.spawn("amixer sset Master 1+ toggle"), desc="Mute/Unmute Volume"),
-
-Key([], "XF86AudioMicMute", lazy.spawn("amixer set Capture toggle"), desc="Mute / unmute mic"),
-
-Key([], "XF86AudioPlay", lazy.spawn("musicplaypause"), desc="Play / pause music player. Priority is audacious, tidal-hifi, mpc"),
-
-Key([], "XF86AudioNext", lazy.spawn("musicnext"), desc="Audio player next track. Priority is audacious, tidal-hifi, mpc"),
-
-Key([], "XF86AudioPrev", lazy.spawn("musicprev"), desc="Audio player previous track. Priority is audacious, tidal-hifi, mpc"),
-
-Key([], "XF86MonBrightnessUp", lazy.spawn("brightnessup"), desc="Increase display brightness"),
-Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessdown"), desc="Decrease display brightness"),
+    Key([], "XF86AudioLowerVolume", lazy.spawn("amixer sset Master 5%-"), desc="Lower Volume by 5%"),
+    Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer sset Master 5%+"), desc="Raise Volume by 5%"),
+    Key([], "XF86AudioMute", lazy.spawn("amixer sset Master 1+ toggle"), desc="Mute/Unmute Volume"),
+    Key([], "XF86AudioMicMute", lazy.spawn("amixer set Capture toggle"), desc="Mute / unmute mic"),
+    Key([], "XF86AudioPlay", lazy.spawn("musicplaypause"), desc="Play / pause music player. Priority is audacious, tidal-hifi, mpc"),
+    Key([], "XF86AudioNext", lazy.spawn("musicnext"), desc="Audio player next track. Priority is audacious, tidal-hifi, mpc"),
+    Key([], "XF86AudioPrev", lazy.spawn("musicprev"), desc="Audio player previous track. Priority is audacious, tidal-hifi, mpc"),
+    Key([], "XF86MonBrightnessUp", lazy.spawn("brightnessup"), desc="Increase display brightness"),
+    Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessdown"), desc="Decrease display brightness"),
 
     # TODO:
     # Key([], "Print", lazy.spawn("notify-send 'hello'"), desc=""),
