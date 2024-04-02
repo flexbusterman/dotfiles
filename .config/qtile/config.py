@@ -58,12 +58,12 @@ keys = [
     # Split = all windows displayed
     # Unsplit = 1 window displayed, like Max layout, but still with
     # multiple stack panes
-    Key(
-        [mod, "shift"],
-        "Return",
-        lazy.layout.toggle_split(),
-        desc="Toggle between split and unsplit sides of stack",
-    ),
+    # Key(
+    #     [mod, "shift"],
+    #     "Return",
+    #     lazy.layout.toggle_split(),
+    #     desc="Toggle between split and unsplit sides of stack",
+    # ),
     Key([mod, "shift"], "Return", lazy.spawn(terminal), desc="Launch terminal"),
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
@@ -77,7 +77,7 @@ keys = [
     Key([mod], "t", lazy.window.toggle_floating(), desc="Toggle floating on the focused window"),
     Key([mod, "shift"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "shift"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
-    Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
+    # Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
 
     # Key([mod], "a", lazy.spawn(), desc=""),
     # Key([mod, "shift"], "a", lazy.spawn(), desc=""),
@@ -220,30 +220,48 @@ keys = [
     # Key([mod, "shift"], "F9", lazy.spawn(), desc=""),
     # Key([mod, "control"], "F9", lazy.spawn(), desc=""),
     # Key([mod, "shift", "control"], "F9", lazy.spawn(), desc=""),
-    # Key([mod], "F10", lazy.spawn(), desc=""),
+    Key([mod], "F10", lazy.spawn("campreview"), desc=""),
     # Key([mod, "shift"], "F10", lazy.spawn(), desc=""),
     # Key([mod, "control"], "F10", lazy.spawn(), desc=""),
     # Key([mod, "shift", "control"], "F10", lazy.spawn(), desc=""),
-    # Key([mod], "F11", lazy.spawn(), desc=""),
+    Key([mod], "F11", lazy.spawn("dmenurecord"), desc="LARBS screencast record script"),
     # Key([mod, "shift"], "F11", lazy.spawn(), desc=""),
     # Key([mod, "control"], "F11", lazy.spawn(), desc=""),
     # Key([mod, "shift", "control"], "F11", lazy.spawn(), desc=""),
-    # Key([mod], "F12", lazy.spawn(), desc=""),
+    Key([mod], "F12", lazy.spawn("killrecording"), desc="Stop recording started with dmenurecord"),
     # Key([mod, "shift"], "F12", lazy.spawn(), desc=""),
     # Key([mod, "control"], "F12", lazy.spawn(), desc=""),
     # Key([mod, "shift", "control"], "F12", lazy.spawn(), desc=""),
 
-    Key([mod], "period", lazy.spawn("qutebrowser"), desc="Qutebrowser Web Browser"),
+    Key([mod], "period", lazy.spawn("qutebrowser"), desc="Qutebrowser web browser"),
     Key([mod], "equal", lazy.spawn("calculate"), desc="Dmenu calculator, result in clipboard"),
+    Key([mod, "shift"], "grave", lazy.spawn("dmenuunicode"), desc="Choose emoji and put in clipboard"),
+    Key([mod], "Return", lazy.spawn("dmenu_run"), desc="Launch program using dmenu"),
 
-    # Key([], "Print", lazy.spawn("notify-send 'hello'"), desc=""),
-    Key([mod, "shift"], "grave", lazy.spawn("dmenuunicode"), desc=""),
+Key([], "XF86AudioLowerVolume", lazy.spawn("amixer sset Master 5%-"), desc="Lower Volume by 5%"),
+
+Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer sset Master 5%+"), desc="Raise Volume by 5%"),
+
+Key([], "XF86AudioMute", lazy.spawn("amixer sset Master 1+ toggle"), desc="Mute/Unmute Volume"),
+
+Key([], "XF86AudioMicMute", lazy.spawn("amixer set Capture toggle"), desc="Mute / unmute mic"),
+
+Key([], "XF86AudioPlay", lazy.spawn("musicplaypause"), desc="Play / pause music player. Priority is audacious, tidal-hifi, mpc"),
+
+Key([], "XF86AudioNext", lazy.spawn("musicnext"), desc="Audio player next track. Priority is audacious, tidal-hifi, mpc"),
+
+Key([], "XF86AudioPrev", lazy.spawn("musicprev"), desc="Audio player previous track. Priority is audacious, tidal-hifi, mpc"),
+
+Key([], "XF86MonBrightnessUp", lazy.spawn("brightnessup"), desc="Increase display brightness"),
+Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessdown"), desc="Decrease display brightness"),
 
     # TODO:
+    # Key([], "Print", lazy.spawn("notify-send 'hello'"), desc=""),
     # Lockscreen binding
   # { 0,															XK_Print,			spawn,					SHCMD("maim -f jpg -m 9 \"/home/flex/Pictures/SCREENSHOTS/$(date +\"%F %H_%M_%S.jpg\")\"")},
   # { ShiftMask,											XK_Print,			spawn,					SHCMD("maim -f jpg -m 9 -s \"/home/flex/Pictures/SCREENSHOTS/$(date +\"%F %H_%M_%S.jpg\")\"")},
     # Mail
+	# { MODKEY,													XK_F10,				spawn,					SHCMD("campreview") },
 
 ]
 
