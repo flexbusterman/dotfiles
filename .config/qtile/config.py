@@ -128,8 +128,8 @@ keys = [
     # Key([mod, "shift"], "l", lazy.spawn(), desc=""),
     # Key([mod, "control"], "l", lazy.spawn(), desc=""),
     # Key([mod, "shift", "control"], "l", lazy.spawn(), desc=""),
-    # Key([mod], "m", lazy.spawn(), desc=""),
-    # Key([mod, "shift"], "m", lazy.spawn(), desc=""),
+    Key([mod], "m", lazy.spawn("mullvadconnect"), desc="Connect Mullvad VPN"),
+    Key([mod, "shift"], "m", lazy.spawn("mullvaddisconnect"), desc="Disconnect Mullvad VPN"),
     # Key([mod, "control"], "m", lazy.spawn(), desc=""),
     # Key([mod, "shift", "control"], "m", lazy.spawn(), desc=""),
     # Key([mod], "n", lazy.spawn(), desc=""),
@@ -184,16 +184,16 @@ keys = [
     # Key([mod, "shift"], "z", lazy.spawn(), desc=""),
     # Key([mod, "control"], "z", lazy.spawn(), desc=""),
     # Key([mod, "shift", "control"], "z", lazy.spawn(), desc=""),
-    # Key([mod], "F1", lazy.spawn(), desc=""),
+    Key([mod], "F1", lazy.spawn("bindings"), desc="Show keyboard bindings"),
     # Key([mod, "shift"], "F1", lazy.spawn(), desc=""),
     # Key([mod, "control"], "F1", lazy.spawn(), desc=""),
     # Key([mod, "shift", "control"], "F1", lazy.spawn(), desc=""),
-    # Key([mod], "F2", lazy.spawn(), desc=""),
+    Key([mod], "F2", lazy.spawn("resolution"), desc="Select display resolution"),
     # Key([mod, "shift"], "F2", lazy.spawn(), desc=""),
     # Key([mod, "control"], "F2", lazy.spawn(), desc=""),
     # Key([mod, "shift", "control"], "F2", lazy.spawn(), desc=""),
-    # Key([mod], "F3", lazy.spawn(), desc=""),
-    # Key([mod, "shift"], "F3", lazy.spawn(), desc=""),
+    Key([mod], "F3", lazy.spawn("displaydefault"), desc="Set default screen resolution"),
+    Key([mod, "shift"], "F3", lazy.spawn("displayselect"), desc="Luke Smith LARBS display select script"),
     # Key([mod, "control"], "F3", lazy.spawn(), desc=""),
     # Key([mod, "shift", "control"], "F3", lazy.spawn(), desc=""),
     # Key([mod], "F4", lazy.spawn(), desc=""),
@@ -208,15 +208,15 @@ keys = [
     # Key([mod, "shift"], "F6", lazy.spawn(), desc=""),
     # Key([mod, "control"], "F6", lazy.spawn(), desc=""),
     # Key([mod, "shift", "control"], "F6", lazy.spawn(), desc=""),
-    # Key([mod], "F7", lazy.spawn(), desc=""),
+    Key([mod], "F7", lazy.spawn("td-toggle"), desc="Luke Smith LARBS Transmission daemon toggle script"),
     # Key([mod, "shift"], "F7", lazy.spawn(), desc=""),
     # Key([mod, "control"], "F7", lazy.spawn(), desc=""),
     # Key([mod, "shift", "control"], "F7", lazy.spawn(), desc=""),
-    # Key([mod], "F8", lazy.spawn(), desc=""),
+    Key([mod], "F8", lazy.spawn("mounter"), desc=""),
     # Key([mod, "shift"], "F8", lazy.spawn(), desc=""),
     # Key([mod, "control"], "F8", lazy.spawn(), desc=""),
     # Key([mod, "shift", "control"], "F8", lazy.spawn(), desc=""),
-    # Key([mod], "F9", lazy.spawn(), desc=""),
+    Key([mod], "F9", lazy.spawn("unmounter"), desc=""),
     # Key([mod, "shift"], "F9", lazy.spawn(), desc=""),
     # Key([mod, "control"], "F9", lazy.spawn(), desc=""),
     # Key([mod, "shift", "control"], "F9", lazy.spawn(), desc=""),
@@ -236,7 +236,14 @@ keys = [
     Key([mod], "period", lazy.spawn("qutebrowser"), desc="Qutebrowser Web Browser"),
     Key([mod], "equal", lazy.spawn("calculate"), desc="Dmenu calculator, result in clipboard"),
 
-    # TODO: Lockscreen binding
+    # Key([], "Print", lazy.spawn("notify-send 'hello'"), desc=""),
+    Key([mod, "shift"], "grave", lazy.spawn("dmenuunicode"), desc=""),
+
+    # TODO:
+    # Lockscreen binding
+  # { 0,															XK_Print,			spawn,					SHCMD("maim -f jpg -m 9 \"/home/flex/Pictures/SCREENSHOTS/$(date +\"%F %H_%M_%S.jpg\")\"")},
+  # { ShiftMask,											XK_Print,			spawn,					SHCMD("maim -f jpg -m 9 -s \"/home/flex/Pictures/SCREENSHOTS/$(date +\"%F %H_%M_%S.jpg\")\"")},
+    # Mail
 
 ]
 
