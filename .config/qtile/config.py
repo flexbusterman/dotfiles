@@ -91,7 +91,8 @@ keys = [
     # Key([mod, "shift"], "c", lazy.spawncmd(), desc=""),
     # Key([mod, "control"], "c", lazy.spawncmd(), desc=""),
     # Key([mod, "shift, control"], "c", lazy.spawncmd(), desc=""),
-    # Key([mod], "d", lazy.spawncmd(), desc=""),
+    # Key([mod], "d", lazy.spawn("xdotool keyup Alt_L Alt_R Control_L Control_R Shift_L Shift_R; xdotool type $(date \+\%F)"), desc="Insert current date using xdotool"),
+    Key([mod], "d", lazy.spawn("bash -c 'xdotool keyup Alt_L Alt_R Control_L Control_R Shift_L Shift_R; xdotool type \"$(date +%F) \"'"), desc="Insert current date using xdotool"),
     # Key([mod, "shift"], "d", lazy.spawncmd(), desc=""),
     # Key([mod, "control"], "d", lazy.spawncmd(), desc=""),
     # Key([mod, "shift, control"], "d", lazy.spawncmd(), desc=""),
@@ -233,6 +234,9 @@ keys = [
     # Key([mod, "shift, control"], "F12", lazy.spawncmd(), desc=""),
 
     Key([mod], "period", lazy.spawn("qutebrowser"), desc="Qutebrowser Web Browser"),
+    Key([mod], "equal", lazy.spawn("calculate"), desc="Dmenu calculator, result in clipboard"),
+
+    # TODO: Lockscreen binding
 
 ]
 
