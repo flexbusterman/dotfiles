@@ -87,7 +87,7 @@ keys = [
     Key([mod, "shift"], "b", lazy.spawn("bluetoothctl disconnect $HEADPHONES"), desc="Disconnect bluetooth device $HEADPHONES"),
     # Key([mod, "control"], "b", lazy.spawn(), desc=""),
     Key([mod, "shift", "control"], "b", lazy.spawn("blueman-manager"), desc="Blueman bluetooth manager"),
-    # Key([mod], "c", lazy.spawn(), desc=""),
+    Key([mod], "c", lazy.spawn("reaperconnect"), desc="Connect Reaper outputs to bluetooth headphones outputs"),
     # Key([mod, "shift"], "c", lazy.spawn(), desc=""),
     # Key([mod, "control"], "c", lazy.spawn(), desc=""),
     # Key([mod, "shift", "control"], "c", lazy.spawn(), desc=""),
@@ -130,13 +130,14 @@ keys = [
     # Key([mod, "shift", "control"], "l", lazy.spawn(), desc=""),
     Key([mod], "m", lazy.spawn("mullvadconnect"), desc="Connect Mullvad VPN"),
     Key([mod, "shift"], "m", lazy.spawn("mullvaddisconnect"), desc="Disconnect Mullvad VPN"),
-    # Key([mod, "control"], "m", lazy.spawn(), desc=""),
+    Key([mod, "control"], "m", lazy.spawn("kruler"), desc="Screen ruler"),
     # Key([mod, "shift", "control"], "m", lazy.spawn(), desc=""),
     # Key([mod], "n", lazy.spawn(), desc=""),
     # Key([mod, "shift"], "n", lazy.spawn(), desc=""),
     # Key([mod, "control"], "n", lazy.spawn(), desc=""),
     # Key([mod, "shift", "control"], "n", lazy.spawn(), desc=""),
-    # Key([mod], "o", lazy.spawn(), desc=""),
+    # TODO: add video folder as variable
+    Key([mod], "o", lazy.spawn("fzfvideo"), desc="Fuzzy finds and plays file in video folder"),
     # Key([mod, "shift"], "o", lazy.spawn(), desc=""),
     # Key([mod, "control"], "o", lazy.spawn(), desc=""),
     # Key([mod, "shift", "control"], "o", lazy.spawn(), desc=""),
@@ -235,11 +236,15 @@ keys = [
 
     Key([mod], "period", lazy.spawn("qutebrowser"), desc="Qutebrowser web browser"),
     Key([mod], "equal", lazy.spawn("calculate"), desc="Dmenu calculator, result in clipboard"),
+    Key([mod], "comma", lazy.spawn("alacritty -e rangerstart"), desc="Start Ranger file manager with image preview support"),
     Key([mod, "shift"], "grave", lazy.spawn("dmenuunicode"), desc="Choose emoji and put in clipboard"),
     Key([mod], "Return", lazy.spawn("dmenu_run"), desc="Launch program using dmenu"),
     Key([mod], "semicolon", lazy.spawn("clipstream"), desc="Stream clipboard link with yt-dlp and webtorrent"),
     Key([mod, "shift"], "semicolon", lazy.spawn("clipdownload"), desc="Download clipboard link as video using yt-dlp"),
     Key([mod, "shift", "control"], "semicolon", lazy.spawn("clipdownload -a"), desc="Download clipboard link as audio using yt-dlp"),
+
+    Key([mod], "slash", lazy.spawn("alacritty -e shortcuts"), desc="Fuzzy finds in, or adds to, Shortcuts.md"),
+    Key([mod, "shift"], "slash", lazy.spawn("alacritty -e fzfvim"), desc="Fuzzy find file in home folder and open in nvim"),
 
 Key([], "XF86AudioLowerVolume", lazy.spawn("amixer sset Master 5%-"), desc="Lower Volume by 5%"),
 
@@ -268,6 +273,9 @@ Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessdown"), desc="Decrease di
 	# { MODKEY,													XK_p,					spawn,					SHCMD("stack -p")},
 	# { MODKEY,													XK_y,					spawn,					SHCMD("stack -y")},
 	# { MODKEY|ShiftMask,								XK_p,					spawn,					SHCMD("passmenu")},
+	# { MODKEY|ShiftMask,								XK_o,					spawn,					SHCMD("ytfzf -m --mpv-opts='--ytdl-format=bestvideo[height<=480]+bestaudio/best[height<=480]' -D")},
+	# // { MODKEY|ShiftMask,								XK_o,					spawn,					SHCMD("ytfzf -dD -P ~/Downloads/VIDEO/")},
+	# { MODKEY|ControlMask,							XK_d,					spawn,          SHCMD("mpc --host ~/.mpd/socket clear" ) },
 
 ]
 
