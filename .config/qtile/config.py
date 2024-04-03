@@ -326,33 +326,58 @@ layouts = [
 ]
 
 widget_defaults = dict(
-    font="sans",
-    fontsize=12,
-    padding=3,
+    font="PxPlus IBM VGA 8x16",
+    fontsize=16,
+    padding=4,
 )
 extension_defaults = widget_defaults.copy()
 
 screens = [
     Screen(
+        # top=bar.Bar(
+        #     [
+        #         widget.CurrentLayout(),
+        #         widget.GroupBox(),
+        #         widget.Prompt(),
+        #         widget.WindowName(),
+        #         widget.Chord(
+        #             chords_colors={
+        #                 "launch": ("#ff0000", "#ffffff"),
+        #             },
+        #             name_transform=lambda name: name.upper(),
+        #         ),
+        #         widget.TextBox("default config", name="default"),
+        #         widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
+        #         # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
+        #         # widget.StatusNotifier(),
+        #         widget.Systray(),
+        #         widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
+        #         widget.QuickExit(),
+        #     ],
+        #     24,
+        #     # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
+        #     # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
+        # ),
         top=bar.Bar(
             [
+                widget.GroupBox(highlight_method="block", rounded=False),
+                widget.Sep(),
                 widget.CurrentLayout(),
-                widget.GroupBox(),
-                widget.Prompt(),
+                widget.Sep(),
                 widget.WindowName(),
-                widget.Chord(
-                    chords_colors={
-                        "launch": ("#ff0000", "#ffffff"),
-                    },
-                    name_transform=lambda name: name.upper(),
-                ),
-                widget.TextBox("default config", name="default"),
-                widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
+                widget.Sep(),
+                widget.CPU(),
+                widget.Sep(),
+                widget.Net(interface='wlp4s0'),
+                widget.Sep(),
+                widget.PulseVolume(),
+                widget.Sep(),
+                widget.Battery(),
+                widget.Sep(),
+                widget.Clock(format="%Y-%m-%d %H:%M"),
+                widget.Sep(),
                 # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
-                # widget.StatusNotifier(),
                 widget.Systray(),
-                widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
-                widget.QuickExit(),
             ],
             24,
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
