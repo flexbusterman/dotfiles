@@ -28,6 +28,11 @@ from libqtile import bar, layout, widget
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
+from libqtile.log_utils import logger
+
+@lazy.function
+def my_function(qtile):
+    lazy.spawn("notify-send hello")
 
 mod = "mod1"
 terminal = guess_terminal()
@@ -41,7 +46,8 @@ keys = [
     Key([mod], "j", lazy.layout.down(), desc="Move focus down"),
     Key([mod], "k", lazy.layout.up(), desc="Move focus up"),
     # Key([mod], "space", lazy.layout.next(), desc="Move window focus to other window"),
-    Key([mod], "space", lazy.layout.swap_main(), desc="Move window focus to other window"),
+    # Key([mod], "space", lazy.layout.swap_main(), desc="Move window focus to other window"),
+    # Key([mod], "space", lazy.function(custom_master_swap), desc="Custom DWM-like master swap"),
     # Move windows between left/right columns or move up/down in current stack.
     # Moving out of range in Columns layout will create new column.
     # Key([mod, "shift"], "h", lazy.layout.shuffle_left(), desc="Move window to the left"),
@@ -264,6 +270,11 @@ keys = [
     Key([], "XF86MonBrightnessUp", lazy.spawn("brightnessup"), desc="Increase display brightness"),
     Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessdown"), desc="Decrease display brightness"),
 
+    # Key([mod], "space", lazy.function(dwm_master_swap)),
+    # Key([mod], "space", lazy.spawn("notify-send hello")),
+
+    Key( [mod], "space", my_function),
+
     # TODO:
     # Key([], "Print", lazy.spawn("notify-send 'hello'"), desc=""),
     # Lockscreen binding
@@ -315,7 +326,7 @@ for i in groups:
     )
 
 layouts = [
-    layout.Spiral(),
+    layout.Spiral(border_focus='#6272a4', border_width=3),
     layout.Max(),
     layout.Stack(num_stacks=2),
     # layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=4),
@@ -348,7 +359,7 @@ screens = [
         #         widget.WindowName(),
         #         widget.Chord(
         #             chords_colors={
-        #                 "launch": ("#ff0000", "#ffffff"),
+        #                 "launch": ("#ff0000", "#DDDDDD"),
         #             },
         #             name_transform=lambda name: name.upper(),
         #         ),
@@ -366,23 +377,23 @@ screens = [
         # ),
         top=bar.Bar(
             [
-                widget.GroupBox(highlight_method="block", rounded=False),
-                widget.Sep(),
-                widget.CurrentLayout(),
-                widget.Sep(),
-                widget.WindowName(),
-                widget.Sep(),
-                widget.Net(interface='wlp4s0', format='↓ {down:.1f}{down_suffix} ↑ {up:.1f}{up_suffix}',prefix='M'),
+                widget.GroupBox(this_current_screen_border='#6272a4', highlight_method="block", rounded=False, active='#DDDDDD', margin_x=0, margin_y=4),
+                widget.Sep(foreground='#404040'),
+                widget.CurrentLayout(foreground='#DDDDDD'),
+                widget.Sep(foreground='#404040'),
+                widget.WindowName(foreground='#DDDDDD'),
+                widget.Sep(foreground='#404040'),
+                widget.Net(foreground='#DDDDDD', interface='wlp4s0', format='↓ {down:.1f}{down_suffix} ↑ {up:.1f}{up_suffix}',prefix='M'),
                 # widget.Net(interface='wlp4s0', format='↓ {down}{down_suffix} ↑ {up}{up_suffix}',prefix='M'),
-                widget.Sep(),
-                widget.CPU(),
-                widget.Sep(),
-                widget.Volume(),
-                widget.Sep(),
-                widget.Battery(),
-                widget.Sep(),
-                widget.Clock(format="%Y-%m-%d %H:%M"),
-                widget.Sep(),
+                widget.Sep(foreground='#404040'),
+                widget.CPU(foreground='#DDDDDD'),
+                widget.Sep(foreground='#404040'),
+                widget.Volume(fmt='VOL {}', foreground='#DDDDDD'),
+                widget.Sep(foreground='#404040'),
+                widget.Battery(fmt='BAT {}',foreground='#DDDDDD'),
+                widget.Sep(foreground='#404040'),
+                widget.Clock(foreground='#DDDDDD', format="%Y-%m-%d %H:%M"),
+                widget.Sep(foreground='#404040'),
                 # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
                 widget.Systray(),
             ],
@@ -392,8 +403,8 @@ screens = [
         ),
         # You can uncomment this variable if you see that on X11 floating resize/moving is laggy
         # By default we handle these events delayed to already improve performance, however your system might still be struggling
-        # This variable is set to None (no cap) by default, but you can set it to 60 to indicate that you limit it to 60 events per second
-        # x11_drag_polling_rate = 60,
+        # This variable is set to None (no cap) by default, but you can set it to DD to indicate that you limit it to DD events per second
+        # x11_drag_polling_rate = DD,
     ),
 ]
 
