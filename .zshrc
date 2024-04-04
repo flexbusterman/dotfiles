@@ -269,6 +269,7 @@ alias c='cd ~/.config/'
 alias b='cd ~/.local/bin/'
 alias m='cd /run/media/$USER/'
 alias g='cd ~/.local/src/'
+alias f='cd ~/.flarbs/'
 
 #   __                  _   _
 #  / _|_   _ _ __   ___| |_(_) ___  _ __  ___
