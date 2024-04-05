@@ -403,7 +403,7 @@ screens = [
                 widget.Sep(padding=16, foreground='#777777'),
                 # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
                 widget.Systray(),
-                widget.TextBox()
+                widget.Sep(padding=8, foreground='#000000'),
             ],
             24,
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
