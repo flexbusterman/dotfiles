@@ -377,7 +377,7 @@ screens = [
         # ),
         top=bar.Bar(
             [
-                widget.GroupBox(this_current_screen_border='#6272a4', highlight_method="block", rounded=False, active='#DDDDDD', margin_x=0, margin_y=16),
+                widget.GroupBox(this_current_screen_border='#6272a4', highlight_method="block", rounded=False, active='#DDDDDD', margin_x=0, margin_y=4),
                 widget.Sep(padding=16, foreground='#777777'),
                 widget.CurrentLayout(foreground='#DDDDDD'),
                 widget.Sep(padding=16, foreground='#777777'),
@@ -386,16 +386,24 @@ screens = [
                 widget.Net(foreground='#DDDDDD', interface='wlp4s0', format='↓ {down:.1f}{down_suffix} ↑ {up:.1f}{up_suffix}',prefix='M'),
                 # widget.Net(interface='wlp4s0', format='↓ {down}{down_suffix} ↑ {up}{up_suffix}',prefix='M'),
                 widget.Sep(padding=16, foreground='#777777'),
-                widget.CPU(foreground='#DDDDDD'),
+                widget.CPU(format='CPU {load_percent:.0f}%', foreground='#DDDDDD'),
+                widget.Sep(padding=16, foreground='#777777'),
+                widget.Memory(fmt='MEM {}', format='{MemUsed:.0f}{mm} {MemPercent:.0f}%', foreground='#DDDDDD', update_interval=5),
+                widget.Sep(padding=16, foreground='#777777'),
+                # widget.DF(format='{/dev/nvme0n1p2} ({flex}{m}|{r:.0f}%)', foreground='#DDDDDD'),
+                widget.DF(format='DF {uf}{m} {r:.0f}%', partition='/', foreground='#DDDDDD', visible_on_warn=False, warn_space=5),
+
                 widget.Sep(padding=16, foreground='#777777'),
                 widget.Volume(fmt='VOL {}', foreground='#DDDDDD'),
                 widget.Sep(padding=16, foreground='#777777'),
-                widget.Battery(fmt='BAT {}',foreground='#DDDDDD'),
+                # widget.Battery(fmt='BAT {}',foreground='#DDDDDD'),
+                widget.Battery(fmt='BAT {}',format='{char}{percent:2.0%} {hour:d}:{min:02d}', charge_char='+', discharge_char='-',foreground='#DDDDDD'),
                 widget.Sep(padding=16, foreground='#777777'),
                 widget.Clock(foreground='#DDDDDD', format="%Y-%m-%d %H:%M"),
                 widget.Sep(padding=16, foreground='#777777'),
                 # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
                 widget.Systray(),
+                widget.TextBox()
             ],
             24,
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
