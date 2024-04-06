@@ -10,7 +10,7 @@ alt + Return
 
 # terminal emulator
 alt + shift + Return
-	kitty
+	alacritty
 
 # toggle bar and resize
 alt + a
@@ -231,27 +231,27 @@ alt + slash
 	# # //
 	# # // terminal applications
 alt + comma
-	kitty ranger
+	alacritty -e rangerstart
 alt + e
 	# st -T NeoMutt -e neomutt
 alt + shift + t
-	kitty tt -Theme dracula
+	alacritty -e tt -Theme dracula
 alt + shift + h
-	kitty btop
+	alacritty -e btop
 alt + n
-	cd ~/Dropbox/NOTES/; kitty -T TODO -e nvim ~/Dropbox/NOTES/TODO.md
+	cd ~/Dropbox/NOTES/; alacritty -T TODO -e nvim ~/Dropbox/NOTES/TODO.md
 alt + shift + n
-	cd ~/Dropbox/NOTES/; kitty -T VimWiki -e nvim -c VimwikiIndex
+	cd ~/Dropbox/NOTES/; alacritty -T VimWiki -e nvim -c VimwikiIndex
 alt + r
 	# st -T Newsboat -e newsboat
 alt + F4
-	kitty -T PulseMixer -e pulsemixer
+	alacritty -T PulseMixer -e pulsemixer
 alt + F6
 	torwrap
 # alt + shift + e
 	# cd ~/.local/src/dwm/; st -T DWMconfig -e nvim config.def.h
 control + shift + Return
-	kitty ncmpcpp
+	alacritty -e ncmpcpp
 # alt + control + shift + Return
 	# st -T ncspot -e ncspot
 alt + s

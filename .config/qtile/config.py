@@ -30,9 +30,8 @@ from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
 from libqtile.log_utils import logger
 
-@lazy.function
-def my_function(qtile):
-    lazy.spawn("notify-send hello")
+# def multiply(qtile, value, multiplier=10):
+#     lazy.layout.up()
 
 mod = "mod1"
 terminal = guess_terminal()
@@ -45,6 +44,7 @@ keys = [
     # Key([mod], "l", lazy.layout.right(), desc="Move focus to right"),
     Key([mod], "j", lazy.layout.down(), desc="Move focus down"),
     Key([mod], "k", lazy.layout.up(), desc="Move focus up"),
+    # Key( [mod], "p", lazy.function(multiply, 10, multiplier=2)),
     # Key([mod], "space", lazy.layout.next(), desc="Move window focus to other window"),
     # Key([mod], "space", lazy.layout.swap_main(), desc="Move window focus to other window"),
     # Key([mod], "space", lazy.function(custom_master_swap), desc="Custom DWM-like master swap"),
@@ -268,12 +268,13 @@ keys = [
     Key([], "XF86AudioNext", lazy.spawn("musicnext"), desc="Audio player next track. Priority is audacious, tidal-hifi, mpc"),
     Key([], "XF86AudioPrev", lazy.spawn("musicprev"), desc="Audio player previous track. Priority is audacious, tidal-hifi, mpc"),
     Key([], "XF86MonBrightnessUp", lazy.spawn("brightnessup"), desc="Increase display brightness"),
-    Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessdown"), desc="Decrease display brightness"),
+Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessdown"), desc="Decrease display brightness"),
+Key([], "Print", lazy.spawn("maim -f jpg -m 9 '/home/flex/Pictures/SCREENSHOTS/$(date +%F %H_%M_%S.jpg)'"), desc="Screenshot full screen"),
 
     # Key([mod], "space", lazy.function(dwm_master_swap)),
     # Key([mod], "space", lazy.spawn("notify-send hello")),
 
-    Key( [mod], "space", my_function),
+    # Key( [mod], "space", my_function),
 
     # TODO:
     # Key([], "Print", lazy.spawn("notify-send 'hello'"), desc=""),
