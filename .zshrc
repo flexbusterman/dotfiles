@@ -210,8 +210,8 @@ alias igdll="cd ~/Dropbox/MEMES && instaloader -F --login _christian_augustin --
 alias igdl="cd ~/Dropbox/MEMES && instaloader -F --no-video-thumbnails --no-metadata-json --no-captions --no-profile-pic memeseducational dank_memes_world_1 dank_memes_world_1 casual.nihilism mvme.hub memefolk.ig stinky420memes memes epicallyepicmemes baked_meme_god stolenmemesawakens memesinyourdms omgzucc"
 
 # VIM aliases for editing common files
-# alias va="cd ~/.config/awesome/; nvim rc.lua"
-alias vA="cd ~/.config/alacritty/; nvim alacritty.toml"
+alias vA="cd ~/.config/awesome/; nvim rc.lua"
+alias va="cd ~/.config/alacritty/; nvim alacritty.toml"
 alias vB="cd ~/; nvim .bashrc"
 # alias vb="cd ~/.config/bspwm/; nvim bspwmrc"
 alias vb="cd ~/.config/xmobar/; nvim xmobarrc"
@@ -225,7 +225,6 @@ alias vh="cd ~/.flarbs; nvim home-manager/home.nix"
 # alias vk="cd ~/.config/kitty/; nvim kitty.conf"
 alias vr="cd ~/.config/ranger/; nvim rc.conf"
 alias vR="cd ~/.config/nvim/; nvim lua/$USER/remap.lua"
-alias va="cd ~/.config/awesome/; nvim rc.lua"
 alias vp="cd ~/.config/polybar/; nvim config.ini"
 # alias vp="cd ~/.config/nvim/; nvim lua/$USER/packer.lua"
 # alias vp="cd ~/.config/nvim/; nvim /home/$USER/.config/nvim/lua/flex/plugins/init.lua"

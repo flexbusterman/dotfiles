@@ -2,17 +2,18 @@
 Config {
 
    -- appearance
-     font =         "Bitstream Vera Sans Mono Bold 9"
+     font =         "PxPlus IBM VGA 8x16 12"
    , bgColor =      "black"
    , fgColor =      "#646464"
    , position =     Top
-   , border =       BottomB
+   , border =       NoBorder
    , borderColor =  "#646464"
 
    -- layout
    , sepChar =  "%"   -- delineator between plugin names and straight text
    , alignSep = "}{"  -- separator between left-right alignment
-   , template = "%battery% | %multicpu% | %coretemp% | %memory% | %dynnetwork% }{ %RJTT% | %date% || %kbd% %_XMONAD_TRAYPAD%"
+   -- , template = "%battery% │ %multicpu% │ %coretemp% │ %memory% │ %dynnetwork% }{ %RJTT% │ %date% │ %kbd% %_XMONAD_TRAYPAD%"
+   , template = "%% │ %multicpu% │ %coretemp% │ %memory% │ %dynnetwork% }{ %RJTT% │ %date% │ %kbd% %_XMONAD_TRAYPAD%"
 
    -- general behavior
    , lowerOnStart =     True    -- send to bottom of window stack on start
@@ -39,11 +40,11 @@ Config {
    , commands =
 
         -- weather monitor
-        [ Run Weather "RJTT" [ "--template", "<skyCondition> | <fc=#4682B4><tempC></fc>°C | <fc=#4682B4><rh></fc>% | <fc=#4682B4><pressure></fc>hPa"
+        [ Run Weather "RJTT" [ "--template", "<skyCondition> │ <fc=#4682B4><tempC></fc>°C │ <fc=#4682B4><rh></fc>% │ <fc=#4682B4><pressure></fc>hPa"
                              ] 36000
 
         -- network activity monitor (dynamic interface resolution)
-        , Run DynNetwork     [ "--template" , "<dev>: <tx>kB/s|<rx>kB/s"
+        , Run DynNetwork     [ "--template" , "<dev>: <tx>kB/s │ <rx>kB/s"
                              , "--Low"      , "1000"       -- units: B/s
                              , "--High"     , "5000"       -- units: B/s
                              , "--low"      , "darkgreen"
@@ -52,7 +53,7 @@ Config {
                              ] 10
 
         -- cpu activity monitor
-        , Run MultiCpu       [ "--template" , "Cpu: <total0>%|<total1>%"
+        , Run MultiCpu       [ "--template" , "Cpu: <total0>% │ <total1>%"
                              , "--Low"      , "50"         -- units: %
                              , "--High"     , "85"         -- units: %
                              , "--low"      , "darkgreen"
@@ -61,7 +62,7 @@ Config {
                              ] 10
 
         -- cpu core temperature monitor
-        , Run CoreTemp       [ "--template" , "Temp: <core0>°C|<core1>°C"
+        , Run CoreTemp       [ "--template" , "Temp: <core0>°C │ <core1>°C"
                              , "--Low"      , "70"        -- units: °C
                              , "--High"     , "80"        -- units: °C
                              , "--low"      , "darkgreen"
