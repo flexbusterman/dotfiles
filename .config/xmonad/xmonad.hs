@@ -11,6 +11,13 @@ import XMonad
 import Data.Monoid
 import System.Exit
 
+import XMonad
+import XMonad.Hooks.DynamicLog
+import XMonad.Hooks.ManageDocks
+import XMonad.Util.Run
+import XMonad.Util.EZConfig
+import System.IO
+
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
 
@@ -60,20 +67,175 @@ myFocusedBorderColor = "#ff0000"
 myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- launch a terminal
-    [ ((modm .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf)
+    [
+      -- Key bindings for A
+      ((modm, xK_a), spawn "notify-send hello")
+      , ((modm .|. shiftMask, xK_a), spawn "notify-send hello")
+      , ((modm .|. controlMask, xK_a), spawn "notify-send hello")
+      , ((shiftMask .|. controlMask, xK_a), spawn "notify-send hello")
+      , ((modm .|. shiftMask .|. controlMask, xK_a), spawn "notify-send hello")
+      -- Key bindings for B
+      , ((modm, xK_b), spawn "notify-send hello")
+      , ((modm .|. shiftMask, xK_b), spawn "notify-send hello")
+      , ((modm .|. controlMask, xK_b), spawn "notify-send hello")
+      , ((shiftMask .|. controlMask, xK_b), spawn "notify-send hello")
+      , ((modm .|. shiftMask .|. controlMask, xK_b), spawn "notify-send hello")
+      -- Key bindings for C
+      , ((modm, xK_c), spawn "notify-send hello")
+      , ((modm .|. shiftMask, xK_c), spawn "notify-send hello")
+      , ((modm .|. controlMask, xK_c), spawn "notify-send hello")
+      , ((shiftMask .|. controlMask, xK_c), spawn "notify-send hello")
+      , ((modm .|. shiftMask .|. controlMask, xK_c), spawn "notify-send hello")
+      -- Key bindings for D
+      , ((modm, xK_d), spawn "notify-send hello")
+      , ((modm .|. shiftMask, xK_d), spawn "notify-send hello")
+      , ((modm .|. controlMask, xK_d), spawn "notify-send hello")
+      , ((shiftMask .|. controlMask, xK_d), spawn "notify-send hello")
+      , ((modm .|. shiftMask .|. controlMask, xK_d), spawn "notify-send hello")
+      -- Key bindings for E
+      , ((modm, xK_e), spawn "notify-send hello")
+      , ((modm .|. shiftMask, xK_e), spawn "notify-send hello")
+      , ((modm .|. controlMask, xK_e), spawn "notify-send hello")
+      , ((shiftMask .|. controlMask, xK_e), spawn "notify-send hello")
+      , ((modm .|. shiftMask .|. controlMask, xK_e), spawn "notify-send hello")
+      -- Key bindings for F
+      , ((modm, xK_f), spawn "notify-send hello")
+      , ((modm .|. shiftMask, xK_f), spawn "notify-send hello")
+      , ((modm .|. controlMask, xK_f), spawn "notify-send hello")
+      , ((shiftMask .|. controlMask, xK_f), spawn "notify-send hello")
+      , ((modm .|. shiftMask .|. controlMask, xK_f), spawn "notify-send hello")
+      -- Key bindings for G
+      , ((modm, xK_g), spawn "notify-send hello")
+      , ((modm .|. shiftMask, xK_g), spawn "notify-send hello")
+      , ((modm .|. controlMask, xK_g), spawn "notify-send hello")
+      , ((shiftMask .|. controlMask, xK_g), spawn "notify-send hello")
+      , ((modm .|. shiftMask .|. controlMask, xK_g), spawn "notify-send hello")
+      -- Key bindings for H
+      , ((modm, xK_h), spawn "notify-send hello")
+      , ((modm .|. shiftMask, xK_h), spawn "notify-send hello")
+      , ((modm .|. controlMask, xK_h), spawn "notify-send hello")
+      , ((shiftMask .|. controlMask, xK_h), spawn "notify-send hello")
+      , ((modm .|. shiftMask .|. controlMask, xK_h), spawn "notify-send hello")
+      -- Key bindings for I
+      , ((modm, xK_i), spawn "notify-send hello")
+      , ((modm .|. shiftMask, xK_i), spawn "notify-send hello")
+      , ((modm .|. controlMask, xK_i), spawn "notify-send hello")
+      , ((shiftMask .|. controlMask, xK_i), spawn "notify-send hello")
+      , ((modm .|. shiftMask .|. controlMask, xK_i), spawn "notify-send hello")
+      -- Key bindings for J
+			, ((modm,               xK_j     ), windows W.focusDown)
+			, ((modm .|. shiftMask, xK_j     ), windows W.swapDown  )
+      , ((modm .|. controlMask, xK_j), spawn "notify-send hello")
+      , ((shiftMask .|. controlMask, xK_j), spawn "notify-send hello")
+      , ((modm .|. shiftMask .|. controlMask, xK_j), spawn "notify-send hello")
+      -- Key bindings for K
+			, ((modm,               xK_k     ), windows W.focusUp  )
+			, ((modm .|. shiftMask, xK_k     ), windows W.swapUp    )
+      , ((modm .|. controlMask, xK_k), spawn "notify-send hello")
+      , ((shiftMask .|. controlMask, xK_k), spawn "notify-send hello")
+      , ((modm .|. shiftMask .|. controlMask, xK_k), spawn "notify-send hello")
+      -- Key bindings for L
+      , ((modm, xK_l), spawn "notify-send hello")
+      , ((modm .|. shiftMask, xK_l), spawn "notify-send hello")
+      , ((modm .|. controlMask, xK_l), spawn "notify-send hello")
+      , ((shiftMask .|. controlMask, xK_l), spawn "notify-send hello")
+      , ((modm .|. shiftMask .|. controlMask, xK_l), spawn "notify-send hello")
+      -- Key bindings for M
+      , ((modm, xK_m), spawn "notify-send hello")
+      , ((modm .|. shiftMask, xK_m), spawn "notify-send hello")
+      , ((modm .|. controlMask, xK_m), spawn "notify-send hello")
+      , ((shiftMask .|. controlMask, xK_m), spawn "notify-send hello")
+      , ((modm .|. shiftMask .|. controlMask, xK_m), spawn "notify-send hello")
+      -- Key bindings for N
+      , ((modm, xK_n), spawn "notify-send hello")
+      , ((modm .|. shiftMask, xK_n), spawn "notify-send hello")
+      , ((modm .|. controlMask, xK_n), spawn "notify-send hello")
+      , ((shiftMask .|. controlMask, xK_n), spawn "notify-send hello")
+      , ((modm .|. shiftMask .|. controlMask, xK_n), spawn "notify-send hello")
+      -- Key bindings for O
+      , ((modm, xK_o), spawn "notify-send hello")
+      , ((modm .|. shiftMask, xK_o), spawn "notify-send hello")
+      , ((modm .|. controlMask, xK_o), spawn "notify-send hello")
+      , ((shiftMask .|. controlMask, xK_o), spawn "notify-send hello")
+      , ((modm .|. shiftMask .|. controlMask, xK_o), spawn "notify-send hello")
+      -- Key bindings for P
+      , ((modm, xK_p), spawn "notify-send hello")
+      , ((modm .|. shiftMask, xK_p), spawn "notify-send hello")
+      , ((modm .|. controlMask, xK_p), spawn "notify-send hello")
+      , ((shiftMask .|. controlMask, xK_p), spawn "notify-send hello")
+      , ((modm .|. shiftMask .|. controlMask, xK_p), spawn "notify-send hello")
+      -- Key bindings for Q
+      , ((modm, xK_q), spawn "notify-send hello")
+      , ((modm .|. shiftMask, xK_q), spawn "notify-send hello")
+      , ((modm .|. controlMask, xK_q), spawn "notify-send hello")
+      , ((shiftMask .|. controlMask, xK_q), spawn "notify-send hello")
+      , ((modm .|. shiftMask .|. controlMask, xK_q), spawn "notify-send hello")
+      -- Key bindings for R
+      , ((modm, xK_r), spawn "notify-send hello")
+      , ((modm .|. shiftMask, xK_r), spawn "notify-send hello")
+      , ((modm .|. controlMask, xK_r), spawn "notify-send hello")
+      , ((shiftMask .|. controlMask, xK_r), spawn "notify-send hello")
+      , ((modm .|. shiftMask .|. controlMask, xK_r), spawn "notify-send hello")
+      -- Key bindings for S
+      , ((modm, xK_s), spawn "notify-send hello")
+      , ((modm .|. shiftMask, xK_s), spawn "notify-send hello")
+      , ((modm .|. controlMask, xK_s), spawn "notify-send hello")
+      , ((shiftMask .|. controlMask, xK_s), spawn "notify-send hello")
+      , ((modm .|. shiftMask .|. controlMask, xK_s), spawn "notify-send hello")
+      -- Key bindings for T
+      , ((modm, xK_t), spawn "notify-send hello")
+      , ((modm .|. shiftMask, xK_t), spawn "notify-send hello")
+      , ((modm .|. controlMask, xK_t), spawn "notify-send hello")
+      , ((shiftMask .|. controlMask, xK_t), spawn "notify-send hello")
+      , ((modm .|. shiftMask .|. controlMask, xK_t), spawn "notify-send hello")
+      -- Key bindings for U
+      , ((modm, xK_u), spawn "notify-send hello")
+      , ((modm .|. shiftMask, xK_u), spawn "notify-send hello")
+      , ((modm .|. controlMask, xK_u), spawn "notify-send hello")
+      , ((shiftMask .|. controlMask, xK_u), spawn "notify-send hello")
+      , ((modm .|. shiftMask .|. controlMask, xK_u), spawn "notify-send hello")
+      -- Key bindings for V
+      , ((modm, xK_v), spawn "notify-send hello")
+      , ((modm .|. shiftMask, xK_v), spawn "notify-send hello")
+      , ((modm .|. controlMask, xK_v), spawn "notify-send hello")
+      , ((shiftMask .|. controlMask, xK_v), spawn "notify-send hello")
+      , ((modm .|. shiftMask .|. controlMask, xK_v), spawn "notify-send hello")
+      -- Key bindings for W
+      , ((modm, xK_w), kill)
+      , ((modm .|. shiftMask, xK_w), spawn "notify-send hello")
+      , ((modm .|. controlMask, xK_w), spawn "notify-send hello")
+      , ((shiftMask .|. controlMask, xK_w), spawn "notify-send hello")
+      , ((modm .|. shiftMask .|. controlMask, xK_w), spawn "notify-send hello")
+      -- Key bindings for X
+      , ((modm, xK_x), spawn "notify-send hello")
+      , ((modm .|. shiftMask, xK_x), spawn "notify-send hello")
+      , ((modm .|. controlMask, xK_x), spawn "notify-send hello")
+      , ((shiftMask .|. controlMask, xK_x), spawn "notify-send hello")
+      , ((modm .|. shiftMask .|. controlMask, xK_x), spawn "notify-send hello")
+      -- Key bindings for Y
+      , ((modm, xK_y), spawn "notify-send hello")
+      , ((modm .|. shiftMask, xK_y), spawn "notify-send hello")
+      , ((modm .|. controlMask, xK_y), spawn "notify-send hello")
+      , ((shiftMask .|. controlMask, xK_y), spawn "notify-send hello")
+      , ((modm .|. shiftMask .|. controlMask, xK_y), spawn "notify-send hello")
+      -- Key bindings for Z
+      , ((modm, xK_z), spawn "notify-send hello")
+      , ((modm .|. shiftMask, xK_z), spawn "notify-send hello")
+      , ((modm .|. controlMask, xK_z), spawn "notify-send hello")
+      , ((shiftMask .|. controlMask, xK_z), spawn "notify-send hello")
+      , ((modm .|. shiftMask .|. controlMask, xK_z), spawn "notify-send hello")
 
     -- launch dmenu
     , ((modm,               xK_Return     ), spawn "dmenu_run")
 
-    -- launch gmrun
-    , ((modm .|. shiftMask, xK_p     ), spawn "gmrun")
-
-    -- close focused window
-    -- , ((modm .|. shiftMask, xK_c     ), kill)
-    , ((modm, xK_w     ), kill)
+		, ((modm .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf)
 
      -- Rotate through the available layout algorithms
     , ((modm,               xK_Tab ), sendMessage NextLayout)
+
+    , ((modm,               xK_period ), spawn "qutebrowser")
+
+    , ((modm,               xK_comma ), spawn "alacritty -e rangerstart")
 
     --  Reset the layouts on the current workspace to default
     -- , ((modm .|. shiftMask, xK_space ), setLayout $ XMonad.layoutHook conf)
@@ -81,26 +243,11 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- Resize viewed windows to the correct size
     -- , ((modm,               xK_n     ), refresh)
 
-    -- Move focus to the next window
-    -- , ((modm,               xK_Tab   ), windows W.focusDown)
-
-    -- Move focus to the next window
-    , ((modm,               xK_j     ), windows W.focusDown)
-
-    -- Move focus to the previous window
-    , ((modm,               xK_k     ), windows W.focusUp  )
-
     -- Move focus to the master window
     -- , ((modm,               xK_m     ), windows W.focusMaster  )
 
     -- Swap the focused window and the master window
     , ((modm,               xK_space), windows W.swapMaster)
-
-    -- Swap the focused window with the next window
-    , ((modm .|. shiftMask, xK_j     ), windows W.swapDown  )
-
-    -- Swap the focused window with the previous window
-    , ((modm .|. shiftMask, xK_k     ), windows W.swapUp    )
 
     -- Shrink the master area
     , ((modm,               xK_h     ), sendMessage Shrink)
@@ -127,7 +274,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm .|. shiftMask, xK_q     ), io (exitWith ExitSuccess))
 
     -- Restart xmonad
-    , ((modm              , xK_q     ), spawn "xmonad --recompile; xmonad --restart")
+    , ((modm .|. shiftMask, xK_r     ), spawn "xmonad --recompile; xmonad --restart")
 
     -- Run xmessage with a summary of the default keybindings (useful for beginners)
     -- , ((modm .|. shiftMask, xK_slash ), spawn ("echo \"" ++ help ++ "\" | xmessage -file -"))
@@ -181,7 +328,7 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 -- The available layouts.  Note that each layout is separated by |||,
 -- which denotes layout choice.
 --
-myLayout = tiled ||| Mirror tiled ||| Full
+myLayout = avoidStruts (tiled ||| Mirror tiled ||| Full)
   where
      -- default tiling algorithm partitions the screen into two panes
      tiled   = Tall nmaster delta ratio
@@ -247,15 +394,20 @@ myLogHook = return ()
 --     spawn "xmobar &"
 -- )
 
-myStartupHook = do
-    spawn "xmobar &"
+myStartupHook = return ()
+-- myStartupHook = do
+    -- spawn "xmobar &"
 
 ------------------------------------------------------------------------
 -- Now run xmonad with all the defaults we set up.
 
 -- Run xmonad with the settings you specify. No need to modify this.
 --
-main = xmonad defaults
+-- main = xmonad defaults
+
+main = do
+	xmproc <- spawnPipe "xmobar ~/.config/xmobar/xmobarrc"
+	xmonad $ docks defaults
 
 -- A structure containing your configuration settings, overriding
 -- fields in the default config. Any you don't override, will
