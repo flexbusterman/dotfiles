@@ -60,7 +60,7 @@ myWorkspaces    = ["1","2","3","4","5","6","7","8","9"]
 -- Border colors for unfocused and focused windows, respectively.
 --
 myNormalBorderColor  = "#000000"
-myFocusedBorderColor = "#ff0000"
+myFocusedBorderColor = "#6272a4"
 
 ------------------------------------------------------------------------
 -- Key bindings. Add, modify or remove key bindings here.
@@ -76,11 +76,11 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
       -- , ((shiftMask .|. controlMask, xK_a), spawn "notify-send hello")
       -- , ((modm .|. shiftMask .|. controlMask, xK_a), spawn "notify-send hello")
       -- Key bindings for B
-      -- , ((modm, xK_b), spawn "notify-send hello")
-      -- , ((modm .|. shiftMask, xK_b), spawn "notify-send hello")
+      , ((modm, xK_b), spawn "bluetoothconnect $HEADPHONES")
+      , ((modm .|. shiftMask, xK_b), spawn "bluetoothctl disconnect $HEADPHONES")
       -- , ((modm .|. controlMask, xK_b), spawn "notify-send hello")
       -- , ((shiftMask .|. controlMask, xK_b), spawn "notify-send hello")
-      -- , ((modm .|. shiftMask .|. controlMask, xK_b), spawn "notify-send hello")
+      , ((modm .|. shiftMask .|. controlMask, xK_b), spawn "blueman-manager")
       -- Key bindings for C
       -- , ((modm, xK_c), spawn "notify-send hello")
       -- , ((modm .|. shiftMask, xK_c), spawn "notify-send hello")
@@ -88,7 +88,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
       -- , ((shiftMask .|. controlMask, xK_c), spawn "notify-send hello")
       -- , ((modm .|. shiftMask .|. controlMask, xK_c), spawn "notify-send hello")
       -- Key bindings for D
-      -- , ((modm, xK_d), spawn "notify-send hello")
+      , ((modm, xK_d), spawn "sleep 0.2 && xdotool type --clearmodifiers \"$(date +\"%F \")\" && sleep 0.2 && xdotool keyup Alt_L Alt_R Control_L Control_R Shift_L Shift_R")
       -- , ((modm .|. shiftMask, xK_d), spawn "notify-send hello")
       -- , ((modm .|. controlMask, xK_d), spawn "notify-send hello")
       -- , ((shiftMask .|. controlMask, xK_d), spawn "notify-send hello")
@@ -237,6 +237,9 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm,               xK_period ), spawn "qutebrowser")
 
     , ((modm,               xK_comma ), spawn "alacritty -e rangerstart")
+    , ((modm,               xK_equal ), spawn "calculate")
+    , ((0,               xK_Print ), spawn "maim -f jpg -m 9 \"/home/flex/Pictures/SCREENSHOTS/$(date +\"%F %H_%M_%S.jpg\")\"")
+    , ((shiftMask,               xK_Print ), spawn "maim -f jpg -m 9 -s \"/home/flex/Pictures/SCREENSHOTS/$(date +\"%F %H_%M_%S.jpg\")\"")
 
     --  Reset the layouts on the current workspace to default
     -- , ((modm .|. shiftMask, xK_space ), setLayout $ XMonad.layoutHook conf)
