@@ -2,9 +2,9 @@
 Config {
 
    -- appearance
-     font =         "PxPlus IBM VGA 8x16 12"
+     font =         "PxPlus IBM VGA 8x16 11"
    , bgColor =      "black"
-   , fgColor =      "#646464"
+   , fgColor =      "#dddddd"
    , position =     Top
    , border =       NoBorder
    , borderColor =  "#646464"
@@ -13,7 +13,7 @@ Config {
    , sepChar =  "%"   -- delineator between plugin names and straight text
    , alignSep = "}{"  -- separator between left-right alignment
    -- , template = "%battery% │ %multicpu% │ %coretemp% │ %memory% │ %dynnetwork% }{ %RJTT% │ %date% │ %kbd% %_XMONAD_TRAYPAD%"
-   , template = "%% │ %multicpu% │ %coretemp% │ %memory% │ %dynnetwork% }{ %RJTT% │ %date% │ %kbd% %_XMONAD_TRAYPAD%"
+   , template = "%StdinReader% }{ │ %multicpu% │ %coretemp% │ %memory% │ %dynnetwork% │ %RJTT% │ %date% │ %kbd% %_XMONAD_TRAYPAD%"
 
    -- general behavior
    , lowerOnStart =     True    -- send to bottom of window stack on start

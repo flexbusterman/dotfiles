@@ -21,6 +21,9 @@ import System.IO
 import XMonad.Layout.ToggleLayouts (ToggleLayout(..), toggleLayouts)
 import XMonad.Layout.NoBorders (noBorders, smartBorders)
 
+-- import Graphics.X11.Types
+import Graphics.X11.ExtraTypes.XF86
+
 import qualified XMonad.Util.Hacks as Hacks
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
@@ -145,8 +148,8 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
       -- , ((shiftMask .|. controlMask, xK_l), spawn "notify-send hello")
       -- , ((modm .|. shiftMask .|. controlMask, xK_l), spawn "notify-send hello")
       -- Key bindings for M
-      -- , ((modm, xK_m), spawn "notify-send hello")
-      -- , ((modm .|. shiftMask, xK_m), spawn "notify-send hello")
+      , ((modm, xK_m), spawn "mullvadconnect")
+      , ((modm .|. shiftMask, xK_m), spawn "mullvaddisconnect")
       -- , ((modm .|. controlMask, xK_m), spawn "notify-send hello")
       -- , ((shiftMask .|. controlMask, xK_m), spawn "notify-send hello")
       -- , ((modm .|. shiftMask .|. controlMask, xK_m), spawn "notify-send hello")
@@ -243,6 +246,33 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm,               xK_equal ), spawn "calculate")
     , ((0,               xK_Print ), spawn "maim -f jpg -m 9 \"/home/flex/Pictures/SCREENSHOTS/$(date +\"%F %H_%M_%S.jpg\")\"")
     , ((shiftMask,               xK_Print ), spawn "maim -f jpg -m 9 -s \"/home/flex/Pictures/SCREENSHOTS/$(date +\"%F %H_%M_%S.jpg\")\"")
+
+    , ((modm,               xK_grave ), spawn "dmenuunicode")
+
+    , ((modm,               xK_F1 ), spawn "bindings")
+    , ((modm,               xK_F2 ), spawn "resolution")
+    , ((modm,               xK_F3 ), spawn "displaydefault")
+    , ((modm .|. shiftMask, xK_F3 ), spawn "displayselect")
+    , ((modm,               xK_F4 ), spawn "alacritty -T PulseMixer -e pulsemixer; kill -44 $(pidof dwmblocks)")
+    -- , ((modm,               xK_F5 ), spawn "")
+    -- , ((modm,               xK_F6 ), spawn "")
+    , ((modm,               xK_F7 ), spawn "td-toggle")
+    , ((modm,               xK_F8 ), spawn "mounter")
+    , ((modm,               xK_F9 ), spawn "unmounter")
+    , ((modm,               xK_F10 ), spawn "campreview")
+    , ((modm,               xK_F11 ), spawn "dmenurecord")
+    , ((modm,               xK_F12 ), spawn "killrecording")
+
+    , ((0,               xF86XK_AudioLowerVolume ), spawn "notify-send hello")
+
+		, (( 0,						xF86XK_AudioMute),								spawn "pamixer -t; kill -44 $(pidof dwmblocks)")
+		, (( 0,						xF86XK_AudioRaiseVolume),				spawn "pamixer --allow-boost -i 5; kill -44 $(pidof dwmblocks)")
+		, (( 0,						xF86XK_AudioLowerVolume),				spawn "pamixer --allow-boost -d 5; kill -44 $(pidof dwmblocks)")
+		, (( 0,						xF86XK_AudioMicMute),						spawn "amixer set Capture toggle")
+		, (( 0,						xF86XK_MonBrightnessUp),					spawn "brightnessup")
+		, (( 0,						xF86XK_MonBrightnessDown),				spawn "brightnessdown")
+
+    -- , ((0,               xF86_AudioRaiseVolume ), spawn "notify-send hello")
 
     --  Reset the layouts on the current workspace to default
     -- , ((modm .|. shiftMask, xK_space ), setLayout $ XMonad.layoutHook conf)
@@ -391,7 +421,8 @@ myEventHook = Hacks.trayerAboveXmobarEventHook <> Hacks.trayerPaddingXmobarEvent
 -- Perform an arbitrary action on each internal state change or X event.
 -- See the 'XMonad.Hooks.DynamicLog' extension for examples.
 --
-myLogHook = return ()
+-- myLogHook = return ()
+myLogHook = dynamicLog
 
 ------------------------------------------------------------------------
 -- Startup hook
