@@ -1,4 +1,4 @@
---
+--yout
 -- xmonad example config file.
 --
 -- A template showing all available configuration hooks,
@@ -13,10 +13,13 @@ import System.Exit
 import XMonad
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
+import XMonad.Hooks.ManageHelpers (doLower)
 import XMonad.Util.Run
 import XMonad.Util.SpawnOnce
 import XMonad.Util.EZConfig
 import System.IO
+import XMonad.Layout.ToggleLayouts (ToggleLayout(..), toggleLayouts)
+import XMonad.Layout.NoBorders (noBorders, smartBorders)
 
 import qualified XMonad.Util.Hacks as Hacks
 import qualified XMonad.StackSet as W
@@ -100,7 +103,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
       -- , ((shiftMask .|. controlMask, xK_e), spawn "notify-send hello")
       -- , ((modm .|. shiftMask .|. controlMask, xK_e), spawn "notify-send hello")
       -- Key bindings for F
-      -- , ((modm, xK_f), spawn "notify-send hello")
+        , ((modm, xK_f), sendMessage (Toggle "Full"))
       -- , ((modm .|. shiftMask, xK_f), spawn "notify-send hello")
       -- , ((modm .|. controlMask, xK_f), spawn "notify-send hello")
       -- , ((shiftMask .|. controlMask, xK_f), spawn "notify-send hello")
@@ -332,7 +335,8 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 -- The available layouts.  Note that each layout is separated by |||,
 -- which denotes layout choice.
 --
-myLayout = avoidStruts (tiled ||| Mirror tiled ||| Full)
+
+myLayout = toggleLayouts (noBorders Full) (avoidStruts (tiled ||| Mirror tiled ||| Full))
   where
      -- default tiling algorithm partitions the screen into two panes
      tiled   = Tall nmaster delta ratio
@@ -365,7 +369,9 @@ myManageHook = composeAll
     [ className =? "MPlayer"        --> doFloat
     , className =? "Gimp"           --> doFloat
     , resource  =? "desktop_window" --> doIgnore
-    , resource  =? "kdesktop"       --> doIgnore ]
+    , resource  =? "kdesktop"       --> doIgnore
+		, checkDock                   --> doLower
+		]
 
 ------------------------------------------------------------------------
 -- Event handling
