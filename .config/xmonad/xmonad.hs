@@ -171,6 +171,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
       -- , ((modm .|. controlMask, xK_p), spawn "notify-send hello")
       -- , ((shiftMask .|. controlMask, xK_p), spawn "notify-send hello")
       -- , ((modm .|. shiftMask .|. controlMask, xK_p), spawn "notify-send hello")
+			, ((modm .|. shiftMask .|. controlMask, xK_p), spawn "poweroff")
       -- Key bindings for Q
       -- , ((modm, xK_q), spawn "notify-send hello")
       -- , ((modm .|. shiftMask, xK_q), spawn "notify-send hello")
@@ -182,7 +183,8 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
       -- , ((modm .|. shiftMask, xK_r), spawn "notify-send hello")
       -- , ((modm .|. controlMask, xK_r), spawn "notify-send hello")
       -- , ((shiftMask .|. controlMask, xK_r), spawn "notify-send hello")
-      -- , ((modm .|. shiftMask .|. controlMask, xK_r), spawn "notify-send hello")
+			, ((modm .|. shiftMask .|. controlMask, xK_r), spawn "reboot")
+
       -- Key bindings for S
       -- , ((modm, xK_s), spawn "notify-send hello")
       -- , ((modm .|. shiftMask, xK_s), spawn "notify-send hello")
@@ -262,6 +264,10 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm,               xK_F10 ), spawn "campreview")
     , ((modm,               xK_F11 ), spawn "dmenurecord")
     , ((modm,               xK_F12 ), spawn "killrecording")
+
+		, ((modm, xK_semicolon), spawn "clipstream")
+		, ((modm .|. shiftMask, xK_semicolon), spawn "clipdownload")
+		, ((modm .|. shiftMask .|. controlMask, xK_semicolon), spawn "clipdownload -a")
 
     , ((0,               xF86XK_AudioLowerVolume ), spawn "notify-send hello")
 
