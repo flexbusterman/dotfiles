@@ -154,8 +154,8 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
       -- , ((shiftMask .|. controlMask, xK_m), spawn "notify-send hello")
       -- , ((modm .|. shiftMask .|. controlMask, xK_m), spawn "notify-send hello")
       -- Key bindings for N
-      -- , ((modm, xK_n), spawn "notify-send hello")
-      -- , ((modm .|. shiftMask, xK_n), spawn "notify-send hello")
+      , ((modm, xK_n), spawn "cd ~/Dropbox/NOTES/; alacritty -T TODO -e nvim ~/Dropbox/NOTES/TODO.md")
+      , ((modm .|. shiftMask, xK_n), spawn "alacritty -e ~/.local/bin/fzfnotes")
       -- , ((modm .|. controlMask, xK_n), spawn "notify-send hello")
       -- , ((shiftMask .|. controlMask, xK_n), spawn "notify-send hello")
       -- , ((modm .|. shiftMask .|. controlMask, xK_n), spawn "notify-send hello")
