@@ -82,11 +82,11 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
       -- , ((shiftMask .|. controlMask, xK_a), spawn "notify-send hello")
       -- , ((modm .|. shiftMask .|. controlMask, xK_a), spawn "notify-send hello")
       -- Key bindings for B
-      , ((modm, xK_b), spawn "bluetoothconnect $HEADPHONES")
-      , ((modm .|. shiftMask, xK_b), spawn "bluetoothctl disconnect $HEADPHONES")
+      -- , ((modm, xK_b), spawn "bluetoothconnect $HEADPHONES")
+      -- , ((modm .|. shiftMask, xK_b), spawn "bluetoothctl disconnect $HEADPHONES")
       -- , ((modm .|. controlMask, xK_b), spawn "notify-send hello")
       -- , ((shiftMask .|. controlMask, xK_b), spawn "notify-send hello")
-      , ((modm .|. shiftMask .|. controlMask, xK_b), spawn "blueman-manager")
+      -- , ((modm .|. shiftMask .|. controlMask, xK_b), spawn "blueman-manager")
       -- Key bindings for C
       -- , ((modm, xK_c), spawn "notify-send hello")
       -- , ((modm .|. shiftMask, xK_c), spawn "notify-send hello")
@@ -94,7 +94,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
       -- , ((shiftMask .|. controlMask, xK_c), spawn "notify-send hello")
       -- , ((modm .|. shiftMask .|. controlMask, xK_c), spawn "notify-send hello")
       -- Key bindings for D
-      , ((modm, xK_d), spawn "sleep 0.2 && xdotool type --clearmodifiers \"$(date +\"%F \")\" && sleep 0.2 && xdotool keyup Alt_L Alt_R Control_L Control_R Shift_L Shift_R")
+      -- , ((modm, xK_d), spawn "sleep 0.2 && xdotool type --clearmodifiers \"$(date +\"%F \")\" && sleep 0.2 && xdotool keyup Alt_L Alt_R Control_L Control_R Shift_L Shift_R")
       -- , ((modm .|. shiftMask, xK_d), spawn "notify-send hello")
       -- , ((modm .|. controlMask, xK_d), spawn "notify-send hello")
       -- , ((shiftMask .|. controlMask, xK_d), spawn "notify-send hello")
@@ -171,7 +171,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
       -- , ((modm .|. controlMask, xK_p), spawn "notify-send hello")
       -- , ((shiftMask .|. controlMask, xK_p), spawn "notify-send hello")
       -- , ((modm .|. shiftMask .|. controlMask, xK_p), spawn "notify-send hello")
-			, ((modm .|. shiftMask .|. controlMask, xK_p), spawn "poweroff")
+			-- , ((modm .|. shiftMask .|. controlMask, xK_p), spawn "poweroff")
       -- Key bindings for Q
       -- , ((modm, xK_q), spawn "notify-send hello")
       -- , ((modm .|. shiftMask, xK_q), spawn "notify-send hello")
@@ -183,7 +183,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
       -- , ((modm .|. shiftMask, xK_r), spawn "notify-send hello")
       -- , ((modm .|. controlMask, xK_r), spawn "notify-send hello")
       -- , ((shiftMask .|. controlMask, xK_r), spawn "notify-send hello")
-			, ((modm .|. shiftMask .|. controlMask, xK_r), spawn "reboot")
+			-- , ((modm .|. shiftMask .|. controlMask, xK_r), spawn "reboot")
 
       -- Key bindings for S
       -- , ((modm, xK_s), spawn "notify-send hello")
@@ -235,7 +235,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
       -- , ((modm .|. shiftMask .|. controlMask, xK_z), spawn "notify-send hello")
 
     -- launch dmenu
-    , ((modm,               xK_Return     ), spawn "dmenu_run")
+    -- , ((modm,               xK_Return     ), spawn "dmenu_run")
 
 		-- , ((modm .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf)
 
@@ -244,39 +244,39 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- , ((modm,               xK_period ), spawn "qutebrowser")
 --
-    , ((modm,               xK_comma ), spawn "alacritty -e rangerstart")
-    , ((modm,               xK_equal ), spawn "calculate")
-    , ((0,               xK_Print ), spawn "maim -f jpg -m 9 \"/home/flex/Pictures/SCREENSHOTS/$(date +\"%F %H_%M_%S.jpg\")\"")
-    , ((shiftMask,               xK_Print ), spawn "maim -f jpg -m 9 -s \"/home/flex/Pictures/SCREENSHOTS/$(date +\"%F %H_%M_%S.jpg\")\"")
+    -- , ((modm,               xK_comma ), spawn "alacritty -e rangerstart")
+    -- , ((modm,               xK_equal ), spawn "calculate")
+    -- , ((0,               xK_Print ), spawn "maim -f jpg -m 9 \"/home/flex/Pictures/SCREENSHOTS/$(date +\"%F %H_%M_%S.jpg\")\"")
+    -- , ((shiftMask,               xK_Print ), spawn "maim -f jpg -m 9 -s \"/home/flex/Pictures/SCREENSHOTS/$(date +\"%F %H_%M_%S.jpg\")\"")
 
-    , ((modm,               xK_grave ), spawn "dmenuunicode")
+    -- , ((modm,               xK_grave ), spawn "dmenuunicode")
 
-    , ((modm,               xK_F1 ), spawn "bindings")
-    , ((modm,               xK_F2 ), spawn "resolution")
-    , ((modm,               xK_F3 ), spawn "displaydefault")
-    , ((modm .|. shiftMask, xK_F3 ), spawn "displayselect")
-    , ((modm,               xK_F4 ), spawn "alacritty -T PulseMixer -e pulsemixer; kill -44 $(pidof dwmblocks)")
+    -- , ((modm,               xK_F1 ), spawn "bindings")
+    -- , ((modm,               xK_F2 ), spawn "resolution")
+    -- , ((modm,               xK_F3 ), spawn "displaydefault")
+    -- , ((modm .|. shiftMask, xK_F3 ), spawn "displayselect")
+    -- , ((modm,               xK_F4 ), spawn "alacritty -T PulseMixer -e pulsemixer; kill -44 $(pidof dwmblocks)")
     -- , ((modm,               xK_F5 ), spawn "")
     -- , ((modm,               xK_F6 ), spawn "")
-    , ((modm,               xK_F7 ), spawn "td-toggle")
-    , ((modm,               xK_F8 ), spawn "mounter")
-    , ((modm,               xK_F9 ), spawn "unmounter")
-    , ((modm,               xK_F10 ), spawn "campreview")
-    , ((modm,               xK_F11 ), spawn "dmenurecord")
-    , ((modm,               xK_F12 ), spawn "killrecording")
+    -- , ((modm,               xK_F7 ), spawn "td-toggle")
+    -- , ((modm,               xK_F8 ), spawn "mounter")
+    -- , ((modm,               xK_F9 ), spawn "unmounter")
+    -- , ((modm,               xK_F10 ), spawn "campreview")
+    -- , ((modm,               xK_F11 ), spawn "dmenurecord")
+    -- , ((modm,               xK_F12 ), spawn "killrecording")
 
-		, ((modm, xK_semicolon), spawn "clipstream")
-		, ((modm .|. shiftMask, xK_semicolon), spawn "clipdownload")
-		, ((modm .|. shiftMask .|. controlMask, xK_semicolon), spawn "clipdownload -a")
+		-- , ((modm, xK_semicolon), spawn "clipstream")
+		-- , ((modm .|. shiftMask, xK_semicolon), spawn "clipdownload")
+		-- , ((modm .|. shiftMask .|. controlMask, xK_semicolon), spawn "clipdownload -a")
 
-    , ((0,               xF86XK_AudioLowerVolume ), spawn "notify-send hello")
+    -- , ((0,               xF86XK_AudioLowerVolume ), spawn "notify-send hello")
 
-		, (( 0,						xF86XK_AudioMute),								spawn "pamixer -t; kill -44 $(pidof dwmblocks)")
-		, (( 0,						xF86XK_AudioRaiseVolume),				spawn "pamixer --allow-boost -i 5; kill -44 $(pidof dwmblocks)")
-		, (( 0,						xF86XK_AudioLowerVolume),				spawn "pamixer --allow-boost -d 5; kill -44 $(pidof dwmblocks)")
-		, (( 0,						xF86XK_AudioMicMute),						spawn "amixer set Capture toggle")
-		, (( 0,						xF86XK_MonBrightnessUp),					spawn "brightnessup")
-		, (( 0,						xF86XK_MonBrightnessDown),				spawn "brightnessdown")
+		-- , (( 0,						xF86XK_AudioMute),								spawn "pamixer -t; kill -44 $(pidof dwmblocks)")
+		-- , (( 0,						xF86XK_AudioRaiseVolume),				spawn "pamixer --allow-boost -i 5; kill -44 $(pidof dwmblocks)")
+		-- , (( 0,						xF86XK_AudioLowerVolume),				spawn "pamixer --allow-boost -d 5; kill -44 $(pidof dwmblocks)")
+		-- , (( 0,						xF86XK_AudioMicMute),						spawn "amixer set Capture toggle")
+		-- , (( 0,						xF86XK_MonBrightnessUp),					spawn "brightnessup")
+		-- , (( 0,						xF86XK_MonBrightnessDown),				spawn "brightnessdown")
 
     -- , ((0,               xF86_AudioRaiseVolume ), spawn "notify-send hello")
 
