@@ -148,14 +148,14 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
       -- , ((shiftMask .|. controlMask, xK_l), spawn "notify-send hello")
       -- , ((modm .|. shiftMask .|. controlMask, xK_l), spawn "notify-send hello")
       -- Key bindings for M
-      , ((modm, xK_m), spawn "mullvadconnect")
-      , ((modm .|. shiftMask, xK_m), spawn "mullvaddisconnect")
+      -- , ((modm, xK_m), spawn "mullvadconnect")
+      -- , ((modm .|. shiftMask, xK_m), spawn "mullvaddisconnect")
       -- , ((modm .|. controlMask, xK_m), spawn "notify-send hello")
       -- , ((shiftMask .|. controlMask, xK_m), spawn "notify-send hello")
       -- , ((modm .|. shiftMask .|. controlMask, xK_m), spawn "notify-send hello")
       -- Key bindings for N
-      , ((modm, xK_n), spawn "cd ~/Dropbox/NOTES/; alacritty -T TODO -e nvim ~/Dropbox/NOTES/TODO.md")
-      , ((modm .|. shiftMask, xK_n), spawn "alacritty -e ~/.local/bin/fzfnotes")
+      -- , ((modm, xK_n), spawn "cd ~/Dropbox/NOTES/; alacritty -T TODO -e nvim ~/Dropbox/NOTES/TODO.md")
+      -- , ((modm .|. shiftMask, xK_n), spawn "alacritty -e ~/.local/bin/fzfnotes")
       -- , ((modm .|. controlMask, xK_n), spawn "notify-send hello")
       -- , ((shiftMask .|. controlMask, xK_n), spawn "notify-send hello")
       -- , ((modm .|. shiftMask .|. controlMask, xK_n), spawn "notify-send hello")
@@ -237,13 +237,13 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- launch dmenu
     , ((modm,               xK_Return     ), spawn "dmenu_run")
 
-		, ((modm .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf)
+		-- , ((modm .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf)
 
      -- Rotate through the available layout algorithms
     , ((modm,               xK_Tab ), sendMessage NextLayout)
 
-    , ((modm,               xK_period ), spawn "qutebrowser")
-
+    -- , ((modm,               xK_period ), spawn "qutebrowser")
+--
     , ((modm,               xK_comma ), spawn "alacritty -e rangerstart")
     , ((modm,               xK_equal ), spawn "calculate")
     , ((0,               xK_Print ), spawn "maim -f jpg -m 9 \"/home/flex/Pictures/SCREENSHOTS/$(date +\"%F %H_%M_%S.jpg\")\"")
@@ -445,6 +445,7 @@ myLogHook = dynamicLog
 -- myStartupHook = return ()
 myStartupHook = do
 	spawnOnce "notify-send hello"
+	spawn "killall sxhkd; exec /usr/bin/env sxhkd &"
 	-- spawn "killall trayer; exec /usr/bin/env trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand true --width 4 --transparent true --alpha 0 --tint 0x000000 --height 19 &"
 	spawn "killall trayer; exec /usr/bin/env trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand true --widthtype request --transparent true --alpha 0 --tint 0x000000 --height 19 &"
 	spawn "killall xmobar; xmobar ~/.config/xmobar/xmobarrc &"
