@@ -254,8 +254,10 @@ alias vm="cd ~/.config/mutt/; nvim muttrc"
 alias vy="cd ~/.config/yazi/; nvim ."
 # alias vh="cd ~/.config/home-manager/; nvim home.nix"
 # alias hr="home-manager switch"
-alias fr="sudo nixos-rebuild switch --flake /home/flex/.flarbs"
+alias nr="sudo nixos-rebuild switch --flake /home/flex/.flarbs"
 alias hr="home-manager switch --flake /home/flex/.flarbs"
+# update flarbs and home manager
+alias nu="sudo nix flake update /home/flex/.flarbs"
 
 alias locate="locate -i"
 
