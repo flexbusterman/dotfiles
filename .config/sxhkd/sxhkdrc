@@ -128,12 +128,10 @@
 	# slock
 # alt + shift + control + m
 	# mailsync
-alt + shift + control + p
-	poweroff
 alt + p
-	stack -p
+	prependclipboard ~/Dropbox/NOTES/TODO.md
 alt + y
-	stack -y
+	# TODO youtube
 alt + shift + p
 	passmenu
 alt + Up
@@ -164,10 +162,6 @@ alt + shift + h
 # alt + r
 	# st -T Newsboat -e newsboat
 
-alt + F4
-	st -T PulseMixer -e pulsemixer
-alt + F6
-	torwrap
 # alt + shift + e
 	# cd ~/.local/src/dwm/; st -T DWMconfig -e nvim config.def.h
 shift + control + Return
@@ -247,10 +241,6 @@ alt + shift + control + m
 	mailsync
 alt + shift + control + m
 	touchpadtoggle
-alt + shift + control + p
-	poweroff
-alt + shift + control + r
-	reboot
 alt + shift + control + semicolon
 	clipdownload -a
  { 0 Print
@@ -436,8 +426,8 @@ alt + shift + n
 # notify-send "alt + shift + p"
 # alt + control + p
 # notify-send "alt + control + p"
-# alt + shift + control + p
-# notify-send "alt + shift + control + p"
+alt + shift + control + p
+	poweroff
 # shift + control + p
 # notify-send "shift + control + p"
 
@@ -580,6 +570,10 @@ alt + F3
 	displaydefault
 alt + shift + F3
 	displayselect
+alt + F4
+	st -T PulseMixer -e pulsemixer
+alt + F6
+	torwrap
 alt + F7
 	td-toggle
 alt + F8
