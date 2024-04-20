@@ -36,7 +36,8 @@ then
 	then
 		yt-dlp -x --audio-format mp3 --audio-quality 320K -P ~/Downloads/ "$clipboard" || notify-send 'Clipboard not valid'
 	else
-		yt-dlp --mark-watched --username fluxbesterman --cookies-from-browser brave -f 'bestvideo[height<=?1080]+bestaudio' -P ~/Downloads/\!\ VIDEO/ -o '%(uploader)s - %(playlist_index|)s%(playlist_index& - |)s%(title)s.%(ext)s' "$clipboard" || notify-send "Download unsuccessful"
+		# yt-dlp --mark-watched --username oauth2 --password $(cat ~/.envYT) -f 'bestvideo[height<=?1080]+bestaudio' -P ~/Downloads/\!\ VIDEO/ -o '%(uploader)s - %(playlist_index|)s%(playlist_index& - |)s%(title)s.%(ext)s' "$clipboard" || notify-send "Download unsuccessful"
+		yt-dlp --mark-watched --cookies-from-browser "brave" -f 'bestvideo[height<=?1080]+bestaudio' -P ~/Downloads/\!\ VIDEO/ -o '%(uploader)s - %(playlist_index|)s%(playlist_index& - |)s%(title)s.%(ext)s' "$clipboard" || notify-send "Download unsuccessful"
 	fi
 else
 	notify-send 'Clipboard empty'

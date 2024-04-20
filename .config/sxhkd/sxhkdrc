@@ -4,19 +4,11 @@
 
 # {notify-send "test 1"; notify-send "test 2", notify-send "test 3"; notify-send "test 4"}
 
-# program launcher
-alt + Return
-	dmenu_run
-
-# terminal emulator
-alt + shift + Return
-	alacritty
-
 # toggle bar and resize
-alt + a
-	{polybar-msg cmd hide; bspc config -m focused top_padding 0, polybar-msg cmd show; bspc config -m focused top_padding 21}
-alt + z
-	{bspc config window_gap 0, bspc config window_gap 16}
+# alt + a
+# 	{polybar-msg cmd hide; bspc config -m focused top_padding 0, polybar-msg cmd show; bspc config -m focused top_padding 21}
+# alt + z
+# 	{bspc config window_gap 0, bspc config window_gap 16}
 
 #
 # bspwm hotkeys
@@ -25,11 +17,6 @@ alt + z
 # quit/restart bspwm
 # alt + shift + {q,r}
 	# bspc {quit,wm -r}
-
-# restart sxhkd
-# alt + shift + k
-alt + r
-	pkill -usr1 -x sxhkd && notify-send 'sxhkd' 'Reloaded config'
 
 # close and kill
 # alt + {_,shift + }w
@@ -137,8 +124,496 @@ alt + r
 # alt + {Left,Down,Up,Right}
 	# bspc node -v {-20 0,0 20,0 -20,20 0}
 
-# Changing the Volume
+# alt + alt + control + l
+	# slock
+# alt + shift + control + m
+	# mailsync
+alt + shift + control + p
+	poweroff
+alt + p
+	stack -p
+alt + y
+	stack -y
+alt + shift + p
+	passmenu
+alt + Up
+	cpuperformance
+alt + Down
+	cpupowersave
+# shift + control + l
+# 	musicseekforward
+alt + shift + i
+	xcalib -i -a
+alt + slash
+	st -e ~/.local/bin/fzfvim
+	# # // _____ _ _ ___
+	# # // |_ _| | | |_ _|
+	# # // | | | | | || |
+	# # // | | | |_| || |
+	# # // |_| \___/|___|
+	# # //
+	# # // terminal applications
+alt + comma
+	st -e rangerstart
+alt + e
+	# st -T NeoMutt -e neomutt
+alt + shift + t
+	st -e tt -Theme dracula
+alt + shift + h
+	st -e btop
+# alt + r
+	# st -T Newsboat -e newsboat
 
+alt + F4
+	st -T PulseMixer -e pulsemixer
+alt + F6
+	torwrap
+# alt + shift + e
+	# cd ~/.local/src/dwm/; st -T DWMconfig -e nvim config.def.h
+shift + control + Return
+	st -e ncmpcpp
+# alt + shift + control + Return
+	# st -T ncspot -e ncspot
+alt + s
+	supercollider
+
+	# # // ____ _ _ ___
+	# # // / ___| | | |_ _|
+	# # // | | _| | | || |
+	# # // | |_| | |_| || |
+	# # // \____|\___/|___|
+	# # //
+	# # // gui applications
+alt + shift + x
+	xkill
+alt + shift + F4
+	pavucontrol
+# alt + control + Return
+# 	audacious
+
+alt + o
+	fzfvideo
+alt + p
+	stack -p
+alt + semicolon
+	clipstream
+alt + slash
+	st -e ~/.local/bin/shortcuts
+alt + y
+	stack -y
+alt + d
+	typedate
+alt + control + d
+	mpc --host ~/.mpd/socket clear
+alt + control + h
+	musicseekbackward
+alt + control + k
+	musicprev
+alt + control + l
+	musicseekforward
+alt + control + m
+	measure
+alt + control + space
+	musicplaypause
+alt + shift + F3
+	displayselect
+alt + shift + equal
+	calculate
+alt + shift + grave
+	dmenuunicode
+alt + shift + i
+	xcalib -i -a
+alt + shift + m
+	mullvaddisconnect
+alt + shift + o
+	ytfzf -m --mpv-opts='--ytdl-format=bestvideo[height<=480]+bestaudio/best[height<=480]' -D
+alt + shift + p
+	passmenu
+alt + shift + r
+	st -e dwmrebuild
+alt + shift + control + 0
+	notify-send 'Killing active timers'; killall timers
+alt + shift + control + 1
+	timers 60
+alt + shift + control + 2
+	timers 30
+alt + shift + control + 3
+	timers 20
+alt + shift + control + 4
+	timers 15
+alt + shift + control + l
+	slock
+alt + shift + control + m
+	mailsync
+alt + shift + control + m
+	touchpadtoggle
+alt + shift + control + p
+	poweroff
+alt + shift + control + r
+	reboot
+alt + shift + control + semicolon
+	clipdownload -a
+ { 0 Print
+	maim -f jpg -m 9 \"/home/flex/Pictures/SCREENSHOTS/$(date +\"%F %H_%M_%S.jpg\
+ { shift + Print
+	maim -f jpg -m 9 -s \"/home/flex/Pictures/SCREENSHOTS/$(date +\"%F %H_%M_%S.jpg\
+
+#                 _           _
+#  ___  ___  _ __| |_ ___  __| |
+# / __|/ _ \| '__| __/ _ \/ _` |
+# \__ \ (_) | |  | ||  __/ (_| |
+# |___/\___/|_|   \__\___|\__,_|
+# bindings sorted
+
+# used by dwm alt + a
+# used by dwm
+# alt + shift + a
+# notify-send "alt + shift + a"
+# alt + control + a
+# notify-send "alt + control + a"
+# alt + shift + control + a
+# notify-send "alt + shift + control + a"
+# shift + control + a
+# notify-send "shift + control + a"
+
+alt + b
+	bluetoothconnect $HEADPHONES
+alt + shift + b
+	bluetoothctl disconnect $HEADPHONES
+# alt + control + b
+# notify-send "alt + control + b"
+alt + shift + control + b
+	blueberry
+# shift + control + b
+# notify-send "shift + control + b"
+
+alt + c
+	reaperconnect
+# alt + shift + c
+# notify-send "alt + shift + c"
+# alt + control + c
+# notify-send "alt + control + c"
+# alt + shift + control + c
+# notify-send "alt + shift + control + c"
+# shift + control + c
+# notify-send "shift + control + c"
+
+alt + d
+	typedate
+# alt + shift + d
+# notify-send "alt + shift + d"
+# alt + control + d
+# notify-send "alt + control + d"
+# alt + shift + control + d
+# notify-send "alt + shift + control + d"
+# shift + control + d
+# notify-send "shift + control + d"
+
+# alt + e
+# notify-send "alt + e"
+# alt + shift + e
+# notify-send "alt + shift + e"
+# alt + control + e
+# notify-send "alt + control + e"
+# alt + shift + control + e
+# notify-send "alt + shift + control + e"
+# shift + control + e
+# notify-send "shift + control + e"
+
+# alt + f
+# notify-send "alt + f"
+# alt + shift + f
+# notify-send "alt + shift + f"
+# alt + control + f
+# notify-send "alt + control + f"
+# alt + shift + control + f
+# notify-send "alt + shift + control + f"
+# shift + control + f
+# notify-send "shift + control + f"
+
+# alt + g
+# notify-send "alt + g"
+# alt + shift + g
+# notify-send "alt + shift + g"
+# alt + control + g
+# notify-send "alt + control + g"
+# alt + shift + control + g
+# notify-send "alt + shift + control + g"
+# shift + control + g
+# notify-send "shift + control + g"
+
+# alt + h
+# notify-send "alt + h"
+# alt + shift + h
+# notify-send "alt + shift + h"
+alt + control + h
+	musicseekbackward
+# alt + shift + control + h
+# notify-send "alt + shift + control + h"
+# shift + control + h
+# notify-send "shift + control + h"
+
+# alt + i
+# notify-send "alt + i"
+# alt + shift + i
+# notify-send "alt + shift + i"
+# alt + control + i
+# notify-send "alt + control + i"
+# alt + shift + control + i
+# notify-send "alt + shift + control + i"
+# shift + control + i
+# notify-send "shift + control + i"
+
+# alt + j
+# notify-send "alt + j"
+# alt + shift + j
+# notify-send "alt + shift + j"
+alt + control + j
+	musicnext
+# alt + shift + control + j
+# notify-send "alt + shift + control + j"
+# shift + control + j
+	# notify-send "shift + control + j"
+
+# used by dwm alt + k
+# used by dwm notify-send "alt + k"
+# used by dwm alt + shift + k
+# used by dwm notify-send "alt + shift + k"
+alt + control + k
+	musicprev
+# alt + shift + control + k
+# notify-send "alt + shift + control + k"
+# shift + control + k
+# notify-send "shift + control + k"
+
+# alt + l
+# notify-send "alt + l"
+# alt + shift + l
+# notify-send "alt + shift + l"
+alt + control + l
+	musicseekforward
+# alt + shift + control + l
+# notify-send "alt + shift + control + l"
+# shift + control + l
+# notify-send "shift + control + l"
+
+alt + m
+	mullvadconnect
+alt + shift + m
+	mullvaddisconnect
+# alt + control + m
+# notify-send "alt + control + m"
+# alt + shift + control + m
+# notify-send "alt + shift + control + m"
+# shift + control + m
+# notify-send "shift + control + m"
+
+alt + n
+	cd ~/Dropbox/NOTES/; st -T TODO -e nvim ~/Dropbox/NOTES/TODO.md
+alt + shift + n
+	st -e ~/.local/bin/fzfnotes
+# alt + control + n
+# notify-send "alt + control + n"
+# alt + shift + control + n
+# notify-send "alt + shift + control + n"
+# shift + control + n
+# notify-send "shift + control + n"
+
+# alt + o
+# notify-send "alt + o"
+# alt + shift + o
+# notify-send "alt + shift + o"
+# alt + control + o
+# notify-send "alt + control + o"
+# alt + shift + control + o
+# notify-send "alt + shift + control + o"
+# shift + control + o
+# notify-send "shift + control + o"
+
+# alt + p
+# notify-send "alt + p"
+# alt + shift + p
+# notify-send "alt + shift + p"
+# alt + control + p
+# notify-send "alt + control + p"
+# alt + shift + control + p
+# notify-send "alt + shift + control + p"
+# shift + control + p
+# notify-send "shift + control + p"
+
+alt + q
+	qpwgraph
+# alt + shift + q
+# notify-send "alt + shift + q"
+# alt + control + q
+# notify-send "alt + control + q"
+# alt + shift + control + q
+# notify-send "alt + shift + control + q"
+# shift + control + q
+# notify-send "shift + control + q"
+
+alt + r
+	pkill -usr1 -x sxhkd && notify-send 'sxhkd' 'Reloaded config'
+# alt + shift + r
+# notify-send "alt + shift + r"
+# alt + control + r
+# notify-send "alt + control + r"
+alt + shift + control + r
+	reboot
+# shift + control + r
+# notify-send "shift + control + r"
+
+# alt + s
+# notify-send "alt + s"
+# alt + shift + s
+# notify-send "alt + shift + s"
+# alt + control + s
+# notify-send "alt + control + s"
+# alt + shift + control + s
+# notify-send "alt + shift + control + s"
+# shift + control + s
+# notify-send "shift + control + s"
+
+# alt + t
+# notify-send "alt + t"
+# alt + shift + t
+# notify-send "alt + shift + t"
+# alt + control + t
+# notify-send "alt + control + t"
+# alt + shift + control + t
+# notify-send "alt + shift + control + t"
+# shift + control + t
+# notify-send "shift + control + t"
+
+# alt + u
+# notify-send "alt + u"
+# alt + shift + u
+# notify-send "alt + shift + u"
+# alt + control + u
+# notify-send "alt + control + u"
+# alt + shift + control + u
+# notify-send "alt + shift + control + u"
+# shift + control + u
+# notify-send "shift + control + u"
+
+# alt + v
+# notify-send "alt + v"
+# alt + shift + v
+# notify-send "alt + shift + v"
+# alt + control + v
+# notify-send "alt + control + v"
+# alt + shift + control + v
+# notify-send "alt + shift + control + v"
+# shift + control + v
+# notify-send "shift + control + v"
+
+# alt + w
+# notify-send "alt + w"
+# alt + shift + w
+# notify-send "alt + shift + w"
+# alt + control + w
+# notify-send "alt + control + w"
+# alt + shift + control + w
+# notify-send "alt + shift + control + w"
+# shift + control + w
+# notify-send "shift + control + w"
+
+# alt + x
+# used by dwm
+# alt + shift + x
+# notify-send "alt + shift + x"
+# alt + control + x
+# notify-send "alt + control + x"
+# alt + shift + control + x
+# notify-send "alt + shift + control + x"
+# shift + control + x
+# notify-send "shift + control + x"
+
+# alt + y
+# notify-send "alt + y"
+# alt + shift + y
+# notify-send "alt + shift + y"
+# alt + control + y
+# notify-send "alt + control + y"
+# alt + shift + control + y
+# notify-send "alt + shift + control + y"
+# shift + control + y
+# notify-send "shift + control + y"
+
+# alt + z
+# notify-send "alt + z"
+# alt + shift + z
+# notify-send "alt + shift + z"
+# alt + control + z
+# notify-send "alt + control + z"
+# alt + shift + control + z
+# notify-send "alt + shift + control + z"
+# shift + control + z
+# notify-send "shift + control + z"
+
+#                      _       _
+#  ___ _ __   ___  ___(_) __ _| |
+# / __| '_ \ / _ \/ __| |/ _` | |
+# \__ \ |_) |  __/ (__| | (_| | |
+# |___/ .__/ \___|\___|_|\__,_|_|
+#     |_|
+# special keys
+
+# program launcher
+alt + Return
+	dmenu_run
+# terminal emulator
+alt + shift + Return
+	st
+alt + control + Return
+	st -e ncmpcpp
+alt + shift + control + Return
+	tidal-hifi
+alt + control + space
+	musicplaypause
+
+alt + F1
+	bindings
+alt + F2
+	resolution
+alt + F3
+	displaydefault
+alt + shift + F3
+	displayselect
+alt + F7
+	td-toggle
+alt + F8
+	mounter
+alt + F9
+	unmounter
+alt + F10
+	campreview
+alt + F11
+	dmenurecord
+alt + F12
+	killrecording
+
+alt + period
+	qutebrowser
+alt + shift + period
+	bravestart
+alt + shift + slash
+	st -e ~/.local/bin/fzfvim
+
+alt + semicolon
+	clipstream
+alt + shift + semicolon
+	clipdownload
+
+alt + shift + grave
+	dmenuunicode
+
+# __  _______ ___   __
+# \ \/ /  ___( _ ) / /_
+#  \  /| |_  / _ \| '_ \
+#  /  \|  _|| (_) | (_) |
+# /_/\_\_|   \___/ \___/
+# xf86 media keys volume brightness
 XF86AudioMute
 	pamixer -T; kill -44 $(pidof dwmblocks)
 XF86AudioRaiseVolume
@@ -151,128 +626,3 @@ XF86MonBrightnessUp
 	brightnessup
 XF86MonBrightnessDown
 	brightnessdown
-
-	# // ____      _    _
-	# // / ___| ___ _ __(_)_ __ | |_ ___
-	# // \___ \ / __| '__| | '_ \| __/ __|
-	# // ___) | (__| | | | |_) | |_\__ \
-	# // |____/ \___|_| |_| .__/ \__|___/
-	# //          |_|
-	# // bindings to run scripts
-alt + shift + c
-	calc
-# alt + alt + control + l
-	# slock
-alt + d
-	typedate
-alt + b
-	bluetoothconnect $HEADPHONES
-alt + shift + b
-	bluetoothctl disconnect $HEADPHONES
-alt + grave
-	dmenuunicode
-alt + m
-	mullvadconnect
-alt + shift + m
-	mullvaddisconnect
-# alt + shift + control + m
-	# mailsync
-alt + F1
-	jackrun
-alt + F2
-	jackkill
-alt + F3
-	displaydefault
-alt + shift + F3
-	displayselect
-alt + F7
-	td-Toggle
-alt + F8
-	dmenumount
-alt + F9
-	dmenuumount
-alt + shift + control + r
-	reboot
-alt + shift + control + p
-	poweroff
-alt + semicolon
-	clipstream
-alt + shift + semicolon
-	clipdownload
-alt + p
-	stack -p
-alt + y
-	stack -y
-alt + shift + p
-	passmenu
-alt + Up
-	cpuperformance
-alt + Down
-	cpupowersave
-control + shift + j
-	musicnext
-control + shift + k
-	musicprev
-control + shift + h
-	musicseekbackward
-control + shift + l
-	musicseekforward
-control + shift + space
-	musicplaypause
-alt + shift + i
-	xcalib -i -a
-alt + slash
-	st -e ~/.local/bin/fzfvim
-	# # // _____ _  _ ___
-	# # // |_  _| | | |_ _|
-	# # //  | | | | | || |
-	# # //  | | | |_| || |
-	# # //  |_| \___/|___|
-	# # //
-	# # // terminal applications
-alt + comma
-	alacritty -e rangerstart
-alt + e
-	# st -T NeoMutt -e neomutt
-alt + shift + t
-	alacritty -e tt -Theme dracula
-alt + shift + h
-	alacritty -e btop
-alt + n
-	cd ~/Dropbox/NOTES/; alacritty -T TODO -e nvim ~/Dropbox/NOTES/TODO.md
-alt + shift + n
-	cd ~/Dropbox/NOTES/; alacritty -T VimWiki -e nvim -c VimwikiIndex
-alt + r
-	# st -T Newsboat -e newsboat
-alt + F4
-	alacritty -T PulseMixer -e pulsemixer
-alt + F6
-	torwrap
-# alt + shift + e
-	# cd ~/.local/src/dwm/; st -T DWMconfig -e nvim config.def.h
-control + shift + Return
-	alacritty -e ncmpcpp
-# alt + control + shift + Return
-	# st -T ncspot -e ncspot
-alt + s
-	supercollider
-
-	# # //  ____ _  _ ___
-	# # // / ___| | | |_ _|
-	# # // | | _| | | || |
-	# # // | |_| | |_| || |
-	# # // \____|\___/|___|
-	# # //
-	# # // gui applications
-alt + q
-	qpwgraph
-alt + period
-	qutebrowser
-alt + shift + period
-	bravestart
-alt + shift + x
-	xkill
-alt + shift + F4
-	pavucontrol
-# alt + control + Return
-# 	audacious
