@@ -13,17 +13,17 @@ path+=($HOME/go/bin/)
 path+=($HOME/.cabal/bin/)
 
 # source ~/.local/src/zsh-autocomplete/zsh-autocomplete.plugin.zsh
-# source ~/.zsh/plugins/zsh-system-clipboard/zsh-system-clipboard.zsh
+source ~/.zsh/plugins/zsh-system-clipboard/zsh-system-clipboard.zsh
 # source ~/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 # source ~/.zsh/plugins/zsh-nvm/zsh-nvm.plugin.zsh
-# source /usr/share/fzf/key-bindings.zsh
-# source /usr/share/fzf/completion.zsh
+source /usr/share/fzf/key-bindings.zsh
+source /usr/share/fzf/completion.zsh
 
 # nixos
-if [ -n "${commands[fzf-share]}" ]; then
-  source "$(fzf-share)/key-bindings.zsh"
-  source "$(fzf-share)/completion.zsh"
-fi
+# if [ -n "${commands[fzf-share]}" ]; then
+#   source "$(fzf-share)/key-bindings.zsh"
+#   source "$(fzf-share)/completion.zsh"
+# fi
 
 setopt APPEND_HISTORY # Allow multiple terminal sessions to all append to one zsh command history
 setopt autocd   # Automatically cd into typed directory.
@@ -235,8 +235,8 @@ alias vs="cd ~/.config/sxhkd/; nvim sxhkdrc"
 # alias vS="cd ~/.config/nvim/after/plugin/luasnippets/; nvim all.lua"
 alias vu="cd ~/.config/newsboat/; nvim urls"
 alias vv="cd ~/.config/vifm/; nvim vifmrc"
-alias vx="cd ~/.config/xmonad/; nvim xmonad.hs"
-alias vX="cd ~/; nvim .xinitrc"
+alias vX="cd ~/.config/xmonad/; nvim xmonad.hs"
+alias vx="cd ~/; nvim .xinitrc"
 alias vk="cd ~/.config/sxhkd; nvim sxhkdrc"
 alias vz="cd ~/; nvim .zshrc"
 alias vi="cd ~/.config/i3/; nvim config"
@@ -491,4 +491,5 @@ alias pdot="/usr/bin/env git --git-dir=$HOME/.pdot.git/ --work-tree=$HOME"
 # source ~/.zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null
 
 # instant-zsh-post
+alias pdot="/usr/bin/env git --git-dir=$HOME/.pdot.git/ --work-tree=$HOME"
 alias pdot="/usr/bin/env git --git-dir=$HOME/.pdot.git/ --work-tree=$HOME"

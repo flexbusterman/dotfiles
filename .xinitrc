@@ -1,5 +1,6 @@
 #!/bin/bash
-setbg &
+# setbg &
+feh --bg-fill ~/.local/share/flex/background.jpg
 remaps &
 xset fp+ /usr/share/fonts/TTF/FiraMono-Medium.ttf
 picom --no-fading-openclose -o 0 &
