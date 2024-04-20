@@ -128,8 +128,6 @@
 	# slock
 # alt + shift + control + m
 	# mailsync
-alt + p
-	prependclipboard ~/Dropbox/NOTES/TODO.md
 alt + y
 	# TODO youtube
 alt + shift + p
@@ -153,7 +151,7 @@ alt + slash
 	# # // terminal applications
 alt + comma
 	st -e rangerstart
-alt + e
+# alt + e
 	# st -T NeoMutt -e neomutt
 alt + shift + t
 	st -e tt -Theme dracula
@@ -168,8 +166,6 @@ shift + control + Return
 	st -e ncmpcpp
 # alt + shift + control + Return
 	# st -T ncspot -e ncspot
-alt + s
-	supercollider
 
 	# # // ____ _ _ ___
 	# # // / ___| | | |_ _|
@@ -185,10 +181,6 @@ alt + shift + F4
 # alt + control + Return
 # 	audacious
 
-alt + o
-	fzfvideo
-alt + p
-	stack -p
 alt + semicolon
 	clipstream
 alt + slash
@@ -409,8 +401,8 @@ alt + shift + n
 # shift + control + n
 # notify-send "shift + control + n"
 
-# alt + o
-# notify-send "alt + o"
+alt + o
+	fzfvideo
 # alt + shift + o
 # notify-send "alt + shift + o"
 # alt + control + o
@@ -420,8 +412,8 @@ alt + shift + n
 # shift + control + o
 # notify-send "shift + control + o"
 
-# alt + p
-# notify-send "alt + p"
+alt + p
+	prependclipboard ~/Dropbox/NOTES/TODO.md
 # alt + shift + p
 # notify-send "alt + shift + p"
 # alt + control + p
@@ -453,8 +445,8 @@ alt + shift + control + r
 # shift + control + r
 # notify-send "shift + control + r"
 
-# alt + s
-# notify-send "alt + s"
+alt + s
+	supercollider
 # alt + shift + s
 # notify-send "alt + shift + s"
 # alt + control + s
