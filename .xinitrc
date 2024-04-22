@@ -1,7 +1,7 @@
 #!/bin/bash
-xrandr --setprovideroutputsource modesetting NVIDIA-0
-xrandr --auto
-xrandr --dpi 96
+# xrandr --setprovideroutputsource modesetting NVIDIA-0
+# xrandr --auto
+# xrandr --dpi 96
 # setbg &
 feh --bg-fill ~/.local/share/flex/background.jpg
 remaps &

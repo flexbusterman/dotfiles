@@ -124,123 +124,6 @@
 # alt + {Left,Down,Up,Right}
 	# bspc node -v {-20 0,0 20,0 -20,20 0}
 
-# alt + alt + control + l
-	# slock
-# alt + shift + control + m
-	# mailsync
-alt + y
-	# TODO youtube
-alt + shift + p
-	passmenu
-alt + Up
-	cpuperformance
-alt + Down
-	cpupowersave
-# shift + control + l
-# 	musicseekforward
-alt + shift + i
-	xcalib -i -a
-alt + slash
-	st -e ~/.local/bin/fzfvim
-	# # // _____ _ _ ___
-	# # // |_ _| | | |_ _|
-	# # // | | | | | || |
-	# # // | | | |_| || |
-	# # // |_| \___/|___|
-	# # //
-	# # // terminal applications
-alt + comma
-	st -e rangerstart
-alt + shift + t
-	st -e tt -theme dracula
-alt + shift + h
-	st -e btop
-
-# alt + shift + e
-	# cd ~/.local/src/dwm/; st -T DWMconfig -e nvim config.def.h
-shift + control + Return
-	st -e ncmpcpp
-# alt + shift + control + Return
-	# st -T ncspot -e ncspot
-
-	# # // ____ _ _ ___
-	# # // / ___| | | |_ _|
-	# # // | | _| | | || |
-	# # // | |_| | |_| || |
-	# # // \____|\___/|___|
-	# # //
-	# # // gui applications
-alt + shift + x
-	xkill
-alt + shift + F4
-	pavucontrol
-# alt + control + Return
-# 	audacious
-
-alt + semicolon
-	clipstream
-alt + slash
-	st -e ~/.local/bin/shortcuts
-alt + y
-	stack -y
-alt + d
-	typedate
-alt + control + d
-	mpc --host ~/.mpd/socket clear
-alt + control + h
-	musicseekbackward
-alt + control + k
-	musicprev
-alt + control + l
-	musicseekforward
-alt + control + m
-	measure
-alt + control + space
-	musicplaypause
-alt + shift + F3
-	displayselect
-alt + shift + equal
-	calculate
-alt + shift + grave
-	dmenuunicode
-alt + shift + i
-	xcalib -i -a
-alt + shift + m
-	mullvaddisconnect
-alt + shift + o
-	ytfzf -m --mpv-opts='--ytdl-format=bestvideo[height<=480]+bestaudio/best[height<=480]' -D
-alt + shift + p
-	passmenu
-alt + shift + control + 0
-	notify-send 'Killing active timers'; killall timers
-alt + shift + control + 1
-	timers 60
-alt + shift + control + 2
-	timers 30
-alt + shift + control + 3
-	timers 20
-alt + shift + control + 4
-	timers 15
-alt + shift + control + l
-	slock
-alt + shift + control + m
-	mailsync
-alt + shift + control + m
-	touchpadtoggle
-alt + shift + control + semicolon
-	clipdownload -a
-Print
-	maim -f jpg -m 9 "/home/flex/Pictures/SCREENSHOTS/$(date +'%F %H_%M_%S.jpg')"
-shift + Print
-	maim -f jpg -m 9 -s "/home/flex/Pictures/SCREENSHOTS/$(date +'%F %H_%M_%S.jpg')"
-
-#                 _           _
-#  ___  ___  _ __| |_ ___  __| |
-# / __|/ _ \| '__| __/ _ \/ _` |
-# \__ \ (_) | |  | ||  __/ (_| |
-# |___/\___/|_|   \__\___|\__,_|
-# bindings sorted
-
 # used by dwm alt + a
 # used by dwm
 # alt + shift + a
@@ -278,8 +161,8 @@ alt + d
 	typedate
 alt + shift + d
 	st -e dwmrebuild
-# alt + control + d
-# notify-send "alt + control + d"
+alt + control + d
+	mpc --host ~/.mpd/socket clear
 # alt + shift + control + d
 # notify-send "alt + shift + control + d"
 # shift + control + d
@@ -331,8 +214,8 @@ alt + control + h
 
 # alt + i
 # notify-send "alt + i"
-# alt + shift + i
-# notify-send "alt + shift + i"
+alt + shift + i
+	xcalib -i -a
 # alt + control + i
 # notify-send "alt + control + i"
 # alt + shift + control + i
@@ -368,8 +251,8 @@ alt + control + k
 # notify-send "alt + shift + l"
 alt + control + l
 	musicseekforward
-# alt + shift + control + l
-# notify-send "alt + shift + control + l"
+alt + shift + control + l
+	slock
 # shift + control + l
 # notify-send "shift + control + l"
 
@@ -377,8 +260,8 @@ alt + m
 	mullvadconnect
 alt + shift + m
 	mullvaddisconnect
-# alt + control + m
-# notify-send "alt + control + m"
+alt + control + m
+	measure
 # alt + shift + control + m
 # notify-send "alt + shift + control + m"
 # shift + control + m
@@ -408,8 +291,8 @@ alt + o
 
 alt + p
 	prependclipboard ~/Dropbox/NOTES/TODO.md
-# alt + shift + p
-# notify-send "alt + shift + p"
+alt + shift + p
+	passmenu
 # alt + control + p
 # notify-send "alt + control + p"
 alt + shift + control + p
@@ -450,14 +333,14 @@ alt + shift + s
 # shift + control + s
 # notify-send "shift + control + s"
 
-# alt + t
-# notify-send "alt + t"
-# alt + shift + t
-# notify-send "alt + shift + t"
+alt + t
+	st -e btop
+alt + shift + t
+	st -e nvtop
 # alt + control + t
 # notify-send "alt + control + t"
-# alt + shift + control + t
-# notify-send "alt + shift + control + t"
+alt + shift + control + t
+	st -e tt -theme dracula
 # shift + control + t
 # notify-send "shift + control + t"
 
@@ -496,8 +379,8 @@ alt + shift + s
 
 # alt + x
 # used by dwm
-# alt + shift + x
-# notify-send "alt + shift + x"
+alt + shift + x
+	xkill
 # alt + control + x
 # notify-send "alt + control + x"
 # alt + shift + control + x
@@ -505,8 +388,8 @@ alt + shift + s
 # shift + control + x
 # notify-send "shift + control + x"
 
-# alt + y
-# notify-send "alt + y"
+alt + y
+	ytfzf -m --mpv-opts='--ytdl-format=bestvideo[height<=480]+bestaudio/best[height<=480]' -D
 # alt + shift + y
 # notify-send "alt + shift + y"
 # alt + control + y
@@ -535,48 +418,28 @@ alt + shift + s
 #     |_|
 # special keys
 
-# program launcher
 alt + Return
 	dmenu_run
-# terminal emulator
 alt + shift + Return
 	st
 alt + control + Return
 	st -e ncmpcpp
 alt + shift + control + Return
 	tidal-hifi
+
 alt + control + space
 	musicplaypause
 
-alt + F1
-	bindings
-alt + F2
-	resolution
-alt + F3
-	displaydefault
-alt + shift + F3
-	displayselect
-alt + F4
-	st -T PulseMixer -e pulsemixer
-alt + F6
-	torwrap
-alt + F7
-	td-toggle
-alt + F8
-	mounter
-alt + F9
-	unmounter
-alt + F10
-	campreview
-alt + F11
-	dmenurecord
-alt + F12
-	killrecording
+alt + comma
+	st -e rangerstart
 
 alt + period
 	qutebrowser
 alt + shift + period
 	bravestart
+
+alt + slash
+	st -e ~/.local/bin/shortcuts
 alt + shift + slash
 	st -e ~/.local/bin/fzfvim
 
@@ -584,9 +447,57 @@ alt + semicolon
 	clipstream
 alt + shift + semicolon
 	clipdownload
+alt + shift + control + semicolon
+	clipdownload -a
+
+alt + shift + equal
+	calculate
 
 alt + shift + grave
 	dmenuunicode
+
+alt + F1
+	bindings
+
+alt + F2
+	resolution
+
+alt + F3
+	displaydefault
+
+alt + shift + F3
+	displayselect
+
+alt + F4
+	st -T PulseMixer -e pulsemixer
+alt + shift + F4
+	pavucontrol
+
+alt + F6
+	torwrap
+
+alt + F7
+	td-toggle
+
+alt + F8
+	mounter
+
+alt + F9
+	unmounter
+
+alt + F10
+	campreview
+
+alt + F11
+	dmenurecord
+
+alt + F12
+	killrecording
+
+Print
+	maim -f jpg -m 9 "/home/flex/Pictures/SCREENSHOTS/$(date +'%F %H_%M_%S.jpg')"
+shift + Print
+	maim -f jpg -m 9 -s "/home/flex/Pictures/SCREENSHOTS/$(date +'%F %H_%M_%S.jpg')"
 
 # __  _______ ___   __
 # \ \/ /  ___( _ ) / /_
