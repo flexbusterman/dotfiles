@@ -231,10 +231,10 @@ alt + shift + control + m
 	touchpadtoggle
 alt + shift + control + semicolon
 	clipdownload -a
- { 0 Print
-	maim -f jpg -m 9 \"/home/flex/Pictures/SCREENSHOTS/$(date +\"%F %H_%M_%S.jpg\
- { shift + Print
-	maim -f jpg -m 9 -s \"/home/flex/Pictures/SCREENSHOTS/$(date +\"%F %H_%M_%S.jpg\
+Print
+	maim -f jpg -m 9 "/home/flex/Pictures/SCREENSHOTS/$(date +'%F %H_%M_%S.jpg')"
+shift + Print
+	maim -f jpg -m 9 -s "/home/flex/Pictures/SCREENSHOTS/$(date +'%F %H_%M_%S.jpg')"
 
 #                 _           _
 #  ___  ___  _ __| |_ ___  __| |

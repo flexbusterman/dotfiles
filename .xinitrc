@@ -1,4 +1,7 @@
 #!/bin/bash
+xrandr --setprovideroutputsource modesetting NVIDIA-0
+xrandr --auto
+xrandr --dpi 96
 # setbg &
 feh --bg-fill ~/.local/share/flex/background.jpg
 remaps &
@@ -21,3 +24,4 @@ sxhkd &
 # if [ "$HOST" = "T460" ]; then # 	 xfce4-screensaver &
 # fi
 exec dwmstart
+# nvidia-xrun
