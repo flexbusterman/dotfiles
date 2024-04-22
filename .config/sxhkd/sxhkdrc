@@ -211,8 +211,6 @@ alt + shift + o
 	ytfzf -m --mpv-opts='--ytdl-format=bestvideo[height<=480]+bestaudio/best[height<=480]' -D
 alt + shift + p
 	passmenu
-alt + shift + r
-	st -e dwmrebuild
 alt + shift + control + 0
 	notify-send 'Killing active timers'; killall timers
 alt + shift + control + 1
@@ -278,8 +276,8 @@ alt + c
 
 alt + d
 	typedate
-# alt + shift + d
-# notify-send "alt + shift + d"
+alt + shift + d
+	st -e dwmrebuild
 # alt + control + d
 # notify-send "alt + control + d"
 # alt + shift + control + d
@@ -431,9 +429,9 @@ alt + q
 # notify-send "shift + control + q"
 
 alt + r
-	pkill -usr1 -x sxhkd && notify-send 'sxhkd' 'Reloaded config'
-# alt + shift + r
-# notify-send "alt + shift + r"
+	reaper
+alt + shift + r
+	pkill -usr1 -x sxhkd && notify-send 'Reloaded sxhkd config'
 # alt + control + r
 # notify-send "alt + control + r"
 alt + shift + control + r
@@ -442,9 +440,9 @@ alt + shift + control + r
 # notify-send "shift + control + r"
 
 alt + s
-	supercollider
-# alt + shift + s
-# notify-send "alt + shift + s"
+	st -T SuperCollider -e tmuxsession SuperCollider 'supercollider'
+alt + shift + s
+	tmux kill-session -t SuperCollider
 # alt + control + s
 # notify-send "alt + control + s"
 # alt + shift + control + s
