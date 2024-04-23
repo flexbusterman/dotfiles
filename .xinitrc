@@ -1,8 +1,5 @@
 #!/bin/bash
-# xrandr --setprovideroutputsource modesetting NVIDIA-0
-# xrandr --auto
-# xrandr --dpi 96
-# setbg &
+xrdb ~/.Xresources
 feh --bg-fill ~/.local/share/flex/background.jpg
 remaps &
 xset fp+ /usr/share/fonts/TTF/FiraMono-Medium.ttf
@@ -21,7 +18,4 @@ blueberry-tray &
 xdotool mousemove $(xdotool getdisplaygeometry | awk '{print $1-1, $2-1}') &
 tmux new-session -d -s main &
 sxhkd &
-# if [ "$HOST" = "T460" ]; then # 	 xfce4-screensaver &
-# fi
 exec dwmstart
-# nvidia-xrun
