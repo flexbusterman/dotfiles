@@ -23,8 +23,8 @@ alt + shift + control + b
 
 alt + c
 	reaperconnect
-# alt + shift + c
-# notify-send "alt + shift + c"
+alt + shift + c
+	calendar
 # alt + control + c
 # notify-send "alt + control + c"
 # alt + shift + control + c
