@@ -157,6 +157,7 @@ alias tks="tmux kill-server"
 alias pg="ping google.com"
 alias sd="cd ~ && cd \$(find * -type d | fzf)"
 alias sz="source ~/.zshrc"
+alias xb="sudo cp -rv /etc/X11/ ~/.config/etcfiles/"
 
 # audio
 alias play="ffplay -nodisp -autoexit"
