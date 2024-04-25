@@ -123,18 +123,7 @@ alt + control + k
 # alt + l
 # notify-send "alt + l"
 # alt + shift + l
-# notify-send "alt + shift + l"
-alt + control + l
-	musicseekforward
-alt + shift + control + l
-	slock
-# shift + control + l
-# notify-send "shift + control + l"
-
-alt + m
-	mullvadconnect
-alt + shift + m
-	mullvaddisconnect
+# notify-send "alt + shift + l" alt + control + l musicseekforward alt + shift + control + l slock # shift + control + l # notify-send "shift + control + l" alt + m mullvadconnect alt + shift + m mullvaddisconnect
 alt + control + m
 	measure
 # alt + shift + control + m

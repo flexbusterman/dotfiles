@@ -55,7 +55,7 @@ return {
 				tmux = {
 					path = vim.fn.tempname(),
 					horizontal = true,
-					size = "30%",
+					size = "15%",
 					cmd = "tail",
 					args = { "-F", "$1" },
 				},
