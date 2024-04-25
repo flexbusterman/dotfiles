@@ -1,13 +1,18 @@
-#!/usr/bin/env bash
-DEVICE=$(xinput --list | grep -o "SynPS/2 Synaptics TouchPad\|Synaptics TM3288-011")
-if [[ $DEVICE ]]; then
-	ENABLED=$(xinput --list-props "$DEVICE" | grep "Device Enabled" | awk '{print $NF}')
-	if [[ $ENABLED == 1 ]]; then
-		echo "Disabling TouchPad"
-		xinput disable "$DEVICE"
-	else
-		echo "Device is already disabled"
-	fi
+#!/bin/bash
+
+# This script checks for the presence of a specified device and disables it if found.
+
+# The device name to look for
+DEVICE_NAME="MSFT0001:00 06CB:CE2D Touchpad"
+
+# Use xinput and grep to find the device ID
+device_id=$(xinput list | grep "$DEVICE_NAME" | awk '{print $6}' | sed 's/id=//')
+
+# Check if the device ID was found
+if [ -z "$device_id" ]; then
+    echo "Device '$DEVICE_NAME' not found."
 else
-	echo "No suitable device found"
+    echo "Device '$DEVICE_NAME' found with ID $device_id. Disabling it..."
+    # Disable the device using xinput
+    xinput disable "$device_id"
 fi
