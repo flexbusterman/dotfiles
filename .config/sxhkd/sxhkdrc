@@ -43,10 +43,10 @@ alt + control + d
 # shift + control + d
 # notify-send "shift + control + d"
 
-# alt + e
-# notify-send "alt + e"
-# alt + shift + e
-# notify-send "alt + shift + e"
+alt + e
+	touchpadenable
+alt + shift + e
+	touchpaddisable
 # alt + control + e
 # notify-send "alt + control + e"
 # alt + shift + control + e

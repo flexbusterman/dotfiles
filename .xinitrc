@@ -19,4 +19,5 @@ xdotool mousemove $(xdotool getdisplaygeometry | awk '{print $1-1, $2-1}') &
 tmux new-session -d -s main &
 sxhkd &
 rfkill unblock bluetooth &
+touchpaddisable
 exec dwmstart
