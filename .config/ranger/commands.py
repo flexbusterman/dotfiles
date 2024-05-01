@@ -17,7 +17,6 @@ from plugins.ranger_udisk_menu.mounter import mount
 # You always need to import ranger.api.commands here to get the Command class:
 from ranger.api.commands import Command
 
-
 # Any class that is a subclass of "Command" will be integrated into ranger as a
 # command.  Try typing ":my_edit<ENTER>" in ranger!
 class my_edit(Command):
@@ -63,7 +62,6 @@ class my_edit(Command):
         # content of the current directory.
         return self._tab_directory_content()
 
-
 class StartupTabs(Command):
     """
     :startup_tabs
@@ -79,7 +77,6 @@ class StartupTabs(Command):
 
         self.fm.tab_new()  # Open another new tab
         self.fm.cd("~/Downloads/")  # Change directory in the second tab
-
 
 # https://github.com/ranger/ranger/wiki/Integrating-File-Search-with-fzf
 # Now, simply bind this function to a key, by adding this to your ~/.config/ranger/rc.conf: map <C-f> fzf_select
@@ -114,7 +111,6 @@ class fzf_select(Command):
             else:
                 self.fm.select_file(fzf_file)
 
-
 # fzf_locate
 class fzf_locate(Command):
     """
@@ -142,7 +138,6 @@ class fzf_locate(Command):
                 self.fm.cd(fzf_file)
             else:
                 self.fm.select_file(fzf_file)
-
 
 class bulkrename(Command):
     """:bulkrename

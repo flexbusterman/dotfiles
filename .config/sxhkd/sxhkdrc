@@ -120,10 +120,29 @@ alt + control + k
 # shift + control + k
 # notify-send "shift + control + k"
 
-# alt + l
-# notify-send "alt + l"
-# alt + shift + l
-# notify-send "alt + shift + l" alt + control + l musicseekforward alt + shift + control + l slock # shift + control + l # notify-send "shift + control + l" alt + m mullvadconnect alt + shift + m mullvaddisconnect
+# used by dwm alt + l
+# used by dwm notify-send "alt + l"
+# used by dwm alt + shift + l
+# used by dwm notify-send "alt + shift + l"
+# alt + control + l
+# 	musicprev
+# alt + shift + control + l
+# notify-send "alt + shift + control + l"
+# shift + control + l
+# notify-send "shift + control + l"
+
+alt + m
+	mullvadconnect
+alt + shift + m
+	mullvaddisconnect
+# alt + control + m
+# 	musicprev
+# alt + shift + control + m
+# notify-send "alt + shift + control + m"
+# shift + control + m
+# notify-send "shift + control + m"
+
+alt + m
 alt + control + m
 	measure
 # alt + shift + control + m

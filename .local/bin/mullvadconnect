@@ -5,6 +5,7 @@ if [[ $STATUS == "UDP" ]]; then
     notify-send "Reconnecting Mullvad"
     mullvad reconnect
 else
+    notify-send "Connecting Mullvad"
     mullvad connect
 		killall slack
     sleep 1
