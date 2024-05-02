@@ -4,10 +4,10 @@ echo $DEVICE
 if [[ $DEVICE ]]; then
 	ENABLED=$(xinput --list-props "$DEVICE" | grep "Device Enabled" | awk '{print $NF}')
 	if [[ $ENABLED == 1 ]]; then
-		echo "Disabling TouchPad"
+		notify-send "Disabling TouchPad"
 		xinput disable "$DEVICE"
 	else
-		echo "Enabling TouchPad"
+		notify-send "Enabling TouchPad"
 		xinput enable "$DEVICE"
 		xinput set-prop "$DEVICE" "libinput Tapping Enabled" 1
 		xinput set-prop "$DEVICE" "libinput Accel Speed" +0.4
