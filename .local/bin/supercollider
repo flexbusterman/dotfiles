@@ -17,7 +17,8 @@ most_recent_file=$(ls -ltr ~/Dropbox/SUPERCOLLIDER/ | grep -Ev ^d | awk '/20[0-9
 ln -sf ~/Dropbox/SUPERCOLLIDER/fieldsteel\ startup.scd ~/.config/SuperCollider/startup.scd
 
 nvim -c "edit $most_recent_file" \
--c "vsplit ~/Dropbox/SUPERCOLLIDER/flextensions.sc" \
+# -c "vsplit ~/Dropbox/SUPERCOLLIDER/flextensions.sc" \
+-c "vsplit ~/Dropbox/SUPERCOLLIDER/synths.scd" \
 -c "wincmd h" \
 -c "wincmd =" \
 -c "set filetype=supercollider" \
