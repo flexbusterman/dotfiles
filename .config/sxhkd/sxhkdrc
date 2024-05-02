@@ -44,9 +44,9 @@ alt + control + d
 # notify-send "shift + control + d"
 
 alt + e
-	touchpadenable
-alt + shift + e
-	touchpaddisable
+	touchpadtoggle
+# alt + shift + e
+# 	touchpaddisable
 # alt + control + e
 # notify-send "alt + control + e"
 # alt + shift + control + e

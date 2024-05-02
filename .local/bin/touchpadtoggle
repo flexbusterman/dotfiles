@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-DEVICE=$(xinput --list | grep -o "SynPS/2 Synaptics TouchPad\|Synaptics TM3288-011")
+DEVICE=$(xinput --list | grep -o "SynPS/2 Synaptics TouchPad\|Synaptics TM3288-011\|MSFT0001:00 06CB:CE2D Touchpad")
+echo $DEVICE
 if [[ $DEVICE ]]; then
 	ENABLED=$(xinput --list-props "$DEVICE" | grep "Device Enabled" | awk '{print $NF}')
 	if [[ $ENABLED == 1 ]]; then
