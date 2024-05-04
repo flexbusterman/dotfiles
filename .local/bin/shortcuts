@@ -6,7 +6,7 @@ file=$(cat /home/$USER/.config/shell/shortcuts | fzf)
 if [ -n "$file" ]; then
 	DIR="$(dirname "$file")"
   cd $DIR
-	if [ $DIR != /home/$USER ]; then
+	if [[ $DIR != *"$HOME"* ]]; then
     SUDO_ASKPASS=~/.local/bin/dmenupass sudo -A nvim "$file"
 	else
 		nvim "$file"
