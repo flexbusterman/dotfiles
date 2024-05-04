@@ -329,7 +329,7 @@ alt + shift + period
 alt + slash
 	st -e ~/.local/bin/shortcuts
 alt + shift + slash
-	st -e ~/.local/bin/fzfvim
+	typesnippet
 
 alt + semicolon
 	clipstream

@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+xdotool type $(grep -v '^#' ~/.config/shell/snippets | dmenu -i -l 50 | cut -d' ' -f1)
