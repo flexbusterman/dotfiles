@@ -1,22 +1,37 @@
 #!/usr/bin/env bash
 # This script is used to create a shortcut to a file and open in nvim
+
 cd /home/$USER/
-echo "Running first fzf"
-file=$(cat /home/$USER/Dropbox/NOTES/Shortcuts.md | fzf)
+file=$(cat /home/$USER/.config/shell/shortcuts | fzf)
 if [ -n "$file" ]; then
-  cd "$(dirname "$file")"
-  nvim "$file"
+	DIR="$(dirname "$file")"
+  cd $DIR
+	if [ $DIR != /home/$USER ]; then
+    SUDO_ASKPASS=~/.local/bin/dmenupass sudo -A nvim "$file"
+	else
+		nvim "$file"
+	fi
 else
-  echo "First fzf cancelled or no file selected, running second fzf"
-	read -t 1 -n 1
-  file="$(fzf)"
-  if [ -n "$file" ]; then
-    echo "File selected: $file"
-    echo "/home/$USER/$file" >> /home/$USER/Dropbox/NOTES/Shortcuts.md
-    cd "$(dirname "$file")"
-    nvim "$file"
-  else
-    echo "No file selected after second fzf"
-    exit 1
-  fi
+	exit 1
 fi
+
+# cd /home/$USER/
+# echo "Running first fzf"
+# file=$(cat /home/$USER/.config/shell/shortcuts | fzf)
+# if [ -n "$file" ]; then
+#   cd "$(dirname "$file")"
+#   nvim "$file"
+# else
+#   echo "First fzf cancelled or no file selected, running second fzf"
+# 	read -t 1 -n 1
+#   file="$(fzf)"
+#   if [ -n "$file" ]; then
+#     echo "File selected: $file"
+#     echo "/home/$USER/$file" >> /home/$USER/Dropbox/NOTES/Shortcuts.md
+#     cd "$(dirname "$file")"
+#     nvim "$file"
+#   else
+#     echo "No file selected after second fzf"
+#     exit 1
+#   fi
+# fi
