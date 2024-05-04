@@ -10,6 +10,12 @@
 # shift + control + a
 # notify-send "shift + control + a"
 
+Super_L
+	$(cat ~/.local/state/flarbs/trackpadalwayson) || touchpadenable
+
+@Super_L
+	$(cat ~/.local/state/flarbs/trackpadalwayson) || touchpaddisable
+
 alt + b
 	bluetoothconnect $HEADPHONES
 alt + shift + b

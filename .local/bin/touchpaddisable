@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# if the flag is on nothing needs to be done
+$(cat ~/.local/state/flarbs/trackpadalwayson) && exit 0
+
 # This script checks for the presence of a specified device and disables it if found.
 
 # The device name to look for

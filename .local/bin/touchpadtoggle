@@ -1,18 +1,36 @@
 #!/usr/bin/env bash
+
 DEVICE=$(xinput --list | grep -o "SynPS/2 Synaptics TouchPad\|Synaptics TM3288-011\|MSFT0001:00 06CB:CE2D Touchpad")
-echo $DEVICE
+
 if [[ $DEVICE ]]; then
-	ENABLED=$(xinput --list-props "$DEVICE" | grep "Device Enabled" | awk '{print $NF}')
-	if [[ $ENABLED == 1 ]]; then
-		notify-send "Disabling TouchPad"
+	if [[ $(cat ~/.local/state/flarbs/trackpadalwayson) == true ]]; then
+		# disable the device
+		notify-send "Disabling always on for $DEVICE"
 		xinput disable "$DEVICE"
+		echo "false" > ~/.local/state/flarbs/trackpadalwayson
 	else
-		notify-send "Enabling TouchPad"
+		# enable the device
+		notify-send "Enable always on for $DEVICE"
 		xinput enable "$DEVICE"
-		xinput set-prop "$DEVICE" "libinput Tapping Enabled" 1
-		xinput set-prop "$DEVICE" "libinput Accel Speed" +0.4
+		echo "true" > ~/.local/state/flarbs/trackpadalwayson
 	fi
 else
 	echo "No suitable device found"
 	exit 1
 fi
+
+# if [[ $DEVICE ]]; then
+# 	ENABLED=$(xinput --list-props "$DEVICE" | grep "Device Enabled" | awk '{print $NF}')
+# 	if [[ $ENABLED == 1 ]]; then
+# 		notify-send "Disabling TouchPad"
+# 		xinput disable "$DEVICE"
+# 	else
+# 		notify-send "Enabling TouchPad"
+# 		xinput enable "$DEVICE"
+# 		xinput set-prop "$DEVICE" "libinput Tapping Enabled" 1
+# 		xinput set-prop "$DEVICE" "libinput Accel Speed" +0.4
+# 	fi
+# else
+# 	echo "No suitable device found"
+# 	exit 1
+# fi
