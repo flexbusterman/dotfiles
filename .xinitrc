@@ -19,7 +19,7 @@ xdotool mousemove $(xdotool getdisplaygeometry | awk '{print $1-1, $2-1}') &
 tmux new-session -d -s main &
 sxhkd &
 rfkill unblock bluetooth &
-mkdir -p ~/.local/state/flarbs/
-echo "false" > ~/.local/state/flarbs/trackpadalwayson
-touchpaddisable
+# mkdir -p ~/.local/state/flarbs/
+# echo "false" > ~/.local/state/flarbs/trackpadalwayson
+# touchpaddisable
 exec dwmstart
