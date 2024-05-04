@@ -50,8 +50,8 @@ alt + control + d
 
 alt + e
 	touchpadtoggle
-# alt + shift + e
-# 	touchpaddisable
+alt + shift + e
+	touchpaddisablewhiletypingtoggle
 # alt + control + e
 # notify-send "alt + control + e"
 # alt + shift + control + e
