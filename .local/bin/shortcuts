@@ -1,18 +1,29 @@
 #!/usr/bin/env bash
 # This script is used to create a shortcut to a file and open in nvim
 
-cd /home/$USER/
 file=$(cat /home/$USER/.config/shell/shortcuts | fzf)
 if [ -n "$file" ]; then
-	DIR="$(dirname "$file")"
-  cd $DIR
-	if [[ $DIR != *"$HOME"* ]]; then
-    SUDO_ASKPASS=~/.local/bin/dmenupass sudo -A nvim "$file"
+	# expand ~ to $HOME
+	file="${file/#\~/$HOME}"
+	# check if the file exists
+	if [ -e "$file" ]; then
+		# get the directory of the file
+		dir=$(dirname "$file")
+		# get the absolute path of the directory
+		real_dir=$(cd "$dir"; pwd)
+		# check if the directory is a subdirectory of the $HOME directory
+		if [[ "$real_dir" == "$HOME/"* ]]; then
+			echo "yes"
+			cd "$dir"
+			nvim "$file"
+		else
+			echo "no"
+			cd "$dir"
+			SUDO_ASKPASS=~/.local/bin/dmenupass sudo -A nvim "$file"
+		fi
 	else
-		nvim "$file"
+		echo "File does not exist"
 	fi
-else
-	exit 1
 fi
 
 # cd /home/$USER/
