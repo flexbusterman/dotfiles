@@ -1,9 +1,9 @@
 return {
 	"davidgranstrom/scnvim",
-	-- dir = "/home/flex/.local/src/scnvim/",
 	ft = { "supercollider" },
 	dependencies = {
 		"davidgranstrom/scnvim-tmux",
+		{ "flexbusterman/nvim-supercollider-piano", dir = "~/.local/src/nvim-supercollider-piano/" },
 	},
 	config = function()
 		local scnvim = require("scnvim")
@@ -80,14 +80,40 @@ return {
 				["<leader>."] = map("sclang.hard_stop", { "n", "x" }),
 				["<leader>s"] = map("sclang.start"),
 				["<leader>sk"] = map("sclang.recompile"),
-				["<F1>"] = map_expr("s.boot"),
-				["<F2>"] = map_expr("s.meter"),
+				-- ["<F1>"] = map_expr("s.boot"),
+				-- ["<F2>"] = map_expr("s.meter"),
 			},
 		})
 
 		scnvim.load_extension("tmux")
 
 		vim.g.scnvim_snippet_format = "luasnip"
+
+		-- vim.keymap.set("n", "<F1>", ":SCNvimExt piano.play 60<CR>", { desc = "Play midinote 60 with default synth" })
+		vim.keymap.set("n", "<F1>", ":SCNvimExt piano.midi 48 0.5 8<CR>", { desc = "midinote duration channel" })
+		vim.keymap.set("n", "<F2>", ":SCNvimExt piano.midi 49 0.5 8<CR>", { desc = "midinote duration channel" })
+		vim.keymap.set("n", "<F3>", ":SCNvimExt piano.midi 50 0.5 8<CR>", { desc = "midinote duration channel" })
+		vim.keymap.set("n", "<F4>", ":SCNvimExt piano.midi 51 0.5 8<CR>", { desc = "midinote duration channel" })
+		vim.keymap.set("n", "<F5>", ":SCNvimExt piano.midi 52 0.5 8<CR>", { desc = "midinote duration channel" })
+		vim.keymap.set("n", "<F6>", ":SCNvimExt piano.midi 53 0.5 8<CR>", { desc = "midinote duration channel" })
+		vim.keymap.set("n", "<F7>", ":SCNvimExt piano.midi 54 0.5 8<CR>", { desc = "midinote duration channel" })
+		vim.keymap.set("n", "<F8>", ":SCNvimExt piano.midi 55 0.5 8<CR>", { desc = "midinote duration channel" })
+		vim.keymap.set("n", "<F9>", ":SCNvimExt piano.midi 56 0.5 8<CR>", { desc = "midinote duration channel" })
+		vim.keymap.set("n", "<F10>", ":SCNvimExt piano.midi 57 0.5 8<CR>", { desc = "midinote duration channel" })
+		vim.keymap.set("n", "<F11>", ":SCNvimExt piano.midi 58 0.5 8<CR>", { desc = "midinote duration channel" })
+		vim.keymap.set("n", "<F12>", ":SCNvimExt piano.midi 59 0.5 8<CR>", { desc = "midinote duration channel" })
+		vim.keymap.set("n", "<F13>", ":SCNvimExt piano.midi 60 0.5 8<CR>", { desc = "midinote duration channel" })
+		vim.keymap.set("n", "<F14>", ":SCNvimExt piano.midi 61 0.5 8<CR>", { desc = "midinote duration channel" })
+		vim.keymap.set("n", "<F15>", ":SCNvimExt piano.midi 62 0.5 8<CR>", { desc = "midinote duration channel" })
+		vim.keymap.set("n", "<F16>", ":SCNvimExt piano.midi 63 0.5 8<CR>", { desc = "midinote duration channel" })
+		vim.keymap.set("n", "<F17>", ":SCNvimExt piano.midi 64 0.5 8<CR>", { desc = "midinote duration channel" })
+		vim.keymap.set("n", "<F18>", ":SCNvimExt piano.midi 65 0.5 8<CR>", { desc = "midinote duration channel" })
+		vim.keymap.set("n", "<F19>", ":SCNvimExt piano.midi 66 0.5 8<CR>", { desc = "midinote duration channel" })
+		vim.keymap.set("n", "<F20>", ":SCNvimExt piano.midi 67 0.5 8<CR>", { desc = "midinote duration channel" })
+		vim.keymap.set("n", "<F21>", ":SCNvimExt piano.midi 68 0.5 8<CR>", { desc = "midinote duration channel" })
+		vim.keymap.set("n", "<F22>", ":SCNvimExt piano.midi 69 0.5 8<CR>", { desc = "midinote duration channel" })
+		vim.keymap.set("n", "<F23>", ":SCNvimExt piano.midi 70 0.5 8<CR>", { desc = "midinote duration channel" })
+		vim.keymap.set("n", "<F24>", ":SCNvimExt piano.midi 71 0.5 8<CR>", { desc = "midinote duration channel" })
 
 		-- vim.cmd([[
 		-- augroup SuperColliderSnippets
