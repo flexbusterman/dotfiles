@@ -17,7 +17,7 @@ source ~/.zsh/plugins/zsh-system-clipboard/zsh-system-clipboard.zsh
 source ~/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 # source ~/.zsh/plugins/zsh-nvm/zsh-nvm.plugin.zsh
 source /usr/share/fzf/key-bindings.zsh
-source /usr/share/fzf/completion.zsh
+# source /usr/share/fzf/completion.zsh
 
 # nixos
 # if [ -n "${commands[fzf-share]}" ]; then
@@ -445,11 +445,8 @@ LC_ALL=
 # bindkey '^X' create_completion
 
 # eval "$(zoxide init --cmd cd zsh)"
-alias pdot="/usr/bin/env git --git-dir=$HOME/.pdot.git/ --work-tree=$HOME"
 
 # Load syntax highlighting; should be last according to Luke Smith.
 # source ~/.zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null
 
 # instant-zsh-post
-alias pdot="/usr/bin/env git --git-dir=$HOME/.pdot.git/ --work-tree=$HOME"
-alias pdot="/usr/bin/env git --git-dir=$HOME/.pdot.git/ --work-tree=$HOME"
