@@ -319,7 +319,7 @@ alt + control + space
 	musicplaypause
 
 alt + comma
-	st -e rangerstart
+	st -e ranger
 
 alt + period
 	qutebrowser
