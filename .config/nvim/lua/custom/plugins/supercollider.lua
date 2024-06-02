@@ -3,7 +3,8 @@ return {
 	ft = { "supercollider" },
 	dependencies = {
 		"davidgranstrom/scnvim-tmux",
-		{ "flexbusterman/nvim-supercollider-piano", dir = "~/.local/src/nvim-supercollider-piano/" },
+		"madskjeldgaard/nvim-supercollider-piano",
+		-- { "flexbusterman/nvim-supercollider-piano", dir = "~/.local/src/nvim-supercollider-piano/" },
 	},
 	config = function()
 		local scnvim = require("scnvim")
