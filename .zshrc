@@ -12,9 +12,9 @@ path+=($HOME/.ghcup/bin)
 path+=($HOME/go/bin/)
 path+=($HOME/.cabal/bin/)
 
-# source ~/.local/src/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+source ~/.zsh/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 source ~/.zsh/plugins/zsh-system-clipboard/zsh-system-clipboard.zsh
-source ~/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+# source ~/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 # source ~/.zsh/plugins/zsh-nvm/zsh-nvm.plugin.zsh
 source /usr/share/fzf/key-bindings.zsh
 # source /usr/share/fzf/completion.zsh
@@ -212,6 +212,7 @@ alias igdl="cd ~/Dropbox/MEMES && instaloader -F --no-video-thumbnails --no-meta
 
 # all shortcuts in
 alias vs="cd ~/.config/shell/; nvim shortcuts"
+alias vz="cd ~; nvim .zshrc"
 
 # alias hr="home-manager switch"
 alias nr="sudo nixos-rebuild switch --flake /home/flex/.flarbs"
