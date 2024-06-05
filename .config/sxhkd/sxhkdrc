@@ -129,8 +129,8 @@ alt + control + k
 # used by dwm notify-send "alt + l"
 # used by dwm alt + shift + l
 # used by dwm notify-send "alt + shift + l"
-# alt + control + l
-# 	musicprev
+alt + control + l
+	musicseekforward
 # alt + shift + control + l
 # notify-send "alt + shift + control + l"
 # shift + control + l

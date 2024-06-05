@@ -12,7 +12,6 @@ path+=($HOME/.ghcup/bin)
 path+=($HOME/go/bin/)
 path+=($HOME/.cabal/bin/)
 
-source ~/.zsh/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 source ~/.zsh/plugins/zsh-system-clipboard/zsh-system-clipboard.zsh
 # source ~/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 # source ~/.zsh/plugins/zsh-nvm/zsh-nvm.plugin.zsh
@@ -451,3 +450,5 @@ LC_ALL=
 # source ~/.zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null
 
 # instant-zsh-post
+
+source ~/.zsh/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
