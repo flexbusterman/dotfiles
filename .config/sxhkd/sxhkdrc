@@ -320,6 +320,8 @@ alt + control + space
 
 alt + comma
 	st -e ranger
+alt + shift + comma
+	st -e lf
 
 alt + period
 	qutebrowser
