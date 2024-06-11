@@ -36,10 +36,10 @@ setopt HIST_IGNORE_DUPS          # Don't record an entry that was just recorded 
 setopt HIST_IGNORE_SPACE         # Don't record an entry starting with a space.
 setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording entry.
 setopt HIST_SAVE_NO_DUPS         # Don't write duplicate entries in the history file.
-setopt HIST_VERIFY               # Don't execute immediately upon history expansion.
 setopt INC_APPEND_HISTORY        # Write to the history file immediately, not when the shell exits.
 setopt MARK_DIRS # append a trailing ‘/’ to all directory names resulting from filename generation
 setopt SHARE_HISTORY             # Share history between all sessions.
+# setopt HIST_VERIFY               # Don't execute immediately upon history expansion.
 
 stty stop undef   # Disable ctrl-s to freeze terminal.
 
@@ -69,9 +69,9 @@ bindkey '\e[A' history-search-backward
 bindkey '\e[B' history-search-forward
 
 zle     -N            fzf-cd-widget
-bindkey -M emacs '^f' fzf-cd-widget
-bindkey -M vicmd '^f' fzf-cd-widget
-bindkey -M viins '^f' fzf-cd-widget
+bindkey -M emacs '^x' fzf-cd-widget
+bindkey -M vicmd '^x' fzf-cd-widget
+bindkey -M viins '^x' fzf-cd-widget
 
 # Enable colors and change prompt:
 autoload -U colors && colors  # Load colors
@@ -83,30 +83,30 @@ PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magent
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/aliasrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/aliasrc"
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/zshnameddirrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/zshnameddirrc"
 
-# vi mode
-bindkey -v
-export KEYTIMEOUT=1
-# export MPD_PORT=6600
-# Change cursor shape for different vi modes.
-function zle-keymap-select {
-  if [[ ${KEYMAP} == vicmd ]] ||
-     [[ $1 = 'block' ]]; then
-    echo -ne '\e[1 q'
-  elif [[ ${KEYMAP} == main ]] ||
-       [[ ${KEYMAP} == viins ]] ||
-       [[ ${KEYMAP} = '' ]] ||
-       [[ $1 = 'beam' ]]; then
-    echo -ne '\e[5 q'
-  fi
-}
-zle -N zle-keymap-select
-zle-line-init() {
-    zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
-    echo -ne "\e[5 q"
-}
-zle -N zle-line-init
-echo -ne '\e[5 q' # Use beam shape cursor on startup.
-preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
+# # vi mode
+# bindkey -v
+# export KEYTIMEOUT=1
+# # export MPD_PORT=6600
+# # Change cursor shape for different vi modes.
+# function zle-keymap-select {
+#   if [[ ${KEYMAP} == vicmd ]] ||
+#      [[ $1 = 'block' ]]; then
+#     echo -ne '\e[1 q'
+#   elif [[ ${KEYMAP} == main ]] ||
+#        [[ ${KEYMAP} == viins ]] ||
+#        [[ ${KEYMAP} = '' ]] ||
+#        [[ $1 = 'beam' ]]; then
+#     echo -ne '\e[5 q'
+#   fi
+# }
+# zle -N zle-keymap-select
+# zle-line-init() {
+#     zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
+#     echo -ne "\e[5 q"
+# }
+# zle -N zle-line-init
+# echo -ne '\e[5 q' # Use beam shape cursor on startup.
+# preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 
 bindkey '^A' beginning-of-line
 bindkey '^E' end-of-line
@@ -452,3 +452,6 @@ LC_ALL=
 # instant-zsh-post
 
 source ~/.zsh/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+
+# bash mode
+bindkey -e
