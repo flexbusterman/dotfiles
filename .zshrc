@@ -157,6 +157,7 @@ alias pg="ping google.com"
 alias sd="cd ~ && cd \$(find * -type d | fzf)"
 alias sz="source ~/.zshrc"
 alias xb="sudo cp -rv /etc/X11/ ~/.config/etcfiles/"
+alias lf="lfrun"
 
 # audio
 alias play="ffplay -nodisp -autoexit"
@@ -209,8 +210,7 @@ alias igdlinit="cd ~/Dropbox/MEMES && instaloader --no-video-thumbnails --no-met
 alias igdll="cd ~/Dropbox/MEMES && instaloader -F --login _christian_augustin --no-video-thumbnails --no-metadata-json --no-captions --no-profile-pic memeforyouandhim"
 alias igdl="cd ~/Dropbox/MEMES && instaloader -F --no-video-thumbnails --no-metadata-json --no-captions --no-profile-pic memeseducational dank_memes_world_1 dank_memes_world_1 casual.nihilism mvme.hub memefolk.ig stinky420memes memes epicallyepicmemes baked_meme_god stolenmemesawakens memesinyourdms omgzucc"
 
-# all shortcuts in
-alias vs="cd ~/.config/shell/; nvim shortcuts"
+# shortcuts
 alias vz="cd ~; nvim .zshrc"
 
 # alias hr="home-manager switch"
