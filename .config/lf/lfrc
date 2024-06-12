@@ -1,5 +1,15 @@
 # interpreter for shell commands
-set shell sh
+# set shell sh
+set shell bash
+
+# display hidden files
+set hidden
+
+# line numbers
+set number
+set relativenumber true
+
+set scrolloff 10
 
 # set '-eu' options for shell commands
 # These options are used to have safer shell commands. Option '-e' is used to
@@ -41,10 +51,24 @@ map O $mimeopen --ask $f
 # This command is called when current file is not a directory. You may want to
 # use either file extensions and/or mime types here. Below uses an editor for
 # text files and a file opener for the rest.
-cmd open &{{
-    case $(file --mime-type -Lb $f) in
-        text/*) lf -remote "send $id \$$EDITOR \$fx";;
-        *) for f in $fx; do $OPENER $f > /dev/null 2> /dev/null & done;;
+# cmd open &{{
+#     case $(file --mime-type -Lb $f) in
+#         text/*) lf -remote "send $id \$$EDITOR \$fx";;
+#         *) for f in $fx; do $OPENER $f > /dev/null 2> /dev/null & done;;
+#     esac
+# }}
+
+cmd open ${{
+    case $f in
+        *.midi) mpv $fx && exit 1;;
+    esac
+    case $(file --mime-type $f -b) in
+        text/*) $EDITOR $fx;;
+        image/*) imv $fx;;
+        audio/*) musicadd $fx;;
+        video/*) mpv $fx;;
+        application/pdf) zathura $fx;;
+        *) for f in $fx; do setsid $OPENER $f > /dev/null 2> /dev/null & done;;
     esac
 }}
 

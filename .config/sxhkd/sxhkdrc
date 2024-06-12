@@ -319,9 +319,9 @@ alt + control + space
 	musicplaypause
 
 alt + comma
-	st -e ranger
-alt + shift + comma
 	st -e lf
+alt + shift + comma
+	st -e ranger
 
 alt + period
 	qutebrowser
