@@ -202,6 +202,48 @@ cmd fzf_search ${{
     )"
     [ -n "$res" ] && lf -remote "send $id select \"$res\""
 }}
+
+# https://github.com/gokcehan/lf/wiki/Tips#yank-paths-into-your-clipboard
+cmd yank-dirname $dirname -- "$f" | head -c-1 | xclip -i -selection clipboard
+cmd yank-path $printf '%s' "$fx" | xclip -i -selection clipboard
+cmd yank-basename ${{
+    echo "$fx" |
+        xargs -r -d '\n' -I {} basename "{}" |
+        if [ -n "$fs" ]; then cat; else tr -d '\n'; fi |
+        xclip -i -selection clipboard
+}}
+
+cmd yank-basename-without-extension ${{
+    echo "$fx" |
+        xargs -r -d '\n' basename -a |
+        awk -e '{
+            for (i=length($0); i > 0; i--) {
+                if (substr($0, i, 1) == ".") {
+                    if (i == 1) print $0
+                    else print substr($0, 0, i-1)
+
+                    break
+                }
+            }
+            if (i == 0)
+                print $0
+        }' |
+        if [ -n "$fs" ]; then cat; else tr -d '\n'; fi |
+        xclip -i -selection clipboard
+}}
+
+map y
+map yy :copy
+map d
+map dd :cut
+map dD :delete
+map p
+map pp :paste
+map yn :yank-basename; unselect
+map yd :yank-dirname; unselect
+map yp :yank-path; unselect
+map ye :yank-basename-without-extension; unselect
+
 map sg :fzf_search
 
 # Bindings
