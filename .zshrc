@@ -157,6 +157,7 @@ alias sd="cd ~ && cd \$(find * -type d | fzf)"
 alias sz="source ~/.zshrc"
 alias xb="sudo cp -rv /etc/X11/ ~/.config/etcfiles/"
 alias lf="lfrun"
+alias pi="paru -Syu --needed $* && remaps"
 
 # audio
 alias play="ffplay -nodisp -autoexit"

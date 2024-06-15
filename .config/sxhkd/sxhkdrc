@@ -213,7 +213,8 @@ alt + shift + control + r
 alt + s
 	st -T SuperCollider -e tmuxsession SuperCollider 'supercollider'
 alt + shift + s
-	tmux kill-session -t SuperCollider
+	tmux kill-session -t SuperCollider; tmux kill-session -t tidal;
+
 # alt + control + s
 # notify-send "alt + control + s"
 # alt + shift + control + s

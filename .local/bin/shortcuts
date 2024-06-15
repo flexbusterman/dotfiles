@@ -14,9 +14,11 @@ if [ -n "$file" ]; then
         # check if the file is in the home directory or its subdirectories
         if [[ "$real_file" == "$home_dir"* ]]; then
             echo "yes"
+						cd $(dirname "$file")
             nvim "$file"
         else
             echo "no"
+						cd $(dirname "$file")
             SUDO_ASKPASS=~/.local/bin/dmenupass sudo -A nvim "$file"
         fi
     else
