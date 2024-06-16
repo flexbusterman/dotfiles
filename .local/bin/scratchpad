@@ -6,14 +6,14 @@ tmux_has_session() {
 }
 
 # Start a new tmux session if it doesn't exist
-if ! tmux_has_session "main"; then
-  tmux new-session -d -s "main"
+if ! tmux_has_session "digitalocean"; then
+  tmux new-session -d -s "digitalocean"
 fi
 
 # # Send 'Ctrl+l' to clear the screen
-# tmux send-keys -t "main" C-l
+# tmux send-keys -t "digitalocean" C-l
 
 # Start a new kitty terminal and attach to the tmux session
-# kitty -T scratchpad -o initial_window_width=20 -o initial_window_height=400 -o background_opacity=1 tmux attach -t "main" &
+# kitty -T scratchpad -o initial_window_width=20 -o initial_window_height=400 -o background_opacity=1 tmux attach -t "digitalocean" &
 
-st -t scratchpad -g 80x45 -e tmux attach -t "main"
+st -t scratchpad -g 80x45 -e tmux attach -t "digitalocean"

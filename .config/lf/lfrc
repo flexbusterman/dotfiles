@@ -68,8 +68,9 @@ cmd fzf-restore ${{
 # cmds/functions
 cmd open ${{
     case $(file --mime-type "$(readlink -f $f)" -b) in
+		image/*) setsid -f sxivopen "$f" >/dev/null 2>&1;;
     # application/vnd.openxmlformats-officedocument.spreadsheetml.sheet) localc $fx;;
-    image/vnd.djvu|application/pdf|application/postscript) setsid -f zathura $fx >/dev/null 2>&1;;
+    # image/vnd.djvu|application/pdf|application/postscript) setsid -f zathura $fx >/dev/null 2>&1;;
     # application/vnd.openxmlformats-officedocument.wordprocessingml.document|application/vnd.oasis.opendocument.text|application/vnd.openxmlformats-officedocument.spreadsheetml.sheet|application/vnd.oasis.opendocument.spreadsheet|application/vnd.oasis.opendocument.spreadsheet-template|application/vnd.openxmlformats-officedocument.presentationml.presentation|application/vnd.oasis.opendocument.presentation-template|application/vnd.oasis.opendocument.presentation|application/vnd.ms-powerpoint|application/vnd.oasis.opendocument.graphics|application/vnd.oasis.opendocument.graphics-template|application/vnd.oasis.opendocument.formula|application/vnd.oasis.opendocument.database) setsid -f libreoffice $fx >/dev/null 2>&1;;
     application/x-sc) setsid -f st -e sc-im $fx >/dev/null 2>&1;;  # Handle .sc files
 		audio/*) musicadd $fx >/dev/null 2>&1;;
