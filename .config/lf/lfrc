@@ -246,6 +246,7 @@ map yn :yank-basename; unselect
 map yd :yank-dirname; unselect
 map yp :yank-path; unselect
 map ye :yank-basename-without-extension; unselect
+map yl $dropbox-cli sharelink "$f" | xclip -sel clip &
 
 map sg :fzf_search
 
