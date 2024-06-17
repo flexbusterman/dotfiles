@@ -129,10 +129,6 @@ cmd trash %set -f; mv $fx ~/.trash
 #     [ "$ans" = "y" ] && rm -rf $fx
 # }}
 
-# use '<delete>' key for either 'trash' or 'delete' command
-# map <delete> trash
-# map <delete> delete
-
 # extract the current file with the right command
 # (xkcd link: https://xkcd.com/1168/)
 cmd extract ${{
@@ -193,46 +189,45 @@ cmd fzf_jump ${{
         lf -remote "send $id $cmd \"$res\""
     fi
 }}
-map sf :fzf_jump
 
 cmd fzf_search ${{
-    RG_PREFIX="rg --column --line-number --no-heading --color=always --smart-case "
-    res="$(
-        FZF_DEFAULT_COMMAND="$RG_PREFIX ''" \
-            fzf --bind "change:reload:$RG_PREFIX {q} || true" \
-            --ansi --layout=reverse --header 'Search in files' \
-            | cut -d':' -f1 | sed 's/\\/\\\\/g;s/"/\\"/g'
-    )"
-    [ -n "$res" ] && lf -remote "send $id select \"$res\""
+	RG_PREFIX="rg --column --line-number --no-heading --color=always --smart-case "
+		res="$(
+			FZF_DEFAULT_COMMAND="$RG_PREFIX ''" \
+			fzf --bind "change:reload:$RG_PREFIX {q} || true" \
+			--ansi --layout=reverse --header 'Search in files' \
+			| cut -d':' -f1 | sed 's/\\/\\\\/g;s/"/\\"/g'
+		)"
+		[ -n "$res" ] && lf -remote "send $id select \"$res\""
 }}
 
 # https://github.com/gokcehan/lf/wiki/Tips#yank-paths-into-your-clipboard
 cmd yank-dirname $dirname -- "$f" | head -c-1 | xclip -i -selection clipboard
 cmd yank-path $printf '%s' "$fx" | xclip -i -selection clipboard
 cmd yank-basename ${{
-    echo "$fx" |
-        xargs -r -d '\n' -I {} basename "{}" |
-        if [ -n "$fs" ]; then cat; else tr -d '\n'; fi |
-        xclip -i -selection clipboard
+	echo "$fx" |
+		xargs -r -d '\n' -I {} basename "{}" |
+		if [ -n "$fs" ]; then cat; else tr -d '\n'; fi |
+			xclip -i -selection clipboard
 }}
 
 cmd yank-basename-without-extension ${{
-    echo "$fx" |
-        xargs -r -d '\n' basename -a |
-        awk -e '{
-            for (i=length($0); i > 0; i--) {
-                if (substr($0, i, 1) == ".") {
-                    if (i == 1) print $0
-                    else print substr($0, 0, i-1)
+	echo "$fx" |
+		xargs -r -d '\n' basename -a |
+		awk -e '{
+			for (i=length($0); i > 0; i--) {
+				if (substr($0, i, 1) == ".") {
+					if (i == 1) print $0
+					else print substr($0, 0, i-1)
 
-                    break
-                }
-            }
-            if (i == 0)
-                print $0
-        }' |
-        if [ -n "$fs" ]; then cat; else tr -d '\n'; fi |
-        xclip -i -selection clipboard
+						break
+				}
+			}
+			if (i == 0)
+				print $0
+		}' |
+	if [ -n "$fs" ]; then cat; else tr -d '\n'; fi |
+		xclip -i -selection clipboard
 }}
 
 map y
@@ -248,6 +243,11 @@ map yp :yank-path; unselect
 map ye :yank-basename-without-extension; unselect
 map yl $dropbox-cli sharelink "$f" | xclip -sel clip &
 
+# use '<delete>' key for either 'trash' or 'delete' command
+# map <delete> trash
+# map <delete> delete
+
+map sf :fzf_jump
 map sg :fzf_search
 
 # Bindings
@@ -267,6 +267,64 @@ map O $mimeopen --ask $f
 # trash using gtrash
 map D $gtrash put $fx
 map U fzf-restore
+
+cmd edit ${{
+	filetype=$(file --mime-type -b "$f")
+	notify-send "$filetype"
+	case "$filetype" in
+		image/*)
+			setsid -f pinta "$f" >/dev/null 2>&1
+			;;
+		video/*)
+			setsid -f reaper "$f" >/dev/null 2>&1
+			;;
+		audio/*)
+			setsid -f reaper "$f" >/dev/null 2>&1
+			;;
+		application/vnd.openxmlformats-officedocument.spreadsheetml.sheet)
+			setsid -f st -e sc-im "$f" >/dev/null 2>&1
+			;;
+		application/x-sc)
+			setsid -f st -e sc-im "$f" >/dev/null 2>&1
+			;;
+		application/octet-stream)
+			case "${f##*.}" in
+				doc|docx|xls|xlsx|odt|ppt|pptx)
+					setsid -f libreoffice "$f" >/dev/null 2>&1
+					;;
+			esac
+			;;
+		text/plain)
+			case "${f##*.}" in
+				# rpp|RPP)
+				# 	setsid -f reaper "$f" >/dev/null 2>&1
+				# 	;;
+				*)
+				notify-send "Defaulting to nvim"
+					${EDITOR:-nvim} "$f"
+					;;
+			esac
+			;;
+		*)
+			notify-send "Defaulting to nvim"
+			${EDITOR:-nvim} "$f"
+			;;
+	esac
+}}
+
+# cmd edit %{{
+#     for file in $fx; do
+# 			notify-send $file
+#         for count in 'seq $lf_count'; do *
+#             notify-send ${file}
+#         done
+#     done
+# }}
+
+# deafult e binding
+# map e $$EDITOR "$f"
+# if file is image, open in pinta, else open in $EDITOR
+map e :edit $f
 
 map a $musicadd $fx
 
