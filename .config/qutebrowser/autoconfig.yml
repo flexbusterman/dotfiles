@@ -30,6 +30,8 @@ settings:
   content.cookies.accept:
     '*://qutebrowser.org/*': all
     https://www.youtube.com/: all
+  content.javascript.clipboard:
+    https://chatgpt.com/: access
   content.geolocation:
     https://www.1177.se: true
     https://www.elgiganten.se: true

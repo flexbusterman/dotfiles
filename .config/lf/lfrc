@@ -97,6 +97,8 @@ cmd open ${{
 	case "$filetype" in
 			image/*) setsid -f sxivopen "$f" >/dev/null 2>&1
 			;;
+			application/pdf) setsid -f zathura $fx > /dev/null 2>&1 &
+			;;
 		video/*)
 				files=()
 				while IFS= read -r file; do

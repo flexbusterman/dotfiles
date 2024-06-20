@@ -1,5 +1,6 @@
 return {
 	"davidgranstrom/scnvim",
+	-- dir = "~/.local/src/scnvim",
 	ft = { "supercollider" },
 	dependencies = {
 		"davidgranstrom/scnvim-tmux",
