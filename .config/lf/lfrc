@@ -40,57 +40,6 @@ cmd fzf-restore ${{
     clear
 }}
 
-# define a custom 'open' command
-# This command is called when current file is not a directory. You may want to
-# use either file extensions and/or mime types here. Below uses an editor for
-# text files and a file opener for the rest.
-# cmd open &{{
-#     case $(file --mime-type -Lb $f) in
-#         text/*) lf -remote "send $id \$$EDITOR \$fx";;
-#         *) for f in $fx; do $OPENER $f > /dev/null 2> /dev/null & done;;
-#     esac
-# }}
-
-# cmd open ${{
-#     case $f in
-#         *.midi) mpv $fx && exit 1;;
-#     esac
-#     case $(file --mime-type $f -b) in
-#         text/*) $EDITOR $fx;;
-#         image/*) sxiv $fx;;
-#         audio/*) musicadd $fx > /dev/null 2>&1 & done;;
-#         video/*) mpv $fx > /dev/null 2>&1 & done;;
-#         application/pdf) zathura $fx > /dev/null 2>&1 & done;;
-#         *) for f in $fx; do setsid $OPENER $f > /dev/null 2> /dev/null & done;;
-#     esac
-# }}
-
-# # cmds/functions
-# # TODO: insert complicated file loops
-# cmd open ${{
-#     case $(file --mime-type "$(readlink -f $f)" -b) in
-# 		image/*) setsid -f sxivopen "$f" >/dev/null 2>&1;;
-#     # application/vnd.openxmlformats-officedocument.spreadsheetml.sheet) localc $fx;;
-#     # image/vnd.djvu|application/pdf|application/postscript) setsid -f zathura $fx >/dev/null 2>&1;;
-#     # application/vnd.openxmlformats-officedocument.wordprocessingml.document|application/vnd.oasis.opendocument.text|application/vnd.openxmlformats-officedocument.spreadsheetml.sheet|application/vnd.oasis.opendocument.spreadsheet|application/vnd.oasis.opendocument.spreadsheet-template|application/vnd.openxmlformats-officedocument.presentationml.presentation|application/vnd.oasis.opendocument.presentation-template|application/vnd.oasis.opendocument.presentation|application/vnd.ms-powerpoint|application/vnd.oasis.opendocument.graphics|application/vnd.oasis.opendocument.graphics-template|application/vnd.oasis.opendocument.formula|application/vnd.oasis.opendocument.database) setsid -f libreoffice $fx >/dev/null 2>&1;;
-#     application/x-sc) setsid -f st -e sc-im $fx >/dev/null 2>&1;;  # Handle .sc files
-# 		audio/*) musicadd $fx >/dev/null 2>&1;;
-# 		video/*) setsid -f mpv $f -quiet >/dev/null 2>&1;;
-# 		application/octet-stream) case ${f##*.} in
-#             # other applications
-#             doc|docx|xls|xlsx|odt|ppt|pptx) setsid -f libreoffice $fx >/dev/null 2>&1;;
-#             ghw) setsid -f gtkwave $f >/dev/null 2>&1;;
-#             ts) setsid -f mpv $f -quiet >/dev/null 2>&1;;
-#             smc) setsid -f snes9x-gtk $f -quiet >/dev/null 2>&1;;
-#             *) setsid -f zathura $fx >/dev/null 2>&1;;
-#         esac;;
-#     *) case ${f##*.} in
-#             rpp|RPP) setsid -f reaper $f >/dev/null 2>&1 &;;  # Handle .rpp and .RPP files
-#             *) setsid -f $OPENER $f >/dev/null 2>&1;;
-#         esac;;
-#     esac
-# }}
-
 cmd open ${{
 	filetype=$(file --mime-type -b "$f")
 	notify-send "$filetype"
@@ -106,7 +55,6 @@ cmd open ${{
 				done <<< "$fx"
 				setsid -f mpv "${files[@]}"  >/dev/null 2>&1
 			;;
-
 		audio/*)
 				files=()
 				while IFS= read -r file; do
@@ -157,47 +105,98 @@ cmd open ${{
 	esac
 }}
 
-cmd mkdir $mkdir -p "$@"
-
-cmd extract ${{
-	clear; tput cup $(($(tput lines)/3)); tput bold
-	set -f
-	printf "%s\n\t" "$fx"
-	printf "extract?[y/N]"
-	read ans
-	[ $ans = "y" ] && {
-		case $fx in
-			*.tar.bz2)   tar xjf $fx    ;;
-			*.tar.gz)    tar xzf $fx    ;;
-			*.bz2)       bunzip2 $fx    ;;
-			*.rar)       unrar e $fx    ;;
-			*.gz)        gunzip $fx     ;;
-			*.tar)       tar xf $fx     ;;
-			*.tbz2)      tar xjf $fx    ;;
-			*.tgz)       tar xzf $fx    ;;
-			*.zip)       unzip $fx      ;;
-			*.Z)         uncompress $fx ;;
-			*.7z)        7z x $fx       ;;
-			*.tar.xz)    tar xf $fx     ;;
-		esac
-	}
+cmd edit ${{
+	filetype=$(file --mime-type -b "$f")
+	notify-send "$filetype"
+	case "$filetype" in
+		image/*)
+				files=()
+				while IFS= read -r file; do
+						files+=("$file")
+				done <<< "$fx"
+				setsid -f pinta "${files[@]}"  >/dev/null 2>&1
+			;;
+		video/*)
+				files=()
+				while IFS= read -r file; do
+						files+=("$file")
+				done <<< "$fx"
+				setsid -f reaper "${files[@]}"  >/dev/null 2>&1
+			;;
+		audio/*)
+				files=()
+				while IFS= read -r file; do
+						files+=("$file")
+				done <<< "$fx"
+				setsid -f reaper "${files[@]}"  >/dev/null 2>&1
+			;;
+		application/vnd.openxmlformats-officedocument.spreadsheetml.sheet)
+			setsid -f st -e sc-im "$f" >/dev/null 2>&1
+			;;
+		application/x-sc)
+			setsid -f st -e sc-im "$f" >/dev/null 2>&1
+			;;
+		application/octet-stream)
+			case "${f##*.}" in
+				doc|docx|xls|xlsx|odt|ppt|pptx)
+				files=()
+				while IFS= read -r file; do
+						files+=("$file")
+				done <<< "$fx"
+				setsid -f libreoffice "${files[@]}"  >/dev/null 2>&1
+					;;
+			esac
+			;;
+		text/plain)
+			case "${f##*.}" in
+				# rpp|RPP)
+				# 	setsid -f reaper "$fx" >/dev/null 2>&1
+				# 	;;
+				*)
+				notify-send "Defaulting to nvim"
+				files=()
+				while IFS= read -r file; do
+						files+=("$file")
+				done <<< "$fx"
+				setsid -f st -e '${EDITOR:-nvim} "${files[@]}" ' >/dev/null 2>&1
+					;;
+			esac
+			;;
+		*)
+				notify-send "Defaulting to nvim"
+				files=()
+				while IFS= read -r file; do
+						files+=("$file")
+				done <<< "$fx"
+				setsid -f st -e '${EDITOR:-nvim} "${files[@]}" ' >/dev/null 2>&1
+			;;
+	esac
 }}
 
-# move current file or selected files to trash folder
-# (also see 'man mv' for backup/overwrite options)
-# cmd trash ${{
-# 	%set -f
-# 	# mv $fx ~/.trash
-# 	setsid -f st -e '${EDITOR:-nvim} "${files[@]}" ' >/dev/null 2>&1
-# }}
+cmd mkdir $mkdir -p "$@"
 
-# define a custom 'delete' command
-# cmd delete ${{
-#     set -f
-#     printf "$fx\n"
-#     printf "delete?[y/n]"
-#     read ans
-#     [ "$ans" = "y" ] && rm -rf $fx
+# cmd extract ${{
+# 	clear; tput cup $(($(tput lines)/3)); tput bold
+# 	set -f
+# 	printf "%s\n\t" "$fx"
+# 	printf "extract?[y/N]"
+# 	read ans
+# 	[ $ans = "y" ] && {
+# 		case $fx in
+# 			*.tar.bz2)   tar xjf $fx    ;;
+# 			*.tar.gz)    tar xzf $fx    ;;
+# 			*.bz2)       bunzip2 $fx    ;;
+# 			*.rar)       unrar e $fx    ;;
+# 			*.gz)        gunzip $fx     ;;
+# 			*.tar)       tar xf $fx     ;;
+# 			*.tbz2)      tar xjf $fx    ;;
+# 			*.tgz)       tar xzf $fx    ;;
+# 			*.zip)       unzip $fx      ;;
+# 			*.Z)         uncompress $fx ;;
+# 			*.7z)        7z x $fx       ;;
+# 			*.tar.xz)    tar xf $fx     ;;
+# 		esac
+# 	}
 # }}
 
 # extract the current file with the right command
@@ -290,7 +289,6 @@ cmd yank-basename-without-extension ${{
 				if (substr($0, i, 1) == ".") {
 					if (i == 1) print $0
 					else print substr($0, 0, i-1)
-
 						break
 				}
 			}
@@ -308,74 +306,6 @@ cmd trash ${{
 			files+=("$file")
 	done <<< "$fx"
 	setsid -f gtrash put "${files[@]}" >/dev/null 2>&1
-}}
-
-cmd edit ${{
-	filetype=$(file --mime-type -b "$f")
-	notify-send "$filetype"
-	case "$filetype" in
-		image/*)
-				files=()
-				while IFS= read -r file; do
-						files+=("$file")
-				done <<< "$fx"
-				setsid -f pinta "${files[@]}"  >/dev/null 2>&1
-			;;
-		video/*)
-				files=()
-				while IFS= read -r file; do
-						files+=("$file")
-				done <<< "$fx"
-				setsid -f reaper "${files[@]}"  >/dev/null 2>&1
-			;;
-		audio/*)
-				files=()
-				while IFS= read -r file; do
-						files+=("$file")
-				done <<< "$fx"
-				setsid -f reaper "${files[@]}"  >/dev/null 2>&1
-			;;
-		application/vnd.openxmlformats-officedocument.spreadsheetml.sheet)
-			setsid -f st -e sc-im "$f" >/dev/null 2>&1
-			;;
-		application/x-sc)
-			setsid -f st -e sc-im "$f" >/dev/null 2>&1
-			;;
-		application/octet-stream)
-			case "${f##*.}" in
-				doc|docx|xls|xlsx|odt|ppt|pptx)
-				files=()
-				while IFS= read -r file; do
-						files+=("$file")
-				done <<< "$fx"
-				setsid -f libreoffice "${files[@]}"  >/dev/null 2>&1
-					;;
-			esac
-			;;
-		text/plain)
-			case "${f##*.}" in
-				# rpp|RPP)
-				# 	setsid -f reaper "$fx" >/dev/null 2>&1
-				# 	;;
-				*)
-				notify-send "Defaulting to nvim"
-				files=()
-				while IFS= read -r file; do
-						files+=("$file")
-				done <<< "$fx"
-				setsid -f st -e '${EDITOR:-nvim} "${files[@]}" ' >/dev/null 2>&1
-					;;
-			esac
-			;;
-		*)
-				notify-send "Defaulting to nvim"
-				files=()
-				while IFS= read -r file; do
-						files+=("$file")
-				done <<< "$fx"
-				setsid -f st -e '${EDITOR:-nvim} "${files[@]}" ' >/dev/null 2>&1
-			;;
-	esac
 }}
 
 cmd drag ${{
@@ -398,19 +328,13 @@ map yd :yank-dirname; unselect
 map yp :yank-path; unselect
 map ye :yank-basename-without-extension; unselect
 map yl $dropbox-cli sharelink "$f" | xclip -sel clip &
-
-# use '<delete>' key for either 'trash' or 'delete' command
-# map <delete> trash
-# map <delete> delet&
-
 map sf :fzf_jump
 map sg :fzf_search
 map dt $gtrash prune --day 0
 
-# Bindings
 map zx :extract
-# mkdir command. See wiki if you want it to select created dir
-map <c-n> :push %mkdir<space>
+
+map <c-n> :push %mkdir<space> # mkdir command. See wiki if you want it to select created dir
 # use enter for shell commands
 map @ shell
 # show the result of execution of previous commands
@@ -439,6 +363,6 @@ map I :rename; cmd-home # at the very beginning
 map r :bulkrename
 map b $setbg $f
 
-map D
-map D trash
-# TODO: dT Trash
+map D :trash; trash # for some reason this function has to be ran twice
+
+map
