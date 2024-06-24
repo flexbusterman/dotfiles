@@ -31,7 +31,8 @@ case "$filetype" in
 				reaper "$@"
 				;;
 			*)
-				${EDITOR:-vim} "$@"
+				# start files in separate tabs in nvim
+				st -e nvim -O "$@"
 				;;
 		esac
 		;;
