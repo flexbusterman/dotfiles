@@ -177,3 +177,6 @@ export CM_IGNORE_WINDOW="dmenu"
 if [ -f ~/.envPrivate ]; then
     source ~/.envPrivate
 fi
+
+# bind 'set show-all-if-ambiguous on'
+# bind 'TAB:menu-complete'
