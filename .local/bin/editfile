@@ -1,0 +1,38 @@
+#!/bin/bash
+
+filetype=$(file --mime-type -b "$@")
+notify-send $filetype
+case "$filetype" in
+	image/*)
+		pinta "$@"
+		;;
+	video/*)
+		reaper "$@"
+		;;
+	audio/*)
+		reaper "$@"
+		;;
+	application/vnd.openxmlformats-officedocument.spreadsheetml.sheet)
+		st -e sc-im "$@"
+		;;
+	application/x-sc)
+		st -e sc-im "$@"
+		;;
+	application/octet-stream)
+		case "${1##*.}" in
+			doc|docx|xls|xlsx|odt|ppt|pptx)
+				libreoffice "$@"
+				;;
+		esac
+		;;
+	*)
+		case "${1##*.}" in
+			rpp|RPP)
+				reaper "$@"
+				;;
+			*)
+				${EDITOR:-vim} "$@"
+				;;
+		esac
+		;;
+esac

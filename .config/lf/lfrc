@@ -354,7 +354,8 @@ map <c-e> :drag
 
 map e :edit
 
-map c :clear; unselect;
+# map c :clear; unselect;
+map <esc> :clear; unselect;
 
 map a $musicadd $fx
 
