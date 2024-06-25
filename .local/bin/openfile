@@ -19,12 +19,25 @@ case "$filetype" in
 	application/x-sc)
 		st -e sc-im "$@"
 		;;
+	application/pdf)
+		zathura "$@"
+		;;
 	application/octet-stream)
 		case "${1##*.}" in
 			doc|docx|xls|xlsx|odt|ppt|pptx)
 				libreoffice "$@"
 				;;
+			ahx|hes)
+				mpc --host ~/.mpd/socket clear
+				musicadd "$@"
+				;;
+			*)
+				notify-send "${1##*.}"
+				;;
 		esac
+		;;
+	text/html)
+		qutebrowser "$@"
 		;;
 	*)
 		case "${1##*.}" in
