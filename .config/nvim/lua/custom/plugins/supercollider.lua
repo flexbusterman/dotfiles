@@ -8,10 +8,18 @@ return {
 		-- { "flexbusterman/nvim-supercollider-piano", dir = "~/.local/src/nvim-supercollider-piano/" },
 	},
 	config = function()
+		vim.o.wrap = true
+		vim.o.linebreak = true
+		vim.keymap.set("n", "j", "gj")
+		vim.keymap.set("n", "k", "gk")
+		vim.keymap.set("n", "h", "gh")
+		vim.keymap.set("n", "l", "gl")
+		vim.keymap.set("n", "0", "g0")
+		vim.keymap.set("n", "$", "g$")
+
 		local scnvim = require("scnvim")
 		local map = scnvim.map
 		local map_expr = scnvim.map_expr
-
 		scnvim.setup({
 			ensure_installed = true,
 			sclang = {
