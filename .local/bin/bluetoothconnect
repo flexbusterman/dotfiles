@@ -1,23 +1,97 @@
 #!/usr/bin/env bash
 
-DEVICE="${1:?Missing MAC address as argument}"
-CONNECTED=$(bluetoothctl devices | cut -f2 -d' ' | while read uuid; do bluetoothctl info $uuid; done|grep -e "Connected" | awk '{print $NF}')
-echo $CONNECTED
-POWERED=$(bluetoothctl show | grep -i powered | grep -i yes)
+# Function to check if a command exists
+command_exists() {
+    command -v "$1" &> /dev/null
+}
 
-if [[ $POWERED ]]; then
-    if [[ $CONNECTED == yes ]]; then
-        echo "Restarting bluetooth service"
-        SUDO_ASKPASS=~/.local/bin/dmenupass sudo -A systemctl restart bluetooth.service && bluetoothctl power on && bluetoothctl -- connect $1
+# Ensure bluetoothctl and pactl commands are available
+if ! command_exists bluetoothctl || ! command_exists pactl; then
+    echo "Error: Required commands 'bluetoothctl' or 'pactl' are not available."
+    exit 1
+fi
+
+# Function to get the Bluetooth power status
+get_bluetooth_power_status() {
+    bluetoothctl show | grep -i powered | grep -i yes
+}
+
+# Function to check if the device is connected
+is_device_connected() {
+    local device_mac=$1
+    bluetoothctl info "$device_mac" | grep -q "Connected: yes"
+}
+
+# Function to connect to a Bluetooth device
+connect_bluetooth_device() {
+    local device_mac=$1
+    bluetoothctl connect "$device_mac"
+}
+
+# Function to restart Bluetooth service
+restart_bluetooth_service() {
+    SUDO_ASKPASS=~/.local/bin/dmenupass sudo -A systemctl restart bluetooth.service
+    bluetoothctl power on
+}
+
+# Function to set the audio profile
+set_audio_profile() {
+    local device_mac=$1
+    local mac_transformed=$(echo "$device_mac" | tr ":" "_")
+    pactl set-card-profile "bluez_card.$mac_transformed" a2dp-sink
+}
+
+# Function to unmute the audio
+unmute_audio() {
+    /home/$USER/.local/bin/unmute
+}
+
+# Main script starts here
+if [ -z "$1" ]; then
+    echo "Error: Missing MAC address as argument."
+    echo "Usage: $0 <MAC_ADDRESS>"
+    exit 1
+fi
+
+DEVICE_MAC=$1
+
+# Check if Bluetooth is powered on
+POWERED=$(get_bluetooth_power_status)
+
+if [[ -n $POWERED ]]; then
+    # Check if the device is already connected
+    if is_device_connected "$DEVICE_MAC"; then
+        echo "Device is already connected. Restarting Bluetooth service..."
+        restart_bluetooth_service && connect_bluetooth_device "$DEVICE_MAC"
     else
-        echo "Bluetooth powered but not connected"
-        bluetoothctl -- connect $1
+        echo "Bluetooth is powered but the device is not connected. Connecting..."
+        connect_bluetooth_device "$DEVICE_MAC"
     fi
     sleep 1
-		MAC=$(echo $1 | tr ":" "_")
-    pactl set-card-profile bluez_card.$MAC a2dp-sink
-		/home/$USER/.local/bin/unmute
+    set_audio_profile "$DEVICE_MAC"
+    unmute_audio
 else
-    echo "Bluetooth not powered"
-    bluetoothctl power on && bluetoothctl -- connect $1
+    echo "Bluetooth is not powered. Powering on and connecting..."
+    bluetoothctl power on && connect_bluetooth_device "$DEVICE_MAC"
 fi
+
+# EVICE="${1:?Missing MAC address as argument}"
+# CONNECTED=$(bluetoothctl devices | cut -f2 -d' ' | while read uuid; do bluetoothctl info $uuid; done|grep -e "Connected" | awk '{print $NF}')
+# echo $CONNECTED
+# POWERED=$(bluetoothctl show | grep -i powered | grep -i yes)
+# if [[ $POWERED ]]; then
+#     if [[ $CONNECTED == yes ]]; then
+#         echo "Restarting bluetooth service"
+#         SUDO_ASKPASS=~/.local/bin/dmenupass sudo -A systemctl restart bluetooth.service && bluetoothctl power on && bluetoothctl -- connect $1
+#     else
+#         echo "Bluetooth powered but not connected"
+#         bluetoothctl -- connect $1
+#     fi
+#     sleep 1
+# 		MAC=$(echo $1 | tr ":" "_")
+#     pactl set-card-profile bluez_card.$MAC a2dp-sink
+# 		/home/$USER/.local/bin/unmute
+# else
+#     echo "Bluetooth not powered"
+#     bluetoothctl power on && bluetoothctl -- connect $1
+# fi
