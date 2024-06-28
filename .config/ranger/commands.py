@@ -79,6 +79,8 @@ class customrename(Command):
         from ranger.ext.shell_escape import shell_escape as esc
         py3 = sys.version_info[0] >= 3
 
+        self.fm.notify("Test")
+
         # Create and edit the file list
         filenames = [f.relative_path for f in self.fm.thistab.get_selection()]
         with tempfile.NamedTemporaryFile(delete=False) as listfile:
@@ -88,7 +90,7 @@ class customrename(Command):
                     encoding="utf-8", errors="surrogateescape"))
             else:
                 listfile.write("\n".join(filenames))
-        self.fm.execute_file([File(listpath)], app='editor')
+        self.fm.execute_file([File(listpath)], app='nvim')
         with (open(listpath, 'r', encoding="utf-8", errors="surrogateescape") if
               py3 else open(listpath, 'r')) as listfile:
             new_filenames = listfile.read().split("\n")
