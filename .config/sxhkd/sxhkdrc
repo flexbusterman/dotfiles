@@ -316,11 +316,11 @@ alt + control + Return
 alt + shift + control + Return
 	tidal-hifi
 
-alt + control + space
-	musicplaypause
-
 alt + control + shift + space
 	musicrandomfolder
+
+alt + control + space
+	musicplaypause
 
 alt + comma
 	st -e ranger
