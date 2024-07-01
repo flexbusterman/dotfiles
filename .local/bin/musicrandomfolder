@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# Find all directories within ~/Music/FLAC and its subdirectories
+albums=$(find ~/Music/FLAC -type d)
+
+# Pick one random folder, including subfolders
+random_album=$(echo "$albums" | shuf -n 1)
+
+# Clear the play cache in MPD
+mpc --host ~/.mpd/socket clear
+
+# Add the album and check for success
+if mpc --host ~/.mpd/socket add "$random_album"; then
+    echo "Successfully added $random_album to MPD."
+    mpc --host ~/.mpd/socket play
+else
+    echo "Error adding $random_album to MPD. It may not be a valid directory."
+    exit 1
+fi

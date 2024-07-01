@@ -319,6 +319,9 @@ alt + shift + control + Return
 alt + control + space
 	musicplaypause
 
+alt + control + shift + space
+	musicrandomfolder
+
 alt + comma
 	st -e ranger
 alt + shift + comma
