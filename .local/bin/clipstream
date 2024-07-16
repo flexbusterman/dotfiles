@@ -14,7 +14,7 @@ then
 		# strips duplicate time values
 		clipboard=$(echo $clipboard | sed 's/&[^&]*//')
 		# mpv --ytdl-raw-options=netrc=,mark-watched= "$clipboard"
-		mpv --ytdl-raw-options=mark-watched=,cookies-from-browser="brave"  "$clipboard"
+		mpv --ytdl-raw-options=mark-watched=,cookies-from-browser="brave",embed-chapters= "$clipboard"
 	else
 		# notify-send "not youtube"
 		# strips time and path info
