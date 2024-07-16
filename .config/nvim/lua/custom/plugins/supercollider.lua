@@ -147,20 +147,23 @@ return {
         augroup END
         ]])
 
-		-- supercollider argument transformation
+		-- vim.api.nvim_create_autocmd({
+		-- 	"VimResized",
+		-- }, {
+		-- 	pattern = "scd",
+		-- 	command = "exec 'vertical resize ' . string(&columns *  0.5)",
+		-- })
 
+		-- supercollider argument transformation
 		vim.api.nvim_exec(
 			[[
 		function! ProcessRange() range
 			" Substitution command
 			'<,'>s/\(\\[^.]*\)\.[ka]r(\([^)]*\))/\r\1, \2,\r/g
-
 			" Delete lines not starting with a backslash within the selection
 			'<,'>g!/^\s*\\/d
-
 			" Initialize the seen dictionary to track duplicates
 			let seen = {}
-
 			" Iterate over each line in the selection to remove duplicates
 			let line_num = line("'<")
 			while line_num <= line("'>")
@@ -174,7 +177,6 @@ return {
 					let line_num += 1
 				endif
 			endwhile
-
 			" Wrap negative numbers in parentheses within the selection
 			'<,'>s/\v-([0-9]+)/(-\1)/g
 		endfunction
