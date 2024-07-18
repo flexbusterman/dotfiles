@@ -1,2 +1,2 @@
 #!/bin/bash
-tail -f "$1" | bat --theme=dracula --paging=never -l log
+tail -f "$1" | bat --theme=Dracula --paging=never -l log

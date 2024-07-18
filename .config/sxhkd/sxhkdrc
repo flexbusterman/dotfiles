@@ -383,6 +383,9 @@ alt + F10
 	campreview
 
 alt + F11
+	screencaststart
+
+alt + shift + F11
 	dmenurecord
 
 alt + F12

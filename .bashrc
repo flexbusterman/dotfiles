@@ -21,9 +21,9 @@ export XDG_CACHE_HOME="$HOME/.cache"
 # export ANDROID_SDK_HOME=$HOME/Android/Sdk
 # export ANDROID_AVD_HOME=$HOME/.config/.android/avd
 # export JAVA_HOME=/usr/lib/jvm/java-21-openjdk/
-export HEADPHONES=50:C2:75:29:C7:6E
+export HEADPHONES='50:C2:75:29:C7:6E'
 export MPD_PORT=49152
-export MPD_HOST=127.0.0.1
+export MPD_HOST="/home/flex/.mpd/socket"
 export RANGER_LOAD_DEFAULT_RC=FALSE
 # unlimited history
 export HISTFILESIZE=
