@@ -281,38 +281,6 @@ done
 }
 
 datefolder(){
-for f in $*
-do
-	if [ -z "$('ls' -A $f)" ]
-	then
-	elif [ -d "$f" ]
-	then
-		cd "$f"
-		NEWEST=$(date +"%Y%m%d")
-		for file in *
-		do
-			if [ -f $file ]
-			then
-				if [ $(date -r $file +"%Y%m%d") -le $NEWEST ]
-				then
-					NEWEST=$(date -r "$file" +"%Y%m%d")
-				fi
-			fi
-		done
-		cd ..
-		YEAR=$(echo $NEWEST | cut -c 1-4)
-		MONTH=$(echo $NEWEST | cut -c 5-6)
-		DAY=$(echo $NEWEST | cut -c 7-8)
-		RESULT="$YEAR-$MONTH-$DAY $f"
-		if [[ $f =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}.* ]]
-		then
-			echo "$f already begins with date"
-		else
-			echo "Renaming: $f => $RESULT"
-			mv $f $RESULT
-		fi
-	fi
-done
 }
 
 tf(){

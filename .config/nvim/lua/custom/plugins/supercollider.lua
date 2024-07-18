@@ -66,8 +66,10 @@ return {
 					path = vim.fn.tempname(),
 					horizontal = true,
 					size = "15%",
-					cmd = "tail",
-					args = { "-F", "$1" },
+					-- cmd = "tail",
+					-- args = { "-F", "$1" },
+					cmd = "scnvim-tmux-post",
+					args = { "$1" },
 				},
 				-- tmux = {
 				--   path = vim.fn.tempname(),
