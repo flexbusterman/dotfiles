@@ -1,0 +1,35 @@
+#!/bin/sh
+
+[ -f /tmp/recordingpid ] && notify-send "Recording is already running" && exit
+
+NUMDISPLAYS=$(xrandr | awk '/ connected/ ' | wc -l)
+if [ $NUMDISPLAYS -gt 1 ]; then
+    echo "Multiple displays detected"
+    RECORDDISPLAY=$(dmenu -i -p "Choose display" < <(xrandr | awk '/ connected/ {print $1}'))
+else
+    RECORDDISPLAY=$(xrandr | awk '/ connected/ {print $1}')
+fi
+
+# Get the dimensions and the offset of the selected display
+DISPLAYINFO=$(xrandr | grep "$RECORDDISPLAY" | awk '{print $4}')
+DIMENSIONS=$(echo $DISPLAYINFO | sed 's/\+.*//')
+OFFSET=$(echo $DISPLAYINFO | sed 's/^[0-9]*x[0-9]*//')
+
+echo "Dimensions: $DIMENSIONS"
+echo "Offset: $OFFSET"
+
+# Get the correct display string for ffmpeg
+DISPLAYSTRING=":0.0$OFFSET"
+
+AUDIODEVICE=$(pactl list short sources | grep "$(pactl info | grep "Default Sink" | cut -d' ' -f3).monitor" | cut -f2)
+ffmpeg -y \
+-f x11grab \
+-framerate 30 \
+-s $DIMENSIONS \
+-i "$DISPLAYSTRING" \
+-f pulse -thread_queue_size 1024 -i "$AUDIODEVICE" \
+-c:v h264 \
+-crf 0 -preset ultrafast -c:a flac \
+"$HOME/Downloads/screencast-output-flac-$(date '+%y%m%d-%H%M-%S').mkv" &
+# store the PID of the most recently executed background process
+echo $! > /tmp/recordingpid && notify-send "Started recording"
