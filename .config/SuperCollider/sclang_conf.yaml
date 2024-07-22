@@ -1,5 +1,4 @@
 includePaths:
-    -   /home/flex/.local/share/SuperCollider/downloaded-quarks/BatLib
     -   /home/flex/.local/share/SuperCollider/downloaded-quarks/Bjorklund
     -   /home/flex/.local/share/SuperCollider/downloaded-quarks/XML
     -   /home/flex/.local/share/SuperCollider/downloaded-quarks/wslib
@@ -11,6 +10,7 @@ includePaths:
     -   /home/flex/.local/share/SuperCollider/downloaded-quarks/Dirt-Samples
     -   /home/flex/.local/share/SuperCollider/downloaded-quarks/SuperDirt
     -   /home/flex/.local/share/SuperCollider/downloaded-quarks/FoxDot
+    -   /home/flex/.local/share/SuperCollider/downloaded-quarks/BatLib
 excludePaths:
     []
 postInlineWarnings: false

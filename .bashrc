@@ -85,3 +85,5 @@ dp() {
   dot commit -m "$result"
   dot push
 }
+
+# source /usr/share/blesh/ble.sh
