@@ -61,6 +61,7 @@ alias vn="cd /home/flex/.config/nvim/; nvim init.lua"
 alias vb="cd /home/flex/; nvim .bashrc"
 alias c="cd /home/flex/.config/"
 alias vt="cd ~/NOTES/; nvim TODO.md"
+alias q=exit
 
 # navigation
 alias d='cd ~/Dropbox/'
@@ -70,6 +71,7 @@ alias b='cd ~/.local/bin/'
 alias m='cd /run/media/$USER/'
 alias g='cd ~/.local/src/'
 alias f='cd ~/.flarbs/'
+alias o='cd ~/Dropbox/ORGMODE/'
 
 # ssh add function
 sa() {
@@ -79,11 +81,12 @@ sa() {
 
 dp() {
   eval "$(ssh-agent -s)"
-  ssh-add ~/.ssh/dogit
+  ssh-add ~/.ssh/git
   result="$*"
   dot add -u
   dot commit -m "$result"
   dot push
 }
 
-# source /usr/share/blesh/ble.sh
+source /usr/share/fzf/completion.bash
+source /usr/share/fzf/key-bindings.bash
