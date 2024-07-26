@@ -13,9 +13,9 @@
 
 if [ $HOSTNAME = 'arch' ]; then
 	echo "Running on server"
-	folder='~/SUPERCOLLIDER/'
+	folder='~/SUPERCOLLIDER'
 else
-	folder='~/Dropbox/SUPERCOLLIDER/'
+	folder='~/Dropbox/SUPERCOLLIDER'
 fi
 
 xinput set-prop "MSFT0001:00 06CB:CE2D Touchpad" "libinput Disable While Typing Enabled" 1
