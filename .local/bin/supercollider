@@ -11,6 +11,11 @@
 # -c "sleep 1" \
 # -c "wincmd ="
 
+if [ $HOSTNAME = 'arch' ]; then
+	echo "The hostname is arch"
+	exit 0
+fi
+
 xinput set-prop "MSFT0001:00 06CB:CE2D Touchpad" "libinput Disable While Typing Enabled" 1
 
 cd ~/Dropbox/SUPERCOLLIDER/

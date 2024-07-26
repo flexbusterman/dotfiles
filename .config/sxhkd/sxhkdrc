@@ -156,7 +156,7 @@ alt + control + m
 # notify-send "shift + control + m"
 
 alt + n
-	cd ~/Dropbox/NOTES/; st -T TODO -e nvim ~/Dropbox/NOTES/TODO.md
+	cd ~/Dropbox/ORGMODE/; st -T ORGMODE -e nvim ~/Dropbox/ORGMODE/refile.org
 alt + shift + n
 	st -e ~/.local/bin/fzfnotes
 # alt + control + n
