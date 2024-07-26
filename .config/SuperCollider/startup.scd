@@ -1,1 +1,1 @@
-/home/flex/Dropbox/SUPERCOLLIDER/fieldsteel startup.scd
+~/Dropbox/SUPERCOLLIDER//fieldsteel startup.scd
