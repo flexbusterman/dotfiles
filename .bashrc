@@ -7,6 +7,14 @@
 
 shopt -s autocd
 
+# history
+# shopt -s histappend
+# export HISTCONTROL=ignoredups:erasedups
+export HISTCONTROL=erasedups
+# unlimited history
+export HISTFILESIZE=
+export HISTSIZE=
+
 # environment variables
 export TERMINAL=st
 export EDITOR=nvim
@@ -25,9 +33,6 @@ export HEADPHONES='50:C2:75:29:C7:6E'
 export MPD_PORT=49152
 export MPD_HOST="/home/flex/.mpd/socket"
 export RANGER_LOAD_DEFAULT_RC=FALSE
-# unlimited history
-export HISTFILESIZE=
-export HISTSIZE=
 
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/platform-tools
