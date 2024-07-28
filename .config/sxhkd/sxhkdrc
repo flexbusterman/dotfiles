@@ -178,7 +178,7 @@ alt + o
 # notify-send "shift + control + o"
 
 alt + p
-	prependclipboard ~/Dropbox/NOTES/TODO.md
+	prependclipboard ~/Dropbox/ORGMODE/refile.org
 alt + shift + p
 	passmenu
 # alt + control + p

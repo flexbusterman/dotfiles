@@ -65,7 +65,7 @@ alias dot="/usr/bin/git --git-dir=$HOME/.dot.git/ --work-tree=$HOME"
 alias vn="cd /home/flex/.config/nvim/; nvim init.lua"
 alias vb="cd /home/flex/; nvim .bashrc"
 alias c="cd /home/flex/.config/"
-alias vt="cd ~/NOTES/; nvim TODO.md"
+alias vr="cd ~/Dropbox/ORGMODE/; nvim refile.org"
 alias q=exit
 
 # navigation
