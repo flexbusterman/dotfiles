@@ -170,12 +170,10 @@ alt + o; a;
 	st -T "Orgmode Agenda" -e bash -c "cd ~/Dropbox/ORGMODE/; nvim -c \":lua require('orgmode').action('agenda.agenda')\" refile.org"
 alt + o; t;
 	st -T "Orgmode TODOs" -e bash -c "cd ~/Dropbox/ORGMODE/; nvim -c \":lua require('orgmode').action('agenda.todos')\" refile.org"
-	# TODO: Fix this
 alt + o; c;
-	st -T "Orgmode Capture" -e bash -c "cd ~/Dropbox/ORGMODE/; nvim -c \":lua require('orgmode').action('capture.template.task')\" refile.org"
+	st -T "Orgmode Capture" -e bash -c "cd ~/Dropbox/ORGMODE/; nvim -c 'set ft=org | normal 1 oct' refile.org"
 alt + o; r;
 	cd ~/Dropbox/ORGMODE/; st -T ORGMODE -e nvim ~/Dropbox/ORGMODE/refile.org
-	st -T "Orgmode Capture" -e bash -c "cd ~/Dropbox/ORGMODE/; nvim ~/Dropbox/ORGMODE/refile.org"
 # alt + shift + o
 # notify-send "alt + shift + o"
 # alt + control + o
