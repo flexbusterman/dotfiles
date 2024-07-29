@@ -1,4 +1,3 @@
-
 # used by dwm alt + a
 # used by dwm
 # alt + shift + a
@@ -166,8 +165,11 @@ alt + shift + n
 # shift + control + n
 # notify-send "shift + control + n"
 
-alt + o
-	fzfvideo
+# Orgmode shortcuts
+alt + o; a;
+	st -e bash -c "cd ~/Dropbox/ORGMODE/; nvim -c \":lua require('orgmode').action('agenda.agenda')\" refile.org"
+alt + o; t;
+	st -e bash -c "cd ~/Dropbox/ORGMODE/; nvim -c \":lua require('orgmode').action('agenda.todos')\" refile.org"
 # alt + shift + o
 # notify-send "alt + shift + o"
 # alt + control + o
