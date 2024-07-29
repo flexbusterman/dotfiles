@@ -249,8 +249,8 @@ alt + shift + control + t
 # shift + control + u
 # notify-send "shift + control + u"
 
-# alt + v
-# notify-send "alt + v"
+alt + v
+	fzfvideo
 # alt + shift + v
 # notify-send "alt + shift + v"
 # alt + control + v

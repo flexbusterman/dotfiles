@@ -61,7 +61,6 @@ alias ls="exa"
 alias lt="exa -lar --sort=size"
 alias rf='rm -rf'
 alias grep='grep --color=auto'
-alias dot="/usr/bin/git --git-dir=$HOME/.dot.git/ --work-tree=$HOME"
 alias vn="cd /home/flex/.config/nvim/; nvim init.lua"
 alias vb="cd /home/flex/; nvim .bashrc"
 alias c="cd /home/flex/.config/"
@@ -83,6 +82,10 @@ alias sw='echo $PWD > ~/.workdir'
 alias cw='cd "$(cat ~/.workdir)"'
 alias vw='cd "$(cat ~/.workdir)"; nvim -c "NvimTreeToggle"'
 
+# git
+alias dot="/usr/bin/git --git-dir=$HOME/.dot.git/ --work-tree=$HOME"
+alias pdot="/usr/bin/env git --git-dir=$HOME/.pdot.git/ --work-tree=$HOME"
+
 # ssh add function
 sa() {
 	eval "$(ssh-agent -s)"
@@ -96,6 +99,15 @@ dp() {
   dot add -u
   dot commit -m "$result"
   dot push
+}
+
+pdp() {
+  eval "$(ssh-agent -s)"
+  ssh-add ~/.ssh/git
+  result="$*"
+  pdot add -u
+  pdot commit -m "$result"
+  pdot push
 }
 
 pass() {

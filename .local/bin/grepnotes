@@ -1,0 +1,9 @@
+#!/bin/bash
+result=$(grep -Rns "$(find ~/Dropbox/ORGMODE/* -type f -exec cat {} \; | fzf)" ~/Dropbox/ORGMODE/)
+# use awk to print the second field with colon as delimiter
+linenumber=$(echo $result | awk -F: '{print $2}')
+path=$(echo "$result" | sed 's/:.*//' )
+directory=$(dirname "$path")
+filename=$(basename "$path")
+cd "$directory"
+nvim +$linenumber "$filename"
