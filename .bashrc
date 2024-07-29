@@ -98,5 +98,17 @@ dp() {
   dot push
 }
 
+pass() {
+	eval "$(ssh-agent -s)"
+	ssh-add ~/.ssh/digitalocean
+	command pass $*
+}
+
+ssh() {
+	eval "$(ssh-agent -s)"
+	ssh-add ~/.ssh/digitalocean
+	command ssh $*
+}
+
 source /usr/share/fzf/completion.bash
 source /usr/share/fzf/key-bindings.bash
