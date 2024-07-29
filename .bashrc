@@ -78,6 +78,11 @@ alias g='cd ~/.local/src/'
 alias f='cd ~/.flarbs/'
 alias o='cd ~/Dropbox/ORGMODE/'
 
+# save current dir in workdir file
+alias sw='echo $PWD > ~/.workdir'
+alias cw='cd "$(cat ~/.workdir)"'
+alias vw='cd "$(cat ~/.workdir)"; nvim -c "NvimTreeToggle"'
+
 # ssh add function
 sa() {
 	eval "$(ssh-agent -s)"
