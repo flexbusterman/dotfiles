@@ -155,9 +155,9 @@ alt + control + m
 # notify-send "shift + control + m"
 
 alt + n
-	cd ~/Dropbox/ORGMODE/; st -T ORGMODE -e nvim ~/Dropbox/ORGMODE/refile.org
-alt + shift + n
 	st -e ~/.local/bin/fzfnotes
+alt + shift + n
+	st -e ~/.local/bin/grepnotes
 # alt + control + n
 # notify-send "alt + control + n"
 # alt + shift + control + n
@@ -173,6 +173,9 @@ alt + o; t;
 	# TODO: Fix this
 alt + o; c;
 	st -T "Orgmode Capture" -e bash -c "cd ~/Dropbox/ORGMODE/; nvim -c \":lua require('orgmode').action('capture.template.task')\" refile.org"
+alt + o; r;
+	cd ~/Dropbox/ORGMODE/; st -T ORGMODE -e nvim ~/Dropbox/ORGMODE/refile.org
+	st -T "Orgmode Capture" -e bash -c "cd ~/Dropbox/ORGMODE/; nvim ~/Dropbox/ORGMODE/refile.org"
 # alt + shift + o
 # notify-send "alt + shift + o"
 # alt + control + o

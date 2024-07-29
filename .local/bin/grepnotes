@@ -1,9 +1,26 @@
 #!/bin/bash
-result=$(grep -Rns "$(find ~/Dropbox/ORGMODE/* -type f -exec cat {} \; | fzf)" ~/Dropbox/ORGMODE/)
-# use awk to print the second field with colon as delimiter
-linenumber=$(echo $result | awk -F: '{print $2}')
-path=$(echo "$result" | sed 's/:.*//' )
-directory=$(dirname "$path")
-filename=$(basename "$path")
-cd "$directory"
-nvim +$linenumber "$filename"
+
+# Use ASCII unit separator as delimiter
+delimiter=$'\x1F'
+
+# Use fzf to search through file contents
+selected=$(find ~/Dropbox/ORGMODE -type f -print0 |
+           xargs -0 awk -v OFS="$delimiter" '{print FILENAME, FNR, $0}' |
+           sed 's|.*/ORGMODE/||' |
+           awk -F "$delimiter" '{print $1 ":" $2 ":	" $3}' |
+           fzf --delimiter ':' --with-nth 1,2,3)
+
+# Extract filename, line number, and content from the selection
+if [ -n "$selected" ]; then
+    file=$(echo "$selected" | cut -d':' -f1)
+    linenumber=$(echo "$selected" | cut -d':' -f3)
+    content=$(echo "$selected" | cut -d':' -f5-)
+
+    # Reconstruct full path
+    full_path="$HOME/Dropbox/ORGMODE/$file"
+
+    # Open the file in Neovim at the selected line
+    nvim +"$linenumber" "$full_path"
+else
+    echo "No selection made."
+fi
