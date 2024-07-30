@@ -1,114 +1,31 @@
 #!/bin/bash
 
-# Clear the log file
-rm ~/random.log
-touch ~/random.log
+currentAlbum=$(mpc --host ~/.mpd/socket playlist -f %file% | awk -F/ 'NR==1 {print $(NF-1)}')
+# notify-send "Current:" "$currentAlbum"
 
-LOG_FILE=~/random.log
-
-log() {
-    echo "$(date +'%Y-%m-%d %H:%M:%S') - $1" >> "$LOG_FILE"
+chooseNewAlbum(){
+	newAlbum=$(shuf -n 1 ~/.config/music/albumlist)
+	newAlbumTitle=$(echo "$newAlbum" | awk -F/ '{print $NF}')
+	# notify-send "New Album:" "$newAlbumTitle"
 }
 
-# Ensure log file is writable
-if [ ! -w "$LOG_FILE" ]; then
-    echo "Log file is not writable: $LOG_FILE"
-    exit 1
-fi
+chooseNewAlbum
 
-# Check if the album list file exists and is readable
-ALBUM_LIST_FILE=~/.config/music/albumlist
-if [ ! -r "$ALBUM_LIST_FILE" ]; then
-    log "Album list file not found or not readable: $ALBUM_LIST_FILE"
-    exit 1
-fi
-
-# Read album list into an array
-albums_array=()
-while IFS= read -r line; do
-    albums_array+=("$line")
-done < "$ALBUM_LIST_FILE"
-log "Albums array: ${albums_array[@]}"
-
-# Check if there's at least one album
-if [ ${#albums_array[@]} -eq 0 ]; then
-    notify-send "No albums found in ~/Music/FLAC."
-    log "No albums found in $ALBUM_LIST_FILE."
-    exit 1
-fi
-
-# Function to get a random album
-get_random_album() {
-    echo "${albums_array[RANDOM % ${#albums_array[@]}]}"
-}
-
-# Clear the play cache in MPD
-mpc --host /home/flex/.mpd/socket clear
-log "Cleared MPD cache."
-
-# Get the list of currently playing files
-current_playlist=$(mpc --host /home/flex/.mpd/socket playlist -f %file%)
-log "Current playlist: $current_playlist"
-
-# Pick a random album that is not currently in the playlist
-random_album=$(get_random_album)
-log "Initially selected random album: $random_album"
-
-random_album_basename=$(basename "$random_album")
-log "Random album basename: $random_album_basename"
-
-# Ensure that the random album is not already playing
-while echo "$current_playlist" | grep -q "$random_album_basename"; do
-    log "Album $random_album_basename is currently playing. Selecting a new album."
-    random_album=$(get_random_album)
-    random_album_basename=$(basename "$random_album")
-    log "New random album: $random_album"
-    log "New random album basename: $random_album_basename"
+while [[ "$currentAlbum" == "$newAlbumTitle" ]]; do
+	# notify-send "They are the same! Should choose new album!"
+  chooseNewAlbum
 done
 
-# Verify the random album directory exists and log its contents
-if [ -d "$random_album" ]; then
-    log "Selected album directory exists: $random_album"
-    album_contents=$(ls -A "$random_album")
-    log "Contents of $random_album: $album_contents"
-else
-    notify-send "Selected album directory does not exist: $random_album"
-    log "Selected album directory does not exist: $random_album"
-    exit 1
-fi
+mpc --host ~/.mpd/socket clear
 
-# Extract the relative path from the absolute path
-relative_path="${random_album#/home/flex/Dropbox/MUSIC/FLAC/}"
-log "Relative path: $relative_path"
+rm ~/.tempfile
+touch ~/.tempfile
+find "$newAlbum" >> ~/.tempfile
+input=~/.tempfile
+while IFS= read -r line
+do
+	mpc --host ~/.mpd/socket add "$line"
+done < "$input"
+rm ~/.tempfile
 
-# Add the album using the relative path and check for success
-mpc_add_command="mpc --host /home/flex/.mpd/socket add \"$relative_path\""
-log "mpc add command: $mpc_add_command"
-
-if eval $mpc_add_command; then
-    mpc --host /home/flex/.mpd/socket play
-    notify-send "$random_album"
-    log "Successfully added and playing album: $random_album"
-else
-    notify-send "Error adding $random_album to MPD. It may not be a valid directory."
-    log "Error adding album: $random_album. It may not be a valid directory."
-
-    # Try adding a single file instead of the whole directory for debugging
-    first_file=$(find "$random_album" -type f | head -n 1)
-    if [ -n "$first_file" ]; then
-        relative_first_file="${first_file#/home/flex/Dropbox/MUSIC/FLAC/}"
-        mpc_add_file_command="mpc --host /home/flex/.mpd/socket add \"$relative_first_file\""
-        log "Trying to add first file: $mpc_add_file_command"
-        if eval $mpc_add_file_command; then
-            mpc --host /home/flex/.mpd/socket play
-            notify-send "Playing first file from $random_album"
-            log "Successfully added and playing first file from album: $relative_first_file"
-        else
-            notify-send "Error adding first file from $random_album to MPD."
-            log "Error adding first file from album: $relative_first_file. It may not be a valid file."
-        fi
-    else
-        log "No files found in album: $random_album"
-    fi
-    exit 1
-fi
+mpc --host ~/.mpd/socket play

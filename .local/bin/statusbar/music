@@ -1,5 +1,5 @@
-#!/bin/sh
-status=$(mpc status)
+#!/bin/bash
+# status=$(mpc status)
 playing=$(echo $status | awk '/playing/')
 if [ "$playing" ]; then
 	echo " $status" | awk 'NR==1'
