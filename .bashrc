@@ -66,6 +66,7 @@ alias vb="cd /home/flex/; nvim .bashrc"
 alias c="cd /home/flex/.config/"
 alias vr="cd ~/Dropbox/ORGMODE/; nvim refile.org"
 alias q=exit
+alias pg="ping google.com"
 
 # navigation
 alias d='cd ~/Dropbox/'
