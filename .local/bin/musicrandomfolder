@@ -28,4 +28,6 @@ do
 	mpc --host ~/.mpd/socket add "$line"
 done < "$input"
 
+notify-send "$newAlbumTitle"
+
 mpc --host ~/.mpd/socket play
