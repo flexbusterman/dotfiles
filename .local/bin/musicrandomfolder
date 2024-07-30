@@ -18,14 +18,15 @@ done
 
 mpc --host ~/.mpd/socket clear
 
-rm ~/.tempfile
-touch ~/.tempfile
-find "$newAlbum" >> ~/.tempfile
-input=~/.tempfile
+[[ -f /tmp/album ]] && rm /tmp/album
+[[ -f /tmp/albumsorted ]] && rm /tmp/albumsorted
+find "$newAlbum" >> /tmp/album
+cat /tmp/album
+cat /tmp/album | sort >> /tmp/albumsorted
+input=/tmp/albumsorted
 while IFS= read -r line
 do
 	mpc --host ~/.mpd/socket add "$line"
 done < "$input"
-rm ~/.tempfile
 
 mpc --host ~/.mpd/socket play
