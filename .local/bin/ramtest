@@ -1,0 +1,9 @@
+#!/bin/bash
+
+LOGFILE="/var/log/memtester.log"
+MEMORY="8G"  # Adjust this based on your available memory
+ITERATIONS="1"
+
+echo "Starting memtester with $MEMORY for $ITERATIONS iteration(s)" | tee -a $LOGFILE
+sudo memtester $MEMORY $ITERATIONS 2>&1 | tee -a $LOGFILE
+echo "memtester completed" | tee -a $LOGFILE

@@ -34,6 +34,8 @@ export MPD_PORT=49152
 export MPD_HOST="/home/flex/.mpd/socket"
 export RANGER_LOAD_DEFAULT_RC=FALSE
 
+export __NV_PRIME_RENDER_OFFLOAD=1
+
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 export PATH=$PATH:$HOME/.local/bin/
