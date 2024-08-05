@@ -32,6 +32,7 @@ settings:
     https://www.youtube.com/: all
   content.javascript.clipboard:
     https://chatgpt.com/: access
+    https://github.com/: access
   content.geolocation:
     https://www.1177.se: true
     https://www.elgiganten.se: true

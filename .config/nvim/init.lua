@@ -534,7 +534,7 @@ require("lazy").setup({
 			vim.keymap.set("n", "tl", ":tablast<CR>", { desc = "Jump to last tab" })
 			vim.keymap.set("n", "tj", ":tabnext<CR>", { desc = "Next tab" })
 			vim.keymap.set("n", "tk", ":tabprev<CR>", { desc = "Previous tab" })
-			vim.keymap.set("n", "td", ":tabclose<CR>", { desc = "Close tab" })
+			vim.keymap.set("n", "tq", ":tabclose<CR>", { desc = "Close tab" })
 			vim.keymap.set("n", "tn", ":tabnew<CR>", { desc = "New tab" })
 			vim.keymap.set("n", "tr", ":tabedit ", { desc = "Rename tab" })
 
