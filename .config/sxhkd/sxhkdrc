@@ -167,13 +167,13 @@ alt + shift + n
 
 # Orgmode shortcuts
 alt + o; a;
-	st -T "Orgmode Agenda" -e bash -c "cd ~/Dropbox/ORGMODE/; nvim -c \":lua require('orgmode').action('agenda.agenda')\" refile.org"
+	orgmux -a # tmux orgmode agenda
 alt + o; t;
-	st -T "Orgmode TODOs" -e bash -c "cd ~/Dropbox/ORGMODE/; nvim -c \":lua require('orgmode').action('agenda.todos')\" refile.org"
+	orgmux -t # tmux orgmode todo
 alt + o; c;
-	st -T "Orgmode Capture" -e bash -c "cd ~/Dropbox/ORGMODE/; nvim -c 'set ft=org | normal 1 oct' refile.org"
+	orgmux -c # tmux orgmode capture
 alt + o; r;
-	cd ~/Dropbox/ORGMODE/; st -T ORGMODE -e nvim ~/Dropbox/ORGMODE/refile.org
+	orgmux # tmux orgmode default (refile)
 # alt + shift + o
 # notify-send "alt + shift + o"
 # alt + control + o

@@ -1,0 +1,72 @@
+#!/bin/bash
+
+# if tmux session orgmode is not running, start it
+if ! tmux has-session -t orgmode 2>/dev/null; then
+	echo "tmux session orgmode not running, starting it"
+	tmux new-session -s orgmode -d
+else
+	echo "tmux session orgmode is running"
+fi
+
+# get current command for future vim check
+currentCommand=$(tmux list-panes -t orgmode -F '#{pane_current_command}')
+
+# check if nvim is running
+if [[ "$currentCommand" == *"vim"* ]]; then
+	echo "(n)vim is running"
+
+	# check flags inside of nvim
+
+	noArgs = true
+
+	while getopts 'atc' flag; do
+		case "${flag}" in
+			a) # Orgmode agenda
+				tmux send-keys -t orgmode Escape Space "oaa"
+				;;
+			t) # Orgmode agenda TODO list
+				# echo "flag is -t"
+				tmux send-keys -t orgmode Escape Space "oat"
+				;;
+			c)
+				tmux send-keys -t orgmode Escape Space "oct"
+				;;
+			# *)
+				# 	tmux send-keys -t orgmode Escape ":e ~/ORGMODE/refile.org"
+				# 	exit 1 ;;
+			esac
+			noArgs = false
+		done
+
+		[[ "$noArgs" == "true" ]] && tmux send-keys -t orgmode Escape ":e ~/ORGMODE/refile.org" Enter
+
+	else
+
+	echo "(n)vim is not running"
+
+	# check flags outside of nvim
+
+	noArgs = true
+
+	while getopts 'atc' flag; do
+		case "${flag}" in
+			a) # Orgmode agenda
+				echo "flag is -a"
+				tmux send-keys -t orgmode C-z "cd ~/ORGMODE/; nvim -c \":lua require('orgmode').action('agenda.agenda')\" refile.org" Enter
+				;;
+			t) # Orgmode agenda TODO list
+				echo "flag is -t"
+				tmux send-keys -t orgmode C-z "cd ~/ORGMODE/; nvim -c \":lua require('orgmode').action('agenda.todos')\" refile.org" Enter
+				;;
+			c) # Orgmode capture
+				tmux send-keys -t orgmode C-z "cd ~/ORGMODE/; nvim -c 'normal 1 oct' refile.org" Enter
+				;;
+		esac
+			noArgs = false
+	done
+
+		[[ "$noArgs" == "true" ]] && tmux send-keys -t orgmode C-z "cd ~/ORGMODE/; nvim refile.org" Enter
+
+fi
+
+st -e tmux attach -t orgmode
