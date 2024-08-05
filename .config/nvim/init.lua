@@ -183,6 +183,9 @@ vim.opt.backup = false
 -- no autoamtic commenting on new lines
 vim.opt.formatoptions = ""
 
+-- changes working directory to current file
+vim.opt.autochdir = true
+
 -- [[ Basic Keymaps ]]
 --  _  __
 -- | |/ /___ _   _ _ __ ___   __ _ _ __  ___
@@ -560,6 +563,16 @@ require("lazy").setup({
 			vim.keymap.set("n", "<leader>sn", function()
 				builtin.find_files({ cwd = vim.fn.stdpath("config") })
 			end, { desc = "[S]earch [N]eovim files" })
+
+			-- Shortcut for searching orgmode notes
+			vim.keymap.set("n", "<leader>so", function()
+				builtin.find_files({ cwd = vim.fn.expand("~/ORGMODE/") })
+			end, { desc = "[S]earch [O]rgmode files" })
+
+			-- Shortcut for searching in ~/.local/bin
+			vim.keymap.set("n", "<leader>sb", function()
+				builtin.find_files({ cwd = vim.fn.expand("~/.local/bin") })
+			end, { desc = "[S]earch user [B]in files" })
 		end,
 	},
 
