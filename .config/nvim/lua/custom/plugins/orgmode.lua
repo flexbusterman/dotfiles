@@ -6,9 +6,9 @@ return {
 		-- set statusline to report active clockclock
 		vim.opt.statusline = "%{v:lua.orgmode.statusline()}"
 		require("orgmode").setup({
-			org_agenda_files = "~/Dropbox/ORGMODE/**/*",
+			org_agenda_files = "~/ORGMODE/**/*",
 			org_agenda_start_on_weekday = false,
-			org_default_notes_file = "~/Dropbox/ORGMODE/refile.org",
+			org_default_notes_file = "~/ORGMODE/refile.org",
 			-- win_split_mode = "tabnew",
 			org_priority_highest = "A",
 			org_priority_default = "D",
