@@ -282,6 +282,11 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufNewFile" }, {
 	command = "set filetype=sh.env",
 })
 
+vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+	pattern = "*.tex",
+	command = "silent !bash ~/cv/gen",
+})
+
 vim.api.nvim_create_autocmd({ "BufEnter", "BufNewFile" }, {
 	pattern = "*",
 	callback = function()
