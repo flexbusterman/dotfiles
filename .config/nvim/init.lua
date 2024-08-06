@@ -184,7 +184,8 @@ vim.opt.backup = false
 vim.opt.formatoptions = ""
 
 -- changes working directory to current file
-vim.opt.autochdir = true
+-- annoying when file is in subdir
+-- vim.opt.autochdir = true
 
 -- [[ Basic Keymaps ]]
 --  _  __

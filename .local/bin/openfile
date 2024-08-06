@@ -19,6 +19,12 @@ case "$filetype" in
 	application/x-sc)
 		st -e sc-im "$@"
 		;;
+	application/x-nes-rom)
+		mednafen "$@"
+		;;
+	application/x-dosexec)
+		dosbox "$@"
+		;;
 	application/pdf)
 		zathura "$@"
 		;;

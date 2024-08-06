@@ -17,7 +17,7 @@ if [[ "$currentCommand" == *"vim"* ]]; then
 
 	# check flags inside of nvim
 
-	noArgs = true
+	noArgs=true
 
 	while getopts 'atc' flag; do
 		case "${flag}" in
@@ -35,7 +35,7 @@ if [[ "$currentCommand" == *"vim"* ]]; then
 				# 	tmux send-keys -t orgmode Escape ":e ~/ORGMODE/refile.org"
 				# 	exit 1 ;;
 			esac
-			noArgs = false
+			noArgs=false
 		done
 
 		[[ "$noArgs" == "true" ]] && tmux send-keys -t orgmode Escape ":e ~/ORGMODE/refile.org" Enter
@@ -46,7 +46,7 @@ if [[ "$currentCommand" == *"vim"* ]]; then
 
 	# check flags outside of nvim
 
-	noArgs = true
+	noArgs=true
 
 	while getopts 'atc' flag; do
 		case "${flag}" in
@@ -62,7 +62,7 @@ if [[ "$currentCommand" == *"vim"* ]]; then
 				tmux send-keys -t orgmode C-z "cd ~/ORGMODE/; nvim -c 'normal 1 oct' refile.org" Enter
 				;;
 		esac
-			noArgs = false
+			noArgs=false
 	done
 
 		[[ "$noArgs" == "true" ]] && tmux send-keys -t orgmode C-z "cd ~/ORGMODE/; nvim refile.org" Enter

@@ -1,5 +1,5 @@
 #!/bin/sh
-cd ~/Dropbox/ORGMODE/
+cd ~/ORGMODE/
 # nvim "$(fzf)"
 file="$(fzf)"
 if [[ $file ]]; then
