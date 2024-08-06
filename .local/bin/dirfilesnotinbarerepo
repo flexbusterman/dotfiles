@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# List files in the bare repository
+/usr/bin/git --git-dir=$HOME/.dot.git/ --work-tree=$HOME ls-tree -r HEAD --name-only > /tmp/bare_repo_files.txt
+
+# List files in the current directory
+find . -type f | sed 's|^\./||' > /tmp/current_dir_files.txt
+
+# Compare the lists and find files that are only in the current directory
+comm -23 <(sort /tmp/current_dir_files.txt) <(sort /tmp/bare_repo_files.txt)

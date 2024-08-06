@@ -8,11 +8,7 @@ return {
 		require("orgmode").setup({
 			org_agenda_files = "~/ORGMODE/**/*",
 			org_agenda_start_on_weekday = false,
-<<<<<<< Updated upstream
 			org_default_notes_file = "~/ORGMODE/refile.org",
-=======
-			org_default_notes_file = "~/Dropbox/ORGMODE/refile.org",
->>>>>>> Stashed changes
 			win_split_mode = "tabnew",
 			org_priority_highest = "A",
 			org_priority_default = "D",
