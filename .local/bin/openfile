@@ -50,6 +50,12 @@ case "$filetype" in
 			rpp|RPP)
 				reaper "$@"
 				;;
+			7z|ace|gz|jar|rar|shar|tar|tgz|xar|xz|zip)
+				for file in "$@"
+				do
+					7z x -y "$file" -o"${file%.*}"
+				done
+				;;
 			*)
 				# start files in separate tabs in nvim
 				st -e nvim -O "$@"
