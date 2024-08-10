@@ -4,5 +4,5 @@ fileList=( Trolltech.conf akregatorrc baloofilerc bluedevilglobalrc kactivityman
 # for each file in fileList, echo the name
 for file in ${fileList[*]}
 do
-	git --git-dir=/home/flex/.dot.git/ --work-tree=/home/flex add $file
+	git --git-dir=$HOME/.dot.git/ --work-tree=$HOME add $file
 done
