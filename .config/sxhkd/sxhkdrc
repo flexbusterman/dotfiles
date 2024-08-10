@@ -39,7 +39,7 @@ alt + shift + c
 alt + d
 	typedate
 alt + shift + d
-	st -e dwmrebuild
+	$TERMINAL -e dwmrebuild
 alt + control + d
 	mpc --host ~/.mpd/socket clear
 # alt + shift + control + d
@@ -155,9 +155,9 @@ alt + control + m
 # notify-send "shift + control + m"
 
 alt + n
-	st -e ~/.local/bin/fzfnotes
+	$TERMINAL -e ~/.local/bin/fzfnotes
 alt + shift + n
-	st -e ~/.local/bin/grepnotes
+	$TERMINAL -e ~/.local/bin/grepnotes
 # alt + control + n
 # notify-send "alt + control + n"
 # alt + shift + control + n
@@ -229,13 +229,13 @@ alt + shift + s
 # notify-send "shift + control + s"
 
 alt + t
-	st -e btop
+	$TERMINAL -e btop
 alt + shift + t
-	st -e nvtop
+	$TERMINAL -e nvtop
 # alt + control + t
 # notify-send "alt + control + t"
 alt + shift + control + t
-	st -e tt -theme dracula
+	$TERMINAL -e tt -theme dracula
 # shift + control + t
 # notify-send "shift + control + t"
 
@@ -316,11 +316,12 @@ alt + y
 alt + Return
 	dmenu_run
 alt + shift + Return
-	st
+	$TERMINAL -e tmux new-session -A -s main
 alt + control + Return
-	st -e ncmpcpp
+	$TERMINAL -e ncmpcpp
 alt + shift + control + Return
-	tidal-hifi
+	$TERMINAL
+	# tidal-hifi
 
 alt + control + shift + space
 	musicrandomfolder
@@ -329,9 +330,9 @@ alt + control + space
 	musicplaypause
 
 alt + comma
-	st -e ranger
+	$TERMINAL -e ranger
 alt + shift + comma
-	st -e lfrun
+	$TERMINAL -e lfrun
 
 alt + period
 	qutebrowser
@@ -339,7 +340,7 @@ alt + shift + period
 	bravestart
 
 alt + slash
-	st -e ~/.local/bin/shortcuts
+	$TERMINAL -e ~/.local/bin/shortcuts
 alt + shift + slash
 	typesnippet
 

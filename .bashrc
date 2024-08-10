@@ -31,7 +31,7 @@ export XDG_CACHE_HOME="$HOME/.cache"
 # export JAVA_HOME=/usr/lib/jvm/java-21-openjdk/
 export HEADPHONES='50:C2:75:29:C7:6E'
 export MPD_PORT=49152
-export MPD_HOST="/home/flex/.mpd/socket"
+export MPD_HOST="~/.mpd/socket"
 export RANGER_LOAD_DEFAULT_RC=FALSE
 
 export __NV_PRIME_RENDER_OFFLOAD=1
@@ -41,12 +41,8 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 export PATH=$PATH:$HOME/.local/bin/
 export PATH=$PATH:$HOME/.local/bin/statusbar/
 
-if [ -f ~/.envPrivate ]; then
-    source ~/.envPrivate
-fi
+[ -f ~/.envPrivate ] && source ~/.envPrivate
 
-#PS1='\u@\h \W \$ '
-# standard colors
 R='\[\e[38;2;255;100;100m\]'
 G='\[\e[38;2;100;255;100m\]'
 B='\[\e[38;2;100;100;255m\]'
@@ -63,12 +59,19 @@ alias ls="exa"
 alias lt="exa -lar --sort=size"
 alias rf='rm -rf'
 alias grep='grep --color=auto'
-alias vn="cd /home/flex/.config/nvim/; nvim init.lua"
-alias vb="cd /home/flex/; nvim .bashrc"
-alias c="cd /home/flex/.config/"
-alias vr="cd ~/Dropbox/ORGMODE/; nvim refile.org"
+alias c="cd ~/.config/"
+alias vr="cd ~/ORGMODE/; nvim refile.org"
 alias q=exit
 alias pg="ping google.com"
+
+# commonly edited file shortcuts
+alias vn="cd ~/.config/nvim/; nvim init.lua"
+alias vb="cd ~; nvim .bashrc"
+alias vx="cd ~; nvim .xinitrc"
+alias vs="cd ~/.config/sxhkd/; nvim sxhkdrc"
+alias vp="cd ~/.local/bin/; nvim flarbspackagesmain"
+alias ve="cd ~/.local/bin/; nvim flarbspackagesextra"
+alias vf="cd ~/.local/bin/; nvim flarbsinstall"
 
 # navigation
 alias d='cd ~/Dropbox/'
@@ -130,3 +133,5 @@ ssh() {
 
 source /usr/share/fzf/completion.bash
 source /usr/share/fzf/key-bindings.bash
+alias dot='/usr/bin/git --git-dir=/home/flex/.dot.git/ --work-tree=/home/flex'
+alias pdot='/usr/bin/git --git-dir=/home/flex/.pdot.git/ --work-tree=/home/flex'
