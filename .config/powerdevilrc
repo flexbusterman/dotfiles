@@ -1,3 +1,9 @@
+[AC][Display]
+DisplayBrightness=25
+TurnOffDisplayIdleTimeoutSec=1800
+TurnOffDisplayIdleTimeoutWhenLockedSec=300
+UseProfileSpecificDisplayBrightness=true
+
 [AC][SuspendAndShutdown]
 AutoSuspendAction=0
 PowerButtonAction=1

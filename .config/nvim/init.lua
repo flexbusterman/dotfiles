@@ -179,6 +179,7 @@ vim.opt.wrap = true
 
 vim.opt.swapfile = false
 vim.opt.backup = false
+vim.opt.autoread = true
 
 -- no autoamtic commenting on new lines
 vim.opt.formatoptions = ""

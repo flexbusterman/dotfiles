@@ -1,0 +1,6 @@
+[Daemon]
+Timeout=30
+
+[Greeter][Wallpaper][org.kde.image][General]
+Image=/home/flex/.local/share/flex/background.jpg
+PreviewImage=/home/flex/.local/share/flex/background.jpg

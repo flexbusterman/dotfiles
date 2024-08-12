@@ -72,6 +72,7 @@ alias vs="cd ~/.config/sxhkd/; nvim sxhkdrc"
 alias vp="cd ~/.local/bin/; nvim flarbspackagesmain"
 alias ve="cd ~/.local/bin/; nvim flarbspackagesextra"
 alias vf="cd ~/.local/bin/; nvim flarbsinstall"
+alias vp="cd ~/.local/bin/; nvim flarbsinstallpersonal"
 
 # navigation
 alias d='cd ~/Dropbox/'
@@ -108,6 +109,15 @@ dp() {
   dot add -u
   dot commit -m "$result"
   dot push
+}
+
+gp() {
+  eval "$(ssh-agent -s)"
+  ssh-add ~/.ssh/git
+  result="$*"
+  git add -u
+  git commit -m "$result"
+  git push
 }
 
 pdp() {
