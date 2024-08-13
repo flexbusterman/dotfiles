@@ -1,6 +1,6 @@
 #!/bin/bash
 
-currentAlbum=$(mpc --host ~/.mpd/socket playlist -f %file% | awk -F/ 'NR==1 {print $(NF-1)}')
+currentAlbum=$(mpc --host /run/user/1000/mpd/socket playlist -f %file% | awk -F/ 'NR==1 {print $(NF-1)}')
 # notify-send "Current:" "$currentAlbum"
 
 chooseNewAlbum(){
@@ -16,7 +16,7 @@ while [[ "$currentAlbum" == "$newAlbumTitle" ]]; do
   chooseNewAlbum
 done
 
-mpc --host ~/.mpd/socket clear
+mpc --host /run/user/1000/mpd/socket clear
 
 [[ -f /tmp/album ]] && rm /tmp/album
 [[ -f /tmp/albumsorted ]] && rm /tmp/albumsorted
@@ -25,9 +25,9 @@ cat /tmp/album | sort >> /tmp/albumsorted
 input=/tmp/albumsorted
 while IFS= read -r line
 do
-	mpc --host ~/.mpd/socket add "$line"
+	mpc --host /run/user/1000/mpd/socket add "$line"
 done < "$input"
 
 notify-send "$newAlbumTitle"
 
-mpc --host ~/.mpd/socket play
+mpc --host /run/user/1000/mpd/socket play

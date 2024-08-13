@@ -10,7 +10,7 @@ case "$filetype" in
 		mpv "$@"
 		;;
 	audio/*)
-		mpc --host ~/.mpd/socket clear
+		mpc --host /run/user/1000/mpd/socket clear
 		musicadd "$@"
 		;;
 	application/vnd.openxmlformats-officedocument.spreadsheetml.sheet)
@@ -34,7 +34,7 @@ case "$filetype" in
 				libreoffice "$@"
 				;;
 			ahx|hes)
-				mpc --host ~/.mpd/socket clear
+				mpc --host /run/user/1000/mpd/socket clear
 				musicadd "$@"
 				;;
 			*)
