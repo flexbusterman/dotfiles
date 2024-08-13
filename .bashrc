@@ -16,7 +16,7 @@ export HISTFILESIZE=
 export HISTSIZE=
 
 # environment variables
-export TERMINAL=st
+export TERMINAL=kitty
 export EDITOR=nvim
 export BROWSER=qutebrowser
 export SHELL=/bin/bash

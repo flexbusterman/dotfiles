@@ -229,7 +229,8 @@ alt + shift + s
 # notify-send "shift + control + s"
 
 alt + t
-	$TERMINAL -e btop
+	$TERMINAL -e htop
+	# $TERMINAL -e btop
 alt + shift + t
 	$TERMINAL -e nvtop
 # alt + control + t

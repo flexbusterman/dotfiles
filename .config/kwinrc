@@ -1,10 +1,22 @@
+[Compositing]
+Enabled=false
+WindowsBlockCompositing=false
+
 [Desktops]
 Id_1=dcbfa011-58d8-475e-a671-021630f83d16
-Number=1
+Id_2=3dbaa442-4d3b-430d-906d-b6df40d51d13
+Id_3=4604284c-8d42-4cc2-8122-92e94de5a908
+Id_4=cd5e1728-e833-4b4f-8eea-f13b760c3311
+Id_5=fa8b418a-7f2d-4008-a9a9-086b1dfb30aa
+Id_6=1ae7f336-1748-453d-9587-f813c27b8a19
+Id_7=680bde8a-cc3d-4b43-a162-6803f5a62611
+Id_8=c0d94f11-c350-4f3e-b773-65be5a556737
+Id_9=52e3b03e-9a60-48e4-a4b0-08127cae6738
+Number=9
 Rows=1
 
 [Effect-diminactive]
-Strength=15
+Strength=30
 
 [Effect-mousemark]
 Color=128,255,255

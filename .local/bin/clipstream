@@ -14,7 +14,7 @@ then
 		# strips duplicate time values
 		clipboard=$(echo $clipboard | sed 's/&[^&]*//')
 		# mpv --ytdl-raw-options=netrc=,mark-watched= "$clipboard"
-		mpv --vo=gpu --hwdec=auto --ytdl-raw-options=mark-watched=,cookies-from-browser="brave",embed-chapters= "$clipboard"
+		mpv --vo=vaapi --hwdec=vaapi --ytdl-raw-options=mark-watched=,cookies-from-browser="brave",embed-chapters= "$clipboard"
 	else
 		# notify-send "not youtube"
 		# strips time and path info
@@ -25,7 +25,7 @@ then
 		subdir=$(echo $searchresult | sed 's#[^/]*$##')
 		filename=$(echo $searchresult | sed 's/.*\///')
 		cd $subdir
-		mpv --vo=gpu --hwdec=auto "$filename"
+		mpv --vo=vaapi --hwdec=vaapi "$filename"
 		# mpv "$(find . -name "$escaped")" || notify-send 'Clipboard not valid'
 	fi
 else
