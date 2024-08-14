@@ -29,6 +29,7 @@ mousemarkEnabled=true
 [Script-krohnkite]
 directionalKeyDwm=true
 directionalKeyFocus=false
+floatUtility=false
 newWindowPosition=1
 noTileBorder=true
 
