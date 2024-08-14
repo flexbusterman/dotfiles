@@ -149,5 +149,3 @@ fi
 
 source /usr/share/fzf/completion.bash
 source /usr/share/fzf/key-bindings.bash
-alias dot='/usr/bin/git --git-dir=/home/flex/.dot.git/ --work-tree=/home/flex'
-alias pdot='/usr/bin/git --git-dir=/home/flex/.pdot.git/ --work-tree=/home/flex'
