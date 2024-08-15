@@ -148,5 +148,12 @@ if [[ -n $DISPLAY ]]; then
 fi
 }
 
+if [ ! -d ~/.local/share/blesh/ ]; then  echo "Installing ble.sh";
+git clone --recursive --depth 1 --shallow-submodules https://github.com/akinomyoga/ble.sh.git
+make -C ble.sh install PREFIX=~/.local
+fi
+
+source ~/.local/share/blesh/ble.sh
+
 source /usr/share/fzf/completion.bash
 source /usr/share/fzf/key-bindings.bash
