@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 # xrdb ~/.Xresources
 feh --bg-fill ~/.local/share/flex/background.jpg
 remaps &

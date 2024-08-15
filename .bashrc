@@ -2,6 +2,11 @@
 # ~/.bashrc
 #
 
+# .bashrc refuses to not be loaded, so this is a workaround to instantly start zsh
+exec zsh
+
+echo "Sourcing .bashrc at $(date '+%Y-%m-%d %H:%M:%S.%N')" >> /tmp/bashrc_debug.log
+
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
