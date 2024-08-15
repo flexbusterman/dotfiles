@@ -19,6 +19,7 @@ export HISTSIZE=
 export TERMINAL=kitty
 export EDITOR=nvim
 export BROWSER=qutebrowser
+export QT_QPA_PLATFORMTHEME=qt6ct
 export SHELL=/bin/bash
 export MANPAGER="nvim +Man!"
 export XDG_DATA_HOME="$HOME/.local/share"
