@@ -23,9 +23,10 @@ bindkey -v '^?' backward-delete-char
 bindkey '^P' history-beginning-search-backward
 bindkey '^N' history-beginning-search-forward
 
-bindkey '^E' end-of-line
+bindkey '^E' autosuggest-execute
+# bindkey '^E' end-of-line
 # Pressing control + enter accepts and executes the current suggestion
-bindkey '^' autosuggest-execute
+# bindkey '^' autosuggest-execute
 
 # environment variables
 export TERMINAL=kitty
@@ -77,6 +78,7 @@ alias vp="cd ~/.local/bin/; nvim flarbspackagesmain"
 alias ve="cd ~/.local/bin/; nvim flarbspackagesextra"
 alias vf="cd ~/.local/bin/; nvim flarbsinstall"
 alias vp="cd ~/.local/bin/; nvim flarbsinstallpersonal"
+alias vt="cd ~/; nvim .tmux.conf"
 
 # navigation
 alias d='cd ~/Dropbox/'
@@ -152,8 +154,8 @@ fi
 }
 
 # history
-export HISTSIZE=100000
-export SAVEHIST=20000
+export HISTSIZE=1000000
+export SAVEHIST=200000
 export HISTFILE="$HOME/.history/zsh/history"
 setopt hist_ignore_dups     # do not record an event that was just recorded again
 setopt hist_ignore_all_dups # delete an old recorded event if a new event is a duplicate
