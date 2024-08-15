@@ -154,8 +154,8 @@ fi
 }
 
 # history
-export HISTSIZE=1000000
-export SAVEHIST=200000
+HISTSIZE=10000000
+SAVEHIST=10000000
 export HISTFILE="$HOME/.history/zsh/history"
 setopt hist_ignore_dups     # do not record an event that was just recorded again
 setopt hist_ignore_all_dups # delete an old recorded event if a new event is a duplicate
