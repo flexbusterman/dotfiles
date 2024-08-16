@@ -1,5 +1,5 @@
 [Adapters]
-E0:0A:F6:5F:2E:5C_powered=true
+E0:0A:F6:5F:2E:5C_powered=false
 
 [Devices]
 connectedDevices=

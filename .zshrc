@@ -23,7 +23,7 @@ bindkey -v '^?' backward-delete-char
 bindkey '^P' history-beginning-search-backward
 bindkey '^N' history-beginning-search-forward
 
-bindkey '^I' autosuggest-execute
+bindkey '^ ' autosuggest-execute
 # bindkey '^E' end-of-line
 # Pressing control + enter accepts and executes the current suggestion
 # bindkey '^' autosuggest-execute
