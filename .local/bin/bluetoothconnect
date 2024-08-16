@@ -17,6 +17,8 @@ fi
 # Doing this in a tmux session running in the background.
 # For some reason the bluetoothctl scan doesn't work properly in the background
 
+[[ $(bluetoothctl show | awk '/Powered/ {print $2}') == "no" ]] && echo "Bluetooth controller is not powered" && bluetoothctl power on && "Bluetooth controller powered on"
+
 continue=$(echo -e "Yes\nNo" | dmenu -p "Do you want to reconnect the device?")
 [[ $continue != "Yes" ]] && echo "Quitting" && notify-send "Quitting" && exit 1
 pairing=$(echo -e "Yes\nNo" | dmenu -p "Confirm that your device is in pairing mode")

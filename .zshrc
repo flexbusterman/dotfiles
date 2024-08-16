@@ -83,6 +83,9 @@ alias vf="cd ~/.local/bin/; nvim flarbsinstall"
 alias vp="cd ~/.local/bin/; nvim flarbsinstallpersonal"
 alias vt="cd ~/; nvim .tmux.conf"
 
+# script shortcuts
+alias fn="fzfnotes"
+
 # navigation
 alias d='cd ~/Dropbox/'
 alias D='cd ~/Downloads/'
