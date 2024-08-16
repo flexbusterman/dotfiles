@@ -8,6 +8,7 @@ return {
 		"lua",
 		"sh",
 		"conf",
+		"python",
 	},
 	config = function()
 		require("codeium").setup({})
