@@ -217,7 +217,7 @@ alt + shift + control + r
 # notify-send "shift + control + r"
 
 alt + s
-	st -T SuperCollider -e tmuxsession SuperCollider 'supercollider'
+	$TERMINAL -T SuperCollider -e tmuxsession SuperCollider 'supercollider'
 alt + shift + s
 	tmux kill-session -t SuperCollider; tmux kill-session -t tidal;
 
@@ -371,7 +371,7 @@ alt + shift + F3
 	displayselect
 
 alt + F4
-	st -T PulseMixer -e pulsemixer
+	$TERMINAL -T PulseMixer -e pulsemixer
 alt + shift + F4
 	pavucontrol
 

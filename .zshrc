@@ -32,7 +32,7 @@ bindkey '^ ' autosuggest-execute
 # bindkey '^' autosuggest-execute
 
 # environment variables
-export TERMINAL=kitty
+export TERMINAL=st
 export EDITOR=nvim
 export BROWSER=qutebrowser
 export QT_QPA_PLATFORMTHEME=qt6ct
@@ -82,6 +82,7 @@ alias ve="cd ~/.local/bin/; nvim flarbspackagesextra"
 alias vf="cd ~/.local/bin/; nvim flarbsinstall"
 alias vp="cd ~/.local/bin/; nvim flarbsinstallpersonal"
 alias vt="cd ~/; nvim .tmux.conf"
+alias vq="cd ~/.config/qutebrowser/; nvim autoconfig.yml"
 
 # script shortcuts
 alias fn="fzfnotes"

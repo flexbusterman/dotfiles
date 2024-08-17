@@ -69,4 +69,4 @@ if [[ "$currentCommand" == *"vim"* ]]; then
 
 fi
 
-st -e tmux attach -t orgmode
+$TERMINAL -e tmux attach -t orgmode

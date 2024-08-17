@@ -3,25 +3,25 @@
 feh --bg-fill ~/.local/share/flex/background.jpg
 remaps &
 # xset fp+ /usr/share/fonts/TTF/FiraMono-Medium.ttf
-# picom &
+picom &
 unclutter --timeout 1 &
 udiskie -ta &
 # xss-lock -- sh -c "sleep 0.2; /home/$USER/.local/bin/slockunmute" &
 # mailsync &
-# dropbox &
+dropbox &
 dunst &
 # mpd &
-# qpwgraph -m &
-# pidof dwmblocks || dwmblocks &
+qpwgraph -m &
+pidof dwmblocks || dwmblocks &
 # srandrd displayhandler &
-# blueberry-tray &
+blueberry-tray &
 # syncthing &
 syncthingtray --wait &
-# xdotool mousemove $(xdotool getdisplaygeometry | awk '{print $1-1, $2-1}') &
+# dotool mousemove $(xdotool getdisplaygeometry | awk '{print $1-1, $2-1}') &
 tmux new-session -d -s main &
 sxhkd &
 # rfkill unblock bluetooth &
-# exec dwmstart
-export DESKTOP_SESSION=plasma
+exec dwmstart
+# export DESKTOP_SESSION=plasma
 # export KDEWM=~/.local/bin/dwmstart
-exec startplasma-x11
+# exec startplasma-x11
