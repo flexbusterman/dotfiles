@@ -95,7 +95,8 @@ alt + control + h
 # notify-send "alt + i"
 alt + shift + i
 	xcalib -i -a
-# alt + control + i
+alt + control + i
+	punch --in
 # notify-send "alt + control + i"
 # alt + shift + control + i
 # notify-send "alt + shift + control + i"
@@ -158,8 +159,8 @@ alt + n
 	$TERMINAL -e ~/.local/bin/fzfnotes
 alt + shift + n
 	$TERMINAL -e ~/.local/bin/grepnotes
-# alt + control + n
-# notify-send "alt + control + n"
+alt + control + n
+	punch --new
 # alt + shift + control + n
 # notify-send "alt + shift + control + n"
 # shift + control + n
@@ -176,7 +177,8 @@ alt + o; r;
 	orgmux # tmux orgmode default (refile)
 # alt + shift + o
 # notify-send "alt + shift + o"
-# alt + control + o
+alt + control + o
+	punch --out
 # notify-send "alt + control + o"
 # alt + shift + control + o
 # notify-send "alt + shift + control + o"
