@@ -83,6 +83,7 @@ alias vf="cd ~/.local/bin/; nvim flarbsinstall"
 alias vp="cd ~/.local/bin/; nvim flarbsinstallpersonal"
 alias vt="cd ~/; nvim .tmux.conf"
 alias vq="cd ~/.config/qutebrowser/; nvim autoconfig.yml"
+alias vh="cd ~/.history/zsh/; nvim history"
 
 # script shortcuts
 alias fn="fzfnotes"

@@ -10,7 +10,7 @@ else
 	[[ $(bluetoothctl show | awk '/Powered/ {print $2}') == "no" ]] && echo "Bluetooth controller is not powered" && bluetoothctl power on && "Bluetooth controller powered on"
 	bluetoothctl connect $device
 	sleep 2
-	[[ $(bluetoothctl devices Connected) == *"$device"* ]] && echo "Connection successful" && notify-send "Connection successful"
+	[[ $(grep -q $(bluetoothctl devices Connected) <<< "$device") ]] && echo "Connection successful" && notify-send "Connection successful"
   exit 0
 fi
 
@@ -58,7 +58,7 @@ echo "Killing the tmux session bluetooth"
 notify-send "Killing the tmux session bluetooth"
 tmux kill-session -t bluetooth
 
-if [[ $(bluetoothctl devices Connected) == *"$device"* ]]; then
+if [[ $(grep -q $(bluetoothctl devices Connected) <<< "$device") ]]; then
 	echo "Device reconnect succeeded"
 	notify-send "Device reconnect succeeded"
 	exit 0
