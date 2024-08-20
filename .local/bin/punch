@@ -1,127 +1,130 @@
 #!/bin/bash
 
 usage() {
-    echo "Usage: punch [OPTIONS]"
-    echo ""
-    echo "A script to manage project time tracking with Watson."
-    echo ""
-    echo "Options:"
-    echo "  -i, --in            Punch in the latest used project."
-    echo "                      If no project is found, you will be prompted to enter one."
-    echo ""
-    echo "  -o, --out           Punch out of the current project."
-    echo "                      If no project is currently punched in, an error will be shown."
-    echo ""
-    echo "  --new               Start a new project. If the project already exists,"
-    echo "                      it will start the existing project instead."
-    echo ""
-    echo "  -h, --help          Display this help message and exit."
-    echo ""
-    echo "Examples:"
-    echo "  punch -i            Punch in the latest used project."
-    echo "  punch --out         Punch out of the current project."
-    echo "  punch --new         Start a new project or an existing one based on input."
+	echo "Usage: punch [OPTIONS]"
+	echo ""
+	echo "A script to manage project time tracking with Watson."
+	echo ""
+	echo "Options:"
+	echo "  -i, --in            Punch in the latest used project."
+	echo "                      If no project is found, you will be prompted to enter one."
+	echo ""
+	echo "  -o, --out           Punch out of the current project."
+	echo "                      If no project is currently punched in, an error will be shown."
+	echo ""
+	echo "  --select            Select an existing project from the list or start a new one."
+	echo ""
+	echo "  -h, --help          Display this help message and exit."
+	echo ""
+	echo "Examples:"
+	echo "  punch -i            Punch in the latest used project."
+	echo "  punch --out         Punch out of the current project."
+	echo "  punch --select      Select a project from the list or start a new one."
 }
 
 getLatestProject() {
-    if [ -f ~/.config/watson/latest ]; then
-        latest=$(cat ~/.config/watson/latest)
-    else
-        latest=""
-    fi
+	if [ -f ~/.config/watson/latest ]; then
+		latest=$(cat ~/.config/watson/latest)
+	else
+		latest=""
+	fi
 }
 
 chooseProject() {
-    latest=$(echo "" | dmenu -p "No recent project found. Enter project name:")
-    if [ -n "$latest" ]; then
-        echo "$latest" > ~/.config/watson/latest
-    fi
+	latest=$(echo "" | dmenu -p "No recent project found. Enter project name:")
+	if [ -n "$latest" ]; then
+		echo "$latest" > ~/.config/watson/latest
+	fi
 }
 
 checkWatsonRunning() {
-    watson_status=$(watson status 2>&1)
-    if echo "$watson_status" | grep -q "Project"; then
-        echo "Error: Watson is already tracking a project."
-        notify-send "Watson already running" "$watson_status"
-        return 1
-    else
-        return 0
-    fi
+	watson_status=$(watson status 2>&1)
+	if echo "$watson_status" | grep -q "Project"; then
+		echo "$watson_status"
+		notify-send "$watson_status"
+		return 1
+	else
+		return 0
+	fi
 }
 
-startNewProject() {
-    project=$(echo "" | dmenu -p "Enter project name:")
-    if [ -n "$project" ]; then
-        # Save the project as the latest used
-        echo "$project" > ~/.config/watson/latest
-        # Start the project with Watson
-        if watson start "$project"; then
-            echo "Started project $project"
-            notify-send "Started project $project"
-        else
-            echo "Failed to start project $project"
-            notify-send "Failed to start project $project"
-        fi
-    else
-        echo "No project name entered."
-        notify-send "No project name entered."
-    fi
+selectProject() {
+	# Get the list of projects, skip the first line, and pass to dmenu
+	project=$(watson projects | tail -n +2 | dmenu -p "Select or enter project name:")
+
+	# If a project was selected or entered
+	if [ -n "$project" ]; then
+		# Save the project as the latest used
+		echo "$project" > ~/.config/watson/latest
+		# Start the project with Watson
+		if watson start "$project"; then
+			echo "Started project $project"
+			notify-send "Started project $project"
+		else
+			echo "Failed to start project $project"
+			notify-send "Failed to start project $project"
+		fi
+	else
+		echo "No project name entered."
+		notify-send "No project name entered."
+	fi
 }
 
 while [ "$1" != "" ]; do
-    case $1 in
-    -i | --in)
-        shift
-        checkWatsonRunning
-        if [ $? -eq 0 ]; then
-            getLatestProject
-            if [ -z "$latest" ]; then
-                chooseProject
-            fi
-            if [ -n "$latest" ]; then
-                if watson start "$latest"; then
-                    echo "Punched in $latest"
-                    notify-send "Punched in $latest"
-                else
-                    echo "Failed to punch in $latest"
-                    notify-send "Failed to punch in $latest"
-                fi
-            else
-                echo "No project selected."
-                notify-send "No project selected."
-            fi
-        fi
-        ;;
-    -o | --out)
-        shift
-        getLatestProject
-        if [ -z "$latest" ]; then
-            echo "No project to punch out from."
-            notify-send "No project to punch out from."
-        else
-            if watson stop; then
-                echo "Punched out from $latest"
-                notify-send "Punched out from $latest"
-            else
-                echo "Failed to punch out from $latest"
-                notify-send "Failed to punch out from $latest"
-            fi
-        fi
-        ;;
-    --new)
-        shift
-        checkWatsonRunning
-        if [ $? -eq 0 ]; then
-            startNewProject
-        fi
-        ;;
-    -h | --help)
-        usage
-        ;;
-    *)
-        usage
-        exit 1
-        ;;
-    esac
-    shift
+	case $1 in
+		-i | --in)
+			shift
+			checkWatsonRunning
+			if [ $? -eq 0 ]; then
+				getLatestProject
+				if [ -z "$latest" ]; then
+					chooseProject
+				fi
+				if [ -n "$latest" ]; then
+					if watson start "$latest"; then
+						echo "Punched in $latest"
+						notify-send "Punched in $latest"
+					else
+						echo "Failed to punch in $latest"
+						notify-send "Failed to punch in $latest"
+					fi
+				else
+					echo "No project selected."
+					notify-send "No project selected."
+				fi
+			fi
+			;;
+		-o | --out)
+			shift
+			getLatestProject
+			if [ -z "$latest" ]; then
+				echo "No project to punch out from."
+				notify-send "No project to punch out from."
+			else
+				if watson stop; then
+					echo "Punched out from $latest"
+					notify-send "Punched out from $latest"
+					notify-send "$(watson report | grep $latest)"
+				else
+					echo "Failed to punch out from $latest"
+					notify-send "Failed to punch out from $latest"
+				fi
+			fi
+			;;
+		--select)
+			shift
+			checkWatsonRunning
+			if [ $? -eq 0 ]; then
+				selectProject
+			fi
+			;;
+		-h | --help)
+			usage
+			;;
+		*)
+			usage
+			exit 1
+			;;
+	esac
+	shift
 done

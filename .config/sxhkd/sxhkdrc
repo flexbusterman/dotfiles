@@ -98,8 +98,8 @@ alt + shift + i
 alt + control + i
 	punch --in
 # notify-send "alt + control + i"
-# alt + shift + control + i
-# notify-send "alt + shift + control + i"
+alt + shift + control + i
+	punch --select
 # shift + control + i
 # notify-send "shift + control + i"
 
@@ -159,8 +159,8 @@ alt + n
 	$TERMINAL -e ~/.local/bin/fzfnotes
 alt + shift + n
 	$TERMINAL -e ~/.local/bin/grepnotes
-alt + control + n
-	punch --new
+# alt + control + n
+# notify-send "alt + control + n"
 # alt + shift + control + n
 # notify-send "alt + shift + control + n"
 # shift + control + n
