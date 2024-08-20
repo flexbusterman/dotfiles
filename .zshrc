@@ -57,7 +57,7 @@ export PATH=$PATH:$HOME/.local/bin/statusbar/
 [ -f ~/.envPrivate ] && source ~/.envPrivate
 
 # aliases
-alias ls='ls --color=auto'
+alias ls='exa --group-directories-first'
 alias la="exa -la --group-directories-first"
 alias less="bat --theme=Dracula"
 alias lg="exa -la | grep --color=always -i"

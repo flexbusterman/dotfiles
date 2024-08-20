@@ -55,7 +55,7 @@ B='\[\e[38;2;100;100;255m\]'
 W='\[\e[0m\]'
 PS1="$R\u$W@$B\h$W:$G\w$W \$ "
 
-alias ls='ls --color=auto'
+alias ls='ls --color=auto --group-directories-first'
 
 alias la="exa -la --group-directories-first"
 alias less="bat --theme=Dracula"
