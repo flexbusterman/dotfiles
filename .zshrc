@@ -97,6 +97,7 @@ alias m='cd /run/media/$USER/'
 alias g='cd ~/.local/src/'
 alias f='cd ~/.flarbs/'
 alias o='cd ~/Dropbox/ORGMODE/'
+alias v='cd ~/Downloads/VIDEO/'
 
 # save current dir in workdir file
 alias sw='echo $PWD > ~/.workdir'
