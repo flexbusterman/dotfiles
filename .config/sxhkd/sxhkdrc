@@ -41,9 +41,9 @@ alt + d
 alt + shift + d
 	$TERMINAL -e dwmrebuild
 alt + control + d
-	mpc --host ~/.mpd/socket clear
-alt + shift + control + d
 	punch --delete
+alt + shift + control + d
+	mpc --host ~/.mpd/socket clear
 # shift + control + d
 # notify-send "shift + control + d"
 
