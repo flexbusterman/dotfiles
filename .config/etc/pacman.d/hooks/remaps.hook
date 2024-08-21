@@ -1,0 +1,10 @@
+# Force disks to sync to reduce the risk of data corruption
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Operation = Remove
+Type = Package
+Target = *
+[Action]
+When = PostTransaction
+Exec = /usr/bin/su - flex -c '/home/flex/.local/bin/remaps'
