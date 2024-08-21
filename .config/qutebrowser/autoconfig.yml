@@ -21,6 +21,8 @@ settings:
     global: rgba(200,200,200,1)
   colors.hints.match.fg:
     global: rgba(255,255,255,1)
+  colors.webpage.bg:
+    global: black
   colors.webpage.darkmode.enabled:
     global: false
   content.blocking.enabled:
@@ -30,9 +32,6 @@ settings:
   content.cookies.accept:
     '*://qutebrowser.org/*': all
     https://www.youtube.com/: all
-  content.javascript.clipboard:
-    https://chatgpt.com/: access
-    https://github.com/: access
   content.geolocation:
     https://www.1177.se: true
     https://www.elgiganten.se: true
@@ -40,6 +39,9 @@ settings:
     https://www.google.com.ar: false
     https://www.sj.se: true
     https://www.stockholmparkering.se: true
+  content.javascript.clipboard:
+    https://chatgpt.com/: access
+    https://github.com/: access
   content.media.audio_capture:
     https://app.zoom.us: true
     https://meet.google.com: true
@@ -67,7 +69,6 @@ settings:
     global: 1
   fonts.default_family:
     global: Fira Mono Medium
-    # global: "PxPlus IBM VGA 8x16"
   fonts.default_size:
     global: 14px
   fonts.web.family.standard:
@@ -78,9 +79,9 @@ settings:
     global: about:blank
   url.searchengines:
     global:
+      B: https://www.blocket.se/annonser/hela_sverige?q={}&f=p
       D: https://duckduckgo.com/?q={}
       DEFAULT: https://www.google.com/search?q={}
-      B: https://www.blocket.se/annonser/hela_sverige?q={}&f=p
       b: https://bandcamp.com/search?q={}
       d: https://www.dropbox.com/search/work?path=%2F&query={}
       f: https://freesound.org/search/?g=1&q={}&f=type%3A%22wav%22+samplerate%3A%2244100%22+channels%3A%222%22+bitdepth%3A%2216%22+&s=Automatic%20by%20relevance&cluster_id=None&w=
@@ -88,7 +89,6 @@ settings:
       m: https://www.google.com/maps/search/{}
       n: https://search.nixos.org/packages?channel=unstable&query={}
       o: https://odysee.com/$/search?q={}
-      # p: https://pirate-bays.net/search?q={}
       p: https://thepiratebay10.info/s/?page=0&orderby=0&q={}
       r: https://www.exchange-rates.org/exchange-rate-history/eur-sek-{}
       t: https://www.opensubtitles.org/en/search2/sublanguageid-eng/subtrusted-on/hd-on/moviename-{}
