@@ -22,14 +22,17 @@ echo "Offset: $OFFSET"
 DISPLAYSTRING=":0.0$OFFSET"
 
 AUDIODEVICE=$(pactl list short sources | grep "$(pactl info | grep "Default Sink" | cut -d' ' -f3).monitor" | cut -f2)
+
+# crf: 0 is lossless, 23 is default, and 51 is worst quality
 ffmpeg -y \
+-hwaccel cuda \
 -f x11grab \
--framerate 30 \
+-framerate 60 \
 -s $DIMENSIONS \
 -i "$DISPLAYSTRING" \
 -f pulse -thread_queue_size 1024 -i "$AUDIODEVICE" \
--c:v h264 \
--crf 0 -preset ultrafast -c:a flac \
+-c:v libx264 -crf 30 \
+-c:a flac \
 "$HOME/Downloads/screencast-output-flac-$(date '+%y%m%d-%H%M-%S').mkv" &
 # store the PID of the most recently executed background process
 echo $! > /tmp/recordingpid && notify-send "Started recording"
