@@ -19,7 +19,7 @@ if [[ "$currentCommand" == *"vim"* ]]; then
 
 	noArgs=true
 
-	while getopts 'atc' flag; do
+	while getopts 'atcr' flag; do
 		case "${flag}" in
 			a) # Orgmode agenda
 				tmux send-keys -t orgmode Escape Space "oaa"
@@ -31,6 +31,9 @@ if [[ "$currentCommand" == *"vim"* ]]; then
 			c)
 				tmux send-keys -t orgmode Escape Space "oct"
 				;;
+			r)
+				tmux send-keys -t orgmode Escape ":e ~/ORGMODE/refile.org" Enter
+				;;
 			# *)
 				# 	tmux send-keys -t orgmode Escape ":e ~/ORGMODE/refile.org"
 				# 	exit 1 ;;
@@ -38,7 +41,7 @@ if [[ "$currentCommand" == *"vim"* ]]; then
 			noArgs=false
 		done
 
-		[[ "$noArgs" == "true" ]] && tmux send-keys -t orgmode Escape ":e ~/ORGMODE/refile.org" Enter
+		# [[ "$noArgs" == "true" ]] && tmux send-keys -t orgmode Escape ":e ~/ORGMODE/refile.org" Enter
 
 	else
 
@@ -48,7 +51,7 @@ if [[ "$currentCommand" == *"vim"* ]]; then
 
 	noArgs=true
 
-	while getopts 'atc' flag; do
+	while getopts 'atcr' flag; do
 		case "${flag}" in
 			a) # Orgmode agenda
 				echo "flag is -a"
@@ -60,6 +63,9 @@ if [[ "$currentCommand" == *"vim"* ]]; then
 				;;
 			c) # Orgmode capture
 				tmux send-keys -t orgmode C-z "cd ~/ORGMODE/; nvim -c 'normal 1 oct' refile.org" Enter
+				;;
+			r)
+				tmux send-keys -t orgmode C-z "cd ~/ORGMODE/; nvim refile.org" Enter
 				;;
 		esac
 			noArgs=false
