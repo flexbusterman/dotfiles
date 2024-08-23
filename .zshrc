@@ -27,9 +27,10 @@ bindkey '^A' beginning-of-line
 bindkey '^E' end-of-line
 
 bindkey '^ ' autosuggest-execute
-# bindkey '^E' end-of-line
-# Pressing control + enter accepts and executes the current suggestion
-# bindkey '^' autosuggest-execute
+
+autoload -z edit-command-line
+zle -N edit-command-line
+bindkey "^X^E" edit-command-line
 
 # environment variables
 export TERMINAL=st
@@ -87,6 +88,8 @@ alias vh="cd ~/.history/zsh/; nvim history"
 
 # script shortcuts
 alias fn="fzfnotes"
+
+alias copy="xclip -sel clip"
 
 # navigation
 alias d='cd ~/Dropbox/'

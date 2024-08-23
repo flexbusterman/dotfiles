@@ -13,11 +13,11 @@ if [ -n "$file" ]; then
         home_dir=$(realpath "$HOME")
         # check if the file is in the home directory or its subdirectories
         if [[ "$real_file" == "$home_dir"* ]]; then
-            echo "yes"
+            echo "File is somewhere in home directory"
 						cd $(dirname "$file")
             nvim "$file"
         else
-            echo "no"
+            echo "File is outside home directory"
 						cd $(dirname "$file")
             SUDO_ASKPASS=~/.local/bin/dmenupass sudo -A nvim "$file"
         fi

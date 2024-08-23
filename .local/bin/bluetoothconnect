@@ -6,67 +6,72 @@ if [[ $(bluetoothctl devices Connected) == *"$device"* ]]; then
 	echo "Device is connected"
 	notify-send "Device is connected"
 	exit 0
-else
-	[[ $(bluetoothctl show | awk '/Powered/ {print $2}') == "no" ]] && echo "Bluetooth controller is not powered" && bluetoothctl power on && "Bluetooth controller powered on"
-	bluetoothctl connect $device
-	sleep 2
-	[[ $(grep -q $(bluetoothctl devices Connected) <<< "$device") ]] && echo "Connection successful" && notify-send "Connection successful"
-  exit 0
 fi
+
+powerOnAndConnect() {
+	[[ $(bluetoothctl show | awk '/Powered/ {print $2}') == "no" ]] && echo "Bluetooth controller is not powered" && bluetoothctl power on && "Bluetooth controller powered on"
+	bluetoothctl connect $device && echo "Connection successful"
+	sleep 2
+	[[ $? ]] && notify-send "Connection successful"
+}
+
+powerOnAndConnect
+
+SUDO_ASKPASS=~/.local/bin/dmenupass sudo -A rfkill unblock bluetooth && powerOnAndConnect
 
 # If we're still running the script, something went wrong and we have to resort to reconnecting the device.
 # Doing this in a tmux session running in the background.
 # For some reason the bluetoothctl scan doesn't work properly in the background
 
-continue=$(echo -e "Yes\nNo" | dmenu -p "Do you want to reconnect the device?")
-[[ $continue != "Yes" ]] && echo "Quitting" && notify-send "Quitting" && exit 1
-pairing=$(echo -e "Yes\nNo" | dmenu -p "Confirm that your device is in pairing mode")
-[[ $pairing != "Yes" ]] && echo "Quitting" && notify-send "Quitting" && exit 1
-
-echo "Starting tmux session bluetooth"
-notify-send "Starting tmux session bluetooth"
-tmux new-session -s bluetooth -d
-echo "Starting bluetoothctl"
-notify-send "Starting bluetoothctl"
-tmux send-keys C-c
-sleep 1
-tmux send-keys "bluetoothctl" Enter
-echo "Removing device"
-notify-send "Removing device"
-tmux send-keys "remove $device" Enter
-echo "Scanning for devices"
-notify-send "Scanning for devices"
-tmux send-keys "scan on" Enter
-echo "3 second wait to allow for devices to be shown"
-notify-send "3 second wait to allow for devices to be shown"
-sleep 3
-echo "trusting device"
-notify-send "trusting device"
-tmux send-keys "trust $device" Enter
-sleep 1
-echo "Pairing device"
-notify-send "Pairing device"
-tmux send-keys "pair $device" Enter
-sleep 1
-echo "Connecting device"
-notify-send "Connecting device"
-tmux send-keys "connect $device" Enter
-echo "5 second wait to allow for device to connect"
-notify-send "5 second wait to allow for device to connect"
-sleep 5
-echo "Killing the tmux session bluetooth"
-notify-send "Killing the tmux session bluetooth"
-tmux kill-session -t bluetooth
-
-if [[ $(grep -q $(bluetoothctl devices Connected) <<< "$device") ]]; then
-	echo "Device reconnect succeeded"
-	notify-send "Device reconnect succeeded"
-	exit 0
-else
-	echo "Device reconnect failed"
-  notify-send "Device reconnect failed"
-  exit 1
-fi
+# continue=$(echo -e "Yes\nNo" | dmenu -p "Do you want to reconnect the device?")
+# [[ $continue != "Yes" ]] && echo "Quitting" && notify-send "Quitting" && exit 1
+# pairing=$(echo -e "Yes\nNo" | dmenu -p "Confirm that your device is in pairing mode")
+# [[ $pairing != "Yes" ]] && echo "Quitting" && notify-send "Quitting" && exit 1
+#
+# echo "Starting tmux session bluetooth"
+# notify-send "Starting tmux session bluetooth"
+# tmux new-session -s bluetooth -d
+# echo "Starting bluetoothctl"
+# notify-send "Starting bluetoothctl"
+# tmux send-keys C-c
+# sleep 1
+# tmux send-keys "bluetoothctl" Enter
+# echo "Removing device"
+# notify-send "Removing device"
+# tmux send-keys "remove $device" Enter
+# echo "Scanning for devices"
+# notify-send "Scanning for devices"
+# tmux send-keys "scan on" Enter
+# echo "3 second wait to allow for devices to be shown"
+# notify-send "3 second wait to allow for devices to be shown"
+# sleep 3
+# echo "trusting device"
+# notify-send "trusting device"
+# tmux send-keys "trust $device" Enter
+# sleep 1
+# echo "Pairing device"
+# notify-send "Pairing device"
+# tmux send-keys "pair $device" Enter
+# sleep 1
+# echo "Connecting device"
+# notify-send "Connecting device"
+# tmux send-keys "connect $device" Enter
+# echo "5 second wait to allow for device to connect"
+# notify-send "5 second wait to allow for device to connect"
+# sleep 5
+# echo "Killing the tmux session bluetooth"
+# notify-send "Killing the tmux session bluetooth"
+# tmux kill-session -t bluetooth
+#
+# if [[ $(grep -q $(bluetoothctl devices Connected) <<< "$device") ]]; then
+# 	echo "Device reconnect succeeded"
+# 	notify-send "Device reconnect succeeded"
+# 	exit 0
+# else
+# 	echo "Device reconnect failed"
+#   notify-send "Device reconnect failed"
+#   exit 1
+# fi
 
 # # Function to check if a command exists
 # command_exists() {
