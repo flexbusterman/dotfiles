@@ -1,0 +1,55 @@
+#!/usr/bin/env bash
+
+# save the output from pw-link -lI to an array named links
+readarray -t links < <(pw-link -lI)
+
+# hasVirtualSink=$(printf '%s\n' "${links[@]}" | grep -o -m 1 "alsa_input.*FL")
+
+if ! [[ $(pw-cli list-objects | awk '/node.description = "VirtualSink"/' ) ]]; then
+	echo VirtualSink not found
+	pw-loopback --capture-props="media.class=Audio/Sink node.description=VirtualSink" &
+	sleep 1
+fi
+
+loopbackOutputL="$(pw-link -lI | awk '/^ *[0-9]* output.pw-loopback.*FL/ {print $2}')"
+loopbackOutputR="$(pw-link -lI | awk '/^ *[0-9]* output.pw-loopback.*FR/ {print $2}')"
+
+readarray -t loopbackOutputLinksL < <(pw-link -lI | sed -n '/^ *[0-9]* *output.pw-loopback-[0-9]*:output_FL/,/^ *[0-9]* [a-zA-Z]/p' | awk --posix '/\|/ {print $NF}')
+readarray -t loopbackOutputLinksR < <(pw-link -lI | sed -n '/^ *[0-9]* *output.pw-loopback-[0-9]*:output_FR/,/^ *[0-9]* [a-zA-Z]/p' | awk --posix '/\|/ {print $NF}')
+
+for link in "${loopbackOutputLinksL[@]}"; do
+	pw-link -d "$loopbackOutputL" "$link"
+done
+
+for link in "${loopbackOutputLinksR[@]}"; do
+	pw-link -d "$loopbackOutputR" "$link"
+done
+
+readarray -t loopbackOutputLinksL < <(pw-link -lI | sed -n '/^ *[0-9]* *output.pw-loopback-[0-9]*:output_FL/,/^ *[0-9]* [a-zA-Z]/p' | awk --posix '/\|/ {print $NF}')
+
+pw-link "$loopbackName:output_FL" "SuperCollider:in_1"
+pw-link "$loopbackName:output_FR" "SuperCollider:in_2"
+
+loopbackOutL=$(printf '%s\n' "${links[@]}" | awk --posix '/^ *[0-9]{2} output.pw-loopback.*output_FL/ {print $2}')
+loopbackOutR=$(printf '%s\n' "${links[@]}" | awk --posix '/^ *[0-9]{2} output.pw-loopback.*output_FR/ {print $2}')
+
+pw-link "$loopbackOutL" "SuperCollider:in_1"
+pw-link "$loopbackOutR" "SuperCollider:in_2"
+
+bluezIns=$(pw-cli list-objects | awk -F'"' '/bluez_input/ {print $2}')
+bluezCaptures=$(pw-cli list-objects | awk -F'"' '/bluez_capture/ {print $2}')
+
+for input in ${bluezIns[@]}; do
+	pw-link -d "$input" "SuperCollider:in_1"
+	pw-link -d "$input" "SuperCollider:in_2"
+done
+
+for capture in ${bluezCaptures[@]}; do
+	pw-link -d "$capture" "SuperCollider:in_1"
+	pw-link -d "$capture" "SuperCollider:in_2"
+done
+
+jabra=$(pw-cli list-objects | awk -F'"' '/description = "Jabra/{print $2; exit}')
+
+pw-link "SuperCollider:out_1" "$jabra:playback_FL"
+pw-link "SuperCollider:out_2" "$jabra:playback_FR"

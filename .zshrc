@@ -90,6 +90,7 @@ alias vh="cd ~/.history/zsh/; nvim history"
 alias fn="fzfnotes"
 
 alias copy="xclip -sel clip"
+alias yes="yes | yay"
 
 # navigation
 alias d='cd ~/Dropbox/'
