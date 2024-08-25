@@ -2,14 +2,10 @@
 # ~/.bashrc
 #
 
-# .bashrc refuses to not be loaded, so this is a workaround to instantly start zsh
-exec zsh
-
-echo "Sourcing .bashrc at $(date '+%Y-%m-%d %H:%M:%S.%N')" >> /tmp/bashrc_debug.log
-
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+figlet "BASH"
 shopt -s autocd
 
 # history
@@ -153,7 +149,7 @@ git clone --recursive --depth 1 --shallow-submodules https://github.com/akinomyo
 make -C ble.sh install PREFIX=~/.local
 fi
 
-source ~/.local/share/blesh/ble.sh
+# source ~/.local/share/blesh/ble.sh
 
 source /usr/share/fzf/completion.bash
 source /usr/share/fzf/key-bindings.bash

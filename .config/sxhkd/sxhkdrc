@@ -331,7 +331,8 @@ alt + y
 alt + Return
 	dmenu_run
 alt + shift + Return
-	$TERMINAL -e tmux new-session -A -s main
+	$TERMINAL -e tmux new-session -A -s main "/bin/zsh"
+	# $TERMINAL -e tmux new-session -A -s main
 alt + control + Return
 	$TERMINAL -e $SHELL -c "MPD_HOST=/run/user/$UID/mpd/socket ncmpcpp"
 alt + shift + control + Return

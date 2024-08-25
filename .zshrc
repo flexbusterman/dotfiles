@@ -206,3 +206,5 @@ fi
 
 # fzf in terminal, fzf must be installed to use this
 eval "$(fzf --zsh)"
+
+clear
