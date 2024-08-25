@@ -20,32 +20,27 @@ export HISTCONTROL=erasedups
 export HISTFILESIZE=
 export HISTSIZE=
 
-# environment variables
-export TERMINAL=kitty
-export EDITOR=nvim
-export BROWSER=qutebrowser
-export QT_QPA_PLATFORMTHEME=qt6ct
-export SHELL=/bin/bash
-export MANPAGER="nvim +Man!"
-export XDG_DATA_HOME="$HOME/.local/share"
-export XDG_CONFIG_HOME="$HOME/.config"
-export XDG_CACHE_HOME="$HOME/.cache"
-# export ANDROID_HOME=$HOME/Android/Sdk
-# export ANDROID_SDK_ROOT=$HOME/Android/Sdk
-# export ANDROID_SDK_HOME=$HOME/Android/Sdk
-# export ANDROID_AVD_HOME=$HOME/.config/.android/avd
-# export JAVA_HOME=/usr/lib/jvm/java-21-openjdk/
-export HEADPHONES='50:C2:75:29:C7:6E'
-export MPD_PORT=49152
-export MPD_HOST="~/.mpd/socket"
-export RANGER_LOAD_DEFAULT_RC=FALSE
-
-export __NV_PRIME_RENDER_OFFLOAD=1
-
-export PATH=$PATH:$ANDROID_HOME/emulator
-export PATH=$PATH:$ANDROID_HOME/platform-tools
-export PATH=$PATH:$HOME/.local/bin/
-export PATH=$PATH:$HOME/.local/bin/statusbar/
+# moved environment variables to .bash_profile
+# export TERMINAL=kitty
+# export EDITOR=nvim
+# export BROWSER=qutebrowser
+# export QT_QPA_PLATFORMTHEME=qt6ct
+# export SHELL=/bin/bash
+# export MANPAGER="nvim +Man!"
+# export XDG_DATA_HOME="$HOME/.local/share"
+# export XDG_CONFIG_HOME="$HOME/.config"
+# export XDG_CACHE_HOME="$HOME/.cache"
+# export HEADPHONES='50:C2:75:29:C7:6E'
+# export MPD_PORT=49152
+# export MPD_HOST="~/.mpd/socket"
+# export RANGER_LOAD_DEFAULT_RC=FALSE
+#
+# export __NV_PRIME_RENDER_OFFLOAD=1
+#
+# export PATH=$PATH:$ANDROID_HOME/emulator
+# export PATH=$PATH:$ANDROID_HOME/platform-tools
+# export PATH=$PATH:$HOME/.local/bin/
+# export PATH=$PATH:$HOME/.local/bin/statusbar/
 
 [ -f ~/.envPrivate ] && source ~/.envPrivate
 

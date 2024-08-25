@@ -16,12 +16,12 @@ pidof dwmblocks || dwmblocks &
 # srandrd displayhandler &
 blueberry-tray &
 # syncthing &
-syncthingtray --wait &
+# syncthingtray --wait &
 # dotool mousemove $(xdotool getdisplaygeometry | awk '{print $1-1, $2-1}') &
 tmux new-session -d -s main &
 sxhkd &
 # rfkill unblock bluetooth &
-exec dwmstart
+exec ~/.local/bin/dwmstart
 # export DESKTOP_SESSION=plasma
 # export KDEWM=~/.local/bin/dwmstart
 # exec startplasma-x11

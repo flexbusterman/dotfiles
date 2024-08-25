@@ -32,28 +32,28 @@ autoload -z edit-command-line
 zle -N edit-command-line
 bindkey "^X^E" edit-command-line
 
-# environment variables
-export TERMINAL=st
-export EDITOR=nvim
-export BROWSER=qutebrowser
-export QT_QPA_PLATFORMTHEME=qt6ct
-export SHELL=/usr/bin/zsh
-export MANPAGER="nvim +Man!"
-export XDG_DATA_HOME="$HOME/.local/share"
-export XDG_CONFIG_HOME="$HOME/.config"
-export XDG_CACHE_HOME="$HOME/.cache"
+# environment variables moved to .bash_profile
+# export TERMINAL=st
+# export EDITOR=nvim
+# export BROWSER=qutebrowser
+# export QT_QPA_PLATFORMTHEME=qt6ct
+# export SHELL=/usr/bin/zsh
+# export MANPAGER="nvim +Man!"
+# export XDG_DATA_HOME="$HOME/.local/share"
+# export XDG_CONFIG_HOME="$HOME/.config"
+# export XDG_CACHE_HOME="$HOME/.cache"
 # export ANDROID_HOME=$HOME/Android/Sdk
 # export ANDROID_SDK_ROOT=$HOME/Android/Sdk
 # export ANDROID_SDK_HOME=$HOME/Android/Sdk
 # export ANDROID_AVD_HOME=$HOME/.config/.android/avd
 # export JAVA_HOME=/usr/lib/jvm/java-21-openjdk/
-export HEADPHONES='50:C2:75:29:C7:6E'
-export MPD_PORT=49152
-export MPD_HOST="~/.mpd/socket"
-export RANGER_LOAD_DEFAULT_RC=FALSE
-export __NV_PRIME_RENDER_OFFLOAD=1
-export PATH=$PATH:$HOME/.local/bin/
-export PATH=$PATH:$HOME/.local/bin/statusbar/
+# export HEADPHONES='50:C2:75:29:C7:6E'
+# export MPD_PORT=49152
+# export MPD_HOST="~/.mpd/socket"
+# export RANGER_LOAD_DEFAULT_RC=FALSE
+# export __NV_PRIME_RENDER_OFFLOAD=1
+# export PATH=$PATH:$HOME/.local/bin/
+# export PATH=$PATH:$HOME/.local/bin/statusbar/
 
 [ -f ~/.envPrivate ] && source ~/.envPrivate
 
@@ -188,6 +188,7 @@ select-word-style bash
 
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh/plugins/zsh-system-clipboard/zsh-system-clipboard.zsh
+[[ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] || sudo git clone "https://github.com/zsh-users/zsh-syntax-highlighting" /usr/share/zsh/plugins/zsh-syntax-highlighting/
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 setopt vi
