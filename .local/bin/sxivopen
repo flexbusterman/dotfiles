@@ -27,7 +27,6 @@
 # the list to sxiv. This is the fastest approach since we won't have to call
 # listfiles twice.
 
-
 TMPDIR="${TMPDIR:-/tmp}"
 tmp="$TMPDIR/sxiv_rifle_$$"
 
@@ -37,15 +36,15 @@ listfiles () {
       sort | tee "$tmp"
 }
 
-is_img () {
-    case "${1##*.}" in
-        "jpg"|"jpeg"|"png"|"gif"|"webp"|"tiff"|"bmp") return 0 ;;
-        *) return 1 ;;
-    esac
-}
+# is_img () {
+#     case "${1##*.}" in
+#         | "jpg"|"jpeg"|"png"|"gif"|"webp"|"tiff"|"bmp") return 0 ;;
+#         *) return 1 ;;
+#     esac
+# }
 
 open_img () {
-    is_img "$1" || exit 1
+    # is_img "$1" || exit 1
     trap 'rm -f $tmp' EXIT
     count="$(listfiles "$1" | grep -nF "$1")"
     if [ -n "$count" ]; then
