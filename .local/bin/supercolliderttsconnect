@@ -4,6 +4,13 @@
 # bluezNameL="$(pw-cli ls Node | awk '/bluez_output/ {print}')"
 # bluezNameR="$(pw-cli ls Node | awk '/bluez.*FR/ {print}')"
 
+# create VirtualSink if not present
+if ! [[ $(pw-cli list-objects | awk '/node.description = "VirtualSink"/' ) ]]; then
+	echo VirtualSink not found
+	pw-loopback --capture-props="media.class=Audio/Sink node.description=VirtualSink" &
+	sleep 1
+fi
+
 loopName=$(pw-cli ls Node | awk -F'"' '/node.name = "output.pw/{print $2}')
 bluezName=$(pw-cli ls Node | awk -F'"' '/node.name = "bluez_output/{print $2}')
 
