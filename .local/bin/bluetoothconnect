@@ -2,22 +2,23 @@
 
 device=$1
 
-if [[ $(bluetoothctl devices Connected) == *"$device"* ]]; then
+if [[ $(pactl list sinks | grep -i "Bluetooth") ]]; then
 	echo "Device is connected"
 	notify-send "Device is connected"
 	exit 0
 fi
 
 powerOnAndConnect() {
-	[[ $(bluetoothctl show | awk '/Powered/ {print $2}') == "no" ]] && echo "Bluetooth controller is not powered" && bluetoothctl power on && "Bluetooth controller powered on"
-	bluetoothctl connect $device && echo "Connection successful"
-	sleep 2
-	[[ $? ]] && notify-send "Connection successful"
+	[[ $(bluetoothctl show | awk '/Powered/ {print $2}') == "no" ]] && notify-send "Bluetooth controller is not powered" && rfkill unblock bluetooth && bluetoothctl power on && notify-send "Bluetooth controller powered on"
+	bluetoothctl connect $device && notify-send "Connection successful"
+	# sleep 2
+	# [[ $? ]] && notify-send "Connection successful"
 }
 
 powerOnAndConnect
 
-SUDO_ASKPASS=~/.local/bin/dmenupass sudo -A rfkill unblock bluetooth && powerOnAndConnect
+# SUDO_ASKPASS=~/.local/bin/dmenupass sudo -A rfkill unblock bluetooth && powerOnAndConnect
+# rfkill unblock bluetooth && powerOnAndConnect
 
 # If we're still running the script, something went wrong and we have to resort to reconnecting the device.
 # Doing this in a tmux session running in the background.

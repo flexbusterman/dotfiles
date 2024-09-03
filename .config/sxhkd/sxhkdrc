@@ -427,7 +427,7 @@ shift + Print
 # /_/\_\_|   \___/ \___/
 # xf86 media keys volume brightness
 XF86AudioMute
-	pamixer -T; kill -44 $(pidof dwmblocks)
+	pamixer -t; kill -44 $(pidof dwmblocks)
 XF86AudioRaiseVolume
 	pamixer --allow-boost -i 3; kill -44 $(pidof dwmblocks)
 XF86AudioLowerVolume

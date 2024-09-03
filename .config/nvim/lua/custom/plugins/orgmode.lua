@@ -3,6 +3,18 @@ return {
 	-- event = "VeryLazy",
 	-- ft = { "org" },
 	config = function()
+		vim.api.nvim_create_augroup("AutoFormat", {})
+
+		vim.api.nvim_create_autocmd("BufWritePre", {
+			pattern = "*.org",
+			group = "AutoFormat",
+			callback = function()
+				local cursor_pos = vim.api.nvim_win_get_cursor(0)
+				vim.cmd("normal! gg=G")
+				vim.api.nvim_win_set_cursor(0, cursor_pos)
+				vim.cmd("normal! zz")
+			end,
+		})
 		-- set statusline to report active clockclock
 		vim.opt.statusline = "%{v:lua.orgmode.statusline()}"
 		require("orgmode").setup({
