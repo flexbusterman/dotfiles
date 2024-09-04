@@ -1,7 +1,10 @@
 #!/bin/bash
+path="$1"
+command="$2"
+notify-send "Watching $1"
 while true; do
-
-inotifywait -e modify,create,delete -r ~/Pictures/SCREENSHOTS/ && \
-notify-send "Screenshot folder modified"
-
+	inotifywait -e modify,create,delete -r "$1" && \
+	# notify-send "Running script $2"
+	echo "Running script $2"
+	$2
 done
