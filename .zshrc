@@ -32,7 +32,7 @@ autoload -z edit-command-line
 zle -N edit-command-line
 bindkey "^X^E" edit-command-line
 
-							# trims leading whitespace on first line and trailing whitespace and newlines on last line
+# trims leading whitespace on first line and trailing whitespace and newlines on last line
 function pastefunction {
 	# xclip -o -sel clip | sed "1s/^[ \t]*//" | sed "$s/[ \t\n]*$//"
 	printf %s "$(xclip -o -sel clip | sed "1s/^[ \t]*//")"
@@ -109,7 +109,7 @@ alias b='cd ~/.local/bin/'
 alias m='cd /run/media/$USER/'
 alias g='cd ~/.local/src/'
 alias f='cd ~/.flarbs/'
-alias o='cd ~/Dropbox/ORGMODE/'
+alias o='cd ~/Dropbox/ORGMODE/; fzfnotes;'
 alias v='cd ~/Downloads/VIDEO/'
 
 # save current dir in workdir file
