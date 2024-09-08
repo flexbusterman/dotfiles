@@ -15,7 +15,7 @@ qpwgraph -m &
 pidof dwmblocks || dwmblocks &
 # srandrd displayhandler &
 blueberry-tray &
-syncthing &
+syncthing --no-browser &
 # syncthingtray --wait &
 # dotool mousemove $(xdotool getdisplaygeometry | awk '{print $1-1, $2-1}') &
 tmux new-session -d -s main &
