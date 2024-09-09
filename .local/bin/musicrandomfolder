@@ -1,33 +1,40 @@
 #!/bin/bash
 
 currentAlbum=$(mpc --host /run/user/1000/mpd/socket playlist -f %file% | awk -F/ 'NR==1 {print $(NF-1)}')
-# notify-send "Current:" "$currentAlbum"
+
+playAlbum(){
+	mpc --host /run/user/1000/mpd/socket clear
+	[[ -f /tmp/album ]] && rm /tmp/album
+	[[ -f /tmp/albumsorted ]] && rm /tmp/albumsorted
+	find "$newAlbum" >> /tmp/album
+	cat /tmp/album | sort >> /tmp/albumsorted
+	input=/tmp/albumsorted
+	while IFS= read -r line
+	do
+		mpc --host /run/user/1000/mpd/socket add "$line"
+	done < "$input"
+	notify-send "$newAlbumTitle"
+	mpc --host /run/user/1000/mpd/socket play
+}
 
 chooseNewAlbum(){
-	newAlbum=$(shuf -n 1 ~/.config/music/albumlist)
-	newAlbumTitle=$(echo "$newAlbum" | awk -F/ '{print $NF}')
-	# notify-send "New Album:" "$newAlbumTitle"
+	albumList=$( awk '/^[^#]/' ~/.config/music/albumlist)
+	numberAlbums=$(echo "$albumList" | wc -l)
+	# notify-send "number albums: $numberAlbums"
+	if [[ $numberAlbums -gt 1 ]]; then
+		newAlbum=$(echo "$albumList" | shuf -n 1 )
+		newAlbumTitle=$(echo "$newAlbum" | awk -F/ '{print $NF}')
+	else
+		notify-send "Need more albums"
+		exit 1
+	fi
 }
 
 chooseNewAlbum
 
 while [[ "$currentAlbum" == "$newAlbumTitle" ]]; do
 	# notify-send "They are the same! Should choose new album!"
-  chooseNewAlbum
+	chooseNewAlbum
 done
 
-mpc --host /run/user/1000/mpd/socket clear
-
-[[ -f /tmp/album ]] && rm /tmp/album
-[[ -f /tmp/albumsorted ]] && rm /tmp/albumsorted
-find "$newAlbum" >> /tmp/album
-cat /tmp/album | sort >> /tmp/albumsorted
-input=/tmp/albumsorted
-while IFS= read -r line
-do
-	mpc --host /run/user/1000/mpd/socket add "$line"
-done < "$input"
-
-notify-send "$newAlbumTitle"
-
-mpc --host /run/user/1000/mpd/socket play
+playAlbum
