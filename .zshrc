@@ -33,14 +33,14 @@ zle -N edit-command-line
 bindkey "^X^E" edit-command-line
 
 # trims leading whitespace on first line and trailing whitespace and newlines on last line
-function pastefunction {
-	# xclip -o -sel clip | sed "1s/^[ \t]*//" | sed "$s/[ \t\n]*$//"
-	printf %s "$(xclip -o -sel clip | sed "1s/^[ \t]*//")"
-}
-
-zle -N pastefunction
-
-bindkey -a p pastefunction
+# function pastefunction {
+# 	# xclip -o -sel clip | sed "1s/^[ \t]*//" | sed "$s/[ \t\n]*$//"
+# 	printf %s "$(xclip -o -sel clip | sed "1s/^[ \t]*//")"
+# }
+#
+# zle -N pastefunction
+#
+# bindkey -a p pastefunction
 
 # environment variables moved to .bash_profile
 # export TERMINAL=st
