@@ -347,9 +347,9 @@ alt + control + space
 	musicplaypause
 
 alt + comma
-	$TERMINAL -e ranger
+	$TERMINAL -e yazi
 alt + shift + comma
-	$TERMINAL -e lfrun
+	$TERMINAL -e ranger
 
 alt + period
 	qutebrowser
