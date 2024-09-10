@@ -83,19 +83,18 @@ alias q=exit
 alias pg="ping google.com"
 
 # commonly edited file shortcuts
-alias vn="cd ~/.config/nvim/; nvim init.lua"
 alias vb="cd ~; nvim .bashrc"
-alias vz="cd ~; nvim .zshrc"
-alias vx="cd ~; nvim .xinitrc"
-alias vs="cd ~/.config/sxhkd/; nvim sxhkdrc"
-alias vp="cd ~/.local/bin/; nvim flarbspackagesmain"
-alias ve="cd ~/.local/bin/; nvim flarbspackagesextra"
+alias ve="cd ~/.local/bin/; nvim editfile"
 alias vf="cd ~/.local/bin/; nvim flarbsinstall"
-alias vp="cd ~/.local/bin/; nvim flarbsinstallpersonal"
-alias vt="cd ~/; nvim .tmux.conf"
-alias vq="cd ~/.config/qutebrowser/; nvim autoconfig.yml"
 alias vh="cd ~/.history/zsh/; nvim history"
+alias vn="cd ~/.config/nvim/; nvim init.lua"
+alias vo="cd ~/.local/bin/; nvim openfile"
+alias vq="cd ~/.config/qutebrowser/; nvim autoconfig.yml"
+alias vs="cd ~/.config/sxhkd/; nvim sxhkdrc"
+alias vt="cd ~/; nvim .tmux.conf"
+alias vx="cd ~; nvim .xinitrc"
 alias vy="cd ~/.config/yazi/; nvim yazi.toml"
+alias vz="cd ~; nvim .zshrc"
 
 # script shortcuts
 alias fn="fzfnotes"
