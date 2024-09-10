@@ -1,6 +1,5 @@
 require("bookmarks"):setup({
-	save_last_directory = false, -- DEPRECATED - will be removed in the future. Use `last_directory`
-	last_directory = { enable = false, persist = false },
+	last_directory = { enable = true, persist = true },
 	persist = "all",
 	desc_format = "full",
 	file_pick_mode = "hover",
@@ -14,3 +13,5 @@ require("bookmarks"):setup({
 		},
 	},
 })
+
+require("relative-motions"):setup({ show_numbers = "relative_absolute", show_motion = true })
