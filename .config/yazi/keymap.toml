@@ -397,3 +397,7 @@ run = 'shell "editfile \"$@\"" --confirm'
 [[manager.append_keymap]]
 on  = "<C-e>"
 run = 'shell "dragon \"$@\"" --confirm'
+
+[[manager.append_keymap]]
+on  = "u"
+run = 'shell "$TERMINAL -e gtrash restore" --confirm'
