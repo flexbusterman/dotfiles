@@ -393,3 +393,7 @@ desc = "Move in relative steps"
 [[manager.append_keymap]]
 on  = "e"
 run = 'shell "editfile \"$@\"" --confirm'
+
+[[manager.append_keymap]]
+on  = "<C-e>"
+run = 'shell "dragon \"$@\"" --confirm'
