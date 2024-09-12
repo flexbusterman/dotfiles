@@ -111,6 +111,7 @@ alias g='cd ~/.local/src/'
 alias f='cd ~/.flarbs/'
 alias o='cd ~/Dropbox/ORGMODE/; fzfnotes;'
 alias v='cd ~/Downloads/VIDEO/'
+alias s="cd ~/Dropbox/$(date +%Y)\ FOTO/SCREENSHOTS/"
 
 # save current dir in workdir file
 alias sw='echo $PWD > ~/.workdir'

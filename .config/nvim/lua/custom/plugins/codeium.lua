@@ -9,6 +9,8 @@ return {
 		"sh",
 		"conf",
 		"python",
+		"php",
+		"css",
 	},
 	config = function()
 		require("codeium").setup({})
