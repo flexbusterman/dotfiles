@@ -26,7 +26,7 @@ alt + shift + control + b
 # notify-send "shift + control + b"
 
 alt + c
-	reaperconnect
+	reaperconnect; supercolliderttsconnect;
 alt + shift + c
 	calendar
 # alt + control + c

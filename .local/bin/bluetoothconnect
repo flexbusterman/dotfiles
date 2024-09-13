@@ -8,9 +8,30 @@ if [[ $(pactl list sinks | grep -i "Bluetooth") ]]; then
 	exit 0
 fi
 
+isPowered(){
+	[[ $(bluetoothctl show | awk '/Powered/ {print $2}') == "yes" ]] && powered=true
+}
+
+isUnPowered(){
+	[[ $(bluetoothctl show | awk '/Powered/ {print $2}') == "no" ]] && powered=false
+}
+
+isPowered
+isUnPowered
+
+notify-send "Bluetooth controller powered $powered"
+
 powerOnAndConnect() {
-	[[ $(bluetoothctl show | awk '/Powered/ {print $2}') == "no" ]] && notify-send "Bluetooth controller is not powered" && rfkill unblock bluetooth && bluetoothctl power on && notify-send "Bluetooth controller powered on"
-	bluetoothctl connect $device && notify-send "Connection successful"
+	if [[ $powered == "false" ]]; then
+		notify-send "Bluetooth controller is not powered"
+		rfkill unblock bluetooth
+		bluetoothctl power on
+		sleep 1
+		isPowered
+		[[ $powered == "true" ]] &&  "Bluetooth controller powered on"
+	sleep 3
+	fi
+	bluetoothctl connect $device && notify-send "Connection successful" || notify-send "Connection failed" "Manually systemctl remove, trust, pair and connect"
 	# sleep 2
 	# [[ $? ]] && notify-send "Connection successful"
 }
