@@ -20,7 +20,6 @@ syncthing --no-browser &
 # dotool mousemove $(xdotool getdisplaygeometry | awk '{print $1-1, $2-1}') &
 tmux new-session -d -s main &
 sxhkd &
-aw-qt &
 # rfkill unblock bluetooth &
 exec ~/.local/bin/dwmstart
 # export DESKTOP_SESSION=plasma
