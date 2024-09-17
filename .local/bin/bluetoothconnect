@@ -19,7 +19,7 @@ isUnPowered(){
 isPowered
 isUnPowered
 
-notify-send "Bluetooth controller powered $powered"
+# notify-send "Bluetooth controller powered $powered"
 
 powerOnAndConnect() {
 	if [[ $powered == "false" ]]; then
