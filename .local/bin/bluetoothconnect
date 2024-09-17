@@ -19,16 +19,16 @@ isUnPowered(){
 isPowered
 isUnPowered
 
-# notify-send "Bluetooth controller powered $powered"
+echo "Bluetooth controller powered $powered"
 
 powerOnAndConnect() {
 	if [[ $powered == "false" ]]; then
-		notify-send "Bluetooth controller is not powered"
+		echo "Bluetooth controller is not powered"
 		rfkill unblock bluetooth
 		bluetoothctl power on
 		sleep 1
 		isPowered
-		[[ $powered == "true" ]] &&  "Bluetooth controller powered on"
+		[[ $powered == "true" ]] && echo "Bluetooth controller powered on"
 	sleep 3
 	fi
 	bluetoothctl connect $device && notify-send "Connection successful" || notify-send "Connection failed" "If the device is not connected to another device, manually systemctl remove, trust, pair and connect"
