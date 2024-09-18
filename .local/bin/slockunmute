@@ -1,7 +1,44 @@
 #!/usr/bin/env bash
-/home/flex/.local/bin/mute
-[[ -f /usr/bin/slock ]] && /usr/bin/slock || /usr/local/bin/slock
-/home/flex/.local/bin/remaps
-/home/flex/.local/bin/unmute
-sleep 6
-[[ $(pactl list sinks | grep -i "bluetooth") ]] && /home/flex/.local/bin/unmute
+
+# Log for troubleshooting
+# echo "$(date) - Mute script started" >> ~/mute.log
+
+# Mute the sound when the lid closes
+~/.local/bin/mute
+
+# Log after muting
+# echo "$(date) - Sound muted" >> ~/mute.log
+
+# Run slock and monitor its process
+if [[ -f /usr/bin/slock ]]; then
+    /usr/bin/slock &
+else
+    /usr/local/bin/slock &
+fi
+
+# Get the PID of the slock process
+SLOCK_PID=$!
+
+# Wait for the slock process to finish
+while ps -p $SLOCK_PID > /dev/null; do
+    sleep 1
+done
+
+# Log after slock is unlocked
+# echo "$(date) - Slock unlocked" >> ~/mute.log
+
+# Remap keys or any other post-unlock setup
+~/.local/bin/remaps
+
+# Unmute the sound only after slock is successfully unlocked
+~/.local/bin/unmute
+
+# Log unmute action
+# echo "$(date) - Sound unmuted" >> ~/mute.log
+
+# Additional check for Bluetooth devices, if necessary
+sleep 4
+if [[ $(pactl list sinks | grep -i "bluetooth") ]]; then
+    ~/.local/bin/unmute
+    # echo "$(date) - Bluetooth detected, unmuted" >> ~/mute.log
+fi

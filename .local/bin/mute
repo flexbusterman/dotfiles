@@ -1,5 +1,18 @@
 #!/usr/bin/env bash
-# pamixer -q set Master mute
+# Log mute script start
+#echo "$(date) - Mute script started by ACPI" >> /home/flex/mute.log
+
+# Mute the sound
+# pactl set-sink-mute @DEFAULT_SINK@ 1
+# amixer set Master mute
+# amixer -c 1 set Master mute
+# amixer set Speaker mute
+# amixer -c 1 set Speaker mute
+
 pactl set-sink-mute @DEFAULT_SINK@ 1
+amixer set Master mute
 amixer -c 1 set Master mute
+amixer set Speaker mute
 amixer -c 1 set Speaker mute
+
+#echo "$(date) - Mute script finished" >> /home/flex/mute.log
