@@ -1,11 +1,11 @@
 #!/bin/sh
 echo "Remapping keys"
 # # echo "Loading xresources"
-xrdb -load /home/$USER/.Xresources &
+xrdb -load /home/${SUDO_USER:-$USER}/.Xresources &
 # echo "Setting capslock to shift"
 setxkbmap -option shift:both_capslock_cancel;
 # echo "xmodmap"
-xmodmap /home/$USER/.Xmodmap
+xmodmap /home/${SUDO_USER:-$USER}/.Xmodmap
 # echo "Setting capslock to escape"
 xcape -e 'Mode_switch=Escape'
 xcape -e 'Caps_Lock=Escape'
