@@ -1103,8 +1103,8 @@ require("lazy").setup({
 					end, { "i", "s" }),
 				}),
 				sources = {
-					{ name = "buffer" },
 					{ name = "codeium" },
+					{ name = "buffer" },
 					{ name = "nvim_lsp" },
 					{ name = "luasnip" },
 					{ name = "path" },

@@ -1,10 +1,11 @@
-# Force disks to sync to reduce the risk of data corruption
 [Trigger]
 Operation = Install
 Operation = Upgrade
 Operation = Remove
 Type = Package
 Target = *
+
 [Action]
+Description = Run remaps script after pacman operations
 When = PostTransaction
-Exec = /usr/bin/su - flex -c '/home/flex/.local/bin/remaps'
+Exec = /home/flex/.local/bin/remaps
