@@ -430,5 +430,9 @@ desc = "Empty trash"
 [[manager.prepend_keymap]]
 on = [ "c", "d" ]
 run = 'shell "dropbox-cli sharelink \"$1\" | xclip -sel clip" --confirm'
-
 desc = "Copy Dropbox share link of selected file"
+
+[[manager.prepend_keymap]]
+on = [ "t" ]
+run = 'shell "$TERMINAL -e gtrash prune --day 0" --confirm'
+desc = "Empty trash"
