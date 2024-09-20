@@ -20,6 +20,13 @@ echo $loopName
 
 pw-link -lI
 
+# get nodes connected to supercollider inputs
+readarray -t scInsL < <(pw-link -lI | sed -n "/^ *[0-9]* SuperCollider:in_1/,/^ *[0-9]* [a-zA-Z]/p" | awk --posix '/\|/ {print $NF}')
+readarray -t scInsR < <(pw-link -lI | sed -n "/^ *[0-9]* SuperCollider:in_2/,/^ *[0-9]* [a-zA-Z]/p" | awk --posix '/\|/ {print $NF}')
+
+echo "SuperCollider inputs L: $scInsL[@]"
+echo "SuperCollider inputs R: $scInsR[@]"
+
 # get outgoing connections for loopback
 readarray -t loopOutsL < <(pw-link -lI | sed -n "/^ *[0-9]* output.pw.*FL/,/^ *[0-9]* [a-zA-Z]/p" | awk --posix '/\|/ {print $NF}')
 readarray -t loopOutsR < <(pw-link -lI | sed -n "/^ *[0-9]* output.pw.*FR/,/^ *[0-9]* [a-zA-Z]/p" | awk --posix '/\|/ {print $NF}')
