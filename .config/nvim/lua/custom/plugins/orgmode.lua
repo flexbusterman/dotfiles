@@ -1,7 +1,5 @@
 return {
 	"nvim-orgmode/orgmode",
-	-- event = "VeryLazy",
-	-- ft = { "org" },
 	config = function()
 		vim.api.nvim_create_augroup("AutoFormat", {})
 
@@ -9,6 +7,7 @@ return {
 			pattern = "*.org",
 			group = "AutoFormat",
 			callback = function()
+				vim.cmd([[silent! %s/\(\*.*\)\n\n\+/\1\r/]])
 				local cursor_pos = vim.api.nvim_win_get_cursor(0)
 				vim.cmd("normal! gg=G")
 				vim.api.nvim_win_set_cursor(0, cursor_pos)
