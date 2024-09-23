@@ -1,0 +1,53 @@
+#!/bin/bash
+
+# Check if any arguments are passed
+if [ $# -eq 0 ]; then
+    echo "No files provided. Usage: ./bulkrename.sh file1 file2 ..."
+    exit 1
+fi
+
+# Temporary file to store original file names
+tmpfile=$(mktemp)
+
+# Add original file names (excluding the script name) to the temporary file
+for file in "$@"; do
+    echo "$file" >> "$tmpfile"
+done
+
+# Open the file list in nvim for editing
+nvim "$tmpfile"
+
+# Read new file names from the temporary file
+mapfile -t new_filenames < "$tmpfile"
+
+# Remove the temporary file
+rm "$tmpfile"
+
+# Check if the number of original and new filenames match
+if [ ${#new_filenames[@]} -ne $# ]; then
+    echo "The number of new filenames does not match the original files!"
+    exit 1
+fi
+
+# Rename files
+i=0
+for original_file in "$@"; do
+    new_file="${new_filenames[$i]}"
+    ((i++))
+
+    # Skip if names are the same
+    if [ "$original_file" == "$new_file" ]; then
+        continue
+    fi
+
+    # Create directory if necessary
+    new_dir=$(dirname "$new_file")
+    if [ ! -d "$new_dir" ]; then
+        mkdir -vp "$new_dir"
+    fi
+
+    # Perform the rename
+    mv -v "$original_file" "$new_file"
+done
+
+echo "Renaming complete!"
