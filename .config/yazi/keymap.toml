@@ -443,3 +443,14 @@ desc = "Empty trash"
 on = [ "r" ]
 run = 'shell "$TERMINAL -e bulkrename \"$@\"" --confirm'
 desc = "Bulk rename files"
+
+[[manager.prepend_keymap]]
+on = [ ">" ]
+run = 'shell "for file in \"$@\"; do magick \"$file\" -rotate 90 \"${file%}\"; done" --confirm'
+desc = "Rotate selected images clockwise"
+
+[[manager.prepend_keymap]]
+on = [ "<" ]
+run = 'shell "for file in \"$@\"; do magick \"$file\" -rotate 270 \"${file%}\"; done" --confirm'
+
+desc = "Rotate selected images counter-clockwise"
