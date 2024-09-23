@@ -72,7 +72,7 @@ keymap = [
 	{ on = "d",					run = "remove --force",											desc = "Trash selected files" },
 	{ on = "D",					run = "remove --permanently",				desc = "Permanently delete selected files" },
 	{ on = "a",					run = "create",											desc = "Create a file (ends with / for directories)" },
-	{ on = "r",					run = "rename",	desc = "Rename selected file(s)" },
+	# { on = "r",					run = "rename",	desc = "Rename selected file(s)" },
 	{ on = "A",					run = "rename --cursor=before_ext",	desc = "Rename with cursor before file extension" },
 	{ on = "I",					run = "rename --cursor=start",				desc = "Rename with cursor before filename" },
 	{ on = ";",					run = "shell --interactive",					desc = "Run a shell command" },
@@ -438,3 +438,8 @@ desc = "Copy Dropbox share link of selected file"
 on = [ "t" ]
 run = 'shell "$TERMINAL -e gtrash prune --day 0" --confirm'
 desc = "Empty trash"
+
+[[manager.prepend_keymap]]
+on = [ "r" ]
+run = 'shell "$TERMINAL -e bulkrename \"$@\"" --confirm'
+desc = "Bulk rename files"
