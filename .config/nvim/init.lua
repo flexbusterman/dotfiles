@@ -1138,7 +1138,7 @@ require("lazy").setup({
 		opts = {
 			signs = false,
 			colors = {
-				-- NOTE: Dracula Colors
+				-- Dracula Colors
 				-- bg = "#282A36",
 				-- fg = "#F8F8F2",
 				-- selection = "#44475A",
@@ -1170,6 +1170,7 @@ require("lazy").setup({
 				default = { "Identifier", "#7C3AED" },
 				test = { "Identifier", "#FF00FF" },
 				brightgreen = { "BrightGreen", "#69FF94" },
+				brightmagenta = { "BrightMagenta", "#FF92DF" },
 			},
 			keywords = {
 				FIX = {
@@ -1180,7 +1181,7 @@ require("lazy").setup({
 				},
 				TODO = { icon = " ", color = "info" },
 				HACK = { icon = " ", color = "warning" },
-				NEXT = { icon = " ", color = "brightgreen" },
+				NEXT = { icon = " ", color = "brightmagenta" },
 				WARN = { icon = " ", color = "warning", alt = { "WARNING", "XXX" } },
 				PERF = { icon = " ", alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" } },
 				NOTE = { icon = " ", color = "hint", alt = { "INFO" } },
