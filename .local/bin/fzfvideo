@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-st -T fzfvideo -e bash -c '
+$TERMINAL -T fzfvideo -e bash -c '
 	find /home/flex/Downloads/VIDEO/ -type f -iregex ".*\.\(mp4\|avi\|mkv\|flv\|mov\|wmv\|webm\)" | fzf > /home/flex/.towatch
 '
 mpv "$(cat /home/flex/.towatch)" &
