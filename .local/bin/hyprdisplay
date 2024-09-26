@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# Get the current hostname
+theHost=$(uname -n)
+
+# Configure monitors based on the hostname
+if [ "$theHost" = "Legion5" ]; then
+    # Set scaling for Legion5
+    hyprctl monitors -j | jq '.[] | select(.name=="eDP-1") | .id' | xargs -I{} hyprctl keyword monitor eDP-1,preferred,0x0,1.2
+elif [ "$theHost" = "11e" ]; then
+    # Set scaling for 11e
+    hyprctl monitors -j | jq '.[] | select(.name=="eDP-1") | .id' | xargs -I{} hyprctl keyword monitor eDP-1,preferred,0x0,1.0
+else
+    echo "Hostname not recognized, no monitor setup applied."
+fi
+
+# configuring second monitor
+hyprctl keyword monitor HDMI-A-1,preferred,-1680x0,auto
