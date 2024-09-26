@@ -224,7 +224,9 @@ alt + shift + q
 alt + r
 	reaper
 alt + shift + r
-	pkill -usr1 -x sxhkd && notify-send 'Reloaded sxhkd config'
+	sudo pkill -HUP swhkd
+	# pkill -usr1 -x sxhkd && notify-send 'Reloaded sxhkd config' || pkill -usr1 -x swhkd && notify-send 'Reloaded swhkd config'
+
 # alt + control + r
 # notify-send "alt + control + r"
 alt + shift + control + r
@@ -331,7 +333,9 @@ alt + y
 # special keys
 
 alt + Return
-	dmenu_run
+	wofi
+ # --show drun
+	# dmenu_run
 alt + shift + Return
 	$TERMINAL -e tmux new-session -A -s main
 	# $TERMINAL -e tmux new-session -A -s main
