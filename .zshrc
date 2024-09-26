@@ -85,7 +85,7 @@ alias pg="ping google.com"
 # commonly edited file shortcuts
 alias vb="cd ~; nvim .bashrc"
 alias ve="cd ~/.local/bin/; nvim editfile"
-alias vf="cd ~/.local/bin/; nvim flarbsinstall"
+alias vf="cd ~/.local/src/flarbs/; nvim flarbsinstall"
 alias vh="cd ~/.config/hypr/; nvim hyprland.conf"
 alias vH="cd ~/.history/zsh/; nvim history"
 alias vk="cd ~/.config/kitty/; nvim kitty.conf"
