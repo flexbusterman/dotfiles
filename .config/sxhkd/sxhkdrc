@@ -333,11 +333,11 @@ alt + y
 # special keys
 
 alt + Return
-	wofi
+	wofi --show run
  # --show drun
 	# dmenu_run
 alt + shift + Return
-	$TERMINAL -e tmux new-session -A -s main
+	kitty -e tmux new-session -A -s main
 	# $TERMINAL -e tmux new-session -A -s main
 alt + control + Return
 	$TERMINAL -e $SHELL -c "MPD_HOST=/run/user/$UID/mpd/socket ncmpcpp"
