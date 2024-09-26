@@ -423,9 +423,9 @@ alt + F12
 	killrecording
 
 Print
-	maim -f jpg -m 9 "/home/flex/Pictures/SCREENSHOTS/$(date +'%F %H_%M_%S.jpg')"
+	screenshot
 shift + Print
-	maim -f jpg -m 9 -s "/home/flex/Pictures/SCREENSHOTS/$(date +'%F %H_%M_%S.jpg')"
+	screenshot -s
 
 # __  _______ ___   __
 # \ \/ /  ___( _ ) / /_
