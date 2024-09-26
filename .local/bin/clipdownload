@@ -1,6 +1,12 @@
 #!/usr/bin/env bash
 # ifinstalled xsel yt-dlp || exit 1
-clipboard=$(xsel -ob)
+# set clipboard depending on whether X11 or wayland is running
+
+if [[ $XDG_SESSION_TYPE == "wayland" ]]; then
+	clipboard=$(wl-paste)
+else
+	clipboard=$(xsel -ob)
+fi
 
 Help()
 {
