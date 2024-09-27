@@ -335,12 +335,13 @@ alt + y
 # special keys
 
 alt + Return
-	fuzzel
+	~/.local/bin/dmenurun
+	# fuzzel
 	# dmenu_run
 	# wofi --show run
 	# --show drun
 alt + shift + Return
-	kitty -e tmux new-session -A -s main
+	$TERMINAL -e tmux new-session -A -s main
 	# $TERMINAL -e tmux new-session -A -s main
 alt + control + Return
 	$TERMINAL -e $SHELL -c "MPD_HOST=/run/user/$UID/mpd/socket ncmpcpp"

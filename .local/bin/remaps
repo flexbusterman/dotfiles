@@ -1,16 +1,18 @@
 #!/bin/sh
-echo "Remapping keys"
-# # echo "Loading xresources"
-xrdb -load /home/${SUDO_USER:-$USER}/.Xresources &
-# echo "Setting capslock to shift"
-setxkbmap -option shift:both_capslock_cancel;
-# echo "xmodmap"
-xmodmap /home/${SUDO_USER:-$USER}/.Xmodmap
-# echo "Setting capslock to escape"
-xcape -e 'Mode_switch=Escape'
-xcape -e 'Caps_Lock=Escape'
-# echo "Setting keyboard repeat rate"
-xset r rate 300 50 &
+if [ -z "$WAYLAND_DISPLAY" ]; then
+	echo "Remapping keys"
+	# # echo "Loading xresources"
+	xrdb -load /home/${SUDO_USER:-$USER}/.Xresources &
+	# echo "Setting capslock to shift"
+	setxkbmap -option shift:both_capslock_cancel;
+	# echo "xmodmap"
+	xmodmap /home/${SUDO_USER:-$USER}/.Xmodmap
+	# echo "Setting capslock to escape"
+	xcape -e 'Mode_switch=Escape'
+	xcape -e 'Caps_Lock=Escape'
+	# echo "Setting keyboard repeat rate"
+	xset r rate 300 50 &
+fi
 # Define an associative array with device names as keys and desired properties as values
 # declare -A devices
 # devices=(
