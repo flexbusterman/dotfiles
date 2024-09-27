@@ -335,7 +335,8 @@ alt + y
 # special keys
 
 alt + Return
-	dmenu_run
+	fuzzel
+	# dmenu_run
 	# wofi --show run
 	# --show drun
 alt + shift + Return
