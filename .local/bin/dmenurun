@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if [ -z "$WAYLAND_DISPLAY" ]; then
+	dmenu_run
+else
+	dmenu-wl_run -fn "Fira Mono Medium 10"
+fi
