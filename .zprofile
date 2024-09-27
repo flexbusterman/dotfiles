@@ -4,12 +4,23 @@
 
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 
-if [ -z "$XDG_RUNTIME_DIR" ]; then
-	XDG_RUNTIME_DIR="/tmp/$(id -u)-runtime-dir"
-	mkdir -pm 0700 "$XDG_RUNTIME_DIR"
-	export XDG_RUNTIME_DIR
+if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
+  exec startx
 fi
 
-if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
-  exec Hyprland
-fi
+#  _   _                  _                 _
+# | | | |_   _ _ __  _ __| | __ _ _ __   __| |
+# | |_| | | | | '_ \| '__| |/ _` | '_ \ / _` |
+# |  _  | |_| | |_) | |  | | (_| | | | | (_| |
+# |_| |_|\__, | .__/|_|  |_|\__,_|_| |_|\__,_|
+#        |___/|_|
+
+# if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
+#   exec Hyprland
+# fi
+
+# if [ -z "$XDG_RUNTIME_DIR" ]; then
+# 	XDG_RUNTIME_DIR="/tmp/$(id -u)-runtime-dir"
+# 	mkdir -pm 0700 "$XDG_RUNTIME_DIR"
+# 	export XDG_RUNTIME_DIR
+# fi
