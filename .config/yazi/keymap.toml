@@ -452,5 +452,4 @@ desc = "Rotate selected images clockwise"
 [[manager.prepend_keymap]]
 on = [ "<" ]
 run = ['shell "for file in \"$@\"; do magick \"$file\" -rotate 270 \"${file%}\"; done" --confirm', "refresh" ]
-
 desc = "Rotate selected images counter-clockwise"

@@ -1,6 +1,6 @@
 #!/bin/sh
 
-[ -f /tmp/recordingpid ] && notify-send "Recording is already running" && exit
+[ -f /tmp/recordingpid ] && pgrep ffmpeg && notify-send "Recording is already running" && exit
 
 NUMDISPLAYS=$(xrandr | awk '/ connected/ ' | wc -l)
 if [ $NUMDISPLAYS -gt 1 ]; then
@@ -25,7 +25,7 @@ AUDIODEVICE=$(pactl list short sources | grep "$(pactl info | grep "Default Sink
 
 # crf: 0 is lossless, 23 is default, and 51 is worst quality
 ffmpeg -y \
--hwaccel cuda \
+-hwaccel auto \
 -f x11grab \
 -framerate 60 \
 -s $DIMENSIONS \
