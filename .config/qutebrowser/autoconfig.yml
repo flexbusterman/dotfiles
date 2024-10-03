@@ -42,6 +42,7 @@ settings:
   content.javascript.clipboard:
     https://chatgpt.com/: access
     https://github.com/: access
+    https://google.com/: access
   content.media.audio_capture:
     https://app.zoom.us: true
     https://meet.google.com: true
