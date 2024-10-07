@@ -31,7 +31,7 @@ powerOnAndConnect() {
 		[[ $powered == "true" ]] && echo "Bluetooth controller powered on"
 	sleep 3
 	fi
-	bluetoothctl connect $device && notify-send "Connection successful" || notify-send "Connection failed" "If the device is not connected to another device, manually systemctl remove, trust, pair and connect"
+	bluetoothctl connect $device && notify-send "Connection successful" || notify-send "Failed to connect"
 	# sleep 2
 	# [[ $? ]] && notify-send "Connection successful"
 }
