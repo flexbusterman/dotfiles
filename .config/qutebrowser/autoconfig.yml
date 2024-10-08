@@ -43,6 +43,7 @@ settings:
     https://chatgpt.com/: access
     https://github.com/: access
     https://google.com/: access
+    https://claude.ai/: access
   content.media.audio_capture:
     https://app.zoom.us: true
     https://meet.google.com: true
