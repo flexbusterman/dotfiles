@@ -1061,7 +1061,7 @@ require("lazy").setup({
 					["<C-k>"] = cmp.mapping.select_prev_item(),
 					["<C-d>"] = cmp.mapping.scroll_docs(-4),
 					["<C-u>"] = cmp.mapping.scroll_docs(4),
-					["<C-Space>"] = cmp.mapping.complete({}),
+					-- ["<C-Space>"] = cmp.mapping.complete({}),
 					["<C-l>"] = cmp.mapping(function(fallback)
 						if cmp.visible() then
 							cmp.confirm({
