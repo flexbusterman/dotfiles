@@ -1,10 +1,20 @@
 #!/usr/bin/env bash
 # script that toggles the ability to use the touchpad while typing
-# useful to have
-if [ $(xinput list-props "MSFT0001:00 06CB:CE2D Touchpad" | grep "Disable While Typing Enabled (" | awk '{print $NF}') -eq 1 ]; then
-	xinput set-prop "MSFT0001:00 06CB:CE2D Touchpad" "libinput Disable While Typing Enabled" 0
+# if [ $(xinput list-props "MSFT0001:00 06CB:CE2D Touchpad" | grep "Disable While Typing Enabled (" | awk '{print $NF}') -eq 1 ]; then
+# 	xinput set-prop "MSFT0001:00 06CB:CE2D Touchpad" "libinput Disable While Typing Enabled" 0
+# 	notify-send "Touchpad" "Enabled while typing"
+# else
+# 	xinput set-prop "MSFT0001:00 06CB:CE2D Touchpad" "libinput Disable While Typing Enabled" 1
+# 	notify-send "Touchpad" "Disabled while typing"
+# fi
+
+# get the touchpad device id
+device_id=$(xinput list | grep -i "touchpad" | awk '{print $6}' | sed 's/id=//')
+# toggle Disable While Typing
+if [ $(xinput list-props $device_id | grep "Disable While Typing Enabled (" | awk '{print $NF}') -eq 1 ]; then
+	xinput set-prop $device_id "libinput Disable While Typing Enabled" 0
 	notify-send "Touchpad" "Enabled while typing"
 else
-	xinput set-prop "MSFT0001:00 06CB:CE2D Touchpad" "libinput Disable While Typing Enabled" 1
+	xinput set-prop $device_id "libinput Disable While Typing Enabled" 1
 	notify-send "Touchpad" "Disabled while typing"
 fi
