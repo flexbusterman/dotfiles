@@ -14,10 +14,10 @@ case "$filetype" in
 		musicadd "$@"
 		;;
 	application/vnd.openxmlformats-officedocument.spreadsheetml.sheet)
-		st -e sc-im "$@"
+		$TERMINAL -e sc-im "$@"
 		;;
 	application/x-sc)
-		st -e sc-im "$@"
+		$TERMINAL -e sc-im "$@"
 		;;
 	application/x-nes-rom)
 		mednafen "$@"
@@ -50,6 +50,9 @@ case "$filetype" in
 			rpp|RPP)
 				reaper "$@"
 				;;
+			exe|EXE)
+				wine "$@"
+				;;
 			7z|ace|gz|jar|rar|shar|tar|tgz|xar|xz|zip)
 				for file in "$@"
 				do
@@ -58,7 +61,7 @@ case "$filetype" in
 				;;
 			*)
 				# start files in separate tabs in nvim
-				st -e nvim -O "$@"
+				$TERMINAL -e nvim -O "$@"
 				;;
 		esac
 		;;

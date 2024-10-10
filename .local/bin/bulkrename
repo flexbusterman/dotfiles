@@ -6,25 +6,29 @@ if [ $# -eq 0 ]; then
     exit 1
 fi
 
-# Temporary file to store original file names
+# Temporary file to store original basenames
 tmpfile=$(mktemp)
 
-# Add original file names (excluding the script name) to the temporary file
+# Array to store full paths
+declare -a full_paths
+
+# Add original basenames to the temporary file, store full paths separately
 for file in "$@"; do
-    echo "$file" >> "$tmpfile"
+    echo "$(basename "$file")" >> "$tmpfile"
+    full_paths+=("$(dirname "$file")")
 done
 
-# Open the file list in nvim for editing
+# Open the basenames in nvim for editing
 nvim "$tmpfile"
 
-# Read new file names from the temporary file
-mapfile -t new_filenames < "$tmpfile"
+# Read new basenames from the temporary file
+mapfile -t new_basenames < "$tmpfile"
 
 # Remove the temporary file
 rm "$tmpfile"
 
 # Check if the number of original and new filenames match
-if [ ${#new_filenames[@]} -ne $# ]; then
+if [ ${#new_basenames[@]} -ne $# ]; then
     echo "The number of new filenames does not match the original files!"
     exit 1
 fi
@@ -32,22 +36,17 @@ fi
 # Rename files
 i=0
 for original_file in "$@"; do
-    new_file="${new_filenames[$i]}"
+    new_basename="${new_basenames[$i]}"
+    original_dir="${full_paths[$i]}"
     ((i++))
 
     # Skip if names are the same
-    if [ "$original_file" == "$new_file" ]; then
+    if [ "$(basename "$original_file")" == "$new_basename" ]; then
         continue
     fi
 
-    # Create directory if necessary
-    new_dir=$(dirname "$new_file")
-    if [ ! -d "$new_dir" ]; then
-        mkdir -vp "$new_dir"
-    fi
-
-    # Perform the rename
-    mv -v "$original_file" "$new_file"
+    # Perform the rename within the original directory
+    mv -v "$original_file" "$original_dir/$new_basename"
 done
 
 echo "Renaming complete!"
