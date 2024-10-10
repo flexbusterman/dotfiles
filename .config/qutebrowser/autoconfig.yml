@@ -95,7 +95,7 @@ settings:
       m: https://www.google.com/maps/search/{}
       n: https://search.nixos.org/packages?channel=unstable&query={}
       o: https://odysee.com/$/search?q={}
-      p: https://thepiratebay10.info/s/?page=0&orderby=0&q={}
+      p: https://tpirbay.top/search/{}/1/99/0
       r: https://www.exchange-rates.org/exchange-rate-history/eur-sek-{}
       s: https://www.opensubtitles.org/en/search2/sublanguageid-eng/moviename-{}
       y: https://www.youtube.com/results?search_query={}
