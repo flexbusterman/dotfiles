@@ -28,8 +28,8 @@ return {
 			},
 			documentation = {
 				cmd = "/usr/bin/pandoc",
-				horizontal = false,
-				direction = "right",
+				horizontal = true,
+				direction = "bot",
 				keymaps = true,
 			},
 			editor = {
@@ -64,8 +64,8 @@ return {
 			extensions = {
 				tmux = {
 					path = vim.fn.tempname(),
-					horizontal = true,
-					size = "15%",
+					horizontal = false,
+					size = "50%",
 					-- cmd = "tail",
 					-- args = { "-F", "$1" },
 					cmd = "scnvim-tmux-post",
