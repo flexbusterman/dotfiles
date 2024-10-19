@@ -19,10 +19,10 @@ if [ $HOSTNAME = 'arch' ]; then
 	ln -sf ~/SUPERCOLLIDER/fieldsteel\ startup.scd ~/.config/SuperCollider/startup.scd
 	nvim -c "edit $most_recent_file" \
 		-c "set filetype=supercollider" \
+		-c "vsplit ~/Dropbox/SUPERCOLLIDER/fieldsteel startup.scd" \
+		-c "wincmd h" \
+		-c "wincmd =" \
 		-c "SCNvimStart"
-		# -c "vsplit ~/Dropbox/SUPERCOLLIDER/fieldsteel startup.scd" \
-		# -c "wincmd h" \
-		# -c "wincmd =" \
 else
 	xinput set-prop "MSFT0001:00 06CB:CE2D Touchpad" "libinput Disable While Typing Enabled" 1
 	cd ~/Dropbox/SUPERCOLLIDER
@@ -30,8 +30,8 @@ else
 	ln -sf ~/Dropbox/SUPERCOLLIDER/fieldsteel\ startup.scd ~/.config/SuperCollider/startup.scd
 	nvim -c "edit $most_recent_file" \
 		-c "set filetype=supercollider" \
+		-c "vsplit ~/Dropbox/SUPERCOLLIDER/fieldsteel startup.scd" \
+		-c "wincmd h" \
+		-c "wincmd =" \
 		-c "SCNvimStart"
-		# -c "vsplit ~/Dropbox/SUPERCOLLIDER/fieldsteel startup.scd" \
-		# -c "wincmd h" \
-		# -c "wincmd =" \
 fi

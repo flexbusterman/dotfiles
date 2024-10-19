@@ -64,8 +64,8 @@ return {
 			extensions = {
 				tmux = {
 					path = vim.fn.tempname(),
-					horizontal = false,
-					size = "50%",
+					horizontal = true,
+					size = "20%",
 					-- cmd = "tail",
 					-- args = { "-F", "$1" },
 					cmd = "scnvim-tmux-post",
