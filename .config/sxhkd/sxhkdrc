@@ -224,10 +224,10 @@ alt + shift + q
 alt + r
 	reaper
 alt + shift + r
-	sudo pkill -HUP swhkd
-	notify-send "reloaded config"
-	# sudo pkill -HUP swhkd
-	# pkill -usr1 -x sxhkd && notify-send 'Reloaded sxhkd config' || pkill -usr1 -x swhkd && notify-send 'Reloaded swhkd config'
+	pkill -usr1 -x sxhkd && notify-send 'Reloaded sxhkd config' || pkill -usr1 -x sxhkd && notify-send 'Reloaded sxhkd config'
+	# sudo pkill -HUP sxhkd
+	# notify-send "reloaded config"
+	# sudo pkill -HUP sxhkd
 
 # alt + control + r
 # notify-send "alt + control + r"
@@ -428,6 +428,9 @@ Print
 	screenshot
 shift + Print
 	screenshot -s
+
+alt + control + BackSpace
+	notify-send "alt + control + BackSpace"
 
 # __  _______ ___   __
 # \ \/ /  ___( _ ) / /_
