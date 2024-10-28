@@ -57,7 +57,7 @@ keymap = [
 	# { on = "o",					run = "open",												desc = "Open selected files" },
 	{ on = "o",					run = 'shell "openfile \"$@\"" --confirm --orphan', desc = "Open selected files using ~/.local/bin/openfile" },
 
-	{ on = "O",					run = "open --interactive",					desc = "Open selected files interactively" },
+	# { on = "O",					run = "open --interactive",					desc = "Open selected files interactively" },
 	{ on = "<Enter>",		run = "open",												desc = "Open selected files" },
 	{ on = "<S-Enter>", run = "open --interactive",					desc = "Open selected files interactively" },
 	{ on = "y",					run = "yank",												desc = "Yank selected files (copy)" },
@@ -81,8 +81,8 @@ keymap = [
 	{ on = "s",					run = "search fd",										desc = "Search files by name using fd" },
 	{ on = "S",					run = "search rg",										desc = "Search files by content using ripgrep" },
 	{ on = "<C-s>",			run = "escape --search",							desc = "Cancel the ongoing search" },
+	{ on = "<C-t>",			run = "plugin fzf",									desc = "Jump to a directory or reveal a file using fzf" },
 	{ on = "z",					run = "plugin zoxide",								desc = "Jump to a directory using zoxide" },
-	{ on = "Z",					run = "plugin fzf",									desc = "Jump to a directory or reveal a file using fzf" },
 
 	# Linemode
 	{ on = [ "m", "s" ], run = "linemode size",				desc = "Set linemode to size" },
@@ -453,3 +453,8 @@ desc = "Rotate selected images clockwise"
 on = [ "<" ]
 run = ['shell "for file in \"$@\"; do magick \"$file\" -rotate 270 \"${file%}\"; done" --confirm', "refresh" ]
 desc = "Rotate selected images counter-clockwise"
+
+[[manager.prepend_keymap]]
+on = [ "O" ]
+run = ['shell "xdg-open \"$(dirname \"$1\")\"" --confirm --orphan', "refresh" ]
+desc = "Open terminal in the directory of the selected file"
