@@ -167,26 +167,14 @@ alt + shift + n
 # notify-send "shift + control + n"
 
 # Orgmode shortcuts
-alt + o; a;
+alt + o; a; a;
 	orgmux -a # tmux orgmode agenda
-alt + o; alt + a;
-	orgmux -a # tmux orgmode agenda
-alt + o; t;
+alt + o; a; t;
 	orgmux -t # tmux orgmode todo
-alt + o; alt + t;
-	orgmux -t # tmux orgmode todo
-alt + o; c;
+alt + o; a; c;
 	orgmux -c # tmux orgmode capture
-alt + o; alt + c;
-	orgmux -c # tmux orgmode capture
-alt + o; r;
+alt + o; a; r;
 	orgmux -r # tmux orgmode open refile
-alt + o; alt + r;
-	orgmux -r # tmux orgmode open refile
-alt + o; o;
-	orgmux # tmux orgmode focus if open, else open refile
-alt + o; alt + o;
-	orgmux # tmux orgmode focus if open, else open refile
 # alt + shift + o
 # notify-send "alt + shift + o"
 
