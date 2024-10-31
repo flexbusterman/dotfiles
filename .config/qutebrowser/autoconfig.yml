@@ -21,8 +21,6 @@ settings:
     global: rgba(200,200,200,1)
   colors.hints.match.fg:
     global: rgba(255,255,255,1)
-  # colors.webpage.bg:
-  #   global: black
   colors.webpage.darkmode.enabled:
     global: false
   content.blocking.enabled:
@@ -32,6 +30,8 @@ settings:
   content.cookies.accept:
     '*://qutebrowser.org/*': all
     https://www.youtube.com/: all
+  content.desktop_capture:
+    https://teams.live.com: true
   content.geolocation:
     https://www.1177.se: true
     https://www.elgiganten.se: true
@@ -41,18 +41,21 @@ settings:
     https://www.stockholmparkering.se: true
   content.javascript.clipboard:
     https://chatgpt.com/: access
+    https://claude.ai/: access
     https://github.com/: access
     https://google.com/: access
-    https://claude.ai/: access
   content.media.audio_capture:
     https://app.zoom.us: true
     https://meet.google.com: true
+    https://teams.live.com: true
     https://www.instagram.com: true
   content.media.audio_video_capture:
     https://meet.google.com: true
+    https://teams.live.com: true
   content.media.video_capture:
     https://app.zoom.us: true
     https://meet.google.com: true
+    https://teams.live.com: true
     https://www.instagram.com: true
   content.mouse_lock:
     https://nusan.itch.io: true
@@ -95,7 +98,6 @@ settings:
       m: https://www.google.com/maps/search/{}
       n: https://search.nixos.org/packages?channel=unstable&query={}
       o: https://odysee.com/$/search?q={}
-      # p: https://tpirbay.top/search/{}/1/99/0
       p: https://thepiratebay10.info/search/{}/1/99/0
       r: https://www.exchange-rates.org/exchange-rate-history/eur-sek-{}
       s: https://www.opensubtitles.org/en/search2/sublanguageid-eng/moviename-{}
