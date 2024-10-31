@@ -13,7 +13,6 @@ export QT_QPA_PLATFORMTHEME=qt6ct
 export RANGER_LOAD_DEFAULT_RC=FALSE
 export SHELL=/usr/bin/zsh
 export TERMINAL=kitty
-export TERM=kitty
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
