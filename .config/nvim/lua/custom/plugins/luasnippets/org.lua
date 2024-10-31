@@ -8,7 +8,10 @@ local snippets = {
 		i(1, "language"),
 		t({ "", "" }),
 		i(2, ""),
-		t({ "", "#+END_SRC" }), -- Closing line with a newline above
+		t({ "", "#+END_SRC" }),
+	}),
+	s({ trig = "checkbox", name = "Checkbox" }, {
+		t("- [ ] "),
 	}),
 }
 return snippets
