@@ -917,6 +917,11 @@ require("lazy").setup({
 				"stylua", -- lua
 				"black", -- python
 				"isort", -- python
+				"typescript-language-server", -- TypeScript/JavaScript
+				"eslint", -- ESLint
+				"tailwindcss", -- If you use Tailwind
+				"cssls", -- CSS
+				"html", -- HTML
 			})
 			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
@@ -1236,7 +1241,20 @@ require("lazy").setup({
 
 			---@diagnostic disable-next-line: missing-fields
 			require("nvim-treesitter.configs").setup({
-				ensure_installed = { "bash", "c", "html", "lua", "markdown", "vim", "vimdoc" },
+				ensure_installed = {
+					"bash",
+					"c",
+					"css",
+					"html",
+					"javascript",
+					"json",
+					"lua",
+					"markdown",
+					"tsx",
+					"typescript",
+					"vim",
+					"vimdoc",
+				},
 				-- Autoinstall languages that are not installed
 				auto_install = true,
 				highlight = { enable = true },
