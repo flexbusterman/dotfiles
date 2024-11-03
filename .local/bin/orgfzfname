@@ -26,7 +26,9 @@ if [[ "$currentCommand" == *"vim"* ]]; then
 else
 	echo "(n)vim is not running"
 	# start, send output to dev/null and disown
-	tmux send-keys -t orgmode C-z "cd ~/ORGMODE/; nvim \"$file\" > /dev/null 2>&1 & disown" Enter
+	tmux send-keys -t orgmode C-c
+	sleep 0.1
+	tmux send-keys -t orgmode "cd ~/ORGMODE/; nvim \"$file\"" Enter
 fi
 
 (setsid $TERMINAL -e tmux attach -t orgmode >/dev/null 2>&1 &)
