@@ -1,4 +1,11 @@
 #!/bin/sh
+
+# Detect if running in a terminal, otherwise open a terminal with the script
+if [ -z "$TMUX" ] && [ -z "$TERM" ]; then
+    exec "$TERMINAL" -e "$0"
+    exit
+fi
+
 cd ~/ORGMODE/
 
 # 1. Search for text in files using Ripgrep
@@ -13,32 +20,33 @@ IFS=: read -ra selected < <(
         --preview 'bat --color=always {1} --highlight-line {2}' \
         --preview-window 'up,60%,border-bottom,+{2}+3/3,~3'
 )
-# [ -n "${selected[0]}" ] && nvim "${selected[0]}" "+${selected[1]}"
+
+if [ -z "${selected[0]}" ]; then
+    notify-send "No selection made"
+    exit 1
+fi
 
 # if tmux session orgmode is not running, start it
 if ! tmux has-session -t orgmode 2>/dev/null; then
-	echo "tmux session orgmode not running, starting it"
-	tmux new-session -s orgmode -d
+    notify-send "Starting tmux session orgmode"
+    tmux new-session -s orgmode -d
 else
-	echo "tmux session orgmode is running"
+    notify-send "tmux session orgmode is running"
 fi
 
-# get current command for future vim check
+# Get current command to check if (n)vim is running
 currentCommand=$(tmux list-panes -t orgmode -F '#{pane_current_command}')
 
-# check if nvim is running
+# Check if nvim is running
 if [[ "$currentCommand" == *"vim"* ]]; then
-	echo "(n)vim is running"
-	# open file in a tab or switch to tab with buffer
-	tmux send-keys -t orgmode Escape ":e +${selected[1]} \"${selected[0]}\" " Enter
-	# expand nvim fold
+    tmux send-keys -t orgmode Escape ":e +${selected[1]} \"${selected[0]}\"" Enter
 else
-	echo "(n)vim is not running"
-	# start, send output to dev/null and disown
-	# tmux send-keys -t orgmode Escape ":e \"${selected[0]}\" \"+${selected[1]}\"" Enter
-	tmux send-keys -t orgmode C-z "cd ~/ORGMODE/; nvim +${selected[1]} \"${selected[0]}\"" Enter
+    tmux send-keys -t orgmode C-z "cd ~/ORGMODE/; nvim +${selected[1]} \"${selected[0]}\"" Enter
 fi
 
+# Expand folds and center the view
 tmux send-keys -t orgmode Escape "zRzt"
 
-(setsid $TERMINAL -e tmux attach -t orgmode >/dev/null 2>&1 &)
+# Attach to tmux session
+notify-send "$TERMINAL" "Opening $file in (n)vim"
+tmux attach -t orgmode
