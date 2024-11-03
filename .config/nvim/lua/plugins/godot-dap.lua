@@ -1,4 +1,5 @@
 return {
+	-- plugin for interfacing with godot game engine
 	"mfussenegger/nvim-dap",
 	config = function()
 		vim.keymap.set("n", "<F5>", function()
