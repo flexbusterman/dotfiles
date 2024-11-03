@@ -22,16 +22,16 @@ IFS=: read -ra selected < <(
 )
 
 if [ -z "${selected[0]}" ]; then
-    notify-send "No selection made"
+    echo "No selection made"
     exit 1
 fi
 
 # if tmux session orgmode is not running, start it
 if ! tmux has-session -t orgmode 2>/dev/null; then
-    notify-send "Starting tmux session orgmode"
+    echo "Starting tmux session orgmode"
     tmux new-session -s orgmode -d
 else
-    notify-send "tmux session orgmode is running"
+    echo "tmux session orgmode is running"
 fi
 
 # Get current command to check if (n)vim is running
@@ -48,5 +48,5 @@ fi
 tmux send-keys -t orgmode Escape "zRzt"
 
 # Attach to tmux session
-notify-send "$TERMINAL" "Opening $file in (n)vim"
+echo "$TERMINAL" "Opening $file in (n)vim"
 tmux attach -t orgmode
