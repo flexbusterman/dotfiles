@@ -1,0 +1,44 @@
+#!/bin/sh
+cd ~/ORGMODE/
+
+# 1. Search for text in files using Ripgrep
+# 2. Interactively narrow down the list using fzf
+# 3. Open the file in orgmode tmux session
+
+IFS=: read -ra selected < <(
+  rg --color=always --line-number --no-heading --smart-case "${*:-}" |
+    fzf --ansi \
+        --color "hl:-1:underline,hl+:-1:underline:reverse" \
+        --delimiter : \
+        --preview 'bat --color=always {1} --highlight-line {2}' \
+        --preview-window 'up,60%,border-bottom,+{2}+3/3,~3'
+)
+# [ -n "${selected[0]}" ] && nvim "${selected[0]}" "+${selected[1]}"
+
+# if tmux session orgmode is not running, start it
+if ! tmux has-session -t orgmode 2>/dev/null; then
+	echo "tmux session orgmode not running, starting it"
+	tmux new-session -s orgmode -d
+else
+	echo "tmux session orgmode is running"
+fi
+
+# get current command for future vim check
+currentCommand=$(tmux list-panes -t orgmode -F '#{pane_current_command}')
+
+# check if nvim is running
+if [[ "$currentCommand" == *"vim"* ]]; then
+	echo "(n)vim is running"
+	# open file in a tab or switch to tab with buffer
+	tmux send-keys -t orgmode Escape ":e +${selected[1]} \"${selected[0]}\" " Enter
+	# expand nvim fold
+else
+	echo "(n)vim is not running"
+	# start, send output to dev/null and disown
+	# tmux send-keys -t orgmode Escape ":e \"${selected[0]}\" \"+${selected[1]}\"" Enter
+	tmux send-keys -t orgmode C-z "cd ~/ORGMODE/; nvim +${selected[1]} \"${selected[0]}\"" Enter
+fi
+
+tmux send-keys -t orgmode Escape "zRzt"
+
+(setsid $TERMINAL -e tmux attach -t orgmode >/dev/null 2>&1 &)
