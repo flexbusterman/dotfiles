@@ -10,7 +10,7 @@ return {
 			-- set custom lualine background color
 			lualine_bg_color = "#44475a", -- default nil
 			-- set italic comment
-			italic_comment = true -- default false
+			italic_comment = true, -- default false
 		})
 		vim.cmd("colorscheme dracula")
 	end,
