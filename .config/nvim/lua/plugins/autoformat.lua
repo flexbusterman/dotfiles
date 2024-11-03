@@ -12,6 +12,8 @@ return { -- Autoformat
 			timeout_ms = 500,
 		},
 		formatters_by_ft = {
+			sh = { "shfmt" },
+			bash = { "shfmt" },
 			lua = { "stylua" },
 			javascript = {
 				"prettier",

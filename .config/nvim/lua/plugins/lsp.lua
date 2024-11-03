@@ -334,6 +334,7 @@ return { -- LSP Configuration & Plugins
 			"tailwindcss", -- If you use Tailwind
 			"cssls", -- CSS
 			"html", -- HTML
+			"shfmt", -- Shell BASH
 		})
 		require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
