@@ -8,6 +8,19 @@ return {
 		-- { "flexbusterman/nvim-supercollider-piano", dir = "~/.local/src/nvim-supercollider-piano/" },
 	},
 	config = function()
+		local function adjust_tmux_height()
+			local fixed_tmux_height = 10 -- Fixed height for the bottom tmux split
+			vim.fn.system("tmux resize-pane -y " .. fixed_tmux_height .. " -t bottom")
+		end
+
+		-- Automatically adjust the tmux split height when Neovim is resized
+		vim.api.nvim_create_autocmd("VimResized", {
+			callback = adjust_tmux_height,
+		})
+
+		-- Set initial height at startup
+		adjust_tmux_height()
+
 		vim.o.wrap = true
 		vim.o.linebreak = true
 		-- vim.keymap.set("n", "j", "gj")

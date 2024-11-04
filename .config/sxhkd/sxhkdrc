@@ -407,7 +407,8 @@ alt + F11
 	screencaststart
 
 alt + shift + F11
-	dmenurecord
+	screencastwithmicstart
+	# dmenurecord
 
 alt + F12
 	killrecording

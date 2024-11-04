@@ -41,4 +41,4 @@ ffmpeg -y \
 "$HOME/Downloads/screencast-output-flac-$(date '+%y%m%d-%H%M-%S').mkv" &
 
 # store the PID of the most recently executed background process
-echo $! > /tmp/recordingpid && notify-send "Started recording"
+echo $! > /tmp/recordingpid && notify-send "Started recording with mic"
