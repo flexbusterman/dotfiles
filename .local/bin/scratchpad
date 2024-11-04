@@ -2,12 +2,12 @@
 
 # Function to check if the tmux session exists
 tmux_has_session() {
-  tmux has-session -t $1 2>/dev/null
+	tmux has-session -t $1 2>/dev/null
 }
 
 # Start a new tmux session if it doesn't exist
 if ! tmux_has_session "orgmode"; then
-  tmux new-session -d -s "orgmode"
+	tmux new-session -d -s "orgmode"
 fi
 
 # # Send 'Ctrl+l' to clear the screen
@@ -19,13 +19,13 @@ fi
 # Check if (n)vim is running in the tmux session
 currentCommand=$(tmux list-panes -t orgmode -F '#{pane_current_command}')
 if [[ "$currentCommand" == *"vim"* ]]; then
-    echo "(n)vim is running"
-    tmux send-keys -t orgmode Escape ":e ~/ORGMODE/refile.org" Enter
+	echo "(n)vim is running"
+	tmux send-keys -t orgmode Escape ":e ~/ORGMODE/refile.org" Enter
 else
-    echo "(n)vim is not running"
-    tmux send-keys -t orgmode C-c
-    sleep 0.1
-    tmux send-keys -t orgmode "cd ~/ORGMODE/; nvim refile.org" Enter
+	echo "(n)vim is not running"
+	tmux send-keys -t orgmode C-c
+	sleep 0.1
+	tmux send-keys -t orgmode "cd ~/ORGMODE/; nvim refile.org" Enter
 fi
 
-st -t scratchpad -g 80x45 -e tmux attach -t "orgmode"
+kitty -T scratchpad -c ~/.config/kitty/kitty-no-transparency.conf -e tmux attach -t "orgmode"
