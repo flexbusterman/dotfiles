@@ -1,166 +1,59 @@
 #!/bin/bash
 
-# get bluetooth names
-# bluezNameL="$(pw-cli ls Node | awk '/bluez_output/ {print}')"
-# bluezNameR="$(pw-cli ls Node | awk '/bluez.*FR/ {print}')"
-
 # create VirtualSink if not present
-if ! [[ $(pw-cli list-objects | awk '/node.description = "VirtualSink"/' ) ]]; then
-	echo VirtualSink not found
+if ! [[ $(pw-cli list-objects | awk '/node.description = "VirtualSink"/') ]]; then
+	echo "VirtualSink not found"
 	pw-loopback --capture-props="media.class=Audio/Sink node.description=VirtualSink" &
 	sleep 1
 fi
 
+# get node names
 loopName=$(pw-cli ls Node | awk -F'"' '/node.name = "output.pw/{print $2}')
 bluezName=$(pw-cli ls Node | awk -F'"' '/node.name = "bluez_output/{print $2}')
+echo "Loopback name: $loopName"
+echo "Bluetooth output name: $bluezName"
 
-echo $bluezName
-
-echo $loopName
-
+# Display current connections
+echo "Current connections:"
 pw-link -lI
 
 # get nodes connected to supercollider inputs
 readarray -t scInsL < <(pw-link -lI | sed -n "/^ *[0-9]* SuperCollider:in_1/,/^ *[0-9]* [a-zA-Z]/p" | awk --posix '/\|/ {print $NF}')
 readarray -t scInsR < <(pw-link -lI | sed -n "/^ *[0-9]* SuperCollider:in_2/,/^ *[0-9]* [a-zA-Z]/p" | awk --posix '/\|/ {print $NF}')
 
-echo "SuperCollider inputs L: $scInsL[@]"
-echo "SuperCollider inputs R: $scInsR[@]"
+# Disconnect all existing connections to SuperCollider inputs
+echo "Disconnecting existing SuperCollider input connections..."
+for input in "${scInsL[@]}"; do
+	echo "Disconnecting from SuperCollider:in_1: $input"
+	pw-link -d "$input" "SuperCollider:in_1"
+done
+
+for input in "${scInsR[@]}"; do
+	echo "Disconnecting from SuperCollider:in_2: $input"
+	pw-link -d "$input" "SuperCollider:in_2"
+done
 
 # get outgoing connections for loopback
 readarray -t loopOutsL < <(pw-link -lI | sed -n "/^ *[0-9]* output.pw.*FL/,/^ *[0-9]* [a-zA-Z]/p" | awk --posix '/\|/ {print $NF}')
 readarray -t loopOutsR < <(pw-link -lI | sed -n "/^ *[0-9]* output.pw.*FR/,/^ *[0-9]* [a-zA-Z]/p" | awk --posix '/\|/ {print $NF}')
 
 # disconnect loopback outputs
-for loopOutL in ${loopOutsL[@]}; do
-	echo "disconnecting" "$loopName:output_FL" $loopOutL
-	pw-link -d "$loopName:output_FL" $loopOutL
-done
-for loopOutR in ${loopOutsR[@]}; do
-	echo "disconnecting" "$loopName:output_FR" $loopOutR
-	pw-link -d "$loopName:output_FR" $loopOutR
+echo "Disconnecting existing loopback outputs..."
+for loopOutL in "${loopOutsL[@]}"; do
+	echo "Disconnecting $loopName:output_FL from $loopOutL"
+	pw-link -d "$loopName:output_FL" "$loopOutL"
 done
 
+for loopOutR in "${loopOutsR[@]}"; do
+	echo "Disconnecting $loopName:output_FR from $loopOutR"
+	pw-link -d "$loopName:output_FR" "$loopOutR"
+done
+
+# Make new connections
+echo "Creating new connections..."
 pw-link "$loopName:output_FL" "SuperCollider:in_1"
 pw-link "$loopName:output_FR" "SuperCollider:in_2"
-
 pw-link "SuperCollider:out_1" "$bluezName:playback_FL"
 pw-link "SuperCollider:out_2" "$bluezName:playback_FR"
 
-# readarray -t loopOutsR < <(pw-link -lI | sed -n "/^ *[0-9]* $loopName:output_FR/,/^ *[0-9]* [a-zA-Z]/p" | awk --posix '/\|/ {print $NF}')
-
-# # disconnect all outgoing connections for loopback
-# for loopOutL in "${loopOutsL[@]}"; do
-# 	pw-link -d "$loopName:output_FL" "$loopOutL"
-# done
-# for loopOutR in "${loopOutsR[@]}"; do
-# 	pw-link -d "$loopName:output_FR" "$loopOutR"
-# done
-#
-# # connect loopback outputs to SuperCollider inputs
-# pw-link "$loopNameL" "SuperCollider:in_1"
-# pw-link "$loopNameR" "SuperCollider:in_2"
-
-# echo "${loopOutsL[@]}"
-# echo "${loopOutsR[@]}"
-
-# # Declare an array to hold devices
-# declare -a devices
-#
-# # Run pw-cli and capture its output
-# input_data=$(pw-cli ls Node)
-#
-# # Split input data into an array of lines
-# IFS=$'\n' read -r -d '' -a lines <<<"$input_data"$'\n'
-#
-# # Initialize variables
-# current_id=""
-# current_type=""
-# current_name=""
-#
-# # Loop through each line
-# for line in "${lines[@]}"; do
-#     # Trim leading and trailing whitespace
-#     trimmed_line=$(echo "$line" | xargs)
-#
-#     # Debug: print the line being processed
-#     # echo "Processing line: $trimmed_line"
-#
-#     if [[ $trimmed_line =~ ^id\ ([0-9]+),\ type\ (.+)$ ]]; then
-#         # If we have a current device with a name, save it to the devices array
-#         if [[ -n $current_id && -n $current_name ]]; then
-#             devices+=("$current_id,$current_name,$current_type")
-#         fi
-#         # Parse new device ID and type
-#         current_id="${BASH_REMATCH[1]}"
-#         current_type="${BASH_REMATCH[2]}"
-#         current_name=""  # Reset the device name for the new device
-#         # Debug: print the parsed ID and type
-#         # echo "Found new device - ID: $current_id, Type: $current_type"
-#     elif [[ $trimmed_line =~ ^node\.name\ =\ ([^\"]+) ]]; then
-#         # Parse the device name
-#         current_name="${BASH_REMATCH[1]}"
-#         # Debug: print the parsed name
-#         # echo "Found device name: $current_name"
-#     fi
-# done
-#
-# # Add the last device to the array (if it has a name)
-# if [[ -n $current_id && -n $current_name ]]; then
-#     devices+=("$current_id,$current_name,$current_type")
-# fi
-#
-# pw-link -lI
-
-# # Output the devices array
-# for device in ${devices[@]}; do
-# 	name=$(echo $device | cut -d, -f2)
-# 	if [[ $name == *"bluez_output"* ]]; then
-# 		id=$(echo $device | cut -d, -f1)
-# 		pw-link -d
-# 	fi
-# done
-
-#
-# # create VirtualSink if not present
-# if ! [[ $(pw-cli list-objects | awk '/node.description = "VirtualSink"/' ) ]]; then
-# 	echo VirtualSink not found
-# 	pw-loopback --capture-props="media.class=Audio/Sink node.description=VirtualSink" &
-# 	sleep 1
-# fi
-#
-# # disconnect loopback outputs
-# loopbackOutputL="$(pw-link -lI | awk '/^ *[0-9]* output.pw-loopback.*FL/ {print $2}')"
-# loopbackOutputR="$(pw-link -lI | awk '/^ *[0-9]* output.pw-loopback.*FR/ {print $2}')"
-# readarray -t loopbackOutputLinksL < <(pw-link -lI | sed -n '/^ *[0-9]* *output.pw-loopback-[0-9]*:output_FL/,/^ *[0-9]* [a-zA-Z]/p' | awk --posix '/\|/ {print $NF}')
-# readarray -t loopbackOutputLinksR < <(pw-link -lI | sed -n '/^ *[0-9]* *output.pw-loopback-[0-9]*:output_FR/,/^ *[0-9]* [a-zA-Z]/p' | awk --posix '/\|/ {print $NF}')
-# for link in "${loopbackOutputLinksL[@]}"; do
-# 	pw-link -d "$loopbackOutputL" "$link"
-# done
-# for link in "${loopbackOutputLinksR[@]}"; do
-# 	pw-link -d "$loopbackOutputR" "$link"
-# done
-#
-# # connect loopback outputs to SuperCollider
-# pw-link "$loopbackOutL" "SuperCollider:in_1"
-# pw-link "$loopbackOutR" "SuperCollider:in_2"
-#
-# # disconnect bluetooth headset outputs
-# bluezIns=$(pw-cli list-objects | awk -F'"' '/bluez_input/ {print $2}' | awk -F':' '{print $1}')
-#
-# echo "$bluezIns"
-#
-# bluezCaptures=$(pw-cli list-objects | awk -F'"' '/bluez_capture/ {print $2}')
-# for input in ${bluezIns[@]}; do
-# 	pw-link -d "$input" "SuperCollider:in_1"
-# 	pw-link -d "$input" "SuperCollider:in_2"
-# done
-# for capture in ${bluezCaptures[@]}; do
-# 	pw-link -d "$capture" "SuperCollider:in_1"
-# 	pw-link -d "$capture" "SuperCollider:in_2"
-# done
-#
-# # connect SuperCollider to bluetooth headset
-# jabra=$(pw-cli list-objects | awk -F'"' '/description = "Jabra/{print $2; exit}')
-# pw-link "SuperCollider:out_1" "$jabra:playback_FL"
-# pw-link "SuperCollider:out_2" "$jabra:playback_FR"
+echo "Setup complete!"
