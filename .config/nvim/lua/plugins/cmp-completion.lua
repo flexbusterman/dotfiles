@@ -8,7 +8,7 @@ return { -- Autocompletion
 			config = function()
 				require("luasnip.loaders.from_vscode").lazy_load()
 				require("luasnip.loaders.from_lua").lazy_load({
-					paths = "/home/flex/.config/nvim/lua/custom/plugins/luasnippets/",
+					paths = "/home/flex/.config/nvim/lua/plugins/luasnippets/",
 				})
 				require("luasnip").filetype_extend("javascript", { "javascriptreact" })
 				require("luasnip").filetype_extend("javascript", { "html" })
