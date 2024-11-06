@@ -29,6 +29,12 @@ return {
 				org_priority_lowest = "F",
 				org_capture_templates = { t = { description = "Task", template = "* TODO %?\n  SCHEDULED: %t" } },
 				org_todo_keywords = { "TODO", "NEXT", "LEARN", "|", "DONE" },
+				mappings = {
+					agenda = {
+						-- this is 't' by default, which conflicts with my tab navigation mappings
+						org_agenda_todo = false,
+					},
+				},
 			})
 		end,
 	},

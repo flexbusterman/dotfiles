@@ -33,6 +33,7 @@ settings:
   content.desktop_capture:
     https://teams.live.com: true
   content.geolocation:
+    https://onsiter.com: true
     https://www.1177.se: true
     https://www.elgiganten.se: true
     https://www.google.com: true
