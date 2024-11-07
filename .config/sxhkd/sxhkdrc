@@ -446,21 +446,9 @@ XF86MonBrightnessDown
 # \__ \\ V  V /  __/ (_| | \__ \ | | |
 # |___/ \_/\_/ \___|\__,_|_|___/_| |_|
 
-# # å character
-# super + bracketleft
-# 	xdotool keyup super; echo -n å | xclip -selection clipboard; echo key Control+Shift+v | dotool
-# super + shift + bracketleft
-# 	xdotool keyup super; echo -n Å | xclip -selection clipboard; echo key Control+Shift+v | dotool
-# # ä character
-# super + apostrophe
-# 	xdotool keyup super; echo -n ä | xclip -selection clipboard; echo key Control+Shift+v | dotool
-# super + shift + apostrophe
-# 	xdotool keyup super; echo -n Ä | xclip -selection clipboard; echo key Control+Shift+v | dotool
-# # ö character
-# super + semicolon
-# 	xdotool keyup super; echo -n ö | xclip -selection clipboard; echo key Control+Shift+v | dotool
-# super + shift + semicolon
-# 	xdotool keyup super; echo -n Ö | xclip -selection clipboard; echo key Control+Shift+v | dotool
+super + bracketleft
+	typesnippet -ao
+	# notify-send "super + bracketleft"
 
 #      _       __             _ _
 #   __| | ___ / _| __ _ _   _| | |_ ___

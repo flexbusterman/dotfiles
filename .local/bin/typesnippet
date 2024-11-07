@@ -1,2 +1,27 @@
 #!/usr/bin/env bash
-xdotool type $(grep -v '^#' ~/.config/shell/snippets | dmenu -i -l 50 | cut -d' ' -f1)
+# xdotool type $(grep -v '^#' ~/.config/shell/snippets | dmenu -l 50 | cut -d' ' -f1)
+
+# check which options are passed to the script with a case statement
+case $1 in
+-ao)
+	xdotool type "å"
+	;;
+-ae)
+	xdotool type "ä"
+	;;
+-oe)
+	xdotool type "ö"
+	;;
+-AO)
+	xdotool type "Å"
+	;;
+-AE)
+	xdotool type "Ä"
+	;;
+-OE)
+	xdotool type "Ö"
+	;;
+*)
+	xdotool type $(grep -v '^#' ~/.config/shell/snippets | dmenu -l 50 | cut -d' ' -f1)
+	;;
+esac
