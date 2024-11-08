@@ -1,5 +1,6 @@
 (defcfg
   process-unmapped-keys yes
+	danger-enable-cmd yes
 )
 
 (defsrc
@@ -26,6 +27,12 @@
 	k (tap-hold $tap-time $hold-time k rsft)
 	l (tap-hold $tap-time $hold-time l ralt)
 	; (tap-hold $tap-time $hold-time ; rmet)
+  ao (cmd xdotool type "å")
+  ae (cmd xdotool type "ä")
+  oe (cmd xdotool type "ö")
+  AO (cmd xdotool type "Å")
+  AE (cmd xdotool type "Ä")
+  OE (cmd xdotool type "Ö")
 )
 
 (deflayer default
@@ -40,8 +47,8 @@
 (deflayer special
   _    _    _    _    _    _    _    _    _    _    _    _    _
   _    S-1  S-2  S-3  S-4  S-5  S-6  S-7  S-8  S-9  S-0  _    _    _
-  _    S-5  S-6  S-7  S-8  _    _    _    _    S-9  S-0  _    _    _
-  _    _    _    del  _    _    left down up   rght _    _    _
+  _    S-5  S-6  S-7  S-8  _    _    _    _    S-9  S-0  @ao  _    _
+  _    _    _    del  _    _    left down up   rght @oe  @ae  _
   _    _    _    _    _    _    _    _    _    _    _    _
   _    _    _              _              _    _    _
 )
