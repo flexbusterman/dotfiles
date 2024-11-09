@@ -1,0 +1,8 @@
+#!/bin/bash
+if $(systemctl --user is-active --quiet kanata); then
+	notify-send "Disabling Kanata"
+	systemctl --user disable --now kanata
+else
+	notify-send "Enabling Kanata"
+	systemctl --user enable --now kanata
+fi

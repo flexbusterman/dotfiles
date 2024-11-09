@@ -50,7 +50,7 @@ alt + shift + control + d
 alt + e
 	touchpaddisablewhiletypingtoggle
 alt + shift + e
-	touchpadtoggle
+	kanatatoggle
 # alt + control + e
 # notify-send "alt + control + e"
 # alt + shift + control + e
