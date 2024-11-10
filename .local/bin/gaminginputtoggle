@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+device_id=$(xinput list | grep -i "touchpad" | awk '{print $6}' | sed 's/id=//')
+if $(systemctl --user is-active --quiet kanata); then
+	xinput set-prop $device_id "libinput Disable While Typing Enabled" 0
+	notify-send "Touchpad" "Enabled while typing"
+	notify-send "Disabling Kanata"
+	systemctl --user disable --now kanata
+else
+	xinput set-prop $device_id "libinput Disable While Typing Enabled" 1
+	notify-send "Touchpad" "Disabled while typing"
+	notify-send "Enabling Kanata"
+	systemctl --user enable --now kanata
+fi
