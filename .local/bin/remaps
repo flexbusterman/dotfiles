@@ -1,15 +1,16 @@
 #!/bin/sh
 if [ -z "$WAYLAND_DISPLAY" ]; then
 	echo "Remapping keys"
-	# # echo "Loading xresources"
-	# xrdb -load /home/${SUDO_USER:-$USER}/.Xresources &
+	# echo "Loading xresources"
+	xrdb -load /home/${SUDO_USER:-$USER}/.Xresources &
 	# echo "Setting capslock to shift"
-	# setxkbmap -option shift:both_capslock_cancel;
+	setxkbmap -option shift:both_capslock_cancel
 	# echo "xmodmap"
-	# xmodmap /home/${SUDO_USER:-$USER}/.Xmodmap
+	xmodmap /home/${SUDO_USER:-$USER}/.Xmodmap
+	# echo "Setting Mode_switch to escape"
+	xcape -e 'Mode_switch=Escape'
 	# echo "Setting capslock to escape"
-	# xcape -e 'Mode_switch=Escape'
-	# xcape -e 'Caps_Lock=Escape'
+	xcape -e 'Caps_Lock=Escape'
 	# echo "Setting keyboard repeat rate"
 	xset r rate 300 50 &
 fi
