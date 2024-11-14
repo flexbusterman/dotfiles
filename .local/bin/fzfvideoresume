@@ -1,0 +1,50 @@
+#!/bin/bash
+
+# parse log of files using this format and sort by date:
+lastLine=$(tail -n 1 ~/.config/mpv/mpvHistory.log)
+echo "Last line: $lastLine"
+# remove everything before the path
+lastFile=${lastLine##*$HOME/}
+# reove everything after the first |
+lastFile="${lastFile%%|*}"
+lastFile="$HOME/$lastFile"
+# trim whitespace
+lastFile=$(echo $lastFile | xargs)
+echo "Last file: $lastFile"
+
+if [[ ! -f "$lastFile" ]]; then
+	notify-send "Previous video not found"
+	exit 1
+fi
+
+# use dmenu to choose if user want to resume last video or watch next video
+dmresponse=$(echo -e "Resume\nNext" | dmenu -i -p "Resume last video or watch next video?")
+if [[ $dmresponse == "Resume" ]]; then
+	echo ""
+	echo "Resuming last video"
+	echo "Playing $lastFile"
+	mpv "$lastFile" || notify-send "Error: Previous video not found" "$lastFile"
+else
+	# start an fzf search for video files in the original files directory
+	# and play the selected video
+	dirname=$(dirname "$lastFile")
+	season=$(echo "$lastFile" | grep -oP "S\d{2}")
+	echo $season
+	episode=$(echo "$lastFile" | grep -oP "E\d{2}")
+	echo $episode
+	# if the next episode is found, play it
+	# otherwise play the next seasons first episode
+	# calculate the next episode number allowing for 2 digit numbers
+	nextEpisodeNumber=$(printf "E%02d" $((10#${episode:1} + 1)))
+	echo $nextEpisodeNumber
+	# find the next episode
+	nextEpisode=$(find "$dirname" -type f -name "*$season*$nextEpisodeNumber*" | sort | head -n 1)
+	echo "Next episode: $nextEpisode"
+	if [[ -f "$nextEpisode" ]]; then
+		echo "Playing $nextEpisode"
+		mpv "$nextEpisode" || notify-send "Error: Next episode not found" "$nextEpisode"
+	else
+		# fzf in the dirname
+		mpv $(find "$dirname" -type f | fzf)
+	fi
+fi

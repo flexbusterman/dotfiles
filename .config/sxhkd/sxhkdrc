@@ -262,8 +262,8 @@ alt + shift + control + t
 
 alt + v
 	fzfvideo
-# alt + shift + v
-# notify-send "alt + shift + v"
+alt + shift + v
+	fzfvideoresume
 # alt + control + v
 # notify-send "alt + control + v"
 # alt + shift + control + v
