@@ -2,36 +2,37 @@
 
 # Check if running in a terminal, otherwise relaunch in $TERMINAL
 if [ -z "$TMUX" ] && [ -z "$TERM" ]; then
-    exec "$TERMINAL" -e "$0"
-    exit
+	exec "$TERMINAL" -e "$0"
+	exit
 fi
 
 cd ~/ORGMODE/
 
 file="$(fzf)"
 if [[ -z $file ]]; then
-    echo "No file selected, exiting"
-    exit 1
+	echo "No file selected, exiting"
+	exit 1
 fi
 
 # Start the tmux session if not running
 if ! tmux has-session -t orgmode 2>/dev/null; then
-    echo "tmux session orgmode not running, starting it"
-    tmux new-session -s orgmode -d
+	echo "tmux session orgmode not running, starting it"
+	tmux new-session -s orgmode -d
 else
-    echo "tmux session orgmode is running"
+	echo "tmux session orgmode is running"
 fi
 
 # Check if (n)vim is running in the tmux session
 currentCommand=$(tmux list-panes -t orgmode -F '#{pane_current_command}')
 if [[ "$currentCommand" == *"vim"* ]]; then
-    echo "(n)vim is running"
-    tmux send-keys -t orgmode Escape ":e $file" Enter
+	echo "(n)vim is running"
+	tmux send-keys -t orgmode Escape ":e $file" Enter
 else
-    echo "(n)vim is not running"
-    tmux send-keys -t orgmode C-c
-    sleep 0.1
-    tmux send-keys -t orgmode "cd ~/ORGMODE/; nvim \"$file\"" Enter
+	echo "(n)vim is not running"
+	# tmux send-keys -t orgmode C-c
+	# sleep 0.1
+	# tmux send-keys -t orgmode "cd ~/ORGMODE/; nvim \"$file\"" Enter
+	tmux send-keys -t orgmode C-z "cd ~/ORGMODE/; nvim \"$file\"" Enter
 fi
 
 # Attach to tmux session
