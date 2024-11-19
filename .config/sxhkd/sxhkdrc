@@ -369,6 +369,9 @@ alt + shift + control + semicolon
 alt + shift + equal
 	calculate
 
+alt + grave
+	$TERMINAL -T tui-deck -e deck
+
 alt + shift + grave
 	dmenuunicode
 
