@@ -128,6 +128,8 @@ alias pdot="/usr/bin/env git --git-dir=$HOME/.pdot.git/ --work-tree=$HOME"
 # network shortcuts
 alias wls="nmcli device wifi"
 
+source .zshrcprv
+
 # ssh add function
 sa() {
 	eval "$(ssh-agent -s)"
