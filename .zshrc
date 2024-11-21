@@ -77,8 +77,6 @@ alias ls="exa"
 alias lt="exa -lar --sort=size"
 alias rf='rm -rf'
 alias grep='grep --color=auto'
-alias c="cd ~/.config/"
-alias vr="cd ~/ORGMODE/; nvim refile.org"
 alias q=exit
 alias pg="ping google.com"
 
@@ -93,6 +91,7 @@ alias vn="cd ~/.config/nvim/; nvim init.lua"
 alias vo="cd ~/.local/bin/; nvim openfile"
 alias vp="cd ~/.config/picom/; nvim picom.conf"
 alias vq="cd ~/.config/qutebrowser/; nvim autoconfig.yml"
+alias vr="cd ~/ORGMODE/; nvim refile.org"
 alias vs="cd ~/.config/sxhkd/; nvim sxhkdrc"
 alias vt="cd ~/; nvim .tmux.conf"
 alias vx="cd ~; nvim .xinitrc"
@@ -107,7 +106,7 @@ alias copy="xclip -sel clip"
 # navigation
 alias d='cd ~/Dropbox/'
 alias D='cd ~/Downloads/'
-alias c='cd ~/.config/'
+alias C='cd ~/.config/'
 alias b='cd ~/.local/bin/'
 alias m='cd /run/media/$USER/'
 alias g='cd ~/.local/src/'
@@ -117,9 +116,9 @@ alias v='cd ~/Downloads/VIDEO/'
 alias s="cd ~/Dropbox/$(date +%Y)\ FOTO/SCREENSHOTS/"
 
 # save current dir in workdir file
-alias sw='echo $PWD > ~/.workdir'
-alias cw='cd "$(cat ~/.workdir)"'
-alias vw='cd "$(cat ~/.workdir)"; nvim -c "NvimTreeToggle"'
+alias sW='echo $PWD > ~/.workdir'
+alias cW='cd "$(cat ~/.workdir)"'
+alias vW='cd "$(cat ~/.workdir)"; nvim -c "NvimTreeToggle"'
 
 # git
 alias dot="/usr/bin/git --git-dir=$HOME/.dot.git/ --work-tree=$HOME"
