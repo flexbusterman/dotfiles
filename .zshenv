@@ -19,6 +19,7 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export __NV_PRIME_RENDER_OFFLOAD=1
 export DEBUG_CODEIUM="warn"
 export XKB_DEFAULT_OPTIONS=caps:escape
+export TASKRC=~/.config/taskwarrior/taskrc
 
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/platform-tools
