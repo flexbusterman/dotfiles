@@ -48,7 +48,7 @@ alt + shift + control + d
 # notify-send "shift + control + d"
 
 alt + e
-touchpaddisablewhiletypingtoggle
+	touchpaddisablewhiletypingtoggle
 	# gaminginputtoggle
 # alt + shift + e
 # notify-send "alt + control + e"
