@@ -10,17 +10,20 @@
 #
 
 set $mod Mod1
-set $terminal alacritty
+set $terminal kitty
 
 # exec_always --no-startup-id "$HOME/.config/polybar/launch.sh"
 # exec_always --no-startup-id "i3-layouts"
-exec_always --no-startup-id "i3reset"
-exec_always --no-startup-id "autotiling"
-exec_always "maestral"
-exec_always "blueman-applet"
-exec_always "nm-applet"
+# exec_always --no-startup-id "i3reset"
+# exec_always --no-startup-id "autotiling"
+# exec_always "maestral"
+# exec_always "blueman-applet"
+# exec_always "nm-applet"
+# exec_always "pkexec swhkd -c /home/flex/.config/sxhkd/sxhkdrc"
 # exec_always --no-startup-id i3l spiral 0.6
 # exec_always --no-startup-id "dropbox"
+
+# exec "pkexec swhkd -c /home/flex/.config/sxhkd/sxhkdrc"
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -78,7 +81,9 @@ client.background       #ffffff
 
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
-exec --no-startup-id dex --autostart --environment i3
+# exec --no-startup-id dex --autostart --environment i3
+
+# exec swaymsg exec pkexec swhkd -c /home/flex/.config/sxhkd/sxhkdrc
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
@@ -215,12 +220,12 @@ bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
 # reload the configuration file
-# bindsym $mod+r reload
+bindsym $mod+Shift+r reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 # bindsym $mod+Shift+r restart && exec --no-startup-id killall -q polybar
 # bindsym $mod+Shift+r restart && exec --no-startup-id killall -q polybar
 # exit i3 (logs you out of your X session)
-bindsym $mod+shift+r exec --no-startup-id "i3reset"
+# bindsym $mod+shift+r exec --no-startup-id "i3reset"
 # bindsym $mod+Shift+q exec --no-startup-id "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 bindsym $mod+Shift+q exit
 
@@ -265,69 +270,69 @@ bar {
 }
 
 # script bindings
-bindsym $mod+period exec "qutebrowser"
-bindsym $mod+y exec --no-startup-id "stack -y"
-bindsym $mod+p exec --no-startup-id "stack -p"
-bindsym $mod+Shift+y exec --no-startup-id "ytfzfclipboard"
-bindsym --release $mod+d exec --no-startup-id sleep 0.2 && xdotool type --clearmodifiers $(date +"%F ") && sleep 0.2 && xdotool keyup Alt_L Alt_R Control_L Control_R Shift_L Shift_R
-bindsym $mod+b exec --no-startup-id "bluetoothconnect 74:5C:4B:D2:86:F7"
-bindsym $mod+Shift+b exec --no-startup-id "bluetoothctl disconnect 74:5C:4B:D2:86:F7"
-bindsym Print exec --no-startup-id maim -f jpg -m 9 "/home/flex/Pictures/SCREENSHOTS/$(date +\"%F %H_%M_%S.jpg\")"
-bindsym Shift+Print exec --no-startup-id maim -f jpg -m 9 -s "/home/flex/Pictures/SCREENSHOTS/$(date +\"%F %H_%M_%S.jpg\")"
-bindsym $mod+grave exec --no-startup-id "dmenuunicode"
-bindsym $mod+m exec --no-startup-id "mullvadconnect"
-bindsym $mod+Shift+m exec --no-startup-id "mullvaddisconnect"
-bindsym $mod+g exec --no-startup-id "calc"
+# bindsym $mod+period exec "qutebrowser"
+# bindsym $mod+y exec --no-startup-id "stack -y"
+# bindsym $mod+p exec --no-startup-id "stack -p"
+# bindsym $mod+Shift+y exec --no-startup-id "ytfzfclipboard"
+# bindsym --release $mod+d exec --no-startup-id sleep 0.2 && xdotool type --clearmodifiers $(date +"%F ") && sleep 0.2 && xdotool keyup Alt_L Alt_R Control_L Control_R Shift_L Shift_R
+# bindsym $mod+b exec --no-startup-id "bluetoothconnect 74:5C:4B:D2:86:F7"
+# bindsym $mod+Shift+b exec --no-startup-id "bluetoothctl disconnect 74:5C:4B:D2:86:F7"
+# bindsym Print exec --no-startup-id maim -f jpg -m 9 "/home/flex/Pictures/SCREENSHOTS/$(date +\"%F %H_%M_%S.jpg\")"
+# bindsym Shift+Print exec --no-startup-id maim -f jpg -m 9 -s "/home/flex/Pictures/SCREENSHOTS/$(date +\"%F %H_%M_%S.jpg\")"
+# bindsym $mod+grave exec --no-startup-id "dmenuunicode"
+# bindsym $mod+m exec --no-startup-id "mullvadconnect"
+# bindsym $mod+Shift+m exec --no-startup-id "mullvaddisconnect"
+# bindsym $mod+g exec --no-startup-id "calc"
 # bindsym $mod+F1 exec --no-startup-id "jackrun"
 # bindsym $mod+F2 exec --no-startup-id "jackkill"
-bindsym $mod+F3 exec --no-startup-id "displayselect"
-bindsym $mod+Shift+F3 exec --no-startup-id "displaydefault"
-bindsym $mod+F7 exec --no-startup-id "td-toggle"
-bindsym $mod+F8 exec --no-startup-id "dmenumount"
-bindsym $mod+F9 exec --no-startup-id "dmenuumount"
-bindsym $mod+Shift+Control+r exec --no-startup-id "reboot"
-bindsym $mod+Shift+Control+p exec --no-startup-id "poweroff"
-bindsym $mod+semicolon exec --no-startup-id "clipstream & i3promotewindow"
-bindsym $mod+Shift+semicolon exec --no-startup-id "clipdownload"
-bindsym $mod+Shift+p exec --no-startup-id "passmenu"
-bindsym $mod+Up exec --no-startup-id "cpuperformance"
-bindsym $mod+Down exec --no-startup-id "cpupowersave"
-bindsym Control+Shift+j exec --no-startup-id "musicnext"
-bindsym Control+Shift+k exec --no-startup-id "musicprev"
-bindsym Control+Shift+h exec --no-startup-id "musicseekbackward"
-bindsym Control+Shift+l exec --no-startup-id "musicseekforward"
-bindsym Control+Shift+space exec --no-startup-id "musicplaypause"
-bindsym $mod+Shift+Control+m exec --no-startup-id "mailsync"
-bindsym $mod+Shift+i exec --no-startup-id "xcalib -i -a"
-bindsym $mod+slash exec --no-startup-id "st -e ~/.local/bin/fzfvim & i3promotewindow"
-bindsym $mod+Shift+slash exec --no-startup-id "st -e vimshortcuts & i3promotewindow"
-bindsym $mod+Shift+d exec --no-startup-id "cd ~/.local/src/; dev $(ls -d */ | dmenu) & i3promotewindow"
+# bindsym $mod+F3 exec --no-startup-id "displayselect"
+# bindsym $mod+Shift+F3 exec --no-startup-id "displaydefault"
+# bindsym $mod+F7 exec --no-startup-id "td-toggle"
+# bindsym $mod+F8 exec --no-startup-id "dmenumount"
+# bindsym $mod+F9 exec --no-startup-id "dmenuumount"
+# bindsym $mod+Shift+Control+r exec --no-startup-id "reboot"
+# bindsym $mod+Shift+Control+p exec --no-startup-id "poweroff"
+# bindsym $mod+semicolon exec --no-startup-id "clipstream & i3promotewindow"
+# bindsym $mod+Shift+semicolon exec --no-startup-id "clipdownload"
+# bindsym $mod+Shift+p exec --no-startup-id "passmenu"
+# bindsym $mod+Up exec --no-startup-id "cpuperformance"
+# bindsym $mod+Down exec --no-startup-id "cpupowersave"
+# bindsym Control+Shift+j exec --no-startup-id "musicnext"
+# bindsym Control+Shift+k exec --no-startup-id "musicprev"
+# bindsym Control+Shift+h exec --no-startup-id "musicseekbackward"
+# bindsym Control+Shift+l exec --no-startup-id "musicseekforward"
+# bindsym Control+Shift+space exec --no-startup-id "musicplaypause"
+# bindsym $mod+Shift+Control+m exec --no-startup-id "mailsync"
+# bindsym $mod+Shift+i exec --no-startup-id "xcalib -i -a"
+# bindsym $mod+slash exec --no-startup-id "st -e ~/.local/bin/fzfvim & i3promotewindow"
+# bindsym $mod+Shift+slash exec --no-startup-id "st -e vimshortcuts & i3promotewindow"
+# bindsym $mod+Shift+d exec --no-startup-id "cd ~/.local/src/; dev $(ls -d */ | dmenu) & i3promotewindow"
 
 # terminal tui applications
-bindsym $mod+n exec --no-startup-id "cd ~/Dropbox/NOTES/; st -t TODO -e nvim TODO.md & i3promotewindow"
-bindsym $mod+Shift+n exec --no-startup-id "cd ~/Dropbox/NOTES/; st -t VimWiki -e nvim -c VimwikiIndex & i3promotewindow"
-# bindsym $mod+Shift+n exec --no-startup-id "$terminal -t stack --working-directory ~/.local/src/stack -e nvim ~/.local/src/stack/stack"
-bindsym $mod+Shift+comma exec --no-startup-id "st -t Vifm -e vifmrun & i3promotewindow"
-bindsym $mod+e exec --no-startup-id "$terminal -t NeoMutt -e neomutt & i3promotewindow"
-bindsym $mod+t exec --no-startup-id "$terminal -t Htop -e htop & i3promotewindow"
-# bindsym $mod+Shift+r exec --no-startup-id "$terminal -t Newsboat -e newsboat & i3promotewindow"
-bindsym $mod+F4 exec --no-startup-id "$terminal -t PulseMixer -e pulsemixer & i3promotewindow"
-bindsym $mod+F6 exec --no-startup-id "torwrap & i3promotewindow"
-bindsym $mod+s exec --no-startup-id "st -e supercollider & i3promotewindow"
-bindsym $mod+Control+Shift+Return exec --no-startup-id "$terminal -t ncspot -e ncspot & i3promotewindow"
-bindsym Control+Shift+Return exec --no-startup-id "$terminal -t ncmpcpp -e ncmpcpp & i3promotewindow"
-bindsym $mod+Shift+t exec --no-startup-id "$terminal -t typingtest -e tt -theme dracula & i3promotewindow"
-bindsym $mod+Shift+c exec --no-startup-id "$terminal -t calcurse -e calcurse & i3promotewindow"
-bindsym $mod+Shift+e exec --no-startup-id "cd ~/.config/i3; st -t i3config -e nvim config & i3promotewindow"
+# bindsym $mod+n exec --no-startup-id "cd ~/Dropbox/NOTES/; st -t TODO -e nvim TODO.md & i3promotewindow"
+# bindsym $mod+Shift+n exec --no-startup-id "cd ~/Dropbox/NOTES/; st -t VimWiki -e nvim -c VimwikiIndex & i3promotewindow"
+# # bindsym $mod+Shift+n exec --no-startup-id "$terminal -t stack --working-directory ~/.local/src/stack -e nvim ~/.local/src/stack/stack"
+# bindsym $mod+Shift+comma exec --no-startup-id "st -t Vifm -e vifmrun & i3promotewindow"
+# bindsym $mod+e exec --no-startup-id "$terminal -t NeoMutt -e neomutt & i3promotewindow"
+# bindsym $mod+t exec --no-startup-id "$terminal -t Htop -e htop & i3promotewindow"
+# # bindsym $mod+Shift+r exec --no-startup-id "$terminal -t Newsboat -e newsboat & i3promotewindow"
+# bindsym $mod+F4 exec --no-startup-id "$terminal -t PulseMixer -e pulsemixer & i3promotewindow"
+# bindsym $mod+F6 exec --no-startup-id "torwrap & i3promotewindow"
+# bindsym $mod+s exec --no-startup-id "st -e supercollider & i3promotewindow"
+# bindsym $mod+Control+Shift+Return exec --no-startup-id "$terminal -t ncspot -e ncspot & i3promotewindow"
+# bindsym Control+Shift+Return exec --no-startup-id "$terminal -t ncmpcpp -e ncmpcpp & i3promotewindow"
+# bindsym $mod+Shift+t exec --no-startup-id "$terminal -t typingtest -e tt -theme dracula & i3promotewindow"
+# bindsym $mod+Shift+c exec --no-startup-id "$terminal -t calcurse -e calcurse & i3promotewindow"
+# bindsym $mod+Shift+e exec --no-startup-id "cd ~/.config/i3; st -t i3config -e nvim config & i3promotewindow"
 
 # gui applications
-bindsym $mod+Shift+period exec "bravestart"
-bindsym --release $mod+Shift+Control+l exec --no-startup-id "slock"
-bindsym --release $mod+Shift+x exec --no-startup-id "xkill"
-bindsym $mod+q exec --no-startup-id "qpwgraph & i3promotewindow"
-bindsym $mod+Shift+F4 exec --no-startup-id "pavucontrol & i3promotewindow"
-bindsym $mod+Control+Return exec --no-startup-id "audacious & i3promotewindow"
-bindsym $mod+r exec --no-startup-id "reaper"
+# bindsym $mod+Shift+period exec "bravestart"
+# bindsym --release $mod+Shift+Control+l exec --no-startup-id "slock"
+# bindsym --release $mod+Shift+x exec --no-startup-id "xkill"
+# bindsym $mod+q exec --no-startup-id "qpwgraph & i3promotewindow"
+# bindsym $mod+Shift+F4 exec --no-startup-id "pavucontrol & i3promotewindow"
+# bindsym $mod+Control+Return exec --no-startup-id "audacious & i3promotewindow"
+# bindsym $mod+r exec --no-startup-id "reaper"
 
 # rules
 # assign [class="Audacious"] 9

@@ -122,12 +122,10 @@ alias vW='cd "$(cat ~/.workdir)"; nvim -c "NvimTreeToggle"'
 
 # git
 alias dot="/usr/bin/git --git-dir=$HOME/.dot.git/ --work-tree=$HOME"
-alias pdot="/usr/bin/env git --git-dir=$HOME/.pdot.git/ --work-tree=$HOME"
+alias pdot="/usr/bin/git --git-dir=$HOME/.pdot.git/ --work-tree=$HOME"
 
 # network shortcuts
 alias wls="nmcli device wifi"
-
-source .zshrcprv
 
 # ssh add function
 sa() {

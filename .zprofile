@@ -5,7 +5,7 @@
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 
 if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
-  exec startx
+	exec startx
 fi
 
 #  _   _                  _                 _
@@ -16,7 +16,7 @@ fi
 #        |___/|_|
 
 # if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
-#   exec Hyprland
+# 	exec sway
 # fi
 
 # if [ -z "$XDG_RUNTIME_DIR" ]; then
