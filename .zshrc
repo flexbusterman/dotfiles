@@ -170,12 +170,12 @@ ssh() {
 	eval "$(ssh-agent -s)"
 	ssh-add ~/.ssh/digitalocean
 	command ssh $*
-if [[ -n $DISPLAY ]]; then
-  copy_line_to_x_clipboard () {
-    printf %s "$READLINE_LINE" | xsel -ib
-  }
-  bind -x '"\eW": copy_line_to_x_clipboard'
-fi
+# if [[ -n $DISPLAY ]]; then
+#   copy_line_to_x_clipboard () {
+#     printf %s "$READLINE_LINE" | xsel -ib
+#   }
+#   bind -x '"\eW": copy_line_to_x_clipboard'
+# fi
 }
 
 # history
