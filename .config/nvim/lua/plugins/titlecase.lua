@@ -1,6 +1,6 @@
 return {
-	'christoomey/vim-titlecase',
+	"christoomey/vim-titlecase",
 	config = function()
-		vim.keymap.set({"n", "v" }, "<leader>t", "<Plug>TitlecaseLine", { silent = true })
-	end
+		vim.keymap.set({ "n", "v" }, "<leader>tc", "<Plug>TitlecaseLine", { silent = true })
+	end,
 }
