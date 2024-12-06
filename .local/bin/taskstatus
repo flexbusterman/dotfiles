@@ -1,6 +1,12 @@
 #!/bin/bash
 if [[ $(timew) == "There is no active time tracking." ]]; then
-	echo "No active task"
+	# echo "No active task"
+	nextID=$(task _get $(task next limit:1 | tail -n +4 | head -n 1 | sed 's/^ //' | cut -d ' ' -f1).id)
+	nextUUID=$(task _get $(task next limit:1 | tail -n +4 | head -n 1 | sed 's/^ //' | cut -d ' ' -f1).uuid)
+	nextDescription=$(task _get $(task next limit:1 | tail -n +4 | head -n 1 | sed 's/^ //' | cut -d ' ' -f1).description)
+	echo "Next $nextID $nextDescription"
+	# echo "task $nextUUID start"
+	# task $nextUUID start
 else
 	timew
 fi
