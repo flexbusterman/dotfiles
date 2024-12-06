@@ -1,0 +1,6 @@
+#!/bin/bash
+if [[ $(timew) == "There is no active time tracking." ]]; then
+	echo "No active task"
+else
+	timew
+fi
