@@ -1,9 +1,33 @@
-#!/bin/sh
-primary=$(xrandr -q | grep -w connected | awk '/^[eDP]/ {print $1}')
-secondary=$(xrandr -q | grep -w connected | awk '/^[^eDP]/ {print $1}')
-xrandr --output eDP1 --auto --scale 1.0x1.0 --output $secondary --left-of $primary --auto --scale 1.0x1.0
+#!/bin/bash
 
-setbg
+# Detect connected displays
+connected_displays=$(xrandr --query | grep " connected" | awk '{print $1}')
+num_displays=$(echo "$connected_displays" | wc -l)
+
+# Arrays to hold display names
+displays=($connected_displays)
+
+if [ "$num_displays" -eq 2 ]; then
+	# Assume the first is the internal and the second is the external display
+	internal_display=${displays[0]}
+	external_display=${displays[1]}
+
+	# Configure displays: external as primary, internal as secondary
+	xrandr --output "$external_display" --primary --auto --output "$internal_display" --auto --right-of "$external_display"
+
+	echo "Two displays detected. Configured $external_display as primary and $internal_display as secondary."
+elif [ "$num_displays" -eq 1 ]; then
+	# Only one display detected, set it as primary
+	internal_display=${displays[0]}
+
+	xrandr --output "$internal_display" --primary --auto
+	echo "One display detected. Configured $internal_display as primary."
+else
+	echo "No connected displays detected."
+	exit 1
+fi
+
+feh --bg-fill ~/.local/share/flex/background.jpg
 remaps
 killall dunst
 setsid -f dunst
