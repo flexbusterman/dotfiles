@@ -1,12 +1,31 @@
 #!/bin/bash
+
+# Maximum length for task descriptions
+MAX_LENGTH=15
+
+truncate_text() {
+	local input=$1
+	local maxlen=$2
+	if ((${#input} > maxlen)); then
+		echo "${input:0:maxlen}…"
+	else
+		echo "$input"
+	fi
+}
+
 if [[ $(timew) == "There is no active time tracking." ]]; then
-	# echo "No active task"
+	# Extract the next task information
 	nextID=$(task _get $(task next limit:1 | tail -n +4 | head -n 1 | sed 's/^ //' | cut -d ' ' -f1).id)
-	nextUUID=$(task _get $(task next limit:1 | tail -n +4 | head -n 1 | sed 's/^ //' | cut -d ' ' -f1).uuid)
-	nextDescription=$(task _get $(task next limit:1 | tail -n +4 | head -n 1 | sed 's/^ //' | cut -d ' ' -f1).description)
-	echo "Next $nextID $nextDescription"
-	# echo "task $nextUUID start"
-	# task $nextUUID start
+	rawNextDescription=$(task _get $(task next limit:1 | tail -n +4 | head -n 1 | sed 's/^ //' | cut -d ' ' -f1).description)
+	nextDescription=$(truncate_text "$rawNextDescription" "$MAX_LENGTH")
+	# Output for tmux status bar
+	printf "#[fg=colour243] %s %s\n" "$nextID" "$nextDescription"
 else
-	timew
+	# Extract active task information
+	status=$(timew)
+	rawTitle=$(echo "$status" | cut -d '"' -f2)
+	title=$(truncate_text "$rawTitle" "$MAX_LENGTH")
+	id=$(task _get $(task active limit:1 | tail -n +4 | head -n 1 | sed 's/^ //' | cut -d ' ' -f1).id)
+	# Output for tmux status bar
+	printf "#[fg=colour5] %s %s\n" "$id" "$title"
 fi

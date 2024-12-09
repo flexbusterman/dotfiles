@@ -41,7 +41,8 @@ alt + d
 alt + shift + d
 	$TERMINAL -e dwmrebuild
 alt + control + d
-	punch --delete
+	task rm $(task _get $(task next limit:1 | tail -n +4 | head -n 1 | sed 's/^ //' | cut -d ' ' -f1).id)
+	# punch --delete
 alt + shift + control + d
 	mpc --host ~/.mpd/socket clear
 # shift + control + d
@@ -97,7 +98,8 @@ alt + control + h
 alt + shift + i
 	xcalib -i -a
 alt + control + i
-	punch --in
+	task start $(task _get $(task next limit:1 | tail -n +4 | head -n 1 | sed 's/^ //' | cut -d ' ' -f1).id)
+	# punch --in
 # notify-send "alt + control + i"
 alt + shift + control + i
 	punch --select
@@ -180,7 +182,8 @@ alt + o; a; r;
 # notify-send "alt + shift + o"
 
 alt + control + o
-	punch --out
+	task stop $(task _get $(task next limit:1 | tail -n +4 | head -n 1 | sed 's/^ //' | cut -d ' ' -f1).id)
+	# punch --out
 # notify-send "alt + control + o"
 # alt + shift + control + o
 # notify-send "alt + shift + control + o"
@@ -242,7 +245,8 @@ alt + t
 	# $TERMINAL -e btop
 alt + shift + t
 	$TERMINAL -e nvtop
-# alt + control + t
+alt + control + t
+	$TERMINAL -e vit
 # notify-send "alt + control + t"
 alt + shift + control + t
 	$TERMINAL -e tt -theme dracula
