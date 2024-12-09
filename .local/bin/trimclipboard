@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# Check if xclip is installed
+if ! command -v xclip &>/dev/null; then
+	echo "Error: xclip is not installed. Please install it using:"
+	echo "sudo pacman -S xclip"
+	exit 1
+fi
+
+# Trim leading whitespace only from the first line of the primary clipboard
+# notify-send "Trimming clipboard content"
+xclip -selection clipboard -o | sed '1s/^[[:space:]]*//' | xclip -selection clipboard

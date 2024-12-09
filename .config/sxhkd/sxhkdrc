@@ -246,8 +246,8 @@ alt + shift + t
 # notify-send "alt + control + t"
 alt + shift + control + t
 	$TERMINAL -e tt -theme dracula
-# shift + control + t
-# notify-send "shift + control + t"
+shift + control + t
+	~/.local/bin/trimclipboard
 
 # alt + u
 # notify-send "alt + u"
