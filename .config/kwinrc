@@ -36,9 +36,18 @@ noTileBorder=true
 [Tiling]
 padding=4
 
+[Tiling][86324088-9fdc-5689-b6ea-d35c0a746938]
+tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
+
 [Tiling][8ebe56a4-e66f-5d5b-9a75-dc8427382c34]
+tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
+
+[Tiling][dd507038-4579-5d62-a698-e6adf39e3136]
 tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
 
 [Windows]
 DelayFocusInterval=0
 FocusPolicy=FocusFollowsMouse
+
+[Xwayland]
+Scale=1.25

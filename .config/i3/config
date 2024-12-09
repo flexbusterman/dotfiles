@@ -33,14 +33,15 @@ for_window [class="^.*"] border pixel 3
 hide_edge_borders smart
 gaps inner 24
 gaps outer 0
+smart_gaps on
 
 # set $i3l spiral 0.6
 
 # set $i3l spiral
 
-bindsym $mod+a exec --no-startup-id "i3toggle focus"
-bindsym $mod+z exec --no-startup-id "i3toggle bar"
-bindsym $mod+x exec --no-startup-id "i3toggle gaps"
+# bindsym $mod+a exec --no-startup-id "i3toggle focus"
+bindsym $mod+a exec --no-startup-id "sway bar mode toggle"
+bindsym $mod+z exec --no-startup-id "sway smart_gaps toggle"
 # smart_gaps on
 
 # Default Colors
@@ -118,7 +119,7 @@ bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec $(bc <<< "$(x
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+shift+Return exec --no-startup-id "$terminal & i3promotewindow"
+bindsym $mod+shift+Return exec --no-startup-id "$terminal -e tmux new-session -A -s main & i3promotewindow"
 # bindsym $mod+shift+space exec --no-startup-id i3l swap container with mark 1
 bindsym $mod+space exec --no-startup-id i3promotewindow
 
@@ -268,6 +269,9 @@ bar {
 		font pango: Px437 IBM BIOS 7
     tray_output primary
 }
+
+# wallpaper
+output * background ~/.local/share/flex/background.jpg fill
 
 # script bindings
 # bindsym $mod+period exec "qutebrowser"

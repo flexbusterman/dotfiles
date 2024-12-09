@@ -169,17 +169,17 @@ alt + shift + n
 # shift + control + n
 # notify-send "shift + control + n"
 
-# Orgmode shortcuts
-alt + o; a; a;
-	orgmux -a # tmux orgmode agenda
-alt + o; a; t;
-	orgmux -t # tmux orgmode todo
-alt + o; a; c;
-	orgmux -c # tmux orgmode capture
-alt + o; a; r;
-	orgmux -r # tmux orgmode open refile
-# alt + shift + o
-# notify-send "alt + shift + o"
+# # Orgmode shortcuts
+# alt + o; a; a;
+# 	orgmux -a # tmux orgmode agenda
+# alt + o; a; t;
+# 	orgmux -t # tmux orgmode todo
+# alt + o; a; c;
+# 	orgmux -c # tmux orgmode capture
+# alt + o; a; r;
+# 	orgmux -r # tmux orgmode open refile
+# # alt + shift + o
+# # notify-send "alt + shift + o"
 
 alt + control + o
 	task stop $(task _get $(task next limit:1 | tail -n +4 | head -n 1 | sed 's/^ //' | cut -d ' ' -f1).id)

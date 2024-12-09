@@ -1,10 +1,11 @@
 [ActivityManager]
 _k_friendly_name=Activity Manager
 switch-to-activity-1d948ec2-3dfb-4dfd-997f-950672c9221f=none,none,Switch to activity "Default"
+switch-to-activity-c341f721-de91-4274-a536-1416cc4aeef0=none,none,Switch to activity "Default"
 
 [KDE Keyboard Layout Switcher]
-Switch to Last-Used Keyboard Layout=none,none,Switch to Last-Used Keyboard Layout
-Switch to Next Keyboard Layout=none,none,Switch to Next Keyboard Layout
+Switch to Last-Used Keyboard Layout=none,Meta+Alt+L,Switch to Last-Used Keyboard Layout
+Switch to Next Keyboard Layout=none,Meta+Alt+K,Switch to Next Keyboard Layout
 _k_friendly_name=Keyboard Layout Switcher
 
 [kaccess]
@@ -31,7 +32,7 @@ mute=Volume Mute,Volume Mute,Mute
 [ksmserver]
 Halt Without Confirmation=Ctrl+Alt+Shift+P,,Shut Down Without Confirmation
 Lock Session=Ctrl+Alt+Shift+L,Meta+L\tScreensaver,Lock Session
-Log Out=Ctrl+Alt+Del,Ctrl+Alt+Del,Show Logout Prompt
+Log Out=Ctrl+Alt+Del,Ctrl+Alt+Del,Show Logout Screen
 Log Out Without Confirmation=none,,Log Out Without Confirmation
 LogOut=none,,Log Out
 Reboot=none,,Reboot
@@ -87,6 +88,7 @@ KrohnkiteTileLayout=Alt+U,none,Krohnkite: Tile Layout
 KrohnkiteToggleFloat=Alt+Shift+Space,none,Krohnkite: Toggle Float
 KrohnkiteTreeColumnLayout=none,none,Krohnkite: Tree Column Layout
 KrohnkitegrowWidth=Alt+L,none,Krohnkite: Grow Width
+Move Tablet to Next Output=none,none,Move the tablet to the next output
 MoveMouseToCenter=none,Meta+F6,Move Mouse to Center
 MoveMouseToFocus=none,Meta+F5,Move Mouse to Focus
 MoveZoomDown=none,none,Move Zoomed Area Downwards
@@ -254,7 +256,7 @@ PowerOff=Power Off,Power Off,Power Off
 Sleep=Sleep,Sleep,Suspend
 Toggle Keyboard Backlight=Keyboard Light On/Off,Keyboard Light On/Off,Toggle Keyboard Backlight
 Turn Off Screen=none,none,Turn Off Screen
-_k_friendly_name=KDE Power Management System
+_k_friendly_name=Power Management
 powerProfile=Battery\tMeta+B,Battery\tMeta+B,Switch Power Profile
 
 [plasmashell]
