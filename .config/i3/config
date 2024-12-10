@@ -27,7 +27,8 @@ set $terminal kitty
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango: Px437 IBM BIOS 7
+# font pango: Px437 IBM BIOS 7
+font pango: Fira Mono Medium 11
 
 for_window [class="^.*"] border pixel 3
 hide_edge_borders smart
@@ -35,13 +36,15 @@ gaps inner 24
 gaps outer 0
 smart_gaps on
 
+seat * hide_cursor 1000
+
 # set $i3l spiral 0.6
 
 # set $i3l spiral
 
 # bindsym $mod+a exec --no-startup-id "i3toggle focus"
 bindsym $mod+a exec --no-startup-id "sway bar mode toggle"
-bindsym $mod+z exec --no-startup-id "sway smart_gaps toggle"
+bindsym $mod+z exec --no-startup-id "sway gaps inner all toggle 20"
 # smart_gaps on
 
 # Default Colors
@@ -119,7 +122,7 @@ bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec $(bc <<< "$(x
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+shift+Return exec --no-startup-id "$terminal -e tmux new-session -A -s main & i3promotewindow"
+bindsym $mod+shift+Return exec --no-startup-id "$terminal -e tmux new-session -A -s main"
 # bindsym $mod+shift+space exec --no-startup-id i3l swap container with mark 1
 bindsym $mod+space exec --no-startup-id i3promotewindow
 
@@ -128,6 +131,9 @@ bindsym $mod+w kill
 
 # start dmenu (a program launcher)
 bindsym $mod+Return exec --no-startup-id "dmenu_run"
+
+bindsym $mod+Period exec "qutebrowser"
+bindsym $mod+shift+Period exec "brave youtube.com"
 
 # change focus
 bindsym $mod+h focus left
@@ -266,7 +272,7 @@ bindsym $mod+Shift+minus resize shrink height 40 px or 3 ppt
 bar {
     status_command i3status
 		position top
-		font pango: Px437 IBM BIOS 7
+		# font pango: Px437 IBM BIOS 7
     tray_output primary
 }
 
@@ -275,68 +281,69 @@ output * background ~/.local/share/flex/background.jpg fill
 
 # script bindings
 # bindsym $mod+period exec "qutebrowser"
-# bindsym $mod+y exec --no-startup-id "stack -y"
-# bindsym $mod+p exec --no-startup-id "stack -p"
-# bindsym $mod+Shift+y exec --no-startup-id "ytfzfclipboard"
+bindsym $mod+y exec --no-startup-id "stack -y"
+bindsym $mod+p exec --no-startup-id "stack -p"
+bindsym $mod+Shift+y exec --no-startup-id "ytfzfclipboard"
 # bindsym --release $mod+d exec --no-startup-id sleep 0.2 && xdotool type --clearmodifiers $(date +"%F ") && sleep 0.2 && xdotool keyup Alt_L Alt_R Control_L Control_R Shift_L Shift_R
-# bindsym $mod+b exec --no-startup-id "bluetoothconnect 74:5C:4B:D2:86:F7"
-# bindsym $mod+Shift+b exec --no-startup-id "bluetoothctl disconnect 74:5C:4B:D2:86:F7"
+bindsym $mod+d exec --no-startup-id typedate
+bindsym $mod+b exec --no-startup-id "bluetoothconnect $HEADPHONES"
+bindsym $mod+Shift+b exec --no-startup-id "bluetoothctl disconnect $HEADPHONES"
 # bindsym Print exec --no-startup-id maim -f jpg -m 9 "/home/flex/Pictures/SCREENSHOTS/$(date +\"%F %H_%M_%S.jpg\")"
 # bindsym Shift+Print exec --no-startup-id maim -f jpg -m 9 -s "/home/flex/Pictures/SCREENSHOTS/$(date +\"%F %H_%M_%S.jpg\")"
-# bindsym $mod+grave exec --no-startup-id "dmenuunicode"
-# bindsym $mod+m exec --no-startup-id "mullvadconnect"
-# bindsym $mod+Shift+m exec --no-startup-id "mullvaddisconnect"
-# bindsym $mod+g exec --no-startup-id "calc"
-# bindsym $mod+F1 exec --no-startup-id "jackrun"
-# bindsym $mod+F2 exec --no-startup-id "jackkill"
-# bindsym $mod+F3 exec --no-startup-id "displayselect"
-# bindsym $mod+Shift+F3 exec --no-startup-id "displaydefault"
-# bindsym $mod+F7 exec --no-startup-id "td-toggle"
-# bindsym $mod+F8 exec --no-startup-id "dmenumount"
-# bindsym $mod+F9 exec --no-startup-id "dmenuumount"
-# bindsym $mod+Shift+Control+r exec --no-startup-id "reboot"
-# bindsym $mod+Shift+Control+p exec --no-startup-id "poweroff"
-# bindsym $mod+semicolon exec --no-startup-id "clipstream & i3promotewindow"
-# bindsym $mod+Shift+semicolon exec --no-startup-id "clipdownload"
-# bindsym $mod+Shift+p exec --no-startup-id "passmenu"
-# bindsym $mod+Up exec --no-startup-id "cpuperformance"
-# bindsym $mod+Down exec --no-startup-id "cpupowersave"
-# bindsym Control+Shift+j exec --no-startup-id "musicnext"
-# bindsym Control+Shift+k exec --no-startup-id "musicprev"
-# bindsym Control+Shift+h exec --no-startup-id "musicseekbackward"
-# bindsym Control+Shift+l exec --no-startup-id "musicseekforward"
-# bindsym Control+Shift+space exec --no-startup-id "musicplaypause"
-# bindsym $mod+Shift+Control+m exec --no-startup-id "mailsync"
-# bindsym $mod+Shift+i exec --no-startup-id "xcalib -i -a"
-# bindsym $mod+slash exec --no-startup-id "st -e ~/.local/bin/fzfvim & i3promotewindow"
-# bindsym $mod+Shift+slash exec --no-startup-id "st -e vimshortcuts & i3promotewindow"
-# bindsym $mod+Shift+d exec --no-startup-id "cd ~/.local/src/; dev $(ls -d */ | dmenu) & i3promotewindow"
-
+bindsym $mod+grave exec --no-startup-id "dmenuunicode"
+bindsym $mod+m exec --no-startup-id "mullvadconnect"
+bindsym $mod+Shift+m exec --no-startup-id "mullvaddisconnect"
+bindsym $mod+g exec --no-startup-id "calc"
+bindsym $mod+F1 exec --no-startup-id "jackrun"
+bindsym $mod+F2 exec --no-startup-id "jackkill"
+bindsym $mod+F3 exec --no-startup-id "displayselect"
+bindsym $mod+Shift+F3 exec --no-startup-id "displaydefault"
+bindsym $mod+F7 exec --no-startup-id "td-toggle"
+bindsym $mod+F8 exec --no-startup-id "dmenumount"
+bindsym $mod+F9 exec --no-startup-id "dmenuumount"
+bindsym $mod+Shift+Control+r exec --no-startup-id "reboot"
+bindsym $mod+Shift+Control+p exec --no-startup-id "poweroff"
+bindsym $mod+semicolon exec --no-startup-id "clipstream"
+bindsym $mod+Shift+semicolon exec --no-startup-id "clipdownload"
+bindsym $mod+Shift+p exec --no-startup-id "passmenu"
+bindsym $mod+Up exec --no-startup-id "cpuperformance"
+bindsym $mod+Down exec --no-startup-id "cpupowersave"
+bindsym Control+Shift+j exec --no-startup-id "musicnext"
+bindsym Control+Shift+k exec --no-startup-id "musicprev"
+bindsym Control+Shift+h exec --no-startup-id "musicseekbackward"
+bindsym Control+Shift+l exec --no-startup-id "musicseekforward"
+bindsym Control+Shift+space exec --no-startup-id "musicplaypause"
+bindsym $mod+Shift+Control+m exec --no-startup-id "mailsync"
+bindsym $mod+Shift+i exec --no-startup-id "xcalib -i -a"
+bindsym $mod+n exec --no-startup-id "$terminal -e ~/.local/bin/orgfzfname"
+bindsym $mod+Shift+n exec --no-startup-id "$terminal -e ~/.local/bin/orgfzfgrep"
+bindsym $mod+slash exec --no-startup-id "$terminal -e vimshortcuts"
+# bindsym $mod+Shift+d exec --no-startup-id "cd ~/.local/src/; dev $(ls -d */ | dmenu)"
 # terminal tui applications
-# bindsym $mod+n exec --no-startup-id "cd ~/Dropbox/NOTES/; st -t TODO -e nvim TODO.md & i3promotewindow"
-# bindsym $mod+Shift+n exec --no-startup-id "cd ~/Dropbox/NOTES/; st -t VimWiki -e nvim -c VimwikiIndex & i3promotewindow"
-# # bindsym $mod+Shift+n exec --no-startup-id "$terminal -t stack --working-directory ~/.local/src/stack -e nvim ~/.local/src/stack/stack"
-# bindsym $mod+Shift+comma exec --no-startup-id "st -t Vifm -e vifmrun & i3promotewindow"
-# bindsym $mod+e exec --no-startup-id "$terminal -t NeoMutt -e neomutt & i3promotewindow"
-# bindsym $mod+t exec --no-startup-id "$terminal -t Htop -e htop & i3promotewindow"
-# # bindsym $mod+Shift+r exec --no-startup-id "$terminal -t Newsboat -e newsboat & i3promotewindow"
-# bindsym $mod+F4 exec --no-startup-id "$terminal -t PulseMixer -e pulsemixer & i3promotewindow"
-# bindsym $mod+F6 exec --no-startup-id "torwrap & i3promotewindow"
-# bindsym $mod+s exec --no-startup-id "st -e supercollider & i3promotewindow"
-# bindsym $mod+Control+Shift+Return exec --no-startup-id "$terminal -t ncspot -e ncspot & i3promotewindow"
-# bindsym Control+Shift+Return exec --no-startup-id "$terminal -t ncmpcpp -e ncmpcpp & i3promotewindow"
-# bindsym $mod+Shift+t exec --no-startup-id "$terminal -t typingtest -e tt -theme dracula & i3promotewindow"
-# bindsym $mod+Shift+c exec --no-startup-id "$terminal -t calcurse -e calcurse & i3promotewindow"
-# bindsym $mod+Shift+e exec --no-startup-id "cd ~/.config/i3; st -t i3config -e nvim config & i3promotewindow"
+# bindsym $mod+Shift+n exec --no-startup-id "$terminal -T stack --working-directory ~/.local/src/stack -e nvim ~/.local/src/stack/stack"
+bindsym $mod+comma exec --no-startup-id "$terminal -T yazi -e yazi"
+bindsym $mod+e exec --no-startup-id "touchpaddisablewhiletypingtoggle"
+bindsym $mod+t exec --no-startup-id "$terminal -T Htop -e htop"
+# bindsym $mod+Shift+r exec --no-startup-id "$terminal -T Newsboat -e newsboat"
+bindsym $mod+s exec --no-startup-id "$terminal -T SuperCollider -e tmuxsession SuperCollider 'supercollider'"
+bindsym $mod+Shift+s exec --no-startup-id "tmux kill-session -t SuperCollider; tmux kill-session -t tidal;"
+bindsym $mod+Control+Return exec --no-startup-id "$terminal -T ncmpcpp -e ncmpcpp"
+bindsym $mod+Control+Shift+Return exec --no-startup-id "tidal-hifi"
+bindsym $mod+Shift+t exec --no-startup-id "$terminal -T typingtest -e tt -theme dracula"
+bindsym $mod+Shift+c exec --no-startup-id "$terminal -T calcurse -e calcurse"
+bindsym $mod+Shift+e exec --no-startup-id "cd ~/.config/i3; $terminal -T i3config -e nvim config"
+
+bindsym $mod+F4 exec --no-startup-id "$terminal -T PulseMixer -e pulsemixer"
+bindsym $mod+Shift+F4 exec --no-startup-id "pavucontrol"
+bindsym $mod+F6 exec --no-startup-id "torwrap"
 
 # gui applications
 # bindsym $mod+Shift+period exec "bravestart"
 # bindsym --release $mod+Shift+Control+l exec --no-startup-id "slock"
 # bindsym --release $mod+Shift+x exec --no-startup-id "xkill"
-# bindsym $mod+q exec --no-startup-id "qpwgraph & i3promotewindow"
-# bindsym $mod+Shift+F4 exec --no-startup-id "pavucontrol & i3promotewindow"
-# bindsym $mod+Control+Return exec --no-startup-id "audacious & i3promotewindow"
-# bindsym $mod+r exec --no-startup-id "reaper"
+bindsym $mod+q exec --no-startup-id "qpwgraph"
+# bindsym $mod+Control+Return exec --no-startup-id "audacious"
+bindsym $mod+r exec --no-startup-id "reaper"
 
 # rules
 # assign [class="Audacious"] 9
