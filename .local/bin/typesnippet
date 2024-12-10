@@ -4,22 +4,46 @@
 # check which options are passed to the script with a case statement
 case $1 in
 -ao)
-	xdotool type "å"
+	if [ -n "$WAYLAND_DISPLAY" ]; then
+		wtype "å"
+	else
+		xdotool type "å"
+	fi
 	;;
 -ae)
-	xdotool type "ä"
+	if [ -n "$WAYLAND_DISPLAY" ]; then
+		wtype "ä"
+	else
+		xdotool type "ä"
+	fi
 	;;
 -oe)
-	xdotool type "ö"
+	if [ -n "$WAYLAND_DISPLAY" ]; then
+		wtype "ö"
+	else
+		xdotool type "ö"
+	fi
 	;;
 -AO)
-	xdotool type "Å"
+	if [ -n "$WAYLAND_DISPLAY" ]; then
+		wtype "Å"
+	else
+		xdotool type "Å"
+	fi
 	;;
 -AE)
-	xdotool type "Ä"
+	if [ -n "$WAYLAND_DISPLAY" ]; then
+		wtype "Ä"
+	else
+		xdotool type "Ä"
+	fi
 	;;
 -OE)
-	xdotool type "Ö"
+	if [ -n "$WAYLAND_DISPLAY" ]; then
+		wtype "Ö"
+	else
+		xdotool type "Ö"
+	fi
 	;;
 *)
 	xdotool type $(grep -v '^#' ~/.config/shell/snippets | dmenu -l 50 | cut -d' ' -f1)

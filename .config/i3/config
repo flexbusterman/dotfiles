@@ -373,6 +373,19 @@ bindsym $mod+F12 exec killrecording
 bindsym Print exec screenshot
 bindsym Shift+Print exec screenshot -s
 
+# bindsym Super_L+bracketleft exec typesnippet -ao
+
+# bind left windows key
+# bindsym --release Super_L exec notify-send "Super_L"
+bindsym Super+bracketleft exec typesnippet -ao
+bindsym Super+Shift+bracketleft exec typesnippet -AO
+bindsym Super+apostrophe exec typesnippet -ae
+bindsym Super+Shift+apostrophe exec typesnippet -AE
+bindsym Super+semicolon exec typesnippet -oe
+bindsym Super+Shift+semicolon exec typesnippet -OE
+
+exec_always dunst
+
 # bindsym $mod+Control+Return exec --no-startup-id "audacious"
 # bindsym $mod+Shift+d exec --no-startup-id "cd ~/.local/src/; dev $(ls -d */ | dmenu)"
 # bindsym $mod+Shift+n exec --no-startup-id "$terminal -T stack --working-directory ~/.local/src/stack -e nvim ~/.local/src/stack/stack"
