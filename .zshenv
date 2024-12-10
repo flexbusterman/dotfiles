@@ -27,6 +27,8 @@ export PATH=$PATH:$HOME/.local/bin/
 export PATH=$PATH:$HOME/.cargo/bin/
 export PATH=$PATH:$HOME/.local/bin/statusbar/
 
+export TIMEWARRIORDB="~/TASK/timewarrior/"
+
 export SYSTEMD_EDITOR=nvim
 
 # export NEXTCLOUD_PHP_CONFIG=/etc/webapps/nextcloud/php.ini

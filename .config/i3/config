@@ -12,11 +12,17 @@
 set $mod Mod1
 set $terminal kitty
 
+# startup applications
+exec dunst
+# exec dropbox
+# exec_always dunst
+# exec_always pgrep dropbox && notify-send "Dropbox is already running" || exec dropbox
 # exec_always --no-startup-id "$HOME/.config/polybar/launch.sh"
 # exec_always --no-startup-id "i3-layouts"
 # exec_always --no-startup-id "i3reset"
 # exec_always --no-startup-id "autotiling"
-# exec_always "maestral"
+exec_always maestral
+exec_always syncthing --no-browser
 # exec_always "blueman-applet"
 # exec_always "nm-applet"
 # exec_always "pkexec swhkd -c /home/flex/.config/sxhkd/sxhkdrc"
@@ -43,7 +49,9 @@ seat * hide_cursor 1000
 # set $i3l spiral
 
 # bindsym $mod+a exec --no-startup-id "i3toggle focus"
-bindsym $mod+a exec --no-startup-id "sway bar mode toggle"
+# bindsym $mod+a exec --no-startup-id "sway bar mode toggle"
+
+bindsym $mod+a exec pkill waybar || waybar
 bindsym $mod+z exec --no-startup-id "sway gaps inner all toggle 20"
 # smart_gaps on
 
@@ -271,7 +279,7 @@ bar {
   #   status_command i3status
 		# position top
 		# # font pango: Px437 IBM BIOS 7
-  #   tray_output primary
+    # tray_output primary
 }
 
 input "2:7:SynPS/2_Synaptics_TouchPad" {
@@ -394,12 +402,6 @@ bindsym Super+apostrophe exec typesnippet -ae
 bindsym Super+Shift+apostrophe exec typesnippet -AE
 bindsym Super+semicolon exec typesnippet -oe
 bindsym Super+Shift+semicolon exec typesnippet -OE
-
-# startup applications
-exec dunst
-exec dropbox
-# exec_always dunst
-# exec_always pgrep dropbox && notify-send "Dropbox is already running" || exec dropbox
 
 # bindsym $mod+Control+Return exec --no-startup-id "audacious"
 # bindsym $mod+Shift+d exec --no-startup-id "cd ~/.local/src/; dev $(ls -d */ | dmenu)"
