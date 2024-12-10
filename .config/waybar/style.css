@@ -8,7 +8,8 @@
 }
 
 window#waybar {
-  background-color: rgba(43, 48, 59, 0.5);
+  background-color: rgba(0, 0, 0, 0.8);
+  /* background-color: rgba(43, 48, 59, 0.9); */
   /* border-bottom: 3px solid rgba(100, 114, 125, 0.5); */
   border-bottom: none;
   color: #ffffff;
@@ -30,7 +31,8 @@ window#waybar.solo {
 */
 
 window#waybar.termite {
-  background-color: #3f3f3f;
+  /* background-color: #3f3f3f; */
+  background-color: rgba(0, 0, 0, 0.9);
 }
 
 window#waybar.chromium {
@@ -124,12 +126,14 @@ button:hover {
 
 #clock {
   /* background-color: #64727d; */
-  background-color: rgba(100, 114, 125, 0.5);
+  /* background-color: rgba(100, 114, 125, 0.5); */
+  background-color: rgba(0, 0, 0, 0.9);
 }
 
 #battery {
   /* background-color: #ffffff; */
-  background-color: rgba(255, 255, 255, 0.5);
+  /* background-color: rgba(255, 255, 255, 0.5); */
+  background-color: rgba(0, 0, 0, 0.9);
   color: #000000;
 }
 
@@ -137,7 +141,8 @@ button:hover {
 #battery.plugged {
   color: #ffffff;
   /* background-color: #26a65b; */
-  background-color: rgba(38, 166, 91, 0.5);
+  /* background-color: rgba(38, 166, 91, 0.5); */
+  background-color: rgba(0, 0, 0, 0.9);
 }
 
 @keyframes blink {
@@ -183,42 +188,50 @@ label:focus {
 
 #cpu {
   /* background-color: #2ecc71; */
-  background-color: rgba(46, 204, 113, 0.5);
+  /* background-color: rgba(46, 204, 113, 0.5); */
+  background-color: rgba(0, 0, 0, 0.9);
 }
 
 #memory {
   /* background-color: #9b59b6; */
-  background-color: rgba(155, 89, 182, 0.5);
+  /* background-color: rgba(155, 89, 182, 0.5); */
+  background-color: rgba(0, 0, 0, 0.9);
 }
 
 #disk {
   /* background-color: #964b00; */
-  background-color: rgba(150, 75, 0, 0.5);
+  /* background-color: rgba(150, 75, 0, 0.5); */
+  background-color: rgba(0, 0, 0, 0.9);
 }
 
 #backlight {
   /* background-color: #90b1b1; */
-  background-color: rgba(144, 177, 177, 0.5);
+  /* background-color: rgba(144, 177, 177, 0.5); */
+  background-color: rgba(0, 0, 0, 0.9);
 }
 
 #network {
-  background-color: #2980b9;
-  background-color: rgba(41, 128, 185, 0.5);
+  /* background-color: #2980b9; */
+  /* background-color: rgba(41, 128, 185, 0.5); */
+  background-color: rgba(0, 0, 0, 0.9);
 }
 
 #network.disconnected {
   /* background-color: #f53c3c; */
-  background-color: rgba(245, 60, 60, 0.5);
+  /* background-color: rgba(245, 60, 60, 0.5); */
+  background-color: rgba(0, 0, 0, 0.9);
 }
 
 #pulseaudio {
   /* background-color: #8be9fd; */
   /* add some alpha */
-  background-color: rgba(139, 233, 253, 0.5);
+  /* background-color: rgba(139, 233, 253, 0.5); */
+  background-color: rgba(0, 0, 0, 0.9);
 }
 
 #pulseaudio.muted {
-  background-color: rgba(155, 177, 177, 0.5);
+  /* background-color: rgba(155, 177, 177, 0.5); */
+  background-color: rgba(0, 0, 0, 0.9);
 }
 
 #wireplumber {
@@ -258,7 +271,8 @@ label:focus {
 
 #tray {
   /* background-color: #2980b9; */
-  background-color: rgba(41, 128, 185, 0.5);
+  /* background-color: rgba(41, 128, 185, 0.5); */
+  background-color: rgba(0, 0, 0, 0.9);
 }
 
 #tray > .passive {
