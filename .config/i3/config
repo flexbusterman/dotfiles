@@ -274,6 +274,12 @@ bar {
   #   tray_output primary
 }
 
+input "2:7:SynPS/2_Synaptics_TouchPad" {
+	dwt enabled
+		tap enabled
+		middle_emulation enabled
+}
+
 # wallpaper
 output * background ~/.local/share/flex/background.jpg fill
 
@@ -384,7 +390,11 @@ bindsym Super+Shift+apostrophe exec typesnippet -AE
 bindsym Super+semicolon exec typesnippet -oe
 bindsym Super+Shift+semicolon exec typesnippet -OE
 
-exec_always dunst
+# startup applications
+exec dunst
+exec dropbox
+# exec_always dunst
+# exec_always pgrep dropbox && notify-send "Dropbox is already running" || exec dropbox
 
 # bindsym $mod+Control+Return exec --no-startup-id "audacious"
 # bindsym $mod+Shift+d exec --no-startup-id "cd ~/.local/src/; dev $(ls -d */ | dmenu)"
