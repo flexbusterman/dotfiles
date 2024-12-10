@@ -132,9 +132,6 @@ bindsym $mod+w kill
 # start dmenu (a program launcher)
 bindsym $mod+Return exec --no-startup-id "dmenu_run"
 
-bindsym $mod+Period exec "qutebrowser"
-bindsym $mod+shift+Period exec "brave youtube.com"
-
 # change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
@@ -280,71 +277,118 @@ bar {
 # wallpaper
 output * background ~/.local/share/flex/background.jpg fill
 
-# script bindings
-# bindsym $mod+period exec "qutebrowser"
-bindsym $mod+y exec --no-startup-id "stack -y"
-bindsym $mod+p exec --no-startup-id "stack -p"
-bindsym $mod+Shift+y exec --no-startup-id "ytfzfclipboard"
-# bindsym --release $mod+d exec --no-startup-id sleep 0.2 && xdotool type --clearmodifiers $(date +"%F ") && sleep 0.2 && xdotool keyup Alt_L Alt_R Control_L Control_R Shift_L Shift_R
-bindsym $mod+d exec --no-startup-id typedate
-bindsym $mod+b exec --no-startup-id "bluetoothconnect $HEADPHONES"
-bindsym $mod+Shift+b exec --no-startup-id "bluetoothctl disconnect $HEADPHONES"
-# bindsym Print exec --no-startup-id maim -f jpg -m 9 "/home/flex/Pictures/SCREENSHOTS/$(date +\"%F %H_%M_%S.jpg\")"
-# bindsym Shift+Print exec --no-startup-id maim -f jpg -m 9 -s "/home/flex/Pictures/SCREENSHOTS/$(date +\"%F %H_%M_%S.jpg\")"
-bindsym $mod+grave exec --no-startup-id "dmenuunicode"
-bindsym $mod+m exec --no-startup-id "mullvadconnect"
-bindsym $mod+Shift+m exec --no-startup-id "mullvaddisconnect"
-bindsym $mod+g exec --no-startup-id "calc"
-bindsym $mod+F1 exec --no-startup-id "jackrun"
-bindsym $mod+F2 exec --no-startup-id "jackkill"
-bindsym $mod+F3 exec --no-startup-id "displayselect"
-bindsym $mod+Shift+F3 exec --no-startup-id "displaydefault"
-bindsym $mod+F7 exec --no-startup-id "td-toggle"
-bindsym $mod+F8 exec --no-startup-id "dmenumount"
-bindsym $mod+F9 exec --no-startup-id "dmenuumount"
-bindsym $mod+Shift+Control+r exec --no-startup-id "reboot"
-bindsym $mod+Shift+Control+p exec --no-startup-id "poweroff"
-bindsym $mod+semicolon exec --no-startup-id "clipstream"
-bindsym $mod+Shift+semicolon exec --no-startup-id "clipdownload"
-bindsym $mod+Shift+p exec --no-startup-id "passmenu"
-bindsym $mod+Up exec --no-startup-id "cpuperformance"
-bindsym $mod+Down exec --no-startup-id "cpupowersave"
-bindsym Control+Shift+j exec --no-startup-id "musicnext"
-bindsym Control+Shift+k exec --no-startup-id "musicprev"
-bindsym Control+Shift+h exec --no-startup-id "musicseekbackward"
-bindsym Control+Shift+l exec --no-startup-id "musicseekforward"
-bindsym Control+Shift+space exec --no-startup-id "musicplaypause"
-bindsym $mod+Shift+Control+m exec --no-startup-id "mailsync"
-bindsym $mod+Shift+i exec --no-startup-id "xcalib -i -a"
-bindsym $mod+n exec --no-startup-id "$terminal -e ~/.local/bin/orgfzfname"
-bindsym $mod+Shift+n exec --no-startup-id "$terminal -e ~/.local/bin/orgfzfgrep"
-bindsym $mod+slash exec --no-startup-id "$terminal -e vimshortcuts"
+# Bindings
+
+bindsym $mod+b exec bluetoothconnect $HEADPHONES
+bindsym $mod+Shift+b exec bluetoothctl disconnect $HEADPHONES
+bindsym $mod+Shift+Control+b exec blueberry
+
+bindsym $mod+c exec "reaperconnect; supercolliderttsconnect; notify-send test"
+bindsym $mod+Shift+c exec calendar
+
+bindsym $mod+d exec typedate
+bindsym $mod+Control+d exec task done $(task _get $(task next limit:1 | tail -n +4 | head -n 1 | sed 's/^ //' | cut -d ' ' -f1).id)
+bindsym $mod+Shift+Control+d exec mpc --host ~/.mpd/socket clear
+
+bindsym $mod+e exec touchpaddisablewhiletypingtoggle
+bindsym $mod+Shift+e exec cd ~/.config/i3; $terminal -T i3config -e nvim config
+
+bindsym $mod+g exec calc
+
+bindsym Control+Shift+h exec musicseekbackward
+
+bindsym $mod+Shift+i exec xcalib -i -a
+bindsym $mod+Control+i exec task start $(task _get $(task next limit:1 | tail -n +4 | head -n 1 | sed 's/^ //' | cut -d ' ' -f1).id)
+
+bindsym Control+Shift+j exec musicnext
+
+bindsym Control+Shift+k exec musicprev
+
+bindsym Control+Shift+l exec musicseekforward
+
+bindsym $mod+m exec mullvadconnect
+bindsym $mod+Shift+m exec mullvaddisconnect
+
+bindsym $mod+n exec $terminal -e ~/.local/bin/orgfzfname
+bindsym $mod+Shift+n exec $terminal -e ~/.local/bin/orgfzfgrep
+
+bindsym $mod+Control+o exec task stop $(task _get $(task next limit:1 | tail -n +4 | head -n 1 | sed 's/^ //' | cut -d ' ' -f1).id)
+
+bindsym $mod+p exec prependclipboard ~/Dropbox/ORGMODE/refile.org
+bindsym $mod+Shift+p exec passmenu
+bindsym $mod+Shift+Control+p exec poweroff
+
+bindsym $mod+q exec qpwgraph
+
+bindsym $mod+r exec reaper
+bindsym $mod+Shift+Control+r exec reboot
+
+bindsym $mod+s exec $terminal -T SuperCollider -e tmuxsession SuperCollider 'supercollider'
+bindsym $mod+Shift+s exec tmux kill-session -t SuperCollider; tmux kill-session -t tidal;
+
+bindsym $mod+t exec $terminal -T Htop -e htop
+bindsym $mod+Shift+t exec $terminal -T nvtop -e nvtop
+bindsym $mod+Control+t exec $terminal -T vit -e vit
+bindsym $mod+Shift+Control+t exec $terminal -T typingtest -e tt -theme dracula
+bindsym Shift+Control+t exec ~/.local/bin/trimclipboard
+
+bindsym $mod+v exec fzfvideo
+bindsym $mod+Shift+v exec fzfvideoresume
+
+bindsym $mod+y exec stack -y
+bindsym $mod+Shift+y exec ytfzfclipboard
+
+bindsym $mod+Control+Return exec $terminal -T ncmpcpp -e $SHELL -c "MPD_HOST=/run/user/$UID/mpd/socket ncmpcpp"
+bindsym $mod+Control+Shift+Return exec tidal-hifi
+
+bindsym $mod+comma exec $terminal -T yazi -e yazi
+bindsym $mod+Shift+comma exec thunar
+bindsym $mod+semicolon exec clipstream
+bindsym $mod+Shift+semicolon exec clipdownload
+bindsym $mod+Shift+Control+semicolon exec clipdownload -a
+bindsym $mod+slash exec $terminal -e shortcuts
+bindsym $mod+Shift+slash exec typesnippet
+bindsym $mod+grave exec dmenuunicode
+bindsym $mod+Control+Shift+space exec musicrandomfolder
+bindsym $mod+Control+space exec musicplaypause
+bindsym $mod+Control+Shift+equal exec calculate
+
+bindsym $mod+Period exec qutebrowser
+bindsym $mod+shift+Period exec bravestart
+
+bindsym $mod+F1 exec bindings
+bindsym $mod+F2 exec resolution
+bindsym $mod+F3 exec displaydefault
+bindsym $mod+Shift+F3 exec displayselect
+bindsym $mod+F4 exec $terminal -T PulseMixer -e pulsemixer
+bindsym $mod+Shift+F4 exec pavucontrol
+bindsym $mod+F6 exec torwrap
+bindsym $mod+F7 exec td-toggle
+bindsym $mod+F8 exec mounter
+bindsym $mod+F9 exec unmounter
+bindsym $mod+F10 exec campreview
+bindsym $mod+F11 exec screencaststart
+bindsym $mod+Shift+F11 exec screencastwithmicstart
+bindsym $mod+F12 exec killrecording
+bindsym Print exec screenshot
+bindsym Shift+Print exec screenshot -s
+
+# bindsym $mod+Control+Return exec --no-startup-id "audacious"
 # bindsym $mod+Shift+d exec --no-startup-id "cd ~/.local/src/; dev $(ls -d */ | dmenu)"
-# terminal tui applications
 # bindsym $mod+Shift+n exec --no-startup-id "$terminal -T stack --working-directory ~/.local/src/stack -e nvim ~/.local/src/stack/stack"
-bindsym $mod+comma exec --no-startup-id "$terminal -T yazi -e yazi"
-bindsym $mod+e exec --no-startup-id "touchpaddisablewhiletypingtoggle"
-bindsym $mod+t exec --no-startup-id "$terminal -T Htop -e htop"
-# bindsym $mod+Shift+r exec --no-startup-id "$terminal -T Newsboat -e newsboat"
-bindsym $mod+s exec --no-startup-id "$terminal -T SuperCollider -e tmuxsession SuperCollider 'supercollider'"
-bindsym $mod+Shift+s exec --no-startup-id "tmux kill-session -t SuperCollider; tmux kill-session -t tidal;"
-bindsym $mod+Control+Return exec --no-startup-id "$terminal -T ncmpcpp -e ncmpcpp"
-bindsym $mod+Control+Shift+Return exec --no-startup-id "tidal-hifi"
-bindsym $mod+Shift+t exec --no-startup-id "$terminal -T typingtest -e tt -theme dracula"
-bindsym $mod+Shift+c exec --no-startup-id "$terminal -T calcurse -e calcurse"
-bindsym $mod+Shift+e exec --no-startup-id "cd ~/.config/i3; $terminal -T i3config -e nvim config"
-
-bindsym $mod+F4 exec --no-startup-id "$terminal -T PulseMixer -e pulsemixer"
-bindsym $mod+Shift+F4 exec --no-startup-id "pavucontrol"
-bindsym $mod+F6 exec --no-startup-id "torwrap"
-
-# gui applications
 # bindsym $mod+Shift+period exec "bravestart"
+# bindsym $mod+Shift+r exec --no-startup-id "$terminal -T Newsboat -e newsboat"
 # bindsym --release $mod+Shift+Control+l exec --no-startup-id "slock"
 # bindsym --release $mod+Shift+x exec --no-startup-id "xkill"
-bindsym $mod+q exec --no-startup-id "qpwgraph"
-# bindsym $mod+Control+Return exec --no-startup-id "audacious"
-bindsym $mod+r exec --no-startup-id "reaper"
+# bindsym Print exec --no-startup-id maim -f jpg -m 9 "/home/flex/Pictures/SCREENSHOTS/$(date +\"%F %H_%M_%S.jpg\")"
+# bindsym Shift+Print exec --no-startup-id maim -f jpg -m 9 -s "/home/flex/Pictures/SCREENSHOTS/$(date +\"%F %H_%M_%S.jpg\")"
+# gui applications
+# terminal tui applications
+# bindsym $mod+Up exec --no-startup-id "cpuperformance"
+# bindsym $mod+Shift+Control+m exec --no-startup-id "mailsync"
+# bindsym $mod+Down exec --no-startup-id "cpupowersave"
+# bindsym $mod+F1 exec --no-startup-id "jackrun"
+# bindsym $mod+F2 exec --no-startup-id "jackkill"
 
 # rules
 # assign [class="Audacious"] 9
