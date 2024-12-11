@@ -26,6 +26,7 @@
 		// "power-profiles-daemon",
 		"cpu",
 		"memory",
+		"disk",
 		// "temperature",
 		"backlight",
 		// "keyboard-state",
@@ -123,6 +124,10 @@
 	"memory": {
 		"format": " {}%"
 	},
+	"disk": {
+		"format": "{path} {specific_free:0.0f}",
+		"unit": "GB"
+	},
 	"temperature": {
 		// "thermal-zone": 2,
 		// "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
@@ -173,7 +178,8 @@
 		"tooltip-format": " {ifname} via {gwaddr}",
 		"format-linked": " {ifname} (No IP)",
 		"format-disconnected": " Disconnected ⚠",
-		"format-alt": "{ifname}: {ipaddr}/{cidr}"
+		"format-alt": "{ifname}: {ipaddr}/{cidr}",
+		"interval": 2
 	},
 	"pulseaudio": {
 		// "scroll-step": 1, // %, can be a float
