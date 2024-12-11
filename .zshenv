@@ -33,4 +33,4 @@ export SYSTEMD_EDITOR=nvim
 
 # export NEXTCLOUD_PHP_CONFIG=/etc/webapps/nextcloud/php.ini
 
-export SWAYSOCK=$( lsof /run/user/1000/sway-ipc.* 2>/dev/null | awk '{print $9}' | tail -n +2 | sort | uniq )
+# export SWAYSOCK=$( lsof /run/user/1000/sway-ipc.* 2>/dev/null | awk '{print $9}' | tail -n +2 | sort | uniq )

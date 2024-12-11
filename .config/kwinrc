@@ -16,7 +16,10 @@ Number=9
 Rows=1
 
 [Effect-diminactive]
-Strength=30
+DimDesktop=true
+DimKeepAbove=true
+DimPanels=true
+Strength=0
 
 [Effect-mousemark]
 Color=128,255,255

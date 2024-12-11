@@ -14,6 +14,9 @@ set $terminal kitty
 
 # startup applications
 exec dunst
+exec_always pgrep layman || exec layman
+exec_always pgrep maestral_qt || exec maestral_qt
+exec_always pgrep syncthing || exec syncthing --no-browser
 # exec dropbox
 # exec_always dunst
 # exec_always pgrep dropbox && notify-send "Dropbox is already running" || exec dropbox
@@ -21,8 +24,6 @@ exec dunst
 # exec_always --no-startup-id "i3-layouts"
 # exec_always --no-startup-id "i3reset"
 # exec_always --no-startup-id "autotiling"
-exec_always maestral_qt
-exec_always syncthing --no-browser
 # exec_always "blueman-applet"
 # exec_always "nm-applet"
 # exec_always "pkexec swhkd -c /home/flex/.config/sxhkd/sxhkdrc"
@@ -132,7 +133,7 @@ floating_modifier $mod
 # start a terminal
 bindsym $mod+shift+Return exec --no-startup-id "$terminal -e tmux new-session -A -s main"
 # bindsym $mod+shift+space exec --no-startup-id i3l swap container with mark 1
-bindsym $mod+space exec --no-startup-id i3promotewindow
+# bindsym $mod+space exec --no-startup-id i3promotewindow
 
 # kill focused window
 bindsym $mod+w kill
@@ -147,10 +148,17 @@ bindsym $mod+k focus up
 bindsym $mod+l focus right
 
 # move focused window
-bindsym $mod+Shift+h move left 40
-bindsym $mod+Shift+j move down 40
-bindsym $mod+Shift+k move up 40
-bindsym $mod+Shift+l move right 40
+# bindsym $mod+Shift+h move left 40
+# bindsym $mod+Shift+j move down 40
+# bindsym $mod+Shift+k move up 40
+# bindsym $mod+Shift+l move right 40
+
+# move focused window
+bindsym $mod+Shift+h nop layman move left
+bindsym $mod+Shift+l nop layman move right
+bindsym $mod+Shift+j nop layman rotate cw
+bindsym $mod+Shift+k nop layman rotate ccw
+# bindsym $mod+Shift+l move right 40
 
 # bindsym $mod+Shift+h exec --no-startup-id i3l move left
 # bindsym $mod+Shift+j exec --no-startup-id i3l move down
@@ -177,7 +185,7 @@ bindsym $mod+u exec --no-startup-id i3l spiral 0.6
 bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+o focus mode_toggle
+# bindsym $mod+o focus mode_toggle
 
  # bindsym $mod+space exec --no-startup-id i3l swap container with mark 1
 
@@ -240,6 +248,13 @@ bindsym $mod+Shift+r reload
 # bindsym $mod+shift+r exec --no-startup-id "i3reset"
 # bindsym $mod+Shift+q exec --no-startup-id "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 bindsym $mod+Shift+q exit
+
+# layman layout bindings
+bindsym $mod+i nop layman layout MasterStack
+# bindsym $mod+o nop layman layout Autotiling
+# bindsym $mod+n nop layman layout none
+# bindsym $mod+g nop layman layout Grid
+bindsym $mod+Space nop layman swap master
 
 # resize window (you can also use the mouse for that)
 #

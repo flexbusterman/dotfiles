@@ -4,9 +4,9 @@
 
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 
-# if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
-# 	exec startx
-# fi
+if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
+	exec startx
+fi
 
 #  _   _                  _                 _
 # | | | |_   _ _ __  _ __| | __ _ _ __   __| |
@@ -25,6 +25,6 @@
 # 	Hyprland
 # fi
 
-if [ -z "$WAYLAND_DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ] ; then
-	sway
-fi
+# if [ -z "$WAYLAND_DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ] ; then
+# 	dwlstart
+# fi
