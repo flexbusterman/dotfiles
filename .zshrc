@@ -98,6 +98,7 @@ alias vx="cd ~; nvim .xinitrc"
 alias vy="cd ~/.config/yazi/; nvim yazi.toml"
 alias vz="cd ~; nvim .zshrc"
 alias vi="cd ~/.config/i3/; nvim config"
+alias vw="cd ~/.config/waybar/; nvim config.jsonc"
 
 # script shortcuts
 alias fn="fzfnotes"

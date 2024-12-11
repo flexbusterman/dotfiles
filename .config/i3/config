@@ -21,7 +21,7 @@ exec dunst
 # exec_always --no-startup-id "i3-layouts"
 # exec_always --no-startup-id "i3reset"
 # exec_always --no-startup-id "autotiling"
-exec_always maestral
+exec_always maestral_qt
 exec_always syncthing --no-browser
 # exec_always "blueman-applet"
 # exec_always "nm-applet"
