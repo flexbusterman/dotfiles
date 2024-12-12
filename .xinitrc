@@ -9,7 +9,7 @@ unclutter --timeout 1 &
 udiskie -ta &
 # # xss-lock -- sh -c "sleep 0.2; /home/$USER/.local/bin/slockunmute" &
 # # mailsync &
-# dropbox &
+dropbox &
 dunst &
 # mpd &
 # qpwgraph -m &
@@ -22,9 +22,9 @@ syncthing --no-browser &
 tmux new-session -d -s main &
 sxhkd &
 # # rfkill unblock bluetooth &
-# exec ~/.local/bin/dwmstart
+exec ~/.local/bin/dwmstart
 # # export DESKTOP_SESSION=plasma
 # # export KDEWM=~/.local/bin/dwmstart
-exec startplasma-x11
+# exec startplasma-x11
 # exec Hyprland
 # echo "Hello from login"
