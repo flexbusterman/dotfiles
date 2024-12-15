@@ -3,66 +3,70 @@
 filetype=$(file --mime-type -b "$@")
 notify-send $filetype
 case "$filetype" in
-	image/*)
-		sxivopen "$@"
+image/*)
+	sxivopen "$@"
+	;;
+video/*)
+	mpv "$@"
+	;;
+audio/*)
+	mpc --host /run/user/1000/mpd/socket clear
+	musicadd "$@"
+	;;
+application/vnd.openxmlformats-officedocument.spreadsheetml.sheet)
+	$TERMINAL -e sc-im "$@"
+	;;
+application/x-sc)
+	$TERMINAL -e sc-im "$@"
+	;;
+application/x-nes-rom)
+	mednafen "$@"
+	;;
+application/x-dosexec)
+	dosbox "$@"
+	;;
+application/pdf)
+	zathura "$@"
+	;;
+application/octet-stream)
+	case "${1##*.}" in
+	doc | docx | xls | xlsx | odt | ppt | pptx)
+		libreoffice "$@"
 		;;
-	video/*)
-		mpv "$@"
-		;;
-	audio/*)
+	ahx | hes)
 		mpc --host /run/user/1000/mpd/socket clear
 		musicadd "$@"
 		;;
-	application/vnd.openxmlformats-officedocument.spreadsheetml.sheet)
-		$TERMINAL -e sc-im "$@"
-		;;
-	application/x-sc)
-		$TERMINAL -e sc-im "$@"
-		;;
-	application/x-nes-rom)
-		mednafen "$@"
-		;;
-	application/x-dosexec)
-		dosbox "$@"
-		;;
-	application/pdf)
-		zathura "$@"
-		;;
-	application/octet-stream)
-		case "${1##*.}" in
-			doc|docx|xls|xlsx|odt|ppt|pptx)
-				libreoffice "$@"
-				;;
-			ahx|hes)
-				mpc --host /run/user/1000/mpd/socket clear
-				musicadd "$@"
-				;;
-			*)
-				notify-send "${1##*.}"
-				;;
-		esac
-		;;
-	text/html)
-		qutebrowser "$@"
+	7z | ace | gz | jar | rar | shar | tar | tgz | xar | xz | zip)
+		for file in "$@"; do
+			7z x -y "$file" -o"${file%.*}"
+		done
 		;;
 	*)
-		case "${1##*.}" in
-			rpp|RPP)
-				reaper "$@"
-				;;
-			exe|EXE)
-				wine "$@"
-				;;
-			7z|ace|gz|jar|rar|shar|tar|tgz|xar|xz|zip)
-				for file in "$@"
-				do
-					7z x -y "$file" -o"${file%.*}"
-				done
-				;;
-			*)
-				# start files in separate tabs in nvim
-				$TERMINAL -e nvim -O "$@"
-				;;
-		esac
+		notify-send "${1##*.}"
 		;;
+	esac
+	;;
+text/html)
+	qutebrowser "$@"
+	;;
+*)
+	case "${1##*.}" in
+	rpp | RPP)
+		reaper "$@"
+		;;
+	exe | EXE)
+		wine "$@"
+		;;
+	7z | ace | gz | jar | rar | shar | tar | tgz | xar | xz | zip)
+		for file in "$@"; do
+			7z x -y "$file" -o"${file%.*}"
+		done
+		;;
+	*)
+		# start files in separate tabs in nvim
+		$TERMINAL -e nvim -O "$@"
+		;;
+	esac
+	;;
 esac
