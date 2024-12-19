@@ -134,8 +134,8 @@ alt + control + k
 # used by dwm notify-send "alt + shift + l"
 alt + control + l
 	musicseekforward
-# alt + shift + control + l
-# notify-send "alt + shift + control + l"
+alt + shift + control + l
+	slock
 # shift + control + l
 # notify-send "shift + control + l"
 
