@@ -1,5 +1,5 @@
 #!/bin/bash
-inotifywait -e modify -r -m "$1" |\
-while read E; do
-	qutebrowser :reload
-done
+inotifywait -e modify -r -m "$@" |
+	while read E; do
+		qutebrowser :reload
+	done

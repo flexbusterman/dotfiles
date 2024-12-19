@@ -1,0 +1,4 @@
+#!/bin/bash
+inotifywait -e modify -r -m "$@" | while read E; do
+	firefoxreload
+done

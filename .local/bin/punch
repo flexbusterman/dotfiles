@@ -1,8 +1,12 @@
 #!/bin/bash
 
-programs=(neovim watson gawk sed libnotify)
-for x in "${programs[@]}";do
-	pacman -Qq "$x" >/dev/null 2>&1 || { echo -e "Program not found: $x\n"; notify-send "Program not found: $x";}
+# programs=(neovim watson gawk sed libnotify)
+programs=(neovim gawk sed libnotify)
+for x in "${programs[@]}"; do
+	pacman -Qq "$x" >/dev/null 2>&1 || {
+		echo -e "Program not found: $x\n"
+		notify-send "Program not found: $x"
+	}
 done
 
 usage() {
@@ -38,7 +42,7 @@ deleteProject() {
 	confirmation=$(echo -e "yes\nno" | dmenu -p "Delete $project?")
 	if [ $confirmation == "yes" ]; then
 		cp ~/.config/watson/frames ~/.config/watson/frames.beforedelete$(date +%s)
-		cat ~/.config/watson/frames | awk -v search="\"$project\"" '$0 ~ search{for(x=NR-3;x<=NR+4;x++)d[x];}{a[NR]=$0}END{for(i=1;i<=NR;i++)if(!(i in d))print a[i]}' > ~/.config/watson/frames.temp
+		cat ~/.config/watson/frames | awk -v search="\"$project\"" '$0 ~ search{for(x=NR-3;x<=NR+4;x++)d[x];}{a[NR]=$0}END{for(i=1;i<=NR;i++)if(!(i in d))print a[i]}' >~/.config/watson/frames.temp
 		mv ~/.config/watson/frames.temp ~/.config/watson/frames
 		# nvim hack to fix json syntax if we removed the last entry, leaving trailing comma
 		nvim -es +'silent! %s/],\n]/]\r]/g | wq' ~/.config/watson/frames
@@ -50,7 +54,7 @@ deleteProject() {
 chooseProject() {
 	latest=$(echo "" | dmenu -p "No recent project found. Enter project name:")
 	if [ -n "$latest" ]; then
-		echo "$latest" > ~/.config/watson/latest
+		echo "$latest" >~/.config/watson/latest
 	fi
 }
 
@@ -72,7 +76,7 @@ selectProject() {
 	# If a project was selected or entered
 	if [ -n "$project" ]; then
 		# Save the project as the latest used
-		echo "$project" > ~/.config/watson/latest
+		echo "$project" >~/.config/watson/latest
 		# Start the project with Watson
 		if watson start "$project"; then
 			echo "Started project $project"
@@ -98,70 +102,70 @@ getElapsedTimeForProject() {
 
 while [ "$1" != "" ]; do
 	case $1 in
-		-i | --in)
-			shift
-			checkWatsonRunning
-			if [ $? -eq 0 ]; then
-				getLatestProject
-				if [ -z "$latest" ]; then
-					chooseProject
-				fi
-				if [ -n "$latest" ]; then
-					if watson start "$latest"; then
-						echo "Punched in $latest"
-						notify-send "Punched in $latest"
-					else
-						echo "Failed to punch in $latest"
-						notify-send "Failed to punch in $latest"
-					fi
-				else
-					echo "No project selected"
-					notify-send "No project selected"
-				fi
-			fi
-			;;
-		-o | --out)
-			shift
+	-i | --in)
+		shift
+		checkWatsonRunning
+		if [ $? -eq 0 ]; then
 			getLatestProject
 			if [ -z "$latest" ]; then
-				echo "No project to punch out from"
-				notify-send "No project to punch out from"
-			else
-				if watson stop; then
-					echo "Punched out from $latest"
-					notify-send "Punched out from $latest"
-					elapsed_time=$(getElapsedTimeForProject "$latest")
-					if [ -n "$elapsed_time" ]; then
-						notify-send "Total project time:" "$elapsed_time"
-					else
-						notify-send "Unable to determine total time clocked"
-					fi
+				chooseProject
+			fi
+			if [ -n "$latest" ]; then
+				if watson start "$latest"; then
+					echo "Punched in $latest"
+					notify-send "Punched in $latest"
 				else
-					# echo "Failed to punch out from $latest"
-					# notify-send "Failed to punch out from $latest"
-					watson status
-					notify-send "$(watson status)"
+					echo "Failed to punch in $latest"
+					notify-send "Failed to punch in $latest"
 				fi
+			else
+				echo "No project selected"
+				notify-send "No project selected"
 			fi
-			;;
-		-s | --select)
-			shift
-			checkWatsonRunning
-			if [ $? -eq 0 ]; then
-				selectProject
+		fi
+		;;
+	-o | --out)
+		shift
+		getLatestProject
+		if [ -z "$latest" ]; then
+			echo "No project to punch out from"
+			notify-send "No project to punch out from"
+		else
+			if watson stop; then
+				echo "Punched out from $latest"
+				notify-send "Punched out from $latest"
+				elapsed_time=$(getElapsedTimeForProject "$latest")
+				if [ -n "$elapsed_time" ]; then
+					notify-send "Total project time:" "$elapsed_time"
+				else
+					notify-send "Unable to determine total time clocked"
+				fi
+			else
+				# echo "Failed to punch out from $latest"
+				# notify-send "Failed to punch out from $latest"
+				watson status
+				notify-send "$(watson status)"
 			fi
-			;;
-		-d | --delete)
-			shift
-			deleteProject
-			;;
-		-h | --help)
-			usage
-			;;
-		*)
-			usage
-			exit 1
-			;;
+		fi
+		;;
+	-s | --select)
+		shift
+		checkWatsonRunning
+		if [ $? -eq 0 ]; then
+			selectProject
+		fi
+		;;
+	-d | --delete)
+		shift
+		deleteProject
+		;;
+	-h | --help)
+		usage
+		;;
+	*)
+		usage
+		exit 1
+		;;
 	esac
 	shift
 done

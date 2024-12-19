@@ -118,6 +118,9 @@ alias f='cd ~/.flarbs/'
 alias o='cd ~/Dropbox/ORGMODE/'
 alias v='cd ~/Downloads/VIDEO/'
 alias s="cd ~/Dropbox/$(date +%Y)\ FOTO/SCREENSHOTS/"
+alias a="cd ~/Documents/"
+
+# taskwarrior
 alias t="task"
 
 # save current dir in workdir file
