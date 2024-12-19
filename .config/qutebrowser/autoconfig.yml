@@ -80,7 +80,7 @@ settings:
   fonts.default_family:
     global: Fira Mono Medium
   fonts.default_size:
-    global: 14px
+    global: 16px
   fonts.web.family.standard:
     global: Arimo Nerd Font Regular
   hints.border:
