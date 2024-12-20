@@ -37,9 +37,11 @@ local SHOW_NUMBERS_RELATIVE_ABSOLUTE = 2
 local render_motion_setup = ya.sync(function(_)
 	ya.render()
 
-	Status.motion = function() return ui.Span("") end
+	Status.motion = function()
+		return ui.Span("")
+	end
 
-	Status.children_redraw = function(self, side)
+	Status.children_render = function(self, side)
 		local lines = {}
 		if side == self.RIGHT then
 			lines[1] = self:motion(self)
@@ -51,7 +53,7 @@ local render_motion_setup = ya.sync(function(_)
 	end
 
 	-- TODO: check why it doesn't work line this
-	-- Status:children_add(function() return ui.Span("") end, 1000, Status.RIGHT)
+	-- Status:children_add(Status.motion, 100, Status.RIGHT)
 end)
 
 local render_motion = ya.sync(function(_, motion_num, motion_cmd)
@@ -66,17 +68,17 @@ local render_motion = ya.sync(function(_, motion_num, motion_cmd)
 
 		local motion_span
 		if not motion_cmd then
-			motion_span = ui.Span(string.format("  %3d ", motion_num))
+			motion_span = ui.Span(string.format("  %3d ", motion_num)):style(style)
 		else
-			motion_span = ui.Span(string.format(" %3d%s ", motion_num, motion_cmd))
+			motion_span = ui.Span(string.format(" %3d%s ", motion_num, motion_cmd)):style(style)
 		end
 
-		return ui.Line {
-			ui.Span(THEME.status.separator_open):fg(style.main.bg),
-			motion_span:style(style.main),
-			ui.Span(THEME.status.separator_close):fg(style.main.bg),
+		return ui.Line({
+			ui.Span(THEME.status.separator_open):fg(style.bg),
+			motion_span,
+			ui.Span(THEME.status.separator_close):fg(style.bg),
 			ui.Span(" "),
-		}
+		})
 	end
 end)
 
@@ -107,7 +109,7 @@ local render_numbers = ya.sync(function(_, mode)
 		end
 	end
 
-	Current.redraw = function(self)
+	Current.render = function(self)
 		local files = self._folder.window
 		if #files == 0 then
 			return self:empty()
@@ -123,26 +125,31 @@ local render_numbers = ya.sync(function(_, mode)
 
 		local entities, linemodes = {}, {}
 		for i, f in ipairs(files) do
-			linemodes[#linemodes + 1] = Linemode:new(f):redraw()
+			linemodes[#linemodes + 1] = Linemode:new(f):render()
 
 			local entity = Entity:new(f)
-			entities[#entities + 1] = ui.Line({ Entity:number(i, f, hovered_index), entity:redraw() }):style(entity:style())
+			entities[#entities + 1] = ui.ListItem(ui.Line({ Entity:number(i, f, hovered_index), entity:render() }))
+				:style(entity:style())
 		end
 
 		return {
-			ui.List(entities):area(self._area),
-			ui.Text(linemodes):area(self._area):align(ui.Text.RIGHT),
+			ui.List(self._area, entities),
+			ui.Paragraph(self._area, linemodes):align(ui.Paragraph.RIGHT),
 		}
 	end
 end)
 
-local function render_clear() render_motion() end
+local function render_clear()
+	render_motion()
+end
 
 -----------------------------------------------
 --------- C O M M A N D   P A R S E R ---------
 -----------------------------------------------
 
-local get_keys = ya.sync(function(state) return state._only_motions and MOTION_KEYS or MOTIONS_AND_OP_KEYS end)
+local get_keys = ya.sync(function(state)
+	return state._only_motions and MOTION_KEYS or MOTIONS_AND_OP_KEYS
+end)
 
 local function normal_direction(dir)
 	if dir == "<Down>" then
@@ -159,7 +166,7 @@ local function get_cmd(first_char, keys)
 
 	while true do
 		render_motion(tonumber(lines))
-		local key = ya.which { cands = keys, silent = true }
+		local key = ya.which({ cands = keys, silent = true })
 		if not key then
 			return nil, nil, nil
 		end
@@ -181,7 +188,7 @@ local function get_cmd(first_char, keys)
 		DIRECTION_KEYS[#DIRECTION_KEYS + 1] = {
 			on = last_key,
 		}
-		local direction_key = ya.which { cands = DIRECTION_KEYS, silent = true }
+		local direction_key = ya.which({ cands = DIRECTION_KEYS, silent = true })
 		if not direction_key then
 			return nil, nil, nil
 		end
@@ -203,19 +210,20 @@ local function is_tab_command(command)
 	return false
 end
 
-local get_active_tab = ya.sync(function(_) return cx.tabs.idx end)
+local get_active_tab = ya.sync(function(_)
+	return cx.tabs.idx
+end)
 
 -----------------------------------------------
 ---------- E N T R Y   /   S E T U P ----------
 -----------------------------------------------
 
 return {
-	entry = function(_, job)
+	entry = function(_, args)
 		local initial_value
 
-		local args = job.args
 		-- this is checking if the argument is a valid number
-		if #args > 0 then
+		if args then
 			initial_value = tostring(tonumber(args[1]))
 			if initial_value == "nil" then
 				return
