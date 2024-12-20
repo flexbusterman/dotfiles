@@ -1,45 +1,89 @@
-#/bin/sh
+#!/bin/sh
 
-# Loop through all attached batteries.
-for battery in /sys/class/power_supply/BAT?
-do
-	# Get its remaining capacity and charge status
-	capacity=$(cat "$battery"/capacity 2>/dev/null) || break
-	# status=$(sed "s/[Dd]ischarging/-/;s/[Nn]ot charging//;s/[Cc]harging/+/;s/[Uu]nknown//;s/[Ff]ull//" "$battery"/status)
-	status=$(sed "s/[Dd]ischarging/-/;s/[Cc]harging/+/;s/[Nn]ot //; s/[Uu]nknown//;s/[Ff]ull//" "$battery"/status)
-	percentageSum=$((percentageSum + capacity))
-	numberOfBatteries=$((numberOfBatteries + 1))
-done
-percentage=$((percentageSum / numberOfBatteries))
+# Prints all batteries, their percentage remaining and an emoji corresponding
+# to charge status (🔌 for plugged up, 🔋 for discharging on battery, etc.).
 
-# get time remaining from all batteries and sum
-# for seconds in $(TZ=utc date -d "1970-01-01 $(acpi | awk '/remaining/ {print $5}')" +%s)
+case $BLOCK_BUTTON in
+3) notify-send "🔋 Battery module" "🔋: discharging
+🛑: not charging
+♻: stagnant charge
+🔌: charging
+⚡: charged
+❗: battery very low!
+- Scroll to change adjust xbacklight." ;;
+4) xbacklight -inc 10 ;;
+5) xbacklight -dec 10 ;;
+6) setsid -f "$TERMINAL" -e "$EDITOR" "$0" ;;
+esac
+
+# Loop through all attached batteries and format the info
+for battery in /sys/class/power_supply/BAT?*; do
+	# If non-first battery, print a space separator.
+	[ -n "${capacity+x}" ] && printf " "
+	# Sets up the status and capacity
+	case "$(cat "$battery/status" 2>&1)" in
+	# "Full") status="⚡" ;;
+	"Full") status="" ;;
+	# "Discharging") status="🔋" ;;
+	"Discharging") status="-" ;;
+	# "Charging") status="🔌" ;;
+	"Charging") status="+" ;;
+	# "Not charging") status="🛑" ;;
+	"Not charging") status="" ;;
+	# "Unknown") status="♻️" ;;
+	"Unknown") status="" ;;
+	*) exit 1 ;;
+	esac
+	capacity="$(cat "$battery/capacity" 2>&1)"
+	# Will make a warn variable if discharging and low
+	[ "$status" = "🔋" ] && [ "$capacity" -le 25 ] && warn="❗"
+	# Prints the info
+	printf "%s%s%d%%" "$status" "$warn" "$capacity"
+	unset warn
+done && printf "\\n"
+
+# #/bin/sh
+#
+# # Loop through all attached batteries.
+# for battery in /sys/class/power_supply/BAT?
 # do
-	# sumSeconds=$((sumSeconds + seconds))
+# 	# Get its remaining capacity and charge status
+# 	capacity=$(cat "$battery"/capacity 2>/dev/null) || break
+# 	# status=$(sed "s/[Dd]ischarging/-/;s/[Nn]ot charging//;s/[Cc]harging/+/;s/[Uu]nknown//;s/[Ff]ull//" "$battery"/status)
+# 	status=$(sed "s/[Dd]ischarging/-/;s/[Cc]harging/+/;s/[Nn]ot //; s/[Uu]nknown//;s/[Ff]ull//" "$battery"/status)
+# 	percentageSum=$((percentageSum + capacity))
+# 	numberOfBatteries=$((numberOfBatteries + 1))
 # done
-
-# convert to HH:MM:SS
-# timeLeft=$(date -d@$sumSeconds -u +%H:%M)
-
-# if [[ $sumSeconds > 0 ]]; then
-	# printf "%s%s%s" "$status$percentage% $timeLeft"
-# else
-	# printf "%s%s%s" "$status$percentage%"
-# fi
-
-printf "%s" "BAT $status$percentage%"
-
-# percentage=$(bc <<< "$(cat "/sys/class/power_supply/BAT0/capacity" + 2>/dev/null) ")
-
-	# charging=$([[ $(cat "/sys/class/power_supply/BAT0/status" 2>/dev/null) == "Charging" || $(cat "/sys/class/power_supply/BAT1/status" 2>/dev/null) == "Charging" ]] && printf "+" ) 
-	# discharging=$([[ $(cat "/sys/class/power_supply/BAT0/status" 2>/dev/null) == "Discharging" || $(cat "/sys/class/power_supply/BAT1/status" 2>/dev/null) == "Discharging" ]] && printf "-" ) 
-
-# printf "BAT %s%s%s%s" "$charging" "$discharging" "$percentage" "%" 
-
-# numberofbatteries=$(acpi | wc -l)
-# batterystatus=$(acpi | sed "s/[Dd]ischarging/-/;s/[Nn]ot charging//;s/[Cc]harging/+/;s/[Uu]nknown//;s/[Ff]ull//")
-# echo $batterystatus
-	# # If it is discharging and 25% or less, we will add a ❗ as a warning.
-	 # [ "$capacity" -le 25 ] && [ "$status" = "-" ] && warn="!"
-	# unset warn
-# done | sed 's/*$//'
+# percentage=$((percentageSum / numberOfBatteries))
+#
+# # get time remaining from all batteries and sum
+# # for seconds in $(TZ=utc date -d "1970-01-01 $(acpi | awk '/remaining/ {print $5}')" +%s)
+# # do
+# 	# sumSeconds=$((sumSeconds + seconds))
+# # done
+#
+# # convert to HH:MM:SS
+# # timeLeft=$(date -d@$sumSeconds -u +%H:%M)
+#
+# # if [[ $sumSeconds > 0 ]]; then
+# 	# printf "%s%s%s" "$status$percentage% $timeLeft"
+# # else
+# 	# printf "%s%s%s" "$status$percentage%"
+# # fi
+#
+# printf "%s" "BAT $status$percentage%"
+#
+# # percentage=$(bc <<< "$(cat "/sys/class/power_supply/BAT0/capacity" + 2>/dev/null) ")
+#
+# 	# charging=$([[ $(cat "/sys/class/power_supply/BAT0/status" 2>/dev/null) == "Charging" || $(cat "/sys/class/power_supply/BAT1/status" 2>/dev/null) == "Charging" ]] && printf "+" )
+# 	# discharging=$([[ $(cat "/sys/class/power_supply/BAT0/status" 2>/dev/null) == "Discharging" || $(cat "/sys/class/power_supply/BAT1/status" 2>/dev/null) == "Discharging" ]] && printf "-" )
+#
+# # printf "BAT %s%s%s%s" "$charging" "$discharging" "$percentage" "%"
+#
+# # numberofbatteries=$(acpi | wc -l)
+# # batterystatus=$(acpi | sed "s/[Dd]ischarging/-/;s/[Nn]ot charging//;s/[Cc]harging/+/;s/[Uu]nknown//;s/[Ff]ull//")
+# # echo $batterystatus
+# 	# # If it is discharging and 25% or less, we will add a ❗ as a warning.
+# 	 # [ "$capacity" -le 25 ] && [ "$status" = "-" ] && warn="!"
+# 	# unset warn
+# # done | sed 's/*$//'
