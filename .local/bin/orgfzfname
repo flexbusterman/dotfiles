@@ -32,7 +32,7 @@ else
 	# tmux send-keys -t orgmode C-c
 	# sleep 0.1
 	# tmux send-keys -t orgmode "cd ~/ORGMODE/; nvim \"$file\"" Enter
-	tmux send-keys -t orgmode C-z "cd ~/ORGMODE/; nvim \"$file\"" Enter
+	tmux send-keys -t orgmode C-c "cd ~/ORGMODE/; nvim \"$file\"" Enter
 fi
 
 # Attach to tmux session

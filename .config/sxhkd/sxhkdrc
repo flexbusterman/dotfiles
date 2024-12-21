@@ -374,7 +374,7 @@ alt + shift + equal
 	calculate
 
 alt + grave
-	$TERMINAL -T tui-deck -e deck
+	$TERMINAL -T vit -e vit
 
 alt + shift + grave
 	dmenuunicode
