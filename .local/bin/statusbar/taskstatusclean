@@ -4,20 +4,12 @@ if [[ $(timew) == "There is no active time tracking." ]]; then
 	# Extract the next task information
 	nextID=$(task _get $(task next limit:1 | tail -n +4 | head -n 1 | sed 's/^ //' | cut -d ' ' -f1).id)
 	rawNextDescription=$(task _get $(task next limit:1 | tail -n +4 | head -n 1 | sed 's/^ //' | cut -d ' ' -f1).description)
-	nextDescription=${rawNextDescription:0:13}
+	nextDescription=$rawNextDescription
 	# Output for tmux status bar
-	if [[ ${#nextDescription} -gt 13 ]]; then
-		echo "$nextID ${nextDescription}..."
-	else
-		echo "$nextID $nextDescription"
-	fi
+	echo "$nextID $nextDescription"
 else
 	id=$(task _get $(task active limit:1 | tail -n +4 | head -n 1 | sed 's/^ //' | cut -d ' ' -f1).id)
 	title=$(task _get $(task active limit:1 | tail -n +4 | head -n 1 | sed 's/^ //' | cut -d ' ' -f1).description)
 	# Output for tmux status bar
-	if [[ ${#title} -gt 13 ]]; then
-		echo "^c#ff79c6^$id ${title:0:13}...^d^"
-	else
-		echo "^c#ff79c6^$id ${title:0:13}^d^"
-	fi
+	echo "^c#ff79c6^$id $title^d^"
 fi
