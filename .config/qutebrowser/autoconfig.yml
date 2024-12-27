@@ -43,6 +43,7 @@ settings:
   content.javascript.clipboard:
     https://chatgpt.com/: access
     https://claude.ai/: access
+    https://github.com: access-paste
     https://github.com/: access
     https://google.com/: access
   content.media.audio_capture:

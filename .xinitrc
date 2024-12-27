@@ -22,7 +22,6 @@ syncthing --no-browser &
 tmux new-session -d -s main &
 kitty -e tmux attach-session -t main &
 sxhkd &
-xdotool mousemove $(xdotool getdisplaygeometry | awk '{print $1 " " $2}') &
 xautolock -time 3 -locker idlescript &
 # # rfkill unblock bluetooth &
 exec ~/.local/bin/dwmstart
