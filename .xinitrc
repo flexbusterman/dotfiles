@@ -23,7 +23,7 @@ tmux new-session -d -s main &
 kitty -e tmux attach-session -t main &
 sxhkd &
 xautolock -time 3 -locker idlescript &
-updatetasklist &
+updatetasklist
 # # rfkill unblock bluetooth &
 exec ~/.local/bin/dwmstart
 # # export DESKTOP_SESSION=plasma

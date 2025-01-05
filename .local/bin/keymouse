@@ -1,0 +1,12 @@
+#!/bin/bash
+pgrep unclutter && unclutterIsRunning=true
+if [[ $unclutterIsRunning == true ]]; then
+	echo "unclutter is running"
+	pkill unclutter
+	xmouseless
+	unclutter --timeout 1 &
+	disown
+else
+	echo "unclutter is not running"
+	xmouseless
+fi

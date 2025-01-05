@@ -363,6 +363,11 @@ alt + slash
 alt + shift + slash
 	typesnippet
 
+alt + backslash
+	keymouse
+alt + shift + backslash
+	nofity-send "keynav goes here"
+
 alt + semicolon
 	clipstream
 alt + shift + semicolon
