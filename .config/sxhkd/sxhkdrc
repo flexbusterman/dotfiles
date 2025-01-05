@@ -365,8 +365,8 @@ alt + shift + slash
 
 alt + backslash
 	keymouse
-alt + shift + backslash
-	nofity-send "keynav goes here"
+# alt + shift + backslash
+# 	nofity-send "keynav goes here"
 
 alt + semicolon
 	clipstream

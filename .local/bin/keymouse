@@ -1,12 +1,16 @@
 #!/bin/bash
-pgrep unclutter && unclutterIsRunning=true
-if [[ $unclutterIsRunning == true ]]; then
-	echo "unclutter is running"
+pgrep unclutter && unclutterWasRunning=true
+if [[ $unclutterWasRunning == true ]]; then
+	echo "Killing unclutter"
 	pkill unclutter
-	xmouseless
+fi
+
+xdotool mousemove_relative +1 0
+find-cursor --color cyan --wait 200 --line-width 1
+xmouseless
+
+if [[ $unclutterWasRunning == true ]]; then
+	echo "Restarting unclutter"
 	unclutter --timeout 1 &
 	disown
-else
-	echo "unclutter is not running"
-	xmouseless
 fi
