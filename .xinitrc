@@ -24,6 +24,7 @@ kitty -e tmux attach-session -t main &
 sxhkd &
 xautolock -time 3 -locker idlescript &
 updatetasklist
+historybackup &
 # # rfkill unblock bluetooth &
 exec ~/.local/bin/dwmstart
 # # export DESKTOP_SESSION=plasma
