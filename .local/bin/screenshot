@@ -1,4 +1,5 @@
 #!/bin/bash
+[[ ! -d "/home/flex/Pictures/SCREENSHOTS" ]] && notify-send "Directory doesn't exist" && exit 1
 filename="/home/flex/Pictures/SCREENSHOTS/$(date +'%F %H_%M_%S.jpg')"
 echo "Filename: $filename"
 
@@ -29,8 +30,8 @@ if [ $# -eq 0 ]; then
 else
 	while getopts 's' flag; do
 		case "${flag}" in
-			s) selectPrintScreen ;;
-			*) printScreen ;;
+		s) selectPrintScreen ;;
+		*) printScreen ;;
 		esac
 	done
 fi
