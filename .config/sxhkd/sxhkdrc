@@ -169,6 +169,8 @@ alt + shift + n
 # shift + control + n
 # notify-send "shift + control + n"
 
+alt + o
+	notify-send -t 15000 "$(oblique)"
 # # Orgmode shortcuts
 # alt + o; a; a;
 # 	orgmux -a # tmux orgmode agenda
