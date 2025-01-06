@@ -41,7 +41,7 @@ currentCommand=$(tmux list-panes -t orgmode -F '#{pane_current_command}')
 if [[ "$currentCommand" == *"vim"* ]]; then
     tmux send-keys -t orgmode Escape ":e +${selected[1]} \"${selected[0]}\"" Enter
 else
-    tmux send-keys -t orgmode C-z "cd ~/ORGMODE/; nvim +${selected[1]} \"${selected[0]}\"" Enter
+    tmux send-keys -t orgmode C-z "cd ~/ORGMODE/; nvim +${selected[1]} \"${selected[0]}\"; exit" Enter
 fi
 
 # Expand folds and center the view
