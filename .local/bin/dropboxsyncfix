@@ -1,0 +1,7 @@
+#!/bin/bash
+# Fix Dropbox stuck on syncing
+rm -rf ~/Dropbox/.dropbox.cache/
+sudo chown -R "$USER" "$HOME/Dropbox"
+sudo chattr -R -i "$HOME/Dropbox"
+chmod -R u+rw ~/Dropbox
+
