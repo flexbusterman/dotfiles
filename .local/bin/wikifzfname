@@ -1,0 +1,40 @@
+#!/bin/zsh
+
+# Check if running in a terminal, otherwise relaunch in $TERMINAL
+if [ -z "$TMUX" ] && [ -z "$TERM" ]; then
+	exec "$TERMINAL" -e "$0"
+	exit
+fi
+
+cd ~/Dropbox/MD/
+
+file="$(fzf)"
+if [[ -z $file ]]; then
+	echo "No file selected, exiting"
+	exit 1
+fi
+
+# Start the tmux session if not running
+if ! tmux has-session -t wiki 2>/dev/null; then
+	echo "tmux session wiki not running, starting it"
+	tmux new-session -s wiki -d
+else
+	echo "tmux session wiki is running"
+fi
+
+# Check if (n)vim is running in the tmux session
+currentCommand=$(tmux list-panes -t wiki -F '#{pane_current_command}')
+if [[ "$currentCommand" == *"vim"* ]]; then
+	echo "(n)vim is running"
+	tmux send-keys -t wiki Escape ":e $file" Enter
+else
+	echo "(n)vim is not running"
+	# tmux send-keys -t wiki C-c
+	# sleep 0.1
+	# tmux send-keys -t wiki "cd ~/Dropbox/MD/; nvim \"$file\"" Enter
+	tmux send-keys -t wiki C-c "source ~/.zshrc; cd ~/Dropbox/MD/; nvim \"$file\"; exit" Enter
+fi
+
+# Attach to tmux session
+echo "$TERMINAL" "Opening $file in (n)vim"
+tmux attach -t wiki

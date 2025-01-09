@@ -159,9 +159,9 @@ alt + control + m
 # notify-send "shift + control + m"
 
 alt + n
-	$TERMINAL -e ~/.local/bin/orgfzfname
+	$TERMINAL -e ~/.local/bin/wikifzfname
 alt + shift + n
-	$TERMINAL -e ~/.local/bin/orgfzfgrep
+	$TERMINAL -e ~/.local/bin/wikifzfgrep
 # alt + control + n
 # notify-send "alt + control + n"
 # alt + shift + control + n

@@ -9,6 +9,6 @@ return {
 		vim.keymap.set("i", "<c-p>", "<Plug>(copilot-previous)")
 		vim.keymap.set("n", "<c- >", "<Plug>(copilot-suggest)")
 		vim.g.copilot_no_tab_map = true
-		vim.g.copilot_filetypes = { org = false, supercollider = false, taskedit = false }
+		vim.g.copilot_filetypes = { org = false, supercollider = false, taskedit = false, markdown = false }
 	end,
 }
