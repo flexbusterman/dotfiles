@@ -43,8 +43,9 @@ return { -- Autoformat
 				"prettier",
 			},
 			python = {
-				"isort",
-				"black",
+				-- "isort",
+				-- "black",
+				"pyright",
 			},
 			-- Conform can also run multiple formatters sequentially
 			-- python = { "isort", "black" },

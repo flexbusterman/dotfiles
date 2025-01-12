@@ -124,9 +124,9 @@ alias a="cd ~/Documents/"
 alias t="task"
 
 # save current dir in workdir file
-alias sW='echo $PWD > ~/.workdir'
-alias cW='cd "$(cat ~/.workdir)"'
-alias vW='cd "$(cat ~/.workdir)"; nvim -c "NvimTreeToggle"'
+alias sw='echo $PWD > ~/.workdir'
+alias cw='cd "$(cat ~/.workdir)"'
+alias vw='cd "$(cat ~/.workdir)"; nvim -c "NvimTreeToggle"'
 
 # git
 alias dot="/usr/bin/git --git-dir=$HOME/.dot.git/ --work-tree=$HOME"

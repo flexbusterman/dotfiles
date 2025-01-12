@@ -327,8 +327,9 @@ return { -- LSP Configuration & Plugins
 		local ensure_installed = vim.tbl_keys(servers or {})
 		vim.list_extend(ensure_installed, {
 			"stylua", -- lua
-			"black", -- python
-			"isort", -- python
+			-- "black", -- python
+			-- "isort", -- python
+			"pyright", -- python
 			"typescript-language-server", -- TypeScript/JavaScript
 			"eslint", -- ESLint
 			"tailwindcss", -- If you use Tailwind
