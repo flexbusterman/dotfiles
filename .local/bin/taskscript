@@ -1,0 +1,14 @@
+#!/bin/bash
+
+if [[ $(timew) == "There is no active time tracking." ]]; then
+	taskobject=$(jq 'map_values(select(.id > 0) | select(has("wait") | not)) | sort_by(.urgency) | reverse | first' ~/.local/share/$USER/tasklist.json)
+	taskid=$(echo $taskobject | jq -r '.id')
+	taskdescription=$(echo $taskobject | jq -r '.description')
+	echo "#[fg=colour243] $taskid $taskdescription"
+else
+	timewRawActiveDescription=$(timew)
+	timewActiveDescription=$(echo $timewRawActiveDescription | awk /'Tracking'/ | awk -F'"' '{print $2}')
+	taskobject=$(jq --arg keyvar "$timewActiveDescription" 'map_values(select(.description==$keyvar))[0]' ~/.local/share/$USER/tasklist.json)
+	taskid=$(echo $taskobject | jq -r '.id')
+	echo "#[fg=colour5] $taskid $timewActiveDescription"
+fi
