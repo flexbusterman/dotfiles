@@ -107,4 +107,4 @@ settings:
   url.start_pages:
     global: ~/.config/qutebrowser/start.html
   zoom.default:
-    global: 125%
+    global: 115%
