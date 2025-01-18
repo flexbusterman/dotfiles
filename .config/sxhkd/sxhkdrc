@@ -341,8 +341,8 @@ alt + shift + Return
 alt + control + Return
 	$TERMINAL -e $SHELL -c "MPD_HOST=/run/user/$UID/mpd/socket ncmpcpp"
 alt + shift + control + Return
-	$TERMINAL
-	# tidal-hifi
+	tidal-hifi
+	# $TERMINAL
 
 alt + control + shift + space
 	musicrandomfolder
