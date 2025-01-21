@@ -21,6 +21,11 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufNewFile" }, {
 	command = "TableModeEnable",
 })
 
+vim.api.nvim_create_autocmd({ "BufEnter", "BufNewFile" }, {
+	pattern = "*.md",
+	command = "set linebreak",
+})
+
 vim.api.nvim_create_autocmd({ "BufWritePost" }, {
 	pattern = "*.tex",
 	command = "silent !bash ~/cv/gen",
