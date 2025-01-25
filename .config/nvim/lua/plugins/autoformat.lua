@@ -18,6 +18,9 @@ return { -- Autoformat
 			javascript = {
 				"prettier",
 			},
+			tex = {
+				"latexindent",
+			},
 			typescript = {
 				"prettier",
 			},

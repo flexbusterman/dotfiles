@@ -23,13 +23,13 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufNewFile" }, {
 
 vim.api.nvim_create_autocmd({ "BufEnter", "BufNewFile" }, {
 	pattern = "*.md",
-	command = "set linebreak",
+	command = "set linebreak | set ft=markdown",
 })
 
-vim.api.nvim_create_autocmd({ "BufWritePost" }, {
-	pattern = "*.tex",
-	command = "silent !bash ~/cv/gen",
-})
+-- vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+-- 	pattern = "*.tex",
+-- 	command = "silent !bash ~/cv/gen",
+-- })
 
 vim.api.nvim_create_autocmd({ "BufEnter", "BufNewFile" }, {
 	pattern = "*",

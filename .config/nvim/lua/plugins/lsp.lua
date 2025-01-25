@@ -336,6 +336,8 @@ return { -- LSP Configuration & Plugins
 			"cssls", -- CSS
 			"html", -- HTML
 			"shfmt", -- Shell BASH
+			"texlab", -- LaTeX
+			"latexindent", -- LaTeX
 		})
 		require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
