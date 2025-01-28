@@ -8,18 +8,16 @@ local snippets = {
 		"section",
 		fmt(
 			[[
-\section{<>}
+\section*{<>}
 \begin{enumerate}[label=(\alph*)]
 	\item
-	      \begin{equation}
-		      $$
-			      <>
-		      $$
-	      \end{equation}
+		\begin{align*}
+			<> \\
+		\end{align*}
 \end{enumerate}
   ]],
 			{
-				i(1, "1"),
+				i(1, ""),
 				i(2, "1+1=2"),
 			},
 			{
@@ -27,5 +25,25 @@ local snippets = {
 			}
 		)
 	),
+
+	s(
+		"item",
+		fmt(
+			[[
+	\item
+		\begin{align*}
+			<> \\
+		\end{align*}
+  ]],
+			{
+				i(1, ""),
+			},
+			{
+				delimiters = "<>",
+			}
+		)
+	),
+
+	s({ trig = "pq", name = "PQ-formeln" }, { t("x &= -\\frac{p}{2} \\pm \\sqrt{\\left(\\frac{p}{2}\\right)^2 - q}") }),
 }
 return snippets

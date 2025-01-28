@@ -41,6 +41,7 @@ settings:
     https://www.sj.se: true
     https://www.stockholmparkering.se: true
   content.javascript.clipboard:
+    https://chat.deepseek.com: access-paste
     https://chatgpt.com/: access
     https://claude.ai/: access
     https://github.com: access-paste
