@@ -59,4 +59,4 @@ set scroll-step 50
 # map f toggle_fullscreen
 
 set selection-clipboard clipboard
-# set recolor "true"
+set recolor "true"
