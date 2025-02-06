@@ -20,7 +20,7 @@ blueberry-tray &
 # # syncthingtray --wait &
 # # dotool mousemove $(xdotool getdisplaygeometry | awk '{print $1-1, $2-1}') &
 tmux new-session -d -s main &
-kitty -e tmux attach-session -t main &
+# kitty -e tmux attach-session -t main &
 sxhkd &
 xautolock -time 3 -locker idlescript &
 updatetasklist
