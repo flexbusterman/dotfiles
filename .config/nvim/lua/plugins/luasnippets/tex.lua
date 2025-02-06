@@ -5,7 +5,7 @@ local t = ls.text_node
 local fmt = require("luasnip.extras.fmt").fmt
 local snippets = {
 	s(
-		"section",
+		"section with enumerate",
 		fmt(
 			[[
 \section*{<>}
@@ -15,6 +15,24 @@ local snippets = {
 			<> \\
 		\end{align*}
 \end{enumerate}
+  ]],
+			{
+				i(1, ""),
+				i(2, "1+1=2"),
+			},
+			{
+				delimiters = "<>",
+			}
+		)
+	),
+	s(
+		"section",
+		fmt(
+			[[
+\section*{<>}
+\begin{align*}
+	<> \\
+\end{align*}
   ]],
 			{
 				i(1, ""),
@@ -101,10 +119,25 @@ local snippets = {
 		fmt(
 			[[
 print(pow(<>, 1/<>))
-  ]],
+]],
 			{
 				i(1, "1"),
 				i(2, "1"),
+			},
+			{
+				delimiters = "<>",
+			}
+		)
+	),
+
+	s(
+		"log10 python",
+		fmt(
+			[[
+import math; print(math.log10(<>))
+]],
+			{
+				i(1, "1"),
 			},
 			{
 				delimiters = "<>",

@@ -1,34 +1,50 @@
 #!/bin/bash
 
 # Default color settings
-beginColorString=" "
-endColorString=" "
+beginColorString=""
+endColorString=""
 # echo "^c#ff79c6^$taskid $timewActiveDescription^d^"
 
-# Parse flags
-while getopts "td" opt; do
-	case $opt in
-	t)
-		beginColorString="#[fg=colour243] "
-		# beginColorString="#[fg=colour5	] "
-		;;
-	d)
-		beginColorString="^c#ff79c6^"
-		endColorString="^d^"
-		;;
-	esac
-done
-
 if [[ $(timew) == "There is no active time tracking." ]]; then
+	# Parse flags
+	while getopts "td" opt; do
+		case $opt in
+		t)
+			beginColorString="#[fg=colour243]"
+			# beginColorString="#[fg=colour5	] "
+			endColorString=" "
+			;;
+		d)
+			# beginColorString="^c#ff79c6^"
+			# endColorString="^d^"
+			;;
+		esac
+	done
+
 	# taskobject=$(jq 'map_values(select(.id > 0) | select(has("wait") | not)) | sort_by(.urgency) | reverse | first' ~/.local/share/$USER/tasklist.json)
 	taskobject=$(jq 'map_values(select(.id > 0)) | sort_by(.urgency) | reverse | first' ~/.local/share/$USER/tasklist.json)
 	taskid=$(echo $taskobject | jq -r '.id')
 	taskdescription=$(echo $taskobject | jq -r '.description')
-	echo "$beginColorString $taskid $taskdescription $endColorString"
+	echo "$beginColorString $taskid $taskdescription$endColorString"
 else
+
+	# Parse flags
+	while getopts "td" opt; do
+		case $opt in
+		t)
+			# beginColorString="#[fg=colour243]"
+			beginColorString="#[fg=colour5]"
+			endColorString=" "
+			;;
+		d)
+			beginColorString=" ^c#ff79c6^"
+			endColorString="^d^"
+			;;
+		esac
+	done
 	timewRawActiveDescription=$(timew)
 	timewActiveDescription=$(echo $timewRawActiveDescription | awk /'Tracking'/ | awk -F'"' '{print $2}')
 	taskobject=$(jq --arg keyvar "$timewActiveDescription" 'map_values(select(.description==$keyvar))[0]' ~/.local/share/$USER/tasklist.json)
 	taskid=$(echo $taskobject | jq -r '.id')
-	echo "$beginColorString $taskid $timewActiveDescription $endColorString"
+	echo "$beginColorString$taskid $timewActiveDescription$endColorString"
 fi
