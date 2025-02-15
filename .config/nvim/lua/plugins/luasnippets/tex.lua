@@ -94,8 +94,6 @@ local snippets = {
 \begin{document}
 \maketitle
 
-\href{https://fredrikfilmer.wixsite.com/filmer/matematik-5000-2b}{Lösningar}
-
 \section{}
 \begin{align*}
 	<> \\
