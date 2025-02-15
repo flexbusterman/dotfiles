@@ -26,7 +26,7 @@ Color=128,255,255
 
 [Plugins]
 diminactiveEnabled=true
-krohnkiteEnabled=true
+krohnkiteEnabled=false
 mousemarkEnabled=true
 
 [Script-krohnkite]
