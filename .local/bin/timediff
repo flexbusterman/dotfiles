@@ -68,8 +68,12 @@ calculate_time_difference() {
 	local minutes=$(((diff_seconds % 3600) / 60))
 	local seconds=$((diff_seconds % 60))
 
+	# Calculate decimal hours
+	local decimal_hours=$(echo "scale=2; $diff_seconds / 3600" | bc)
+
 	# Format output
 	printf "Start: %s\nEnd: %s\nTime Difference: %02d:%02d:%02d (HH:MM:SS)\n" "$full_start" "$full_end" $hours $minutes $seconds
+	printf "Time Difference in Decimal Hours: %.2f\n" "$decimal_hours"
 }
 
 # Call function with all arguments
