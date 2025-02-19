@@ -23,7 +23,7 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufNewFile" }, {
 
 vim.api.nvim_create_autocmd({ "BufEnter", "BufNewFile" }, {
 	pattern = "*.md",
-	command = "set linebreak | set ft=markdown",
+	command = "set linebreak | set ft=vimwiki",
 })
 
 vim.api.nvim_create_autocmd("InsertLeave", {
