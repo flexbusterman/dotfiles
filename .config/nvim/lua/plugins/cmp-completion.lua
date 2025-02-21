@@ -5,6 +5,7 @@ return { -- Autocompletion
 		-- Snippet Engine & its associated nvim-cmp source
 		{
 			"L3MON4D3/LuaSnip",
+			"saadparwaiz1/cmp_luasnip",
 			"mireq/luasnip-snippets",
 			config = function()
 				require("luasnip_snippets.common.snip_utils").setup()
