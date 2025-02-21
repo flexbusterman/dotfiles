@@ -5,7 +5,9 @@ return { -- Autocompletion
 		-- Snippet Engine & its associated nvim-cmp source
 		{
 			"L3MON4D3/LuaSnip",
+			"mireq/luasnip-snippets",
 			config = function()
+				require("luasnip_snippets.common.snip_utils").setup()
 				require("luasnip.loaders.from_vscode").lazy_load()
 				require("luasnip.loaders.from_lua").lazy_load({
 					paths = "/home/flex/.config/nvim/lua/plugins/luasnippets/",
@@ -42,7 +44,15 @@ return { -- Autocompletion
 		-- See `:help cmp`
 		local cmp = require("cmp")
 		local luasnip = require("luasnip")
-		luasnip.config.setup({})
+		luasnip.config.setup({
+			-- Required to automatically include base snippets, like "c" snippets for "cpp"
+			load_ft_func = require("luasnip_snippets.common.snip_utils").load_ft_func,
+			ft_func = require("luasnip_snippets.common.snip_utils").ft_func,
+			-- To enable auto expansin
+			enable_autosnippets = true,
+			-- Uncomment to enable visual snippets triggered using <c-x>
+			-- store_selection_keys = '<c-x>',
+		})
 
 		cmp.setup({
 			snippet = {

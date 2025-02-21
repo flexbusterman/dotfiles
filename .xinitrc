@@ -23,7 +23,7 @@ tmux new-session -d -s main &
 # kitty -e tmux attach-session -t main &
 sxhkd &
 xautolock -time 3 -locker idlescript &
-updatetasklist
+task export >~/.local/share/flex/tasklist.json &
 historybackup &
 # # rfkill unblock bluetooth &
 exec ~/.local/bin/dwmstart
