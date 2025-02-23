@@ -1,324 +1,324 @@
-# used by dwm alt + a
+# used by dwm super + a
 # used by dwm
-# alt + shift + a
-# notify-send "alt + shift + a"
-# alt + control + a
-# notify-send "alt + control + a"
-# alt + shift + control + a
-# notify-send "alt + shift + control + a"
+# super + shift + a
+# notify-send "super + shift + a"
+# super + control + a
+# notify-send "super + control + a"
+# super + shift + control + a
+# notify-send "super + shift + control + a"
 # shift + control + a
 # notify-send "shift + control + a"
 
-# Super_L
+# Alt_L
 # 	$(cat ~/.local/state/flarbs/trackpadalwayson) || touchpadenable
-# @Super_L
+# @Alt_L
 # 	$(cat ~/.local/state/flarbs/trackpadalwayson) || touchpaddisable
 
-alt + b
+super + b
 	bluetoothconnect $HEADPHONES
-alt + shift + b
+super + shift + b
 	bluetoothctl disconnect $HEADPHONES
-# alt + control + b
-# notify-send "alt + control + b"
-alt + shift + control + b
+# super + control + b
+# notify-send "super + control + b"
+super + shift + control + b
 	blueberry
 # shift + control + b
 # notify-send "shift + control + b"
 
-alt + c
-	reaperconnect; supercolliderttsconnect;
-alt + shift + c
+super + c
+	reaperconnect; altcolliderttsconnect;
+super + shift + c
 	calendar
-# alt + control + c
-# notify-send "alt + control + c"
-# alt + shift + control + c
-# notify-send "alt + shift + control + c"
+# super + control + c
+# notify-send "super + control + c"
+# super + shift + control + c
+# notify-send "super + shift + control + c"
 # shift + control + c
 # notify-send "shift + control + c"
 
-alt + d
+super + d
 	typedate
-alt + shift + d
+super + shift + d
 	$TERMINAL -e dwmrebuild
-alt + control + d
+super + control + d
 	task rm $(task _get $(task next limit:1 | tail -n +4 | head -n 1 | sed 's/^ //' | cut -d ' ' -f1).id)
 	# punch --delete
-alt + shift + control + d
+super + shift + control + d
 	mpc --host ~/.mpd/socket clear
 # shift + control + d
 # notify-send "shift + control + d"
 
-alt + e
+super + e
 	kitty -e emacsclient -c -nw
 	# gaminginputtoggle
-alt + shift + e
+super + shift + e
 	touchpaddisablewhiletypingtoggle
-# notify-send "alt + control + e"
-# alt + control + e
-# notify-send "alt + control + e"
-# alt + shift + control + e
-# notify-send "alt + shift + control + e"
+# notify-send "super + control + e"
+# super + control + e
+# notify-send "super + control + e"
+# super + shift + control + e
+# notify-send "super + shift + control + e"
 # shift + control + e
 # notify-send "shift + control + e"
 
-# alt + f
-# notify-send "alt + f"
-# alt + shift + f
-# notify-send "alt + shift + f"
-# alt + control + f
-# notify-send "alt + control + f"
-# alt + shift + control + f
-# notify-send "alt + shift + control + f"
+# super + f
+# notify-send "super + f"
+# super + shift + f
+# notify-send "super + shift + f"
+# super + control + f
+# notify-send "super + control + f"
+# super + shift + control + f
+# notify-send "super + shift + control + f"
 # shift + control + f
 # notify-send "shift + control + f"
 
-# alt + g
-# notify-send "alt + g"
-# alt + shift + g
-# notify-send "alt + shift + g"
-# alt + control + g
-# notify-send "alt + control + g"
-# alt + shift + control + g
-# notify-send "alt + shift + control + g"
+# super + g
+# notify-send "super + g"
+# super + shift + g
+# notify-send "super + shift + g"
+# super + control + g
+# notify-send "super + control + g"
+# super + shift + control + g
+# notify-send "super + shift + control + g"
 # shift + control + g
 # notify-send "shift + control + g"
 
-# alt + h
-# notify-send "alt + h"
-# alt + shift + h
-# notify-send "alt + shift + h"
-alt + control + h
+# super + h
+# notify-send "super + h"
+# super + shift + h
+# notify-send "super + shift + h"
+super + control + h
 	musicseekbackward
-# alt + shift + control + h
-# notify-send "alt + shift + control + h"
+# super + shift + control + h
+# notify-send "super + shift + control + h"
 # shift + control + h
 # notify-send "shift + control + h"
 
-# alt + i
-# notify-send "alt + i"
-alt + shift + i
+# super + i
+# notify-send "super + i"
+super + shift + i
 	xcalib -i -a
-alt + control + i
+super + control + i
 	task start $(task _get $(task next limit:1 | tail -n +4 | head -n 1 | sed 's/^ //' | cut -d ' ' -f1).id)
 	# punch --in
-# notify-send "alt + control + i"
-alt + shift + control + i
+# notify-send "super + control + i"
+super + shift + control + i
 	punch --select
 # shift + control + i
 # notify-send "shift + control + i"
 
-# alt + j
-# notify-send "alt + j"
-# alt + shift + j
-# notify-send "alt + shift + j"
-alt + control + j
+# super + j
+# notify-send "super + j"
+# super + shift + j
+# notify-send "super + shift + j"
+super + control + j
 	musicnext
-# alt + shift + control + j
-# notify-send "alt + shift + control + j"
+# super + shift + control + j
+# notify-send "super + shift + control + j"
 # shift + control + j
 	# notify-send "shift + control + j"
 
-# used by dwm alt + k
-# used by dwm notify-send "alt + k"
-# used by dwm alt + shift + k
-# used by dwm notify-send "alt + shift + k"
-alt + control + k
+# used by dwm super + k
+# used by dwm notify-send "super + k"
+# used by dwm super + shift + k
+# used by dwm notify-send "super + shift + k"
+super + control + k
 	musicprev
-# alt + shift + control + k
-# notify-send "alt + shift + control + k"
+# super + shift + control + k
+# notify-send "super + shift + control + k"
 # shift + control + k
 # notify-send "shift + control + k"
 
-# used by dwm alt + l
-# used by dwm notify-send "alt + l"
-# used by dwm alt + shift + l
-# used by dwm notify-send "alt + shift + l"
-alt + control + l
+# used by dwm super + l
+# used by dwm notify-send "super + l"
+# used by dwm super + shift + l
+# used by dwm notify-send "super + shift + l"
+super + control + l
 	musicseekforward
-alt + shift + control + l
+super + shift + control + l
 	slock
 # shift + control + l
 # notify-send "shift + control + l"
 
-alt + m
+super + m
 	mullvadconnect
-alt + shift + m
+super + shift + m
 	mullvaddisconnect
-# alt + control + m
+# super + control + m
 # 	musicprev
-# alt + shift + control + m
-# notify-send "alt + shift + control + m"
+# super + shift + control + m
+# notify-send "super + shift + control + m"
 # shift + control + m
 # notify-send "shift + control + m"
 
-alt + m
-alt + control + m
+super + m
+super + control + m
 	measure
-# alt + shift + control + m
-# notify-send "alt + shift + control + m"
+# super + shift + control + m
+# notify-send "super + shift + control + m"
 # shift + control + m
 # notify-send "shift + control + m"
 
-alt + n
+super + n
 	$TERMINAL -e ~/.local/bin/wikifzfname
-alt + shift + n
+super + shift + n
 	$TERMINAL -e ~/.local/bin/wikifzfgrep
-# alt + control + n
-# notify-send "alt + control + n"
-# alt + shift + control + n
-# notify-send "alt + shift + control + n"
+# super + control + n
+# notify-send "super + control + n"
+# super + shift + control + n
+# notify-send "super + shift + control + n"
 # shift + control + n
 # notify-send "shift + control + n"
 
-alt + o
+super + o
 	notify-send -t 15000 "$(oblique)"
 # # Orgmode shortcuts
-# alt + o; a; a;
+# super + o; a; a;
 # 	orgmux -a # tmux orgmode agenda
-# alt + o; a; t;
+# super + o; a; t;
 # 	orgmux -t # tmux orgmode todo
-# alt + o; a; c;
+# super + o; a; c;
 # 	orgmux -c # tmux orgmode capture
-# alt + o; a; r;
+# super + o; a; r;
 # 	orgmux -r # tmux orgmode open refile
-# # alt + shift + o
-# # notify-send "alt + shift + o"
+# # super + shift + o
+# # notify-send "super + shift + o"
 
-alt + control + o
+super + control + o
 	task stop $(task _get $(task active limit:1 | tail -n +4 | head -n 1 | sed 's/^ //' | cut -d ' ' -f1).id)
 	# punch --out
-# notify-send "alt + control + o"
-# alt + shift + control + o
-# notify-send "alt + shift + control + o"
+# notify-send "super + control + o"
+# super + shift + control + o
+# notify-send "super + shift + control + o"
 # shift + control + o
 # notify-send "shift + control + o"
 
-alt + p
+super + p
 	prependclipboard ~/Dropbox/ORGMODE/refile.org
-alt + shift + p
+super + shift + p
 	passmenu
-# alt + control + p
-# notify-send "alt + control + p"
-alt + shift + control + p
+# super + control + p
+# notify-send "super + control + p"
+super + shift + control + p
 	poweroff
 # shift + control + p
 # notify-send "shift + control + p"
 
-alt + q
+super + q
 	qpwgraph
-alt + shift + q
+super + shift + q
 	killall Xorg
-# notify-send "alt + shift + q"
-# alt + control + q
-# notify-send "alt + control + q"
-# alt + shift + control + q
-# notify-send "alt + shift + control + q"
+# notify-send "super + shift + q"
+# super + control + q
+# notify-send "super + control + q"
+# super + shift + control + q
+# notify-send "super + shift + control + q"
 # shift + control + q
 # notify-send "shift + control + q"
 
-alt + r
+super + r
 	reaper
-alt + shift + r
+super + shift + r
 	pkill -usr1 -x sxhkd && notify-send 'Reloaded sxhkd config' || pkill -usr1 -x sxhkd && notify-send 'Reloaded sxhkd config'
 	# sudo pkill -HUP sxhkd
 	# notify-send "reloaded config"
 	# sudo pkill -HUP sxhkd
 
-# alt + control + r
-# notify-send "alt + control + r"
-alt + shift + control + r
+# super + control + r
+# notify-send "super + control + r"
+super + shift + control + r
 	reboot
 # shift + control + r
 # notify-send "shift + control + r"
 
-alt + s
-	$TERMINAL -T SuperCollider -e tmuxsession SuperCollider 'supercollider'
-alt + shift + s
-	tmux kill-session -t SuperCollider; tmux kill-session -t tidal;
+super + s
+	$TERMINAL -T AltCollider -e tmuxsession AltCollider 'altcollider'
+super + shift + s
+	tmux kill-session -t AltCollider; tmux kill-session -t tidal;
 
-# alt + control + s
-# notify-send "alt + control + s"
-# alt + shift + control + s
-# notify-send "alt + shift + control + s"
+# super + control + s
+# notify-send "super + control + s"
+# super + shift + control + s
+# notify-send "super + shift + control + s"
 # shift + control + s
 # notify-send "shift + control + s"
 
-alt + t
+super + t
 	$TERMINAL -e htop
 	# $TERMINAL -e btop
-alt + shift + t
+super + shift + t
 	$TERMINAL -e nvtop
-alt + control + t
+super + control + t
 	$TERMINAL -e vit
-# notify-send "alt + control + t"
-alt + shift + control + t
+# notify-send "super + control + t"
+super + shift + control + t
 	$TERMINAL -e tt -theme dracula
 shift + control + t
 	~/.local/bin/trimclipboard
 
-# alt + u
-# notify-send "alt + u"
-# alt + shift + u
-# notify-send "alt + shift + u"
-# alt + control + u
-# notify-send "alt + control + u"
-# alt + shift + control + u
-# notify-send "alt + shift + control + u"
+# super + u
+# notify-send "super + u"
+# super + shift + u
+# notify-send "super + shift + u"
+# super + control + u
+# notify-send "super + control + u"
+# super + shift + control + u
+# notify-send "super + shift + control + u"
 # shift + control + u
 # notify-send "shift + control + u"
 
-alt + v
+super + v
 	fzfvideo
-alt + shift + v
+super + shift + v
 	fzfvideoresume
-# alt + control + v
-# notify-send "alt + control + v"
-# alt + shift + control + v
-# notify-send "alt + shift + control + v"
+# super + control + v
+# notify-send "super + control + v"
+# super + shift + control + v
+# notify-send "super + shift + control + v"
 # shift + control + v
 # notify-send "shift + control + v"
 
-# alt + w
-# notify-send "alt + w"
-# alt + shift + w
-# notify-send "alt + shift + w"
-# alt + control + w
-# notify-send "alt + control + w"
-# alt + shift + control + w
-# notify-send "alt + shift + control + w"
+# super + w
+# notify-send "super + w"
+# super + shift + w
+# notify-send "super + shift + w"
+# super + control + w
+# notify-send "super + control + w"
+# super + shift + control + w
+# notify-send "super + shift + control + w"
 # shift + control + w
 # notify-send "shift + control + w"
 
-# alt + x
+# super + x
 # used by dwm
-alt + shift + x
+super + shift + x
 	xkill
-# alt + control + x
-# notify-send "alt + control + x"
-# alt + shift + control + x
-# notify-send "alt + shift + control + x"
+# super + control + x
+# notify-send "super + control + x"
+# super + shift + control + x
+# notify-send "super + shift + control + x"
 # shift + control + x
 # notify-send "shift + control + x"
 
-alt + y
+super + y
 	ytfzf -m --mpv-opts='--ytdl-format=bestvideo[height<=480]+bestaudio/best[height<=480]' -D
-# alt + shift + y
-# notify-send "alt + shift + y"
-# alt + control + y
-# notify-send "alt + control + y"
-# alt + shift + control + y
-# notify-send "alt + shift + control + y"
+# super + shift + y
+# notify-send "super + shift + y"
+# super + control + y
+# notify-send "super + control + y"
+# super + shift + control + y
+# notify-send "super + shift + control + y"
 # shift + control + y
 # notify-send "shift + control + y"
 
-# alt + z
-# notify-send "alt + z"
-# alt + shift + z
-# notify-send "alt + shift + z"
-# alt + control + z
-# notify-send "alt + control + z"
-# alt + shift + control + z
-# notify-send "alt + shift + control + z"
+# super + z
+# notify-send "super + z"
+# super + shift + z
+# notify-send "super + shift + z"
+# super + control + z
+# notify-send "super + control + z"
+# super + shift + control + z
+# notify-send "super + shift + control + z"
 # shift + control + z
 # notify-send "shift + control + z"
 
@@ -330,103 +330,103 @@ alt + y
 #     |_|
 # special keys
 
-alt + Return
+super + Return
 	~/.local/bin/dmenurun
 	# fuzzel
 	# dmenu_run
 	# wofi --show run
 	# --show drun
-alt + shift + Return
+super + shift + Return
 	$TERMINAL -e tmux new-session -A -s main
 	# $TERMINAL -e tmux new-session -A -s main
-alt + control + Return
+super + control + Return
 	$TERMINAL -e $SHELL -c "MPD_HOST=/run/user/$UID/mpd/socket ncmpcpp"
-alt + shift + control + Return
+super + shift + control + Return
 	tidal-hifi
 	# $TERMINAL
 
-alt + control + shift + space
+super + control + shift + space
 	musicrandomfolder
 
-alt + control + space
+super + control + space
 	musicplaypause
 
-alt + comma
+super + comma
 	$TERMINAL -e yazi
-alt + shift + comma
+super + shift + comma
 	$TERMINAL -e ranger
 
-alt + period
+super + period
 	qutebrowser
-alt + shift + period
+super + shift + period
 	bravestart
 
-alt + slash
+super + slash
 	$TERMINAL -e ~/.local/bin/shortcuts
-alt + shift + slash
+super + shift + slash
 	typesnippet
 
-alt + backslash
+super + backslash
 	keymouse
-# alt + shift + backslash
+# super + shift + backslash
 # 	nofity-send "keynav goes here"
 
-alt + semicolon
+super + semicolon
 	clipstream
-alt + shift + semicolon
+super + shift + semicolon
 	clipdownload
-alt + shift + control + semicolon
+super + shift + control + semicolon
 	clipdownload -a
 
-alt + shift + equal
+super + shift + equal
 	calculate
 
-alt + grave
+super + grave
 	$TERMINAL -T vit -e vit
 
-alt + shift + grave
+super + shift + grave
 	dmenuunicode
 
-alt + F1
+super + F1
 	bindings
 
-alt + F2
+super + F2
 	resolution
 
-alt + F3
+super + F3
 	displaydefault
 
-alt + shift + F3
+super + shift + F3
 	displayselect
 
-alt + F4
+super + F4
 	$TERMINAL -T PulseMixer -e pulsemixer
-alt + shift + F4
+super + shift + F4
 	pavucontrol
 
-alt + F6
+super + F6
 	torwrap
 
-alt + F7
+super + F7
 	td-toggle
 
-alt + F8
+super + F8
 	mounter
 
-alt + F9
+super + F9
 	unmounter
 
-alt + F10
+super + F10
 	campreview
 
-alt + F11
+super + F11
 	screencaststart
 
-alt + shift + F11
+super + shift + F11
 	screencastwithmicstart
 	# dmenurecord
 
-alt + F12
+super + F12
 	killrecording
 
 Print
@@ -434,8 +434,8 @@ Print
 shift + Print
 	screenshot -s
 
-alt + control + BackSpace
-	notify-send "alt + control + BackSpace"
+super + control + BackSpace
+	notify-send "super + control + BackSpace"
 
 # __  _______ ___   __
 # \ \/ /  ___( _ ) / /_
@@ -463,7 +463,7 @@ XF86MonBrightnessDown
 # |___/ \_/\_/ \___|\__,_|_|___/_| |_|
 # swedish
 
-super + bracketleft
+alt + bracketleft
 	typeao
 
 #      _       __             _ _
@@ -479,9 +479,9 @@ super + bracketleft
 # {notify-send "test 1"; notify-send "test 2", notify-send "test 3"; notify-send "test 4"}
 
 # toggle bar and resize
-# alt + a
+# super + a
 # 	{polybar-msg cmd hide; bspc config -m focused top_padding 0, polybar-msg cmd show; bspc config -m focused top_padding 21}
-# alt + z
+# super + z
 # 	{bspc config window_gap 0, bspc config window_gap 16}
 
 #
@@ -489,23 +489,23 @@ super + bracketleft
 #
 
 # quit/restart bspwm
-# alt + shift + {q,r}
+# super + shift + {q,r}
 	# bspc {quit,wm -r}
 
 # close and kill
-# alt + {_,shift + }w
+# super + {_,shift + }w
 	# bspc node -{c,k}
 
 # alternate between the tiled and monocle layout
-# alt + m
+# super + m
 	# bspc desktop -l next
 
 # # send the newest marked node to the newest preselected node
-# alt + y
+# super + y
 	# bspc node newest.marked.local -n newest.!automatic.local
 
 # # swap the current node and the biggest window
-# alt + space
+# super + space
 	# bspc node -s biggest.window
 
 #
@@ -513,15 +513,15 @@ super + bracketleft
 #
 
 # set the window state
-# alt + f
+# super + f
 # 	bspc node -t fullscreen
-# alt + f
+# super + f
 	# bspc node --state ~fullscreen
-# alt + {t,shift + t,s,f}
+# super + {t,shift + t,s,f}
 	# bspc node -T {tiled,pseudo_tiled,floating,fullscreen}
 
 # set the node flags
-# alt + ctrl + {m,x,y,z}
+# super + ctrl + {m,x,y,z}
 	# bspc node -g {marked,locked,sticky,private}
 
 #
@@ -529,33 +529,33 @@ super + bracketleft
 #
 
 # focus the node in the given direction
-# alt + {_,shift + }{h,j,k,l}
+# super + {_,shift + }{h,j,k,l}
 	# bspc node -{f,s} {west,south,north,east}
 
 # # focus the node for the given path jump
-# alt + {p,b,comma,period}
+# super + {p,b,comma,period}
 	# bspc node -f @{parent,brother,first,second}
 
 # # focus the next/previous window in the current desktop
-# alt + {_,shift + }c
+# super + {_,shift + }c
 	# bspc node -f {next,prev}.local.!hidden.window
 
 # # focus the next/previous desktop in the current monitor
-# alt + bracket{left,right}
+# super + bracket{left,right}
 	# bspc desktop -f {prev,next}.local
 
 # # focus the last node/desktop
-# alt + {grave,Tab}
+# super + {grave,Tab}
 	# bspc {node,desktop} -f last
 
 # # focus the older or newer node in the focus history
-# alt + {o,i}
+# super + {o,i}
 	# bspc wm -h off; \
 	# bspc node {older,newer} -f; \
 	# bspc wm -h on
 
 # # focus or send to the given desktop
-# alt + {_,shift + }{1-9,0}
+# super + {_,shift + }{1-9,0}
 	# bspc {desktop -f,node -d} '^{1-9,10}'
 
 #
@@ -563,19 +563,19 @@ super + bracketleft
 #
 
 # # preselect the direction
-# alt + ctrl + {h,j,k,l}
+# super + ctrl + {h,j,k,l}
 # 	bspc node -p {west,south,north,east}
 
 # # preselect the ratio
-# alt + ctrl + {1-9}
+# super + ctrl + {1-9}
 	# bspc node -o 0.{1-9}
 
 # # cancel the preselection for the focused node
-# alt + ctrl + space
+# super + ctrl + space
 	# bspc node -p cancel
 
 # # cancel the preselection for the focused desktop
-# alt + ctrl + shift + space
+# super + ctrl + shift + space
 	# bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
 
 # #
@@ -583,17 +583,17 @@ super + bracketleft
 # #
 
 # # expand a window by moving one of its side outward
-# super + {h,j,k,l}
+# alt + {h,j,k,l}
 	# bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
 
 # # expand / shrink
-# super + {k,l,h,j}
+# alt + {k,l,h,j}
 	# bspc node -z {bottom 0 -20,left 20 0,left -20 0,bottom 0 20}
 
 # # contract a window by moving one of its side inward
-# super + {h,j,k,l}
+# alt + {h,j,k,l}
 	# bspc node -z {right -20 0,top 0 20,}
 
 # # move a floating window
-# alt + {Left,Down,Up,Right}
+# super + {Left,Down,Up,Right}
 	# bspc node -v {-20 0,0 20,0 -20,20 0}

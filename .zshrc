@@ -79,6 +79,7 @@ alias rf='rm -rf'
 alias grep='grep --color=auto'
 alias q=exit
 alias pg="ping google.com"
+alias e="emacsclient -c -nw"
 
 # commonly edited file shortcuts
 alias vb="cd ~; nvim .bashrc"
