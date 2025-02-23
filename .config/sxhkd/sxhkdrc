@@ -160,9 +160,9 @@ super + control + m
 # notify-send "shift + control + m"
 
 super + n
-	$TERMINAL -e ~/.local/bin/wikifzfname
+	$TERMINAL -e ~/.local/bin/fzfnotes
 super + shift + n
-	$TERMINAL -e ~/.local/bin/wikifzfgrep
+	$TERMINAL -e ~/.local/bin/fzfgrep
 # super + control + n
 # notify-send "super + control + n"
 # super + shift + control + n

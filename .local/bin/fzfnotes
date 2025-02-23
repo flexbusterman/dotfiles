@@ -3,8 +3,9 @@ cd ~/ORGMODE/
 # nvim "$(fzf)"
 file="$(fzf)"
 if [[ $file ]]; then
-	nvim "$file"
- else
-   # notify-send "nothing selected, exiting"
-   exit 1;
+	# nvim "$file"
+	emacsclient -c -nw "$file"
+else
+	# notify-send "nothing selected, exiting"
+	exit 1
 fi
