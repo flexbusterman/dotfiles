@@ -10,7 +10,8 @@ if [ -z "$WAYLAND_DISPLAY" ]; then
 	# echo "Setting Mode_switch to escape"
 	xcape -e 'Mode_switch=Escape'
 	# echo "Setting capslock to escape"
-	xcape -e 'Caps_Lock=Escape'
+	# xcape -e 'Caps_Lock=Escape'
+	xcape -e 'Caps_Lock=Escape' -t 50
 	# echo "Setting keyboard repeat rate"
 	xset r rate 300 50 &
 	xinput --set-prop "TPPS/2 IBM TrackPoint" "libinput Accel Speed" -0.5 &

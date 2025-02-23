@@ -12,6 +12,7 @@ includePaths:
     -   /home/flex/.local/share/SuperCollider/downloaded-quarks/BatLib
     -   /home/flex/.local/share/SuperCollider/downloaded-quarks/dmx
     -   /home/flex/.local/share/SuperCollider/downloaded-quarks/SimpleDMXControl
+    -   /home/flex/.local/share/SuperCollider/downloaded-quarks/scel
 excludePaths:
     []
 postInlineWarnings: false

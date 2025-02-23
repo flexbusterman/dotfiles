@@ -49,9 +49,10 @@ alt + shift + control + d
 # notify-send "shift + control + d"
 
 alt + e
-	touchpaddisablewhiletypingtoggle
+	kitty -e emacsclient -c -nw
 	# gaminginputtoggle
-# alt + shift + e
+alt + shift + e
+	touchpaddisablewhiletypingtoggle
 # notify-send "alt + control + e"
 # alt + control + e
 # notify-send "alt + control + e"

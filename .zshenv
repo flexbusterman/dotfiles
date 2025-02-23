@@ -1,5 +1,6 @@
 [[ -d $HOME/.local/bin ]] && export PATH=$HOME/.local/bin:$PATH
 [[ -d $HOME/.local/bin/statusbar ]] && export PATH=$HOME/.local/bin/statusbar:$PATH
+[[ -d $HOME/.config/emacs/bin/ ]] && export PATH=$HOME/.config/emacs/bin:$PATH
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#666f98"
 export QT_QPA_PLATFORMTHEME="qt5ct"
 export BROWSER=qutebrowser

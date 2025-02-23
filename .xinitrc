@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 xrdb ~/.Xresources
 feh --bg-fill ~/.local/share/flex/background.jpg
-remaps &
-# kanata -c ~/.config/kanata/kanata.conf &
+# remaps &
+kanata -c ~/.config/kanata/kanata.conf &
 # xset fp+ /usr/share/fonts/TTF/FiraMono-Medium.ttf
 picom &
 unclutter --timeout 1 &
@@ -25,6 +25,7 @@ sxhkd &
 xautolock -time 3 -locker idlescript &
 task export >~/.local/share/flex/tasklist.json &
 historybackup &
+/usr/bin/emacs --daemon &
 # # rfkill unblock bluetooth &
 exec ~/.local/bin/dwmstart
 # # export DESKTOP_SESSION=plasma
