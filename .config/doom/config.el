@@ -84,3 +84,4 @@
 
 (after! evil
   (define-key evil-insert-state-map (kbd "ESC") 'evil-escape))
+
