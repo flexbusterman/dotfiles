@@ -65,7 +65,7 @@ text/html)
 		;;
 	*)
 		# start files in separate tabs in nvim
-		$TERMINAL -e nvim -O "$@"
+		$TERMINAL -e $EDITOR "$@"
 		;;
 	esac
 	;;

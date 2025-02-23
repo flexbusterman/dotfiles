@@ -49,3 +49,4 @@
 
 (package! evil-terminal-cursor-changer)
 (package! doom-snippets)
+(package! latex-preview-pane)

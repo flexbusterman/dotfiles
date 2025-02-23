@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: Calc code block
+# uuid:
+# key: calc
+# condition: t
+# --
+#+begin_src calc
+$1
+#+end_src

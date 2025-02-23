@@ -85,3 +85,4 @@
 (after! evil
   (define-key evil-insert-state-map (kbd "ESC") 'evil-escape))
 
+(setq! scroll-margin 7)
