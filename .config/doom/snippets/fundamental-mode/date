@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: Date
+# uuid:
+# key: date iso
+# condition: t
+# --
+`(insert (format-time-string "%Y-%m-%d"))`

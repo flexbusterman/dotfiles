@@ -86,3 +86,6 @@
   (define-key evil-insert-state-map (kbd "ESC") 'evil-escape))
 
 (setq! scroll-margin 7)
+
+(require 'warnings)
+(add-to-list 'warning-suppress-types '(yasnippet backquote-change))
