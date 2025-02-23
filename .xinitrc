@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 xrdb ~/.Xresources
 feh --bg-fill ~/.local/share/flex/background.jpg
-# remaps &
-kanata -c ~/.config/kanata/kanata.conf &
+remaps &
 # xset fp+ /usr/share/fonts/TTF/FiraMono-Medium.ttf
 picom &
 unclutter --timeout 1 &
