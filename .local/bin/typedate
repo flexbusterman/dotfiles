@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-xdotool keyup Alt_L Alt_R Control_L Control_R Shift_L Shift_R
+xdotool keyup Alt_L Alt_R Control_L Control_R Shift_L Shift_R Super_L Super_R
 xdotool type --clearmodifiers $(date +"%F ") && xdotool type " "
 # the "" adds a space apparently
 echo type $(date +"%F") "" | xdotool
-xdotool keydown Alt_L
+# xdotool keydown Super_L
