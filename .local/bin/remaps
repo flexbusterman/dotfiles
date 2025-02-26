@@ -15,7 +15,8 @@ if [ -z "$WAYLAND_DISPLAY" ]; then
 	# echo "Setting keyboard repeat rate"
 	xset r rate 300 50 &
 	pkill kanata
-	/home/flex/.cargo/bin/kanata -c ~/.config/kanata/config.kbd &
+	# hardcoded config path due to sudo
+	/home/${SUDO_USER:-$USER}/.cargo/bin/kanata -c /home/${SUDO_USER:-$USER}/.config/kanata/config.kbd &
 	xinput --set-prop "TPPS/2 IBM TrackPoint" "libinput Accel Speed" -0.5 &
 	xdotool mousemove $(xdotool getdisplaygeometry | awk '{print $1 " " $2}') &
 fi
