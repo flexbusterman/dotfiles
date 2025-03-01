@@ -437,6 +437,18 @@ shift + Print
 super + control + BackSpace
 	notify-send "super + control + BackSpace"
 
+super + control + equal
+	pamixer --allow-boost -i 3; kill -44 $(pidof dwmblocks)
+
+super + control + minus
+	pamixer --allow-boost -d 3; kill -44 $(pidof dwmblocks)
+
+super + alt + equal
+	brightness -i
+
+super + alt + minus
+	brightness -d
+
 # __  _______ ___   __
 # \ \/ /  ___( _ ) / /_
 #  \  /| |_  / _ \| '_ \

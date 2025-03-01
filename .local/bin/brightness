@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+
+# Define the brightness steps
+steps=(0 1 10 50 100)
+
+# Function to get the current brightness
+get_current_brightness() {
+	current=$(brightnessctl | awk '/Current/ {print $4}' | sed 's/[()%]//g')
+	echo $current
+}
+
+# Function to increase brightness to the next step
+increase_brightness() {
+	current=$(get_current_brightness)
+	for step in "${steps[@]}"; do
+		if [ "$step" -gt "$current" ]; then
+			brightnessctl set "$step"% >/dev/null
+			break
+		fi
+	done
+}
+
+# Function to decrease brightness to the previous step
+decrease_brightness() {
+	current=$(get_current_brightness)
+	for ((i = ${#steps[@]} - 1; i >= 0; i--)); do
+		if [ "${steps[$i]}" -lt "$current" ]; then
+			brightnessctl set "${steps[$i]}"% >/dev/null
+			break
+		fi
+	done
+}
+
+# Main script logic
+case "$1" in
+-i)
+	increase_brightness
+	;;
+-d)
+	decrease_brightness
+	;;
+*)
+	get_current_brightness
+	;;
+esac

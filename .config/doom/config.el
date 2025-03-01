@@ -99,3 +99,16 @@
 
 (map! :leader
       :desc "Save current buffer" "j" #'save-buffer)
+
+(setq! org-priority-highest ?A)
+(setq! org-priority-default ?C)
+(setq! org-priority-lowest ?F)
+
+(defun flex/find-in-bin ()
+  (interactive)
+  (let ((default-directory "~/.local/bin/"))
+    (call-interactively #'find-file)))
+
+(map! :leader
+      :prefix "f"
+      :desc "Find in ~/.local/bin/" "b" #'flex/find-in-bin)
