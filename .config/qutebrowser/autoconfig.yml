@@ -43,6 +43,7 @@ settings:
   content.javascript.clipboard:
     https://chat.deepseek.com: access-paste
     https://chatgpt.com/: access
+    https://claude.ai: access-paste
     https://claude.ai/: access
     https://github.com: access-paste
     https://github.com/: access
