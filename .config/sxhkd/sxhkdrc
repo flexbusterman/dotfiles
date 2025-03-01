@@ -40,8 +40,8 @@ super + d
 	typedate
 super + shift + d
 	$TERMINAL -e dwmrebuild
-super + control + d
-	task rm $(task _get $(task next limit:1 | tail -n +4 | head -n 1 | sed 's/^ //' | cut -d ' ' -f1).id)
+# super + control + d
+# 	task rm $(task _get $(task next limit:1 | tail -n +4 | head -n 1 | sed 's/^ //' | cut -d ' ' -f1).id)
 	# punch --delete
 super + shift + control + d
 	mpc --host ~/.mpd/socket clear
@@ -442,6 +442,9 @@ super + control + equal
 
 super + control + minus
 	pamixer --allow-boost -d 3; kill -44 $(pidof dwmblocks)
+
+super + control + d
+	musicfolderbad
 
 super + alt + equal
 	brightness -i
