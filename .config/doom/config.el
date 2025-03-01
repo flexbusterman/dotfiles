@@ -92,3 +92,10 @@
 
 
 (setq! org-hide-block-startup 1)
+
+(map! :leader
+      :prefix "f"
+      :desc "Find in notes" "n" #'+default/find-in-notes)
+
+(map! :leader
+      :desc "Save current buffer" "j" #'save-buffer)
