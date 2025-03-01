@@ -26,7 +26,7 @@ super + shift + control + b
 # notify-send "shift + control + b"
 
 super + c
-	reaperconnect; altcolliderttsconnect;
+	reaperconnect; supercolliderttsconnect;
 super + shift + c
 	calendar
 # super + control + c
@@ -232,9 +232,9 @@ super + shift + control + r
 # notify-send "shift + control + r"
 
 super + s
-	$TERMINAL -T AltCollider -e tmuxsession AltCollider 'altcollider'
+	$TERMINAL -T SuperCollider -e tmuxsession SuperCollider 'supercollider'
 super + shift + s
-	tmux kill-session -t AltCollider; tmux kill-session -t tidal;
+	tmux kill-session -t SuperCollider; tmux kill-session -t tidal;
 
 # super + control + s
 # notify-send "super + control + s"

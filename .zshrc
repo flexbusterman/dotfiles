@@ -42,29 +42,6 @@ bindkey "^X^E" edit-command-line
 #
 # bindkey -a p pastefunction
 
-# environment variables moved to .bash_profile
-# export TERMINAL=st
-# export EDITOR=nvim
-# export BROWSER=qutebrowser
-# export QT_QPA_PLATFORMTHEME=qt6ct
-# export SHELL=/usr/bin/zsh
-# export MANPAGER="nvim +Man!"
-# export XDG_DATA_HOME="$HOME/.local/share"
-# export XDG_CONFIG_HOME="$HOME/.config"
-# export XDG_CACHE_HOME="$HOME/.cache"
-# export ANDROID_HOME=$HOME/Android/Sdk
-# export ANDROID_SDK_ROOT=$HOME/Android/Sdk
-# export ANDROID_SDK_HOME=$HOME/Android/Sdk
-# export ANDROID_AVD_HOME=$HOME/.config/.android/avd
-# export JAVA_HOME=/usr/lib/jvm/java-21-openjdk/
-# export HEADPHONES='50:C2:75:29:C7:6E'
-# export MPD_PORT=49152
-# export MPD_HOST="~/.mpd/socket"
-# export RANGER_LOAD_DEFAULT_RC=FALSE
-# export __NV_PRIME_RENDER_OFFLOAD=1
-# export PATH=$PATH:$HOME/.local/bin/
-# export PATH=$PATH:$HOME/.local/bin/statusbar/
-
 [ -f ~/.envPrivate ] && source ~/.envPrivate
 
 # aliases
@@ -81,7 +58,7 @@ alias q=exit
 alias pg="ping google.com"
 alias e="emacsclient -c -nw"
 
-# commonly edited file shortcuts
+# nvim edit shortcuts
 alias vb="cd ~; nvim .bashrc"
 alias ve="cd ~/.local/bin/; nvim editfile"
 alias vf="cd ~/.local/src/flarbs/; nvim flarbsinstall"
@@ -102,6 +79,27 @@ alias vi="cd ~/.config/i3/; nvim config"
 alias vw="cd ~/.config/waybar/; nvim config.jsonc"
 alias vl="cd ~/.config/layman/; nvim config.toml"
 alias vd="cd ~/.local/src/dwm/; nvim config.def.h"
+
+# emacs edit shortcuts
+alias eb="cd ~; emacsclient -c -nw .bashrc"
+alias ee="cd ~/.local/bin/; emacsclient -c -nw editfile"
+alias ef="cd ~/.local/src/flarbs/; emacsclient -c -nw flarbsinstall"
+alias eh="cd ~/.history/zsh/; emacsclient -c -nw history"
+alias ek="cd ~/.config/kitty/; emacsclient -c -nw kitty.conf"
+alias en="cd ~/.config/emacsclient -c -nw/; nvim init.lua"
+alias eo="cd ~/.local/bin/; emacsclient -c -nw openfile"
+alias ep="cd ~/.config/picom/; emacsclient -c -nw picom.conf"
+alias eq="cd ~/.config/qutebrowser/; emacsclient -c -nw autoconfig.yml"
+alias er="cd ~/ORGMODE/; emacsclient -c -nw refile.org"
+alias es="cd ~/.config/sxhkd/; emacsclient -c -nw sxhkdrc"
+alias et="cd ~/; emacsclient -c -nw .tmux.conf"
+alias ex="cd ~; emacsclient -c -nw .xinitrc"
+alias ey="cd ~/.config/yazi/; emacsclient -c -nw yazi.toml"
+alias ez="cd ~; emacsclient -c -nw .zshrc"
+alias ei="cd ~/.config/i3/; emacsclient -c -nw config"
+alias ew="cd ~/.config/waybar/; emacsclient -c -nw config.jsonc"
+alias el="cd ~/.config/layman/; emacsclient -c -nw config.toml"
+alias ed="cd ~/.local/src/dwm/; emacsclient -c -nw config.def.h"
 
 # script shortcuts
 alias fn="fzfnotes"
