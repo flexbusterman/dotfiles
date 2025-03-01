@@ -1,39 +1,41 @@
 #!/bin/bash
-
+musicFolder=~/Dropbox/MUSIC/\!\ GOOD\ AMBIENT
 currentAlbum=$(mpc --host /run/user/1000/mpd/socket playlist -f %file% | awk -F/ 'NR==1 {print $(NF-1)}')
+newAlbum=""
+newAlbumTitle=""
 
-playAlbum(){
+chooseNewAlbum() {
+	newAlbum=$(find "$musicFolder" -mindepth 1 -maxdepth 1 -type d | sort -R | head -n 1)
+	newAlbumTitle=$(basename "$newAlbum")
+	notify-send "Selected album: $newAlbumTitle"
+}
+
+playAlbum() {
 	mpc --host /run/user/1000/mpd/socket clear
+
+	# Remove temporary files if they exist
 	[[ -f /tmp/album ]] && rm /tmp/album
 	[[ -f /tmp/albumsorted ]] && rm /tmp/albumsorted
-	find "$newAlbum" >> /tmp/album
-	cat /tmp/album | sort >> /tmp/albumsorted
-	input=/tmp/albumsorted
-	while IFS= read -r line
-	do
+
+	# Find music files and sort them
+	find "$newAlbum" \( -iname "*.mp3" -o -iname "*.flac" -o -iname "*.wav" -o -iname "*.aac" \) >/tmp/album
+	sort /tmp/album >/tmp/albumsorted
+
+	# Add each file to the playlist
+	while IFS= read -r line; do
 		mpc --host /run/user/1000/mpd/socket add "$line"
-	done < "$input"
-	notify-send "$newAlbumTitle"
+	done </tmp/albumsorted
+
+	# Start playing
 	mpc --host /run/user/1000/mpd/socket play
 }
 
-chooseNewAlbum(){
-	albumList=$( awk '/^[^#]/' ~/.config/music/albumlist)
-	numberAlbums=$(echo "$albumList" | wc -l)
-	# notify-send "number albums: $numberAlbums"
-	if [[ $numberAlbums -gt 1 ]]; then
-		newAlbum=$(echo "$albumList" | shuf -n 1 )
-		newAlbumTitle=$(echo "$newAlbum" | awk -F/ '{print $NF}')
-	else
-		notify-send "Need more albums"
-		exit 1
-	fi
-}
-
+# Main execution
 chooseNewAlbum
 
-while [[ "$currentAlbum" == "$newAlbumTitle" ]]; do
-	# notify-send "They are the same! Should choose new album!"
+# Avoid playing the same album that's currently playing
+while [[ "$currentAlbum" == "$newAlbumTitle" && "$(find "$musicFolder" -mindepth 1 -maxdepth 1 -type d | wc -l)" -gt 1 ]]; do
+	notify-send "Same album is currently playing. Choosing another..."
 	chooseNewAlbum
 done
 
