@@ -112,3 +112,7 @@
 (map! :leader
       :prefix "f"
       :desc "Find in ~/.local/bin/" "b" #'flex/find-in-bin)
+
+(use-package! lsp-bridge
+  :config
+  (global-lsp-bridge-mode))
