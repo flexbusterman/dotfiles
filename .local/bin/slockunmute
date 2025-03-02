@@ -28,7 +28,7 @@ done
 # echo "$(date) - Slock unlocked" >> ~/mute.log
 
 # Remap keys or any other post-unlock setup
-~/.local/bin/remaps
+~/.local/bin/remaps &
 
 # Unmute the sound only after slock is successfully unlocked
 ~/.local/bin/unmute

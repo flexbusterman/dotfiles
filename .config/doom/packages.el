@@ -60,3 +60,10 @@
                  :build (:not compile)))
   (package! markdown-mode)
   (package! yasnippet))
+
+(package! copilot
+  :recipe (:host github :repo "copilot-emacs/copilot.el" :files ("*.el")))
+
+;; installed from melpa instead of github
+;; (package! copilot-chat
+;;   :recipe (:host github :repo "chep/copilot-chat.el" :files ("*.el")))

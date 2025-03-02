@@ -116,3 +116,30 @@
 (use-package! lsp-bridge
   :config
   (global-lsp-bridge-mode))
+
+;; (map! :leader
+;;       "t t" nil
+;;       "t T" nil)
+
+;; unbind some keys
+(map! "C-l" nil
+      "C-j" nil
+      "C-k" nil
+      "C-h" nil)
+
+;; accept completion from copilot and fallback to company
+(use-package! copilot
+  :hook ((js-mode . copilot-mode)
+         (emacs-lisp-mode . copilot-mode)
+         (typescript-mode . copilot-mode))
+  :bind (:map copilot-completion-map
+              ("C-l" . 'copilot-accept-completion)
+              ("C-S-TAB" . 'copilot-accept-completion-by-word)
+              ("C-j" . 'copilot-next-completion)
+              ("C-k" . 'copilot-previous-completion)))
+
+;; (use-package! copilot-chat
+;;   :bind (:map global-map
+;;             ("C-c C-y" . copilot-chat-yank)
+;;             ("C-c M-y" . copilot-chat-yank-pop)
+;;             ("C-c C-M-y" . (lambda () (interactive) (copilot-chat-yank-pop -1)))))

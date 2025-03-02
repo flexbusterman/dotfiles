@@ -49,7 +49,7 @@ super + shift + control + d
 # notify-send "shift + control + d"
 
 super + e
-	pgrep emacs || emacs -daemon; kitty -e emacsclient -c -nw
+	pgrep emacs || emacs -daemon; kitty -e emacsclient -c
 	# gaminginputtoggle
 super + shift + e
 	touchpaddisablewhiletypingtoggle

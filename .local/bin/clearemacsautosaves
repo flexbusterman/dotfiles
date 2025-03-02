@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+rm ~/.config/emacs/.local/cache/autosave/*
+notify-send "Cleared emacs autosaves"
