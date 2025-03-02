@@ -72,25 +72,30 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
+
+;; Changes cursor depending on mode
   (unless (display-graphic-p)
           (require 'evil-terminal-cursor-changer)
           (evil-terminal-cursor-changer-activate) ; or (etcc-on)
           )
+
+;; Set transparency
 (add-to-list 'default-frame-alist '(alpha-background . 90)) ;; 90% opacity
 (set-face-attribute 'default nil :background "unspecified-bg") ;; Remove background color
 
+;; SuperCollider
 (add-to-list 'load-path "~/.local/share/SuperCollider/downloaded-quarks/scel/el")
 (require 'sclang)
 
 (after! evil
   (define-key evil-insert-state-map (kbd "ESC") 'evil-escape))
 
+;; Scrolloff
 (setq! scroll-margin 7)
 
+;; Hide some annoying warnings
 (require 'warnings)
 (add-to-list 'warning-suppress-types '(yasnippet backquote-change))
-
-(setq! org-hide-block-startup 1)
 
 (map! :leader
       :prefix "f"
@@ -98,10 +103,6 @@
 
 (map! :leader
       :desc "Save current buffer" "j" #'save-buffer)
-
-(setq! org-priority-highest ?A)
-(setq! org-priority-default ?C)
-(setq! org-priority-lowest ?F)
 
 (defun flex/find-in-bin ()
   (interactive)
@@ -112,13 +113,10 @@
       :prefix "f"
       :desc "Find in ~/.local/bin/" "b" #'flex/find-in-bin)
 
+;; Completion
 (use-package! lsp-bridge
   :config
   (global-lsp-bridge-mode))
-
-;; (map! :leader
-;;       "t t" nil
-;;       "t T" nil)
 
 ;; unbind some keys
 (map! "C-l" nil
@@ -126,7 +124,7 @@
       "C-k" nil
       "C-h" nil)
 
-;; accept completion from copilot and fallback to company
+;; Accept completion from copilot and fallback to company
 (use-package! copilot
   :hook ((js-mode . copilot-mode)
          (emacs-lisp-mode . copilot-mode)
@@ -137,22 +135,12 @@
               ("C-j" . 'copilot-next-completion)
               ("C-k" . 'copilot-previous-completion)))
 
-(setq! org-log-done 'time)
-(setq! org-agenda-todo-ignore-scheduled 'future)
-(setq! org-agenda-tags-todo-honor-ignore-options t)
-
 (defun insert-time-stamp ()
   (interactive)
   (insert (format-time-string "%Y-%m-%d %H:%M ")))
 
 (map! :leader
       :desc "Insert time stamp" "i t" #'insert-time-stamp)
-
-;; (use-package! copilot-chat
-;;   :bind (:map global-map
-;;             ("C-c C-y" . copilot-chat-yank)
-;;             ("C-c M-y" . copilot-chat-yank-pop)
-;;             ("C-c C-M-y" . (lambda () (interactive) (copilot-chat-yank-pop -1)))))
 
 (defun clean-whitespace ()
   "Delete trailing whitespace, and replace repeated blank lines to just 1.
@@ -175,3 +163,28 @@ Works on whole buffer or selection, respects `narrow-to-region'."
   (message "%s done" real-this-command))
 
 (add-hook 'before-save-hook 'clean-whitespace)
+
+;; Global word-wrapping
+(global-visual-line-mode t)
+
+;;   ___  ____   ____
+;;  / _ \|  _ \ / ___|
+;; | | | | |_) | |  _
+;; | |_| |  _ <| |_| |
+;;  \___/|_| \_\\____|
+;;  org-mode settings
+
+;; F as lowest priority
+(setq! org-priority-highest ?A)
+(setq! org-priority-default ?C)
+(setq! org-priority-lowest ?F)
+
+;; Starts org-mode folded
+(setq! org-hide-block-startup 1)
+
+;; Enters timestamp when a task is marked as done
+(setq! org-log-done 'time)
+
+;; Hide items that are scheduled in the future from the agenda
+(setq! org-agenda-todo-ignore-scheduled 'future)
+(setq! org-agenda-tags-todo-honor-ignore-options t)
