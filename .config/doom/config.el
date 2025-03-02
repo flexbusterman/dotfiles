@@ -74,10 +74,10 @@
 ;; they are implemented.
 
 ;; Changes cursor depending on mode
-  (unless (display-graphic-p)
-          (require 'evil-terminal-cursor-changer)
-          (evil-terminal-cursor-changer-activate) ; or (etcc-on)
-          )
+(unless (display-graphic-p)
+  (require 'evil-terminal-cursor-changer)
+  (evil-terminal-cursor-changer-activate) ; or (etcc-on)
+  )
 
 ;; Set transparency
 (add-to-list 'default-frame-alist '(alpha-background . 90)) ;; 90% opacity
