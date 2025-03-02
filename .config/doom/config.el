@@ -139,6 +139,15 @@
               ("C-k" . 'copilot-previous-completion)))
 
 (setq! org-log-done 'time)
+(setq! org-agenda-todo-ignore-scheduled 'future)
+(setq! org-agenda-tags-todo-honor-ignore-options t)
+
+(defun insert-time-stamp ()
+  (interactive)
+  (insert (format-time-string "%Y-%m-%d %H:%M ")))
+
+(map! :leader
+      :desc "Insert time stamp" "i t" #'insert-time-stamp)
 
 ;; (use-package! copilot-chat
 ;;   :bind (:map global-map
