@@ -90,7 +90,6 @@
 (require 'warnings)
 (add-to-list 'warning-suppress-types '(yasnippet backquote-change))
 
-
 (setq! org-hide-block-startup 1)
 
 (map! :leader
@@ -154,3 +153,25 @@
 ;;             ("C-c C-y" . copilot-chat-yank)
 ;;             ("C-c M-y" . copilot-chat-yank-pop)
 ;;             ("C-c C-M-y" . (lambda () (interactive) (copilot-chat-yank-pop -1)))))
+
+(defun clean-whitespace ()
+  "Delete trailing whitespace, and replace repeated blank lines to just 1.
+Only space and tab is considered whitespace here.
+Works on whole buffer or selection, respects `narrow-to-region'."
+  (interactive)
+  (let (xbegin xend)
+    (if (region-active-p)
+        (setq xbegin (region-beginning) xend (region-end))
+      (setq xbegin (point-min) xend (point-max)))
+    (save-excursion
+      (save-restriction
+        (narrow-to-region xbegin xend)
+        (goto-char (point-min))
+        (while (re-search-forward "[ \t]+\n" nil :move) (replace-match "\n"))
+        (goto-char (point-min))
+        (while (re-search-forward "\n\n\n+" nil :move) (replace-match "\n\n"))
+        (goto-char (point-max))
+        (while (eq (char-before) 32) (delete-char -1)))))
+  (message "%s done" real-this-command))
+
+(add-hook 'before-save-hook 'clean-whitespace)
