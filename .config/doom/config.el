@@ -138,6 +138,8 @@
               ("C-j" . 'copilot-next-completion)
               ("C-k" . 'copilot-previous-completion)))
 
+(setq! org-log-done 'time)
+
 ;; (use-package! copilot-chat
 ;;   :bind (:map global-map
 ;;             ("C-c C-y" . copilot-chat-yank)
