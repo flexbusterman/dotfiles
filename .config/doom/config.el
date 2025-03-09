@@ -130,16 +130,19 @@
 ;;   (global-lsp-bridge-mode))
 
 ;; Accept completion from copilot and fallback to company
+(use-package! company
+  :bind (:map company-active-map
+              ("C-l" . company-complete)))
+
 (use-package! copilot
   :hook ((js-mode . copilot-mode)
          (emacs-lisp-mode . copilot-mode)
          (typescript-mode . copilot-mode))
   :bind (:map copilot-completion-map
-              ("C-l" . 'copilot-accept-completion)
-              ("C-S-TAB" . 'copilot-accept-completion-by-word)
-              ("C-j" . 'copilot-next-completion)
-              ("C-k" . 'copilot-previous-completion)))
-
+              ("C-S-l" . copilot-accept-completion)
+              ("C-S-TAB" . copilot-accept-completion-by-word)
+              ("C-S-j" . copilot-next-completion)
+              ("C-S-k" . copilot-previous-completion)))
 (defun insert-time-stamp ()
   (interactive)
   (insert (format-time-string "%Y-%m-%d %H:%M ")))
