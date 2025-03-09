@@ -125,10 +125,9 @@
       "C-k" nil
       "C-h" nil)
 
-(use-package! lsp-bridge
-  :config
-  (global-lsp-bridge-mode))
-
+;; (use-package! lsp-bridge
+;;   :config
+;;   (global-lsp-bridge-mode))
 
 ;; Accept completion from copilot and fallback to company
 (use-package! copilot
@@ -194,4 +193,3 @@ Works on whole buffer or selection, respects `narrow-to-region'."
 ;; Hide items that are scheduled in the future from the agenda
 (setq! org-agenda-todo-ignore-scheduled 'future)
 (setq! org-agenda-tags-todo-honor-ignore-options t)
-
