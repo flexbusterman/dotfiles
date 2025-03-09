@@ -1,48 +1,26 @@
 #!/bin/sh
 USER=$(logname)
 if [ -z "$WAYLAND_DISPLAY" ]; then
-	# echo "Loading xresources"
-	xrdb -load /home/${SUDO_USER:-$USER}/.Xresources &
-	# echo "Setting capslock to shift"
-	setxkbmap -option shift:both_capslock_cancel
-	# echo "xmodmap"
-	xmodmap /home/${SUDO_USER:-$USER}/.Xmodmap
-	# echo "Setting Mode_switch to escape"
-	xcape -e 'Mode_switch=Escape'
-	# echo "Setting capslock to escape"
-	# xcape -e 'Caps_Lock=Escape'
-	xcape -e 'Caps_Lock=Escape' -t 50
-	# echo "Setting keyboard repeat rate"
 	xset r rate 300 50 &
 	pkill kanata
-	# hardcoded config path due to sudo
-	# /home/${SUDO_USER:-$USER}/.cargo/bin/kanata -c /home/${SUDO_USER:-$USER}/.config/kanata/config.kbd &
-	# /home/${SUDO_USER:-$USER}/.cargo/bin/kanata -c /home/${SUDO_USER:-$USER}/.config/kanata/config.kbd >/dev/null 2>&1 &
 	sudo -u $USER /home/$USER/.cargo/bin/kanata -c /home/$USER/.config/kanata/config.kbd >/dev/null 2>&1 &
 	xinput --set-prop "TPPS/2 IBM TrackPoint" "libinput Accel Speed" -0.5 &
-	xdotool mousemove $(xdotool getdisplaygeometry | awk '{print $1 " " $2}') &
 fi
-# Define an associative array with device names as keys and desired properties as values
-# declare -A devices
-# devices=(
-#   ["TPPS/2 IBM TrackPoint"]="-0.45"
-#   ["TPPS/2 Elan TrackPoint"]="-0.55"
-#   ["Synaptics TM3288-011"]="0.3"
-#   ["SynPS/2 Synaptics TouchPad"]="0.3"
-# )
-#
-# # Set properties for devices if they are present
-# for device in "${!devices[@]}"; do
-#   # Check if the device is connected
-#   if xinput list | grep -q "$device"; then
-#     # Set the "libinput Accel Speed" property for the device
-# 		# echo "Setting ${device} acceleratino speed to ${devices[$device]}"
-#     xinput set-prop "$device" "libinput Accel Speed" "${devices[$device]}"
-#
-#     # Additional properties for specific devices can be set here with conditional checks
-#     if [ "$device" == "Synaptics TM3288-011" ] || [ "$device" == "SynPS/2 Synaptics TouchPad" ]; then
-# 			# echo "Setting ${device} tapping enabled"
-#       xinput set-prop "$device" "libinput Tapping Enabled" 1
-#     fi
-#   fi
-# done
+
+# Saving these old commands for reference
+# echo "Loading xresources"
+# xrdb -load /home/${SUDO_USER:-$USER}/.Xresources &
+# echo "Setting capslock to shift"
+# setxkbmap -option shift:both_capslock_cancel
+# echo "xmodmap"
+# xmodmap /home/${SUDO_USER:-$USER}/.Xmodmap
+# echo "Setting Mode_switch to escape"
+# xcape -e 'Mode_switch=Escape'
+# echo "Setting capslock to escape"
+# xcape -e 'Caps_Lock=Escape'
+# xcape -e 'Caps_Lock=Escape' -t 50
+# echo "Setting keyboard repeat rate"
+# hardcoded config path due to sudo
+# /home/${SUDO_USER:-$USER}/.cargo/bin/kanata -c /home/${SUDO_USER:-$USER}/.config/kanata/config.kbd &
+# /home/${SUDO_USER:-$USER}/.cargo/bin/kanata -c /home/${SUDO_USER:-$USER}/.config/kanata/config.kbd >/dev/null 2>&1 &
+# xdotool mousemove $(xdotool getdisplaygeometry | awk '{print $1 " " $2}') &

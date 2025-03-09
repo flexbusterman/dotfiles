@@ -55,6 +55,7 @@ settings:
     https://teams.live.com: true
     https://www.instagram.com: true
   content.media.audio_video_capture:
+    https://app.zoom.us: true
     https://meet.google.com: true
     https://teams.live.com: true
   content.media.video_capture:

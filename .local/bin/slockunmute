@@ -27,6 +27,7 @@ done
 # Log after slock is unlocked
 # echo "$(date) - Slock unlocked" >> ~/mute.log
 
+sleep 1
 # Remap keys or any other post-unlock setup
 ~/.local/bin/remaps &
 
