@@ -134,18 +134,18 @@
   :bind (:map company-active-map
               ("C-l" . company-complete)))
 
-(use-package! copilot
-  :hook ((js-mode . copilot-mode)
-         (emacs-lisp-mode . copilot-mode)
-         (typescript-mode . copilot-mode))
-  :bind (:map copilot-completion-map
-              ("C-S-l" . copilot-accept-completion)
-              ("C-S-TAB" . copilot-accept-completion-by-word)
-              ("C-S-j" . copilot-next-completion)
-              ("C-S-k" . copilot-previous-completion)))
-(defun insert-time-stamp ()
-  (interactive)
-  (insert (format-time-string "%Y-%m-%d %H:%M ")))
+;; (use-package! copilot
+;;   :hook ((js-mode . copilot-mode)
+;;          (emacs-lisp-mode . copilot-mode)
+;;          (typescript-mode . copilot-mode))
+;;   :bind (:map copilot-completion-map
+;;               ("C-S-l" . copilot-accept-completion)
+;;               ("C-S-TAB" . copilot-accept-completion-by-word)
+;;               ("C-S-j" . copilot-next-completion)
+;;               ("C-S-k" . copilot-previous-completion)))
+;; (defun insert-time-stamp ()
+;;   (interactive)
+;;   (insert (format-time-string "%Y-%m-%d %H:%M ")))
 
 (map! :leader
       :desc "Insert time stamp" "i t" #'insert-time-stamp)
