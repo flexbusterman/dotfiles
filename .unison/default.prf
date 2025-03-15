@@ -1,0 +1,5 @@
+# Unison preferences file
+perms=0
+dontchmod=true
+auto=true
+batch=true
