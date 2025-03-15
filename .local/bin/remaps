@@ -7,6 +7,7 @@ if [ -z "$WAYLAND_DISPLAY" ]; then
 	/home/$USER/.cargo/bin/kanata -c /home/$USER/.config/kanata/config.kbd >/dev/null 2>&1 &
 	[[ $(xinput --list | grep "TPPS/2 IBM TrackPoint") ]] && xinput --set-prop "TPPS/2 IBM TrackPoint" "libinput Accel Speed" -0.5 &
 	[[ $(xinput --list | grep "TPPS/2 Elan TrackPoint") ]] && xinput --set-prop "TPPS/2 Elan TrackPoint" "libinput Accel Speed" -0.5 &
+	[[ $(xinput --list | grep "SYNA800E:00 06CB:CE67 Touchpad") ]] && xinput --set-prop "SYNA800E:00 06CB:CE67 Touchpad" "libinput Tapping Enabled" 1 &
 fi
 
 # Saving these old commands for reference
