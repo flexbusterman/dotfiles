@@ -52,7 +52,8 @@ super + e
 	pgrep emacs || emacs -daemon; kitty -e emacsclient -c
 	# gaminginputtoggle
 super + shift + e
-	touchpaddisablewhiletypingtoggle
+    togglekanata
+#	touchpaddisablewhiletypingtoggle
 # notify-send "super + control + e"
 # super + control + e
 # notify-send "super + control + e"

@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+if pgrep kanata > /dev/null; then
+    notify-send "Killing kanata"
+    pkill kanata
+else
+    notify-send "Starting kanata"
+    kanata -c /home/$USER/.config/kanata/config.kbd >/dev/null 2>&1 &
+fi
