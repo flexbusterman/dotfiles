@@ -1,29 +1,38 @@
-#!/bin/sh
-USER=$(logname)
-if [ -z "$WAYLAND_DISPLAY" ]; then
-	xset r rate 300 50 &
-	pkill kanata
-	# sudo -u $USER /home/$USER/.cargo/bin/kanata -c /home/$USER/.config/kanata/config.kbd >/dev/null 2>&1 &
-	/home/$USER/.cargo/bin/kanata -c /home/$USER/.config/kanata/config.kbd >/dev/null 2>&1 &
-	[[ $(xinput --list | grep "TPPS/2 IBM TrackPoint") ]] && xinput --set-prop "TPPS/2 IBM TrackPoint" "libinput Accel Speed" -0.5 &
-	[[ $(xinput --list | grep "TPPS/2 Elan TrackPoint") ]] && xinput --set-prop "TPPS/2 Elan TrackPoint" "libinput Accel Speed" -0.5 &
-	[[ $(xinput --list | grep "SYNA800E:00 06CB:CE67 Touchpad") ]] && xinput --set-prop "SYNA800E:00 06CB:CE67 Touchpad" "libinput Tapping Enabled" 1 &
-fi
+#!/bin/bash
 
-# Saving these old commands for reference
-# echo "Loading xresources"
-# xrdb -load /home/${SUDO_USER:-$USER}/.Xresources &
-# echo "Setting capslock to shift"
-# setxkbmap -option shift:both_capslock_cancel
-# echo "xmodmap"
-# xmodmap /home/${SUDO_USER:-$USER}/.Xmodmap
-# echo "Setting Mode_switch to escape"
-# xcape -e 'Mode_switch=Escape'
-# echo "Setting capslock to escape"
-# xcape -e 'Caps_Lock=Escape'
-# xcape -e 'Caps_Lock=Escape' -t 50
-# echo "Setting keyboard repeat rate"
-# hardcoded config path due to sudo
-# /home/${SUDO_USER:-$USER}/.cargo/bin/kanata -c /home/${SUDO_USER:-$USER}/.config/kanata/config.kbd &
-# /home/${SUDO_USER:-$USER}/.cargo/bin/kanata -c /home/${SUDO_USER:-$USER}/.config/kanata/config.kbd >/dev/null 2>&1 &
-# xdotool mousemove $(xdotool getdisplaygeometry | awk '{print $1 " " $2}') &
+# LOGFILE="/home/flex/remaps.log"
+# echo "$(date) - remaps script started" >>$LOGFILE
+
+USER=$(logname 2>/dev/null)
+if [ -z "$USER" ]; then
+	USER=$(whoami)
+fi
+# echo "$(date) - User: $USER" >>$LOGFILE
+
+if [ -z "$WAYLAND_DISPLAY" ]; then
+	echo "$(date) - Wayland display not found. Running Xorg commands" >>$LOGFILE
+	xset r rate 300 50 &
+	echo "$(date) - xset rate set" >>$LOGFILE
+
+	# pkill kanata
+	# echo "$(date) - kanata process killed" >>$LOGFILE
+
+	# Attempt to run kanata and capture any errors
+	# sudo -u $USER /home/$USER/.cargo/bin/kanata -c /home/$USER/.config/kanata/config.kbd >/dev/null 2>>$LOGFILE &
+	# if [ $? -eq 0 ]; then
+	# 	echo "$(date) - kanata started successfully" >>$LOGFILE
+	# else
+	# 	echo "$(date) - kanata failed to start. Check for errors above." >>$LOGFILE
+	# fi
+
+	[[ $(xinput --list | grep "TPPS/2 IBM TrackPoint") ]] && xinput --set-prop "TPPS/2 IBM TrackPoint" "libinput Accel Speed" -0.5 &
+	# echo "$(date) - IBM TrackPoint config set" >>$LOGFILE
+
+	[[ $(xinput --list | grep "TPPS/2 Elan TrackPoint") ]] && xinput --set-prop "TPPS/2 Elan TrackPoint" "libinput Accel Speed" -0.5 &
+	# echo "$(date) - Elan TrackPoint config set" >>$LOGFILE
+
+	[[ $(xinput --list | grep "SYNA800E:00 06CB:CE67 Touchpad") ]] && xinput --set-prop "SYNA800E:00 06CB:CE67 Touchpad" "libinput Tapping Enabled" 1 &
+	# echo "$(date) - Touchpad tapping enabled" >>$LOGFILE
+else
+	# echo "$(date) - Wayland display found, skipping Xorg commands" >>$LOGFILE
+fi

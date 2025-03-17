@@ -63,6 +63,12 @@
 ;; (package! copilot
 ;;   :recipe (:host github :repo "copilot-emacs/copilot.el" :files ("*.el")))
 
+;; (package! codewars
+;;   :recipe (:host github :repo "justin-roche/codewars.el" :files ("*")))
+
+;; (add-to-list 'load-path "/home/flex/.config/doom/plugins/codewars.el")
+;; (require 'codewars)
+
 ;; installed from melpa instead of github
 ;; (package! copilot-chat
 ;;   :recipe (:host github :repo "chep/copilot-chat.el" :files ("*.el")))

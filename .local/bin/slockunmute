@@ -1,45 +1,45 @@
 #!/usr/bin/env bash
 
-# Log for troubleshooting
-# echo "$(date) - Mute script started" >> ~/mute.log
+LOGFILE="/home/flex/slockunmute.log"
+
+echo "$(date) - slockunmute script started" >>$LOGFILE
 
 # Mute the sound when the lid closes
 ~/.local/bin/mute
-
-# Log after muting
-# echo "$(date) - Sound muted" >> ~/mute.log
+echo "$(date) - Sound muted" >>$LOGFILE
 
 # Run slock and monitor its process
 if [[ -f /usr/bin/slock ]]; then
-    /usr/bin/slock &
+	/usr/bin/slock &
+	echo "$(date) - /usr/bin/slock ran" >>$LOGFILE
 else
-    /usr/local/bin/slock &
+	/usr/local/bin/slock &
+	echo "$(date) - /usr/local/bin/slock ran" >>$LOGFILE
 fi
 
 # Get the PID of the slock process
 SLOCK_PID=$!
+echo "$(date) - SLOCK PID: $SLOCK_PID" >>$LOGFILE
 
 # Wait for the slock process to finish
-while ps -p $SLOCK_PID > /dev/null; do
-    sleep 1
+while ps -p $SLOCK_PID >/dev/null; do
+	sleep 1
 done
 
-# Log after slock is unlocked
-# echo "$(date) - Slock unlocked" >> ~/mute.log
+echo "$(date) - Slock unlocked" >>$LOGFILE
 
 sleep 1
 # Remap keys or any other post-unlock setup
-~/.local/bin/remaps &
+/home/flex/.local/bin/remaps &
+echo "$(date) - remaps script ran" >>$LOGFILE
 
 # Unmute the sound only after slock is successfully unlocked
-~/.local/bin/unmute
-
-# Log unmute action
-# echo "$(date) - Sound unmuted" >> ~/mute.log
+# amixer set Master unmute
+echo "$(date) - Sound unmuted" >>$LOGFILE
 
 # Additional check for Bluetooth devices, if necessary
 sleep 4
 if [[ $(pactl list sinks | grep -i "bluetooth") ]]; then
-    ~/.local/bin/unmute
-    # echo "$(date) - Bluetooth detected, unmuted" >> ~/mute.log
+	amixer set Master unmute
+	echo "$(date) - Bluetooth detected, sound unmuted" >>$LOGFILE
 fi

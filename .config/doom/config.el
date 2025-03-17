@@ -39,7 +39,7 @@
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/Dropbox/ORGMODE/")
+(setq org-directory "~/ORGMODE/")
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
@@ -134,21 +134,23 @@
   :bind (:map company-active-map
               ("C-l" . company-complete)))
 
-;; (use-package! copilot
-;;   :hook ((js-mode . copilot-mode)
-;;          (emacs-lisp-mode . copilot-mode)
-;;          (typescript-mode . copilot-mode))
-;;   :bind (:map copilot-completion-map
-;;               ("C-S-l" . copilot-accept-completion)
-;;               ("C-S-TAB" . copilot-accept-completion-by-word)
-;;               ("C-S-j" . copilot-next-completion)
-;;               ("C-S-k" . copilot-previous-completion)))
-;; (defun insert-time-stamp ()
-;;   (interactive)
-;;   (insert (format-time-string "%Y-%m-%d %H:%M ")))
+(use-package! copilot
+  :hook ((js-mode . copilot-mode)
+         (emacs-lisp-mode . copilot-mode)
+         (typescript-mode . copilot-mode))
+  :bind (:map copilot-completion-map
+              ("C-S-l" . copilot-accept-completion)
+              ("C-S-TAB" . copilot-accept-completion-by-word)
+              ("C-S-j" . copilot-next-completion)
+              ("C-S-k" . copilot-previous-completion)))
+(defun insert-time-stamp ()
+  (interactive)
+  (insert (format-time-string "%Y-%m-%d %H:%M ")))
 
 (map! :leader
       :desc "Insert time stamp" "i t" #'insert-time-stamp)
+
+(use-package! copilot-chat)
 
 (defun clean-whitespace ()
   "Delete trailing whitespace, and replace repeated blank lines to just 1.
