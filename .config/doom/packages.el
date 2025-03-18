@@ -49,6 +49,7 @@
 (package! evil-terminal-cursor-changer)
 (package! doom-snippets)
 (package! latex-preview-pane)
+(package! titlecase)
 
 ;; (when (package! lsp-bridge
 ;;         :recipe (:host github

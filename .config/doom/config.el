@@ -150,6 +150,11 @@
 (map! :leader
       :desc "Insert time stamp" "i t" #'insert-time-stamp)
 
+(use-package! titlecase)
+
+(map! :leader
+      :desc "Titlecase line" "t c" 'titlecase-line)
+
 (use-package! copilot-chat)
 
 (defun clean-whitespace ()
