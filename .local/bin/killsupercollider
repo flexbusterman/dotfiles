@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+if ! [[ $(pgrep sclang) ]]; then
+	notify-send "SuperCollider is not running"
+	exit 1
+fi
+
+answer=$(echo -e "yes\nno" | dmenu -p "Kill SuperCollider?")
+
+if [[ $answer == "yes" ]]; then
+	notify-send "Killing SuperCollider"
+	tmux kill-session -t SuperCollider
+	pkill sclang
+	pkill scsynth
+else
+	notify-send "Not killing SuperCollider"
+fi
