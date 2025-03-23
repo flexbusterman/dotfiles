@@ -145,7 +145,14 @@
               ("C-S-l" . copilot-accept-completion)
               ("C-S-TAB" . copilot-accept-completion-by-word)
               ("C-S-j" . copilot-next-completion)
-              ("C-S-k" . copilot-previous-completion)))
+              ("C-S-k" . copilot-previous-completion))
+
+  :config
+  (add-to-list 'copilot-indentation-alist '(prog-mode 2))
+  (add-to-list 'copilot-indentation-alist '(org-mode 2))
+  (add-to-list 'copilot-indentation-alist '(text-mode 2))
+  (add-to-list 'copilot-indentation-alist '(closure-mode 2))
+  (add-to-list 'copilot-indentation-alist '(emacs-lisp-mode 2)))
 
 (defun insert-time-stamp ()
   (interactive)
