@@ -185,6 +185,10 @@ ssh() {
 # fi
 }
 
+man() {
+    emacsclient -nw -e '(man "'"$1"'")'
+}
+
 # history
 HISTSIZE=10000000
 SAVEHIST=10000000

@@ -14,12 +14,12 @@ audio/*)
 	reaper "$@"
 	;;
 application/vnd.openxmlformats-officedocument.spreadsheetml.sheet)
-	st -e sc-im "$@"
+	$TERM -e sc-im "$@"
 	;;
 application/x-sc)
-	st -e sc-im "$@"
+	$TERM -e sc-im "$@"
 	;;
-application/octet-stream)
+application/octet-$TERMream)
 	case "${1##*.}" in
 	doc | docx | xls | xlsx | odt | ppt | pptx)
 		libreoffice "$@"
@@ -32,8 +32,9 @@ application/octet-stream)
 		reaper "$@"
 		;;
 	*)
-		# start files in separate tabs in nvim
-		st -e nvim -O "$@"
+		# $TERMart files in separate tabs in nvim
+		# $TERM -e nvim -O "$@"
+		$TERM -e $EDITOR "$@"
 		;;
 	esac
 	;;
