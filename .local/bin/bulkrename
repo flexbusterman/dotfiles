@@ -2,8 +2,8 @@
 
 # Check if any arguments are passed
 if [ $# -eq 0 ]; then
-    echo "No files provided. Usage: ./bulkrename.sh file1 file2 ..."
-    exit 1
+	echo "No files provided. Usage: ./bulkrename.sh file1 file2 ..."
+	exit 1
 fi
 
 # Temporary file to store original basenames
@@ -14,39 +14,39 @@ declare -a full_paths
 
 # Add original basenames to the temporary file, store full paths separately
 for file in "$@"; do
-    echo "$(basename "$file")" >> "$tmpfile"
-    full_paths+=("$(dirname "$file")")
+	echo "$(basename "$file")" >>"$tmpfile"
+	full_paths+=("$(dirname "$file")")
 done
 
 # Open the basenames in nvim for editing
-nvim "$tmpfile"
+$EDITOR "$tmpfile"
 
 # Read new basenames from the temporary file
-mapfile -t new_basenames < "$tmpfile"
+mapfile -t new_basenames <"$tmpfile"
 
 # Remove the temporary file
 rm "$tmpfile"
 
 # Check if the number of original and new filenames match
 if [ ${#new_basenames[@]} -ne $# ]; then
-    echo "The number of new filenames does not match the original files!"
-    exit 1
+	echo "The number of new filenames does not match the original files!"
+	exit 1
 fi
 
 # Rename files
 i=0
 for original_file in "$@"; do
-    new_basename="${new_basenames[$i]}"
-    original_dir="${full_paths[$i]}"
-    ((i++))
+	new_basename="${new_basenames[$i]}"
+	original_dir="${full_paths[$i]}"
+	((i++))
 
-    # Skip if names are the same
-    if [ "$(basename "$original_file")" == "$new_basename" ]; then
-        continue
-    fi
+	# Skip if names are the same
+	if [ "$(basename "$original_file")" == "$new_basename" ]; then
+		continue
+	fi
 
-    # Perform the rename within the original directory
-    mv -v "$original_file" "$original_dir/$new_basename"
+	# Perform the rename within the original directory
+	mv -v "$original_file" "$original_dir/$new_basename"
 done
 
 echo "Renaming complete!"
