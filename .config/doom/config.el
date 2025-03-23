@@ -86,12 +86,15 @@
 ;; SuperCollider
 (add-to-list 'load-path "~/.local/share/SuperCollider/downloaded-quarks/scel/el")
 (require 'sclang)
+(require 'w3m)
 
 (after! evil
   (define-key evil-insert-state-map (kbd "ESC") 'evil-escape))
 
 ;; Scrolloff
 (setq! scroll-margin 7)
+
+;; Auto-format on save
 
 ;; Hide some annoying warnings
 (require 'warnings)
@@ -143,6 +146,7 @@
               ("C-S-TAB" . copilot-accept-completion-by-word)
               ("C-S-j" . copilot-next-completion)
               ("C-S-k" . copilot-previous-completion)))
+
 (defun insert-time-stamp ()
   (interactive)
   (insert (format-time-string "%Y-%m-%d %H:%M ")))

@@ -50,6 +50,7 @@
 (package! doom-snippets)
 (package! latex-preview-pane)
 (package! titlecase)
+(package! systemd)
 
 ;; (when (package! lsp-bridge
 ;;         :recipe (:host github
@@ -73,3 +74,5 @@
 ;; installed from melpa instead of github
 ;; (package! copilot-chat
 ;;   :recipe (:host github :repo "chep/copilot-chat.el" :files ("*.el")))
+
+(package! w3m)

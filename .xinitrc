@@ -25,7 +25,6 @@ xautolock -time 3 -locker idlescript &
 task export >~/.local/share/flex/tasklist.json &
 historybackup &
 /usr/bin/emacs --daemon &
-# startunison
 # # rfkill unblock bluetooth &
 exec ~/.local/bin/dwmstart
 # # export DESKTOP_SESSION=plasma
