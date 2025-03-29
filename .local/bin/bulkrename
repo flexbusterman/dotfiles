@@ -19,7 +19,7 @@ for file in "$@"; do
 done
 
 # Open the basenames in nvim for editing
-$EDITOR "$tmpfile"
+nvim "$tmpfile"
 
 # Read new basenames from the temporary file
 mapfile -t new_basenames <"$tmpfile"

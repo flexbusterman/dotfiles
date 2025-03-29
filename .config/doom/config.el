@@ -214,3 +214,9 @@ Works on whole buffer or selection, respects `narrow-to-region'."
 ;; Hide items that are scheduled in the future from the agenda
 (setq! org-agenda-todo-ignore-scheduled 'future)
 (setq! org-agenda-tags-todo-honor-ignore-options t)
+
+;; Define keybinding for custom agenda command
+(map! :leader
+      :prefix ("o a" . "Org Agenda")
+      :desc "TODO Agenda" "t" #'(lambda () (interactive) (org-agenda nil "t")))
+

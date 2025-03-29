@@ -20,6 +20,7 @@ return { -- Highlight, edit, and navigate code
 				"vim",
 				"vimdoc",
 			},
+			ignore_install = { "org" },
 			-- Autoinstall languages that are not installed
 			auto_install = true,
 			highlight = { enable = true },

@@ -22,9 +22,9 @@ tmux new-session -d -s main &
 # kitty -e tmux attach-session -t main &
 sxhkd &
 xautolock -time 3 -locker idlescript &
-task export >~/.local/share/flex/tasklist.json &
+# task export >~/.local/share/flex/tasklist.json &
 historybackup &
-/usr/bin/emacs --daemon &
+# /usr/bin/emacs --daemon &
 # # rfkill unblock bluetooth &
 exec ~/.local/bin/dwmstart
 # # export DESKTOP_SESSION=plasma

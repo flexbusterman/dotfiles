@@ -4,7 +4,7 @@
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#666f98"
 export QT_QPA_PLATFORMTHEME="qt5ct"
 export BROWSER=qutebrowser
-export EDITOR="emacsclient -c"
+export EDITOR="nvim"
 # export HEADPHONES='2C:BE:EB:D6:A1:5D'
 export HEADPHONES='3C:B0:ED:BD:8B:3F'
 export MANPAGER="nvim +Man!"
