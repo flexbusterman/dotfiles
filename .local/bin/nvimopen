@@ -1,0 +1,11 @@
+#!/bin/bash
+
+if [ $1 ]; then
+	cd "$(dirname $1)"
+fi
+
+if [ -d "$1" ] || [ $# -eq 0 ]; then
+	command nvim -c "NvimTreeOpen"
+else
+	command nvim "$1"
+fi

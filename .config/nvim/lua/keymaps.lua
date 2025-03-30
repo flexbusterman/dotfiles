@@ -63,3 +63,12 @@ vim.keymap.set("n", "}", "}w", { desc = "Better jumping to next paragraph" })
 -- 	vim.cmd(":v/./,/./-1join")
 -- 	vim.fn.winrestview(curview)
 -- end)
+
+vim.keymap.set("n", "<Leader>oat", function()
+	vim.cmd("OrgAgenda")
+	vim.cmd("only")
+end, {
+	desc = "Open Org Agenda in a full window",
+	noremap = true,
+	silent = true,
+})

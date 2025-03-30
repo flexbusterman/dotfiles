@@ -1,6 +1,7 @@
 return {
 	"github/copilot.vim",
 	config = function()
+		vim.g.copilot_enabled = false
 		vim.keymap.set("i", "<c- >", 'copilot#Accept("\\<CR>")', {
 			expr = true,
 			replace_keycodes = false,
@@ -10,7 +11,6 @@ return {
 		vim.keymap.set("n", "<c- >", "<Plug>(copilot-suggest)")
 		vim.g.copilot_no_tab_map = true
 		vim.g.copilot_filetypes = {
-			org = false,
 			supercollider = false,
 			taskedit = false,
 			vimwiki = false,
