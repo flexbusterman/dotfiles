@@ -186,9 +186,10 @@ ssh() {
 # fi
 }
 
-man() {
-    emacsclient -nw -e '(man "'"$1"'")'
-}
+# Command to open man files in emacs
+# man() {
+#     emacsclient -nw -e '(man "'"$1"'")'
+# }
 
 # history
 HISTSIZE=10000000
