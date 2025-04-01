@@ -164,7 +164,7 @@ mpd_music_dir = /home/flex/Music
 #
 ## Defines how long messages are supposed to be visible.
 ##
-#message_delay_time = 5
+message_delay_time = 1
 #
 ##### song format #####
 ##
@@ -401,7 +401,7 @@ user_interface = alternative
 #statusbar_visibility = yes
 #
 ## Show the "Connected to ..." message on startup
-#connected_message_on_startup = yes
+connected_message_on_startup = no
 #
 #titles_visibility = yes
 #
