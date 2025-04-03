@@ -145,6 +145,7 @@ return { -- LSP Configuration & Plugins
 						"css",
 						"eruby",
 						"html",
+						"java",
 						"javascript",
 						"javascriptreact",
 						"less",
