@@ -1,0 +1,82 @@
+#!/bin/python3
+import csv
+import sys
+
+def convert_google_contacts_to_abook(csv_file, abook_file, max_contacts=None):
+    with open(csv_file, mode='r', encoding='utf-8') as infile, open(abook_file, mode='w', encoding='utf-8') as outfile:
+        reader = csv.DictReader(infile)
+        outfile.write("[format]\nprogram=abook\nversion=0.6.0\n\n")
+
+        count = 0
+        for row in reader:
+            if max_contacts is not None and count >= max_contacts:
+                break
+
+            name = f"{row.get('First Name', '').strip()} {row.get('Middle Name', '').strip()} {row.get('Last Name', '').strip()}".strip()
+            email = row.get('E-mail 1 - Value', '')
+            phone = row.get('Phone 1 - Value', '')
+            workphone = row.get('Phone 2 - Value', '')
+            mobile = row.get('Phone 3 - Value', '')
+            fax = row.get('Phone 4 - Value', '')
+            address = row.get('Address 1 - Street', '')
+            address2 = row.get('Address 2 - Street', '')
+            city = row.get('Address 1 - City', '')
+            state = row.get('Address 1 - Region', '')
+            zip_code = row.get('Address 1 - Postal Code', '')
+            country = row.get('Address 1 - Country', '')
+            url = row.get('Website 1 - Value', '')
+            notes = row.get('Notes', '')
+            anniversary = row.get('Birthday', '')
+            groups = row.get('Labels', '')
+            custom1 = row.get('Custom Field 1 - Value', '')
+            custom2 = row.get('Custom Field 2 - Value', '')
+            custom3 = row.get('Custom Field 3 - Value', '')
+            custom4 = row.get('Custom Field 4 - Value', '')
+            custom5 = row.get('Custom Field 5 - Value', '')
+
+            print(f"Processing contact {count + 1}: {name}")
+            outfile.write(f"[{count + 1}]\n")
+            outfile.write(f"name={name}\n")
+            outfile.write(f"email={email}\n")
+            outfile.write(f"address={address}\n")
+            outfile.write(f"address2={address2}\n")
+            outfile.write(f"city={city}\n")
+            outfile.write(f"state={state}\n")
+            outfile.write(f"zip={zip_code}\n")
+            outfile.write(f"country={country}\n")
+            outfile.write(f"phone={phone}\n")
+            outfile.write(f"workphone={workphone}\n")
+            outfile.write(f"fax={fax}\n")
+            outfile.write(f"mobile={mobile}\n")
+            outfile.write(f"url={url}\n")
+            outfile.write(f"notes={notes}\n")
+            outfile.write(f"anniversary={anniversary}\n")
+            outfile.write(f"groups={groups}\n")
+            outfile.write(f"custom1={custom1}\n")
+            outfile.write(f"custom2={custom2}\n")
+            outfile.write(f"custom3={custom3}\n")
+            outfile.write(f"custom4={custom4}\n")
+            outfile.write(f"custom5={custom5}\n")
+            outfile.write("\n")
+
+            count += 1
+
+        print(f"Conversion complete. {count} contacts were processed.")
+        print(f"Abook addressbook saved to {abook_file}")
+
+if __name__ == "__main__":
+    if len(sys.argv) != 2:
+        print("Usage: python google_contacts_to_abook.py <path_to_google_contacts_csv>")
+        sys.exit(1)
+
+    google_contacts_csv = sys.argv[1]
+    abook_output_file = 'addressbook.abook'
+
+    user_input = input("Do you want to convert all contacts? (yes/no): ").strip().lower()
+    if user_input == 'no':
+        max_contacts = int(input("How many contacts do you want to convert?: ").strip())
+    else:
+        max_contacts = None
+
+    print(f"Starting conversion from {google_contacts_csv} to {abook_output_file}")
+    convert_google_contacts_to_abook(google_contacts_csv, abook_output_file, max_contacts)
