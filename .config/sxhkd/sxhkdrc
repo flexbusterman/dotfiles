@@ -172,17 +172,17 @@ super + shift + n
 # shift + control + n
 # notify-send "shift + control + n"
 
-super + o
+super + shift + o
 	notify-send -t 15000 "$(oblique)"
 # # Orgmode shortcuts
-# super + o; a; a;
-# 	orgmux -a # tmux orgmode agenda
-# super + o; a; t;
-# 	orgmux -t # tmux orgmode todo
-# super + o; a; c;
-# 	orgmux -c # tmux orgmode capture
-# super + o; a; r;
-# 	orgmux -r # tmux orgmode open refile
+super + o; a; a;
+	orgmux -a # tmux orgmode agenda
+super + o; a; t;
+	orgmux -t # tmux orgmode todo
+super + o; a; c;
+	orgmux -c # tmux orgmode capture
+super + o; a; r;
+	orgmux -r # tmux orgmode open refile
 # # super + shift + o
 # # notify-send "super + shift + o"
 
@@ -196,7 +196,7 @@ super + control + o
 # notify-send "shift + control + o"
 
 super + p
-	prependclipboard ~/Dropbox/ORGMODE/refile.org
+	prependclipboard ~/ORGMODE/refile.org
 super + shift + p
 	passmenu
 # super + control + p
@@ -385,6 +385,7 @@ super + shift + equal
 
 super + grave
 	$TERMINAL -T vit -e vit
+	# $TERMINAL -T vit -e vit
 
 super + shift + grave
 	dmenuunicode

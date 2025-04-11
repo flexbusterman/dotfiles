@@ -56,7 +56,7 @@ alias rf='rm -rf'
 alias grep='grep --color=auto'
 alias q=exit
 alias pg="ping google.com"
-alias nvim="~/.local/bin/nvimopen"
+# alias nvim="~/.local/bin/nvimopen"
 
 # nvim edit shortcuts
 alias vb="cd ~; nvim .bashrc"
