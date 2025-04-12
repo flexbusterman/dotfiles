@@ -1,0 +1,14 @@
+#!/bin/bash
+unset string
+string=$(rg ":nextlong:" ~/ORGMODE/ | head -n 1)
+# Removing everything before the first colon
+string="${string#*:}"
+# Remove everything after the first colon
+string="${string%%:*}"
+# Remove everything before the first *
+string="${string#\*}"
+# Trim whitespace from start
+string="${string# }"
+# Trim whitespace from end
+string="${string% }"
+echo "$string"

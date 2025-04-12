@@ -28,7 +28,7 @@ return {
 				org_priority_lowest = "F",
 				org_capture_templates = { t = { description = "Task", template = "* TODO %?\n  SCHEDULED: %t" } },
 				-- org_todo_keywords = { "TODO", "NEXT", "LEARN", "|", "DONE" },
-				org_todo_keywords = { "TODO", "LONG", "|", "DONE" },
+				org_todo_keywords = { "TODO", "|", "DONE" },
 				-- mappings = {
 				-- 	agenda = {
 				-- 		org_agenda_todo = false,
