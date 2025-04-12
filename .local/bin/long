@@ -1,4 +1,5 @@
 #!/bin/bash
+shopt -s extglob
 unset string
 string=$(rg ":nextlong:" ~/ORGMODE/ | head -n 1)
 # Removing everything before the first colon
@@ -9,6 +10,6 @@ string="${string%%:*}"
 string="${string#\*}"
 # Trim whitespace from start
 string="${string# }"
-# Trim whitespace from end
-string="${string% }"
+# Trim whitespace from end (needs extended globbing to match multiple spaces)
+string="${string%%+( )}"
 echo "$string"
