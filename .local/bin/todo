@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 # rg "TODO.*\[#([A-Z])\]" ~/Dropbox/ORGMODE/ | sort -t'#' -k2.1,2.1
 # rg "TODO.*\[#([A-Z])\]" ~/Dropbox/ORGMODE/ | sort -t'#' -k2.1,2.1 | sed -E 's|^.*/([^/]+\.org):.*(\[#([A-Z])\].*)|\1 \2|'
-rg "TODO.*\[#([A-Z])\]" ~/ORGMODE/ | sort -t'#' -k2.1,2.1 | head -n 1 | sed -E 's|.*\[#([A-Z])\] ||'
+rg "TODO.*\[#([A-Z])\]" ~/ORGMODE/ | sort -t'#' -k2.1,2.1 | head -n 1 | sed -E -e 's|.*\[#([A-Z])\] ||' -e 's/\s+:.*//'
