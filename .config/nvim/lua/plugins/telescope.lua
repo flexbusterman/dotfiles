@@ -4,6 +4,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
 	branch = "0.1.x",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
+		"benfowler/telescope-luasnip.nvim",
 		{ -- If encountering errors, see telescope-fzf-native README for install instructions
 			"nvim-telescope/telescope-fzf-native.nvim",
 
@@ -66,6 +67,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
 		-- Enable telescope extensions, if they are installed
 		pcall(require("telescope").load_extension, "fzf")
 		pcall(require("telescope").load_extension, "ui-select")
+		pcall(require("telescope").load_extension, "luasnip")
 
 		-- See `:help telescope.builtin`
 		local builtin = require("telescope.builtin")
