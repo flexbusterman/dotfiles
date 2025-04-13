@@ -72,3 +72,5 @@ vim.keymap.set("n", "}", "}w", { desc = "Better jumping to next paragraph" })
 -- 	noremap = true,
 -- 	silent = true,
 -- })
+
+vim.keymap.set("n", "<A-x>", ":silent .w !bash -e &<CR>", { desc = "Execute current line using bash" })
