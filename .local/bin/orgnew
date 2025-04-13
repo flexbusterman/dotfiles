@@ -1,0 +1,14 @@
+#!/bin/bash
+if [[ -d $HOME/ORGMODE/ ]]; then
+	# echo "Orgmode folder exists"
+	cd $HOME/ORGMODE/
+else
+	echo "Folder $HOME/ORGMODE/ doesn't exist. Create it?"
+	read -n 1 -s createOrgmodeFolder
+	[ $createOrgmodeFolder == "y" ] && mkdir -p $HOME/ORGMODE/ && cd $HOME/ORGMODE/ || exit 1
+fi
+
+# The colon can be used as true, so no items are needed for input to dmenu
+name=$(: | dmenu -p "Enter filename (excluding .org): ")
+path="$HOME/ORGMODE/$name.org"
+$TERMINAL -e nvim $path
