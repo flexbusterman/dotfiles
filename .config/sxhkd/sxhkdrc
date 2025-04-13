@@ -49,7 +49,7 @@ super + shift + control + d
 # notify-send "shift + control + d"
 
 super + e
-	tmuxaerc
+	$TERMINAL -e aerc
 	# pgrep emacs || emacs -daemon; kitty -e emacsclient -c
 	# gaminginputtoggle
 super + shift + e
@@ -251,7 +251,7 @@ super + t
 super + shift + t
 	$TERMINAL -e nvtop
 super + control + t
-	$TERMINAL -e vit
+	# $TERMINAL -e vit
 # notify-send "super + control + t"
 super + shift + control + t
 	$TERMINAL -e tt -theme dracula
@@ -384,7 +384,7 @@ super + shift + equal
 	calculate
 
 super + grave
-	$TERMINAL -T vit -e vit
+nofity-send "super + grave"
 	# $TERMINAL -T vit -e vit
 
 super + shift + grave
