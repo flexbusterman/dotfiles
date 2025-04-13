@@ -9,5 +9,6 @@ local snippets = {
 	s({ trig = "im", name = "CSS important" }, { t("!important") }),
 	s({ trig = "hc", name = "HTML comment" }, { t("<!-- "), i(1), t(" -->") }),
 	s({ trig = "php", name = "PHP Mode" }, { t("<?php "), i(1), t("; ?>") }),
+	s({ trig = "checkbox", name = "Checkbox" }, { t("- [ ] ") }),
 }
 return snippets

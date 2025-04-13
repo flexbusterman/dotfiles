@@ -235,9 +235,9 @@ super + shift + control + r
 # shift + control + r
 # notify-send "shift + control + r"
 
-super + s
+super + control + s
 	$TERMINAL -T SuperCollider -e tmuxsession SuperCollider 'supercollider'
-super + shift + s
+super + control + shift + s
 	killsupercollider
 
 # super + control + s

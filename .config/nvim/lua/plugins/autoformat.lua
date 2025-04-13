@@ -45,6 +45,9 @@ return { -- Autoformat
 			markdown = {
 				"prettier",
 			},
+			c = {
+				"clang-format",
+			},
 			python = {
 				-- "isort",
 				-- "black",

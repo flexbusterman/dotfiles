@@ -39,7 +39,7 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufNewFile" }, {
 	end,
 })
 
-local FlexGroup = vim.api.nvim_create_augroup("Flex", {})
+local FlexGroup = vim.api.nvim_create_augroup("Flex", { clear = true })
 
 -- vim.api.nvim_create_autocmd({
 -- 	"InsertLeave",
@@ -58,11 +58,13 @@ vim.api.nvim_create_autocmd({
 })
 
 vim.api.nvim_create_autocmd({ "BufEnter", "BufNewFile" }, {
+	group = FlexGroup,
 	pattern = ".env*",
 	command = "set filetype=sh.env",
 })
 
 vim.api.nvim_create_autocmd({ "BufEnter", "BufNewFile" }, {
+	group = FlexGroup,
 	pattern = "*",
 	callback = function()
 		vim.cmd("set formatoptions-=cro")
@@ -96,10 +98,22 @@ vim.api.nvim_create_autocmd({
 	end,
 })
 
--- vim.api.nvim_create_autocmd({
--- 	"Autocompile",
--- }, {
--- 	group = FlexGroup,
--- 	pattern = "c",
--- 	command = "nnoremap <F4> :w <bar> exec '!gcc '.shellescape('%').' -o '.shellescape('%:r').' && ./'.shellescape('%:r')<CR>",
--- })
+-- autocmd filetype c nnoremap <F4> :w <bar> exec '!gcc '.shellescape('%').' -o '.shellescape('%:r').' && ./'.shellescape('%:r')<CR>
+
+vim.api.nvim_create_autocmd({
+	"BufWritePost",
+}, {
+	group = FlexGroup,
+	pattern = "*.c",
+	callback = function()
+		vim.fn.jobstart({
+			"gcc",
+			vim.fn.expand("%"),
+		})
+		-- vim.fn.jobstart({
+		-- 	"kitty",
+		-- 	"-e",
+		-- 	vim.fn.expand("%:p"),
+		-- })
+	end,
+})

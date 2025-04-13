@@ -10,8 +10,5 @@ local snippets = {
 		i(2, ""),
 		t({ "", "#+END_SRC" }),
 	}),
-	s({ trig = "checkbox", name = "Checkbox" }, {
-		t("- [ ] "),
-	}),
 }
 return snippets
