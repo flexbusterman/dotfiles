@@ -25,7 +25,7 @@ super + shift + control + b
 # shift + control + b
 # notify-send "shift + control + b"
 
-super + c
+super + control + c
 	reaperconnect; supercolliderttsconnect;
 super + shift + c
 	calendar
@@ -220,7 +220,7 @@ super + shift + q
 # shift + control + q
 # notify-send "shift + control + q"
 
-super + r
+super + control + r
 	reaper
 super + shift + r
 	pkill -usr1 -x sxhkd && notify-send 'Reloaded sxhkd config' || pkill -usr1 -x sxhkd && notify-send 'Reloaded sxhkd config'
