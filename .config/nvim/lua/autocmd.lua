@@ -95,3 +95,11 @@ vim.api.nvim_create_autocmd({
 		vim.api.nvim_win_set_cursor(0, save_cursor)
 	end,
 })
+
+-- vim.api.nvim_create_autocmd({
+-- 	"Autocompile",
+-- }, {
+-- 	group = FlexGroup,
+-- 	pattern = "c",
+-- 	command = "nnoremap <F4> :w <bar> exec '!gcc '.shellescape('%').' -o '.shellescape('%:r').' && ./'.shellescape('%:r')<CR>",
+-- })
