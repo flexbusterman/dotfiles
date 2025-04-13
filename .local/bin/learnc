@@ -4,7 +4,7 @@
 day=$(: | dmenu -p "Enter day number: ")
 
 # Open learning material
-athura "$HOME/Dropbox/PDF/Computing/Sams Teach Yourself C in 21 Days.pdf" &
+zathura "$HOME/Dropbox/PDF/Computing/Sams Teach Yourself C in 21 Days.pdf" &
 
 # start tmux session
 $TERMINAL -e tmux new-session -A -s LearnC &
