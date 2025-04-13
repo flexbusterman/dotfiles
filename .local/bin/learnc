@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# get the day number from the user
+day=$(: | dmenu -p "Enter day number: ")
+
+# Open learning material
+athura "$HOME/Dropbox/PDF/Computing/Sams Teach Yourself C in 21 Days.pdf" &
+
+# start tmux session
+$TERMINAL -e tmux new-session -A -s LearnC &
+
+# allow some time for the tmux session and zsh to start properly
+sleep 2
+
+# Start nvim in top split
+tmux split-window -v -t LearnC
+tmux send-keys -t LearnC.0 nvim Space $HOME/.local/src/samsteachyourselfc/$day.c Enter
+# Watch the compiled file in the bottom split
+tmux send-keys -t LearnC.1 watch Space -n Space 1 Space $HOME/.local/src/samsteachyourselfc/$day.out Enter

@@ -109,6 +109,8 @@ vim.api.nvim_create_autocmd({
 		vim.fn.jobstart({
 			"gcc",
 			vim.fn.expand("%"),
+			"-o",
+			vim.fn.expand("%:r") .. ".out",
 		})
 		-- vim.fn.jobstart({
 		-- 	"kitty",
