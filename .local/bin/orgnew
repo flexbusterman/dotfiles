@@ -10,5 +10,11 @@ fi
 
 # The colon can be used as true, so no items are needed for input to dmenu
 name=$(: | dmenu -p "Enter filename (excluding .org): ")
+
+if [[ -z $name ]]; then
+	echo "No filename given. Exiting."
+	exit 1
+fi
+
 path="$HOME/ORGMODE/$name.org"
 $TERMINAL -e nvim $path

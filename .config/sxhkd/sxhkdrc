@@ -183,6 +183,8 @@ super + o; a; c;
 	orgmux -c # tmux orgmode capture
 super + o; a; r;
 	orgmux -r # tmux orgmode open refile
+super + o; n;
+	orgnew
 # # super + shift + o
 # # notify-send "super + shift + o"
 
