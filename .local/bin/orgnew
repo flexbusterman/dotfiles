@@ -17,4 +17,6 @@ if [[ -z $name ]]; then
 fi
 
 path="$HOME/ORGMODE/$name.org"
-$TERMINAL -e nvim $path
+# $TERMINAL -e nvim $path
+pgrep emacs || emacs -daemon
+$TERMINAL -e emacsclient -c -nw "$path"

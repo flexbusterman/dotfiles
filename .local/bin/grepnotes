@@ -5,22 +5,24 @@ delimiter=$'\x1F'
 
 # Use fzf to search through file contents
 selected=$(find ~/Dropbox/ORGMODE -type f -print0 |
-           xargs -0 awk -v OFS="$delimiter" '{print FILENAME, FNR, $0}' |
-           sed 's|.*/ORGMODE/||' |
-           awk -F "$delimiter" '{print $1 ":" $2 ":	" $3}' |
-           fzf --delimiter ':' --with-nth 1,2,3)
+	xargs -0 awk -v OFS="$delimiter" '{print FILENAME, FNR, $0}' |
+	sed 's|.*/ORGMODE/||' |
+	awk -F "$delimiter" '{print $1 ":" $2 ":	" $3}' |
+	fzf --delimiter ':' --with-nth 1,2,3)
 
 # Extract filename, line number, and content from the selection
 if [ -n "$selected" ]; then
-    file=$(echo "$selected" | cut -d':' -f1)
-    linenumber=$(echo "$selected" | cut -d':' -f3)
-    content=$(echo "$selected" | cut -d':' -f5-)
+	file=$(echo "$selected" | cut -d':' -f1)
+	linenumber=$(echo "$selected" | cut -d':' -f3)
+	content=$(echo "$selected" | cut -d':' -f5-)
 
-    # Reconstruct full path
-    full_path="$HOME/Dropbox/ORGMODE/$file"
+	# Reconstruct full path
+	full_path="$HOME/Dropbox/ORGMODE/$file"
 
-    # Open the file in Neovim at the selected line
-    nvim +"$linenumber" "$full_path"
+	# Open the file in Neovim at the selected line
+	# nvim +"$linenumber" "$full_path"
+	pgrep emacs || emacs -daemon
+	emacsclient -c -nw "$full_path:linenumber"
 else
-    echo "No selection made."
+	echo "No selection made."
 fi
