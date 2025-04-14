@@ -356,9 +356,9 @@ super + control + space
 	musicplaypause
 
 super + comma
-	$TERMINAL -e ranger
-super + shift + comma
 	$TERMINAL -e yazi
+super + shift + comma
+	$TERMINAL -e ranger
 
 super + period
 	qutebrowser
