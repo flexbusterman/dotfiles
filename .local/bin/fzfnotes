@@ -4,8 +4,7 @@ cd ~/ORGMODE/
 file="$(fzf)"
 if [[ $file ]]; then
 	# nvim "$file"
-	pgrep emacs || emacs -daemon
-	emacsclient -c -nw "$file"
+	emacsclient --alternate-editor="" -c -nw "$file"
 else
 	# notify-send "nothing selected, exiting"
 	exit 1
