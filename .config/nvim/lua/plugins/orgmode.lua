@@ -35,6 +35,55 @@ return {
 				-- 	},
 				-- },
 			})
+			local function create_sub_header()
+				-- Get the current cursor position
+				local current_line = vim.fn.line(".")
+				local total_lines = vim.fn.line("$")
+
+				-- Search upwards for the first header line
+				local header_line = nil
+				local level = 0
+				for i = current_line, 1, -1 do
+					local line_content = vim.fn.getline(i)
+					local stars = line_content:match("^(%*+)%s")
+					if stars then
+						header_line = i
+						level = #stars
+						break
+					end
+				end
+
+				if not header_line then
+					print("No header found above the current line")
+					return
+				end
+
+				-- Find the last line of the current header block
+				local end_of_block = header_line
+				for i = header_line + 1, total_lines do
+					local line_content = vim.fn.getline(i)
+					if line_content:match("^%*+%s") then
+						break
+					end
+					end_of_block = i
+				end
+
+				-- Insert the sub-header after the current block with a space after the asterisks
+				local new_header = string.rep("*", level + 1) .. " "
+				vim.fn.append(end_of_block, new_header)
+
+				-- Move the cursor to the new sub-header line and enter insert mode
+				vim.fn.cursor(end_of_block + 1, 1)
+				vim.api.nvim_feedkeys("A", "n", true)
+			end
+
+			-- Bind the function to <leader>oiH
+			vim.api.nvim_set_keymap("n", "<leader>oiH", "", {
+				noremap = true,
+				silent = true,
+				callback = create_sub_header,
+				desc = "Insert a sub-header below the current content block",
+			})
 		end,
 	},
 	{
