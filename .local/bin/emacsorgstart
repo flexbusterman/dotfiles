@@ -1,0 +1,26 @@
+#!/bin/bash
+
+while getopts 'atcr' flag; do
+	case "${flag}" in
+		a) # Orgmode agenda
+			echo "flag is -a"
+			# tmux send-keys -t orgmode Escape Space "oaa"
+			;;
+		t) # Orgmode agenda TODO list
+			# echo "flag is -t"
+			emacsclient --alternate-editor="" -c -e "(org-agenda nil \"t\")"
+			# tmux send-keys -t orgmode Escape Space "oat"
+			;;
+		c)
+			# tmux send-keys -t orgmode Escape Space "oct"
+			echo "flag is -c"
+			;;
+		r)
+			# tmux send-keys -t orgmode Escape ":e ~/ORGMODE/refile.org" Enter
+			echo "flag is -r"
+			;;
+		*)
+			echo "other flags"
+			# 	exit 1 ;;
+		esac
+	done
