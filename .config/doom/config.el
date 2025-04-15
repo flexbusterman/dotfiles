@@ -205,8 +205,9 @@ Works on whole buffer or selection, respects `narrow-to-region'."
 (setq! org-priority-default ?C)
 (setq! org-priority-lowest ?F)
 
-;; Starts org-mode folded
-(setq! org-hide-block-startup 1)
+;; ;; Starts org-mode folded
+;; (setq! org-hide-block-startup 1)
+(setq org-startup-folded 'fold)
 
 ;; Enters timestamp when a task is marked as done
 (setq! org-log-done 'time)

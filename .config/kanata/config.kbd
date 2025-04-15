@@ -14,7 +14,7 @@
 
 (defvar
   tap-time 50 ;; Number of milliseconds for the window that a tap into re-press with hold results in the $tap-action being held
-  hold-time 150 ;; Number of milliseconds after which the $hold-action activates. Releasing the key before this elapses results in $tap-action activating.
+  hold-time 200 ;; Number of milliseconds after which the $hold-action activates. Releasing the key before this elapses results in $tap-action activating.
 )
 
 (defalias
