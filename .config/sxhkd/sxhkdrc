@@ -377,7 +377,7 @@ super + shift + slash
 super + backslash
 	keymouse
 # super + shift + backslash
-# 	nofity-send "keynav goes here"
+# 	notify-send "keynav goes here"
 
 super + semicolon
 	clipstream
@@ -390,7 +390,9 @@ super + shift + equal
 	calculate
 
 super + grave
-nofity-send "super + grave"
+	$TERMINAL -e emacsorgstart -t
+
+	# notify-send "super + grave"
 	# $TERMINAL -T vit -e vit
 
 super + shift + grave
