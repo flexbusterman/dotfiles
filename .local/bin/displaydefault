@@ -13,7 +13,7 @@ if [ "$num_displays" -eq 2 ]; then
 	external_display=${displays[1]}
 
 	# Configure displays: external as primary, internal as secondary
-	xrandr --output "$internal_display" --primary --auto --output "$external_display" --auto --left-of "$internal_display"
+	xrandr --output "$internal_display" --primary --auto --output "$external_display" --auto --right-of "$internal_display"
 
 	echo "Two displays detected. Configured $external_display as primary and $internal_display as secondary."
 elif [ "$num_displays" -eq 1 ]; then
