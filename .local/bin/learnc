@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # get the day number from the user
-day=$(: | dmenu -p "Enter day number: ")
+day=$(: | dmenu -p "Enter file number: ")
 
 # Open learning material
 zathura "$HOME/Dropbox/PDF/Computing/Sams Teach Yourself C in 21 Days.pdf" &
@@ -18,3 +18,4 @@ tmux send-keys -t LearnC.0 nvim Space $HOME/.local/src/samsteachyourselfc/$day.c
 # Watch the compiled file in the bottom split
 tmux send-keys -t LearnC.1 cd Space $HOME/.local/src/samsteachyourselfc/ Enter
 tmux send-keys -t LearnC.1 watch Space -n Space 1 Space ./$day.out Enter
+tmux select-pane -t LearnC.0
