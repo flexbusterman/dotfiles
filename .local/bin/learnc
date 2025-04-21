@@ -14,8 +14,9 @@ sleep 2
 
 # Start nvim in top split
 tmux split-window -v -t LearnC
-tmux send-keys -t LearnC.0 nvim Space $HOME/.local/src/samsteachyourselfc/$day.c Enter
+tmux send-keys -t LearnC.0 cd Space $HOME/.local/src/samsteachyourselfc/ Enter
+tmux send-keys -t LearnC.0 nvim Space $day.c Enter
 # Watch the compiled file in the bottom split
 tmux send-keys -t LearnC.1 cd Space $HOME/.local/src/samsteachyourselfc/ Enter
-tmux send-keys -t LearnC.1 watch Space -n Space 1 Space ./$day.out Enter
+tmux send-keys -t LearnC.1 watch Space -n Space 1 Space --no-title Space  ./$day.out Enter
 tmux select-pane -t LearnC.0

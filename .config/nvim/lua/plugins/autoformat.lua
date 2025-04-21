@@ -53,6 +53,9 @@ return { -- Autoformat
 				-- "black",
 				"pyright",
 			},
+			awk = {
+				"awk-language-server",
+			},
 			-- Conform can also run multiple formatters sequentially
 			-- python = { "isort", "black" },
 			--

@@ -221,3 +221,6 @@ Works on whole buffer or selection, respects `narrow-to-region'."
       :prefix ("o a" . "Org Agenda")
       :desc "TODO Agenda" "t" #'(lambda () (interactive) (org-agenda nil "t")))
 
+;; Bind `SPC SPC` to `+vertico/switch-workspace-buffer`
+(map! :leader
+      :desc "Switch workspace buffer" "SPC" #'+vertico/switch-workspace-buffer)
