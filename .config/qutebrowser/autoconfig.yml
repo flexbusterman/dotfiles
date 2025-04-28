@@ -33,6 +33,7 @@ settings:
   content.desktop_capture:
     https://teams.live.com: true
   content.geolocation:
+    https://alltidoppet.nu: true
     https://onsiter.com: true
     https://tinder.com: true
     https://www.1177.se: true

@@ -1,0 +1,5 @@
+#!/bin/bash
+filetype=$(file --mime-type -b "$@")
+echo "$filetype"
+notify-send "$filetype"
+echo "$filetype" | xclip -selection clipboard
