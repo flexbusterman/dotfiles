@@ -156,7 +156,7 @@
 
 (defun insert-time-stamp ()
   (interactive)
-  (insert (format-time-string "%Y-%m-%d %H:%M ")))
+  (insert (format-time-string "[%Y-%m-%d %H:%M] ")))
 
 (map! :leader
       :desc "Insert time stamp" "i t" #'insert-time-stamp)
@@ -224,3 +224,5 @@ Works on whole buffer or selection, respects `narrow-to-region'."
 ;; Bind `SPC SPC` to `+vertico/switch-workspace-buffer`
 (map! :leader
       :desc "Switch workspace buffer" "SPC" #'+vertico/switch-workspace-buffer)
+
+(setq org-time-stamp-rounding-minutes '(0 1)) ;; Always include time
