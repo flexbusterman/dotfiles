@@ -1,3 +1,5 @@
+set autocalc
+
 # nmap "q" ":quit"
 
 # color "type=HEADINGS fg=WHITE bg=DEFAULT_COLOR bold=0 dim=0 standout=0 reverse=0"
