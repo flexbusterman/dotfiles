@@ -226,3 +226,6 @@ Works on whole buffer or selection, respects `narrow-to-region'."
       :desc "Switch workspace buffer" "SPC" #'+vertico/switch-workspace-buffer)
 
 (setq org-time-stamp-rounding-minutes '(0 1)) ;; Always include time
+
+(setq browse-url-browser-function 'browse-url-generic
+      browse-url-generic-program "qutebrowser")
