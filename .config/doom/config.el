@@ -229,3 +229,7 @@ Works on whole buffer or selection, respects `narrow-to-region'."
 
 (setq browse-url-browser-function 'browse-url-generic
       browse-url-generic-program "qutebrowser")
+
+;; consult-ripgrep using leader s g
+(map! :leader
+      :desc "Search with ripgrep" "s g" #'consult-ripgrep)

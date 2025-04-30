@@ -16,6 +16,9 @@ audio/*)
 application/vnd.openxmlformats-officedocument.spreadsheetml.sheet)
 	$TERMINAL -e sc-im "$@"
 	;;
+application/vnd.oasis.opendocument.spreadsheet)
+	libreoffice "$@"
+	;;
 application/vnd.openxmlformats-officedocument.wordprocessingml.document)
 	libreoffice "$@"
 	;;
