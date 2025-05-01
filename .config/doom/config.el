@@ -233,3 +233,9 @@ Works on whole buffer or selection, respects `narrow-to-region'."
 ;; consult-ripgrep using leader s g
 (map! :leader
       :desc "Search with ripgrep" "s g" #'consult-ripgrep)
+
+(use-package! org
+  :config
+  (setq org-file-apps
+        '((auto-mode . emacs)
+          ("\\.pdf\\'" . "zathura %s"))))
