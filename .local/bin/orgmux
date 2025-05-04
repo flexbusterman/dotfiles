@@ -72,6 +72,7 @@ else
 	done
 
 	[[ "$noArgs" == "true" ]] && tmux send-keys -t orgmode C-z "cd ~/ORGMODE/; nvim refile.org" Enter
+	# [[ "$noArgs" == "true" ]] && $TERMINAL -e emacsclient -c -nw "$path"
 
 fi
 

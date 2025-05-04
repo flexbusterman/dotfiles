@@ -3,76 +3,80 @@
 filetype=$(file --mime-type -b "$@")
 notify-send $filetype
 case "$filetype" in
-image/*)
-	sxivopen "$@"
-	;;
-video/*)
-	mpv "$@"
-	;;
-audio/*)
-	mpc --host /run/user/1000/mpd/socket clear
-	musicadd "$@"
-	;;
-application/vnd.openxmlformats-officedocument.spreadsheetml.sheet)
-	$TERMINAL -e sc-im "$@"
-	;;
-application/vnd.oasis.opendocument.spreadsheet)
-	libreoffice "$@"
-	;;
-application/vnd.openxmlformats-officedocument.wordprocessingml.document)
-	libreoffice "$@"
-	;;
-application/x-sc)
-	$TERMINAL -e sc-im "$@"
-	;;
-application/x-nes-rom)
-	mednafen "$@"
-	;;
-application/x-dosexec)
-	dosbox "$@"
-	;;
-application/pdf)
-	zathura "$@"
-	;;
-application/octet-stream)
-	case "${1##*.}" in
-	doc | docx | xls | xlsx | odt | ppt | pptx)
-		libreoffice "$@"
+	image/*)
+		sxivopen "$@"
 		;;
-	ahx | hes)
+	video/*)
+		mpv "$@"
+		;;
+	audio/*)
 		mpc --host /run/user/1000/mpd/socket clear
 		musicadd "$@"
 		;;
-	7z | ace | gz | jar | rar | shar | tar | tgz | xar | xz | zip)
-		for file in "$@"; do
-			7z x -y "$file" -o"${file%.*}"
-		done
+	application/vnd.openxmlformats-officedocument.spreadsheetml.sheet)
+		$TERMINAL -e sc-im "$@"
+		;;
+	application/vnd.oasis.opendocument.spreadsheet)
+		libreoffice "$@"
+		;;
+	application/vnd.openxmlformats-officedocument.wordprocessingml.document)
+		libreoffice "$@"
+		;;
+	application/x-sc)
+		$TERMINAL -e sc-im "$@"
+		;;
+	application/x-nes-rom)
+		mednafen "$@"
+		;;
+	application/x-dosexec)
+		dosbox "$@"
+		;;
+	application/pdf)
+		zathura "$@"
+		;;
+	application/octet-stream)
+		case "${1##*.}" in
+			doc | docx | xls | xlsx | odt | ppt | pptx)
+				libreoffice "$@"
+				;;
+			ahx | hes)
+				mpc --host /run/user/1000/mpd/socket clear
+				musicadd "$@"
+				;;
+			7z | ace | gz | jar | rar | shar | tar | tgz | xar | xz | zip)
+				for file in "$@"; do
+					7z x -y "$file" -o"${file%.*}"
+				done
+				;;
+			*)
+				notify-send "${1##*.}"
+				;;
+		esac
+		;;
+	text/html)
+		qutebrowser "$@"
 		;;
 	*)
-		notify-send "${1##*.}"
+		case "${1##*.}" in
+			rpp | RPP)
+				reaper "$@"
+				;;
+			org | ORG)
+				cd ~/ORGMODE/
+				$TERMINAL -e emacsclient --alternate-editor="" -c "$@"
+				;;
+			exe | EXE)
+				wine "$@"
+				;;
+			7z | ace | gz | jar | rar | shar | tar | tgz | xar | xz | zip)
+				for file in "$@"; do
+					7z x -y "$file" -o"${file%.*}"
+				done
+				;;
+			*)
+				# start files in separate tabs in nvim
+				$TERMINAL -e $EDITOR "$@"
+				;;
+		esac
 		;;
-	esac
-	;;
-text/html)
-	qutebrowser "$@"
-	;;
-*)
-	case "${1##*.}" in
-	rpp | RPP)
-		reaper "$@"
-		;;
-	exe | EXE)
-		wine "$@"
-		;;
-	7z | ace | gz | jar | rar | shar | tar | tgz | xar | xz | zip)
-		for file in "$@"; do
-			7z x -y "$file" -o"${file%.*}"
-		done
-		;;
-	*)
-		# start files in separate tabs in nvim
-		$TERMINAL -e $EDITOR "$@"
-		;;
-	esac
-	;;
 esac
