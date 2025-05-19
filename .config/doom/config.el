@@ -35,7 +35,12 @@
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
-(setq display-line-numbers-type 'visual)
+(setq display-line-numbers 'relative
+      display-line-numbers-type 'visual
+      display-line-numbers-current-absolute t
+      display-line-numbers-width 3
+      line-move-visual t
+      display-line-numbers-widen t)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -193,6 +198,10 @@ Works on whole buffer or selection, respects `narrow-to-region'."
 ;; Global word-wrapping
 (global-visual-line-mode t)
 
+(use-package! rainbow-mode
+  :hook ((prog-mode . rainbow-mode)
+         (text-mode . rainbow-mode)))
+;;
 ;;   ___  ____   ____
 ;;  / _ \|  _ \ / ___|
 ;; | | | | |_) | |  _

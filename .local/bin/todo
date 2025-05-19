@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 
 awk '
-/^\* TODO/ {
+/^\*+ TODO/ {
     # Capture the entire TODO line
     todo_line = $0
 
     # Extract the text after "* TODO"
-    # This removes "* TODO " and any trailing space
-    sub(/^\* TODO[ \t]*/, "", todo_line)
+    # This removes "* (any count) TODO " and any trailing space
+    sub(/^\*+[ \t]+TODO[ \t]*/, "", todo_line)
 
     # Check if there is a priority marker [#X] at the start
     priority = "C"  # default priority

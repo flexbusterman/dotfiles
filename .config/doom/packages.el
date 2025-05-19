@@ -76,3 +76,4 @@
 ;;   :recipe (:host github :repo "chep/copilot-chat.el" :files ("*.el")))
 
 (package! w3m)
+(package! rainbow-mode)
