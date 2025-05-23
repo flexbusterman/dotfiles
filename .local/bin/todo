@@ -1,36 +1,36 @@
 #!/usr/bin/env bash
 
-awk '
-/^\*+ TODO/ {
-    # Capture the entire TODO line
-    todo_line = $0
+readarray -t rawtodos < <(grep -rnw "\* TODO\|\* NEXT" ~/ORGMODE)
 
-    # Extract the text after "* TODO"
-    # This removes "* (any count) TODO " and any trailing space
-    sub(/^\*+[ \t]+TODO[ \t]*/, "", todo_line)
+todoswithprio=()
+for rawtodo in "${rawtodos[@]}"; do
+	# Check if it's a NEXT item
+	if [[ "$rawtodo" == *"* NEXT "* ]]; then
+		# Remove everything up to and including '* NEXT '
+		item="$(echo "$rawtodo" | sed -E 's/.*\* NEXT //')"
+		# prepend [#1] to NEXT items to indicate highest possible prio
+		todoswithprio+=( "[#1] $item" )
+	else
+		# Remove everything up to and including '* TODO '
+		item="$(echo "$rawtodo" | sed -E 's/.*\* TODO //')"
+		# if the item has prio already...
+		if [[ "$item" =~ \[\#[A-Z]\] ]]; then
+			# ...just store the item
+		todoswithprio+=( "$item" )
+	else
+		# else add a [#C] to indicate default priority
+		todoswithprio+=( "[#C] $item" )
+		fi
+	fi
+done
 
-    # Check if there is a priority marker [#X] at the start
-    priority = "C"  # default priority
-    if (match(todo_line, /^\[#([A-Za-z])\]/, arr)) {
-        priority = arr[1]
-        # Remove the priority marker [#X] and any surrounding spaces
-        sub(/^\[#.[ \t]*\]/, "", todo_line)
-        sub(/^[ \t]+/, "", todo_line)
-    }
+IFS=$'\n' read -r -d '' -a todossorted < <(printf "%s\n" "${todoswithprio[@]}" | sort && printf '\0')
 
-    # Save just the name of the todo for later printing
-    todo_name = todo_line
+todos=()
+for todo in "${todossorted[@]}"; do
+    # Remove the priority indicator ([#A], [#B], [#1], etc.)
+    todos+=( "$(echo "$todo" | sed -E 's/\s*\[\#[A-Z1-9]\]\s*//')" )
+done
 
-    # Read the next line to check if it is a SCHEDULED date
-    getline
-    if ($1 == "SCHEDULED:" && $2 ~ /<([0-9]{4}-[0-9]{2}-[0-9]{2})/) {
-        scheduled_date = substr($2, 2, 10)
-        if (scheduled_date <= strftime("%Y-%m-%d")) {
-            print todo_name
-        }
-    } else {
-        # If there is no SCHEDULED or it does not match, print the todo name
-        print todo_name
-    }
-}
-' ~/ORGMODE/* | head -n 1 | sed 's/ \+\:.*//'
+# print the first item (which is the one with the highest priority)
+printf "%s" "${todos[0]}"
