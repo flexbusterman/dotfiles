@@ -88,9 +88,10 @@
 (add-to-list 'default-frame-alist '(alpha-background . 90)) ;; 90% opacity
 (set-face-attribute 'default nil :background "unspecified-bg") ;; Remove background color
 
-;; SuperCollider
-(add-to-list 'load-path "~/.local/share/SuperCollider/downloaded-quarks/scel/el")
-(require 'sclang)
+;; ;; SuperCollider
+;; (add-to-list 'load-path "~/.local/share/SuperCollider/downloaded-quarks/scel/el")
+;; (require 'sclang)
+
 (require 'w3m)
 
 (after! evil
@@ -201,6 +202,14 @@ Works on whole buffer or selection, respects `narrow-to-region'."
 (use-package! rainbow-mode
   :hook ((prog-mode . rainbow-mode)
          (text-mode . rainbow-mode)))
+
+(setq browse-url-browser-function 'browse-url-generic
+      browse-url-generic-program "qutebrowser")
+
+;; consult-ripgrep using leader s g
+(map! :leader
+      :desc "Search with ripgrep" "s g" #'consult-ripgrep)
+
 ;;
 ;;   ___  ____   ____
 ;;  / _ \|  _ \ / ___|
@@ -208,6 +217,12 @@ Works on whole buffer or selection, respects `narrow-to-region'."
 ;; | |_| |  _ <| |_| |
 ;;  \___/|_| \_\\____|
 ;;  org-mode settings
+
+(use-package! org
+  :config
+  (setq org-file-apps
+        '((auto-mode . emacs)
+          ("\\.pdf\\'" . "zathura %s"))))
 
 ;; F as lowest priority
 (setq! org-priority-highest ?A)
@@ -230,21 +245,13 @@ Works on whole buffer or selection, respects `narrow-to-region'."
       :prefix ("o a" . "Org Agenda")
       :desc "TODO Agenda" "t" #'(lambda () (interactive) (org-agenda nil "t")))
 
+(setq org-todo-keywords '((type "TODO" "NEXT" "|" "DONE")))
+
 ;; Bind `SPC SPC` to `+vertico/switch-workspace-buffer`
 (map! :leader
       :desc "Switch workspace buffer" "SPC" #'+vertico/switch-workspace-buffer)
 
 (setq org-time-stamp-rounding-minutes '(0 1)) ;; Always include time
 
-(setq browse-url-browser-function 'browse-url-generic
-      browse-url-generic-program "qutebrowser")
-
-;; consult-ripgrep using leader s g
-(map! :leader
-      :desc "Search with ripgrep" "s g" #'consult-ripgrep)
-
-(use-package! org
-  :config
-  (setq org-file-apps
-        '((auto-mode . emacs)
-          ("\\.pdf\\'" . "zathura %s"))))
+;; Automatically save the buffer when an Org trigger is executed
+(add-hook 'org-trigger-hook 'save-buffer)

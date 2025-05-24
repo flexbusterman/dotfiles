@@ -185,9 +185,6 @@ super + o; a; t;
 super + o; a; c;
 	$TERMINAL -e emacsorgstart -c
 	# orgmux -c # tmux orgmode capture
-super + o; a; r;
-	$TERMINAL -e emacsorgstart -r
-	# orgmux -r # tmux orgmode open refile
 super + o; n;
 	orgnew
 # # super + shift + o
