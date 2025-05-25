@@ -27,12 +27,13 @@ super + shift + control + b
 
 super + control + c
 	reaperconnect; supercolliderttsconnect;
-super + shift + c
+super + c
 	calendar
+super + shift + c
+	qutebrowser --target window calendar.google.com
 # super + control + c
 # notify-send "super + control + c"
-super + shift + control + c
-	qutebrowser --target window calendar.google.com
+# super + shift + control + c
 # notify-send "super + shift + control + c"
 # shift + control + c
 # notify-send "shift + control + c"
