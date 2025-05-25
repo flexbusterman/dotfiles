@@ -88,6 +88,11 @@
 (add-to-list 'default-frame-alist '(alpha-background . 90)) ;; 90% opacity
 (set-face-attribute 'default nil :background "unspecified-bg") ;; Remove background color
 
+(defun my/remove-bg-on-buffer-switch (&rest _)
+  (set-face-attribute 'default nil :background "unspecified-bg"))
+
+(add-hook 'window-buffer-change-functions #'my/remove-bg-on-buffer-switch)
+
 ;; ;; SuperCollider
 ;; (add-to-list 'load-path "~/.local/share/SuperCollider/downloaded-quarks/scel/el")
 ;; (require 'sclang)
