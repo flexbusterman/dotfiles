@@ -85,9 +85,9 @@ settings:
   downloads.remove_finished:
     global: 1
   fonts.default_family:
-    global: Fira Mono Medium
+    global: BigBlueTerm437 Nerd Font Mono
   fonts.default_size:
-    global: 16px
+    global: 14px
   fonts.web.family.standard:
     global: Arimo Nerd Font Regular
   hints.border:
