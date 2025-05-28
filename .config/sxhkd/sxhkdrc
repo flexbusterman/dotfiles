@@ -211,12 +211,13 @@ super + shift + control + p
 # shift + control + p
 # notify-send "shift + control + p"
 
-super + q
-	qpwgraph
+# super + q
+	# notify-send "super + q"
 super + shift + q
-	killall Xorg
+	pkill Xorg
 # notify-send "super + shift + q"
-# super + control + q
+super + control + q
+	qpwgraph
 # notify-send "super + control + q"
 # super + shift + control + q
 # notify-send "super + shift + control + q"
