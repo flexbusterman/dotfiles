@@ -24,10 +24,9 @@ sxhkd &
 xautolock -time 3 -locker idlescript &
 # task export >~/.local/share/flex/tasklist.json &
 historybackup &
-# # rfkill unblock bluetooth &
+# rfkill unblock bluetooth &
 exec ~/.local/bin/dwmstart
 # # export DESKTOP_SESSION=plasma
 # # export KDEWM=~/.local/bin/dwmstart
 # exec startplasma-x11
-# exec Hyprland
 # echo "Hello from login"

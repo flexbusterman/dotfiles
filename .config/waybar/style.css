@@ -1,10 +1,10 @@
 * {
   /* `otf-font-awesome` is required to be installed for icons */
   /* font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif; */
-  font-family:
-    Fira Mono Medium,
-    sans-serif;
-  font-size: 13px;
+  font-family: BigBlueTerm437 Nerd Font Mono;
+  /* Fira Mono Medium, */
+  /* sans-serif; */
+  font-size: 18px;
 }
 
 window#waybar {
