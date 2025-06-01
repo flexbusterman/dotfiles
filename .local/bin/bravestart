@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 STATUS=$(mullvad status | awk '{print $1}')
 if [[ $STATUS == "Connected" ]]; then
-	nohup brave --incognito --new-window "https://duckduckgo.com" &
+	nohup brave --incognito --new-window --password-store=basic "https://duckduckgo.com" &
 else
-  nohup brave --new-window "https://youtube.com/" &
+  nohup brave --new-window --password-store=basic "https://youtube.com/" &
 fi
