@@ -9,5 +9,6 @@ fi
 if [[ $answer == "yes" ]]; then
 	hyprctl dispatch exit
 else
-	notify-send "Not quitting Hyprland"
+	# notify-send "Not quitting Hyprland"
+	echo "Not quitting Hyprland"
 fi
