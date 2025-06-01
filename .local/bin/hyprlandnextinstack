@@ -1,0 +1,36 @@
+#!/bin/bash
+
+# Get the address of the currently focused window
+active_addr=$(hyprctl activewindow -j | jq -r '.address')
+if [[ -z "$active_addr" || "$active_addr" == "null" ]]; then
+  exit 1
+fi
+
+# Get all windows (clients) on the same workspace as the active window
+clients=$(hyprctl clients -j)
+ws_id=$(echo "$clients" | jq -r --arg addr "$active_addr" '.[] | select(.address == $addr) | .workspace.id')
+if [[ -z "$ws_id" || "$ws_id" == "null" ]]; then
+  exit 1
+fi
+
+# Filter windows in current workspace, sort by x then y position
+sorted=$(echo "$clients" | jq --argjson ws "$ws_id" '[ .[] | select(.workspace.id == $ws) ] | sort_by(.at[0], .at[1])')
+count=$(echo "$sorted" | jq 'length')
+
+if [[ "$count" -eq 0 ]]; then
+  exit 1
+fi
+
+# Find the index of the focused window in the sorted list
+idx=$(echo "$sorted" | jq --arg addr "$active_addr" 'map(.address) | index($addr)')
+if [[ -z "$idx" || "$idx" == "null" ]]; then
+  next_idx=0
+else
+  next_idx=$(( (idx + 1) % count ))
+fi
+
+# Focus the next window in spatial order
+next_addr=$(echo "$sorted" | jq -r ".[$next_idx].address")
+if [[ -n "$next_addr" && "$next_addr" != "null" ]]; then
+  hyprctl dispatch focuswindow address:"$next_addr"
+fi
