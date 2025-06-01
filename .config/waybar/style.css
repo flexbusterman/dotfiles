@@ -95,7 +95,6 @@ button:hover {
 #disk,
 #temperature,
 #backlight,
-#network,
 #pulseaudio,
 #wireplumber,
 #custom-media,
@@ -107,6 +106,17 @@ button:hover {
 #mpd {
   padding: 0 10px;
   color: #ffffff;
+}
+
+#network {
+  padding: 0 10px;
+  color: #ffffff;
+}
+
+#custom-networkspeed {
+  padding: 0 10px;
+  color: #ffffff;
+  background-color: rgba(0, 0, 0, 0.9);
 }
 
 #window,
@@ -212,6 +222,12 @@ label:focus {
 }
 
 #network {
+  /* background-color: #2980b9; */
+  /* background-color: rgba(41, 128, 185, 0.5); */
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+#custom {
   /* background-color: #2980b9; */
   /* background-color: rgba(41, 128, 185, 0.5); */
   background-color: rgba(0, 0, 0, 0.9);

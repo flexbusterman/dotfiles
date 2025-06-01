@@ -1,0 +1,8 @@
+#!/bin/bash
+
+SAR_OUT=$(LANG=C sar -n DEV 1 1 | awk '/Average:/ && $2 != "lo" {rx+=$5; tx+=$6} END {print int(rx), int(tx)}')
+RX_KBS=$(echo $SAR_OUT | awk '{print $1}')
+TX_KBS=$(echo $SAR_OUT | awk '{print $2}')
+NAME=$(nmcli -t -f active,ssid dev wifi | awk -F: '$1=="yes"{print $2}')
+
+echo "{\"text\": \"${NAME} ${RX_KBS} ${TX_KBS}\", \"tooltip\": \"Down: ${RX_KBS} kb/s\\nUp: ${TX_KBS} kb/s\", \"class\": \"custom-networkspeed\" }"
