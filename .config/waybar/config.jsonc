@@ -21,7 +21,7 @@
 	"modules-right": [
 		// "mpd",
 		// "idle_inhibitor",
-		"network",
+		// "network",
 		"custom/networkspeed",
 		"pulseaudio",
 		// "power-profiles-daemon",
