@@ -164,9 +164,10 @@ super + control + m
 # notify-send "shift + control + m"
 
 super + n
-	$TERMINAL -e ~/.local/bin/fzfnotes
+	notify-send "super + n"
+	# $TERMINAL -e /home/flex/.local/bin/fzfnotes
 super + shift + n
-	$TERMINAL -e ~/.local/bin/fzfgrep
+	$TERMINAL -e /home/flex/.local/bin/fzfgrep
 # super + control + n
 # notify-send "super + control + n"
 # super + shift + control + n
@@ -177,17 +178,19 @@ super + shift + n
 super + shift + o
 	notify-send -t 15000 "$(oblique)"
 # # Orgmode shortcuts
-super + o; a; a;
+
+# Doesn't work on wayland
+# super + o; a; a;
 	# orgmux -a # tmux orgmode agenda
 
-super + o; a; t;
-	$TERMINAL -e emacsorgstart -t
-	# orgmux -t # tmux orgmode todo
-super + o; a; c;
-	$TERMINAL -e emacsorgstart -c
-	# orgmux -c # tmux orgmode capture
-super + o; n;
-	orgnew
+# super + o; a; t;
+# 	$TERMINAL -e emacsorgstart -t
+# 	# orgmux -t # tmux orgmode todo
+# super + o; a; c;
+# 	$TERMINAL -e emacsorgstart -c
+# 	# orgmux -c # tmux orgmode capture
+# super + o; n;
+# 	orgnew
 # # super + shift + o
 # # notify-send "super + shift + o"
 

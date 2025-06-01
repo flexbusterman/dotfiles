@@ -215,6 +215,13 @@ Works on whole buffer or selection, respects `narrow-to-region'."
 (map! :leader
       :desc "Search with ripgrep" "s g" #'consult-ripgrep)
 
+(use-package! xclip
+  :config
+  (setq xclip-program "wl-copy")
+  (setq xclip-select-enable-clipboard t)
+  (setq xclip-mode t)
+  (setq xclip-method (quote wl-copy)))
+
 ;;
 ;;   ___  ____   ____
 ;;  / _ \|  _ \ / ___|

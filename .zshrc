@@ -105,7 +105,7 @@ alias ed="cd ~/.local/src/dwm/; emacsclient -c config.def.h"
 # script shortcuts
 alias fn="fzfnotes"
 
-alias copy="xclip -sel clip"
+alias copy="wl-copy"
 
 # navigation
 alias d='cd ~/Dropbox/'
