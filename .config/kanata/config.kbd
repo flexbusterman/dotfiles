@@ -27,12 +27,12 @@
 	k (tap-hold $tap-time $hold-time k rsft)
 	l (tap-hold $tap-time $hold-time l ralt)
 	; (tap-hold $tap-time $hold-time ; rmet)
-  ao (cmd xdotool type "å")
-  ae (cmd xdotool type "ä")
-  oe (cmd xdotool type "ö")
-  AO (cmd xdotool type "Å")
-  AE (cmd xdotool type "Ä")
-  OE (cmd xdotool type "Ö")
+  ao (cmd wtype "å")
+  ae (cmd wtype "ä")
+  oe (cmd wtype "ö")
+  AO (cmd wtype "Å")
+  AE (cmd wtype "Ä")
+  OE (cmd wtype "Ö")
 )
 
 (deflayer default
