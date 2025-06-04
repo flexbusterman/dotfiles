@@ -19,7 +19,7 @@ then
 		# mpv --ytdl-raw-options=netrc=,mark-watched= "$clipboard"
 		# mpv --vo=vaapi --hwdec=vaapi --ytdl-raw-options=mark-watched=,cookies-from-browser="brave",embed-chapters= "$clipboard"
 		# mpv --ytdl-raw-options=mark-watched=,cookies-from-browser="brave",embed-chapters= "$clipboard"
-		mpv --hwdec=no --ytdl-raw-options=mark-watched=,cookies-from-browser="brave",embed-chapters= "$clipboard"
+		mpv --hwdec=no --ytdl-raw-options=mark-watched=,cookies-from-browser="firefox",embed-chapters= "$clipboard"
 	else
 		# notify-send "not youtube"
 		# strips time and path info

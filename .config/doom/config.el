@@ -222,6 +222,8 @@ Works on whole buffer or selection, respects `narrow-to-region'."
   (setq xclip-mode t)
   (setq xclip-method (quote wl-copy)))
 
+(global-auto-revert-mode 1)
+
 ;;
 ;;   ___  ____   ____
 ;;  / _ \|  _ \ / ___|
