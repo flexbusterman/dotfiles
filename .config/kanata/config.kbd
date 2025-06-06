@@ -27,12 +27,12 @@
 	k (tap-hold $tap-time $hold-time k rsft)
 	l (tap-hold $tap-time $hold-time l ralt)
 	; (tap-hold $tap-time $hold-time ; rmet)
-  ao (cmd wtype "å")
-  ae (cmd wtype "ä")
-  oe (cmd wtype "ö")
-  AO (cmd wtype "Å")
-  AE (cmd wtype "Ä")
-  OE (cmd wtype "Ö")
+  ao (cmd insert "å")
+  ae (cmd insert "ä")
+  oe (cmd insert "ö")
+  AO (cmd insert "Å")
+  AE (cmd insert "Ä")
+  OE (cmd insert "Ö")
 )
 
 (deflayer default
