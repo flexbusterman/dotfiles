@@ -17,4 +17,4 @@ fi
 target="$(cd ~/ORGMODE/; find . -maxdepth 1 -type f -printf '%f\n' | dmenu-wl -p "Target file:")"
 #
 # echo "* $headline [#$priority]" | cat - "~/ORGMODE/$target" > temporaryfile && mv temporaryfile "~/ORGMODE/$target"
-sed -i "1s/^/* TODO $headline [#${priority^^}]\n/" "$HOME/ORGMODE/$target"
+sed -i "1s/^/* TODO [#${priority^^}] $headline\n/" "$HOME/ORGMODE/$target"
