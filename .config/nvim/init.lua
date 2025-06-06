@@ -24,3 +24,13 @@ require("lazy").setup({
 		notify = false,
 	},
 })
+
+-- overriding colors
+-- Brighter comment color
+vim.cmd.hi("Comment guifg=#7282C4 gui=none")
+
+-- Brighter selection/visual color
+vim.cmd.hi("Visual guibg=#6272A4 gui=none")
+
+-- You can add more highlight overrides below as needed
+-- Example: vim.cmd.hi("Search guibg=#FFFFA5 guifg=#000000")
