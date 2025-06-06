@@ -33,7 +33,7 @@ elif [[ "$SESSION_TYPE" == "wayland" || -n "$WAYLAND_DISPLAY" ]]; then
         if echo "$WININFO" | grep -q '"xwayland": true'; then
             # Focused window is XWayland
             if command_exists ydotool; then
-                sudo ydotool type "$STRING"
+                ydotool type "$STRING"
                 exit $?
             else
                 echo "Error: XWayland window focused, but neither xdotool nor ydotool available."

@@ -1,16 +1,6 @@
 #!/usr/bin/env bash
-
 if [[ $XDG_SESSION_TYPE == "wayland" ]]; then
-    # List of modifier keycodes to release
-    MODIFIERS="29 97 56 100 42 54 125 126" # Ctrl_L, Ctrl_R, Alt_L, Alt_R, Shift_L, Shift_R, Super_L, Super_R
-
-    # Release all modifiers using ydotool
-    for keycode in $MODIFIERS; do
-        sudo ydotool keyup "$keycode"
-    done
-
-    # Type the date with a leading and trailing space
-    ydotool type " $(date +"%F") "
+    wtype " $(date +"%F") "
 else
     xdotool keyup Alt_L Alt_R Control_L Control_R Shift_L Shift_R Super_L Super_R
     xdotool type --clearmodifiers " $(date +"%F") "
