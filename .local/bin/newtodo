@@ -1,0 +1,20 @@
+#!/bin/bash
+# Todo item headline
+headline="$(dmenu-wl -po "TODO headline")"
+if [ -z $headline ]; then
+	echo "TODO insertion cancelled"
+	notify-send "TODO insertion cancelled"
+	exit 1
+fi
+priority="$(dmenu-wl -po "Priority (default c)")"
+if [ -z $priority ]; then
+	priority="c"
+fi
+if ! [[ "$priority" =~ [a-zA-Z] ]]; then
+	echo "Priority should be a-z\nSetting to c"
+	notify-send "Priority should be a-z\nSetting to c"
+fi
+target="$(cd ~/ORGMODE/; find . -maxdepth 1 -type f -printf '%f\n' | dmenu-wl -p "Target file:")"
+#
+# echo "* $headline [#$priority]" | cat - "~/ORGMODE/$target" > temporaryfile && mv temporaryfile "~/ORGMODE/$target"
+sed -i "1s/^/* $headline [#${priority^^}]\n/" "$HOME/ORGMODE/$target"
