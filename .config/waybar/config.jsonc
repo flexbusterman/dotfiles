@@ -22,6 +22,8 @@
 		// "mpd",
 		// "idle_inhibitor",
 		// "network",
+		"custom/todo",
+		"custom/long",
 		"custom/networkspeed",
 		"pulseaudio",
 		// "power-profiles-daemon",
@@ -245,6 +247,18 @@
 	"custom/networkspeed": {
 		"exec": "~/.local/bin/waybarnetworkspeed",
 		"interval": 1,
+		"format": "{text}",
+		"return-type": "json",
+	},
+	"custom/todo": {
+		"exec": "~/.local/bin/todo",
+		"interval": 3,
+		"format": "{text}",
+		"return-type": "json",
+	},
+	"custom/long": {
+		"exec": "~/.local/bin/long",
+		"interval": 3,
 		"format": "{text}",
 		"return-type": "json",
 	},
