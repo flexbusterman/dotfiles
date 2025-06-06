@@ -1,0 +1,16 @@
+#!/bin/bash
+shopt -s extglob
+unset string
+string=$(rg ":nextlong:" ~/ORGMODE/ | head -n 1)
+# Removing everything before the first colon
+string="${string#*:}"
+# Remove everything after the first colon
+string="${string%%:*}"
+# Remove everything before the first *
+string="${string#\*}"
+# Trim whitespace from start
+string="${string# }"
+# Trim whitespace from end (needs extended globbing to match multiple spaces)
+string="${string%%+( )}"
+
+echo "{\"text\": \"$string\", \"class\": \"custom-long\" }"

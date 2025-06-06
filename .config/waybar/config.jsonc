@@ -251,13 +251,13 @@
 		"return-type": "json",
 	},
 	"custom/todo": {
-		"exec": "~/.local/bin/todo",
+		"exec": "~/.local/bin/waybartodo",
 		"interval": 3,
 		"format": "{text}",
 		"return-type": "json",
 	},
 	"custom/long": {
-		"exec": "~/.local/bin/long",
+		"exec": "~/.local/bin/waybarlong",
 		"interval": 3,
 		"format": "{text}",
 		"return-type": "json",

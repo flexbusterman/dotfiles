@@ -1,0 +1,61 @@
+#!/usr/bin/env bash
+
+# readarray -t rawtodos < <(grep -rnw "\* TODO\|\* NEXT" ~/ORGMODE)
+
+mapfile -t rawtodos < <(
+  awk -v today="$(date +%Y-%m-%d)" '
+    BEGIN { todo=""; show=1 }
+    /^\* (TODO|NEXT)/ {
+      if (todo && show) print todo;
+      todo = $0;
+      show = 1;
+      nextline = 1;
+      next;
+    }
+    nextline && /^SCHEDULED: <([0-9]{4}-[0-9]{2}-[0-9]{2})/ {
+      match($0, /<([0-9]{4}-[0-9]{2}-[0-9]{2})/, d);
+      if (d[1] > today) show = 0;
+      nextline = 0;
+      next;
+    }
+    {
+      nextline = 0;
+    }
+    END { if (todo && show) print todo; }
+  ' ~/ORGMODE/*
+)
+
+todoswithprio=()
+for rawtodo in "${rawtodos[@]}"; do
+	# Check if it's a NEXT item
+	if [[ "$rawtodo" == *"* NEXT "* ]]; then
+		# Remove everything up to and including '* NEXT '
+		item="$(echo "$rawtodo" | sed -E 's/.*\* NEXT //')"
+		# prepend [#1] to NEXT items to indicate highest possible prio
+		todoswithprio+=( "[#1] $item" )
+	else
+		# Remove everything up to and including '* TODO '
+		item="$(echo "$rawtodo" | sed -E 's/.*\* TODO //')"
+		# if the item has prio already...
+		if [[ "$item" =~ \[\#[A-Z]\] ]]; then
+			# ...just store the item
+		todoswithprio+=( "$item" )
+	else
+		# else add a [#C] to indicate default priority
+		todoswithprio+=( "[#C] $item" )
+		fi
+	fi
+done
+
+IFS=$'\n' read -r -d '' -a todossorted < <(printf "%s\n" "${todoswithprio[@]}" | sort && printf '\0')
+
+todos=()
+for todo in "${todossorted[@]}"; do
+    # Remove the priority indicator ([#A], [#B], [#1], etc.)
+    todos+=( "$(echo "$todo" | sed -E 's/\s*\[\#[A-Z1-9]\]\s*//')" )
+done
+
+# print the first item (which is the one with the highest priority)
+# printf "%s" "${todos[0]}"
+
+echo "{\"text\": \"${todos[0]}\", \"class\": \"custom-todo\" }"

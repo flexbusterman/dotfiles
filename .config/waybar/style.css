@@ -98,22 +98,16 @@ button:hover {
 #pulseaudio,
 #wireplumber,
 #custom-media,
+#custom-todo,
+#custom-long,
 #tray,
 #mode,
 #idle_inhibitor,
 #scratchpad,
 #power-profiles-daemon,
+#network,
+#custom-networkspeed,
 #mpd {
-  padding: 0 10px;
-  color: #ffffff;
-}
-
-#network {
-  padding: 0 10px;
-  color: #ffffff;
-}
-
-#custom-networkspeed {
   padding: 0 10px;
   color: #ffffff;
   background-color: rgba(0, 0, 0, 0.9);
