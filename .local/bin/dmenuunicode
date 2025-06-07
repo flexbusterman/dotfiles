@@ -1,9 +1,17 @@
 #!/bin/sh
 
+if [[ $XDG_SESSION_TYPE == "wayland" ]]; then
+	copycommand="wl-copy"
+	dmenucommand="dmenu-wl"
+else
+	copycommand="xclip -sel clip"
+	dmenucommand="dmenu"
+fi
+
 # The famous "get a menu of emojis to copy" script.
 
 # Get user selection via dmenu from emoji file.
-chosen=$(cut -d ';' -f1 ~/.local/share/emoji | dmenu -i -l 30 | sed "s/ .*//")
+chosen=$(cut -d ';' -f1 ~/.local/share/emoji | dmenu-wl -i -l 30 | sed "s/ .*//")
 
 # Exit if none chosen.
 [ -z "$chosen" ] && exit
@@ -13,6 +21,6 @@ chosen=$(cut -d ';' -f1 ~/.local/share/emoji | dmenu -i -l 30 | sed "s/ .*//")
 if [ -n "$1" ]; then
 	xdotool type "$chosen"
 else
-	echo "$chosen" | tr -d '\n' | xclip -selection clipboard
+	echo "$chosen" | tr -d '\n' | $copycommand
 	# notify-send "'$chosen' copied to clipboard." &
 fi

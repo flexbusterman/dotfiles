@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+if [[ $XDG_SESSION_TYPE == "wayland" ]]; then
+	copycommand="wl-copy"
+else
+	copycommand="xclip -sel clip"
+fi
+
 # Use xmeasure to capture the measurements and save it to a variable
 MEASUREMENT=$(xmeasure)
 
@@ -15,4 +21,4 @@ DIMENSIONS="${WIDTH}x${HEIGHT}"
 # Use notify-send to display the dimensions
 notify-send "$DIMENSIONS"
 
-printf "%s" "$DIMENSIONS" | xclip -selection clipboard
+printf "%s" "$DIMENSIONS" | $copycommand

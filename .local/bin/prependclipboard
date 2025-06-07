@@ -1,2 +1,0 @@
-#!/usr/bin/env bash
-printf '* %s\n%s\n' "$(xclip -o -sel clip)" "$(cat $1)" > $1

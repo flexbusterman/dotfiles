@@ -1,9 +1,15 @@
 #!/usr/bin/env bash
 
+if [[ $XDG_SESSION_TYPE == "wayland" ]]; then
+	copycommand=$(wl-copy)
+else
+	copycommand=$(xclip -sel clip)
+fi
+
 input=$(echo "" | dmenu)
 result=$(awk "BEGIN{ print $input }")
 notify-send $result
-printf $result | xclip -sel clip
+printf $result | $copycommand
 
 # # Prompt for a calculation
 # calculation=$(echo | dmenu)
