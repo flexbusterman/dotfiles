@@ -1,15 +1,25 @@
 #!/usr/bin/env bash
 
-device_id=$(xinput list | grep -i "touchpad" | awk '{print $6}' | sed 's/id=//')
+if [[ $XDG_SESSION_TYPE != "wayland" ]]; then
+	device_id=$(xinput list | grep -i "touchpad" | awk '{print $6}' | sed 's/id=//')
+fi
 
 if pgrep kanata > /dev/null; then
-    notify-send "Killing kanata"
-    pkill kanata
-	xinput set-prop $device_id "libinput Disable While Typing Enabled" 0
+	notify-send "Killing kanata"
+	pkill kanata
+	if [[ $XDG_SESSION_TYPE == "wayland" ]]; then
+		hyprctl keyword input:touchpad:disable_while_typing false
+	else
+		xinput set-prop $device_id "libinput Disable While Typing Enabled" 0
+	fi
 	notify-send "Touchpad Enabled while typing"
 else
-    notify-send "Starting kanata"
-    kanata -c /home/$USER/.config/kanata/config.kbd >/dev/null 2>&1 &
-	xinput set-prop $device_id "libinput Disable While Typing Enabled" 1
+	notify-send "Starting kanata"
+	kanata -c /home/$USER/.config/kanata/config.kbd >/dev/null 2>&1 &
+	if [[ $XDG_SESSION_TYPE == "wayland" ]]; then
+		hyprctl keyword input:touchpad:disable_while_typing true
+	else
+		xinput set-prop $device_id "libinput Disable While Typing Enabled" 1
+	fi
 	notify-send "Touchpad Disabled while typing"
 fi
