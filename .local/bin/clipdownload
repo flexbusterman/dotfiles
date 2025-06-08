@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 # ifinstalled xsel yt-dlp || exit 1
-# set pastecommand depending on whether X11 or wayland is running
+# set clipboard depending on whether X11 or wayland is running
 
 if [[ $XDG_SESSION_TYPE == "wayland" ]]; then
-	copycommand="wl-copy"
+	clipboard=$(wl-paste)
 else
-	copycommand="xclip -sel clip"
+	clipboard=$(xsel -ob)
 fi
 
 Help()
@@ -36,15 +36,15 @@ while getopts ":h:a" option; do
 	esac
 done
 
-if [ -n "$pastecommand" ]
+if [ -n "$clipboard" ]
 then
 	if [[ $MP3 == true ]]
 	then
-		yt-dlp -x --audio-format mp3 --audio-quality 320K -P ~/Downloads/ "$pastecommand" || notify-send 'Clipboard not valid'
+		yt-dlp -x --audio-format mp3 --audio-quality 320K -P ~/Downloads/ "$clipboard" || notify-send 'Clipboard not valid'
 	else
-		# yt-dlp --mark-watched --username oauth2 --password $(cat ~/.envYT) -f 'bestvideo[height<=?1080]+bestaudio' -P ~/Downloads/VIDEO/ -o '%(uploader)s - %(playlist_index|)s%(playlist_index& - |)s%(title)s.%(ext)s' "$pastecommand" || notify-send "Download unsuccessful"
+		# yt-dlp --mark-watched --username oauth2 --password $(cat ~/.envYT) -f 'bestvideo[height<=?1080]+bestaudio' -P ~/Downloads/VIDEO/ -o '%(uploader)s - %(playlist_index|)s%(playlist_index& - |)s%(title)s.%(ext)s' "$clipboard" || notify-send "Download unsuccessful"
 		[ -d ~/Downloads/VIDEO/ ] || mkdir -p ~/Downloads/VIDEO/;
-		yt-dlp --embed-chapters --mark-watched --cookies-from-browser "firefox" -f 'bestvideo[height<=?1080]+bestaudio' -P ~/Downloads/VIDEO/ -o '%(upload_date>%Y-%m-%d)s %(uploader)s - %(playlist_index|)s%(playlist_index& - |)s%(title)s.%(ext)s' "$pastecommand" || notify-send "Download unsuccessful"
+		yt-dlp --embed-chapters --mark-watched --cookies-from-browser "firefox" -f 'bestvideo[height<=?1080]+bestaudio' -P ~/Downloads/VIDEO/ -o '%(upload_date>%Y-%m-%d)s %(uploader)s - %(playlist_index|)s%(playlist_index& - |)s%(title)s.%(ext)s' "$clipboard" || notify-send "Download unsuccessful"
 	fi
 else
 	notify-send 'Clipboard empty'
