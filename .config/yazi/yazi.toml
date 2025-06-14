@@ -119,7 +119,8 @@ previewers = [
 	{ mime = "image/{avif,hei?,jxl,svg+xml}", run = "magick" },
 	{ mime = "image/*", run = "image" },
 	# Video
-	{ mime = "video/*", run = "video" },
+	# { mime = "video/*", run = "video" },
+	{ mime = "video/*", run = "noop" },
 	# PDF
 	{ mime = "application/pdf", run = "pdf" },
 	# Archive
