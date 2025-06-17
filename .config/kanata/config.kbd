@@ -27,12 +27,12 @@
 	k (tap-hold $tap-time $hold-time k rsft)
 	l (tap-hold $tap-time $hold-time l ralt)
 	; (tap-hold $tap-time $hold-time ; rmet)
-  ao (cmd insert "å")
-  ae (cmd insert "ä")
-  oe (cmd insert "ö")
-  AO (cmd insert "Å")
-  AE (cmd insert "Ä")
-  OE (cmd insert "Ö")
+  ao (cmd /home/flex/.local/bin/insert "å")
+  ae (cmd /home/flex/.local/bin/insert "ä")
+  oe (cmd /home/flex/.local/bin/insert "ö")
+  AO (cmd /home/flex/.local/bin/insert "Å")
+  AE (cmd /home/flex/.local/bin/insert "Ä")
+  OE (cmd /home/flex/.local/bin/insert "Ö")
 )
 
 (deflayer default
