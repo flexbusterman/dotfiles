@@ -3,5 +3,5 @@
 if [ -z "$WAYLAND_DISPLAY" ]; then
 	dmenu_run
 else
-	dmenu-wl_run -fn "BigBlueTerm437 Nerd Font Mono 9" -nf "#FFFFFF" -sf "#FFFFFF
+	dmenu-wl_run -fn "BigBlueTerm437 Nerd Font Mono 9" -nf "#FFFFFF" -sf "#FFFFFF"
 fi
