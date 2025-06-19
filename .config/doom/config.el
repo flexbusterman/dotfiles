@@ -259,7 +259,7 @@ Works on whole buffer or selection, respects `narrow-to-region'."
       :prefix ("o a" . "Org Agenda")
       :desc "TODO Agenda" "t" #'(lambda () (interactive) (org-agenda nil "t")))
 
-(setq org-todo-keywords '((type "TODO" "NEXT" "|" "DONE")))
+(setq org-todo-keywords '((type "TODO" "NEXT" "LATER" "|" "DONE")))
 
 ;; Bind `SPC SPC` to `+vertico/switch-workspace-buffer`
 (map! :leader
@@ -269,3 +269,37 @@ Works on whole buffer or selection, respects `narrow-to-region'."
 
 ;; Automatically save the buffer when an Org trigger is executed
 (add-hook 'org-trigger-hook 'save-buffer)
+
+;; ;; Automatically refresh org-agenda-files when Org files are modified
+;; (setq flex/inotify-org-agenda-process
+;;       (make-process
+;;        :name "flex-inotify-org-agenda"
+;;        :command `("inotifywait"
+;;                   "-e" "create"
+;;                   "-e" "delete"
+;;                   "-m" "modify"
+;;                   "-m" "-r" ,(expand-file-name "~/ORGMODE/"))
+;;        :buffer (get-buffer-create "*flex/inotify-org-agenda-process-buffer*")
+;;        :connection-type 'pipe
+;;        :filter #'flex/inotify-org-agenda-process-filter
+;;        :stderr (get-buffer-create "*flex/inotify-org-agenda-process-stderr*")))
+;; (defun flex/inotify-org-agenda-process-filter (proc txt)
+;;   (when (buffer-live-p (process-buffer proc))
+;;     (display-buffer (process-buffer proc))
+;;     (with-current-buffer (process-buffer proc)
+;;       (let ((begin (marker-position (process-mark proc))))
+;;         ;; Insert the text, advancing the process marker.
+;;         (goto-char (process-mark proc))
+;;         (insert-before-markers txt)
+;;         (set-marker (process-mark proc) (point))
+;;         (goto-char (process-mark proc))
+;;         ;; the above is pretty generic: the reason we need a custom
+;;         ;; filter function is so that we can test whether the process
+;;         ;; output indicates that we should refresh
+;;         ;; `org-agenda-files'. We remember where the previous output
+;;         ;; had ended in `begin'; so the new output is the region
+;;         ;; between `begin' and the current `point'. We pass that
+;;         ;; information to the checker and if it returns non-nil, we
+;;         ;; refresh `org-agenda-files'.
+;;         (if (flex/update-org-agenda-file-list? begin (point))
+;;             (flex/refresh-org-agenda-files))))))
