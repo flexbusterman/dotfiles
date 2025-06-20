@@ -1,2 +1,2 @@
 #!/bin/bash
-hyprlock && set-mute @DEFAULT_AUDIO_SINK@ 0
+hyprlock && (set-mute @DEFAULT_AUDIO_SINK@ 0 & systemctl --user restart kanata)
