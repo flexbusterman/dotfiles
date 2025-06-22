@@ -1,13 +1,13 @@
 #!/bin/bash
 # Todo item headline
 headline="$(dmenu-wl -po "TODO headline" -fn "BigBlueTerm437 Nerd Font Mono 9" -nf "#FFFFFF" -sf "#FFFFFF" )"
-if [ -z $headline ]; then
+if [ -z "$headline" ]; then
 	echo "TODO insertion cancelled"
 	notify-send "TODO insertion cancelled"
 	exit 1
 fi
-priority="$(dmenu-wl -po "TODO headline" -fn "BigBlueTerm437 Nerd Font Mono 9" -nf "#FFFFFF" -sf "#FFFFFF" "Priority (default c)")"
-if [ -z $priority ]; then
+priority="$(dmenu-wl -po "Priority (default c)" -fn "BigBlueTerm437 Nerd Font Mono 9" -nf "#FFFFFF" -sf "#FFFFFF" )"
+if [ -z "$priority" ]; then
 	priority="c"
 fi
 if ! [[ "$priority" =~ [a-zA-Z] ]]; then
@@ -16,5 +16,4 @@ if ! [[ "$priority" =~ [a-zA-Z] ]]; then
 fi
 target="$(cd ~/ORGMODE/; find . -maxdepth 1 -type f -printf '%f\n' | dmenu-wl -p "Target file:" -fn "BigBlueTerm437 Nerd Font Mono 9" -nf "#FFFFFF" -sf "#FFFFFF")"
 #
-# echo "* $headline [#$priority]" | cat - "~/ORGMODE/$target" > temporaryfile && mv temporaryfile "~/ORGMODE/$target"
 sed -i "1s/^/* TODO [#${priority^^}] $headline\n/" "$HOME/ORGMODE/$target"

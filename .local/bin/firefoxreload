@@ -4,14 +4,48 @@ set -o errexit
 set -o nounset
 
 keystroke="CTRL+F5"
-
-# set to whatever's given as argument, defaults to firefox
 BROWSER="${1:-firefox}"
 
-# find all visible browser windows
-browser_windows="$(xdotool search --sync --all --onlyvisible --name ${BROWSER})"
+send_keys_x11() {
+    local windows
+    windows="$(xdotool search --sync --all --onlyvisible --name "${BROWSER}")"
+    for bw in $windows; do
+        xdotool key --window "$bw" "$keystroke"
+    done
+}
 
-# Send keystroke
-for bw in $browser_windows; do
-    xdotool key --window "$bw" "$keystroke"
-done
+send_keys_hyprland() {
+    local clients
+    clients=$(hyprctl clients -j | jq -r \
+        --arg name "$BROWSER" \
+        '.[] | select(.title|test($name;"i")) | .address')
+
+    for addr in $clients; do
+        # Focus the window
+        hyprctl dispatch focuswindow address:$addr
+        # Send the keystroke (requires ydotool or wtype)
+        # Uncomment the one you have installed:
+        # ydotool key 29:1 63:1 63:0 29:0  # CTRL+F5 (ydotool keycodes)
+        wtype -M ctrl -k F5 -m ctrl
+        # Optional: sleep if needed to allow the keystroke to register
+        sleep 0.1
+    done
+}
+
+if [[ "${XDG_SESSION_TYPE:-}" == "wayland" && "${XDG_CURRENT_DESKTOP:-}" == "Hyprland" ]]; then
+    if ! command -v hyprctl &>/dev/null; then
+        echo "hyprctl not found. Install Hyprland tools." >&2
+        exit 1
+    fi
+    if ! command -v wtype &>/dev/null && ! command -v ydotool &>/dev/null; then
+        echo "Neither wtype nor ydotool found. Install one for keystroke simulation." >&2
+        exit 1
+    fi
+    send_keys_hyprland
+else
+    if ! command -v xdotool &>/dev/null; then
+        echo "xdotool not found. Install it for X11 keystroke simulation." >&2
+        exit 1
+    fi
+    send_keys_x11
+fi
