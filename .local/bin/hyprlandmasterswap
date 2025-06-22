@@ -1,59 +1,7 @@
 #!/bin/bash
-if [ $TERM == "tmux-256color" ]; then
-	echo "Socket might not work inside tmux"
+hyprctl dispatch layoutmsg swapwithmaster
+activeXpos=$(hyprctl activewindow -j | jq -r '.at[0]')
+if [ $activeXpos -ge 10 ]; then
+	# echo "This is probably not the master window"
+	hyprctl dispatch layoutmsg focusmaster
 fi
-active=$(hyprctl activewindow -j | jq -r '.address')
-echo "Active window address: $active" >&2
-wsid=$(hyprctl activeworkspace -j | jq -r '.id')
-echo "Active workspace id: $wsid" >&2
-#
-# clients=$(hyprctl clients -j)
-# echo "Number of clients: $(echo "$clients" | jq '. | length')" >&2
-#
-# # Get a list of tiled, non-floating, visible windows on this workspace (in stack order)
-# mapfile -t tiled_clients < <(echo "$clients" | jq -r --arg wsid "$wsid" \
-#     '.[] | select(.workspace.id == ($wsid | tonumber)) | select(.floating == false) | select(.hidden == false) | .address')
-#
-# echo "Tiled clients on workspace $wsid:" >&2
-# for idx in "${!tiled_clients[@]}"; do
-#   echo "  [$idx]: ${tiled_clients[$idx]}" >&2
-# done
-#
-# # Robust master detection: first client in tiled_clients
-# master="${tiled_clients[0]}"
-# echo "Assuming master window address: $master" >&2
-#
-# # if [[ "$active" == "$master" ]]; then
-# #     echo "Active window is master. Swapping with next tiled (if available)..." >&2
-# #     if [[ ${#tiled_clients[@]} -le 1 ]]; then
-# #         echo "Only one tiled window. Nothing to swap." >&2
-# #         exit 0
-# #     fi
-# #     next="${tiled_clients[1]}"
-# #     echo "Focusing next tiled window: $next" >&2
-# #     hyprctl dispatch focuswindow address:$next
-# #     echo "Swapping focused window with master..." >&2
-# #     hyprctl dispatch layoutmsg swapwithmaster
-# # else
-# #     echo "Active window is NOT master. Swapping active with master..." >&2
-# #     hyprctl dispatch layoutmsg swapwithmaster
-# # fi
-#
-# # echo "Focusing master window after swap..." >&2
-# # hyprctl dispatch focuswindow address:$master
-# #
-# # # Verify: if focus is not on the master, focus again
-# # active_after=$(hyprctl activewindow -j | jq -r '.address')
-# # echo "After operations:" >&2
-# # echo "  Active: $active_after" >&2
-# # echo "  Master: $master" >&2
-# # if [[ "$active_after" != "$master" ]]; then
-# #     echo "Active window is still not master. Focusing master again..." >&2
-# #     hyprctl dispatch focuswindow address:$master
-# #     active_after2=$(hyprctl activewindow -j | jq -r '.address')
-# #     echo "  After second focuswindow, active: $active_after2" >&2
-# # else
-# #     echo "Master is focused after first try." >&2
-# # fi
-# #
-# # echo "========== END hyprlandmasterswap DEBUG ==========" >&2
