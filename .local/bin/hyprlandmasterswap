@@ -1,6 +1,7 @@
 #!/bin/bash
 hyprctl dispatch layoutmsg swapwithmaster
 activeXpos=$(hyprctl activewindow -j | jq -r '.at[0]')
+# notify-send $activeXpos
 if [ $activeXpos -ge 10 ]; then
 	# echo "This is probably not the master window"
 	hyprctl dispatch layoutmsg focusmaster
