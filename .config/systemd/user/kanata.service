@@ -7,7 +7,7 @@ Environment=PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:$HOME/.cargo/bin
 Environment=DISPLAY=:0
 Type=simple
 ; ExecStart=/usr/bin/ -c 'exec $$(which kanata) --cfg $${HOME}/.config/kanata/config.kbd'
-ExecStart=/usr/bin/bash -c '~/.cargo/bin/kanata --cfg $${HOME}/.config/kanata/config.kbd'
+ExecStart=/usr/bin/bash -c '/usr/bin/kanata --cfg $${HOME}/.config/kanata/config.kbd'
 Restart=no
 
 [Install]
