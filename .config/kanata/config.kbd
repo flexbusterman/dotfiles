@@ -19,14 +19,14 @@
 
 (defalias
   cec (tap-hold $tap-time $hold-time esc (layer-toggle special))
-	a (tap-hold $tap-time $hold-time a lmet)
-	s (tap-hold $tap-time $hold-time s lalt)
-	d (tap-hold $tap-time $hold-time d lsft)
-	f (tap-hold $tap-time $hold-time f lctl)
-	j (tap-hold $tap-time $hold-time j rctl)
-	k (tap-hold $tap-time $hold-time k rsft)
-	l (tap-hold $tap-time $hold-time l ralt)
-	; (tap-hold $tap-time $hold-time ; rmet)
+;;	a (tap-hold $tap-time $hold-time a lmet)
+;;	s (tap-hold $tap-time $hold-time s lalt)
+;;	d (tap-hold $tap-time $hold-time d lsft)
+;;	f (tap-hold $tap-time $hold-time f lctl)
+;;	j (tap-hold $tap-time $hold-time j rctl)
+;;	k (tap-hold $tap-time $hold-time k rsft)
+;;	l (tap-hold $tap-time $hold-time l ralt)
+;;	; (tap-hold $tap-time $hold-time ; rmet)
   ao (cmd /home/flex/.local/bin/insert "å")
   ae (cmd /home/flex/.local/bin/insert "ä")
   oe (cmd /home/flex/.local/bin/insert "ö")
@@ -39,7 +39,7 @@
   caps f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12
   grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
   tab	 q    w    e    r    t    y    u    i    o    p    [    ]    \
-  @cec @a   @s   @d   @f   g    h    @j   @k   @l   @;   '    ret
+  @cec a    s    d    f    g    h    j    k    l    ;    '    ret
   lsft z    x    c    v    b    n    m    ,    .    /    rsft
   lctl lmet lalt           spc            ralt rmet rctl
 )

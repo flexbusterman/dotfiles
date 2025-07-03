@@ -14,11 +14,11 @@ setopt autocd   # Automatically cd into typed directory.
 setopt BANG_HIST                 # Treat the '!' character specially during expansion.
 
 # use vim keys in tab complete menu
-bindkey -M menuselect 'h' vi-backward-char
-bindkey -M menuselect 'k' vi-up-line-or-history
-bindkey -M menuselect 'l' vi-forward-char
-bindkey -M menuselect 'j' vi-down-line-or-history
-bindkey -v '^?' backward-delete-char
+# bindkey -M menuselect 'h' vi-backward-char
+# bindkey -M menuselect 'k' vi-up-line-or-history
+# bindkey -M menuselect 'l' vi-forward-char
+# bindkey -M menuselect 'j' vi-down-line-or-history
+# bindkey -v '^?' backward-delete-char
 
 bindkey '^P' history-beginning-search-backward
 bindkey '^N' history-beginning-search-forward
@@ -26,7 +26,7 @@ bindkey '^N' history-beginning-search-forward
 bindkey '^A' beginning-of-line
 bindkey '^E' end-of-line
 
-bindkey '^ ' autosuggest-execute
+# bindkey '^ ' autosuggest-execute
 
 autoload -z edit-command-line
 zle -N edit-command-line
@@ -217,18 +217,19 @@ source /usr/share/zsh/plugins/zsh-system-clipboard/zsh-system-clipboard.zsh
 [[ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] || sudo git clone "https://github.com/zsh-users/zsh-syntax-highlighting" /usr/share/zsh/plugins/zsh-syntax-highlighting/
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-setopt vi
-KEYTIMEOUT=1
-# change cursor shape in vi mode
-zle-keymap-select () {
-if [[ $KEYMAP == vicmd ]]; then
-	# the command mode for vi
-	echo -ne "\e[2 q"
-else
-	# the insert mode for vi
-	echo -ne "\e[5 q"
-fi
-}
+setopt emacs
+# setopt vi
+# KEYTIMEOUT=1
+# # change cursor shape in vi mode
+# zle-keymap-select () {
+# if [[ $KEYMAP == vicmd ]]; then
+# 	# the command mode for vi
+# 	echo -ne "\e[2 q"
+# else
+# 	# the insert mode for vi
+# 	echo -ne "\e[5 q"
+# fi
+# }
 
 # fzf in terminal, fzf must be installed to use this
 eval "$(fzf --zsh)"
