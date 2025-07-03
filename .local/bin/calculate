@@ -1,15 +1,19 @@
 #!/usr/bin/env bash
 
 if [[ $XDG_SESSION_TYPE == "wayland" ]]; then
-	copycommand=$(wl-copy)
+	input=$(echo "" | dmenu-wl -fn "BigBlueTerm437 Nerd Font Mono 9" -nf "#FFFFFF" -sf "#FFFFFF")
 else
-	copycommand=$(xclip -sel clip)
+	input=$(echo "" | dmenu)
 fi
 
-input=$(echo "" | dmenu)
 result=$(awk "BEGIN{ print $input }")
 notify-send $result
-printf $result | $copycommand
+
+if [[ $XDG_SESSION_TYPE == "wayland" ]]; then
+	printf $result | wl-copy
+else
+	printf $result | xclip -sel clip
+fi
 
 # # Prompt for a calculation
 # calculation=$(echo | dmenu)

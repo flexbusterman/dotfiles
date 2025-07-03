@@ -51,6 +51,7 @@ settings:
     https://github.com/: access
     https://google.com/: access
     https://us17.admin.mailchimp.com: access-paste
+    https://vnc.tryhackme.tech: access-paste
   content.media.audio_capture:
     https://app.zoom.us: true
     https://meet.google.com: true
