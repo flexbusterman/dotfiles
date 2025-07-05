@@ -17,8 +17,6 @@
   hold-time 200 ;; Number of milliseconds after which the $hold-action activates. Releasing the key before this elapses results in $tap-action activating.
 )
 
-(defalias
-  cec (tap-hold $tap-time $hold-time esc (layer-toggle special))
 ;;	a (tap-hold $tap-time $hold-time a lmet)
 ;;	s (tap-hold $tap-time $hold-time s lalt)
 ;;	d (tap-hold $tap-time $hold-time d lsft)
@@ -27,6 +25,9 @@
 ;;	k (tap-hold $tap-time $hold-time k rsft)
 ;;	l (tap-hold $tap-time $hold-time l ralt)
 ;;	; (tap-hold $tap-time $hold-time ; rmet)
+
+(defalias
+  cec (tap-hold $tap-time $hold-time esc (layer-toggle special))
   ao (cmd /home/flex/.local/bin/insert "å")
   ae (cmd /home/flex/.local/bin/insert "ä")
   oe (cmd /home/flex/.local/bin/insert "ö")
