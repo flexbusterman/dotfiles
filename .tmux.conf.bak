@@ -3,8 +3,8 @@ setw -g mode-keys vi
 # set -s copy-command 'xsel -i --clipboard'
 set -s copy-command 'wl-copy'
 bind q killp
-set-option -g default-shell /bin/zsh
-set-option -g default-command "zsh -l"
+set-option -g default-shell /bin/bash
+# set-option -g default-command "zsh -l"
 set-option -g focus-events on
 set -g status-right-length 60
 
