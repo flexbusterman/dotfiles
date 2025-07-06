@@ -5,10 +5,10 @@ if ! [[ $(pgrep sclang) ]]; then
 	exit 1
 fi
 
-answer=$(echo -e "yes\nno" | dmenu -p "Kill SuperCollider?")
+answer=$(echo -e "yes\nno" | dmenu-wl -po "Kill SuperCollider?" -fn "BigBlueTerm437 Nerd Font Mono 9" -nf "#FFFFFF" -sf "#FFFFFF")
 
 if [[ $answer == "yes" ]]; then
-	notify-send "Killing SuperCollider"
+	# notify-send "Killing SuperCollider"
 	tmux kill-session -t SuperCollider
 	pkill sclang
 	pkill scsynth
