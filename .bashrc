@@ -22,3 +22,5 @@ HISTCONTROL=ignoredups # Ignore duplicate commands in a row
 HISTCONTROL=erasedups # Ignore all previous duplicates (not just consecutive)
 HISTCONTROL="${HISTCONTROL}:ignorespace" # Do not record commands that start with a space
 HISTCONTROL="${HISTCONTROL}:erasedups" # Do not write duplicate lines to the history file
+
+export MANPAGER='nvim +Man!'
