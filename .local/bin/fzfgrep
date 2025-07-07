@@ -12,5 +12,5 @@ IFS=: read -ra selected < <(
 			--preview 'bat --color=always {1} --highlight-line {2}' \
 			--preview-window 'up,60%,border-bottom,+{2}+3/3,~3'
 )
-[ -n "${selected[0]}" ] && emacsclient --alternate-editor="" -c -nw "+${selected[1]}" "${selected[0]}"
-# [ -n "${selected[0]}" ] && nvim "+${selected[1]}" "${selected[0]}"
+# [ -n "${selected[0]}" ] && emacsclient --alternate-editor="" -c -nw "+${selected[1]}" "${selected[0]}"
+[ -n "${selected[0]}" ] && nvim "+${selected[1]}" "${selected[0]}"

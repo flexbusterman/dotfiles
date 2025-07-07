@@ -7,7 +7,7 @@ cd ~/.local/src/yay
 makepkg -si
 chmod 600 ~/.ssh/*
 chmod 700 ~/.ssh/sockets/
-yay -Syu --needed --noconfirm exa liquidprompt rg fzf
+yay -Syu --needed --noconfirm exa liquidprompt ripgrep fzf
 eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/git
 cd ~/.local/src/
