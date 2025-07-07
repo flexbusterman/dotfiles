@@ -6,12 +6,14 @@
 [[ $- != *i* ]] && return
 
 if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
+	. ~/.bash_aliases
 fi
 
 [[ $- = *i* ]] && source /usr/bin/liquidprompt
 
-eval "$(fzf --bash)" # Set up fzf key bindings and fuzzy completion
+if [ -n "$BASH_VERSION" ]; then
+  eval "$(fzf --bash)"
+fi
 
 # [[ $- == *i* ]] && source /usr/share/blesh/ble.sh # syntax highlighting and other features
 
@@ -24,3 +26,4 @@ HISTCONTROL="${HISTCONTROL}:ignorespace" # Do not record commands that start wit
 HISTCONTROL="${HISTCONTROL}:erasedups" # Do not write duplicate lines to the history file
 
 export MANPAGER='nvim +Man!'
+alias dot='/usr/bin/git --git-dir=/home/flex/.dot.git/ --work-tree=/home/flex'

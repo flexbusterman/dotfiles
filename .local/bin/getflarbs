@@ -1,0 +1,16 @@
+#!/bin/bash
+sudo pacman -Syu --needed --noconfirm git neovim networkmanager figlet tmux
+mkdir -p ~/.local/src
+cd ~/.local/src/
+git clone https://aur.archlinux.org/yay.git
+cd ~/.local/src/yay
+makepkg -si
+chmod 600 ~/.ssh/*
+chmod 700 ~/.ssh/sockets/
+yay -Syu --needed --noconfirm exa liquidprompt rg fzf
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/git
+cd ~/.local/src/
+git clone git@github.com:flexbusterman/flarbs.git
+cd flarbs
+./flarbsinstall
