@@ -1,2 +1,48 @@
 #!/bin/bash
-sudo reflector --verbose --sort rate --save /etc/pacman.d/mirrorlist --download-timeout 60
+
+# Improved script to update Arch Linux mirrorlist with fastest, working mirrors
+# Requires: reflector, sudo, optionally rankmirrors
+
+# CONFIGURE YOUR COUNTRY CODE BELOW
+COUNTRY="SE,DK,FI,NO,DE,NL,PL"
+NUM_MIRRORS=10
+MIRRORLIST_TMP="/tmp/mirrorlist"
+
+# Check and install reflector if needed
+if ! command -v reflector &> /dev/null; then
+    echo "reflector not found. Installing..."
+    sudo pacman -Sy --noconfirm reflector
+fi
+
+# Check for rankmirrors (for optional extra testing)
+if ! command -v rankmirrors &>/dev/null; then
+    echo "rankmirrors not found. Installing..."
+    sudo pacman -Sy --noconfirm pacman-contrib
+fi
+
+# Backup current mirrorlist
+sudo cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak
+
+echo "Generating a new mirrorlist for country: $COUNTRY with $NUM_MIRRORS mirrors..."
+
+# Fetch and rank the fastest, most up-to-date HTTPS mirrors (last sync within 6 hours, working only)
+sudo reflector \
+    --country "$COUNTRY" \
+    --latest 20 \
+    --number $NUM_MIRRORS \
+    --age 12 \
+    --protocol https \
+    --sort rate \
+    --save "$MIRRORLIST_TMP"
+
+# Optionally, test the generated mirrorlist using rankmirrors (can be slow)
+if [ -s "$MIRRORLIST_TMP" ]; then
+    echo "Testing mirrors with rankmirrors, this may take a while..."
+    sudo rankmirrors -n $NUM_MIRRORS "$MIRRORLIST_TMP" | sudo tee /etc/pacman.d/mirrorlist > /dev/null
+else
+    echo "Temporary mirrorlist not created or empty, aborting!"
+    exit 1
+fi
+
+echo "Mirrorlist updated! Backup at /etc/pacman.d/mirrorlist.bak"
+echo "Try running 'sudo pacman -Syyu' now. If you have issues, restore the backup."
