@@ -2,6 +2,8 @@
 # ifinstalled xsel yt-dlp || exit 1
 # set clipboard depending on whether X11 or wayland is running
 
+[ -d ~/Downloads/VIDEO ] || mkdir -p ~/Downloads/VIDEO
+
 if [[ $XDG_SESSION_TYPE == "wayland" ]]; then
 	clipboard=$(wl-paste)
 else
