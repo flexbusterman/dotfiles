@@ -11,19 +11,18 @@ fi
 
 [[ $- = *i* ]] && source /usr/bin/liquidprompt
 
-if [ -n "$BASH_VERSION" ]; then
-  eval "$(fzf --bash)"
-fi
+# Enable fzf key bindings and completion (recommended way)
+[ -f /usr/share/fzf/key-bindings.bash ] && source /usr/share/fzf/key-bindings.bash
+[ -f /usr/share/fzf/completion.bash ] && source /usr/share/fzf/completion.bash
 
 # [[ $- == *i* ]] && source /usr/share/blesh/ble.sh # syntax highlighting and other features
 
 # history
+export HISTFILE=~/.bash_history
 HISTSIZE=10000000
 SAVEHIST=10000000
-HISTCONTROL=ignoredups # Ignore duplicate commands in a row
-HISTCONTROL=erasedups # Ignore all previous duplicates (not just consecutive)
-HISTCONTROL="${HISTCONTROL}:ignorespace" # Do not record commands that start with a space
-HISTCONTROL="${HISTCONTROL}:erasedups" # Do not write duplicate lines to the history file
+HISTCONTROL=ignoredups:erasedups
 
 export MANPAGER='nvim +Man!'
 alias dot='/usr/bin/git --git-dir=/home/flex/.dot.git/ --work-tree=/home/flex'
+alias pdot='/usr/bin/git --git-dir=/home/flex/.pdot.git/ --work-tree=/home/flex'
