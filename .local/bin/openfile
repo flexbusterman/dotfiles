@@ -14,7 +14,7 @@ case "$filetype" in
 		musicadd "$@"
 		;;
 	application/vnd.openxmlformats-officedocument.spreadsheetml.sheet)
-		$TERMINAL -e sc-im "$@"
+		kitty -e sc-im "$@" > /dev/null 2>&1 & disown
 		;;
 	application/vnd.oasis.opendocument.spreadsheet)
 		libreoffice "$@"
@@ -23,7 +23,7 @@ case "$filetype" in
 		libreoffice "$@"
 		;;
 	application/x-sc)
-		$TERMINAL -e sc-im "$@"
+		kitty -e sc-im "$@" > /dev/null 2>&1 & disown
 		;;
 	application/x-nes-rom)
 		mednafen "$@"
@@ -63,7 +63,7 @@ case "$filetype" in
 				;;
 			org | ORG)
 				cd ~/ORGMODE/
-				$TERMINAL -e emacsclient --alternate-editor="" -c "$@"
+				kitty -e nvim "$@" > /dev/null 2>&1 & disown
 				;;
 			exe | EXE)
 				wine "$@"
@@ -75,7 +75,7 @@ case "$filetype" in
 				;;
 			*)
 				# start files in separate tabs in nvim
-				$TERMINAL -e $EDITOR "$@"
+				kitty -e nvim "$@" > /dev/null 2>&1 & disown
 				;;
 		esac
 		;;

@@ -18,9 +18,10 @@ if [ -n "$file" ]; then
 			cd $(dirname "$file")
 			# if the file ending is org open with emacs
 			if [ ${file##*.} == "org" ]; then
-				emacsclient --alternate-editor="" -c "$file"
+				# emacsclient --alternate-editor="" -c "$file"
+				nvim "$file"
 			else
-				$EDITOR "$file"
+				nvim "$file"
 			fi
 		else
 			echo "File is outside home directory"
