@@ -15,6 +15,8 @@ fi
 [ -f /usr/share/fzf/key-bindings.bash ] && source /usr/share/fzf/key-bindings.bash
 [ -f /usr/share/fzf/completion.bash ] && source /usr/share/fzf/completion.bash
 
+[[ -r /usr/share/bash-completion/bash_completion ]] && . /usr/share/bash-completion/bash_completion
+
 # [[ $- == *i* ]] && source /usr/share/blesh/ble.sh # syntax highlighting and other features
 
 # history
