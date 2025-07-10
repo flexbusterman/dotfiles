@@ -17,8 +17,6 @@ fi
 
 [[ -r /usr/share/bash-completion/bash_completion ]] && . /usr/share/bash-completion/bash_completion
 
-# [[ $- == *i* ]] && source /usr/share/blesh/ble.sh # syntax highlighting and other features
-
 # history
 export HISTFILE=~/.bash_history
 HISTSIZE=10000000
