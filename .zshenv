@@ -15,6 +15,7 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 export __NV_PRIME_RENDER_OFFLOAD=1
 export DEBUG_CODEIUM="warn"
+export WEBKIT_DISABLE_DMABUF_RENDERER=1.
 # export TASKRC=~/.config/taskwarrior/taskrc
 
 # export PATH=$PATH:$ANDROID_HOME/emulator

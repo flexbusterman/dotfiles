@@ -7,7 +7,7 @@ case "$filetype" in
 		sxivopen "$@"
 		;;
 	video/*)
-		mpv "$@"
+		mpv --save-watch-history "$@"
 		;;
 	audio/*)
 		mpc --host /run/user/1000/mpd/socket clear
