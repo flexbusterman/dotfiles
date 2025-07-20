@@ -2,7 +2,8 @@
 [[ -d $HOME/.local/bin/statusbar ]] && export PATH=$HOME/.local/bin/statusbar:$PATH
 [[ -d $HOME/.config/emacs/bin/ ]] && export PATH=$HOME/.config/emacs/bin:$PATH
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#666f98"
-export QT_QPA_PLATFORMTHEME="qt5ct"
+# export QT_QPA_PLATFORMTHEME="qt5ct"
+export QT_QPA_PLATFORMTHEME="xcb"
 export BROWSER=qutebrowser
 export EDITOR="nvim"
 export HEADPHONES='3C:B0:ED:BD:8B:3F'

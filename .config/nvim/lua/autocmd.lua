@@ -20,10 +20,9 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufNewFile" }, {
 	pattern = "*.org",
 	command = "TableModeEnable",
 })
-
 vim.api.nvim_create_autocmd({ "BufEnter", "BufNewFile" }, {
 	pattern = "*.md",
-	command = "set linebreak | set ft=vimwiki",
+	command = "set linebreak | set ft=markdown",
 })
 
 vim.api.nvim_create_autocmd("InsertLeave", {
