@@ -1,60 +1,91 @@
 #!/usr/bin/env bash
 shopt -s extglob
 
-# Check if no arguments are provided
 if [ $# -eq 0 ]; then
-	echo "No files specified."
-	exit 1
+    echo "No files specified."
+    exit 1
 fi
 
-# Flag for renaming all remaining files
 rename_all=false
 
-# Function to confirm action
 confirm() {
-	if $rename_all; then
-		return 0
-	fi
+    if $rename_all; then
+        return 0
+    fi
+    while true; do
+        read -n 1 -p "$1 [Y/N/A]: " yn
+        echo
+        case $yn in
+            [Yy]*) return 0;;
+            [Nn]*) return 1;;
+            [Aa]*) rename_all=true; return 0;;
+            *) echo "Please answer yes, no, or all.";;
+        esac
+    done
+}
 
-	while true; do
-		read -n 1 -p "$1 [Y/N/A]: " yn
-		case $yn in
-			[Yy]*) return 0;;
-			[Nn]*) return 1;;
-			[Aa]*) rename_all=true; return 0;;
-			*) echo "Please answer yes, no, or all.";;
-		esac
-	done
+is_valid_filename() {
+    [[ "$1" =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}\ [0-9]{2}_[0-9]{2}_[0-9]{2}\.[a-zA-Z0-9]+$ ]]
 }
 
 for file in "$@"; do
-	# check if the file has an image extension
-	if [[ ${file,,} =~ \.(jpg|jpeg|png|gif|bmp|webp)$ ]]; then
-		if [[ $file =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2} ]]; then
-			echo "File already has correct format: $file"
-		else
-			echo "Processing file: $file"
-			# Regex to match the pattern starting with 20 for the year
-			[[ $file =~ ([0-9]{4}-[0-9]{2}-[0-9]{2})[-_\ ]([0-9]{2}-[0-9]{2}-[0-9]{2}).*\.(.*$) ]]
-			date=${BASH_REMATCH[1]}
-			time=${BASH_REMATCH[2]//-/_}
-			extension=${BASH_REMATCH[3]}
-			echo "Date: $date"
-			echo "Time: $time"
-			echo "Extension: $extension"
-			newname="$date $time.$extension"
-			echo "$newname"
-			# confirmation prompt
-			if confirm "Rename $file to $newname"; then
-				# if newfile already exists, append a number to the end of the filename
-				if [ -f "$newname" ]; then
-					newname="${newname%.*}-1.${extension}"
-				fi
-				echo "Renaming $file to $newname"
-				mv -v "$file" "$newname"
-			fi
-		fi
-	else
-		echo "File $file is not an image file"
-	fi
+    # Check for image extension
+    if [[ ${file,,} =~ \.(jpg|jpeg|png|gif|bmp|webp)$ ]]; then
+        if [[ $file =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}\ [0-9]{2}_[0-9]{2}_[0-9]{2}\.(jpg|jpeg|png|gif|bmp|webp)$ ]]; then
+            echo "File already has correct format: $file"
+            continue
+        fi
+
+        newname=""
+
+        # Pattern 1: YYYY-MM-DD HH_MM_SS
+        if [[ $file =~ ^([0-9]{4}-[0-9]{2}-[0-9]{2})\ ([0-9]{2})_([0-9]{2})_([0-9]{2}).*\.(jpg|jpeg|png|gif|bmp|webp)$ ]]; then
+            date="${BASH_REMATCH[1]}"
+            time="${BASH_REMATCH[2]}_${BASH_REMATCH[3]}_${BASH_REMATCH[4]}"
+            extension="${BASH_REMATCH[5]}"
+            newname="$date $time.$extension"
+        # Pattern 2: YYYY-MM-DD-HH-MM-SS
+        elif [[ $file =~ ^([0-9]{4}-[0-9]{2}-[0-9]{2})-([0-9]{2})-([0-9]{2})-([0-9]{2}).*\.(jpg|jpeg|png|gif|bmp|webp)$ ]]; then
+            date="${BASH_REMATCH[1]}"
+            time="${BASH_REMATCH[2]}_${BASH_REMATCH[3]}_${BASH_REMATCH[4]}"
+            extension="${BASH_REMATCH[5]}"
+            newname="$date $time.$extension"
+        # Pattern 3: YYYY-MM-DD_HH_MM_SS
+        elif [[ $file =~ ^([0-9]{4}-[0-9]{2}-[0-9]{2})_([0-9]{2})_([0-9]{2})_([0-9]{2}).*\.(jpg|jpeg|png|gif|bmp|webp)$ ]]; then
+            date="${BASH_REMATCH[1]}"
+            time="${BASH_REMATCH[2]}_${BASH_REMATCH[3]}_${BASH_REMATCH[4]}"
+            extension="${BASH_REMATCH[5]}"
+            newname="$date $time.$extension"
+        # Pattern 4: Screenshot_YYYYMMDD-HHMMSS
+        elif [[ $file =~ ^Screenshot_([0-9]{4})([0-9]{2})([0-9]{2})-([0-9]{2})([0-9]{2})([0-9]{2}).*\.(jpg|jpeg|png|gif|bmp|webp)$ ]]; then
+            date="${BASH_REMATCH[1]}-${BASH_REMATCH[2]}-${BASH_REMATCH[3]}"
+            time="${BASH_REMATCH[4]}_${BASH_REMATCH[5]}_${BASH_REMATCH[6]}"
+            extension="${BASH_REMATCH[7]}"
+            newname="$date $time.$extension"
+        fi
+
+        if [ -n "$newname" ] && is_valid_filename "$newname"; then
+            echo "Detected: $file"
+            echo "Renaming to: $newname"
+            if confirm "Rename $file to $newname?"; then
+                base="${newname%.*}"
+                ext="${newname##*.}"
+                count=1
+                finalname="$newname"
+                while [ -f "$finalname" ]; do
+                    finalname="${base}_$count.$ext"
+                    ((count++))
+                done
+                echo "Renaming $file to $finalname"
+                mv -v "$file" "$finalname"
+            fi
+        else
+            echo "Could not parse date/time from: $file"
+            if confirm "Do nothing with $file?"; then
+                echo "Leaving $file unchanged."
+            fi
+        fi
+    else
+        echo "File $file is not an image file"
+    fi
 done

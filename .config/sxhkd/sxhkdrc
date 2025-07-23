@@ -155,7 +155,7 @@ super + shift + m
 # shift + control + m
 # notify-send "shift + control + m"
 
-super + m
+# super + m
 super + control + m
 	measure
 # super + shift + control + m
@@ -259,7 +259,7 @@ super + t
 	# $TERMINAL -e btop
 super + shift + t
 	$TERMINAL -e nvtop
-super + control + t
+# super + control + t
 	# $TERMINAL -e vit
 # notify-send "super + control + t"
 super + shift + control + t

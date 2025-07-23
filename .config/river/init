@@ -12,11 +12,18 @@
 # Super+Shift+Return to start an instance of foot (https://codeberg.org/dnkl/foot)
 # riverctl map normal Super+Shift Return spawn foot
 
+# Autostart
+riverctl spawn hyprpaper
+
+riverctl spawn "wideriver --ratio-master 0.55 --smart-gaps --outer-gaps 20 --inner-gaps 20 --log-threshold info > \"/tmp/wideriver.${XDG_VTNR}.${USER}.log\" 2>&1 & "
+riverctl default-layout wideriver
+riverctl output-layout wideriver
+
 # Super+Q to close the focused view
 riverctl map normal Super Q close
 
 # exit river
-riverctl map normal Super+Shift Q exit
+riverctl map normal Super+Shift Q spawn riverquit
 
 # Super+J and Super+K to focus the next/previous view in the layout stack
 riverctl map normal Super J focus-view next
@@ -30,8 +37,8 @@ riverctl map normal Super+Shift K swap previous
 # Super+Period and Super+Comma to focus the next/previous output
 # riverctl map normal Super Period focus-output next
 # riverctl map normal Super Comma focus-output previous
-riverctl map normal Control+Shift J focus-output next
-riverctl map normal Control+Shift K focus-output previous
+riverctl map normal+Control+Shift J focus-output next
+riverctl map normal+Control+Shift K focus-output previous
 
 # Super+Shift+{Period,Comma} to send the focused view to the next/previous output
 riverctl map normal Super+Control+Shift J send-to-output next
@@ -42,12 +49,12 @@ riverctl map normal Super+Control+Shift K send-to-output previous
 riverctl map normal Super Space zoom
 
 # Super+H and Super+L to decrease/increase the main ratio of rivertile(1)
-riverctl map normal Super H send-layout-cmd rivertile "main-ratio -0.05"
-riverctl map normal Super L send-layout-cmd rivertile "main-ratio +0.05"
+# riverctl map normal Super H send-layout-cmd rivertile "main-ratio -0.05"
+# riverctl map normal Super L send-layout-cmd rivertile "main-ratio +0.05"
 
 # Super+Shift+H and Super+Shift+L to increment/decrement the main count of rivertile(1)
-riverctl map normal Super+Shift H send-layout-cmd rivertile "main-count +1"
-riverctl map normal Super+Shift L send-layout-cmd rivertile "main-count -1"
+# riverctl map normal Super+Shift H send-layout-cmd rivertile "main-count +1"
+# riverctl map normal Super+Shift L send-layout-cmd rivertile "main-count -1"
 
 # Super+Alt+{H,J,K,L} to move views
 riverctl map normal Super+Alt H move left 100
@@ -106,10 +113,10 @@ riverctl map normal Super+Shift Space toggle-float
 riverctl map normal Super F toggle-fullscreen
 
 # Super+{Up,Right,Down,Left} to change layout orientation
-riverctl map normal Super Up    send-layout-cmd rivertile "main-location top"
-riverctl map normal Super Right send-layout-cmd rivertile "main-location right"
-riverctl map normal Super Down  send-layout-cmd rivertile "main-location bottom"
-riverctl map normal Super Left  send-layout-cmd rivertile "main-location left"
+# riverctl map normal Super Up    send-layout-cmd rivertile "main-location top"
+# riverctl map normal Super Right send-layout-cmd rivertile "main-location right"
+# riverctl map normal Super Down  send-layout-cmd rivertile "main-location bottom"
+# riverctl map normal Super Left  send-layout-cmd rivertile "main-location left"
 
 # Declare a passthrough mode. This mode has only a single mapping to return to
 # normal mode. This makes it useful for testing a nested wayland compositor
@@ -128,26 +135,28 @@ do
     # Eject the optical drive (well if you still have one that is)
     riverctl map $mode None XF86Eject spawn 'eject -T'
 
-    # Control pulse audio volume with pamixer (https://github.com/cdemoulins/pamixer)
+    #+Control pulse audio volume with pamixer (https://github.com/cdemoulins/pamixer)
     riverctl map $mode None XF86AudioRaiseVolume  spawn 'pamixer -i 5'
     riverctl map $mode None XF86AudioLowerVolume  spawn 'pamixer -d 5'
     riverctl map $mode None XF86AudioMute         spawn 'pamixer --toggle-mute'
 
-    # Control MPRIS aware media players with playerctl (https://github.com/altdesktop/playerctl)
+    #+Control MPRIS aware media players with playerctl (https://github.com/altdesktop/playerctl)
     riverctl map $mode None XF86AudioMedia spawn 'playerctl play-pause'
     riverctl map $mode None XF86AudioPlay  spawn 'playerctl play-pause'
     riverctl map $mode None XF86AudioPrev  spawn 'playerctl previous'
     riverctl map $mode None XF86AudioNext  spawn 'playerctl next'
 
-    # Control screen backlight brightness with brightnessctl (https://github.com/Hummer12007/brightnessctl)
+    #+Control screen backlight brightness with brightnessctl (https://github.com/Hummer12007/brightnessctl)
     riverctl map $mode None XF86MonBrightnessUp   spawn 'brightnessctl set +5%'
     riverctl map $mode None XF86MonBrightnessDown spawn 'brightnessctl set 5%-'
 done
 
 # Set background and border color
 riverctl background-color 0x002b36
-riverctl border-color-focused 0x93a1a1
-riverctl border-color-unfocused 0x586e75
+# riverctl border-color-focused 0x93a1a1
+riverctl border-color-focused 0x005577
+# riverctl border-color-unfocused 0x586e75
+riverctl border-color-unfocused 0x000000
 
 # Set keyboard repeat rate
 riverctl set-repeat 50 300
@@ -160,15 +169,124 @@ riverctl rule-add -app-id "bar" csd
 
 # Set the default layout generator to be rivertile and start it.
 # River will send the process group of the init executable SIGTERM on exit.
-riverctl default-layout rivertile
-rivertile -view-padding 6 -outer-padding 6 &
+# riverctl default-layout rivertile
+# rivertile -view-padding 6 -outer-padding 6 &
 
 # launch programs
-riverctl map normal Super Period spawn vimb
-riverctl map normal Super+Shift Return spawn "kitty -e tmux new-session -A -s main"
 riverctl map normal Super Return spawn dmenurun
 riverctl focus-follows-cursor normal
 
-riverctl spawn wideriver
-riverctl default-layout wideriver
-riverctl output-layout wideriver
+riverctl map normal Super H send-layout-cmd wideriver "--ratio -0.05"
+riverctl map normal Super L send-layout-cmd wideriver "--ratio +0.05"
+
+riverctl map normal Super Minus send-layout-cmd wideriver "--count +1"
+riverctl map normal Super Equal send-layout-cmd wideriver "--count -1"
+
+riverctl map normal Super Z spawn "notify-send $(grep outer-gaps /tmp/wideriver.1.flex.log | awk '{print $4}')"
+
+riverctl map normal Super Period spawn qutebrowser
+riverctl map normal Super+Shift Return spawn "kitty -e tmux new-session -A -s main"
+riverctl map normal Super+Shift Return spawn "kitty -e tmux new-session -A -s main"
+
+riverctl map normal Super a spawn "pkill waybar || (waybar; pkill dropbox; dropbox &)"
+
+riverctl map normal Super b spawn "bluetoothconnect $HEADPHONES"
+riverctl map normal Super+Shift b spawn "bluetoothctl disconnect $HEADPHONES"
+riverctl map normal Super+Shift+Control b spawn "blueberry"
+
+riverctl map normal Super+Control c spawn "reaperconnect; supercolliderttsconnect;"
+
+# alt d spawn typedate
+riverctl map normal Super d spawn typedate
+
+# riverctl map normal Super+Control d spawn task rm $(task _get $(task next limit:1 | tail -n +4 | head -n 1 | sed 's/^ //' | cut -d ' ' -f1).id)
+riverctl map normal Super+Shift+Control d spawn "mpc --host ~/.mpd/socket clear"
+
+# riverctl map normal Super e spawn touchpaddisablewhiletypingtoggle
+
+riverctl map normal Super+Shift+Control b spawn "blueberry"
+riverctl map normal Super c spawn "calendar"
+riverctl map normal Super+Shift c spawn "qutebrowser --target window calendar.google.com"
+riverctl map normal Super+Shift d spawn "kitty -e dwmrebuild"
+riverctl map normal Super+Shift+Control d spawn "mpc --host ~/.mpd/socket clear"
+riverctl map normal Super e spawn "kitty -e aerc"
+riverctl map normal Super+Shift e spawn "togglekanata"
+riverctl map normal Super+Control h spawn "musicseekbackward"
+# riverctl map normal Super+Shift i spawn "xcalib -i -a"
+# riverctl map normal Super+Shift+Control i spawn "punch --select"
+riverctl map normal Super+Control j spawn "musicnext"
+riverctl map normal Super+Control k spawn "musicprev"
+riverctl map normal Super+Control l spawn "musicseekforward"
+riverctl map normal Super+Shift+Control l spawn "slock"
+riverctl map normal Super m spawn "mullvadconnect"
+riverctl map normal Super+Shift m spawn "mullvaddisconnect"
+riverctl map normal Super+Control m spawn "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+riverctl map normal Super n spawn "kitty -e /home/flex/.local/bin/fzfnotes ~/ORGMODE/"
+riverctl map normal Super+Shift n spawn "kitty -e /home/flex/.local/bin/fzfgrep"
+riverctl map normal Super+Shift o spawn "notify-send -t 15000 "$(oblique)""
+riverctl map normal Super p spawn "prependclipboard ~/ORGMODE/refile.org"
+riverctl map normal Super+Shift p spawn "passmenufontfix"
+riverctl map normal Super+Shift+Control p spawn "poweroff"
+riverctl map normal Super+Control q spawn "qpwgraph"
+riverctl map normal Super+Control r spawn "reaper"
+# riverctl map normal Super+Shift r spawn "pkill -usr1 -x sxhkd && notify-send 'Reloaded sxhkd config' || pkill -usr1 -x sxhkd && notify-send 'Reloaded sxhkd config'"
+riverctl map normal Super+Shift+Control r spawn "reboot"
+riverctl map normal Super+Control s spawn "kitty -T SuperCollider -e tmuxsession SuperCollider 'supercollider'"
+riverctl map normal Super+Shift+Control s spawn "killsupercollider"
+riverctl map normal Super t spawn "kitty -e htop"
+riverctl map normal Super+Shift t spawn "kitty -e nvtop"
+riverctl map normal Super+Shift+Control t spawn "kitty -e tt -theme dracula"
+riverctl map normal Super v spawn "fzfvideo"
+riverctl map normal Super+Shift v spawn "fzfvideoresume"
+riverctl map normal Super+Shift x spawn "xkill"
+riverctl map normal Super y spawn "ytfzf -m --mpv-opts='--ytdl-format=bestvideo[height<=480]+bestaudio/best[height<=480]' -D"
+
+riverctl map normal Super+Control t spawn "tidal-hifi"
+riverctl map normal Super+Control n spawn "kitty -e bash -c 'MPD_HOST=/run/user/$UID/mpd/socket ncmpcpp'"
+
+riverctl map normal Super+Control+Shift Space spawn "musicrandomfolder"
+riverctl map normal Super+Control Space spawn "musicplaypause"
+riverctl map normal Super comma spawn "kitty -e yazi"
+riverctl map normal Super+Shift comma spawn "kitty -e ranger"
+# riverctl map normal Super, period spawn "qutebrowser"
+# riverctl map normal Super period spawn "vimb"
+riverctl map normal Super+Shift period spawn "bravestart"
+riverctl map normal Super slash spawn "kitty -e ~/.local/bin/shortcuts"
+riverctl map normal Super+Shift slash spawn "typesnippet"
+riverctl map normal Super backslash spawn "keymouse"
+riverctl map normal Super semicolon spawn "clipstream"
+riverctl map normal Super+Shift semicolon spawn "clipdownload"
+riverctl map normal Super+Shift+Control semicolon spawn "clipdownload -a"
+riverctl map normal Super+Shift equal spawn "calculate"
+# riverctl map normal Super grave spawn "kitty -e emacsorgstart -t"
+riverctl map normal Super grave spawn "kitty -e vit"
+riverctl map normal Super+Shift grave spawn "dmenuunicode"
+riverctl map normal Super F1 spawn "bindings"
+riverctl map normal Super F2 spawn "resolution"
+riverctl map normal Super F3 spawn "displaydefault"
+riverctl map normal Super+Shift F3 spawn "displayselect"
+riverctl map normal Super F4 spawn "kitty -T PulseMixer -e pulsemixer"
+riverctl map normal Super+Shift F4 spawn "pavucontrol"
+riverctl map normal Super F6 spawn "torwrap"
+riverctl map normal Super F7 spawn "td-toggle"
+riverctl map normal Super F8 spawn "mounter"
+riverctl map normal Super F9 spawn "unmounter"
+riverctl map normal Super F10 spawn "campreview"
+riverctl map normal Super F11 spawn "screencaststart"
+riverctl map normal Super+Shift F11 spawn "screencastwithmicstart"
+riverctl map normal Super F12 spawn "killrecording"
+riverctl map normal None Print spawn "screenshot"
+riverctl map normal Shift Print spawn "screenshot -s"
+riverctl map normal Super+Control BackSpace spawn "notify-send \"super+Control BackSpace\""
+riverctl map normal Super+Control equal spawn "pamixer --allow-boost -i 3"
+riverctl map normal Super+Control minus spawn "pamixer --allow-boost -d 3"
+riverctl map normal Super+Control d spawn musicfolderbad
+# bind = shift+Control Equal spawn "brightnessctl s 10%+"
+# bind = shift+Control minus spawn "brightnessctl s 10%-"
+riverctl map normal Shift+Control Equal spawn "brightness -i"
+riverctl map normal Shift+Control minus spawn "brightness -d"
+
+# riverctl map normal Super z spawn bash -c 'current=$(hyprctl getoption general:gaps_in | grep "custom type" | awk "{print \$3}"); if [ "$current" -eq 0 ]; then hyprctl keyword general:gaps_in 8; hyprctl keyword general:gaps_out 16; else hyprctl keyword general:gaps_in 0; hyprctl keyword general:gaps_out 0; fi'
+
+riverctl map normal Super i spawn taskstart
+riverctl map normal Super o spawn taskstop
