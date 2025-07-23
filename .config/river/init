@@ -150,12 +150,17 @@ do
     riverctl map $mode None XF86MonBrightnessDown spawn 'brightnessctl set 5%-'
 done
 
+# Options
+
 # Set background and border color
 riverctl background-color 0x002b36
 # riverctl border-color-focused 0x93a1a1
 riverctl border-color-focused 0x005577
 # riverctl border-color-unfocused 0x586e75
 riverctl border-color-unfocused 0x000000
+
+riverctl hide-cursor timeout 1000
+riverctl hide-cursor when-typing enabled
 
 # Set keyboard repeat rate
 riverctl set-repeat 50 300
