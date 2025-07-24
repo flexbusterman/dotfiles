@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# This is the example configuration file for river.
+#This is the example configuration file for river.
 #
 # If you wish to edit this, you will probably want to copy it to
 # $XDG_CONFIG_HOME/river/init or $HOME/.config/river/init first.
@@ -14,6 +14,9 @@
 
 # Autostart
 riverctl spawn hyprpaper
+riverctl spawn dropbox
+riverctl spawn dunst
+riverctl spawn "udiskie -ta"
 riverctl spawn "wideriver --ratio-master 0.55 --smart-gaps --outer-gaps 20 --inner-gaps 20 --log-threshold info > \"/tmp/wideriver.${XDG_VTNR}.${USER}.log\" 2>&1 & "
 riverctl default-layout wideriver
 riverctl output-layout wideriver
@@ -150,32 +153,6 @@ do
     riverctl map $mode None XF86MonBrightnessDown spawn 'brightnessctl set 5%-'
 done
 
-# Options
-
-# Set background and border color
-riverctl background-color 0x002b36
-# riverctl border-color-focused 0x93a1a1
-riverctl border-color-focused 0x005577
-# riverctl border-color-unfocused 0x586e75
-riverctl border-color-unfocused 0x000000
-
-riverctl hide-cursor timeout 1000
-riverctl hide-cursor when-typing enabled
-
-# Set keyboard repeat rate
-riverctl set-repeat 50 300
-
-# Make all views with an app-id that starts with "float" and title "foo" start floating.
-riverctl rule-add -app-id 'float*' -title 'foo' float
-
-# Make all views with app-id "bar" and any title use client-side decorations
-riverctl rule-add -app-id "bar" csd
-
-# Set the default layout generator to be rivertile and start it.
-# River will send the process group of the init executable SIGTERM on exit.
-# riverctl default-layout rivertile
-# rivertile -view-padding 6 -outer-padding 6 &
-
 # launch programs
 riverctl map normal Super Return spawn dmenurun
 riverctl focus-follows-cursor normal
@@ -192,7 +169,7 @@ riverctl map normal Super Period spawn qutebrowser
 riverctl map normal Super+Shift Return spawn "kitty -e tmux new-session -A -s main"
 riverctl map normal Super+Shift Return spawn "kitty -e tmux new-session -A -s main"
 
-riverctl map normal Super a spawn "pkill waybar || (waybar; pkill dropbox; dropbox &)"
+riverctl map normal Super a spawn "pkill waybar || waybar"
 
 riverctl map normal Super b spawn "bluetoothconnect $HEADPHONES"
 riverctl map normal Super+Shift b spawn "bluetoothctl disconnect $HEADPHONES"
@@ -294,3 +271,101 @@ riverctl map normal Shift+Control minus spawn "brightness -d"
 
 riverctl map normal Super i spawn taskstart
 riverctl map normal Super o spawn taskstop
+
+# Options
+
+riverctl hide-cursor timeout 1000
+riverctl hide-cursor when-typing enabled
+
+# Set keyboard repeat rate
+riverctl set-repeat 50 300
+
+# Make all views with an app-id that starts with "float" and title "foo" start floating.
+riverctl rule-add -app-id 'float*' -title 'foo' float
+
+# Make all views with app-id "bar" and any title use client-side decorations
+riverctl rule-add -app-id "bar" csd
+
+# Set the default layout generator to be rivertile and start it.
+# River will send the process group of the init executable SIGTERM on exit.
+# riverctl default-layout rivertile
+# rivertile -view-padding 6 -outer-padding 6 &
+
+# default-attach-mode top|bottom|above|below|after <N>
+#     Set the attach mode to be used by all outputs by default.
+#
+#     Possible values:
+#     •   top: Prepends the newly spawned view at the top of the stack.
+#     •   bottom: Appends the newly spawned view at the bottom of the stack.
+#     •   above: Inserts the newly spawned view above the currently focused view.
+#     •   below: Inserts the newly spawned view below the currently focused view.
+#     •   after <N>: Inserts the newly spawned view after N views in the stack.
+#
+#     Note that the deprecated attach-mode command is aliased to default-attach-mode for backwards compatibility.
+#
+# output-attach-mode top|bottom|above|below|after <N>
+#     Set the attach mode of the currently focused output, overriding the value of default-attach-mode if any.
+#
+# allow-tearing enabled|disabled
+#     Allow  fullscreen views to tear if requested by the view. See also the tearing rule to force enable tearing
+#     for specific views.
+#
+# background-color 0xRRGGBB|0xRRGGBBAA
+#     Set the background color.
+#
+# border-color-focused 0xRRGGBB|0xRRGGBBAA
+#     Set the border color of focused views.
+#
+# border-color-unfocused 0xRRGGBB|0xRRGGBBAA
+#     Set the border color of unfocused views.
+#
+# border-color-urgent 0xRRGGBB|0xRRGGBBAA
+#     Set the border color of urgent views.
+#
+#
+# focus-follows-cursor disabled|normal|always
+#     There are three available modes:
+#
+#     •   disabled: Moving the cursor does not affect focus. This is the default.
+#     •   normal: Moving the cursor over a view will focus that view. Moving the cursor within a  view  will  not
+#         re-focus that view if focus has moved elsewhere.
+#     •   always: Moving the cursor will always focus whatever view is under the cursor.
+#
+#     If the view to be focused is on an output that does not have focus, focus is switched to that output.
+#
+# hide-cursor timeout timeout
+#     Hide  the  cursor  if it wasn't moved in the last timeout milliseconds until it is moved again. The default
+#     value is 0, which disables automatically hiding the cursor. Show the cursor again on any movement.
+#
+# hide-cursor when-typing enabled|disabled
+#     Hide the cursor when pressing any non-modifier key. Show the cursor again on any movement.
+#
+# set-cursor-warp disabled|on-output-change|on-focus-change
+#     Set the cursor warp mode. There are two available modes:
+#
+#     •   disabled: Cursor will not be warped. This is the default.
+#     •   on-output-change: When a different output is focused, the cursor will be warped to its center.
+#     •   on-focus-change: When a different view/output is focused, the cursor will be warped to its center.
+#
+# set-repeat rate delay
+#     Set the keyboard repeat rate to rate key repeats per second and repeat delay to delay milliseconds. The de‐
+#     fault is a rate of 25 repeats per second and a delay of 600ms.
+#
+# xcursor-theme theme_name [size]
+#     Set the xcursor theme to theme_name and optionally set the size. The theme of the default  seat  determines
+#     the default for Xwayland and is made available through the XCURSOR_THEME and XCURSOR_SIZE environment vari‐
+#     ables.
+#
+
+riverctl border-width 3
+# Set background and border color
+riverctl background-color 0x002b36
+# riverctl border-color-focused 0x93a1a1
+riverctl border-color-focused 0x005577
+# riverctl border-color-unfocused 0x586e75
+riverctl border-color-unfocused 0x000000
+
+# riverctl input pointer-2-10-TPPS/2_IBM_TrackPoint click-method click-finger
+#
+riverctl input pointer-2-7-SynPS/2_Synaptics_TouchPad tap enabled
+riverctl input pointer-2-7-SynPS/2_Synaptics_TouchPad tap-button-map left-right-middle
