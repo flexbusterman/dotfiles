@@ -380,3 +380,5 @@ riverctl input pointer-2-10-TPPS/2_IBM_TrackPoint pointer-accel -0.5
 
 riverctl spawn hyprpaper
 riverctl spawn swayidlestart
+
+riverctl spawn "sleep 1; riverborder" &
