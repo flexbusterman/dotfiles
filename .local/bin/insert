@@ -9,6 +9,5 @@ SESSION_TYPE="${XDG_SESSION_TYPE:-unknown}"
 if [[ "$SESSION_TYPE" == "x11" ]]; then
 	xdotool type "$STRING"
 else
-	ydotool type "$STRING"
 	wtype "$STRING"
 fi
