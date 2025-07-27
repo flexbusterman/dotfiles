@@ -4,66 +4,11 @@ set -e
 
 STRING="$*"
 
-# Function to check if a command exists
-command_exists() {
-	command -v "$1" >/dev/null 2>&1
-}
-
-# Detect session type
 SESSION_TYPE="${XDG_SESSION_TYPE:-unknown}"
-WAYLAND_DISPLAY="${WAYLAND_DISPLAY:-}"
 
 if [[ "$SESSION_TYPE" == "x11" ]]; then
-	# notify-send "We're running X11"
-	if command_exists xdotool; then
-		xdotool type "$STRING"
-		exit $?
-	else
-		echo "Error: xdotool not found. Cannot type on X11."
-		exit 1
-	fi
-elif [[ "$SESSION_TYPE" == "wayland" || -n "$WAYLAND_DISPLAY" ]]; then
-
-	# notify-send "We're running Wayland"
-	# Check if running Hyprland
-	if [ "$XDG_CURRENT_DESKTOP" = "Hyprland" ] || [ "$XDG_SESSION_DESKTOP" = "Hyprland" ]; then
-		# Query active window with hyprctl
-		if ! command_exists hyprctl; then
-			echo "Error: hyprctl not found. Cannot determine window type."
-			exit 1
-		fi
-		WININFO=$(hyprctl activewindow -j)
-		if echo "$WININFO" | grep -q '"xwayland": true'; then
-			# Focused window is XWayland
-			if command_exists ydotool; then
-				ydotool type "$STRING"
-				exit $?
-			else
-				echo "Error: XWayland window focused, but neither xdotool nor ydotool available."
-				echo "Try installing ydotool (and ensure it has necessary permissions)."
-				exit 1
-			fi
-		else
-			# Focused window is native Wayland
-			if command_exists wtype; then
-				wtype "$STRING"
-				exit $?
-			else
-				echo "Error: wtype not found for Wayland window."
-				exit 1
-			fi
-		fi
-	else
-		# Not Hyprland, fallback for other compositors
-		if command_exists wtype; then
-			wtype "$STRING"
-			exit $?
-		else
-			echo "Error: wtype not found for Wayland window."
-			exit 1
-		fi
-	fi
+	xdotool type "$STRING"
 else
-	echo "Error: Unknown session type: $SESSION_TYPE"
-	exit 1
+	ydotool type "$STRING"
+	wtype "$STRING"
 fi

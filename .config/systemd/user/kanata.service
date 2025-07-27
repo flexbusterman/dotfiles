@@ -5,6 +5,8 @@ Documentation=https://github.com/jtroo/kanata
 [Service]
 Environment=PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:$HOME/.cargo/bin
 Environment=DISPLAY=:0
+Environment=WAYLAND_DISPLAY=wayland-1
+Environment="XDG_RUNTIME_DIR=/run/user/%U"
 Type=simple
 ; ExecStart=/usr/bin/ -c 'exec $$(which kanata) --cfg $${HOME}/.config/kanata/config.kbd'
 ExecStart=/usr/bin/bash -c '/usr/bin/kanata --cfg $${HOME}/.config/kanata/config.kbd'
