@@ -1,0 +1,6 @@
+#!/bin/bash
+swayidle -w \
+  timeout 300 'waylock' \
+  timeout 600 'for output in $(wlr-randr | awk '\''/^[^[:space:]]/ {print $1}'\''); do wlr-randr --output $output --off; done' \
+    resume 'for output in $(wlr-randr | awk '\''/^[^[:space:]]/ {print $1}'\''); do wlr-randr --output $output --on; done' \
+  before-sleep 'waylock'
