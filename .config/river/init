@@ -17,7 +17,7 @@ riverctl spawn hyprpaper
 riverctl spawn dropbox
 riverctl spawn dunst
 riverctl spawn "udiskie -ta"
-riverctl spawn "wideriver --ratio-master 0.55 --smart-gaps --outer-gaps 20 --inner-gaps 20 --log-threshold info > \"/tmp/wideriver.${XDG_VTNR}.${USER}.log\" 2>&1 & "
+riverctl spawn "wideriver --ratio-master 0.55 --smart-gaps --outer-gaps 0 --inner-gaps 0 --log-threshold info > \"/tmp/wideriver.${XDG_VTNR}.${USER}.log\" 2>&1 & "
 riverctl default-layout wideriver
 riverctl output-layout wideriver
 
@@ -283,10 +283,14 @@ riverctl set-repeat 50 300
 # Rules
 # Make all views with an app-id that starts with "float" and title "foo" start floating.
 riverctl rule-add -app-id 'float*' -title 'foo' float
-riverctl rule-add -app-id 'REAPER' no-float
-
 # Make all views with app-id "bar" and any title use client-side decorations
 riverctl rule-add -app-id "bar" csd
+
+riverctl rule-add -app-id 'REAPER' -title '*Licensed*' no-float
+riverctl rule-add -app-id 'REAPER' -title 'FX*' no-float
+riverctl rule-add -app-id 'REAPER' -title 'MIDI' no-float
+riverctl rule-add -app-id 'REAPER' -title 'REAPER (initializing)' float
+riverctl rule-add -app-id 'REAPER' -title 'REAPER Query' float
 
 # Set the default layout generator to be rivertile and start it.
 # River will send the process group of the init executable SIGTERM on exit.
