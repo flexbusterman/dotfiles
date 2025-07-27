@@ -380,8 +380,4 @@ riverctl input pointer-2-10-TPPS/2_IBM_TrackPoint pointer-accel -0.5
 
 riverctl spawn hyprpaper
 #!/bin/sh
-riverctl spawn "swayidle -w \
-  timeout 300 'waylock' \
-  timeout 600 'for output in $(wlr-randr | awk '\''/^[^[:space:]]/ {print $1}'\''); do wlr-randr --output $output --off; done' \
-    resume 'for output in $(wlr-randr | awk '\''/^[^[:space:]]/ {print $1}'\''); do wlr-randr --output $output --on; done' \
-  before-sleep 'waylock'"
+riverctl spawn swayidlestart
