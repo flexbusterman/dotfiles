@@ -379,5 +379,4 @@ riverctl input pointer-2-7-SynPS/2_Synaptics_TouchPad tap-button-map left-right-
 riverctl input pointer-2-10-TPPS/2_IBM_TrackPoint pointer-accel -0.5
 
 riverctl spawn hyprpaper
-#!/bin/sh
 riverctl spawn swayidlestart
