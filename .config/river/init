@@ -17,7 +17,18 @@ riverctl spawn hyprpaper
 riverctl spawn dropbox
 riverctl spawn dunst
 riverctl spawn "udiskie -ta"
-riverctl spawn "wideriver --ratio-master 0.55 --smart-gaps --outer-gaps 0 --inner-gaps 0 --log-threshold info > \"/tmp/wideriver.${XDG_VTNR}.${USER}.log\" 2>&1 & "
+
+riverctl spawn "wideriver \
+	--ratio-master 0.55 \
+	--stack even \
+	--smart-gaps \
+	--outer-gaps 0 \
+	--inner-gaps 0 \
+	--border-width 3 \
+	--border-color-focused 0x93a1a1 \
+	--border-color-unfocused 0x000000 \
+	--log-threshold info > \"/tmp/wideriver.${XDG_VTNR}.${USER}.log\" 2>&1 & "
+
 riverctl default-layout wideriver
 riverctl output-layout wideriver
 
@@ -361,21 +372,13 @@ riverctl rule-add -app-id 'REAPER' -title 'REAPER v*' no-float
 #     ables.
 #
 
-# riverctl border-width 3
-# # Set background and border color
-# riverctl background-color 0x002b36
-# # riverctl border-color-focused 0x93a1a1
-# riverctl border-color-focused 0x005577
-# # riverctl border-color-unfocused 0x586e75
-# riverctl border-color-unfocused 0x000000
-
 for Touchpad in "$(riverctl list-inputs | awk '/Touchpad/ {print}')"; do
 	riverctl input "$Touchpad" tap enabled
 	riverctl input "$Touchpad" tap-button-map left-right-middle
 done
 
 for TrackPoint in "$(riverctl list-inputs | awk '/TrackPoint/ {print}')"; do
-	riverctl input "$TrackPoint" pointer-accel -0.4
+	riverctl input "$TrackPoint" pointer-accel -0.3
 done
 
 riverctl spawn hyprpaper
