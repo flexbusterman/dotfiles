@@ -3,49 +3,55 @@
 # Default color settings
 beginColorString=""
 endColorString=""
-# echo "^c#ff79c6^$taskid $timewActiveDescription^d^"
+
+truncate_length=15
+
+truncate() {
+	local str="$1"
+	local len="$2"
+	if [ "${#str}" -gt "$len" ]; then
+		echo "${str:0:len}…"
+	else
+		echo "$str"
+	fi
+}
 
 if [[ $(timew) == "There is no active time tracking." ]]; then
 	# Parse flags
 	while getopts "td" opt; do
 		case $opt in
-		t)
-			beginColorString="#[fg=colour243]"
-			# beginColorString="#[fg=colour5	] "
-			endColorString=" "
-			;;
-		d)
-			# beginColorString="^c#ff79c6^"
-			# endColorString="^d^"
-			;;
+			t)
+				beginColorString="#[fg=colour243]"
+				endColorString=" "
+				;;
+			d)
+				# beginColorString="^c#ff79c6^"
+				# endColorString="^d^"
+				;;
 		esac
 	done
 
-	# taskobject=$(jq 'map_values(select(.id > 0) | select(has("wait") | not)) | sort_by(.urgency) | reverse | first' ~/.local/share/$USER/tasklist.json)
-	# taskobject=$(jq 'map_values(select(.id > 0)) | sort_by(.urgency) | reverse | first' ~/.local/share/$USER/tasklist.json)
-	# taskid=$(echo $taskobject | jq -r '.id')
-	# taskdescription=$(echo $taskobject | jq -r '.description')
 	taskid=$(task next limit:1 | tail -n +4 | head -n 1 | sed 's/^ //' | cut -d ' ' -f1)
 	taskdescription=$(task _get $taskid.description)
+	taskdescription=$(truncate "$taskdescription" "$truncate_length")
 	echo "$beginColorString $taskid $taskdescription$endColorString"
 else
-
 	# Parse flags
 	while getopts "td" opt; do
 		case $opt in
-		t)
-			# beginColorString="#[fg=colour243]"
-			beginColorString="#[fg=colour5]"
-			endColorString=" "
-			;;
-		d)
-			beginColorString=" ^c#ff79c6^"
-			endColorString="^d^"
-			;;
+			t)
+				beginColorString="#[fg=colour5]"
+				endColorString=" "
+				;;
+			d)
+				beginColorString=" ^c#ff79c6^"
+				endColorString="^d^"
+				;;
 		esac
 	done
 	timewRawActiveDescription=$(timew)
 	timewActiveDescription=$(echo $timewRawActiveDescription | awk /'Tracking'/ | awk -F'"' '{print $2}')
+	timewActiveDescription=$(truncate "$timewActiveDescription" "$truncate_length")
 	taskobject=$(jq --arg keyvar "$timewActiveDescription" 'map_values(select(.description==$keyvar))[0]' ~/.local/share/$USER/tasklist.json)
 	taskid=$(echo $taskobject | jq -r '.id')
 	echo "$beginColorString$taskid $timewActiveDescription$endColorString"
