@@ -25,7 +25,7 @@ riverctl spawn "wideriver \
 	--outer-gaps 0 \
 	--inner-gaps 0 \
 	--border-width 3 \
-	--border-color-focused 0x93a1a1 \
+	--border-color-focused 0x005577 \
 	--border-color-unfocused 0x000000 \
 	--log-threshold info > \"/tmp/wideriver.${XDG_VTNR}.${USER}.log\" 2>&1 & "
 
@@ -171,8 +171,8 @@ riverctl focus-follows-cursor normal
 riverctl map normal Super H send-layout-cmd wideriver "--ratio -0.05"
 riverctl map normal Super L send-layout-cmd wideriver "--ratio +0.05"
 
-riverctl map normal Super Minus send-layout-cmd wideriver "--count +1"
-riverctl map normal Super Equal send-layout-cmd wideriver "--count -1"
+riverctl map normal Super Equal send-layout-cmd wideriver "--count +1"
+riverctl map normal Super Minus send-layout-cmd wideriver "--count -1"
 
 riverctl map normal Super Z spawn "notify-send $(grep outer-gaps /tmp/wideriver.1.flex.log | awk '{print $4}')"
 
