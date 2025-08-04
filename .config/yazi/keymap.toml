@@ -399,7 +399,10 @@ run = 'shell "editfile \"$@\"" --orphan --confirm'
 
 [[mgr.append_keymap]]
 on	= "<C-e>"
-run = 'shell "dragon \"$@\"" --confirm'
+# run = 'shell "dragon-drop \"$@\"" --confirm'
+run = '''
+    shell 'dragon-drop -a -x -T "$@"' --confirm
+'''
 
 [[mgr.append_keymap]]
 on	= "u"
