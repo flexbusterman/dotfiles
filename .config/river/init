@@ -378,7 +378,7 @@ for Touchpad in "$(riverctl list-inputs | awk '/Touchpad/ {print}')"; do
 done
 
 for TrackPoint in "$(riverctl list-inputs | awk '/TrackPoint/ {print}')"; do
-	riverctl input "$TrackPoint" pointer-accel -0.3
+	riverctl input "$TrackPoint" pointer-accel -0.5
 done
 
 riverctl spawn hyprpaper

@@ -4,9 +4,9 @@
 readarray -t links < <(pw-link -lI | sed 's/^[ \t]*//')
 # store name that begins with alsa_output in a variable
 
-for link in "${links[@]}"; do
-	echo "$link"
-done
+# for link in "${links[@]}"; do
+# 	echo "$link"
+# done
 
 # Check if alsa_output.*FL exists
 alsaFL=$(printf '%s\n' "${links[@]}" | grep -o -m 1 "alsa_output.*FL")
@@ -26,11 +26,5 @@ if [[ " ${links[@]} " =~ " REAPER:out2 " ]] && [[ ! -z "$alsaFR" ]]; then
 	pw-link -d REAPER:out2 $alsaFR
 fi
 
-# if array links doesn't contain bluez_output
-if [[ ! "${links[@]}" =~ "bluez_output" ]]; then
-		MAC=$(echo $HEADPHONES | tr ":" "_")
-		pw-link REAPER:out1 bluez_output.$MAC.1:playback_FL
-		pw-link REAPER:out2 bluez_output.$MAC.1:playback_FR
-fi
-
-# printf '%s\n' "${links[@]}"#
+pw-link REAPER:out1 bluez_output.$(echo $HEADPHONES | tr ":" "_").1:playback_FL
+pw-link REAPER:out2 bluez_output.$(echo $HEADPHONES | tr ":" "_").1:playback_FR
