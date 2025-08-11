@@ -48,6 +48,9 @@ case "$filetype" in
 					7z x -y "$file" -o"${file%.*}"
 				done
 				;;
+			smc)
+				snes9x-gtk "$file"
+				;;
 			*)
 				notify-send "${1##*.}"
 				;;

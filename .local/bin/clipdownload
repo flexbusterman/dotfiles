@@ -1,53 +1,106 @@
 #!/usr/bin/env bash
-# ifinstalled xsel yt-dlp || exit 1
-# set clipboard depending on whether X11 or wayland is running
 
-[ -d ~/Downloads/VIDEO ] || mkdir -p ~/Downloads/VIDEO
-
-if [[ $XDG_SESSION_TYPE == "wayland" ]]; then
-	clipboard=$(wl-paste)
-else
-	clipboard=$(xsel -ob)
+# Enable debug output if DEBUG env is set
+if [[ "$DEBUG" == "1" ]]; then
+    set -x
 fi
 
-Help()
-{
-	# Display Help
-	echo "Download video in clipboard to your ~/Downloads folder."
-	echo
-	echo "Syntax: clipdownload [-h|a]"
-	echo "options:"
-	echo "-h     Print this Help."
-	echo "-a     Download 320kb/s MP3 format."
-	echo
+# Function to output debug messages
+debug() {
+    if [[ "$DEBUG" == "1" ]]; then
+        echo "[DEBUG] $*" >&2
+    fi
 }
 
+# Ensure ~/Downloads/VIDEO exists
+if [ ! -d "$HOME/Downloads/VIDEO" ]; then
+    debug "Creating directory $HOME/Downloads/VIDEO"
+    mkdir -p "$HOME/Downloads/VIDEO"
+fi
+
+# Show help
+Help() {
+    echo "Download video in clipboard or specified URL to your ~/Downloads folder."
+    echo
+    echo "Syntax: clipdownload [-h|a] [URL]"
+    echo "options:"
+    echo "-h     Print this Help."
+    echo "-a     Download 320kb/s MP3 format."
+    echo
+}
+
+MP3=false
+
+# Parse options
 while getopts ":h:a" option; do
-	case $option in
-		h) # display Help
-			Help
-			exit;;
-		a) # display Help
-			MP3=true
-			;;
-		# n) # Enter a name
-			# Name=$OPTARG;;
-		\?) # Invalid option
-			echo "Error: Invalid option"
-			exit;;
-	esac
+    case $option in
+        h)
+            debug "Displaying help"
+            Help
+            exit 0
+            ;;
+        a)
+            debug "MP3 flag set"
+            MP3=true
+            ;;
+        \?)
+            echo "Error: Invalid option"
+            exit 1
+            ;;
+    esac
 done
 
-if [ -n "$clipboard" ]
-then
-	if [[ $MP3 == true ]]
-	then
-		yt-dlp -x --audio-format mp3 --audio-quality 320K -P ~/Downloads/ "$clipboard" || notify-send 'Clipboard not valid'
-	else
-		# yt-dlp --mark-watched --username oauth2 --password $(cat ~/.envYT) -f 'bestvideo[height<=?1080]+bestaudio' -P ~/Downloads/VIDEO/ -o '%(uploader)s - %(playlist_index|)s%(playlist_index& - |)s%(title)s.%(ext)s' "$clipboard" || notify-send "Download unsuccessful"
-		[ -d ~/Downloads/VIDEO/ ] || mkdir -p ~/Downloads/VIDEO/;
-		yt-dlp --embed-chapters --mark-watched --cookies-from-browser "firefox" -f 'bestvideo[height<=?1080]+bestaudio' -P ~/Downloads/VIDEO/ -o '%(upload_date>%Y-%m-%d)s %(uploader)s - %(playlist_index|)s%(playlist_index& - |)s%(title)s.%(ext)s' "$clipboard" || notify-send "Download unsuccessful"
+shift $((OPTIND-1))
+
+# Get URL: use first argument if provided, else from clipboard
+if [ -n "$1" ]; then
+    url="$1"
+    debug "Using URL from first argument: $url"
+else
+    debug "No URL argument provided, checking clipboard"
+    if [[ $XDG_SESSION_TYPE == "wayland" ]]; then
+        url=$(wl-paste)
+        debug "Got URL from wl-paste: $url"
+    else
+        url=$(xsel -ob)
+        debug "Got URL from xsel: $url"
+    fi
+fi
+
+if [ -z "$url" ]; then
+    debug "URL variable is empty"
+    notify-send 'Clipboard empty or no URL provided'
+    exit 1
+fi
+
+# Main download logic
+if [[ "$MP3" == "true" ]]; then
+	debug "Running yt-dlp for MP3 download: yt-dlp -x --audio-format mp3 --audio-quality 320K -P $HOME/Downloads/ \"$url\""
+	yt-dlp -x --audio-format mp3 --audio-quality 320K -P "$HOME/Downloads/" "$url"
+	status=$?
+	debug "yt-dlp mp3 exit status: $status"
+	if [[ $status -ne 0 ]]; then
+		notify-send 'Clipboard/URL not valid or download failed'
+		exit $status
 	fi
 else
-	notify-send 'Clipboard empty'
+	debug "Ensuring $HOME/Downloads/VIDEO exists"
+	mkdir -p "$HOME/Downloads/VIDEO/"
+	debug "Running yt-dlp for video download: yt-dlp --embed-chapters --mark-watched --extractor-args \"youtube:player-client=default,mweb\" --cookies-from-browser \"firefox\" -f 'bestvideo[height<=?1080]+bestaudio' -P $HOME/Downloads/VIDEO/ -o '%(upload_date>%Y-%m-%d)s %(uploader)s - %(playlist_index|)s%(playlist_index& - |)s%(title)s.%(ext)s' \"$url\""
+	yt-dlp --embed-chapters \
+		--mark-watched \
+		--extractor-args "youtube:player-client=default" \
+		--cookies-from-browser "firefox" \
+		-f 'bestvideo[height<=?1080]+bestaudio/best/bestvideo+bestaudio/18' \
+		-P "$HOME/Downloads/VIDEO/" \
+		-o '%(upload_date>%Y-%m-%d)s %(uploader)s - %(playlist_index|)s%(playlist_index& - |)s%(title)s.%(ext)s' \
+		"$url"
+	status=$?
+	debug "yt-dlp video exit status: $status"
+	if [[ $status -ne 0 ]]; then
+		notify-send "Download unsuccessful"
+		exit $status
+	fi
 fi
+
+debug "Download finished successfully"
