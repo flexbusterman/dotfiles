@@ -299,6 +299,7 @@ riverctl rule-add -app-id "bar" csd
 
 riverctl rule-add -app-id 'REAPER' float
 riverctl rule-add -app-id 'REAPER' -title 'REAPER v*' no-float
+riverctl rule-add -app-id 'REAPER' -title 'MIDI*' no-float
 # riverctl rule-add -app-id 'REAPER' -title 'REAPER Notice' float
 
 # Set the default layout generator to be rivertile and start it.
