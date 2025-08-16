@@ -183,7 +183,7 @@ riverctl map normal Super+Shift Return spawn "kitty -e tmux new-session -A -s ma
 riverctl map normal Super a spawn "pkill waybar || waybar"
 
 riverctl map normal Super b spawn "bluetoothconnect $HEADPHONES"
-riverctl map normal Super+Shift b spawn "bluetoothctl disconnect $HEADPHONES"
+riverctl map normal Super+Shift b spawn "bluetoothctl disconnect $HEADPHONES && reaperconnect"
 riverctl map normal Super+Shift+Control b spawn "blueberry"
 
 riverctl map normal Super+Control c spawn "reaperconnect; supercolliderttsconnect;"
