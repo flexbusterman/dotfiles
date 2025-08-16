@@ -1,4 +1,4 @@
-#!/bin/sh
+#/bin/sh
 
 #This is the example configuration file for river.
 #
@@ -297,9 +297,11 @@ riverctl rule-add -app-id 'float*' -title 'foo' float
 # Make all views with app-id "bar" and any title use client-side decorations
 riverctl rule-add -app-id "bar" csd
 
-riverctl rule-add -app-id 'REAPER' float
-riverctl rule-add -app-id 'REAPER' -title 'REAPER v*' no-float
-riverctl rule-add -app-id 'REAPER' -title 'MIDI*' no-float
+riverctl rule-add -app-id 'REAPER' no-float
+riverctl rule-add -app-id 'REAPER' -title 'REAPER (initializing)' float
+riverctl rule-add -app-id 'REAPER' -title 'REAPER (loading)' float
+riverctl rule-add -app-id 'REAPER' -title 'Open project' float
+riverctl rule-add -app-id 'REAPER' -title 'REAPER Query' float
 # riverctl rule-add -app-id 'REAPER' -title 'REAPER Notice' float
 
 # Set the default layout generator to be rivertile and start it.
