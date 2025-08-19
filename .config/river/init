@@ -298,11 +298,15 @@ riverctl rule-add -app-id 'float*' -title 'foo' float
 # Make all views with app-id "bar" and any title use client-side decorations
 riverctl rule-add -app-id "bar" csd
 
-riverctl rule-add -app-id 'REAPER' no-float
+riverctl rule-add -app-id 'REAPER' no-float ssd
 riverctl rule-add -app-id 'REAPER' -title 'REAPER (initializing)' float
 riverctl rule-add -app-id 'REAPER' -title 'REAPER (loading)' float
 riverctl rule-add -app-id 'REAPER' -title 'Open project' float
 riverctl rule-add -app-id 'REAPER' -title 'REAPER Query' float
+riverctl rule-add -app-id 'REAPER' -title 'Export configuration' float
+riverctl rule-add -app-id 'REAPER' -title 'Success*' float
+riverctl rule-add -app-id 'REAPER' -title 'REAPER Preferences' float
+riverctl rule-add -app-id 'REAPER' -title 'Media Item Properties*' float
 # riverctl rule-add -app-id 'REAPER' -title 'REAPER Notice' float
 
 # Set the default layout generator to be rivertile and start it.
