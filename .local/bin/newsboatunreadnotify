@@ -1,5 +1,6 @@
 #!/bin/bash
 
+newsboat -x reload || exit 1
 unread=$(newsboat -x print-unread | awk 'NR==1{print $1}')
 if [ "$unread" -gt 0 ]; then
     notify-send "Newsboat" "You have $unread unread RSS feed item(s)."
