@@ -11,11 +11,20 @@ links="$(pw-link -lI 2>/dev/null)"
 # Then sort uniquely (numeric) and load into array.
 mapfile -t outIDs < <( awk '$2=="|<-" && $4 ~ /^REAPER:out[0-9]+$/ { print $1 }' <<<"$links")
 
+echo $inIDs
+
 # Disconnect all connected Reaper outputs
 for outID in "${outIDs[@]}"; do
 	echo "$outID"
 	pw-link -d $outID
 done
 
-pw-link REAPER:out1 $default:playback_FL
-pw-link REAPER:out2 $default:playback_FR
+if [[ $default =~ "Steinberg" ]]; then
+	pw-link REAPER:out1 $default:playback_AUX0
+	pw-link REAPER:out2 $default:playback_AUX1
+	pw-link "Steinberg UR22:capture_AUX0" REAPER:in1
+	pw-link "Steinberg UR22:capture_AUX1" REAPER:in2
+else
+	pw-link REAPER:out1 $default:playback_FL
+	pw-link REAPER:out2 $default:playback_FR
+fi
