@@ -11,8 +11,6 @@ links="$(pw-link -lI 2>/dev/null)"
 # Then sort uniquely (numeric) and load into array.
 mapfile -t outIDs < <( awk '$2=="|<-" && $4 ~ /^REAPER:out[0-9]+$/ { print $1 }' <<<"$links")
 
-echo $inIDs
-
 # Disconnect all connected Reaper outputs
 for outID in "${outIDs[@]}"; do
 	echo "$outID"

@@ -259,7 +259,7 @@ riverctl map normal Super F2 spawn "resolution"
 riverctl map normal Super F3 spawn "displaydefault"
 riverctl map normal Super+Shift F3 spawn "displayselect"
 riverctl map normal Super F4 spawn "kitty -T PulseMixer -e pulsemixer"
-riverctl map normal Super+Shift F4 spawn "pavucontrol"
+riverctl map normal Super+Shift F4 spawn "pwvucontrol"
 riverctl map normal Super F6 spawn "torwrap"
 riverctl map normal Super F7 spawn "td-toggle"
 riverctl map normal Super F8 spawn "mounter"
@@ -298,6 +298,7 @@ riverctl rule-add -app-id 'float*' -title 'foo' float
 # Make all views with app-id "bar" and any title use client-side decorations
 riverctl rule-add -app-id "bar" csd
 
+riverctl rule-add -app-id 'Steam' -title 'Steam' ssd
 riverctl rule-add -app-id 'REAPER' no-float ssd
 riverctl rule-add -app-id 'REAPER' -title 'REAPER (initializing)' float
 riverctl rule-add -app-id 'REAPER' -title 'REAPER (loading)' float
