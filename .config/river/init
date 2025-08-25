@@ -21,7 +21,7 @@ riverctl spawn "udiskie -ta"
 riverctl spawn "wideriver \
 	--ratio-master 0.55 \
 	--stack even \
-	--smart-gaps \
+	# --smart-gaps \
 	--outer-gaps 0 \
 	--inner-gaps 0 \
 	--border-width 3 \

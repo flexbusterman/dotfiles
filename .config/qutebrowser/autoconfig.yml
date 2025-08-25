@@ -56,15 +56,18 @@ settings:
     https://app.zoom.us: true
     https://meet.google.com: true
     https://teams.live.com: true
+    https://teams.microsoft.com: true
     https://www.instagram.com: true
   content.media.audio_video_capture:
     https://app.zoom.us: true
     https://meet.google.com: true
     https://teams.live.com: true
+    https://teams.microsoft.com: true
   content.media.video_capture:
     https://app.zoom.us: true
     https://meet.google.com: true
     https://teams.live.com: true
+    https://teams.microsoft.com: true
     https://www.instagram.com: true
   content.mouse_lock:
     https://nusan.itch.io: true

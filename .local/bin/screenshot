@@ -8,6 +8,7 @@ selectPrintScreen() {
 	if [ -z "$WAYLAND_DISPLAY" ]; then
 		echo "Is not wayland display"
 		maim -f jpg -m 9 -s "$filename"
+		echo "$filename" | wl-copy
 	else
 		echo "Is wayland display"
 		# slurp | grim -t jpeg -q 100 -g - "$filename"
@@ -20,9 +21,11 @@ printScreen() {
 	if [ -z "$WAYLAND_DISPLAY" ]; then
 		echo "Is not wayland display"
 		maim -f jpg -m 9 "$filename"
+		echo "$filename" | copy
 	else
 		echo "Is wayland display"
 		grim -t jpeg -q 100 "$filename"
+		echo "$filename" | wl-copy
 	fi
 }
 
