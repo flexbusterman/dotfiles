@@ -21,7 +21,7 @@ bindkey -e
 # fzf in terminal, fzf must be installed to use this
 eval "$(fzf --zsh)"
 
-[ -d /usr/share/zsh/plugins/zsh-autocomplete ] && source /usr/share/zsh/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+# [ -d /usr/share/zsh/plugins/zsh-autocomplete ] && source /usr/share/zsh/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 [ -d /usr/share/zsh/plugins/zsh-autosuggestions/ ] && source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
 [ -d /usr/share/zsh/plugins/zsh-syntax-highlighting/ ] && source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
 
