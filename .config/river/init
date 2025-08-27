@@ -22,13 +22,14 @@ riverctl spawn "udiskie -ta"
 riverctl spawn "wideriver \
 	--ratio-master 0.55 \
 	--stack even \
-	--smart-gaps \
 	--outer-gaps 0 \
 	--inner-gaps 0 \
 	--border-width 3 \
 	--border-color-focused 0x005577 \
 	--border-color-unfocused 0x000000 \
 	--log-threshold info > \"/tmp/wideriver.${XDG_VTNR}.${USER}.log\" 2>&1 & "
+
+	# --smart-gaps \
 
 riverctl default-layout wideriver
 riverctl output-layout wideriver
@@ -180,6 +181,7 @@ riverctl map normal Super Z spawn "notify-send $(grep outer-gaps /tmp/wideriver.
 riverctl map normal Super Period spawn qutebrowser
 riverctl map normal Super+Shift Return spawn "kitty -e tmux new-session -A -s main"
 riverctl map normal Super+Shift Return spawn "kitty -e tmux new-session -A -s main"
+riverctl map normal Super+Shift+Control Return spawn "text"
 
 riverctl map normal Super a spawn "pkill waybar || waybar"
 
@@ -214,7 +216,8 @@ riverctl map normal Super+Shift+Control l spawn "slock"
 riverctl map normal Super m spawn "mullvadconnect"
 riverctl map normal Super+Shift m spawn "mullvaddisconnect"
 riverctl map normal Super+Control m spawn "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
-riverctl map normal Super n spawn "kitty -e /home/flex/.local/bin/fzfnotes ~/ORGMODE/"
+riverctl map normal Super n spawn "kitty -e /home/flex/.local/bin/fzfnotes ~/WIKI/"
+riverctl map normal Super w spawn "kitty -e vimwiki"
 riverctl map normal Super+Shift n spawn "kitty -e /home/flex/.local/bin/fzfgrep"
 riverctl map normal Super+Shift o spawn "notify-send -t 15000 "$(oblique)""
 riverctl map normal Super p spawn "prependclipboard ~/ORGMODE/refile.org"
@@ -299,7 +302,9 @@ riverctl rule-add -app-id 'float*' -title 'foo' float
 # Make all views with app-id "bar" and any title use client-side decorations
 riverctl rule-add -app-id "bar" csd
 
-riverctl rule-add -app-id 'Steam' -title 'Steam' ssd
+riverctl rule-add ssd
+riverctl rule-add -app-id 'steam' ssd
+riverctl rule-add -app-id 'org.pwmt.zathura' ssd
 riverctl rule-add -app-id 'REAPER' no-float ssd
 riverctl rule-add -app-id 'REAPER' -title 'REAPER (initializing)' float
 riverctl rule-add -app-id 'REAPER' -title 'REAPER (loading)' float
@@ -309,6 +314,11 @@ riverctl rule-add -app-id 'REAPER' -title 'Export configuration' float
 riverctl rule-add -app-id 'REAPER' -title 'Success*' float
 riverctl rule-add -app-id 'REAPER' -title 'REAPER Preferences' float
 riverctl rule-add -app-id 'REAPER' -title 'Media Item Properties*' float
+
+# riverctl rule-add -app-id 'scratchpad' -float-size 640 480 float
+
+riverctl rule-add -app-id 'scratchpad' dimensions 640 480
+
 # riverctl rule-add -app-id 'REAPER' -title 'REAPER Notice' float
 
 # Set the default layout generator to be rivertile and start it.

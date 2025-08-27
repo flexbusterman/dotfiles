@@ -57,6 +57,8 @@ vim.keymap.set("n", "tt", ":tab split<CR>", { desc = "Open buffer in a new full 
 vim.keymap.set("n", "{", "{b", { desc = "Better jumping to previous paragraph" })
 vim.keymap.set("n", "}", "}w", { desc = "Better jumping to next paragraph" })
 
+vim.keymap.set("i", "<S-CR>", "<Esc><leader><CR>gi", { desc = "Insert mode leader+Enter" })
+
 -- vim.keymap.set("n", "<leader>l", function()
 -- 	local curview = vim.fn.winsaveview()
 -- 	vim.cmd(":%s/^\\s\\+$//e")
