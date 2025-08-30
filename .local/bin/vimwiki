@@ -1,0 +1,52 @@
+#!/usr/bin/bash
+
+# Check if running in a terminal, otherwise relaunch in $TERMINAL
+if [ -z "$TMUX" ] && [ -z "$TERM" ]; then
+	exec "$TERMINAL" -e "$0"
+	exit
+fi
+
+# Parse options
+while getopts ":d" option; do
+	case $option in
+		d)
+			diary=true
+			;;
+		\?)
+			echo "Error: Invalid option"
+			exit 1
+			;;
+	esac
+done
+
+cd ~/WIKI/
+
+# Start the tmux session if not running
+if ! tmux has-session -t wiki 2>/dev/null; then
+	echo "tmux session wiki not running, starting it"
+	tmux new-session -s wiki -d
+else
+	echo "tmux session wiki is running"
+fi
+
+# Check if (n)vim is running in the tmux session
+currentCommand=$(tmux list-panes -t wiki -F '#{pane_current_command}')
+if [[ "$currentCommand" == *"vim"* ]]; then
+	echo "(n)vim is running"
+	if [[ $diary ]]; then
+		tmux send-keys -t wiki Escape ":VimwikiMakeDiaryNote" Enter
+	else
+		tmux send-keys -t wiki Escape ":e index.md" Enter
+	fi
+else
+	echo "(n)vim is not running"
+	if [[ $diary ]]; then
+		tmux send-keys -t wiki 'cd ~/WIKI/; nvim -c "VimwikiMakeDiaryNote"' Enter
+	else
+		tmux send-keys -t wiki "cd ~/WIKI/; nvim index.md" Enter
+	fi
+fi
+
+# Attach to tmux session
+echo "$TERMINAL" "Opening vimwiki index in (n)vim"
+tmux attach -t wiki
