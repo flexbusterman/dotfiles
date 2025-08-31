@@ -18,6 +18,7 @@ riverctl spawn waybar
 riverctl spawn dropbox
 riverctl spawn dunst
 riverctl spawn "udiskie -ta"
+riverctl spawn kanshi
 
 riverctl spawn "wideriver \
 	--ratio-master 0.55 \
