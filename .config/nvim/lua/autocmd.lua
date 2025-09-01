@@ -21,6 +21,14 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufNewFile" }, {
 	command = "TableModeEnable",
 })
 
+vim.api.nvim_create_autocmd({ "FileType" }, {
+	pattern = "mail",
+	callback = function()
+		vim.opt_local.textwidth = 0 -- disables automatic linebreaks
+		-- vim.opt_local.wrap = false   -- disables visual wrapping
+	end,
+})
+
 -- vim.api.nvim_create_autocmd({ "BufEnter", "BufNewFile" }, {
 -- 	pattern = "*.md",
 -- 	command = "set linebreak | set ft=markdown",
