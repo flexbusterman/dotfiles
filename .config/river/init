@@ -181,7 +181,6 @@ riverctl map normal Super Z spawn "notify-send $(grep outer-gaps /tmp/wideriver.
 
 riverctl map normal Super Period spawn qutebrowser
 riverctl map normal Super+Shift Return spawn "kitty -e tmux new-session -A -s main"
-riverctl map normal Super+Shift Return spawn "kitty -e tmux new-session -A -s main"
 riverctl map normal Super+Shift+Control Return spawn "text"
 
 riverctl map normal Super a spawn "pkill waybar || waybar"
@@ -317,8 +316,7 @@ riverctl rule-add -app-id 'REAPER' -title 'Success*' float
 riverctl rule-add -app-id 'REAPER' -title 'REAPER Preferences' float
 riverctl rule-add -app-id 'REAPER' -title 'Media Item Properties*' float
 
-# riverctl rule-add -app-id 'scratchpad' -float-size 640 480 float
-
+riverctl rule-add -app-id 'scratchpad' float
 riverctl rule-add -app-id 'scratchpad' dimensions 640 480
 
 # riverctl rule-add -app-id 'REAPER' -title 'REAPER Notice' float

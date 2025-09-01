@@ -1,42 +1,4 @@
 #!/usr/bin/env bash
-# #!/usr/bin/env bash
-#
-# # Dependencies: nvim, xclip or wl-copy, mktemp, (alacritty|kitty|xterm)
-# # Optional: riverctl/i3-msg/etc for floating, but see notes below
-#
-# # Choose your terminal emulator here:
-# TERMINAL="kitty"          # Or "kitty", "xterm" etc.
-# TERMINAL_FLAGS="--class Scratchpad"  # For WM rules; customize if needed
-#
-# # Clipboard tool (auto-detect)
-# if command -v wl-copy &> /dev/null; then
-#     CLIP="wl-copy"
-# elif command -v xclip &> /dev/null; then
-#     CLIP="xclip -selection clipboard"
-# else
-#     echo "No clipboard tool found (xclip or wl-copy required)"
-#     exit 1
-# fi
-#
-# TMPFILE=$(mktemp /tmp/scratchpad.XXXXXX)
-#
-# # Open nvim in floating terminal
-# $TERMINAL $TERMINAL_FLAGS -e nvim "$TMPFILE"
-#
-# # After closing nvim, copy contents to clipboard if not empty
-# if [ -s "$TMPFILE" ]; then
-#     cat "$TMPFILE" | $CLIP
-#     echo "Copied contents to clipboard."
-# else
-#     echo "Scratchpad was empty, nothing copied."
-# fi
-#
-# rm -f "$TMPFILE"
-
-# Dependencies: nvim, xclip or wl-copy, mktemp, alacritty, riverctl
-
-#!/usr/bin/env bash
-
 APPID="scratchpad"
 TITLE="Scratchpad"
 TERMINAL="kitty"
@@ -52,7 +14,7 @@ else
     exit 1
 fi
 
-$TERMINAL --class "$APPID" --title "$TITLE" -e nvim "$TMPFILE"
+$TERMINAL --class "$APPID" --title "$TITLE" -e nvim -c 'startinsert' "$TMPFILE"
 
 if [ -s "$TMPFILE" ]; then
     cat "$TMPFILE" | $CLIP
