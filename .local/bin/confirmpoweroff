@@ -1,0 +1,8 @@
+#!/bin/bash
+answer=$(echo -e "yes\nno" | wmenu -f "BigBlueTerm437 Nerd Font Mono 9" -n "#FFFFFF" -p "Really poweroff? ")
+if [[ "$answer" == "yes" ]]; then
+	poweroff
+else
+	echo "Poweroff cancelled"
+	notify-send "Poweroff cancelled"
+fi
