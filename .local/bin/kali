@@ -1,2 +1,7 @@
 #!/usr/bin/env bash
-VBoxManage startvm "kali"
+# VBoxManage startvm "kali"
+if virsh --connect qemu:///system domstate kali | grep -q "shut off"; then
+  virsh --connect qemu:///system start kali
+fi
+
+virt-viewer --connect qemu:///system --reconnect kali

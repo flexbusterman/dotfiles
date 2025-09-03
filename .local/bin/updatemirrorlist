@@ -5,9 +5,9 @@
 set -euo pipefail
 set -x  # Print commands as they are executed
 
-NUM_MIRRORS=8
+NUM_MIRRORS=20
 MIRRORLIST_TMP="/tmp/mirrorlist"
-BAD_MIRRORS="osbeck.com\|niranjan.co\|phinau.de\|cmt.de\|fef.moe"
+BAD_MIRRORS="osbeck.com\|niranjan.co\|phinau.de\|cmt.de\|fef.moe|atviras.lt"
 
 echo "Checking for required dependencies..."
 if ! command -v reflector &> /dev/null; then
