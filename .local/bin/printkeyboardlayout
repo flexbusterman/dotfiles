@@ -1,0 +1,2 @@
+#!/bin/bash
+hyprctl devices -j | jq -r '.keyboards[] | .active_keymap' | grep Swedish && (notify-send "SE"; echo "SE") || (notify-send "US"; echo "US")
