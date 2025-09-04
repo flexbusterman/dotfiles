@@ -21,14 +21,14 @@
 # 	export XDG_RUNTIME_DIR
 # fi
 
-# if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
-# 	Hyprland
-# fi
+if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
+	Hyprland
+fi
 
 # if [ -z "$WAYLAND_DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ] ; then
 # 	dwlstart
 # fi
 
-if [ -z "$WAYLAND_DISPLAY" ] && [ $(tty) = "/dev/tty1" ]; then
-  exec river > ~/.river.log 2>&1
-fi
+# if [ -z "$WAYLAND_DISPLAY" ] && [ $(tty) = "/dev/tty1" ]; then
+#   exec river > ~/.river.log 2>&1
+# fi
