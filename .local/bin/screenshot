@@ -11,8 +11,8 @@ selectPrintScreen() {
 		echo "$filename" | wl-copy
 	else
 		echo "Is wayland display"
-		# slurp | grim -t jpeg -q 100 -g - "$filename"
-		slurp | grim -t png -g - - | wl-copy --type image/png
+		slurp | grim -t jpeg -q 100 -g - "$filename"
+		# slurp | grim -t png -g - - | wl-copy --type image/png
 	fi
 }
 
