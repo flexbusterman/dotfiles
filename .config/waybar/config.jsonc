@@ -8,9 +8,9 @@
 	// Choose the order of the modules
 	"modules-left": [
 		// "river/tags",
-		"river/window"
-		// "hyprlandpworkspaces",
-		// "hyprland/window"
+		// "river/window"
+		"hyprland/workspaces",
+		"hyprland/window"
 		// "hyprland/workspaces",
 		// "hyprland/window"
 		// "hyprland/mode",
