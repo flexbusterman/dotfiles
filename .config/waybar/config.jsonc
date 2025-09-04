@@ -26,6 +26,7 @@
 		// "network",
 		// "custom/todo",
 		// "custom/long",
+		"hyprland/language",
 		"custom/networkspeed",
 		"pulseaudio",
 		// "power-profiles-daemon",
@@ -35,7 +36,6 @@
 		// "temperature",
 		// "backlight",
 		// "keyboard-state",
-		// "hyprland/language",
 		"battery",
 		"battery#bat2",
 		"clock",
@@ -77,6 +77,11 @@
 		"format-icons": ["", ""],
 		"tooltip": true,
 		"tooltip-format": "{app}: {title}"
+	},
+	"hyprland/language": {
+		"format": "{}",
+		"format-en": "🇺🇸",
+		"format-sv": "🇸🇪"
 	},
 	"mpd": {
 		"host": "/run/user/1000/mpd/socket",
