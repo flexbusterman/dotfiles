@@ -4,4 +4,4 @@ if virsh --connect qemu:///system domstate kali | grep -q "shut off"; then
   virsh --connect qemu:///system start kali
 fi
 
-virt-viewer -f --connect qemu:///system --reconnect kali
+virt-viewer --connect qemu:///system --reconnect kali
