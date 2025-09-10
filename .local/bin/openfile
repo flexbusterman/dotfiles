@@ -39,6 +39,9 @@ case "$filetype" in
 			doc | docx | xls | xlsx | odt | ppt | pptx)
 				libreoffice "$@"
 				;;
+			nfo)
+				kitty -e nvim "$@" > /dev/null 2>&1 & disown
+				;;
 			ahx | hes)
 				mpc --host /run/user/1000/mpd/socket clear
 				musicadd "$@"

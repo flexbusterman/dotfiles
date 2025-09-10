@@ -6,7 +6,7 @@ export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#666f98"
 export QT_QPA_PLATFORMTHEME="xcb"
 export BROWSER=qutebrowser
 export EDITOR="nvim"
-export HEADPHONES='3C:B0:ED:BD:8B:3F'
+export HEADPHONES='50:5E:5C:F1:73:B1'
 export MANPAGER="nvim +Man!"
 export MPD_HOST=/run/user/1000/mpd/socket
 export SHELL=/usr/bin/zsh

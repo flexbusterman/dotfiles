@@ -25,6 +25,8 @@ eval "$(fzf --zsh)"
 [ -d /usr/share/zsh/plugins/zsh-autosuggestions/ ] && source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
 [ -d /usr/share/zsh/plugins/zsh-syntax-highlighting/ ] && source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
 
+setopt autocd
+
 # # tab autocompletions
 # autoload -Uz compinit
 # zstyle ':completion:*' menu select
