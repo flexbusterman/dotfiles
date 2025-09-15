@@ -3,6 +3,8 @@ set -Eeuo pipefail
 
 default="$(pactl get-default-sink)"
 
+echo "$default"
+
 links="$(pw-link -lI 2>/dev/null)"
 
 # Use awk to extract IDs:
@@ -17,12 +19,29 @@ for outID in "${outIDs[@]}"; do
 	pw-link -d $outID
 done
 
-if [[ $default =~ "Steinberg" ]]; then
-	pw-link REAPER:out1 $default:playback_AUX0
-	pw-link REAPER:out2 $default:playback_AUX1
-	pw-link "Steinberg UR22:capture_AUX0" REAPER:in1
-	pw-link "Steinberg UR22:capture_AUX1" REAPER:in2
-else
-	pw-link REAPER:out1 $default:playback_FL
-	pw-link REAPER:out2 $default:playback_FR
-fi
+connectReaper() {
+	if [[ $default =~ "Steinberg" ]]; then
+		pw-link REAPER:out1 $default:playback_AUX0
+		pw-link REAPER:out2 $default:playback_AUX1
+		pw-link "Steinberg UR22:capture_AUX0" REAPER:in1
+		pw-link "Steinberg UR22:capture_AUX1" REAPER:in2
+	else
+		pw-link REAPER:out1 $default:playback_FL
+		pw-link REAPER:out2 $default:playback_FR
+	fi
+}
+
+connectBitwig() {
+	if [[ $default =~ "Steinberg" ]]; then
+		pw-link "Bitwig Studio:Stereo Out_L" $default:playback_AUX0
+		pw-link "Bitwig Studio:Stereo Out_R" $default:playback_AUX1
+		pw-link "Steinberg UR22:capture_AUX0" "Bitwig Studio:Stereo In_L"
+		pw-link "Steinberg UR22:capture_AUX1" "Bitwig Studio:Stereo In_R"
+	else
+		pw-link "Bitwig Studio:Stereo Out_L" $default:playback_FL
+		pw-link "Bitwig Studio:Stereo Out_R" $default:playback_FR
+	fi
+}
+
+[[ $(pgrep reaper) ]] && connectReaper
+[[ $(pgrep bitwig) ]] && connectBitwig

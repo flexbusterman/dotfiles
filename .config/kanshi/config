@@ -1,6 +1,6 @@
 profile docked {
-    output HDMI-A-1 position 0,0
-    output eDP-1 position 0,1080
+    output eDP-1 position 969,2160 mode 1920x1200@60.0010 scale 1.00 transform normal
+    output HDMI-A-1 position 0,0 mode 3840x2160@30.0000 scale 1.00 transform normal
 }
 
 profile undocked {
