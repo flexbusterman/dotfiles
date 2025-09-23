@@ -10,13 +10,48 @@ source ~/.aliases
 HISTSIZE=100000000
 SAVEHIST=100000000
 export HISTFILE="$HOME/.history/zsh/history"
+
 setopt hist_ignore_dups     # do not record an event that was just recorded again
 setopt hist_ignore_all_dups # delete an old recorded event if a new event is a duplicate
 setopt hist_ignore_space    # do not record an event starting with a space
 setopt hist_save_no_dups    # do not write a duplicate event to the history file
 
-# emacs bindings
-bindkey -e
+# from Kali
+setopt autocd              # change directory just by typing its name
+setopt magicequalsubst     # enable filename expansion for arguments of the form ‘anything=expression’
+setopt nonomatch           # hide error message if there is no match for the pattern
+setopt notify              # report the status of background jobs immediately
+setopt numericglobsort     # sort filenames numerically when it makes sense
+setopt promptsubst         # enable command substitution in prompt
+bindkey -e                                        # emacs key bindings
+bindkey ' ' magic-space                           # do history expansion on space
+bindkey '^U' backward-kill-line                   # ctrl + U
+bindkey '^[[3;5~' kill-word                       # ctrl + Supr
+bindkey '^[[3~' delete-char                       # delete
+bindkey '^[[1;5C' forward-word                    # ctrl + ->
+bindkey '^[[1;5D' backward-word                   # ctrl + <-
+bindkey '^[[5~' beginning-of-buffer-or-history    # page up
+bindkey '^[[6~' end-of-buffer-or-history          # page down
+bindkey '^[[H' beginning-of-line                  # home
+bindkey '^[[F' end-of-line                        # end
+bindkey '^[[Z' undo                               # shift + tab undo last action
+autoload -Uz compinit
+compinit -d ~/.cache/zcompdump
+zstyle ':completion:*:*:*:*:*' menu select
+zstyle ':completion:*' auto-description 'specify: %d'
+zstyle ':completion:*' completer _expand _complete
+zstyle ':completion:*' format 'Completing %d'
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*' list-colors ''
+zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+zstyle ':completion:*' rehash true
+zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
+zstyle ':completion:*' use-compctl false
+zstyle ':completion:*' verbose true
+zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
+alias history="history 0"
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#999'
 
 # fzf in terminal, fzf must be installed to use this
 eval "$(fzf --zsh)"
@@ -24,6 +59,9 @@ eval "$(fzf --zsh)"
 # [ -d /usr/share/zsh/plugins/zsh-autocomplete ] && source /usr/share/zsh/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 [ -d /usr/share/zsh/plugins/zsh-autosuggestions/ ] && source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
 [ -d /usr/share/zsh/plugins/zsh-syntax-highlighting/ ] && source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
+
+bindkey "^P" up-line-or-search
+bindkey "^N" down-line-or-search
 
 setopt autocd
 

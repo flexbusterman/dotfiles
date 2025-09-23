@@ -8,6 +8,8 @@ config_version: 2
 settings:
   bindings.commands:
     global:
+      passthrough:
+        <Shift-Tab>: mode-leave
       normal:
         ',d': hint links spawn yt-dlp -f 'bestvideo[height<=1080]+bestaudio/best[height<=1080]'
           -P ~/Downloads/VIDEO/ {hint-url}
