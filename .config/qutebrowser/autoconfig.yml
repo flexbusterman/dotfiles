@@ -8,8 +8,6 @@ config_version: 2
 settings:
   bindings.commands:
     global:
-      passthrough:
-        <Shift-Tab>: mode-leave
       normal:
         ',d': hint links spawn yt-dlp -f 'bestvideo[height<=1080]+bestaudio/best[height<=1080]'
           -P ~/Downloads/VIDEO/ {hint-url}
@@ -17,6 +15,8 @@ settings:
         <Ctrl-m>: bookmark-del
         j: scroll-px 0 100
         k: scroll-px 0 -100
+      passthrough:
+        <Shift-Tab>: mode-leave
   colors.hints.bg:
     global: rgba(0,0,0,1)
   colors.hints.fg:
@@ -45,6 +45,7 @@ settings:
     https://www.sj.se: true
     https://www.stockholmparkering.se: true
   content.javascript.clipboard:
+    https://bloodhound.specterops.io: access-paste
     https://chat.deepseek.com: access-paste
     https://chatgpt.com/: access
     https://claude.ai: access-paste

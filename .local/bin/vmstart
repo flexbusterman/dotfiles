@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
-VBoxManage startvm "$1"
-#
+vmname=$(ls ~/VirtualBox\ VMs/ | wmenu -f "BigBlueTerm437 Nerd Font Mono 9" -n "#FFFFFF" -p "Start VM")
+VBoxManage startvm "$vmname"
+
 # if virsh --connect qemu:///system domstate kali | grep -q "shut off"; then
 #   virsh --connect qemu:///system start kali
 # fi
