@@ -35,7 +35,16 @@ case "$filetype" in
 		zathura "$@"
 		;;
 	application/zip)
-		/var/lib/flatpak/app/com.bitwig.BitwigStudio/current/active/files/bitwig-studio "$@"
+		case "${1##*.}" in
+			7z | ace | gz | jar | rar | shar | tar | tgz | xar | xz | zip)
+				for file in "$@"; do
+					7z x -y "$file" -o"${file%.*}"
+				done
+				;;
+			bitwig )
+				/var/lib/flatpak/app/com.bitwig.BitwigStudio/current/active/files/bitwig-studio "$@"
+				;;
+		esac
 		;;
 	application/octet-stream)
 		case "${1##*.}" in
