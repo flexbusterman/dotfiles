@@ -11,13 +11,15 @@ links="$(pw-link -lI 2>/dev/null)"
 #   $2 must be the arrow "|<-"
 #   $4 must be REAPER:out<number>
 # Then sort uniquely (numeric) and load into array.
-mapfile -t outIDs < <( awk '$2=="|<-" && $4 ~ /^REAPER:out[0-9]+$/ { print $1 }' <<<"$links")
+mapfile -t bitwigOutIDs < <( awk '$2=="|<-" && $4 ~ /^REAPER:out[0-9]+$/ { print $1 }' <<<"$links")
 
 # Disconnect all connected Reaper outputs
-for outID in "${outIDs[@]}"; do
-	echo "$outID"
-	pw-link -d $outID
+for bitwigOutID in "${bitwigOutIDs[@]}"; do
+	echo "$bitwigOutID"
+	pw-link -d $bitwigOutID
 done
+
+echo "default: $default"
 
 connectReaper() {
 	if [[ $default =~ "Steinberg" ]]; then
