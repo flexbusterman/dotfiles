@@ -1,6 +1,27 @@
 #!/usr/bin/env bash
-vmname=$(ls ~/VirtualBox\ VMs/ | wmenu -f "BigBlueTerm437 Nerd Font Mono 9" -n "#FFFFFF" -p "Start VM")
-VBoxManage startvm "$vmname"
+
+# Use an array to store VMs
+vms=()
+# Read each VM name into the array
+while IFS= read -r vm; do
+    vms+=("$vm")
+done < <(ls ~/VirtualBox\ VMs/)
+
+# Append "routervms" to the array
+vms+=("routervms")
+
+# Join array into lines (for wmenu)
+vmname=$(printf "%s\n" "${vms[@]}" | wmenu -i -f "BigBlueTerm437 Nerd Font Mono 9" -n "#FFFFFF" -p "Start VM")
+echo "$vmname"
+
+if [[ "$vmname" == "routervms" ]]; then
+	notify-send "Starting routervms headless"
+	VBoxManage startvm --type=headless 'Debian Router'
+	VBoxManage startvm --type=headless 'Debian TTY 1'
+	VBoxManage startvm --type=headless 'Debian TTY 2'
+else
+	VBoxManage startvm "$vmname"
+fi
 
 # if virsh --connect qemu:///system domstate kali | grep -q "shut off"; then
 #   virsh --connect qemu:///system start kali
