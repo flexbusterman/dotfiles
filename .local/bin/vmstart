@@ -19,6 +19,10 @@ if [[ "$vmname" == "routervms" ]]; then
 	VBoxManage startvm --type=headless 'Debian Router'
 	VBoxManage startvm --type=headless 'Debian TTY 1'
 	VBoxManage startvm --type=headless 'Debian TTY 2'
+	sleep 10
+	kitty -e tmuxsession router &
+	tmux send-keys -t router C-c
+	tmux send-keys -t router "ssh router" Enter
 else
 	VBoxManage startvm "$vmname"
 fi
