@@ -1,30 +1,17 @@
 #!/usr/bin/env bash
 
-# # Use an array to store VMs
-# vms=()
-# # Read each VM name into the array
-# while IFS= read -r vm; do
-#     vms+=("$vm")
-# done < <(ls ~/VirtualBox\ VMs/)
-
 # Use an array to store VMs
 vms=()
 # Read each VM name into the array
 while IFS= read -r vm; do
     vms+=("$vm")
-done < <(ls /var/lib/libvirt/images/ | awk '/qcow/' | sed 's/.qcow2//')
+done < <(virsh --connect qemu:///system list --all | awk -F'\t+|[[:space:]]{2,}' '!/Name/ {print $2}' | awk '!/^$/')
 
 # Append "routervms" to the array
 vms+=("routervms")
 
-for VAR in "${vms[@]}"
-do
-	echo "$VAR"
-done
-
 # Join array into lines (for wmenu)
 vmname=$(printf "%s\n" "${vms[@]}" | wmenu -i -f "BigBlueTerm437 Nerd Font Mono 9" -n "#FFFFFF" -p "Start VM")
-# echo "$vmname"
 
 if [[ "$vmname" == "routervms" ]]; then
 	notify-send "Starting routervms headless"
@@ -40,11 +27,6 @@ if [[ "$vmname" == "routervms" ]]; then
 	tmux send-keys -t router "ssh router" Enter
 else
 	# VBoxManage startvm "$vmname"
-	virsh --connect qemu:///system start "$vnmname"
+	virsh --connect qemu:///system start "$vmname"
+	virt-manager --connect qemu:///system --show-domain-console "$vmname"
 fi
-
-# if virsh --connect qemu:///system domstate kali | grep -q "shut off"; then
-#   virsh --connect qemu:///system start kali
-# fi
-#
-# virt-viewer -f --connect qemu:///system --reconnect kali

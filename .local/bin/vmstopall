@@ -1,0 +1,13 @@
+#!/usr/bin/bash
+
+# Use an array to store VMs
+vms=()
+# Read each VM name into the array
+while IFS= read -r vm; do
+    vms+=("$vm")
+done < <(virsh --connect qemu:///system list --all | awk -F'\t+|[[:space:]]{2,}' '!/Name/ {print $2}' | awk '!/^$/')
+
+for vm in "${vms[@]}"
+do
+	virsh --connect qemu:///system shutdown "$vm"
+done
