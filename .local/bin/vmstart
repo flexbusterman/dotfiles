@@ -25,8 +25,12 @@ if [[ "$vmname" == "routervms" ]]; then
 	kitty -e tmuxsession router &
 	tmux send-keys -t router C-c
 	tmux send-keys -t router "ssh router" Enter
+elif [[ "$vmname" == "Kali" ]]; then
+	VBoxManage startvm "Kali"
 else
 	# VBoxManage startvm "$vmname"
 	virsh --connect qemu:///system start "$vmname"
-	virt-manager --connect qemu:///system --show-domain-console "$vmname"
+	# virt-manager --connect qemu:///system --show-domain-console "$vmname"
+	virt-viewer --connect qemu:///system -K Super_L=,Super_R= "$vmname"
+
 fi

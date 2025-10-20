@@ -1,0 +1,9 @@
+#!/bin/bash
+
+answer=$(echo -e "yes\nno" | dmenu-wl -po "Reboot?" -fn "BigBlueTerm437 Nerd Font Mono 9" -nf "#FFFFFF" -sf "#FFFFFF")
+
+if [[ $answer == "yes" ]]; then
+	reboot
+else
+	notify-send "Not rebooting"
+fi
