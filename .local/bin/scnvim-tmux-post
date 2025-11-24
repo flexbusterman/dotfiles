@@ -1,2 +1,2 @@
-#!/bin/bash
+#!/usr/bin/env bash
 tail -f "$1" | bat --theme=Dracula --paging=never -l log

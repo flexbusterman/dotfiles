@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 pgrep unclutter && unclutterWasRunning=true
 if [[ $unclutterWasRunning == true ]]; then
 	echo "Killing unclutter"

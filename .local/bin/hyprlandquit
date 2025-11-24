@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 if [[ $XDG_SESSION_TYPE == "wayland" ]]; then
 answer=$(echo -e "yes\nno" | dmenu-wl --font-name "BigBlueTerm437 Nerd Font Mono 10" -p "Quit Hyprland?")

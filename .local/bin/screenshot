@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 [[ ! -d "/home/flex/Pictures/SCREENSHOTS" ]] && notify-send "Directory doesn't exist" && exit 1
 filename="/home/flex/Pictures/SCREENSHOTS/$(date +'%F %H_%M_%S.jpg')"
 echo "Filename: $filename"

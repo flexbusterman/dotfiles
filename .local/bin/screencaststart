@@ -1,38 +1,87 @@
-#!/bin/sh
+#!/usr/bin/env sh
+set -eu
 
-[ -f /tmp/recordingpid ] && pgrep ffmpeg && notify-send "Recording is already running" && exit
-
-NUMDISPLAYS=$(xrandr | awk '/ connected/ ' | wc -l)
-if [ $NUMDISPLAYS -gt 1 ]; then
-    echo "Multiple displays detected"
-    RECORDDISPLAY=$(dmenu -i -p "Choose display" < <(xrandr | awk '/ connected/ {print $1}'))
-else
-    RECORDDISPLAY=$(xrandr | awk '/ connected/ {print $1}')
+# Prevent multiple concurrent recordings
+if [ -f /tmp/recordingpid ] && pgrep -x ffmpeg >/dev/null 2>&1; then
+  notify-send "Recording is already running"
+  exit 0
 fi
 
-# Get the dimensions and the offset of the selected display
-DISPLAYINFO=$(xrandr | grep "$RECORDDISPLAY" | awk '{print $4}')
-DIMENSIONS=$(echo $DISPLAYINFO | sed 's/\+.*//')
-OFFSET=$(echo $DISPLAYINFO | sed 's/^[0-9]*x[0-9]*//')
+# Ensure xrandr is available
+command -v xrandr >/dev/null 2>&1 || { notify-send "xrandr not found"; exit 1; }
 
+# Choose display
+DISPLAYS=$(xrandr --query | awk '$2=="connected"{print $1}')
+NUMDISPLAYS=$(printf "%s\n" "$DISPLAYS" | wc -l)
+
+if [ "$NUMDISPLAYS" -gt 1 ]; then
+  if command -v dmenu >/dev/null 2>&1; then
+    RECORDDISPLAY=$(printf "%s\n" "$DISPLAYS" | dmenu -i -p "Choose display")
+  else
+    echo "Multiple displays detected but dmenu not found. Available:"
+    printf "%s\n" "$DISPLAYS"
+    exit 1
+  fi
+else
+  RECORDDISPLAY="$DISPLAYS"
+fi
+
+[ -n "${RECORDDISPLAY:-}" ] || { notify-send "No display selected"; exit 1; }
+
+# Extract WxH+X+Y token robustly (handles presence/absence of 'primary')
+GEOM=$(xrandr --query \
+  | awk -v d="$RECORDDISPLAY" '
+      $1==d && $2=="connected" {
+        for (i=3;i<=NF;i++) if ($i ~ /^[0-9]+x[0-9]+\+[0-9]+\+[0-9]+$/) {print $i; exit}
+      }')
+
+[ -n "${GEOM:-}" ] || { notify-send "Could not parse geometry for $RECORDDISPLAY"; exit 1; }
+
+DIMENSIONS=${GEOM%%+*}           # WxH
+OX=$(printf "%s" "$GEOM" | cut -d'+' -f2)  # X
+OY=$(printf "%s" "$GEOM" | cut -d'+' -f3)  # Y
+
+echo "Display: $RECORDDISPLAY"
 echo "Dimensions: $DIMENSIONS"
-echo "Offset: $OFFSET"
+echo "Offset: +$OX+$OY"
 
-# Get the correct display string for ffmpeg
-DISPLAYSTRING=":0.0$OFFSET"
+# Determine X11 grab device availability
+if ! ffmpeg -hide_banner -devices 2>&1 | grep -q 'x11grab'; then
+  notify-send "ffmpeg lacks x11grab device" "Install ffmpeg-full (nixpkgs#ffmpeg-full) and try again."
+  echo "Your ffmpeg was built without X11/XCB capture (saw --disable-libxcb/--disable-xlib)."
+  echo "On Nix: nix profile install nixpkgs#ffmpeg-full  or use a nix-shell/devShell with pkgs.ffmpeg-full."
+  exit 1
+fi
 
-AUDIODEVICE=$(pactl list short sources | grep "$(pactl info | grep "Default Sink" | cut -d' ' -f3).monitor" | cut -f2)
+# Get PulseAudio/PipeWire monitor of default sink
+DEFAULT_SINK=$(pactl info 2>/dev/null | awk -F': ' '/Default Sink/{print $2}')
+if [ -n "${DEFAULT_SINK:-}" ]; then
+  AUDIODEVICE=$(pactl list short sources | awk -v s="$DEFAULT_SINK" '$2==s".monitor"{print $2; exit}')
+fi
+# Fallback: first monitor source
+AUDIODEVICE=${AUDIODEVICE:-$(pactl list short sources | awk '/\.monitor$/{print $2; exit}')}
 
-# crf: 0 is lossless, 23 is default, and 51 is worst quality
+if [ -z "${AUDIODEVICE:-}" ]; then
+  notify-send "No PulseAudio monitor source found" "Recording will proceed without system audio."
+fi
+
+OUT="$HOME/Downloads/screencast-output-flac-$(date '+%y%m%d-%H%M-%S').mkv"
+
+# Start recording
+# Note: x11grab expects +X,Y after the display and prefers -video_size over -s.
+# Example: -i :0.0+100,200
+DISPLAYSTRING=":0.0+$OX,$OY"
+
 ffmpeg -y \
--hwaccel auto \
--f x11grab \
--framerate 60 \
--s $DIMENSIONS \
--i "$DISPLAYSTRING" \
--f pulse -thread_queue_size 1024 -i "$AUDIODEVICE" \
--c:v libx264 -crf 30 \
--c:a flac \
-"$HOME/Downloads/screencast-output-flac-$(date '+%y%m%d-%H%M-%S').mkv" &
-# store the PID of the most recently executed background process
-echo $! > /tmp/recordingpid && notify-send "Started recording"
+  -hwaccel auto \
+  -f x11grab \
+  -framerate 60 \
+  -video_size "$DIMENSIONS" \
+  -i "$DISPLAYSTRING" \
+  ${AUDIODEVICE:+-f pulse -thread_queue_size 1024 -i "$AUDIODEVICE"} \
+  -c:v libx264 -crf 30 \
+  ${AUDIODEVICE:+-c:a flac} \
+  "$OUT" &
+
+echo $! > /tmp/recordingpid
+notify-send "Started recording" "$OUT"

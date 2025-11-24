@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 riverctl border-width 3
 # Set background and border color
 riverctl background-color 0x002b36

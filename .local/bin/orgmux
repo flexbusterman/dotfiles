@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # if tmux session orgmode is not running, start it
 if ! tmux has-session -t orgmode 2>/dev/null; then

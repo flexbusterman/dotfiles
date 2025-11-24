@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Todo item headline
 headline="$(dmenu-wl -po "TODO headline" -fn "BigBlueTerm437 Nerd Font Mono 9" -nf "#FFFFFF" -sf "#FFFFFF" )"
 if [ -z "$headline" ]; then

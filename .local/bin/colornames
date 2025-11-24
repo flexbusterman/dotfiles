@@ -1,71 +1,48 @@
 #!/usr/bin/env bash
 
-# ... [your color definitions and helper functions here]
+ESC="\033["
+RESET="${ESC}0m"
 
-# Escape codes
-ESC_SEQ="\033["
-COL_RESET=$ESC_SEQ"0m"
-FG=$ESC_SEQ"38;5;"
-BG=$ESC_SEQ"48;5;"
+# Normal foreground colors
+FG_BLACK="${ESC}30m"
+FG_RED="${ESC}31m"
+FG_GREEN="${ESC}32m"
+FG_YELLOW="${ESC}33m"
+FG_BLUE="${ESC}34m"
+FG_MAGENTA="${ESC}35m"
+FG_CYAN="${ESC}36m"
+FG_WHITE="${ESC}37m"
 
-# [the rest of your color definitions...]
+# Bright foreground colors
+FG_BRIGHT_BLACK="${ESC}90m"
+FG_BRIGHT_RED="${ESC}91m"
+FG_BRIGHT_GREEN="${ESC}92m"
+FG_BRIGHT_YELLOW="${ESC}93m"
+FG_BRIGHT_BLUE="${ESC}94m"
+FG_BRIGHT_MAGENTA="${ESC}95m"
+FG_BRIGHT_CYAN="${ESC}96m"
+FG_BRIGHT_WHITE="${ESC}97m"
 
-function printcolor() {
-    # ... [contents of the printcolor function]
-    local FG=$1
-    local BG=$2
-
-    fg=`eval echo "\$\{$FG\}"`
-    bg=`eval echo "\$\{BG_$BG\}"`
-    eval echo -en "$fg$bg"
-
-    printf ' $%-17s' $FG;
-    echo -en "${COL_RESET}"
+print_fg() {
+    local name="$1"
+    local value=$(eval echo "\${FG_${name}}")
+    echo -e "${value}${name}${RESET}"
 }
 
-function colornames() {
-    # ... [contents of the colornames function]
-    local colors=(BLACK RED GREEN YELLOW BLUE MAGENTA CYAN WHITE)
-    local lowup=()
-    lowup[0]="_"
-    lowup[1]="_BRIGHT_"
+print_all_colors() {
+    local normal=(BLACK RED GREEN YELLOW BLUE MAGENTA CYAN WHITE)
+    local bright=(BRIGHT_BLACK BRIGHT_RED BRIGHT_GREEN BRIGHT_YELLOW BRIGHT_BLUE BRIGHT_MAGENTA BRIGHT_CYAN BRIGHT_WHITE)
 
-    local fgcolor bgcolor
-    echo "List of color variables. "
-    #table
-    for bgbright in ${lowup[@]}
-    do
-        # echo "writing ${bgbright:1} bg colors"
-        #column header
-        for bg in ${colors[@]}
-        do
-            # echo -en "\$$bg\t"
-            printf ' $BG_%-14s' ${bgbright:1}$bg;
-        done
+    echo "Normal colors:"
+    for n in "${normal[@]}"; do
+        print_fg "$n"
+    done
 
-        # line feed:
-        echo ""
-
-        for fgbright in ${lowup[@]}
-        do
-
-            #echo "writing ${fgbright:1} fg colors"
-            for fg in ${colors[@]}
-            do
-                fgcolor=${fgbright:1}$fg
-
-                for bg in ${colors[@]}
-                do
-                    bgcolor=${bgbright:1}$bg
-                    printcolor $fgcolor $bgcolor
-                done
-
-                # line feed:
-                echo ""
-            done
-        done
-        echo ""
+    echo ""
+    echo "Bright colors:"
+    for b in "${bright[@]}"; do
+        print_fg "$b"
     done
 }
 
-colornames
+print_all_colors

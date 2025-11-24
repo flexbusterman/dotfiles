@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # parse log of files using this format and sort by date:
 lastLine=$(tail -n 1 ~/.config/mpv/mpvHistory.log)

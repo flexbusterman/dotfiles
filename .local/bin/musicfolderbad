@@ -2,11 +2,13 @@
 
 musicFolder="/home/flex/Dropbox/MUSIC/! GOOD AMBIENT"
 badMusicFolder="/home/flex/Dropbox/MUSIC/! BAD AMBIENT"
-currentAlbum=$(mpc --host /run/user/1000/mpd/socket playlist -f %file% | awk -F/ 'NR==1 {print $(NF-1)}')
+# currentAlbum=$(mpc --host /run/user/1000/mpd/socket playlist -f %file% | awk -F/ 'NR==1 {print $(NF-1)}')
+currentAlbum=$(mpc playlist -f %file% | awk -F/ 'NR==1 {print $(NF-1)}')
 
 moveCurrentAlbum() {
 	# Get the current playing album path
-	current_playing=$(mpc --host /run/user/1000/mpd/socket current -f %file%)
+	# current_playing=$(mpc --host /run/user/1000/mpd/socket current -f %file%)
+	current_playing=$(mpc current -f %file%)
 
 	if [[ -z "$current_playing" ]]; then
 		notify-send "No album currently playing"
@@ -22,7 +24,8 @@ moveCurrentAlbum() {
 
 	if [[ "$confirmation" == "Yes" ]]; then
 		# Stop playback before moving
-		mpc --host /run/user/1000/mpd/socket stop
+		# mpc --host /run/user/1000/mpd/socket stop
+		mpc stop
 
 		# Create BAD AMBIENT folder if it doesn't exist
 		mkdir -p "$badMusicFolder"
@@ -31,7 +34,8 @@ moveCurrentAlbum() {
 		mv "$album_dir" "$badMusicFolder/"
 
 		# Update MPD database
-		mpc --host /run/user/1000/mpd/socket update
+		# mpc --host /run/user/1000/mpd/socket update
+		mpc update
 
 		notify-send "Moved '$album_name' to BAD AMBIENT folder"
 

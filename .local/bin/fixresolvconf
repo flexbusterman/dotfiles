@@ -1,2 +1,2 @@
-#!/bin/bash
+#!/usr/bin/env bash
 echo -e "nameserver 8.8.4.4\nnameserver 8.8.8.8"| sudo tee /etc/resolv.conf

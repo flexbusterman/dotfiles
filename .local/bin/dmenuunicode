@@ -1,17 +1,9 @@
 #!/bin/sh
 
-if [[ $XDG_SESSION_TYPE == "wayland" ]]; then
-	copycommand="wl-copy"
-	dmenucommand="dmenu-wl"
-else
-	copycommand="xclip -sel clip"
-	dmenucommand="dmenu"
-fi
-
 # The famous "get a menu of emojis to copy" script.
 
 # Get user selection via dmenu from emoji file.
-chosen=$(cut -d ';' -f1 ~/.local/share/emoji | dmenu-wl -i -l 30 -fn "BigBlueTerm437 Nerd Font Mono 9" -nf "#FFFFFF" -sf "#FFFFFF" | sed "s/ .*//")
+chosen=$(cut -d ';' -f1 ~/nixos/assets/emoji | dmenu -fn "BigBlueTerm437 Nerd Font Mono" -i -l 30 | sed "s/ .*//")
 
 # Exit if none chosen.
 [ -z "$chosen" ] && exit
@@ -21,6 +13,33 @@ chosen=$(cut -d ';' -f1 ~/.local/share/emoji | dmenu-wl -i -l 30 -fn "BigBlueTer
 if [ -n "$1" ]; then
 	xdotool type "$chosen"
 else
-	echo "$chosen" | tr -d '\n' | $copycommand
-	# notify-send "'$chosen' copied to clipboard." &
+	printf "%s" "$chosen" | xclip -selection clipboard
+	notify-send "'$chosen' copied to clipboard." &
 fi
+
+# if [[ $XDG_SESSION_TYPE == "wayland" ]]; then
+# 	copycommand="wl-copy"
+# 	dmenucommand="dmenu-wl"
+# else
+# 	copycommand="xclip -sel clip"
+# 	dmenucommand="dmenu"
+# fi
+#
+# # The famous "get a menu of emojis to copy" script.
+#
+# # Get user selection via dmenu from emoji file.
+# chosen=$(cut -d ';' -f1 ~/.local/share/emoji | $dmenucommand -i -l 30 -fn "BigBlueTerm437 Nerd Font Mono 9" -nf "#FFFFFF" -sf "#FFFFFF" | sed "s/ .*//")
+#
+# # Exit if none chosen.
+# [ -z "$chosen" ] && exit
+#
+# # If you run this command with an argument, it will automatically insert the
+# # character. Otherwise, show a message that the emoji has been copied.
+# if [ -n "$1" ]; then
+# 	xdotool type "$chosen"
+# else
+# 	echo "$chosen" | tr -d '\n' | $copycommand
+# 	# notify-send "'$chosen' copied to clipboard." &
+# fi
+#
+##!/bin/sh

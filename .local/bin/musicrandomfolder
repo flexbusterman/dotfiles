@@ -1,40 +1,55 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 musicFolder=~/Dropbox/MUSIC/\!\ GOOD\ AMBIENT
-currentAlbum=$(mpc --host /run/user/1000/mpd/socket playlist -f %file% | awk -F/ 'NR==1 {print $(NF-1)}')
+# currentAlbum=$(mpc --host /run/user/1000/mpd/socket playlist -f %file% | awk -F/ 'NR==1 {print $(NF-1)}')
+currentAlbum=$(mpc playlist -f %file% | awk -F/ 'NR==1 {print $(NF-1)}')
+
+echo "Current album: $currentAlbum"
 
 chooseNewAlbum() {
-    newAlbum=$(find "$musicFolder" -mindepth 1 -maxdepth 1 -type d | sort -R | head -n 1)
-    newAlbumTitle=$(basename "$newAlbum")
-    notify-send "Selected album: $newAlbumTitle"
+	echo "Running function chooseNewAlbum"
+	newAlbum=$(find "$musicFolder" -mindepth 1 -maxdepth 1 -type d | sort -R | head -n 1)
+	echo "newAlbum $newAlbum"
+	newAlbumTitle=$(basename "$newAlbum")
+	echo "newAlbumTitle $newAlbumTitle"
+	notify-send "Selected album: $newAlbumTitle"
 }
 
 playAlbum() {
-    mpc --host /run/user/1000/mpd/socket clear
+	echo "Running playAlbum function"
+	# mpc --host /run/user/1000/mpd/socket clear
+	echo "Running mpc clear"
+	mpc clear
 
-    # Remove temporary files if they exist
-    [[ -f /tmp/album ]] && rm /tmp/album
-    [[ -f /tmp/albumsorted ]] && rm /tmp/albumsorted
+	# Remove temporary files if they exist
+	[[ -f /tmp/album ]] && rm /tmp/album
+	[[ -f /tmp/albumsorted ]] && rm /tmp/albumsorted
 
-    # Find music files and sort them
-    find "$newAlbum" \( -iname "*.mp3" -o -iname "*.flac" -o -iname "*.wav" -o -iname "*.aac" \) > /tmp/album
-    sort /tmp/album > /tmp/albumsorted
+	# Find music files and sort them
+	find "$newAlbum" \( -iname "*.mp3" -o -iname "*.flac" -o -iname "*.wav" -o -iname "*.aac" \) > /tmp/album
+	sort /tmp/album > /tmp/albumsorted
 
-    # Add each file to the playlist
-    while IFS= read -r line; do
-        mpc --host /run/user/1000/mpd/socket add "$line"
-    done < /tmp/albumsorted
+	# Add each file to the playlist
+	while IFS= read -r line; do
+		mpc add "$line"
+		# mpc add "$line"
+	done < /tmp/albumsorted
 
-    # Start playing
-    mpc --host /run/user/1000/mpd/socket play
+	echo "Contents of albumsorted"
+	cat /tmp/albumsorted
+
+	# Start playing
+	# mpc --host /run/user/1000/mpd/socket play
+	echo "Starting playing"
+	mpc play
 }
 
 chooseNewAlbum
 
 # Avoid playing the same album that's currently playing
 while [[ "$currentAlbum" == "$newAlbumTitle" && "$(find "$musicFolder" -mindepth 1 -maxdepth 1 -type d | wc -l)" -gt 1 ]]; do
-    notify-send "Same album is currently playing. Choosing another..."
-    chooseNewAlbum
+	notify-send "Same album is currently playing. Choosing another..."
+	chooseNewAlbum
 done
 
 playAlbum

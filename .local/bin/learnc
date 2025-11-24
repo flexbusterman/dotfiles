@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # get the day number from the user
 day=$(: | dmenu -p "Enter file number: ")

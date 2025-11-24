@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 hyprctl dispatch layoutmsg swapwithmaster
 activeXpos=$(hyprctl activewindow -j | jq -r '.at[0]')
 # notify-send $activeXpos

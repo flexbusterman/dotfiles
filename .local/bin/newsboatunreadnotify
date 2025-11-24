@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 newsboat -x reload || exit 1
 unread=$(newsboat -x print-unread | awk 'NR==1{print $1}')

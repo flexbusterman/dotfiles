@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 filetype=$(file --mime-type -b "$@")
 echo "$filetype"
 notify-send "$filetype"

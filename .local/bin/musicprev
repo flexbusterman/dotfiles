@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
 # ps -C spotify >/dev/null && spotifycli --prev || deadbeef --prev
 # pgrep deadbeef && deadbeef --prev || playerctl -a previous
-playerctl -a previous && notify-send "$(playerctl metadata)" || mpc --host /run/user/1000/mpd/socket prev && notify-send "$(mpc --host ~/.mpd/socket current)"
+# playerctl -a previous && notify-send "$(playerctl metadata)" || mpc --host /run/user/1000/mpd/socket prev && notify-send "$(mpc --host ~/.mpd/socket current)"
+playerctl -a previous && notify-send "$(playerctl metadata)" || mpc prev && notify-send "$(mpc current)"

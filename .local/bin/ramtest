@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 LOGFILE="/var/log/memtester.log"
 MEMORY="8G"  # Adjust this based on your available memory

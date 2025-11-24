@@ -1,2 +1,2 @@
-#!/bin/bash
+#!/usr/bin/env bash
 command -v gpt4all-chat && gpt4all-chat || notify-send "gpt4all-chat not installed"

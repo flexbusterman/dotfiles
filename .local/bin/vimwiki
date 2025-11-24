@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 
 # Check if running in a terminal, otherwise relaunch in $TERMINAL
 if [ -z "$TMUX" ] && [ -z "$TERM" ]; then

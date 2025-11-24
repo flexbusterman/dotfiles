@@ -1,16 +1,20 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 filetype=$(file --mime-type -b "$@")
 notify-send $filetype
 case "$filetype" in
+	inode/directory)
+		openfolder "$@"
+		;;
 	image/*)
 		sxivopen "$@"
 		;;
 	video/*)
-		mpv --save-watch-history "$@"
+		mpv --save-watch-history "$@" || vlc "$@"
 		;;
 	audio/*)
-		mpc --host /run/user/1000/mpd/socket clear
+		# mpc --host /run/user/1000/mpd/socket clear
+		mpc clear
 		musicadd "$@"
 		;;
 	application/vnd.openxmlformats-officedocument.spreadsheetml.sheet)

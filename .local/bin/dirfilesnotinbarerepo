@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # List files in the bare repository
 /usr/bin/git --git-dir=$HOME/.dot.git/ --work-tree=$HOME ls-tree -r HEAD --name-only > /tmp/bare_repo_files.txt

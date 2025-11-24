@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 inotifywait -e modify -r -m "$@" | while read E; do
 	firefoxreload
 done

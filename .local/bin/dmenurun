@@ -1,7 +1,7 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 if [ -z "$WAYLAND_DISPLAY" ]; then
-	dmenu_run
+	dmenu_run -fn "BigBlueTerm437 Nerd Font Mono"
 else
 	wmenu-run -f "BigBlueTerm437 Nerd Font Mono 9" -n "#FFFFFF"
 fi

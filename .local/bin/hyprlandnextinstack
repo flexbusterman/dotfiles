@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Get the address of the currently focused window
 active_addr=$(hyprctl activewindow -j | jq -r '.address')

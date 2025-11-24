@@ -1,2 +1,3 @@
 #!/usr/bin/env bash
-playerctl -a position "5+" || mpc --host /run/user/1000/mpd/socket seek +5
+# playerctl -a position "5+" || mpc --host /run/user/1000/mpd/socket seek +5
+playerctl -a position "5+" || mpc seek +5

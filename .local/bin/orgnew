@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 if [[ -d $HOME/ORGMODE/ ]]; then
 	# echo "Orgmode folder exists"
 	cd $HOME/ORGMODE/

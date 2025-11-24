@@ -5,7 +5,7 @@ if ! [[ $(pgrep sclang) ]]; then
 	exit 1
 fi
 
-answer=$(echo -e "yes\nno" | dmenu-wl -po "Kill SuperCollider?" -fn "BigBlueTerm437 Nerd Font Mono 9" -nf "#FFFFFF" -sf "#FFFFFF")
+answer=$(echo -e "yes\nno" | dmenu -p "Kill SuperCollider?")
 
 if [[ $answer == "yes" ]]; then
 	# notify-send "Killing SuperCollider"
