@@ -33,6 +33,7 @@ xset r rate 300 50 &
 # echo "$(date) - Elan TrackPoint config set" >>$LOGFILE
 
 [[ $(xinput --list | grep "SYNA800E:00 06CB:CE67 Touchpad") ]] && xinput --set-prop "SYNA800E:00 06CB:CE67 Touchpad" "libinput Tapping Enabled" 1 &
+[[ $(xinput --list | grep "SYNA8018:00 06CB:CE67 Touchpad") ]] && xinput --set-prop "SYNA8018:00 06CB:CE67 Touchpad" "libinput Tapping Enabled" 1 &
 # echo "$(date) - Touchpad tapping enabled" >>$LOGFILE
 # else
 # 	echo "$(date) - Wayland display found, skipping Xorg commands" >>$LOGFILE
