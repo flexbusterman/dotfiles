@@ -3,7 +3,7 @@ xrdb ~/.Xresources
 feh --bg-fill ~/.local/share/flex/background.jpg
 remaps &
 # xset fp+ /usr/share/fonts/TTF/FiraMono-Medium.ttf
-picom &
+picom -b &
 unclutter --timeout 1 &
 udiskie -ta &
 # # xss-lock -- sh -c "sleep 0.2; /home/$USER/.local/bin/slockunmute" &
