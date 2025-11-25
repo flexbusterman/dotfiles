@@ -157,23 +157,27 @@ super + shift + m
 
 # super + m
 super + control + m
-	measure
-# super + shift + control + m
+	pamixer -t; kill -44 $(pidof dwmblocks)
+super + shift + control + m
+ 	amixer set Capture toggle
 # notify-send "super + shift + control + m"
 # shift + control + m
 # notify-send "shift + control + m"
 
 super + n
-	notify-send "super + n"
-	# $TERMINAL -e /home/flex/.local/bin/fzfnotes
+	$TERMINAL -e fzfnotes
+	# notify-send "super + n"
 super + shift + n
-	$TERMINAL -e /home/flex/.local/bin/fzfgrep
+	$TERMINAL -e fzfgrep
 # super + control + n
 # notify-send "super + control + n"
 # super + shift + control + n
 # notify-send "super + shift + control + n"
 # shift + control + n
 # notify-send "shift + control + n"
+
+super + o
+	obsidian
 
 super + shift + o
 	notify-send -t 15000 "$(oblique)"
@@ -210,14 +214,14 @@ super + shift + p
 # super + control + p
 # notify-send "super + control + p"
 super + shift + control + p
-	poweroff
+	wmquit -p
 # shift + control + p
 # notify-send "shift + control + p"
 
 # super + q
 	# notify-send "super + q"
 super + shift + q
-	pkill Xorg
+	wmquit -q
 # notify-send "super + shift + q"
 super + control + q
 	qpwgraph
@@ -229,16 +233,20 @@ super + control + q
 
 super + control + r
 	reaper
-super + shift + r
-	pkill -usr1 -x sxhkd && notify-send 'Reloaded sxhkd config' || pkill -usr1 -x sxhkd && notify-send 'Reloaded sxhkd config'
+# super + shift + r
+# 	pkill -usr1 -x sxhkd && notify-send 'Reloaded sxhkd config' || pkill -usr1 -x sxhkd;  bspc wm -r;  notify-send 'Restarted bspwm and sxhkd';
 	# sudo pkill -HUP sxhkd
 	# notify-send "reloaded config"
 	# sudo pkill -HUP sxhkd
 
+super + shift + r
+	restartsxhkd
+	# wmrestart
+
 # super + control + r
 # notify-send "super + control + r"
 super + shift + control + r
-	reboot
+	wmquit -r
 # shift + control + r
 # notify-send "shift + control + r"
 
@@ -255,17 +263,16 @@ super + control + shift + s
 # notify-send "shift + control + s"
 
 super + t
-	$TERMINAL -e htop
-	# $TERMINAL -e btop
+	$TERMINAL -e btop
 super + shift + t
-	$TERMINAL -e nvtop
+	$TERMINAL -e htop
 # super + control + t
 	# $TERMINAL -e vit
 # notify-send "super + control + t"
 super + shift + control + t
 	$TERMINAL -e tt -theme dracula
-shift + control + t
-	~/.local/bin/trimclipboard
+# shift + control + t
+# 	~/.local/bin/trimclipboard
 
 # super + u
 # notify-send "super + u"
@@ -289,7 +296,8 @@ super + shift + v
 # shift + control + v
 # notify-send "shift + control + v"
 
-# super + w
+super + w
+	kitty -e vimwiki -d
 # notify-send "super + w"
 # super + shift + w
 # notify-send "super + shift + w"
@@ -342,17 +350,19 @@ super + y
 # special keys
 
 super + Return
-	~/.local/bin/dmenurun
+	dmenu_run
+	# dmenurun
 	# fuzzel
-	# dmenu_run
 	# wofi --show run
 	# --show drun
 super + shift + Return
 	$TERMINAL -e tmux new-session -A -s main
 	# $TERMINAL -e tmux new-session -A -s main
-super + control + Return
-	$TERMINAL -e $SHELL -c "MPD_HOST=/run/user/$UID/mpd/socket ncmpcpp"
-super + shift + control + Return
+# super + control + Return
+super + control + n
+	$TERMINAL -e ncmpcpp
+	# $TERMINAL -e $SHELL -c "MPD_HOST=/run/user/$UID/mpd/socket ncmpcpp"
+super + control + t
 	tidal-hifi
 	# $TERMINAL
 
@@ -364,8 +374,8 @@ super + control + space
 
 super + comma
 	$TERMINAL -e yazi
-super + shift + comma
-	$TERMINAL -e ranger
+# super + shift + comma
+# 	$TERMINAL -e ranger
 
 super + period
 	qutebrowser
@@ -373,7 +383,7 @@ super + shift + period
 	bravestart
 
 super + slash
-	$TERMINAL -e ~/.local/bin/shortcuts
+	$TERMINAL -e shortcuts
 super + shift + slash
 	typesnippet
 
@@ -393,10 +403,10 @@ super + shift + equal
 	calculate
 
 super + grave
-	$TERMINAL -e emacsorgstart -t
-
-	# notify-send "super + grave"
+	$TERMINAL -T taskwarrior-tui -e taskwarrior-tui
 	# $TERMINAL -T vit -e vit
+# $TERMINAL -e emacsorgstart -t
+# notify-send "super + grave"
 
 super + shift + grave
 	dmenuunicode
@@ -434,7 +444,7 @@ super + F10
 	campreview
 
 super + F11
-	screencaststart
+	screencaststart2
 
 super + shift + F11
 	screencastwithmicstart
@@ -448,8 +458,8 @@ Print
 shift + Print
 	screenshot -s
 
-super + control + BackSpace
-	notify-send "super + control + BackSpace"
+# super + control + BackSpace
+# 	notify-send "super + control + BackSpace"
 
 super + control + equal
 	pamixer --allow-boost -i 3; kill -44 $(pidof dwmblocks)
@@ -457,14 +467,13 @@ super + control + equal
 super + control + minus
 	pamixer --allow-boost -d 3; kill -44 $(pidof dwmblocks)
 
+control + shift + equal
+	brightness -i
+control + shift + minus
+	brightness -d
+
 super + control + d
 	musicfolderbad
-
-super + alt + equal
-	brightness -i
-
-super + alt + minus
-	brightness -d
 
 # __  _______ ___   __
 # \ \/ /  ___( _ ) / /_
@@ -472,18 +481,21 @@ super + alt + minus
 #  /  \|  _|| (_) | (_) |
 # /_/\_\_|   \___/ \___/
 # xf86 media keys volume brightness
-XF86AudioMute
-	pamixer -t; kill -44 $(pidof dwmblocks)
-XF86AudioRaiseVolume
-	pamixer --allow-boost -i 3; kill -44 $(pidof dwmblocks)
-XF86AudioLowerVolume
-	pamixer --allow-boost -d 3; kill -44 $(pidof dwmblocks)
-XF86AudioMicMute
-	amixer set Capture toggle
-XF86MonBrightnessUp
-	brightnessup
-XF86MonBrightnessDown
-	brightnessdown
+# XF86AudioMute
+# 	pamixer -t; kill -44 $(pidof dwmblocks)
+# XF86AudioRaiseVolume
+# 	pamixer --allow-boost -i 3; kill -44 $(pidof dwmblocks)
+# XF86AudioLowerVolume
+# 	pamixer --allow-boost -d 3; kill -44 $(pidof dwmblocks)
+# XF86AudioMicMute
+# 	amixer set Capture toggle
+# XF86MonBrightnessUp
+# 	brightness -i
+# XF86MonBrightnessDown
+# 	brightness -d
+
+super + Tab
+	toggleinputlanguage
 
 #      _       __             _ _
 #   __| | ___ / _| __ _ _   _| | |_ ___
@@ -509,23 +521,23 @@ XF86MonBrightnessDown
 
 # quit/restart bspwm
 # super + shift + {q,r}
-	# bspc {quit,wm -r}
+# 	bspc {quit,wm -r}
 
 # close and kill
-# super + {_,shift + }w
-	# bspc node -{c,k}
+# super + {_,shift + }q
+# 	bspc node -{c,k}
+
+# close window
+# super + q
+# 	bspc node -c
 
 # alternate between the tiled and monocle layout
 # super + m
-	# bspc desktop -l next
+# 	bspc desktop -l next
 
-# # send the newest marked node to the newest preselected node
+# send the newest marked node to the newest preselected node
 # super + y
-	# bspc node newest.marked.local -n newest.!automatic.local
-
-# # swap the current node and the biggest window
-# super + space
-	# bspc node -s biggest.window
+# 	bspc node newest.marked.local -n newest.!automatic.local
 
 #
 # state/flags
@@ -533,15 +545,19 @@ XF86MonBrightnessDown
 
 # set the window state
 # super + f
-# 	bspc node -t fullscreen
+# 	bspc node -t \~fullscreen
 # super + f
-	# bspc node --state ~fullscreen
+# 	bspc node --state ~fullscreen
 # super + {t,shift + t,s,f}
-	# bspc node -T {tiled,pseudo_tiled,floating,fullscreen}
+#         bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+
+# super + {t,shift + t,s,f}
+# 	bspc node -t {tiled && polybar-msg cmd show, fullscreen && polybar-msg cmd hide}
+# 	bspc node -t {tiled && polybar-msg cmd show,pseudo\_tiled,fullscreen && polybar-msg cmd hide}
 
 # set the node flags
 # super + ctrl + {m,x,y,z}
-	# bspc node -g {marked,locked,sticky,private}
+# 	bspc node -g {marked,locked,sticky,private}
 
 #
 # focus/swap
@@ -549,7 +565,23 @@ XF86MonBrightnessDown
 
 # focus the node in the given direction
 # super + {_,shift + }{h,j,k,l}
-	# bspc node -{f,s} {west,south,north,east}
+# 	bspc node -{f,s} {west,south,north,east}
+
+# super + {k,j}
+# 	bspc node '@/' -C {backward,forward}
+# Focus next/previous window on the current desktop (skip hidden)
+# super + {j,k}
+#   bspc node -f {next,prev}.local.!hidden.window
+
+# Move (swap) the focused window with next/previous in the stack on the current desktop
+# super + shift + {j,k}
+#   bspc node -s {next,prev}.local.!hidden.window
+
+# swap the current node and the biggest window on the current desktop
+# super + space
+# 	bspc node -s biggest.local.!hidden.window
+# super + space
+#   sh -c 'f=$(bspc query -N -n focused); b=$(bspc query -N -n biggest.local.!hidden.window); if [ "$f" = "$b" ]; then n=$(bspc query -N -n next.local.!hidden.window); [ -n "$n" ] && bspc node -f "$n" && bspc node -s "$b"; else bspc node -s "$b"; fi'
 
 # # focus the node for the given path jump
 # super + {p,b,comma,period}
@@ -557,7 +589,7 @@ XF86MonBrightnessDown
 
 # # focus the next/previous window in the current desktop
 # super + {_,shift + }c
-	# bspc node -f {next,prev}.local.!hidden.window
+# 	bspc node -f {next,prev}.local.!hidden.window
 
 # # focus the next/previous desktop in the current monitor
 # super + bracket{left,right}
@@ -573,9 +605,17 @@ XF86MonBrightnessDown
 	# bspc node {older,newer} -f; \
 	# bspc wm -h on
 
-# # focus or send to the given desktop
+# # # focus or send to the given desktop
 # super + {_,shift + }{1-9,0}
-	# bspc {desktop -f,node -d} '^{1-9,10}'
+# 	bspc {desktop -f,node -d} '^{1-9,10}'
+
+# focus desktop
+# super + {1-9,0}
+# 	bspc desktop -f '^{1-9,10}'
+
+# send window to desktop and follow focus
+# super + shift + {1-9,0}
+# 	bspc node -d '^{1-9,10}' --follow
 
 #
 # preselect
@@ -587,7 +627,7 @@ XF86MonBrightnessDown
 
 # # preselect the ratio
 # super + ctrl + {1-9}
-	# bspc node -o 0.{1-9}
+# 	bspc node -o 0.{1-9}
 
 # # cancel the preselection for the focused node
 # super + ctrl + space
@@ -603,16 +643,16 @@ XF86MonBrightnessDown
 
 # # expand a window by moving one of its side outward
 # alt + {h,j,k,l}
-	# bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+# 	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
 
 # # expand / shrink
 # alt + {k,l,h,j}
-	# bspc node -z {bottom 0 -20,left 20 0,left -20 0,bottom 0 20}
+# 	bspc node -z {bottom 0 -20,left 20 0,left -20 0,bottom 0 20}
 
 # # contract a window by moving one of its side inward
 # alt + {h,j,k,l}
-	# bspc node -z {right -20 0,top 0 20,}
+# 	bspc node -z {right -20 0,top 0 20,}
 
 # # move a floating window
 # super + {Left,Down,Up,Right}
-	# bspc node -v {-20 0,0 20,0 -20,20 0}
+# 	bspc node -v {-20 0,0 20,0 -20,20 0}

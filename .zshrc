@@ -2,7 +2,7 @@
 [[ $- != *i* ]] && return
 
 # liquidprompt
-source /usr/bin/liquidprompt
+source ~/.local/bin/liquidprompt
 
 source ~/.aliases
 

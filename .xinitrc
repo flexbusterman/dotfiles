@@ -10,9 +10,10 @@ udiskie -ta &
 # # mailsync &
 dropbox &
 dunst &
+slstatus &
 # mpd &
 # qpwgraph -m &
-pidof dwmblocks || dwmblocks &
+# pidof dwmblocks || dwmblocks &
 # # srandrd displayhandler &
 blueberry-tray &
 # syncthing --no-browser &
