@@ -12,7 +12,7 @@
 # if [ -z "$WAYLAND_DISPLAY" ]; then
 # echo "$(date) - Wayland display not found. Running Xorg commands" >>$LOGFILE
 xset r rate 300 50 &
-# setxkbmap -option "caps:swapescape"
+setxkbmap -option "caps:swapescape" &
 # echo "$(date) - xset rate set" >>$LOGFILE
 
 # pkill kanata
