@@ -53,6 +53,7 @@ settings:
     https://github.com: access-paste
     https://github.com/: access
     https://google.com/: access
+    https://stackoverflow.com: access-paste
     https://teams.microsoft.com: access-paste
     https://translate.google.com: access-paste
     https://us17.admin.mailchimp.com: access-paste

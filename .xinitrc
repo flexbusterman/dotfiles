@@ -12,5 +12,6 @@ blueberry-tray &
 sxhkd &
 xautolock -time 3 -locker idlescript &
 ~/.local/bin/historybackup &
+mpd &
 exec ~/.local/bin/dwmstart
 # rfkill unblock bluetooth &
