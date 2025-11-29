@@ -13,5 +13,6 @@ sxhkd &
 xautolock -time 3 -locker idlescript &
 ~/.local/bin/historybackup &
 mpd &
+transmission-daemon &
 exec ~/.local/bin/dwmstart
 # rfkill unblock bluetooth &

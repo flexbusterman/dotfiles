@@ -2,6 +2,8 @@
 [[ -d $HOME/.local/bin/statusbar ]] && export PATH=$HOME/.local/bin/statusbar:$PATH
 # [[ -d $HOME/.config/emacs/bin/ ]] && export PATH=$HOME/.config/emacs/bin:$PATH
 
+export ZSHENV_RAN=true
+
 # export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#666f98"
 # export QT_QPA_PLATFORMTHEME="qt6ct"
 export QT_QPA_PLATFORMTHEME=qt5ct
@@ -11,7 +13,7 @@ export BROWSER=qutebrowser
 export EDITOR="nvim"
 export HEADPHONES='50:5E:5C:F1:73:B1'
 export MANPAGER="nvim +Man!"
-export MPD_HOST=/run/user/1000/mpd/socket
+export MPD_HOST="$XDG_RUNTIME_DIR/mpd/socket"
 export SHELL=/usr/bin/zsh
 export TERMINAL=kitty
 export XDG_CACHE_HOME="$HOME/.cache"
@@ -22,6 +24,12 @@ export DEBUG_CODEIUM="warn"
 export WEBKIT_DISABLE_DMABUF_RENDERER=1.
 export TIMEWARRIORDB="~/TASK/timewarrior/"
 export SYSTEMD_EDITOR=nvim
+export XKB_DEFAULT_OPTIONS=caps:escape
+export WALLPAPER=~/.local/share/$USER/background.jpg
+export TIMEWARRIORDB="~/TASK/timewarrior/"
+export XDG_CURRENT_DESKTOP=Unity
+# export XSECURELOCK_PAM_SERVICE=xscreensaver
+export XSECURELOCK_SAVER=saver_xscreensaver
 # export TASKRC=~/.config/taskwarrior/taskrc
 # export PATH=$PATH:$ANDROID_HOME/emulator
 # export PATH=$PATH:$ANDROID_HOME/platform-tools

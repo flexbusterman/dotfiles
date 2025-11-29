@@ -100,10 +100,11 @@ super + control + h
 
 # super + i
 # notify-send "super + i"
-super + shift + i
+control + shift + i
 	xcalib -i -a
-super + control + i
-	task start $(task _get $(task next limit:1 | tail -n +4 | head -n 1 | sed 's/^ //' | cut -d ' ' -f1).id)
+super + shift + i
+	taskstart
+	# task start $(task _get $(task next limit:1 | tail -n +4 | head -n 1 | sed 's/^ //' | cut -d ' ' -f1).id)
 	# punch --in
 # notify-send "super + control + i"
 super + shift + control + i
@@ -180,7 +181,8 @@ super + o
 	obsidian
 
 super + shift + o
-	notify-send -t 15000 "$(oblique)"
+	taskstop
+	# notify-send -t 15000 "$(oblique)"
 # # Orgmode shortcuts
 
 # Doesn't work on wayland

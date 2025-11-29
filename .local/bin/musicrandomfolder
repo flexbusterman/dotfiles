@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-musicFolder="$HOME/Music"
+musicFolder="/home/flex/DROPCOX Dropbox/Christian Augustin/MUSIC/! GOOD AMBIENT/"
 # currentAlbum=$(mpc --host /run/user/1000/mpd/socket playlist -f %file% | awk -F/ 'NR==1 {print $(NF-1)}')
 currentAlbum=$(mpc playlist -f %file% | awk -F/ 'NR==1 {print $(NF-1)}')
 

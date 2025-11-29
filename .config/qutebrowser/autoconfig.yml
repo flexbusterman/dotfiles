@@ -58,6 +58,7 @@ settings:
     https://translate.google.com: access-paste
     https://us17.admin.mailchimp.com: access-paste
     https://vnc.tryhackme.tech: access-paste
+    https://www.dropbox.com: access-paste
   content.media.audio_capture:
     https://app.zoom.us: true
     https://meet.google.com: true

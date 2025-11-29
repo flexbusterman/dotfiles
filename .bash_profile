@@ -27,6 +27,7 @@ __NV_PRIME_RENDER_OFFLOAD=1
 DEBUG_CODEIUM="warn"
 XKB_DEFAULT_OPTIONS=caps:escape
 TASKRC=~/.config/taskwarrior/taskrc
+WALLPAPER=~/.local/share/$USER/background.jpg
 
 TIMEWARRIORDB="~/TASK/timewarrior/"
 SYSTEMD_EDITOR=nvim
