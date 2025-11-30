@@ -9,7 +9,8 @@ source ~/.aliases
 # history
 HISTSIZE=100000000
 SAVEHIST=100000000
-export HISTFILE="$HOME/.history/zsh/history"
+# export HISTFILE="$HOME/.history/zsh/history"
+export HISTFILE="$HOME/HISTORY/history"
 
 setopt hist_ignore_dups     # do not record an event that was just recorded again
 setopt hist_ignore_all_dups # delete an old recorded event if a new event is a duplicate
