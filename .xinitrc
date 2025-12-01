@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 xrdb ~/.Xresources
-feh --bg-fill ~/.local/share/flex/background.jpg
+feh --bg-fill /home/flex/.local/share/flex/background-xmas.jpeg
 ~/.local/bin/remaps &
 picom -b &
 unclutter --timeout 1 &

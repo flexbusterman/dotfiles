@@ -26,15 +26,10 @@ setxkbmap -option "caps:swapescape" &
 # 	echo "$(date) - kanata failed to start. Check for errors above." >>$LOGFILE
 # fi
 
-[[ $(xinput --list | grep "TPPS/2 IBM TrackPoint") ]] && xinput --set-prop "TPPS/2 IBM TrackPoint" "libinput Accel Speed" -0.2 &
+[[ $(xinput --list | grep "TPPS/2 IBM TrackPoint") ]] && xinput --set-prop "TPPS/2 IBM TrackPoint" "libinput Accel Speed" -0.3 &
 # echo "$(date) - IBM TrackPoint config set" >>$LOGFILE
-
 [[ $(xinput --list | grep "TPPS/2 Elan TrackPoint") ]] && xinput --set-prop "TPPS/2 Elan TrackPoint" "libinput Accel Speed" -0.5 &
 # echo "$(date) - Elan TrackPoint config set" >>$LOGFILE
 
-[[ $(xinput --list | grep "SYNA800E:00 06CB:CE67 Touchpad") ]] && xinput --set-prop "SYNA800E:00 06CB:CE67 Touchpad" "libinput Tapping Enabled" 1 &
-[[ $(xinput --list | grep "SYNA8018:00 06CB:CE67 Touchpad") ]] && xinput --set-prop "SYNA8018:00 06CB:CE67 Touchpad" "libinput Tapping Enabled" 1 &
-# echo "$(date) - Touchpad tapping enabled" >>$LOGFILE
-# else
-# 	echo "$(date) - Wayland display found, skipping Xorg commands" >>$LOGFILE
-# fi
+touchpad=$(xinput --list | awk 'BEGIN{IGNORECASE=1; FS="↳|id="} /touchpad/ { s=$2; gsub(/^[ \t]+|[ \t]+$/,"",s); print s }')
+xinput --set-prop "$touchpad" "libinput Tapping Enabled" 1 &
