@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-# flatpak run com.bitwig.BitwigStudio "$@"
-/var/lib/flatpak/app/com.bitwig.BitwigStudio/current/active/files/bitwig-studio

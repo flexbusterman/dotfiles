@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+
+print_usage() {
+  printf "Usage:\nwmquit -r reboot\nwmquit -q quit\nwmquit -p poweroff"
+}
+
+if (( $# == 0 )); then
+	echo "Missing flag"
+	print_usage
+	exit 1
+fi
+
+while getopts 'rqp' flag; do
+  case "${flag}" in
+    r) action="reboot" ;;
+    q) action="quit" ;;
+		p) action="poweroff" ;;
+		*) print_usage
+       exit 1 ;;
+  esac
+done
+
+answer=$(echo -e "yes\nno" | dmenu -fn "BigBlueTerm437 Nerd Font Mono" -p "Really $action?")
+
+if [[ $answer == "yes" ]]; then
+  case "$action" in
+    "reboot") reboot ;;
+    "quit") pkill dwm ;;
+		"poweroff") poweroff ;;
+  esac
+else
+	# notify-send "Not quitting Hyprland"
+	echo "Not performing $action"
+fi
