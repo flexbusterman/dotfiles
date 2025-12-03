@@ -97,6 +97,15 @@ vim.opt.autoread = true
 -- no autoamtic commenting on new lines
 vim.opt.formatoptions = ""
 
+-- Setting this here because the variables are not set when loading viki with external commands
+vim.g.vimwiki_list = {
+	{
+		path = "~/WIKI",
+		syntax = "markdown",
+		ext = ".md",
+	},
+}
+
 -- changes working directory to current file
 -- annoying when file is in subdir
 -- vim.opt.autochdir = true

@@ -4,7 +4,9 @@ CURRENT_LAYOUT=$(setxkbmap -query|awk -F : 'NR==3{print $2}'|sed 's/ //g')
 if [ "$CURRENT_LAYOUT" = "us" ]; then
     setxkbmap "se"
 		notify-send "SE"
+		remaps
 else
     setxkbmap "us"
 		notify-send "US"
+		remaps
 fi
