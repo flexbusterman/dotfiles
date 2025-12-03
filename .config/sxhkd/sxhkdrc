@@ -172,7 +172,8 @@ super + shift + n
 	$TERMINAL -e fzfgrep
 # super + control + n
 # notify-send "super + control + n"
-# super + shift + control + n
+super + shift + control + n
+	newnote
 # notify-send "super + shift + control + n"
 # shift + control + n
 # notify-send "shift + control + n"

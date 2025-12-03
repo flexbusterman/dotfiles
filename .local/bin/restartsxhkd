@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+if pkill -USR1 -x sxhkd; then
+	echo 'Reloaded sxhkd config'
+	notify-send 'Reloaded sxhkd config'
+else
+	nix run nixpkgs#sxhkd -- -c /home/flex/nixos/config/sxhkd/sxhkdrc &
+	echo 'Started sxhkd'
+	notify-send 'Started sxhkd'
+fi
