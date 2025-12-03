@@ -3,6 +3,8 @@
 while true; do
     # Log stderror to a file
     dwm 2> ~/.dwm.log
+		notify-send "DWM was started with dwmstart script"
+		notify-send "Restarting instead of quitting"
     # No error logging
     #dwm >/dev/null 2>&1
 done

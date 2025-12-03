@@ -1,19 +1,26 @@
 #!/usr/bin/env bash
 #
 # notify-send "Running fzfnotes"
-
 # Check if running in a terminal, otherwise relaunch in $TERMINAL
 if [ -z "$TMUX" ] && [ -z "$TERM" ]; then
 	exec "$TERMINAL" -e "$0"
 	exit
 fi
-
 cd ~/WIKI/
 
-file="$(fzf)"
-if [[ -z $file ]]; then
-	echo "No file selected, exiting"
-	exit 1
+# Capture both query and selection
+result="$(fzf --print-query)"
+query="$(echo "$result" | head -n1)"
+selection="$(echo "$result" | tail -n1)"
+
+# If a file was selected (user pressed Enter on a match), use it
+# If no match (only query returned), create new file from query
+if [[ "$selection" != "$query" ]] && [[ -n "$selection" ]]; then
+	# User selected an existing file
+	file="$selection"
+else
+	# No match - use query to create new file
+	file="${query}.md"
 fi
 
 # Start the tmux session if not running
