@@ -265,6 +265,7 @@ return {
 				"stylua", -- Used to format Lua code
 				"clang-format", -- Used to format Lua code
 				"clangd",
+				"pyright",
 			})
 			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
