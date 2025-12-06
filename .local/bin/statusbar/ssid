@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+ip a show wlp4s0 | awk -F: 'NR==1{print $2}'

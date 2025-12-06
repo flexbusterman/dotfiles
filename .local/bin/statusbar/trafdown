@@ -1,5 +1,5 @@
 #!/bin/sh
-cat /tmp/trafdown
 # sar -n DEV 1 1 | awk '/Average.*wlp[23456789]s0/ || /Average.*wlan0/ || /Average.*enp0/ {print $5}' | sed 's/[.,].*//' >/tmp/trafdown
 # awk -F '|' '$1 ~ /smiths/ {sum += $3} END {print sum}'
-sar -n DEV 1 1 | awk '$1 ~ /Average/ {sum +=$5} END {print int(sum)}'
+cat /tmp/trafdown
+sar -n DEV 1 1 | awk '$1 ~ /Average/ {sum +=$5} END {print int(sum)}' > /tmp/trafdown
