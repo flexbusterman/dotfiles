@@ -10,8 +10,8 @@ dunst &
 slstatus &
 blueberry-tray &
 sxhkd &
-xautolock -time 3 -locker idlescript &
 ~/.local/bin/historybackup &
+xss-lock -l -- xsecurelock &
 mpd &
 transmission-daemon &
 exec ~/.local/bin/dwmstart

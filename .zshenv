@@ -27,13 +27,14 @@ export SYSTEMD_EDITOR=nvim
 export XKB_DEFAULT_OPTIONS=caps:escape
 export WALLPAPER=~/.local/share/$USER/background.jpg
 export XDG_CURRENT_DESKTOP=Unity
-# export XSECURELOCK_PAM_SERVICE=xscreensaver
-export XSECURELOCK_SAVER=saver_xscreensaver
 export TASKRC=~/.config/taskwarrior/taskrc
-# export PATH=$PATH:$ANDROID_HOME/emulator
-# export PATH=$PATH:$ANDROID_HOME/platform-tools
-# export PATH=$PATH:$HOME/.local/bin/
-# export PATH=$PATH:$HOME/.cargo/bin/
-# export PATH=$PATH:$HOME/.local/bin/statusbar/
-# export NEXTCLOUD_PHP_CONFIG=/etc/webapps/nextcloud/php.ini
-# export SWAYSOCK=$( lsof /run/user/1000/sway-ipc.* 2>/dev/null | awk '{print $9}' | tail -n +2 | sort | uniq )
+
+export XSECURELOCK_SAVER=saver_xscreensaver
+# Specifies the time (in seconds) to wait for response to a prompt by `auth_x11` before giving up and reverting to the screen saver.
+export XSECURELOCK_AUTH_TIMEOUT=2
+# Specifies the time (in seconds) before telling X11 to fully blank the screen; a negative value disables X11 blanking.
+export XSECURELOCK_BLANK_TIMEOUT=1800
+# Specifies which DPMS state to put the screen in when blanking (one of standby, suspend, off and on, where "on" means to not invoke DPMS at all).
+export XSECURELOCK_BLANK_DPMS_STATE="off"
+# If set to 0, the key pressed to stop the screen saver and spawn the auth child is sent to the auth child (and thus becomes part of the password entry).
+export XSECURELOCK_DISCARD_FIRST_KEYPRESS=0

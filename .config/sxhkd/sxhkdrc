@@ -141,7 +141,7 @@ super + control + k
 super + control + l
 	musicseekforward
 super + shift + control + l
-	slock
+	xset s activate
 # shift + control + l
 # notify-send "shift + control + l"
 
@@ -359,7 +359,8 @@ super + Return
 	# wofi --show run
 	# --show drun
 super + shift + Return
-	$TERMINAL -e tmux new-session -A -s main
+	kitty -e tmux new-session -A -s main
+	# $TERMINAL -e tmux new-session -A -s main
 	# $TERMINAL -e tmux new-session -A -s main
 # super + control + Return
 super + control + n

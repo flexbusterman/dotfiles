@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+
+# The colon can be used as true, so no items are needed for input to dmenu
 name=$(: | dmenu -p "Enter filename (excluding .md): ")
 
 if [[ -z $name ]]; then
@@ -6,7 +8,7 @@ if [[ -z $name ]]; then
 	exit 1
 fi
 
-file="$HOME/WIKI/$name.md"
+cd ~/WIKI/
 
 # Start the tmux session if not running
 if ! tmux has-session -t wiki 2>/dev/null; then
@@ -20,13 +22,12 @@ fi
 currentCommand=$(tmux list-panes -t wiki -F '#{pane_current_command}')
 if [[ "$currentCommand" == *"vim"* ]]; then
 	echo "(n)vim is running"
-	tmux send-keys -t wiki Escape ":e $file" Enter
+	tmux send-keys -t wiki Escape ":e $path" Enter
 else
 	echo "(n)vim is not running"
-	tmux send-keys -t wiki "cd ~/WIKI/; nvim \"$file\"" Enter
+	tmux send-keys -t wiki "cd ~/WIKI/; nvim \"$path\"" Enter
 fi
 
 # Attach to tmux session
-echo "$TERMINAL" "Opening $file in (n)vim"
-
+echo "$TERMINAL" "Opening $path in (n)vim"
 $TERMINAL -e tmux attach -t wiki

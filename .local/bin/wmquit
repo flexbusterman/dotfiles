@@ -25,7 +25,7 @@ answer=$(echo -e "yes\nno" | dmenu -fn "BigBlueTerm437 Nerd Font Mono" -p "Reall
 if [[ $answer == "yes" ]]; then
   case "$action" in
     "reboot") reboot ;;
-    "quit") pkill dwm ;;
+    "quit") pkill Xorg ;;
 		"poweroff") poweroff ;;
   esac
 else
