@@ -435,7 +435,7 @@ desc = "Empty trash"
 
 [[mgr.prepend_keymap]]
 on = [ "c", "d" ]
-run = 'shell "dropbox-cli sharelink \"$1\" | wl-copy" --confirm'
+run = 'shell "dropbox-cli sharelink \"$1\" | xclip -sel clipboard" --confirm'
 desc = "Copy Dropbox share link of selected file"
 
 [[mgr.prepend_keymap]]
