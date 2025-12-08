@@ -20,7 +20,8 @@ while getopts 'rqp' flag; do
   esac
 done
 
-answer=$(echo -e "yes\nno" | dmenu -fn "BigBlueTerm437 Nerd Font Mono" -p "Really $action?")
+# answer=$(echo -e "yes\nno" | dmenu -fn "BigBlueTerm437 Nerd Font Mono" -p "Really $action?")
+answer=$(echo -e "yes\nno" | dmenu -p "Really $action?")
 
 if [[ $answer == "yes" ]]; then
   case "$action" in
