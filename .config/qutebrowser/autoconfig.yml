@@ -23,8 +23,10 @@ settings:
     global: rgba(200,200,200,1)
   colors.hints.match.fg:
     global: rgba(255,255,255,1)
+  colors.webpage.bg:
+    global: black
   colors.webpage.darkmode.enabled:
-    global: false
+    global: true
   content.blocking.enabled:
     global: true
   content.blocking.method:
@@ -45,6 +47,7 @@ settings:
     https://www.sj.se: true
     https://www.stockholmparkering.se: true
   content.javascript.clipboard:
+    http://127.0.0.1:39493: access-paste
     https://bloodhound.specterops.io: access-paste
     https://chat.deepseek.com: access-paste
     https://chatgpt.com/: access
